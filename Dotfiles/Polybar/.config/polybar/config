@@ -1,0 +1,180 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+;background = ${xrdb:color0:#1C1B19}
+background = #00000000
+background-alt = #1C1B19
+;foreground = ${xrdb:color7:#1C1B19}
+foreground = #FCE8C3
+foreground-alt = #918175
+primary = #FED06E
+secondary = #98BC37
+alert = #F75341
+
+[bar/bar]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 32
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding = 0
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = JetBrains Mono:style=Bold:size=12;2
+font-1 = JetBrainsMono Nerd Font:style=Regular:size=12;2
+font-2 = JetBrains Mono:style=Regular:size=12;2
+
+modules-left = bspwm title
+modules-right = battery date
+;modules-right = pulseaudio battery date
+
+tray-position = right
+tray-padding = 0
+;tray-background = #0063ff
+
+wm-restack = bspwm
+
+override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/bspwm]
+type = internal/bspwm
+
+pin-workspaces = true
+inline-mode = false
+enable-click = true
+enable-scroll = false
+reverse-scroll = false
+fuzzy-match = true
+
+format = <label-state> <label-mode>
+label-separator =
+label-separator-padding =
+
+label-monitor = "%name%"
+label-focused = "%icon%"
+label-occupied = "%icon%"
+label-occupied-foreground = "${colors.foreground-alt}"
+label-urgent = "%icon%"
+label-empty =
+label-active-font = 2
+
+ws-icon-0 = "info;  "
+ws-icon-1 = "term;  "
+ws-icon-2 = "text;  "
+ws-icon-3 = "draw;  "
+ws-icon-4 = "webs; 爵 "
+ws-icon-5 = "work; 漣 "
+ws-icon-6 = "game;  "
+
+
+[module/title]
+type = internal/xwindow
+
+format = <label>
+
+label-maxlen = 64
+
+
+[module/date]
+type = internal/date
+
+interval = 1.0
+
+label = "%date%%time% "
+date =
+time = "%I:%M"
+date-alt = "%A, %d/%m/%Y - "
+time-alt = "%r"
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+use-ui-max = false
+interval = 5
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = "%percentage%奄"
+label-muted = "%percentage%-"
+ramp-volume-0 =
+ramp-volume-1 =
+ramp-volume-2 =
+
+click-right = pavucontrol &
+; click-middle =
+
+
+[module/battery]
+type = internal/battery
+
+full-at = 90
+battery = BAT0
+adapter = ADP1
+poll-interval = 5
+
+format-charging = <label-charging>
+format-discharging = <ramp-capacity><label-discharging>
+label-charging = "%percentage%"
+label-discharging = "%percentage%"
+label-full =
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini

@@ -1,0 +1,91 @@
+#! /bin/sh
+bspc rule -r "*"
+
+
+#### Desktops
+bspc monitor -d info term text draw webs work game
+
+bspc config split_ratio                       0.52
+
+bspc config border_width                         2
+bspc config window_gap                          14
+bspc config top_padding                        -16
+bspc config bottom_padding                      16
+bspc config left_padding                       -16
+bspc config right_padding                      -16
+
+bspc config borderless_monocle               false
+bspc config gapless_monocle                  false
+bspc config top_monocle_padding                  0
+bspc config bottom_monocle_padding               0
+bspc config left_monocle_padding                 0
+bspc config right_monocle_padding                0
+
+bspc config -d 'info' top_padding               32
+bspc config -d 'info' bottom_padding             0
+bspc config -d 'info' left_padding              32
+bspc config -d 'info' right_padding            691
+
+bspc config -d 'term' top_padding               16
+bspc config -d 'term' bottom_padding             0
+bspc config -d 'term' left_padding             203
+bspc config -d 'term' right_padding            203
+
+bspc config -d 'text' top_padding               16
+bspc config -d 'text' bottom_padding             0
+bspc config -d 'text' left_padding              43
+bspc config -d 'text' right_padding             43
+
+bspc config normal_border_color          "#1C1B19"
+bspc config active_border_color          "#FBB829"
+bspc config focused_border_color         "#FED06E"
+bspc config presel_feedback_color        "#FED06E"
+bspc config urgent_border_color          "#F75341"
+
+
+#### Apps
+bspc rule -a text                                       desktop='text' follow=on
+bspc rule -a firefox                                    desktop='webs' follow=on
+bspc rule -a DesktopEditors                             desktop='text' follow=on
+bspc rule -a Gimp                                       desktop='draw' follow=on
+bspc rule -a Blender                                    desktop='draw' follow=on
+bspc rule -a Godot                                      desktop='work' follow=on
+bspc rule -a steam                                      desktop='game' follow=on
+bspc rule -a lutris                                     desktop='game' follow=on
+bspc rule -a retroarch                                  desktop='game' follow=on
+bspc rule -a minecraft                                  desktop='game' follow=on
+
+#### Keybinding
+bspc config focus_follows_pointer            false
+bspc config pointer_action1                   move
+bspc config pointer_action2          resize_corner
+bspc config pointer_action3          resize_corner
+
+
+#### Autostarts
+nitrogen --set-zoom-fill ~/Dotfiles/Cloud/Wallpapers/Wallpapers/Indoor/background-min.png
+killall -q picom
+picom --experimental-backends &
+killall -q polybar
+polybar bar &
+killall -q dunst
+dunst &
+setxkbmap
+xmodmap .Xmodmap
+killall -q sxhkd
+sxhkd &
+killall -q ibus-daemon
+ibus-daemon -rdx
+
+bspc subscribe node_focus | while read -r _ _ _ l
+do
+	if [[ $(bspc subscribe -c 1 report | cut -f 2- -d ":" | cut -f 2 -d "L" | cut -f 1 -d ":") = "M" ]]
+	then
+		for othernodes in $(bspc query -N -n .local)
+		do
+			picom-trans -w $othernodes -o 0
+		done
+		picom-trans -c -o 100
+	fi
+done &
+

@@ -1,0 +1,3 @@
+if v:version >= 703
+  call s:HL('CursorLineNr', s:black, s:bright_yellow)
+endif

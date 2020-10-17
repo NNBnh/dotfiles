@@ -1,0 +1,63 @@
+* {
+  scrollbar-color: #FCE8C3 #1C1B19 !important;
+  scrollbar-width: thin !important;
+}
+
+@-moz-document url-prefix("about:"),
+@-moz-document url-prefix("chrome://mozapps/content/extensions/aboutaddons.html") {
+  window,
+  page,
+  html,
+  .main-content,
+  scrollbar {
+    scrollbar-color: #FCE8C3 #1C1B19 !important;
+    scrollbar-width: thin !important;
+  }
+}
+
+
+
+@-moz-document url("about:home"),url("about:blank"),url("about:newtab"),url("about:privatebrowsing"){
+  body{background-color: #1C1B19 !important;}
+}
+
+
+
+@-moz-document domain("youtube.com")
+{
+/* Full height player */
+  ytd-app[is-watch-page] ytd-watch[theater] #player,
+ytd-app[is-watch-page] ytd-watch-flexy[theater] #player-theater-container
+  {
+    max-height: 100vh !important;
+    min-height: 100vh !important;
+  }
+/* Hide top bar */
+  ytd-app[is-watch-page] #masthead-container
+  {
+    opacity: 0 !important;
+    transition: opacity 0.2s ease-in-out;
+  }
+/* Show on hover */
+  ytd-app[is-watch-page] #masthead-container:hover
+  {
+    opacity: 1 !important;
+  }
+/* Remove top margin */
+  ytd-app[is-watch-page] #page-manager
+  {
+    margin-top: 0 !important;
+  }
+/* Hide feedback and restore classic buttons */
+  ytd-app[is-watch-page] #extra-buttons
+  {
+    display: none !important;
+  }
+/* Fix toast interfering with controls */
+  ytd-app[is-watch-page] #toast:not(.paper-toast-open)
+  {
+    pointer-events: none;
+  }
+/* Hide Scrollbar
+  :root{ scrollbar-width: none !important } */
+}
