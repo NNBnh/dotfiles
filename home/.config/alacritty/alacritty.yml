@@ -1,0 +1,462 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator
+
+# Any items in the `env` entry below will be added as
+# environment variables. Some entries may override variables
+# set by alacritty it self.
+# senv:
+  # TERM env customization.
+  #
+  # If this property is not set, alacritty will set it to xterm-256color.
+  #
+  # Note that some xterm terminfo databases don't declare support for italics.
+  # You can verify this by checking for the presence of `smso` and `sitm` in
+  # `infocmp xterm-256color`.
+  # TERM: xterm-256color-italic
+
+window:
+  # Window dimensions (changes require restart)
+  #
+  # Specified in number of columns/lines, not pixels. If both are zero this
+  # setting is ignored.
+  dimensions:
+    columns: 80
+    lines: 30
+
+  # Window padding (changes require restart)
+  #
+  # Blank space added around the window in pixels. This padding is not scaled by
+  # DPI and the specified value is always added at both opposing sides.
+  padding:
+    x: 0
+    y: 0
+
+  # Spread additional padding evenly around the terminal content.
+  dynamic_padding: true
+
+  # Window decorations
+  #
+  # Available values:
+  # - full: borders and title bar
+  # - none: neither borders nor title bar
+  # - transparent: title bar, transparent background and title bar buttons
+  # - buttonless: title bar, transparent background, but no title bar buttons
+  decorations: full
+
+  # Startup Mode (changes require restart)
+  #
+  # Values for `startup_mode`:
+  #   - Windowed
+  #   - Maximized
+  #   - Fullscreen
+  #
+  # Values for `startup_mode` (macOS only):
+  #   - SimpleFullscreen
+  startup_mode: Maximized
+
+scrolling:
+  # maximum number of lines in the scrollback buffer. Specifying '0' will
+  # disable scrolling.
+  history: 1024
+
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+  multiplier: 1
+
+# Font configuration (changes require restart)
+font:
+  # The normal (roman) font face to use.
+  # Style can be specified to pick a specific face.
+  normal:
+    family: "JetBrainsMono Nerd Font"
+    # style: Retina
+
+  # The bold font face
+  bold:
+    family: "JetBrainsMono Nerd Font"
+    style: "Bold"
+
+  # The italic font face
+  italic:
+    family: "JetBrainsMono Nerd Font"
+    style: "italic"
+
+  # The bold-italic font face
+  bold_italic:
+    family: "JetBrainsMono Nerd Font"
+    style: "Bold Italic"
+
+  # Point size of the font
+  size: 10.5
+
+  # Offset is the extra space around each character. offset.y can be thought of
+  # as modifying the linespacing, and offset.x as modifying the letter spacing.
+  offset:
+    x: 0
+    y: 0
+
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increase the x offset to move the glyph to
+  # the right, increase the y offset to move the glyph upward.
+  glyph_offset:
+    x: 0
+    y: 0
+
+  # Thin stroke font rendering (macOS only)
+  #
+  # Thin strokes are suitable for retina displays, but for non-retina you
+  # probably want this set to false.
+  #
+  # macOS >= 10.14.x:
+  #
+  # If the font quality on non-retina display looks bad then set
+  # `use_thin_strokes` to `true` and enable font smoothing by running the
+  # following command:
+  #   `defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO`
+  #
+  # This is a global setting and will require a log out or restart to take
+  # effect.
+  use_thin_strokes: true
+
+# When true, bold text is drawn using the bright variant of colors.
+draw_bold_text_with_bright_colors: false
+
+# Colors
+colors:
+  # Default colors
+  primary:
+    background: '0x2c2620'
+    foreground: '0xfce8c3'
+
+  # Colors that should be used to draw the terminal cursor. If these are unset,
+  # the cursor colour will be the inverse of the cell colour.
+  cursor:
+    text:    '0x1c1b19'
+    cursor:  '0xfed06e'
+
+  # Normal colors
+  normal:
+    black:   '0x1c1b19'
+    red:     '0xef2f27'
+    green:   '0x519f50'
+    yellow:  '0xfbb829'
+    blue:    '0x2c78bf'
+    magenta: '0xe02c6d'
+    cyan:    '0x0aaeb3'
+    white:   '0xd0bfa1'
+
+  # Bright colors
+  bright:
+    black:   '0x918175'
+    red:     '0xf75341'
+    green:   '0x98bc37'
+    yellow:  '0xfed06e'
+    blue:    '0x68a8e4'
+    magenta: '0xff5c8f'
+    cyan:    '0x53fde9'
+    white:   '0xfce8c3'
+
+
+  # Indexed Colors
+  #
+  # The indexed colors include all colors from 16 to 256.
+  # When these are not set, they're filled with sensible defaults.
+  #
+  # Example:
+  #   `- { index: 16, color: '0xff00ff' }`
+  #
+  indexed_colors:
+    - { index: 166, color: '0xd75f00' }
+    - { index: 208, color: '0xff8700' }
+    - { index: 233, color: '0x121212' }
+    - { index: 235, color: '0x262626' }
+    - { index: 236, color: '0x303030' }
+    - { index: 237, color: '0x3a3a3a' }
+    - { index: 238, color: '0x444444' }
+    - { index: 239, color: '0x4e4e4e' }
+    - { index: 240, color: '0x585858' }
+
+# Visual Bell
+#
+# Any time the BEL code is received, Alacritty "rings" the visual bell. Once
+# rung, the terminal background will be set to white and transition back to the
+# default background color. You can control the rate of this transition by
+# setting the `duration` property (represented in milliseconds). You can also
+# configure the transition function by setting the `animation` property.
+#
+# Possible values for `animation`
+# `Ease`
+# `EaseOut`
+# `EaseOutSine`
+# `EaseOutQuad`
+# `EaseOutCubic`
+# `EaseOutQuart`
+# `EaseOutQuint`
+# `EaseOutExpo`
+# `EaseOutCirc`
+# `Linear`
+#
+# To completely disable the visual bell, set its duration to 0.
+#
+visual_bell:
+  animation: EaseOutExpo
+  color: '0xfce8c3'
+  duration: 0
+
+# Background opacity
+background_opacity: 0.80
+
+# Key bindings
+#
+# Key bindings are specified as a list of objects. Each binding will specify a
+# key and modifiers required to trigger it, terminal modes where the binding is
+# applicable, and what should be done when the key binding fires. It can either
+# send a byte sequence to the running application (`chars`), execute a
+# predefined action (`action`) or fork and execute a specified command plus
+# arguments (`command`).
+#
+# Bindings are always filled by default, but will be replaced when a new binding
+# with the same triggers is defined. To unset a default binding, it can be
+# mapped to the `None` action.
+#
+# Example:
+#   `- { key: V, mods: Control|Shift, action: Paste }`
+#
+# Available fields:
+#   - key
+#   - mods (optional)
+#   - chars | action | command (exactly one required)
+#   - mode (optional)
+#
+# Values for `key`:
+#   - `A` -> `Z`
+#   - `F1` -> `F12`
+#   - `Key1` -> `Key0`
+#
+#   A full list with available key codes can be found here:
+#   https://docs.rs/glutin/*/glutin/enum.VirtualKeyCode.html#variants
+#
+#   Instead of using the name of the keys, the `key` field also supports using
+#   the scancode of the desired key. Scancodes have to be specified as a
+#   decimal number.
+#   This command will allow you to display the hex scancodes for certain keys:
+#     `showkey --scancodes`
+#
+# Values for `mods`:
+#   - Command
+#   - Control
+#   - Option
+#   - Super
+#   - Shift
+#   - Alt
+#
+#   Multiple `mods` can be combined using `|` like this: `mods: Control|Shift`.
+#   Whitespace and capitalization is relevant and must match the example.
+#
+# Values for `chars`:
+#   The `chars` field writes the specified string to the terminal. This makes
+#   it possible to pass escape sequences.
+#   To find escape codes for bindings like `PageUp` ("\x1b[5~"), you can run
+#   the command `showkey -a` outside of tmux.
+#   Note that applications use terminfo to map escape sequences back to
+#   keys. It is therefore required to update the terminfo when
+#   changing an escape sequence.
+#
+# Values for `action`:
+#   - Paste
+#   - PasteSelection
+#   - Copy
+#   - IncreaseFontSize
+#   - DecreaseFontSize
+#   - ResetFontSize
+#   - ScrollPageUp
+#   - ScrollPageDown
+#   - ScrollLineUp
+#   - ScrollLineDown
+#   - ScrollToTop
+#   - ScrollToBottom
+#   - ClearHistory
+#   - Hide
+#   - Quit
+#   - ClearLogNotice
+#   - SpawnNewInstance
+#   - ToggleFullscreen
+#   - None
+#
+# Values for `action` (macOS only):
+#   - ToggleSimpleFullscreen: Enters fullscreen without occupying another space
+#
+# Values for `command`:
+#   The `command` field must be a map containing a `program` string and
+#   an `args` array of command line parameter strings.
+#
+#   Example:
+#       `command: { program: "alacritty", args: ["-e", "vttest"] }`
+#
+# Values for `mode`:
+#   - ~AppCursor
+#   - AppCursor
+#   - ~AppKeypad
+#   - AppKeypad
+#
+key_bindings:
+  - { key: A,        mods: Control|Shift, chars:  "\x1b[2;8~a"     }
+  - { key: B,        mods: Control|Shift, chars:  "\x1b[2;8~b"     }
+  # - { key: C,        mods: Control|Shift, chars:  "\x1b[2;8~c"     }
+  - { key: D,        mods: Control|Shift, chars:  "\x1b[2;8~d"     }
+  - { key: E,        mods: Control|Shift, chars:  "\x1b[2;8~e"     }
+  - { key: F,        mods: Control|Shift, chars:  "\x1b[2;8~f"     }
+  - { key: G,        mods: Control|Shift, chars:  "\x1b[2;8~g"     }
+  - { key: H,        mods: Control|Shift, chars:  "\x1b[2;8~h"     }
+  - { key: I,        mods: Control|Shift, chars:  "\x1b[2;8~i"     }
+  - { key: J,        mods: Control|Shift, chars:  "\x1b[2;8~j"     }
+  - { key: K,        mods: Control|Shift, chars:  "\x1b[2;8~k"     }
+  - { key: L,        mods: Control|Shift, chars:  "\x1b[2;8~l"     }
+  - { key: M,        mods: Control|Shift, chars:  "\x1b[2;8~m"     }
+  - { key: N,        mods: Control|Shift, chars:  "\x1b[2;8~n"     }
+  - { key: O,        mods: Control|Shift, chars:  "\x1b[2;8~o"     }
+  - { key: P,        mods: Control|Shift, chars:  "\x1b[2;8~p"     }
+  - { key: Q,        mods: Control|Shift, chars:  "\x1b[2;8~q"     }
+  - { key: R,        mods: Control|Shift, chars:  "\x1b[2;8~r"     }
+  - { key: S,        mods: Control|Shift, chars:  "\x1b[2;8~s"     }
+  - { key: T,        mods: Control|Shift, chars:  "\x1b[2;8~t"     }
+  - { key: U,        mods: Control|Shift, chars:  "\x1b[2;8~u"     }
+  # - { key: V,        mods: Control|Shift, chars:  "\x1b[2;8~v"     }
+  - { key: W,        mods: Control|Shift, chars:  "\x1b[2;8~w"     }
+  - { key: X,        mods: Control|Shift, chars:  "\x1b[2;8~x"     }
+  - { key: Y,        mods: Control|Shift, chars:  "\x1b[2;8~y"     }
+  - { key: Z,        mods: Control|Shift, chars:  "\x1b[2;8~z"     }
+  - { key: 0,        mods: Control|Shift, chars:  "\x1b[2;8~0"     }
+  - { key: 1,        mods: Control|Shift, chars:  "\x1b[2;8~1"     }
+  - { key: 2,        mods: Control|Shift, chars:  "\x1b[2;8~2"     }
+  - { key: 3,        mods: Control|Shift, chars:  "\x1b[2;8~3"     }
+  - { key: 4,        mods: Control|Shift, chars:  "\x1b[2;8~4"     }
+  - { key: 5,        mods: Control|Shift, chars:  "\x1b[2;8~5"     }
+  - { key: 6,        mods: Control|Shift, chars:  "\x1b[2;8~6"     }
+  - { key: 7,        mods: Control|Shift, chars:  "\x1b[2;8~7"     }
+  - { key: 8,        mods: Control|Shift, chars:  "\x1b[2;8~8"     }
+  - { key: 9,        mods: Control|Shift, chars:  "\x1b[2;8~9"     }
+  # - { key:  ,        mods: Control|Shift, chars:  "\x1b[2;8~,"     }
+  # - { key:  ,        mods: Control|Shift, chars:  "\x1b[2;8~."     }
+  # - { key:  ,        mods: Control|Shift, chars:  "\x1b[2;8~;"     }
+  # - { key:  ,        mods: Control|Shift, chars:  "\x1b[2;8~'"     }
+  # - { key:  ,        mods: Control|Shift, chars:  "\x1b[2;8~/"     }
+  # - { key:  ,        mods: Control|Shift, chars:  "\x1b[2;8~["     }
+  # - { key:  ,        mods: Control|Shift, chars:  "\x1b[2;8~]"     }
+  # - { key:  ,        mods: Control|Shift, chars:  "\x1b[2;8~\"     }
+  # - { key:  ,        mods: Control|Shift, chars:  "\x1b[2;8~-"     }
+  # - { key:  ,        mods: Control|Shift, chars:  "\x1b[2;8~="     }
+  # - { key:  ,        mods: Control|Shift, chars:  "\x1b[2;8~`"     }
+
+  - { key: C,        mods: Control|Shift, action: Copy             }
+  - { key: V,        mods: Control|Shift, action: Paste            }
+  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
+  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
+  - { key: R,        mods: Control|Shift, action: ResetFontSize    }
+
+mouse:
+  # Click settings
+  #
+  # The `double_click` and `triple_click` settings control the time
+  # alacritty should wait for accepting multiple clicks as one double
+  # or triple click.
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+
+  # If this is `true`, the cursor is temporarily hidden when typing.
+  # hide_when_typing: true
+
+  # URL launcher
+  # url:
+    # This program is executed when clicking on a text which is recognized as a URL.
+    # The URL is always added to the command as the last parameter.
+    #
+    # When set to `None`, URL launching will be disabled completely.
+    #
+    # Default:
+    #   - (macOS) open
+    #   - (Linux) xdg-open
+    #   - (Windows) explorer
+    # launcher:
+    #   program: xdg-open
+    #   args: []
+
+    # These are the modifiers that need to be held down for opening URLs when clicking
+    # on them. The available modifiers are documented in the key binding section.
+    # modifiers: Control|Shift
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  # save_to_clipboard: false
+
+# Mouse bindings
+#
+# Available fields:
+# - mouse
+# - action
+# - mods (optional)
+#
+# Values for `mouse`:
+# - Middle
+# - Left
+# - Right
+# - Numeric identifier such as `5`
+#
+# All available `mods` and `action` values are documented in the key binding
+# section.
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+cursor:
+  # Cursor style
+  #
+  # Values for 'style':
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  style: Block
+
+  # If this is `true`, the cursor will be rendered as a hollow box when the
+  # window is not focused.
+  unfocused_hollow: true
+
+# dynamic_title: false
+
+# Live config reload (changes require restart)
+live_config_reload: true
+
+# Shell
+#
+# You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
+# Entries in shell.args are passed unmodified as arguments to the shell.
+# shell:
+#   program: /usr/local/homebrew/bin/fish
+#   args:
+#     - --command=tmux
+
+debug:
+  # Should display the render timer
+  render_timer: false
+
+  # Keep the log file after quitting Alacritty.
+  persistent_logging: false
+
+  # Log level
+  #
+  # Values for `log_level`:
+  #   - None
+  #   - Error
+  #   - Warn
+  #   - Info
+  #   - Debug
+  #   - Trace
+  log_level: None
+
+  # Print all received window events.
+  print_events: false
+
+  # Record all characters and escape sequences as test data.
+  ref_test: false
+
+# vim: nospell

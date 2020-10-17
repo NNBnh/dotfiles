@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+col -b -x | kak

@@ -1,0 +1,161 @@
+
+
+# WM
+	# Start
+	PAC:grub
+	PAC:efibootmgr
+	PAC:lightdm
+	PAC:bspwm
+
+	# Safe
+	PAC:ufw
+	AUR:betterlockscreen
+
+	# Input
+	PAC:sxhkd
+	PAC:languagetool
+	AUR:ibus-bamboo
+	AUR:xf86-input-wizardpen
+
+	# UI
+	PAC:xorg-xrdb
+	PAC:xwallpaper
+	AUR:xwinwrap-git
+	AUR:picom-tryone-git
+	PAC:redshift
+	PAC:conky
+	AUR:lemonbar-xft-git
+	PAC:xtitle
+
+		# Notice
+		PAC:dunst
+		PAC:libnotify
+
+	# Resource
+	PAC:ttf-jetbrains-mono
+	AUR:nerd-fonts-jetbrains-mono
+	PAC:adobe-source-han-sans-jp-fonts
+	PAC:papirus-icon-theme
+
+# CLI
+	# Shell
+	PAC:fish
+	PAC:zsh
+
+	# Files
+	PAC:exa
+	PAC:fzy
+	PAC:fd
+	PAC:ripgrep
+	PAC:git
+	PAC:stow
+	PAC:curl
+	PAC:wget
+	PAC:rsync
+	PAC:transmission-cli
+	AUR:transfer.sh
+	AUR:ffsend-bin
+	AUR:github-cli
+	PAC:youtube-dl
+	AUR:vimv-git
+	PAC:trash-cli
+
+	# Code
+	PAC:python
+	PAC:nim
+
+	# Safe
+	PAC:pass
+
+	# Documents
+	PAC:pandoc
+
+	# Image
+	PAC:chafa
+	PAC:maim
+	AUR:colorpicker
+	PAC:imagemagick
+
+	# System
+		# Info
+		PAC:neofetch
+		PAC:xorg-xprop
+
+		# Screen
+		PAC:xorg-xbacklight
+
+		# Audio
+		PAC:pulseaudio
+		PAC:pamixer
+		PAC:mpd
+		PAC:mpc
+		PAC:mopidy
+
+		# Binding
+		PAC:xorg-xmodmap
+		PAC:xorg-setxkbmap
+		PAC:xorg-xev
+
+		# Clipboard
+		PAC:xclip
+
+	# Todo
+	PAC:libqalculate
+	PAC:task
+	PAC:timew
+
+	# Work
+	PAC:surfraw
+	PAC:translate-shell
+
+	# Fun
+	PAC:lolcat
+	PAC:figlet
+	AUR:no-more-secrets
+	AUR:unimatrix-git
+	AUR:shell-color-scripts
+
+# TUI
+	# Files
+	PAC:kakoune
+
+	# System
+	PAC:glances
+
+	# Audio
+	PAC:pulsemixer
+
+	# Online
+	PAC:weechat
+	AUR:browsh-bin
+
+# GUI
+	# Term
+	PAC:alacritty
+
+	# Menu
+	PAC:rofi
+	AUR:rofi-greenclip
+
+	# Files
+	PAC:nemo
+	PAC:firefox
+	PAC:sxiv
+	PAC:mpv
+	PAC:zathura
+	PAC:zathura-pdf-poppler
+	PAC:zathura-cb
+
+	# Edit
+	AUR:godot-bin
+	PAC:gimp
+	PAC:blender
+	PAC:audacity
+	PAC:lmms
+
+# Games
+	PAC:steam
+	PAC:lutris
+	PAC:retroarch
+	AUR:minecraft-launcher
+	AUR:flips

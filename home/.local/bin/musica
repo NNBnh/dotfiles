@@ -1,0 +1,80 @@
+#!/bin/sh
+
+
+function playinginfo() {
+	mpd-albumart one
+	dunstify -r 766677 -I "$HOME/.cache/mpd/albumart.png" -b "Musica" "$(mpc -f "[%title%[ - %artist%]]" | head -1)\n$(mpc -f %album% | head -1)" &
+}
+
+function playingvol() {
+	dunstify -r 766677 -b "Musica" "$(mpc volume | cut -f 2- -d ":" )" &
+}
+
+function playinghow() {
+	dunstify -r 766677 -b "Musica" "$how" &
+}
+
+
+flag="${1:-"pause"}"
+
+case $flag in
+	"pause")
+		[ $(mpc | sed "2q;d" | cut -f 1 -d " ") = "[paused]" ] \
+			&& how="契 play" \
+			|| how=" pause"
+		mpc toggle && playinghow || mpd &
+		;;
+	"prev")
+		mpc prev
+		playinginfo
+		;;
+	"next")
+		mpc next
+		playinginfo
+		;;
+	"seekprev")
+		mpc seek -00:00:05
+		;;
+	"seeknext")
+		mpc seek +00:00:05
+		;;
+	"down")
+		mpc volume -5
+		playinghow
+		;;
+	"up")
+		mpc volume +5
+		playinghow
+		;;
+	"full")
+		mpc toggleoutput 1
+		playinghow
+		;;
+	"how")
+		case "$(mpc | sed "3q;d" | cut -f 3-4 -d ":")" in
+			" off   random: off   single")
+				mpc repeat off
+				mpc random on
+				how+=" random"
+				;;
+			" off   random: on    single")
+				mpc repeat on
+				mpc random off
+				how+="綾 repeat"
+				;;
+			*)
+				mpc repeat off
+				mpc random off
+				how+="凌 loop"
+				;;
+		esac
+		playinghow
+		;;
+	"menu")
+		music="$(echo -e "PLAYLISTS\n$(mpc playlist -f "[%title%[ - %artist%][ - %album%]]")" | rofi $theme -format i -p "Musica" -dmenu -i)"
+		[ "$music" = "0" ] || mpc play $music
+		;;
+esac
+
+
+exit 0

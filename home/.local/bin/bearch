@@ -1,0 +1,56 @@
+#!/bin/sh
+
+#    ___                   __ 
+#   / _ )___ ___ _________/ / 
+#  / _  / -_) _ `/ __/ __/ _ \
+# /____/\__/\_,_/_/  \__/_//_/
+                            
+# File:         search that SuperB
+# Description:  Script for hackerman
+# Author:       NNB
+#               └─ https://github.com/NNBnh
+# License:      GPLv3
+
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+# NOTE: Requires jq
+
+
+# Values
+engine=${BEARCH_ENGINE-'https://duckduckgo.com/?q='}
+engine_suggest_head=${ENGINE_SUGGEST_HEAD-'https://ac.duckduckgo.com/ac/?q='}
+[[ -z $BEARCH_ENGINE_SUGGEST_HEAD ]] \
+	&& engine_suggest_tail='&type=list' \
+	|| engine_suggest_tail=$BEARCH_ENGINE_SUGGEST_TAIL
+
+selector=${BEARCH_SELECTOR-'fzy'}
+prompt_head=${PROMPT_HEAD-'Search \"'}
+[[ -z $BEARCH_PROMPT_HEAD ]] \
+	&& prompt_tail='\"' \
+	|| prompt_tail=$BEARCH_PROMPT_TAIL
+url=$*
+
+
+# Start
+while :; do
+	[[ ! -z $url ]] && suggest=$(jq -r '.[1][]' <<< $(curl -fsSL $engine_suggest_head${url//' '/'%20'}$engine_suggest_tail))
+	url=$(printf "$prompt\n$suggest" | $selector) || break
+	last_url=$url
+	prompt="$prompt_head$url$prompt_tail"
+	url=${url//'+'/'%2B1'}
+	[[ $url == $prompt ]] && $BROWSER $engine${last_url//' '/'+'} && break
+done
+
+
+exit

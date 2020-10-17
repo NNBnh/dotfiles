@@ -1,0 +1,119 @@
+#### Modes
+super + {_,shift + ,ctrl + ,shift + ctrl + }Escape
+	dwsb power {lock,default,refresh,logout}
+
+#### Movements
+super + {Left,Down,Up,Right}
+	bspc node -f {west,south,north,east}
+super + shift + {Left,Down,Up,Right}
+	bspc node -z {left -10 0,bottom 0 10,top 0 -10,right 10 0}
+super + ctrl + {Left,Down,Up,Right}
+	bspc node -z {right -10 0,top 0 10,bottom 0 -10,left 10 0}
+super + alt {Left,Down,Up,Right}
+	bspc node -v {-10 0,0 10,0 -10,10 0}
+super + {_,shift + }Tab
+	bspc monitor -f {next,prev}
+super + {_,shift + }g
+	bspc monitor -f {next,prev}
+
+### Quick
+super + {_,shift + }{a,q,s,d,e,f,c,v}
+	dwsb-desktop {--next,--prev} {1-8}
+
+### Advance
+super + {_,ctrl + }r
+	bspc node any.local -{E,B}
+super + shift + r
+	dwsb power refresh
+
+## Edits
+super + ctrl + w ; super + ctrl + w
+	bspc node focused -p cancel
+super + ctrl + w ; super + ctrl + {Left,Down,Up,Right}
+	bspc node focused -p {west,south,north,east}
+super + ctrl + w ; super + ctrl + {j,k,i,l}
+	bspc node focused -p {west,south,north,east}
+
+## Moves
+super + w ; super + {a,q,s,d,e,f,c,v}
+	bspc node -d '^{1-8}' --follow
+super + w ; super + {Left,Down,Up,Right}
+	bspc node -s {west,south,north,east}.local
+super + w ; super + {j,k,i,l}
+	bspc node -s {west,south,north,east}.local
+super + w ; super + {_,shift + }{u,o}
+	bspc node {@parent,any}.local -R {270,90}
+
+#### Actions
+### Kill
+super + {_,shift + }x
+	bspc node -{c,k}
+
+### Add & Min
+super + {_,shift + ,alt + ,ctrl + }{minus,equal,apostrophe}
+	dwsb {volume,brightness,transparent,media} {down,up,default}
+super + {_,shift + ,alt + ,ctrl + }button{5,4}
+	dwsb {volume,brightness,transparent,media} {down,up}
+super + alt + shift + apostrophe
+	dwsb transparent show
+
+### Screeny
+{_,shift + ,ctrl + ,alt + }Print
+	screenyb {full,quick,crop,color}
+super + {_,shift + ,ctrl + ,alt + }Print
+	screenyb {full,quick,crop,color}
+super + {_,shift + ,ctrl + ,alt + }t
+	screenyb {full,quick,crop,color}
+
+#super + {_,shift + }z
+#	dwsb input {default,caps}
+
+### Menu
+super + {_,shift + ,ctrl + }slash
+	dwsb menu {default,local,cmd}
+
+### Layouts
+super + {_,shift + ,ctrl + }backslash
+	dwsb layout {default,stack,floatdwim}
+
+
+#### Right
+### Modes
+super + semicolon
+	dwsb menu cmd
+
+### Movements
+super + {j,k,i,l}
+	bspc node -f {west,south,north,east}
+super + shift + {j,k,i,l}
+	bspc node -z {left -10 0,bottom 0 10,top 0 -10,right 10 0}
+super + ctrl + {j,k,i,l}
+	bspc node -z {right -10 0,top 0 10,bottom 0 -10,left 10 0}
+super + alt + {j,k,i,l}
+	bspc node -v {-10 0,0 10,0 -10,10 0}
+
+## Advance
+super + {_,shift + }{u,o}
+	bspc node {@parent,any}.local -R {270,90}
+
+### Action
+## Musica
+super + {_,shift + }n
+	musica {prev,next}
+super + ctrl + {_,shift + }n
+	musica seek {prev,next}
+super + m
+	musica how
+super + comma
+	dwsb menu media
+super + period
+	musica pause
+
+## New
+super + {_,shift + }p
+	{dwsb menu app,alacritty}
+
+### Modes
+super + b
+	dwsb menu calc
+

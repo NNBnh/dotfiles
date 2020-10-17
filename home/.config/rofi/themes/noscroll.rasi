@@ -1,0 +1,7 @@
+@import "book.rasi"
+
+listview {
+	scrollbar: false;
+}
+
+// vim:ft=css:ts=2:sw=2:fdm=marker

@@ -1,0 +1,37 @@
+#!/bin/sh
+
+
+declare -A DWSB_WORKSPACES=(
+	[0]='None ...'
+	[1]="dwsb menu app"
+	[2]="$TERMINAL -e weechat"
+	[3]="$TERMINAL"
+	[4]="$TERMINAL -e $EDITOR"
+	[5]="gimp"
+	[6]="$BROWSER"
+	[7]="godot"
+	[8]="retroarch"
+)
+
+direction=${1-'--next'}
+workspace=${2-'1'}
+
+
+function launch {
+	bspc desktop -f "^$workspace"
+	${DWSB_WORKSPACES[$workspace]}
+}
+
+
+if [[ $(bspc query -D -d "^$workspace".local) == $(bspc query -D -d focused.occupied.local) ]]; then
+	if [[ $direction == '--prev' ]]; then
+		bspc node -f prev.local
+	else
+		bspc node -f next.local
+	fi
+else
+	bspc desktop -f "^$workspace".occupied.local || launch $workspace
+fi
+
+
+exit

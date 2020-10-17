@@ -1,0 +1,314 @@
+#!/bin/sh
+
+#      __           __
+#  ___/ /_   _____ / /
+# / _  / |/|/ (_-</ _ \
+# \_,_/|__,__/___/_.__/
+#
+
+# File:         dwsb
+# Description:  Do what superB
+# Author:       NNB
+#               └─ https://github.com/NNBnh
+# License:      GPLv3
+
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+# Values
+cmd=${1:-'menu'}
+cmd_sub=${2:-'default'}
+
+	# Menu
+	options_menu_cmd=" Run"
+	options_menu_app=" Apps launcher"
+	options_menu_search=" Search"
+	options_menu_clip=" Clipboard"
+	options_menu_calc="﬛ Calculator"
+	options_menu_emoji=" emoji"
+	options_menu_wifi="直 Wifi"
+	options_menu_blue=" Bluetooth"
+	options_menu_screen=" Screeny"
+	options_menu_media=" Musica"
+	options_menu_power="襤 Power"
+
+	# Layout
+	layout_pad="16"
+	options_layout_stack=" Stack"
+	options_layout_floatw="类 Float"
+	options_layout_sticky=" Sticky"
+	options_layout_max=" Max"
+	options_layout_a43=" 4:3"
+	options_layout_a169=" 16:9"
+	options_layout_fill=" Fill"
+	options_layout_full=" Full"
+	options_layout_nes=" NES"
+	options_layout_snes=" SNES"
+	options_layout_gb=" GB"
+	options_layout_gba=" GBA"
+
+	# Power
+	options_power_lock=" Lock"
+	options_power_refresh="勒 Refresh"
+	options_power_hiber=" Hibernate"
+	options_power_sleep="鈴 Sleep"
+	options_power_logout=" Logout"
+	options_power_shut="襤 Shutdown"
+
+
+# Functions
+function chosen() {
+	chosen="$(echo -e $options | rofi -theme themes/noscroll.rasi -p 'Menu' -dmenu -i -lines $1 -columns $2 -width $3)"
+}
+
+	# Menu
+	function menu_cmd()    {
+		rofi -show run
+	}
+	function menu_app()    {
+		rofi -show drun -show-icons
+	}
+	function menu_search() {
+		search=$(rofi -p "Search" -dmenu -i -lines 0) && [[ ! -z "$search" ]] && xdg-open "https://www.duckduckgo.com/?q=$search"
+	}
+	function menu_clip()   {
+		rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+	}
+	function menu_calc()   {
+		rofi -show calc -modi calc -no-show-match -no-sort
+	}
+	function menu_emoji()  {
+		rofi -show emoji -modi emoji
+	}
+	function menu_wifi()   {
+		rofi-wifi-menu
+	}
+	function menu_blue()   {
+		rofi-bluetooth
+	}
+	function menu_screen() {
+		screenyb menu
+	}
+	function menu_music()  {
+		musica menu
+	}
+	function menu_power()  {
+		powermana menu
+	}
+
+	# Layout
+	function layout_custom() {
+		bspc desktop $desktop -l $1
+		bspc config -d $desktop border_width   $2
+		bspc config -d $desktop window_gap     $3
+		bspc config -d $desktop top_padding    $(( $4 - $layout_pad ))
+		bspc config -d $desktop bottom_padding $(( $5 - $layout_pad ))
+		bspc config -d $desktop left_padding   $(( $6 - $layout_pad ))
+		bspc config -d $desktop right_padding  $(( $7 - $layout_pad ))
+	}
+	function layout_stack()     {
+		bspc desktop -l next
+	}
+	function layout_floatdwimon() {
+		bspc config -n focused.tiled border_width 2
+		bspc node focused.tiled -t floating -g sticky=on
+	}
+	function layout_floatdwimoff() {
+		bspc config -n focused.floating border_width $(bspc config -d any.focused border_width)
+		bspc node focused.floating -t tiled -g sticky=off
+	}
+	function layout_floatdwim() {
+		layout_floatdwimon || layout_floatdwimoff
+	}
+	function layout_float()     {
+		bspc node focused -t \~floating
+	}
+	function layout_sticky()    {
+		bspc node focused -g sticky
+	}
+	function layout_max()       {
+		bspc node focused -t \~fullscreen
+	}
+	function layout_a43()  {
+		layout_custom        tiled   2 14 12          12          203         203
+	}
+	function layout_a169() {
+		layout_custom        tiled   2 14 12          12          43          43
+	}
+	function layout_fill() {
+		layout_custom        tiled   2 0  $layout_pad $layout_pad $layout_pad $layout_pad
+	}
+	function layout_full() {
+		layout_custom        monocle 0 0  $layout_pad $layout_pad $layout_pad $layout_pad
+	}
+	function layout_nes()  {
+		layout_custom        monocle 2 14 12          12          299         299
+	}
+	function layout_snes() {
+		layout_custom        monocle 2 14 12          12          272         271
+	}
+	function layout_gb()   {
+		layout_custom        monocle 2 14 12          12          283         283
+	}
+	function layout_gba()  {
+		layout_custom        monocle 2 14 12          12          143         143
+	}
+
+	# Power
+	function power_lock() {
+		betterlockscreen -l -- \
+			--indpos=w/2:h/2+288 --radius=32 --ring-width=16 \
+			--timepos=w/2-12:h/2-32 --time-align=0 --timesize=272 --time-font="JetBrainsMono" --timestr="%I" \
+			--datepos=w/2-12:h/2+192 --date-align=0 --datesize=256 --date-font="JetBrainsMono" --datestr="%M" \
+		|| betterlockscreen -u "$HOME/.local/share/wallpapers/indoor/background.png"
+	}
+	function power_refresh() {
+		bspc wm -r
+	}
+	function power_hiber()   {
+		systemctl hibernate
+	}
+	function power_sleep()   {
+		systemctl suspend
+	}
+	function power_logout()  {
+		bspc quit
+	}
+	function power_shut()    {
+		systemctl poweroff
+	}
+
+case $cmd in
+	'menu')
+		case $cmd_sub in
+			'default')
+				options="$options_menu_cmd\n$options_menu_app\n$options_menu_search\n$options_menu_clip\n$options_menu_calc\n$options_menu_emoji\n$options_menu_wifi\n$options_menu_blue\n$options_menu_screen\n$options_menu_media\n$options_menu_power"
+				chosen 11 1 14
+				case $chosen in
+					$options_menu_cmd)    menu_cmd    ;;
+					$options_menu_app)    menu_app    ;;
+					$options_menu_search) menu_search ;;
+					$options_menu_clip)   menu_clip   ;;
+					$options_menu_calc)   menu_calc   ;;
+					$options_menu_emoji)  menu_emoji  ;;
+					$options_menu_wifi)   menu_wifi   ;;
+					$options_menu_blue)   menu_blue   ;;
+					$options_menu_screen) menu_screen ;;
+					$options_menu_media)  menu_music  ;;
+					$options_menu_power)  menu_power  ;;
+				esac
+			;;
+			*)
+				menu_$cmd_sub
+			;;
+		esac
+
+	;;
+	'layout')
+		desktop=${3:-'any.focused'}
+		case $cmd_sub in
+			'default')
+				options="$options_layout_stack\n$options_layout_floatw\n$options_layout_sticky\n$options_layout_max\n$options_layout_a43\n$options_layout_a169\n$options_layout_fill\n$options_layout_full\n$options_layout_nes\n$options_layout_snes\n$options_layout_gb\n$options_layout_gba"
+				chosen 4 3 25
+				case $chosen in
+					$options_layout_stack)  layout_stack  ;;
+					$options_layout_floatw) layout_float  ;;
+					$options_layout_sticky) layout_sticky ;;
+					$options_layout_max)    layout_max    ;;
+					$options_layout_a43)    layout_a43    ;;
+					$options_layout_a169)   layout_a169   ;;
+					$options_layout_fill)   layout_fill   ;;
+					$options_layout_full)   layout_full   ;;
+					$options_layout_nes)    layout_nes    ;;
+					$options_layout_snes)   layout_snes   ;;
+					$options_layout_gb)     layout_gb     ;;
+					$options_layout_gba)    layout_gba    ;;
+				esac
+			;;
+			*)
+				layout_$cmd_sub
+			;;
+		esac
+
+	;;
+	'power')
+		case $cmd_sub in
+			'default')
+				options="$options_power_lock\n$options_power_refresh\n$options_power_hiber\n$options_power_sleep\n$options_power_logout\n$options_power_shut"
+				chosen 3 2 20
+				case $chosen in
+					$options_power_lock)    power_lock    ;;
+					$options_power_refresh) power_refresh ;;
+					$options_power_hiber)   power_hiber   ;;
+					$options_power_sleep)   power_sleep   ;;
+					$options_power_logout)  power_logout  ;;
+					$options_power_shut)    power_shut    ;;
+				esac
+			;;
+			*)
+				power_$cmd_sub
+			;;
+		esac
+
+	;;
+	'brightness')
+		case $cmd_sub in
+			'default')
+				[[ $(xbacklight -get) = "100.000000" ]] \
+					&& xbacklight -set 1 \
+					|| xbacklight -set 100
+			;;
+			'down') xbacklight -dec 5 ;;
+			'up')   xbacklight -inc 5 ;;
+		esac
+		dunstify -r 766675 -b "Brightness" "$(xbacklight -get | cut -f 1 -d ".")%" &
+
+	;;
+	'volume')
+		case $cmd_sub in
+			'default') pactl set-sink-mute 0 toggle ;;
+			'down')    pactl set-sink-volume 0 -5%  ;;
+			'up')      pactl set-sink-volume 0 +5%  ;;
+		esac
+		[[ $(pamixer --get-mute) = "true" ]] && icon=" 婢"
+		dunstify -r 766675 -b "Volume" "$(pamixer --get-volume)%$icon" &
+
+	;;
+	'transparent')
+		#TODO
+		case $cmd_sub in
+			'default') picom-trans -c -o 5   ;;
+			'show')    picom-trans -c -o 100 ;;
+			'down')    picom-trans -c -o -10 ;;
+			'up')      picom-trans -c -o +10 ;;
+		esac
+
+	;;
+	'input')
+		#TODO
+		case $cmd_sub in
+			"default")
+				[[ $(ibus engine) = 'xkb:us::eng' ]] \
+					&& ibus engine Bamboo \
+					|| ibus engine xkb:us::eng
+			;;
+			"caps")
+				#xdotool key Caps_Lock
+			;;
+		esac
+	;;
+esac
+
+
+exit

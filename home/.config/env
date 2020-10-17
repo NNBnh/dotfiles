@@ -1,0 +1,15 @@
+#!/bin/sh
+
+export EDITOR="/usr/bin/kak"
+export VISUAL="/usr/bin/kak"
+export PAGER="$HOME/.local/bin/kak-pager"
+export MANPAGER="$HOME/.local/bin/kak-man-pager"
+export TERMINAL="/usr/bin/alacritty"
+export BROWSER="/usr/bin/firefox"
+
+export ZDOTDIR="$HOME/.config/zsh"
+export CARGO_HOME="$HOME/.local/share/cargo"
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc"
+export TASKRC="$HOME/.config/task/taskrc"
+export ENHANCD_DIR="$HOME/.local/share/enhancd"
+#export XAUTHORITY="$HOME/.local/share/xauthority/Xauthority"

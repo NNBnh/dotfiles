@@ -1,0 +1,43 @@
+#!/bin/sh
+
+#    __ __         __
+#   / // /__ _____/ /_____ ______ _  ___ ____ 
+#  / _  / _ `/ __/  '_/ -_) __/  ' \/ _ `/ _ \
+# /_//_/\_,_/\__/_/\_\\__/_/ /_/_/_/\_,_/_//_/
+#
+
+# File:         hackerman
+# Description:  Script for hackerman
+# Author:       NNB
+#               └─ https://github.com/NNBnh
+# License:      GPLv3
+
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+# Start
+case $1 in
+	'')                      nms -a -f green ;;
+	'm'|'matrix')            unimatrix -s 95 ;;
+	'a'|'attack')            sneakers ;;
+	'r'|'run'|'rick')        curl -fsSL https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash ;;
+	'c'|'currency'|'money')  curl --silent rate.sx ;;
+	's'|'send')
+		echo 'curl -s -L http://bit.ly/10hA8iC | bash' | xclip -selection clipboard
+		echo 'Send !'
+	;;
+esac
+
+
+exit

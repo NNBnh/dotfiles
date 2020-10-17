@@ -1,0 +1,7 @@
+configuration {
+  modi: "drun,run";
+  lines: 24;
+  theme:"themes/book.rasi" ;
+}
+
+@import "key.rasi"

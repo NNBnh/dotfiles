@@ -1,0 +1,34 @@
+configuration {
+  /*kb-accept-alt: "Shift+Return,Shift+KP_Enter,Alt+Return,Alt+KP_Enter,Super+Return,Super+KP_Enter";*/
+  kb-row-select: "Control+space,Alt+w,Super+w";
+
+  kb-row-up: "Up,Control+p,ISO_Left_Tab,Alt+i,Super+i";
+  kb-row-first: "Home,KP_Home,Alt+I,Super+I";
+  kb-row-down: "Down,Control+n,Alt+k,Super+k";
+  kb-row-last: "End,KP_End,Alt+K,Super+K";
+  kb-move-char-back: "Left,Control+b,Alt+j,Super+j";
+  kb-move-front: "Control+a,Alt+J,Super+J";
+  kb-move-char-forward: "Right,Control+f,Alt+l,Super+l";
+  kb-move-end: "Control+e,Alt+L,Super+L";
+
+  kb-move-word-back: "Control+Left,Alt+u,Super+u";
+  kb-page-prev: "Page_Up,Alt+U,Super+U";
+  kb-move-word-forward: "Control+Right,Alt+o,Super+o";
+  kb-page-next: "Page_Down,Alt+O,Super+O";
+
+  kb-mode-next: "Shift+Right,Control+Tab,Alt+g,Super+g";
+  kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab,Alt+G,Super+G";
+
+  kb-primary-paste: "Control+V,Shift+Insert,Alt+v,Super+v";
+  kb-secondary-paste: "Control+v,Insert,Alt+V,Super+V";
+
+  kb-remove-word-back: "Control+BackSpace";
+  kb-remove-word-forward: "";
+  kb-screenshot: "";
+  kb-ellipsize: "";
+  kb-toggle-case-sensitivity: "";
+
+  me-select-entry: "Control+MousePrimary";
+  me-accept-entry: "MousePrimary";
+  me-accept-custom: "Control+MouseDPrimary";
+}
