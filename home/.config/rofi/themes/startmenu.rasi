@@ -1,7 +1,0 @@
-@import "book.rasi"
-
-mainbox {
-	children: [inputbar, message, listview ,mode-switcher];
-}
-
-// vim:ft=css:ts=2:sw=2:fdm=marker

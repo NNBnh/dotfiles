@@ -12,72 +12,52 @@
 
 
 ###################################[ Plugins ]##################################
-nop %sh{
-	[[ ! -f $HOME/.local/share/kak/plugins/plug.kak ]] \
-		&& git clone https://github.com/robertmeta/plug.kak.git \
-			"$HOME/.local/share/kak/plugins/plug.kak"
+evaluate-commands %sh{
+	XDG_DATA_HOME=${XDG_DATA_HOME:-"$HOME/.local/share"}
+	[ ! -f $XDG_DATA_HOME/kak/plug/plug.kak ] && git clone --quiet https://github.com/robertmeta/plug.kak.git "$XDG_DATA_HOME/kak/plug"
+	echo "source $XDG_DATA_HOME/kak/plug/rc/plug.kak"
 }
-source "%sh{ echo $HOME }/.local/share/kak/plugins/plug.kak/rc/plug.kak"
 
-plug 'NNBnh/bcolor.kak' theme config %{
-	declare-option str bcolor_main 'bright-yellow'
+plug 'NNBnh/bui.kak' theme config %{
+	# declare-option str bcolor_orange 'rgb:DC9656'
+	# declare-option str bcolor_main 'bright-yellow'
 	# declare-option str ui_background 'rgb:303030'
-	declare-option bool bcolor_main_light true
-	declare-option bool bcolor_cursor_main true
-	declare-option bool bcolor_status_main true
-	colorscheme bcolor
+	# declare-option bool bcolor_main_light true
+	# declare-option bool bcolor_cursor_main true
+	# declare-option bool bcolor_status_main true
+	colorscheme bui
 }
 
-plug 'alexherbo2/palette.kak'
+# plug 'alexherbo2/palette.kak'
 
 plug 'NNBnh/bkey.kak' config %{
-	bkey-make
+	bkey-load
+	bkey-enable
 }
-# source "%sh{ echo $HOME }/Datas/Documents/bkey.kak/rc/bkey.kak"
-# bkey-make
 
 plug 'danr/kakoune-easymotion' config %{
-	map global normal <m> ': easy-motion-char<ret>'
+	map global normal <m>   ': easy-motion-char<ret>'
 	map global normal <a-m> ': easy-motion-word<ret>'
-}
-
-plug 'occivink/kakoune-phantom-selection' config %{
-	map global Menu <g> ': phantom-selection-iterate-next<ret>'
-	map global Menu <G> ': phantom-selection-iterate-prev<ret>'
 }
 
 plug 'lePerdu/kakboard' config %{
 	declare-option str-list kakboard_paste_keys ''
-	declare-option str-list kakboard_copy_keys ''
+	declare-option str-list kakboard_copy_keys  ''
 
-	map global normal <x> '<d>: kakboard-push-clipboard<ret>'
-	map global normal <X> '<a-l><d>: kakboard-push-clipboard<ret>'
-	map global normal <c> '<y>: kakboard-push-clipboard<ret>'
-	map global normal <C> '<a-l><y>: kakboard-push-clipboard<ret>'
-
-	hook global WinCreate .* %{ kakboard-enable }
-	hook global WinCreate .* %{ kakboard-pull-clipboard }
-	hook global FocusIn .* %{ kakboard-pull-clipboard }
+	hook global WinCreate        .* %{ kakboard-enable         }
+	hook global RegisterModified \" %{ kakboard-push-clipboard }
+	hook global WinCreate        .* %{ kakboard-pull-clipboard }
+	hook global FocusIn          .* %{ kakboard-pull-clipboard }
 }
 
 plug 'Screwtapello/kakoune-inc-dec' domain "gitlab.com" config %{
-	map global normal <a-_> ': inc-dec-modify-numbers - %val{count}<ret>'
+	map global normal <a-_>    ': inc-dec-modify-numbers - %val{count}<ret>'
 	map global normal <a-plus> ': inc-dec-modify-numbers + %val{count}<ret>'
 }
 
-plug 'alexherbo2/auto-pairs.kak'
+# plug 'alexherbo2/auto-pairs.kak'
 
-plug 'h-youhei/kakoune-surround' config %{
-	map global Menu <a> ': surround<ret>'
-	map global Menu <x> ': delete-surround<ret>'
-	map global Menu <e> ': change-surround<ret>'
-	map global Menu <a-e> ': select-surround<ret>'
-
-	map global Menu <A> ': surround-with-tag<ret>'
-	map global Menu <X> ': delete-surrounding-tag<ret>'
-	map global Menu <E> ': change-surrounding-tag<ret>'
-	map global Menu <a-E> ': select-surrounding-tag<ret>'
-}
+# plug 'h-youhei/kakoune-surround'
 
 # plug 'ul/kak-lsp' do %{
 # 	cargo build --release --locked
@@ -109,16 +89,12 @@ plug 'h-youhei/kakoune-surround' config %{
 # 	plug 'andryorst/kakoune-snippet-collection'
 # }
 
-# plug 'Skytrias/gdscript-kak'
-# plug 'ABuffSeagull/kakoune-vue'
-
 
 ###################################[ Options ]##################################
 set-option global scrolloff 1,3
 set-option global tabstop 4
 set-option global indentwidth 0
-set-option global ui_options ncurses_set_title=false
-set-option global modelinefmt '{{context_info}} {{mode_info}} %val{cursor_line}:%val{cursor_char_column} '
+set-option global modelinefmt '{{context_info}} {{mode_info}} %val{cursor_line}:%val{cursor_char_column} / %val{buf_line_count} '
 
 add-highlighter global/ number-lines -relative -hlcursor -separator ' ' -min-digits '3'
 add-highlighter global/ show-whitespaces -tab '▏' -tabpad ' ' -lf ' ' -spc ' ' -nbsp ' '
@@ -141,12 +117,12 @@ add-highlighter global/ dynregex ' +$' 0:+u
 # 	echo %val{bufname}
 # }
 
-hook global WinDisplay .* %{ echo %val{bufname} }
-hook global BufOpenFile .* %{ editorconfig-load }
-hook global BufNewFile .* %{ editorconfig-load }
+hook global WinDisplay  .* %{ echo %val{bufname} }
+hook global BufOpenFile .* %{ editorconfig-load  }
+hook global BufNewFile  .* %{ editorconfig-load  }
 
-define-command wrap-on 'add-highlighter global/bkey-wrap wrap -word -indent'
-define-command wrap-off 'remove-highlighter global/bkey-wrap'
+# define-command wrap-on  'add-highlighter    global/bui-wrap wrap -word -indent'
+# define-command wrap-off 'remove-highlighter global/bui-wrap'
 
 # hook global WinSetOption filetype=(c|cpp) %{
 #     clang-enable-autocomplete

@@ -1,4 +1,3 @@
 #!/bin/sh
 
-
-col -b -x | kak -e 'set buffer filetype man; remove-hooks window man-hooks'
+col -b -x | kak -e 'set buffer filetype man'

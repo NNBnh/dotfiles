@@ -1,0 +1,26 @@
+#            ___ __                         ____
+#    ___ ___/ (_) /____  ___________  ___  / _(_)__ _
+#  _/ -_) _  / / __/ _ \/ __/ __/ _ \/ _ \/ _/ / _ `/
+# (_)__/\_,_/_/\__/\___/_/  \__/\___/_//_/_//_/\_, /
+#                                             /___/
+
+# File:         .editorconfig
+# Description:  editorconfig that SuperB
+# Author:       NNB
+#               └─ https://github.com/NNBnh
+
+
+root = true
+
+[*]
+charset = utf-8
+max_line_length = 80
+
+end_of_line = lf
+trim_trailing_whitespace = true
+
+indent_style = tab
+indent_size = 4
+
+[*.{html,css,sass,scss,js,ts}]
+indent_size = 2

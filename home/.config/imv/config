@@ -1,0 +1,75 @@
+# =============================================================================
+[options]
+# =============================================================================
+background             = checks
+scaling_mode           = full
+upscaling_method       = linear
+suppress_default_binds = true
+
+
+# =============================================================================
+[aliases]
+# =============================================================================
+
+
+# =============================================================================
+[binds]
+# =============================================================================
+
+### CUA
+<f11>         = fullscreen
+<up>          = pan  0   64
+<down>        = pan  0  -64
+<left>        = pan  64  0
+<right>       = pan -64  0
+<shift+up>    = pan  0    128
+<shift+down>  = pan  0   -128
+<shift+left>  = pan  128  0
+<shift+right> = pan -128  0
+<ctrl+up>     = pan  0    16
+<ctrl+down>   = pan  0   -16
+<ctrl+left>   = pan  16   0
+<ctrl+right>  = pan -16   0
+<alt+up>      = pan  0    1
+<alt+down>    = pan  0   -1
+<alt+left>    = pan  1    0
+<alt+right>   = pan -1    0
+<space>       = toggle_playing
+<ctrl+w>      = close
+<ctrl+q>      = quit
+
+### Navigation
+i         = pan  0    64
+k         = pan  0   -64
+j         = pan  64   0
+l         = pan -64   0
+<shift+i> = pan  0    128
+<shift+k> = pan  0   -128
+<shift+j> = pan  128  0
+<shift+l> = pan -128  0
+<ctrl+i>  = pan  0    16
+<ctrl+k>  = pan  0   -16
+<ctrl+j>  = pan  16   0
+<ctrl+l>  = pan -16   0
+<alt+i>   = pan  0    1
+<alt+k>   = pan  0   -1
+<alt+j>   = pan  1    0
+<alt+l>   = pan -1    0
+n         = next
+<shift+n> = prev
+y         = next_frame
+<shift+y> = prev_frame
+
+### Environment
+r        = reset
+<ctrl+r> = center
+
+# View
+<backslash>        = scaling next
+<alt+backslash>    = upscaling next
+<minus>            = zoom -1
+<equal>            = zoom  1
+<apostrophe>       = zoom actual
+<shift+minus>      = slideshow -1
+<shift+equal>      = slideshow  1
+<shift+apostrophe> = slideshow  0

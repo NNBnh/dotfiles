@@ -1,0 +1,43 @@
+.
+├── Cant buy
+│  ├── Mgtnsynchro
+│  │  ├── synchronicity.exe
+│  │  └── 真・女神転生シンクロニシティ マニュアル.pdf
+│  ├── Phantasy Star Universe
+│  ├── Puyo Puyo Sun
+│  ├── Sonic Hero
+│  └── Touhou
+│     ├── Touhou 6
+│     ├── Touhou 7
+│     ├── Touhou 8
+│     ├── Touhou 9
+│     ├── Touhou 10
+│     ├── Touhou 11
+│     ├── Touhou 12
+│     └── Touhou 15.5
+├── Fan games
+│  ├── AM2R
+│  ├── MegaMan Unlimited
+│  ├── Rockman7 FC
+│  ├── Rockman8 FC
+│  └── UniMaker Special Bundle
+├── Other
+│  ├── LovingLife.exe
+│  └── Tak Colecton
+│     ├── AGPPBP
+│     ├── GARDEN.exe
+│     ├── pipe.exe
+│     ├── STEP.exe
+│     └── ᗢ.exe
+├── Rom
+│  ├── mega_man_legends.bin
+│  ├── mega_man_legends_2.bin
+│  └── Newer SMBW
+└── RPG MK
+   ├── Escatpade
+   ├── Midnight Train Demo
+   ├── Mogeko Castle
+   ├── Purgatory
+   └── The Mystery Files of Detective Inaba
+      ├── The Mystery Files of Detective Inaba No. 1
+      └── The Mystery Files of Detective Inaba No. 2

@@ -1,0 +1,68 @@
+#!/bin/sh
+
+#    ____    __
+#   / __/__ / /___ _____
+#  _\ \/ -_) __/ // / _ \
+# /___/\__/\__/\_,_/ .__/
+#                 /_/
+
+# File:         setup
+# Description:  setup script that SuperB
+# Author:       NNB
+#               └─ https://github.com/NNBnh
+# URL:          https://github.com/NNBnh/dots/blob/master/bootstrap/setup
+
+
+# Install packages
+	swd=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+	bawkpack_update='no'
+
+	curl -fsSL https://raw.githubusercontent.com/NNBnh/bawkpack/master/bawkpack \
+		&& echo 'Do you what to update Bawkpack to this script?' \
+		&& read -p '(y)es or (n)o: ' bawkpack_update
+	case $bawkpack_update in
+		'yes'|'y'|'')
+			curl -fsSL https://raw.githubusercontent.com/NNBnh/bawkpack/master/bawkpack > $swd/bawkpack
+			chmod +x $swd/bawkpack
+		;;
+		'no'|'n')        ;;
+		*)        exit 1 ;;
+	esac
+	[ ! -f "$swd/bawkpack" ] && echo 'Bawkpack is not found' && exit 1
+	$swd/bawkpack "$swd/packageslist"
+
+
+# Before symlink
+	# Create directories (to only symlink files inside, not the directory)
+	mkdir $HOME/.local/bin  $HOME/.config/godot  $HOME/.config/retroarch
+
+	# Remove junks (Spring cleaning your $HOME)
+	mkdir $HOME/test
+	mv $HOME/Desktop $HOME/Documents $HOME/Downloads $HOME/Music $HOME/Pictures $HOME/Public $HOME/Templates $HOME/Videos $HOME/.ICEauthority $HOME/.bash_history $HOME/.bash_logout $HOME/.bash_profile $HOME/.bashrc $HOME/.inputrc $HOME/.xinitrc $HOME/.xsession $HOME/.xsession-errors $HOME/test
+
+
+# Symlink dotfiles
+pwd="$PWD"
+cd ..
+stow -vt ~ home
+sudo stow -vt / root
+cd $pwd
+
+
+# After symlink
+	# Change default shell
+	chsh -s "/usr/bin/fish"
+
+	# Enable firewall
+	sudo ufw enable
+
+	# Git-alias
+	mkdir -p "$HOME/.local/share/git"
+	curl -fsSL https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt > "$HOME/.local/share/git/gitalias.txt"
+
+	# Grub theme
+	git clone https://github.com/mateosss/matter.git "$HOME/.local/share/grub/themes/matter"
+	$HOME/.local/share/grub/themes/matter
+
+
+exit 0

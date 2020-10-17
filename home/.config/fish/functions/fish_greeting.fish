@@ -1,5 +1,1 @@
-
-
-function fish_greeting --wraps='bfetch' --description 'bfetch'
-  bfetch;
-end
+source "$HOME/.config/env"

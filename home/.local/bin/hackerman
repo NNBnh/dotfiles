@@ -10,6 +10,7 @@
 # Description:  Script for hackerman
 # Author:       NNB
 #               └─ https://github.com/NNBnh
+# URL:          https://github.com/NNBnh/dots/wiki/hackerman
 # License:      GPLv3
 
 #    This program is free software: you can redistribute it and/or modify
@@ -27,17 +28,29 @@
 
 
 # Start
-case $1 in
-	'')                      nms -a -f green ;;
-	'm'|'matrix')            unimatrix -s 95 ;;
-	'a'|'attack')            sneakers ;;
-	'r'|'run'|'rick')        curl -fsSL https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash ;;
-	'c'|'currency'|'money')  curl --silent rate.sx ;;
-	's'|'send')
-		echo 'curl -s -L http://bit.ly/10hA8iC | bash' | xclip -selection clipboard
-		echo 'Send !'
-	;;
-esac
+	# Action
+	case $1 in
+		'i'|'ip')                action="curl --silent ifconfig.me"                                                                ;;
+		'c'|'currency'|'money')  action="curl --silent rate.sx"                                                                    ;;
+		'w'|'wether')            action="curl --silent V2.wttr.in"                                                                 ;;
+		's'|'sneakers')          action="echo 'curl -s -L http://bit.ly/10hA8iC | bash'"                                           ;;
+		'm'|'matrix')            action="cmatrix"                                                                                  ;;
+		'I'|'info'|'system')     action="glances || top"                                                                           ;;
+		'r'|'run'|'rick')        action="curl -fsSL https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" ;;
+		'a'|'attack')            action="sneakers"                                                                                 ;;
+		*)                       exit 1                                                                                            ;;
+	esac
+
+	# Effect
+	case $2 in
+		'r'|'l'|'rainbow'|'lolcat') effect="| lolcat" ;;
+		'd'|'n'|'decrypt'|'nms')    effect="| nms -a" ;;
+		*)                          exit 1            ;;
+	esac
+
+
+# Start
+$action $effect
 
 
 exit
