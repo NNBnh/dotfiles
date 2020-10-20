@@ -60,9 +60,5 @@ cd $pwd
 	mkdir -p "$HOME/.local/share/git"
 	curl -fsSL https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt > "$HOME/.local/share/git/gitalias.txt"
 
-	# Grub theme
-	git clone https://github.com/mateosss/matter.git "$HOME/.local/share/grub/themes/matter"
-	$HOME/.local/share/grub/themes/matter
-
 
 exit 0

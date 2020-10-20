@@ -1,4 +1,4 @@
-#    ___           __                       ___     __ 
+#    ___           __                       ___     __
 #   / _ \___ _____/ /_____ ____ ____ ___   / (_)__ / /_
 #  / ___/ _ `/ __/  '_/ _ `/ _ `/ -_|_-<  / / (_-</ __/
 # /_/   \_,_/\__/_/\_\\_,_/\_, /\__/___/ /_/_/___/\__/
@@ -15,7 +15,6 @@
 # =============================================================================
 
 ### Boot
-  APT:grub2                       PAC:grub                        XBP:grub                      # Bootloader
   APT:lightdm                     PAC:lightdm                     XBP:lightdm                   # Login manager
 
 ### Audio
@@ -29,6 +28,7 @@
 ### Resource
                                   AUR:ttf-iosevka                 XBP:font-iosevka              # Font (WH.I.CH https://github.com/NNBnh/dots/wiki/which#font)
                                   PAC:ttf-sarasa-gothic           XBP:font-sarasa-gothic        # Non Latin support for font
+                                  AUR:ttf-twemoji                 XBP:twemoji                   # Emoji support for font
   APT:papirus-icon-theme          PAC:papirus-icon-theme          XBP:papirus-icon-theme        # Icon set that support nearly every app
 
 ## Xorg -----------------------------------------------------------------------
