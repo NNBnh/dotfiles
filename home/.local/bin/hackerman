@@ -32,12 +32,13 @@
 	case $1 in
 		'i'|'ip')                action="curl --silent ifconfig.me"                                                                ;;
 		'c'|'currency'|'money')  action="curl --silent rate.sx"                                                                    ;;
-		'w'|'wether')            action="curl --silent V2.wttr.in"                                                                 ;;
-		's'|'sneakers')          action="echo 'curl -s -L http://bit.ly/10hA8iC | bash'"                                           ;;
-		'm'|'matrix')            action="cmatrix"                                                                                  ;;
-		'I'|'info'|'system')     action="glances || top"                                                                           ;;
-		'r'|'run'|'rick')        action="curl -fsSL https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" ;;
-		'a'|'attack')            action="sneakers"                                                                                 ;;
+		'r'|'rate')              action="curl --silent rate.sx/btc"                                                                ;;
+		'w'|'weather')           action="curl --silent V2.wttr.in"                                                                 ;;
+		'a'|'attack')            action="echo 'curl -s -L http://bit.ly/10hA8iC | bash'"                                           ;;
+		'M'|'matrix')            action="cmatrix"                                                                                  ;;
+		'I'|'info'|'system')     action="glances || { htop || top }"                                                               ;;
+		'R'|'run'|'rick')        action="curl -fsSL https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" ;;
+		'S'|'sneakers')          action="sneakers"                                                                                 ;;
 		*)                       exit 1                                                                                            ;;
 	esac
 
