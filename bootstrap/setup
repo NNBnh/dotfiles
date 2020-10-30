@@ -34,7 +34,7 @@
 
 # Before symlink
 	# Create directories (to only symlink files inside, not the directory)
-	mkdir $HOME/.local/bin  $HOME/.config/godot  $HOME/.config/retroarch
+	mkdir $HOME/.local/bin $HOME/.config/fish $HOME/.config/godot $HOME/.config/retroarch
 
 	# Remove junks (Spring cleaning your $HOME)
 	mkdir $HOME/test
@@ -43,7 +43,7 @@
 
 # Symlink dotfiles
 pwd="$PWD"
-cd ..
+cd $pwd/..
 stow -vt ~ home
 sudo stow -vt / root
 cd $pwd
@@ -52,6 +52,9 @@ cd $pwd
 # After symlink
 	# Change default shell
 	chsh -s "/usr/bin/fish"
+
+	# Install prompt
+	curl -fsSL https://starship.rs/install.sh | bash
 
 	# Enable firewall
 	sudo ufw enable

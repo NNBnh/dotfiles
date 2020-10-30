@@ -14,7 +14,7 @@
 ###################################[ Plugins ]##################################
 evaluate-commands %sh{
 	XDG_DATA_HOME=${XDG_DATA_HOME:-"$HOME/.local/share"}
-	[ ! -f $XDG_DATA_HOME/kak/plug/plug.kak ] && git clone --quiet https://github.com/robertmeta/plug.kak.git "$XDG_DATA_HOME/kak/plug"
+	[ ! -f "$XDG_DATA_HOME/kak/plug/rc/plug.kak" ] && git clone --quiet https://github.com/robertmeta/plug.kak.git "$XDG_DATA_HOME/kak/plug"
 	echo "source $XDG_DATA_HOME/kak/plug/rc/plug.kak"
 }
 
