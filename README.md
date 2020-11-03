@@ -1,4 +1,4 @@
-<h1 align="center"><i>Đotfiles</i></h1>
+<h1 align="center"><code>Đotfiles</code></h1>
 <p align="center">Đotfiles that <i>SuperB</i></p>
 <p align="center"><img width="25%" src="extra/logo.png"></p>
 <p align="center"><a href="https://github.com/NNBnh/dots/wiki/gallery"><img src="https://img.shields.io/badge/gallery%20-%23181818.svg?style=for-the-badge" alt="Gallery"></a> <a href="packageslist"><img src="https://img.shields.io/badge/packages_list%20-%23181818.svg?style=for-the-badge" alt="Packages list"></a> <a href="https://github.com/NNBnh/dots/wiki"><img src="https://img.shields.io/badge/wiki%20-%23181818.svg?style=for-the-badge" alt="Wiki"></a></p>
