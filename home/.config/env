@@ -32,14 +32,12 @@ export XDG_TEMPLATES_DIR="$XDG_DESKTOP_DIR"
 export XDG_VIDEOS_DIR="$XDG_DESKTOP_DIR"
 
 ### Spring cleaning
-# export XAUTHORITY="$XDG_DATA_HOME/xauthority/Xauthority"
-# startx "$XDG_CONFIG_HOME/X11/xinitrc" -- "$XDG_CONFIG_HOME/X11/xserverrc" vt1
+# export XAUTHORITY="$XDG_DATA_HOME/xauthority/Xauthority" #FIXME bug
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
 export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-# gpg2 --homedir "$XDG_DATA_HOME/gnupg"
 export HISTFILE="$XDG_DATA_HOME/bash/history"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
