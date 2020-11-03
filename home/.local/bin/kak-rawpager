@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sed --expression='s/\[[0-9;]*m//g' | kak

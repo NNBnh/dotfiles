@@ -1,30 +1,25 @@
-# __   __      __
-# \ \  \ \    |  \
-#  \ \  \ \   |  /
-#   \ \  \ \  |   \
-#    \_\  \_\ |___/
+#     __ __
+#    / //_/     __
+#   / ,<  ___ _/ /_____  __ _____  ___
+#  / /| |/ _ `/  '_/ _ \/ // / _ \/ -_)
+# /_/ |_|\_,_/_/\_\\___/\_,_/_//_/\__/
 #
 
-# File:         .kakrc
-# Description:  Kakrc config that SuperB
+# File:         kakrc
+# Description:  Kakoune config that SuperB
 # Author:       NNB
 #               └─ https://github.com/NNBnh
+# URL:          https://github.com/NNBnh/dots/blob/master/home/.config/kak/kakrc
 
 
 ###################################[ Plugins ]##################################
 evaluate-commands %sh{
-	XDG_DATA_HOME=${XDG_DATA_HOME:-"$HOME/.local/share"}
+	XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 	[ ! -f "$XDG_DATA_HOME/kak/plug/rc/plug.kak" ] && git clone --quiet https://github.com/robertmeta/plug.kak.git "$XDG_DATA_HOME/kak/plug"
 	echo "source $XDG_DATA_HOME/kak/plug/rc/plug.kak"
 }
 
 plug 'NNBnh/bui.kak' theme config %{
-	# declare-option str bcolor_orange 'rgb:DC9656'
-	# declare-option str bcolor_main 'bright-yellow'
-	# declare-option str ui_background 'rgb:303030'
-	# declare-option bool bcolor_main_light true
-	# declare-option bool bcolor_cursor_main true
-	# declare-option bool bcolor_status_main true
 	colorscheme bui
 }
 
@@ -35,19 +30,13 @@ plug 'NNBnh/bkey.kak' config %{
 	bkey-enable
 }
 
-plug 'danr/kakoune-easymotion' config %{
-	map global normal <m>   ': easy-motion-char<ret>'
-	map global normal <a-m> ': easy-motion-word<ret>'
-}
-
 plug 'lePerdu/kakboard' config %{
 	declare-option str-list kakboard_paste_keys ''
 	declare-option str-list kakboard_copy_keys  ''
 
-	hook global WinCreate        .* %{ kakboard-enable         }
-	hook global RegisterModified \" %{ kakboard-push-clipboard }
-	hook global WinCreate        .* %{ kakboard-pull-clipboard }
+	hook global WinCreate        .* %{ kakboard-enable; kakboard-pull-clipboard }
 	hook global FocusIn          .* %{ kakboard-pull-clipboard }
+	hook global RegisterModified \" %{ kakboard-push-clipboard }
 }
 
 plug 'Screwtapello/kakoune-inc-dec' domain "gitlab.com" config %{
@@ -55,34 +44,14 @@ plug 'Screwtapello/kakoune-inc-dec' domain "gitlab.com" config %{
 	map global normal <a-plus> ': inc-dec-modify-numbers + %val{count}<ret>'
 }
 
-# plug 'alexherbo2/auto-pairs.kak'
+plug 'alexherbo2/auto-pairs.kak'
 
 # plug 'h-youhei/kakoune-surround'
-
-# plug 'ul/kak-lsp' do %{
-# 	cargo build --release --locked
-# 	cargo install --locked --force --path .
-# } config %{
-# 	eval %sh{kak-lsp --kakoune -s $kak_session}
-# 	set global lsp_diagnostic_line_error_sign '║'
-# 	set global lsp_diagnostic_line_warning_sign '┊'
-
-# 	set-option global lsp_server_configuration pyls.configurationSources=["flake8"]
-# 	define-command ne -docstring 'go to next error/warning from lsp' %{ lsp-find-error --include-warnings }
-# 	define-command pe -docstring 'go to previous error/warning from lsp' %{ lsp-find-error --previous --include-warnings }
-# 	define-command ee -docstring 'go to current error/warning from lsp' %{ lsp-find-error --include-warnings; lsp-find-error --previous --include-warnings }
-
-# 	define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
-# 	hook global WinSetOption filetype=(python|c|cpp|cc|rust|javascript|typescript) %{
-# 		set-option window lsp_auto_highlight_references true
-# 		set-option window lsp_hover_anchor false
-# 		lsp-auto-hover-enable
-# 		echo -debug "Enabling LSP for filtetype %opt{filetype}"
-# 		lsp-enable-window
-# 	}
-
-# 	map global normal <Q> ': enter-user-mode lsp<ret>'
+# 	map global menu <a> ': enter-user-mode surround<ret>'
+# 	map global menu <A> ': surround-enter-insert-mode<ret>'
 # }
+
+# plug 'ul/kak-lsp'
 
 # plug 'occivink/kakoune-snippets' config %{
 # 	set-option -add global snippets_directories "%opt{plug_install_dir}/kakoune-snippet-collection/snippets"
@@ -97,44 +66,11 @@ set-option global indentwidth 0
 set-option global modelinefmt '{{context_info}} {{mode_info}} %val{cursor_line}:%val{cursor_char_column} / %val{buf_line_count} '
 
 add-highlighter global/ number-lines -relative -hlcursor -separator ' ' -min-digits '3'
-add-highlighter global/ show-whitespaces -tab '▏' -tabpad ' ' -lf ' ' -spc ' ' -nbsp ' '
+add-highlighter global/ show-whitespaces -tab '▏' -tabpad ' ' -lf ' ' -spc ' ' -nbsp '·'
 add-highlighter global/ show-matching
+add-highlighter global/ regex "\h+$" 0:+u
 add-highlighter global/ dynregex '%reg{/}' 0:MatchingChar
-add-highlighter global/ dynregex ' +$' 0:+u
 
-# hook global WinDisplay .* %{
-# 	set-option global ui_options ncurses_set_title=true
-# 	set-option global modelinefmt '%val{bufname}'
-# 	set-option global ui_options ncurses_set_title=false
-# 	# set-option global modelinefmt '{{context_info}} {{mode_info}} %sh{
-# 	# 	position=(${kak_selection_desc//,/ })
-# 	# 	[[ ${position[0]} == ${position[1]} ]] \
-# 	# 		&& positions=${position[1]} \
-# 	# 		|| positions="${position[1]} & ${position[0]}"
-# 	# 	echo "${positions//./:} / $(wc -l < $kak_buffile)"
-# 	# } '
-# 	set-option global modelinefmt '{{context_info}} {{mode_info}} %val{cursor_line}:%val{cursor_char_column} '
-# 	echo %val{bufname}
-# }
 
-hook global WinDisplay  .* %{ echo %val{bufname} }
-hook global BufOpenFile .* %{ editorconfig-load  }
-hook global BufNewFile  .* %{ editorconfig-load  }
-
-# define-command wrap-on  'add-highlighter    global/bui-wrap wrap -word -indent'
-# define-command wrap-off 'remove-highlighter global/bui-wrap'
-
-# hook global WinSetOption filetype=(c|cpp) %{
-#     clang-enable-autocomplete
-#     clang-enable-diagnostics
-#     alias window lint clang-parse
-#     alias window lint-next-error clang-diagnostics-next
-# }
-
-# hook global WinSetOption filetype=python %{
-#     jedi-enable-autocomplete
-#     lint-enable
-#     set-option global lintcmd 'flake8'
-# }
-
-hook global BufWritePost .* %{ echo %val{buffile} }
+hook global WinDisplay .* %{ echo %val{bufname} }
+hook global BufCreate .* %{ try %{ editorconfig-load } catch %{ try sh%{ echo "editorconfig-load ${XDG_CONFIG_HOME:-$HOME/.config}/editorconfig" } } }

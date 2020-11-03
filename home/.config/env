@@ -1,7 +1,23 @@
 #!/bin/sh
 
+#    _____  ___   __
+#   / __/ |/ / | / /
+#  / _//    /| |/ /
+# /___/_/|_/ |___/
+#
 
-# XDG base directory
+# File:         env
+# Description:  Environment variables that SuperB
+# Author:       NNB
+#               └─ https://github.com/NNBnh
+# URL:          https://github.com/NNBnh/dots/blob/master/home/.config/env
+
+
+# =============================================================================
+# 1. Paths
+# =============================================================================
+
+### XDG base directory
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -15,6 +31,7 @@ export XDG_PUBLICSHARE_DIR="$XDG_DESKTOP_DIR"
 export XDG_TEMPLATES_DIR="$XDG_DESKTOP_DIR"
 export XDG_VIDEOS_DIR="$XDG_DESKTOP_DIR"
 
+### Spring cleaning
 # export XAUTHORITY="$XDG_DATA_HOME/xauthority/Xauthority"
 # startx "$XDG_CONFIG_HOME/X11/xinitrc" -- "$XDG_CONFIG_HOME/X11/xserverrc" vt1
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
@@ -30,14 +47,93 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
 export PATH="$PATH:$HOME/.local/bin"
 
-
-# Default applications
+# =============================================================================
+# 2. Default applications
+# =============================================================================
 export EDITOR="/usr/bin/kak"
 export VISUAL="$EDITOR"
 export PAGER="$HOME/.local/bin/kak-pager"
 export MANPAGER="$HOME/.local/bin/kak-manpager"
+export RAWPAGER="$HOME/.local/bin/kak-rawpager"
 export TERMINAL="/usr/bin/kitty"
 export BROWSER="/usr/bin/firefox"
+
+# =============================================================================
+# 3. Visual
+# =============================================================================
+
+export BUI_CURSOR="block"
+export BUI_OPACITY="0.8"
+
+## Colors ---------------------------------------------------------------------
+
+export BUI_COLOR_DARK="#181818"
+export BUI_COLOR_DARK_ALT="#282828"
+export BUI_COLOR_BLACK="#383838"
+export BUI_COLOR_GRAY="#585858"
+export BUI_COLOR_GREY="#B8B8B8"
+export BUI_COLOR_WHITE="#D8D8D8"
+export BUI_COLOR_LIGHT_ALT="#E8E8E8"
+export BUI_COLOR_LIGHT="#F8F8F8"
+export BUI_COLOR_BROWN="#A16946"
+export BUI_COLOR_RED="#AB4642"
+export BUI_COLOR_ORANGE="#DC9656"
+export BUI_COLOR_YELLOW="#F7CA88"
+export BUI_COLOR_LIME="#A1B56C"
+export BUI_COLOR_GREEN=""
+export BUI_COLOR_TEAR=""
+export BUI_COLOR_CYAN="#86C1B9"
+export BUI_COLOR_BLUE="#7CAFC2"
+export BUI_COLOR_PURPLE=
+export BUI_COLOR_MAGENTA="#BA8BAF"
+export BUI_COLOR_PINK=""
+
+### Environment
+export BUI_COLOR_MAIN="$BUI_COLOR_YELLOW"
+export BUI_COLOR_MAIN_ALT="$BUI_COLOR_GREY"
+export BUI_COLOR_FOREGROUND="$BUI_COLOR_WHITE"
+export BUI_COLOR_BACKGROUND="$BUI_COLOR_DARK"
+export BUI_COLOR_FOREGROUND_ALT="$BUI_COLOR_GRAY"
+export BUI_COLOR_BACKGROUND_ALT="$BUI_COLOR_DARK_ALT"
+export BUI_COLOR_CURSOR="$BUI_COLOR_MAIN"
+export BUI_COLOR_CURSOR_ALT="$BUI_COLOR_MAIN_ALT"
+export BUI_COLOR_SELECTION="$BUI_COLOR_GRAY"
+
+### Base16
+export BUI_COLOR_BASE00="$BUI_COLOR_DARK"
+export BUI_COLOR_BASE01="$BUI_COLOR_DARK_ALT"
+export BUI_COLOR_BASE02="$BUI_COLOR_BLACK"
+export BUI_COLOR_BASE03="$BUI_COLOR_GRAY"
+export BUI_COLOR_BASE04="$BUI_COLOR_GREY"
+export BUI_COLOR_BASE05="$BUI_COLOR_WHITE"
+export BUI_COLOR_BASE06="$BUI_COLOR_LIGHT_ALT"
+export BUI_COLOR_BASE07="$BUI_COLOR_LIGHT"
+export BUI_COLOR_BASE08="$BUI_COLOR_RED"
+export BUI_COLOR_BASE09="$BUI_COLOR_ORANGE"
+export BUI_COLOR_BASE0A="$BUI_COLOR_YELLOW"
+export BUI_COLOR_BASE0B="$BUI_COLOR_LIME"
+export BUI_COLOR_BASE0C="$BUI_COLOR_CYAN"
+export BUI_COLOR_BASE0D="$BUI_COLOR_BLUE"
+export BUI_COLOR_BASE0E="$BUI_COLOR_MAGENTA"
+export BUI_COLOR_BASE0F="$BUI_COLOR_BROWN"
+
+### Terminal
+export BUI_COLOR_COLOR0="$BUI_COLOR_DARK_ALT"
+export BUI_COLOR_COLOR1="$BUI_COLOR_RED"
+export BUI_COLOR_COLOR2="$BUI_COLOR_LIME"
+export BUI_COLOR_COLOR3="$BUI_COLOR_YELLOW"
+export BUI_COLOR_COLOR4="$BUI_COLOR_BLUE"
+export BUI_COLOR_COLOR5="$BUI_COLOR_MAGENTA"
+export BUI_COLOR_COLOR6="$BUI_COLOR_CYAN"
+export BUI_COLOR_COLOR7="$BUI_COLOR_GREY"
+export BUI_COLOR_COLOR8="$BUI_COLOR_GRAY"
+export BUI_COLOR_COLOR9="$BUI_COLOR_RED"
+export BUI_COLOR_COLOR10="$BUI_COLOR_LIME"
+export BUI_COLOR_COLOR11="$BUI_COLOR_YELLOW"
+export BUI_COLOR_COLOR12="$BUI_COLOR_BLUE"
+export BUI_COLOR_COLOR13="$BUI_COLOR_MAGENTA"
+export BUI_COLOR_COLOR14="$BUI_COLOR_CYAN"
+export BUI_COLOR_COLOR15="$BUI_COLOR_LIGHT_ALT"
 
 
 exit 0
