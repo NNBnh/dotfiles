@@ -21,7 +21,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 # Install packages
 	curl -fsSL https://raw.githubusercontent.com/NNBnh/bawkpack/master/bawkpack --create-dirs -o $XDG_CACHE_HOME/bawkpack
 	chmod +x $XDG_CACHE_HOME/.cache/bawkpack
-    $XDG_CACHE_HOME/bawkpack "$swd/packageslist"
+    sudo $XDG_CACHE_HOME/bawkpack "$swd/packageslist"
 
 
 # Before symlink
