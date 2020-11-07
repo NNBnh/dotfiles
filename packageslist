@@ -5,7 +5,7 @@
 #                         /___/
 
 # File:         packageslist
-# Description:  packages list that SuperB
+# Description:  Packages list that SuperB
 # Author:       NNB
 #               └─ https://github.com/NNBnh
 # URL:          https://github.com/NNBnh/dots/blob/master/packageslist
@@ -23,7 +23,7 @@
 
 ### Input
                                   AUR:sc-controller               XBP:sc-controller             # Controller
-                                  AUR:ibus-bamboo                 XBP:ibus-bamboo               # Vietnamese input method
+  APT:ibus-unikey                 AUR:ibus-bamboo                 XBP:ibus-bamboo               # Vietnamese input method
 
 ### Resource
                                   AUR:ttf-iosevka                 XBP:font-iosevka              # Font (WH.I.CH https://github.com/NNBnh/dots/wiki/which#font)
@@ -89,7 +89,7 @@
 ### Work
   APT:kakoune                     PAC:kakoune                     XBP:kakoune                   # Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
                                   AUR:vimv-git                                                  # Batch rename files
-                                  PAC:libqalculate                XBP:libqalculate              # Calculator
+  APT:libqalculate20              PAC:libqalculate                XBP:libqalculate              # Calculator
   APT:translate-shell             PAC:translate-shell             XBP:translate-shell           # Translator
   APT:ufw                         PAC:ufw                         XBP:ufw                       # Firewall (just run `sudo ufw enable`)
 
@@ -99,7 +99,6 @@
   APT:pandoc                      PAC:pandoc                      XBP:pandoc                    # Markup converter
   APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick               # Image converter
   APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                    # Media converter
-                                  AUR:flips                                                     # IPS & BPS patches (to patch SNES rom)
 
 ## Other ----------------------------------------------------------------------
 
@@ -109,10 +108,10 @@
 
 ### Utilitie
   APT:coreutils                   PAC:coreutils                   XBP:coreutils                 # GNU core utilities (to get chown, chmod, shred, ...)
-                                  PAC:exa                         XBP:exa                       # List files
+  APT:exa                         PAC:exa                         XBP:exa                       # List files
                                   PAC:bat                         XBP:bat                       # Files renderer
-                                  PAC:fd                          XBP:fd                        # Find files
-                                  PAC:ripgrep                     XBP:ripgrep                   # Find files with regex
+  APT:fd-find                     PAC:fd                          XBP:fd                        # Find files
+  APT:ripgrep                     PAC:ripgrep                     XBP:ripgrep                   # Find files with regex
   APT:gawk                        PAC:gawk                        XBP:gawk                      # Text manipulation dynamo
                                   PAC:abduco                      XBP:abduco                    # Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
 
@@ -128,18 +127,18 @@
 # =============================================================================
 
 ### Files
-                                  PAC:kitty                       XBP:kitty                     # Terminal emulator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
-                                  PAC:nemo                        XBP:nemo                      # Files manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#files-manager)
-                                  PAC:imv                         XBP:imv                       # Image viewer (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-viewer)
-                                  PAC:mpv                         XBP:mpv                       # Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
-  FLA:org.mozilla.firefox         PAC:firefox                     XBP:firefox                   # Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
+  APT:kitty                           PAC:kitty                       XBP:kitty                     # Terminal emulator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
+  APT:nemo                            PAC:nemo                        XBP:nemo                      # Files manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#files-manager)
+  APT:imv                             PAC:imv                         XBP:imv                       # Image viewer (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-viewer)
+  APT:mpv                             PAC:mpv                         XBP:mpv                       # Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
+  APT:firefox                         PAC:firefox                     XBP:firefox                   # Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
 
 ### Edit
-  FLA:org.gimp.GIMP               PAC:gimp                        XBP:gimp                      # Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
-  FLA:org.blender.Blender         PAC:blender                     XBP:blender                   # Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
-  FLA:org.godotengine.Godot       AUR:godot-bin                   XBP:godot                     # Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
+  APT:gimp                           PAC:gimp                        XBP:gimp                      # Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
+  APT:blender                        PAC:blender                     XBP:blender                   # Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
+  FLA:godot3                         AUR:godot-bin                   XBP:godot                     # Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
 
 ### Games
-                                  PAC:lutris                      XBP:lutris                    # Games manager
-  FLA:com.valvesoftware.Steam     PAC:steam                       XBP:steam                     # Gamer mode
-  FLA:org.libretro.RetroArch      PAC:retroarch                   XBP:retroarch                 # Retro emulators
+                                     PAC:lutris                      XBP:lutris                    # Games manager
+  APT:steam                          PAC:steam                       XBP:steam                     # Gamer mode
+  APT:retroarch                      PAC:retroarch                   XBP:retroarch                 # Retro emulators
