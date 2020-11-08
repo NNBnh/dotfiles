@@ -21,7 +21,7 @@ evaluate-commands %sh{
 	[ ! -f "$XDG_DATA_HOME/kak/plug/rc/plug.kak" ] && git clone --quiet https://github.com/robertmeta/plug.kak.git "$XDG_DATA_HOME/kak/plug"
 	echo "source $XDG_DATA_HOME/kak/plug/rc/plug.kak"
 }
-set-option global/ plug_always_ensure 'true'
+set-option global plug_always_ensure 'true'
 
 ## Visual ---------------------------------------------------------------------
 

@@ -108,7 +108,7 @@
 
 ### Utilitie
   APT:coreutils                   PAC:coreutils                   XBP:coreutils                 # GNU core utilities (to get chown, chmod, shred, ...)
-  APT:exa                         PAC:exa                         XBP:exa                       # List files
+                                  PAC:exa                         XBP:exa                       # List files
                                   PAC:bat                         XBP:bat                       # Files renderer
   APT:fd-find                     PAC:fd                          XBP:fd                        # Find files
   APT:ripgrep                     PAC:ripgrep                     XBP:ripgrep                   # Find files with regex
@@ -127,18 +127,18 @@
 # =============================================================================
 
 ### Files
-  APT:kitty                           PAC:kitty                       XBP:kitty                     # Terminal emulator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
-  APT:nemo                            PAC:nemo                        XBP:nemo                      # Files manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#files-manager)
-  APT:imv                             PAC:imv                         XBP:imv                       # Image viewer (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-viewer)
-  APT:mpv                             PAC:mpv                         XBP:mpv                       # Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
-  APT:firefox                         PAC:firefox                     XBP:firefox                   # Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
+  APT:kitty                           PAC:kitty                       XBP:kitty                 # Terminal emulator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
+  APT:nemo                            PAC:nemo                        XBP:nemo                  # Files manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#files-manager)
+  APT:imv                             PAC:imv                         XBP:imv                   # Image viewer (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-viewer)
+  APT:mpv                             PAC:mpv                         XBP:mpv                   # Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
+  APT:firefox                         PAC:firefox                     XBP:firefox               # Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
 
 ### Edit
-  APT:gimp                           PAC:gimp                        XBP:gimp                      # Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
-  APT:blender                        PAC:blender                     XBP:blender                   # Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
-  FLA:godot3                         AUR:godot-bin                   XBP:godot                     # Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
+  APT:gimp                           PAC:gimp                        XBP:gimp                   # Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
+  APT:blender                        PAC:blender                     XBP:blender                # Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
+  APT:godot3                         AUR:godot-bin                   XBP:godot                  # Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
 
 ### Games
-                                     PAC:lutris                      XBP:lutris                    # Games manager
-  APT:steam                          PAC:steam                       XBP:steam                     # Gamer mode
-  APT:retroarch                      PAC:retroarch                   XBP:retroarch                 # Retro emulators
+                                     PAC:lutris                      XBP:lutris                 # Games manager
+                                     PAC:steam                       XBP:steam                  # Gamer mode
+  APT:retroarch                      PAC:retroarch                   XBP:retroarch              # Retro emulators

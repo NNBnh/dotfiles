@@ -17,59 +17,62 @@ suppress_default_binds = true
 # =============================================================================
 
 ### CUA
-<f11>         = fullscreen
-<up>          = pan  0   64
-<down>        = pan  0  -64
-<left>        = pan  64  0
-<right>       = pan -64  0
-<shift+up>    = pan  0    128
-<shift+down>  = pan  0   -128
-<shift+left>  = pan  128  0
-<shift+right> = pan -128  0
-<ctrl+up>     = pan  0    16
-<ctrl+down>   = pan  0   -16
-<ctrl+left>   = pan  16   0
-<ctrl+right>  = pan -16   0
-<alt+up>      = pan  0    1
-<alt+down>    = pan  0   -1
-<alt+left>    = pan  1    0
-<alt+right>   = pan -1    0
-<space>       = toggle_playing
-<ctrl+w>      = close
-<ctrl+q>      = quit
+<Up>          = pan  0   64
+<Down>        = pan  0  -64
+<Left>        = pan  64  0
+<Right>       = pan -64  0
+<Shift+Up>    = pan  0    128
+<Shift+Down>  = pan  0   -128
+<Shift+Left>  = pan  128  0
+<Shift+Right> = pan -128  0
+<Ctrl+Up>     = pan  0    16
+<Ctrl+Down>   = pan  0   -16
+<Ctrl+Left>   = pan  16   0
+<Ctrl+Right>  = pan -16   0
+<Meta+Up>     = pan  0    1
+<Meta+Down>   = pan  0   -1
+<Meta+Left>   = pan  1    0
+<Meta+Right>  = pan -1    0
+<Space>       = toggle_playing
+<Ctrl+w>      = close
+<Ctrl+q>      = quit
 
 ### Navigation
 i         = pan  0    64
 k         = pan  0   -64
 j         = pan  64   0
 l         = pan -64   0
-<shift+i> = pan  0    128
-<shift+k> = pan  0   -128
-<shift+j> = pan  128  0
-<shift+l> = pan -128  0
-<ctrl+i>  = pan  0    16
-<ctrl+k>  = pan  0   -16
-<ctrl+j>  = pan  16   0
-<ctrl+l>  = pan -16   0
-<alt+i>   = pan  0    1
-<alt+k>   = pan  0   -1
-<alt+j>   = pan  1    0
-<alt+l>   = pan -1    0
+<Shift+I> = pan  0    128
+<Shift+K> = pan  0   -128
+<Shift+J> = pan  128  0
+<Shift+L> = pan -128  0
+<Ctrl+i>  = pan  0    16
+<Ctrl+k>  = pan  0   -16
+<Ctrl+j>  = pan  16   0
+<Ctrl+l>  = pan -16   0
+<Meta+i>  = pan  0    1
+<Meta+k>  = pan  0   -1
+<Meta+j>  = pan  1    0
+<Meta+l>  = pan -1    0
 n         = next
-<shift+n> = prev
+<Shift+N> = prev
 y         = next_frame
-<shift+y> = prev_frame
+<Shift+Y> = prev_frame
 
 ### Environment
 r        = reset
-<ctrl+r> = center
+<Ctrl+r> = center
 
-# View
-<backslash>        = scaling next
-<alt+backslash>    = upscaling next
-<minus>            = zoom -1
-<equal>            = zoom  1
-<apostrophe>       = zoom actual
-<shift+minus>      = slideshow -1
-<shift+equal>      = slideshow  1
-<shift+apostrophe> = slideshow  0
+### View
+<backslash>         = scaling next
+<Meta+backslash>    = upscaling next
+<minus>             = zoom -2
+<equal>             = zoom  2
+<Shift+underscore>  = zoom -4
+<Shift+plus>        = zoom  4
+<Ctrl+minus>        = zoom -1
+<Ctrl+equal>        = zoom  1
+<Meta+minus>        = slideshow -1
+<Meta+equal>        = slideshow  1
+<apostrophe>        = zoom actual
+<Meta+apostrophe>   = slideshow  0

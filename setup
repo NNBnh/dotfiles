@@ -13,20 +13,22 @@
 # URL:          https://github.com/NNBnh/dots/blob/master/setup
 
 
-# Environment
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
+# Values
+pwd="$PWD"
+pld=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+XDG_CACHE_HOME="$HOME/.cache"
+XDG_DATA_HOME="$HOME/.local/share"
 
 
 # Install packages
 	curl -fsSL https://raw.githubusercontent.com/NNBnh/bawkpack/master/bawkpack --create-dirs -o $XDG_CACHE_HOME/bawkpack
-	chmod +x $XDG_CACHE_HOME/.cache/bawkpack
-    sudo $XDG_CACHE_HOME/bawkpack "$swd/packageslist"
+	chmod +x $XDG_CACHE_HOME/bawkpack
+	$XDG_CACHE_HOME/bawkpack "$pld/packageslist"
 
 
 # Before symlink
 	# Create directories (to only symlink files inside, not the directory)
-	mkdir $HOME/.local/bin $HOME/.config/fish $HOME/.config/godot $HOME/.config/retroarch
+	mkdir $HOME/.local/bin $HOME/.config/fish $HOME/.config/retroarch
 
 	# Remove junks (Spring cleaning your $HOME)
 	mkdir $HOME/test
@@ -34,8 +36,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 
 
 # Symlink dotfiles
-pwd="$PWD"
-cd $(cd -P -- "$(dirname -- "$0")" && pwd -P)
+cd $pld
 stow -vt ~ home
 sudo stow -vt / root
 cd $pwd
