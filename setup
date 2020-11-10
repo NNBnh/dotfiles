@@ -14,16 +14,14 @@
 
 
 # Values
-pwd="$PWD"
-pld=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+DOTS=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 XDG_CACHE_HOME="$HOME/.cache"
 XDG_DATA_HOME="$HOME/.local/share"
 
 
 # Install packages
-	curl -fsSL https://raw.githubusercontent.com/NNBnh/bawkpack/master/bawkpack --create-dirs -o $XDG_CACHE_HOME/bawkpack
-	chmod +x $XDG_CACHE_HOME/bawkpack
-	$XDG_CACHE_HOME/bawkpack "$pld/packageslist"
+curl -fsSL https://raw.githubusercontent.com/NNBnh/bawkpack/master/bawkpack --create-dirs -o $DOTS/bawkpack && chmod +x $DOTS/bawkpack
+$DOTS/bawkpack "$pld/packageslist"
 
 
 # Before symlink
@@ -36,10 +34,8 @@ XDG_DATA_HOME="$HOME/.local/share"
 
 
 # Symlink dotfiles
-cd $pld
 stow -vt ~ home
 sudo stow -vt / root
-cd $pwd
 
 
 # After symlink

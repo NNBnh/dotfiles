@@ -127,11 +127,11 @@
 # =============================================================================
 
 ### Files
-  APT:kitty                           PAC:kitty                       XBP:kitty                 # Terminal emulator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
-  APT:nemo                            PAC:nemo                        XBP:nemo                  # Files manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#files-manager)
-  APT:imv                             PAC:imv                         XBP:imv                   # Image viewer (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-viewer)
-  APT:mpv                             PAC:mpv                         XBP:mpv                   # Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
-  APT:firefox                         PAC:firefox                     XBP:firefox               # Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
+  APT:kitty                          PAC:kitty                       XBP:kitty                 # Terminal emulator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
+  APT:nemo                           PAC:nemo                        XBP:nemo                  # Files manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#files-manager)
+  APT:imv                            PAC:imv                         XBP:imv                   # Image viewer (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-viewer)
+  APT:mpv                            PAC:mpv                         XBP:mpv                   # Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
+  APT:firefox                        PAC:firefox                     XBP:firefox               # Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
 
 ### Edit
   APT:gimp                           PAC:gimp                        XBP:gimp                   # Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
