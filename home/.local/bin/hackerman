@@ -51,7 +51,7 @@
 
 
 # Start
-$action $effect
+$action "$effect"
 
 
-exit
+exit 0
