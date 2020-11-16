@@ -66,6 +66,8 @@ plug 'kak-lsp/kak-lsp' config %{
 # =============================================================================
 
 set-option global scrolloff '3,7'
+set-option global tabstop 4
+set-option global indentwidth 0
 set-option global modelinefmt '{{context_info}} {{mode_info}} %val{cursor_line}:%val{cursor_char_column} / %val{buf_line_count} '
 
 add-highlighter global/ number-lines -relative -hlcursor -separator ' ' -min-digits '3'
@@ -76,4 +78,4 @@ add-highlighter global/ dynregex '%reg{/}' 0:MatchingChar
 
 hook global WinDisplay .* %{ echo %val{bufname} }
 
-hook global BufCreate .* %{ try %{ editorconfig-load } catch %{ try sh%{ echo "editorconfig-load ${XDG_CONFIG_HOME:-$HOME/.config}/editorconfig" } } }
+hook global BufCreate .* %{ try editorconfig-load }
