@@ -15,22 +15,21 @@
 
 # Values
 DOTS=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-XDG_CACHE_HOME="$HOME/.cache"
 XDG_DATA_HOME="$HOME/.local/share"
 
 
 # Install packages
-curl -fsSL https://raw.githubusercontent.com/NNBnh/bawkpack/master/bawkpack --create-dirs -o $DOTS/bawkpack && chmod +x $DOTS/bawkpack
-$DOTS/bawkpack "$pld/packageslist"
+curl -fsSL https://raw.githubusercontent.com/NNBnh/bawkpack/master/bawkpack --create-dirs -o "$DOTS/bawkpack" && chmod +x "$DOTS/bawkpack"
+"$DOTS/bawkpack" "$DOTS/packageslist"
 
 
 # Before symlink
 	# Create directories (to only symlink files inside, not the directory)
-	mkdir $HOME/.local/bin $HOME/.config/fish $HOME/.config/kak $HOME/.config/retroarch
+	mkdir "$HOME/.local/bin" "$HOME/.config/fish" "$HOME/.config/kak" "$HOME/.config/retroarch"
 
 	# Remove junks (Spring cleaning your $HOME)
-	mkdir $HOME/test
-	mv $HOME/Desktop $HOME/Documents $HOME/Downloads $HOME/Music $HOME/Pictures $HOME/Public $HOME/Templates $HOME/Videos $HOME/.ICEauthority $HOME/.bash_history $HOME/.bash_logout $HOME/.bash_profile $HOME/.bashrc $HOME/.inputrc $HOME/.xinitrc $HOME/.xsession $HOME/.xsession-errors $HOME/test
+	mkdir "$HOME/test"
+	mv "$HOME/Desktop" "$HOME/Documents" "$HOME/Downloads" "$HOME/Music" "$HOME/Pictures" "$HOME/Public" "$HOME/Templates" "$HOME/Videos" "$HOME/.ICEauthority" "$HOME/.bash_history" "$HOME/.bash_logout" "$HOME/.bash_profile" "$HOME/.bashrc" "$HOME/.inputrc" "$HOME/.xinitrc" "$HOME/.xsession" "$HOME/.xsession-errors" "$HOME/test"
 
 
 # Symlink dotfiles
@@ -46,7 +45,7 @@ sudo stow -vt / root
 	sudo ufw enable
 
 	# Git-alias
-	curl -fsSL https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt --create-dirs -o $XDG_DATA_HOME/git/gitalias.txt
+	curl -fsSL https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt --create-dirs -o "$XDG_DATA_HOME/git/gitalias.txt"
 
 
 exit 0
