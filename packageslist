@@ -31,32 +31,47 @@
                                   AUR:ttf-twemoji                 XBP:twemoji                   # Emoji support for font
   APT:papirus-icon-theme          PAC:papirus-icon-theme          XBP:papirus-icon-theme        # Icon set that support nearly every app
 
+
+## Wayland --------------------------------------------------------------------
+
+### Core
+                                  AUR:wayfire                     XBP:wayfire                   # Windows manager (WH.I.CH *)
+
+### Screen
+  APT:brightnessctl               PAC:brightnessctl               XBP:brightnessctl             # Screen backlight
+                                  PAC:gammastep                   XBP:gammastep                 # Blue light filter (F.lux alternative for linux)
+  APT:grim                        PAC:grim                        XBP:grim                      # Screenshot
+  APT:slurp                       PAC:slurp                       XBP:slurp                     # Screen region selector
+
+### UI
+                                  AUR:nwg-launchers               XBP:nwg-launchers             # Menu
+
+### Notification
+  APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                 # Notification library
+                                  PAC:mako                        XBP:mako                      # Notification daemon
+
+### Clipboard
+  APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard              # Clipboard manager
+
 ## Xorg -----------------------------------------------------------------------
 #
 ### Core
-#                                 PAC:bspwm                       XBP:bspwm                     # Windows manager (WH.I.CH *)
-#                                 PAC:sxhkd                       XBP:sxhkd                     # Hotkey
+# APT:bspwm                       PAC:bspwm                       XBP:bspwm                     # Windows manager for Xorg
+# APT:sxhkd                       PAC:sxhkd                       XBP:sxhkd                     # Hotkey
 #
 ### Screen
-#                                 AUR:picom-tryone-git            XBP:picom                     # Compositor (add blur transparent to app)
-#                                 PAC:xwallpaper                  XBP:xwallpaper                # Wallpaper
-#                                 AUR:xwinwrap-git                XBP:xwinwrap                  # Wallpaper using video and anythings
-#                                 PAC:xorg-xbacklight             XBP:xbacklight                # Screen backlight
-#                                 PAC:redshift                    XBP:redshift                  # Blue light filter (F.lux alternative for linux)
-#                                 PAC:maim                        XBP:maim                      # Screenshot
+# APT:compton                     AUR:picom-tryone-git            XBP:picom                     # Compositor (add blur transparent to app)
+# APT:xwallpaper                  PAC:xwallpaper                  XBP:xwallpaper                # Wallpaper
+# APT:maim                        PAC:maim                        XBP:maim                      # Screenshot
 #
 ### UI
-#                                 PAC:rofi                        XBP:rofi                      # Quick menu
-#                                 AUR:conky-cli                   XBP:conky-cli                 # Desktop description (Rainmeter alternative for linux)
-#                                 PAC:xorg-xprop                  XBP:xprop                     # Get app info
+# APT:conky                       AUR:conky-cli                   XBP:conky-cli                 # Desktop description (Rainmeter alternative for linux)
 #
 ### Notification
-#                                 PAC:libnotify                   XBP:libnotify                 # Notification library
-#                                 PAC:dunst                       XBP:dunst                     # Notification daemon
+# APT:dunst                       PAC:dunst                       XBP:dunst                     # Notification daemon
 #
 ### Clipboard
-#                                 PAC:xclip                       XBP:xclip                     # Clipboard manipulation
-#                                 AUR:xcmenu-git                  XBP:xcmenu                    # Clipboard manager
+# APT:xclip                       PAC:xclip                       XBP:xclip                     # Clipboard manager
 
 # =============================================================================
 # 2. Terminal
@@ -88,12 +103,12 @@
 
 ### Work
   APT:kakoune                     PAC:kakoune                     XBP:kakoune                   # Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
-                                  AUR:vimv-git                                                  # Batch rename files
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate              # Calculator
   APT:translate-shell             PAC:translate-shell             XBP:translate-shell           # Translator
   APT:ufw                         PAC:ufw                         XBP:ufw                       # Firewall (just run `sudo ufw enable`)
 
 ### Formats
+  APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                # Shell script static analysis
   APT:p7zip                       PAC:p7zip                       XBP:p7zip                     # Files archive
   APT:p7zip-rar                   PAC:unrar                       XBP:p7zip-unrar               # RAR support for archive
   APT:pandoc                      PAC:pandoc                      XBP:pandoc                    # Markup converter
@@ -134,11 +149,11 @@
   APT:firefox                        PAC:firefox                     XBP:firefox               # Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
 
 ### Edit
-  APT:gimp                           PAC:gimp                        XBP:gimp                   # Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
-  APT:blender                        PAC:blender                     XBP:blender                # Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
-  APT:godot3                         AUR:godot-bin                   XBP:godot                  # Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
+  APT:gimp                           PAC:gimp                        XBP:gimp                  # Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
+  APT:blender                        PAC:blender                     XBP:blender               # Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
+  APT:godot3                         AUR:godot-bin                   XBP:godot                 # Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
 
 ### Games
-                                     PAC:lutris                      XBP:lutris                 # Games manager
-                                     PAC:steam                       XBP:steam                  # Gamer mode
-  APT:retroarch                      PAC:retroarch                   XBP:retroarch              # Retro emulators
+                                     PAC:lutris                      XBP:lutris                # Games manager
+                                     PAC:steam                       XBP:steam                 # Gamer mode
+  APT:retroarch                      PAC:retroarch                   XBP:retroarch             # Retro emulators
