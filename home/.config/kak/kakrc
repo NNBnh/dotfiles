@@ -49,7 +49,8 @@ plug 'lePerdu/kakboard' config %{
 	declare-option str-list kakboard_paste_keys ''
 	declare-option str-list kakboard_copy_keys  ''
 
-	hook global WinCreate        .* %{ kakboard-enable; kakboard-pull-clipboard }
+	hook global WinCreate        .* %{ kakboard-enable }
+	hook global WinCreate        .* %{ kakboard-pull-clipboard }
 	hook global FocusIn          .* %{ kakboard-pull-clipboard }
 	hook global RegisterModified \" %{ kakboard-push-clipboard }
 }

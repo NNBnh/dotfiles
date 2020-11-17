@@ -44,7 +44,9 @@
   APT:slurp                       PAC:slurp                       XBP:slurp                         # Screen region selector
 
 ### UI
+                                  PAC:waybar                      XBP:waybar                        # Bar
                                   AUR:nwg-launchers               XBP:nwg-launchers                 # Menu
+                                  PAC:swaylock                    XBP:swaylock                      # Lock screen
 
 ### Notification
   APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                     # Notification library
@@ -131,6 +133,7 @@
                                   PAC:abduco                      XBP:abduco                        # Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
 
 ### Fun
+  APT:asciinema                   PAC:asciinema                   XBP:asciinema                     # Record terminal
   APT:figlet                      PAC:figlet                      XBP:figlet                        # Create fancy text (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
                                   AUR:figlet-fonts                XBP:figlet-fonts                  # Add more fonts to figlet
   APT:lolcat                      PAC:lolcat                      XBP:lolcat-c                      # Make outputs RGB
