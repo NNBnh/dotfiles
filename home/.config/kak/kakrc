@@ -26,10 +26,14 @@ set-option global plug_always_ensure 'true'
 ## Visual ---------------------------------------------------------------------
 
 plug 'NNBnh/bui.kak' theme config %{
+	declare-option str-list bui_cursor_information 'true'
+
 	colorscheme bui
 }
 
-# plug 'alexherbo2/palette.kak'
+plug 'eraserhd/kak-ansi' config %{
+	hook global WinCreate \*stdin\* %{ ansi-render }
+}
 
 ## Interactive ----------------------------------------------------------------
 

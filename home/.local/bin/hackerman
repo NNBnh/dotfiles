@@ -33,12 +33,14 @@
 		'i'|'ip')                action="curl --silent ifconfig.me"                                                                ;;
 		'c'|'currency'|'money')  action="curl --silent rate.sx"                                                                    ;;
 		'r'|'rate')              action="curl --silent rate.sx/btc"                                                                ;;
-		'w'|'weather')           action="curl --silent V2.wttr.in"                                                                 ;;
+		'w'|'weather')           action="curl --silent wttr.in"                                                                    ;;
+		'2'|'weather2')          action="curl --silent V2.wttr.in"                                                                 ;;
 		'a'|'attack')            action="echo 'curl -s -L http://bit.ly/10hA8iC | bash'"                                           ;;
 		'M'|'matrix')            action="cmatrix"                                                                                  ;;
 		'I'|'info'|'system')     action="glances || { htop || top }"                                                               ;;
 		'R'|'run'|'rick')        action="curl -fsSL https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" ;;
 		'S'|'sneakers')          action="sneakers"                                                                                 ;;
+		'A'|'map')               action="telnet mapscii.me"                                                                        ;;
 		*)                       exit 1                                                                                            ;;
 	esac
 
@@ -46,12 +48,11 @@
 	case $2 in
 		'r'|'l'|'rainbow'|'lolcat') effect="| lolcat" ;;
 		'd'|'n'|'decrypt'|'nms')    effect="| nms -a" ;;
-		*)                          exit 1            ;;
 	esac
 
 
 # Start
-$action "$effect"
+$action $effect
 
 
 exit 0

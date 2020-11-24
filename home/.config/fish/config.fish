@@ -20,8 +20,8 @@ source $HOME/.config/env
 
 # Functions
 if not type -q 'starship'
-    curl -fsSL https://starship.rs/install.sh --create-dirs -o $XDG_CACHE_HOME/starship-installer
-    chmod +x $XDG_CACHE_HOME/starship-installer
+    curl -fsSL https://starship.rs/install.sh --create-dirs -o "$XDG_CACHE_HOME/starship-installer"
+    chmod +x "$XDG_CACHE_HOME/starship-installer"
     eval "$XDG_CACHE_HOME/starship-installer --yes --bin-dir '$HOME/.local/bin'"
 end
 
