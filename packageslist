@@ -139,7 +139,7 @@
   APT:lolcat                      PAC:lolcat                      XBP:lolcat-c                      # Make outputs RGB
                                   AUR:no-more-secrets             XBP:no-more-secrets               # Become a hackerman (Make outputs Minecraft enchanting table language)
   APT:cmatrix                     PAC:cmatrix                     XBP:cmatrix                       # Simulates the display from "The Matrix" (WH.I.CH https://github.com/NNBnh/dots/wiki/which#matrix)
-  APT:cava                        PAC:cava                        XBP:cava                          # Make outputs RGB
+                                  AUR:cava                        XBP:cava                          # Audio visualizer
 
 # =============================================================================
 # 3. Applications
@@ -161,3 +161,4 @@
                                   PAC:lutris                      XBP:lutris                        # Games manager
                                   PAC:steam                       XBP:steam                         # Gamer mode
   APT:retroarch                   PAC:retroarch                   XBP:retroarch                     # Retro emulators
+                                  AUR:multimc5                    XBP:MultiMC                       # Minecraft launcher and instance manager
