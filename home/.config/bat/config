@@ -1,2 +1,4 @@
 --theme="base16"
+--wrap="never"
+--style="plain"
 --paging="never"
