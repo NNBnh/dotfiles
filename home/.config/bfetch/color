@@ -1,0 +1,12 @@
+#!/bin/sh
+
+
+# Values
+file="$XDG_DATA_HOME/textart/color/strip.textart"
+
+
+# Start
+[ -x "$file" ] && $file
+
+
+exit 0

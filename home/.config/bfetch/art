@@ -1,0 +1,12 @@
+#!/bin/sh
+
+
+# Values
+file="$XDG_DATA_HOME/textart/other/gamebtw.textart"
+
+
+# Start
+[ -x "$file" ] && $file
+
+
+exit 0

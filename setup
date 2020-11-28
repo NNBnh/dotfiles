@@ -47,5 +47,18 @@ sudo stow -vt / root
 	# Git-alias
 	curl -fsSL https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt --create-dirs -o "$XDG_DATA_HOME/git/gitalias.txt"
 
+	# Wallpaper
+	git clone https://github.com/NNBnh/wallpaper-collections.git "$XDG_DATA_HOME/wallpapers"
+
+	# Textart
+	git clone https://github.com/NNBnh/textart-collections.git "$XDG_DATA_HOME/textart"
+
+	# Bfetch
+	git clone https://github.com/NNBnh/bfetch.git "$XDG_DATA_HOME/bfetch"
+	ln -s "$XDG_DATA_HOME/bfetch/bfetch" "$HOME/.local/bin/"
+
+	# Vimv
+	git clone https://github.com/thameera/vimv.git "$XDG_DATA_HOME/vimv"
+	ln -s "$XDG_DATA_HOME/vimv/vimv" "$HOME/.local/bin/"
 
 exit 0
