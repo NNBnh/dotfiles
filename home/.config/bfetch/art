@@ -2,11 +2,13 @@
 
 
 # Values
-file="$XDG_DATA_HOME/textart/other/gamebtw.textart"
+FILE="$XDG_DATA_HOME/textart/other/gamebtw.textart"
+
+COLOR="${BUI_COLOR_TEXTART:-32}"
 
 
 # Start
-[ -x "$file" ] && $file
+[ -x "$FILE" ] && $FILE "$COLOR"
 
 
 exit 0

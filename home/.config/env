@@ -133,12 +133,15 @@ export BUI_COLOR_TERMINAL013="$BUI_COLOR_MAGENTA"
 export BUI_COLOR_TERMINAL014="$BUI_COLOR_CYAN"
 export BUI_COLOR_TERMINAL015="$BUI_COLOR_LIGHT_ALT"
 
+### Other
+export BUI_COLOR_TEXTART="93"
+
 
 # =============================================================================
 # 4. Setting
 # =============================================================================
 
-export BFETCH_PROMPT_HEIGHT="3"
+export BFETCH_PROMPT_HEIGHT="4"
 
 
 exit 0

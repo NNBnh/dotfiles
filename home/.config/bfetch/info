@@ -2,7 +2,7 @@
 
 
 # Values
-COLOR="93"
+COLOR="${BUI_COLOR_TEXTART:-32}"
 OS=$(lsb_release -sd | sed -e 's/"//g')
 SHELL=$(basename "$SHELL" | sed 's/^[[:lower:]]/\U&/g')
 WM="Wayfire"

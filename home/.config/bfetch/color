@@ -2,11 +2,20 @@
 
 
 # Values
-file="$XDG_DATA_HOME/textart/color/strip.textart"
+FILE="$XDG_DATA_HOME/textart/color/strip.textart"
+
+MAX_WIDTH='4'
+WIDTH='1'
+
+while [ $(( WIDTH + 1 )) -le "$MAX_WIDTH" ] && [ $(( ( WIDTH + 1 ) * 8 )) -le "$BFETCH_COLOR_WIDTH" ]; do
+	WIDTH=$(( WIDTH + 1 ))
+done
+
+[ "$BFETCH_COLOR_HEIGHT" -lt '2' ] && ORDER='normal'
 
 
 # Start
-[ -x "$file" ] && $file
+[ -x "$FILE" ] && $FILE "$WIDTH" "$ORDER" ' ' '7'
 
 
 exit 0
