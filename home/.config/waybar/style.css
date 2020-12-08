@@ -1,0 +1,40 @@
+* {
+	border: none;
+	border-radius: 0;
+	background-color: #282828;
+	font-family: Iosevka Extended;
+	font-size: 16px;
+	padding: 0;
+}
+
+#pulseaudio,
+#mpd,
+#backlight,
+#battery,
+#clock {
+	color: #F8F8F8;
+	padding: 0 4px;
+}
+
+#custom-menu {
+	background-color: #F7CA88;
+	color: #181818;
+	padding: 2px 0;
+	margin-bottom: 0.5em;
+}
+
+#workspaces button {
+	color: #585858;
+}
+
+#workspaces button.focused {
+	color: #F7CA88;
+}
+
+#clock.big {
+	margin-top: 0.5em;
+}
+
+#clock.small {
+	font-size: 8px;
+}

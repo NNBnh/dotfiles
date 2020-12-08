@@ -21,9 +21,14 @@
   APT:brightnessctl               PAC:brightnessctl               XBP:brightnessctl                 # Screen backlight
                                   PAC:gammastep                   XBP:gammastep                     # Blue light filter (F.lux alternative for linux)
 
+### Audio
+  APT:alsa-utils                  PAC:alsa-utils                  XBP:alsa-utils                    # Sound server
+  APT:pulseaudio                  PAC:pulseaudio                  XBP:pulseaudio                    # Sound server but better
+
 ### Input
   APT:ibus-unikey                 AUR:ibus-bamboo                 XBP:ibus-bamboo                   # Vietnamese input method
                                   AUR:sc-controller               XBP:sc-controller                 # Controller
+                                  AUR:ydotool                     XBP:ydotool                       # Send inputs with shell
 
 ### Resource
                                   AUR:ttf-iosevka                 XBP:font-iosevka                  # Font (WH.I.CH https://github.com/NNBnh/dots/wiki/which#font)
@@ -31,28 +36,28 @@
                                   AUR:ttf-twemoji                 XBP:twemoji                       # Emoji support for font
   APT:papirus-icon-theme          PAC:papirus-icon-theme          XBP:papirus-icon-theme            # Icon set that support nearly every app
 
-### library, daemon and server
-  APT:alsa-utils                  PAC:alsa-utils                  XBP:alsa-utils                    # Sound server
-  APT:pulseaudio                  PAC:pulseaudio                  XBP:pulseaudio                    # Sound server but better
+### Other
   APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                     # Notification library
   APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard                  # Clipboard manager
-  APT:xclip                       PAC:xclip                       XBP:xclip                         # Clipboard manager (for Xorg)
 
 ## Windows manager ------------------------------------------------------------
 
 ### Core
-                                  AUR:wayfire                     XBP:wayfire                       # Windows manager (WH.I.CH *)
+                                  AUR:sway                        XBP:sway                          # Windows manager (WH.I.CH *)
 
 ### UI
+                                  PAC:swaybg                      XBP:swaybg                        # Wallpaper
                                   PAC:waybar                      XBP:waybar                        # Bar
                                   AUR:nwg-launchers               XBP:nwg-launchers                 # Menu
+                                  PAC:swayidle                    XBP:swayidle                      # Idle management
                                   PAC:swaylock                    XBP:swaylock                      # Lock screen
                                   PAC:mako                        XBP:mako                          # Notification daemon
   APT:conky                       AUR:conky-cli                   XBP:conky-cli                     # Desktop description (Rainmeter alternative for linux)
 
-### Screenshot
+### Screenshot & screen record
   APT:grim                        PAC:grim                        XBP:grim                          # Screenshot
   APT:slurp                       PAC:slurp                       XBP:slurp                         # Screen region selector
+                                  PAC:wf-recorder                 XBP:wf-recorder                   # Screen record
 
 
 # =============================================================================
@@ -109,7 +114,6 @@
                                   PAC:bat                         XBP:bat                           # Files renderer
   APT:fd-find                     PAC:fd                          XBP:fd                            # Find files
   APT:ripgrep                     PAC:ripgrep                     XBP:ripgrep                       # Find files with regex
-  APT:gawk                        PAC:gawk                        XBP:gawk                          # Text manipulation dynamo
                                   PAC:abduco                      XBP:abduco                        # Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
 
 ### Fun
