@@ -61,4 +61,5 @@ sudo stow -vt / root
 	git clone https://github.com/thameera/vimv.git "$XDG_DATA_HOME/vimv"
 	ln -s "$XDG_DATA_HOME/vimv/vimv" "$HOME/.local/bin/"
 
+
 exit 0

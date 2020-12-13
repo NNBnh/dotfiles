@@ -4,8 +4,6 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-exec_always "exec ~/.config/env"
-
 font pango:Iosevka Extended 12
 smart_borders no_gaps
 smart_gaps yes

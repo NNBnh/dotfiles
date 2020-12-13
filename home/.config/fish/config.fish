@@ -16,7 +16,7 @@
 
 # Values
 source $HOME/.config/env
-
+set --global fish_prompt_pwd_dir_length '16'
 
 # Functions
 if not type -q 'starship'
