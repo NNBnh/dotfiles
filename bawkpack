@@ -60,7 +60,6 @@ packagemanager_not=${packagemanager_all%%$packagemanager_main}
 # Functions
 setup_aur() {
 	echo "BAWKPACK: installing YAY"
-
 	sudo pacman --sync --refresh --noconfirm --needed git base-devel
 	git clone https://aur.archlinux.org/yay.git "$BAWKPACK_LOCAL/yay"
 	cd "$BAWKPACK_LOCAL/yay" || exit 1
@@ -81,15 +80,13 @@ setup_flatpak() {
 
 setup_snap() {
 	echo "BAWKPACK: installing Snap"
-
+	
 	if   [ $packagemanager_main = 'Pacman' ]; then
 		sudo pacman --sync --refresh --noconfirm --needed git
-
 		git clone https://aur.archlinux.org/snapd.git "$BAWKPACK_LOCAL/snap"
 		cd "$BAWKPACK_LOCAL/snap" || exit 1
 		makepkg -si
 		cd "$WD" || exit 1
-
 		sudo systemctl enable --now snapd.socket
 		sudo ln -s /var/lib/snapd/snap /snap
 	elif [ $packagemanager_main = 'APT' ]; then
@@ -117,10 +114,13 @@ for packagemanager in $packagemanager_list; do
 		packages_list=$(printf "$bawkpack_cache" | sed -e "s/^.*$packagemanager_mark//g" -e 's/[[:space:]].*$//g')
 		bawkpack_cache=$(printf "$bawkpack_cache" | sed -e "s/$packagemanager_mark//g")
 
-		if [ "*$packagemanager*" != "$packagemanager_not" ]; then
-			echo "BAWKPACK: installing $packagemanager Packages"
-			$packagemanager_command "$packages_list"
-		fi
+		case "$packagemanager" in
+			*$packagemanager_not*) ;;
+			*)
+				echo "BAWKPACK: installing $packagemanager Packages"
+				$packagemanager_command "$packages_list"
+			;;
+		esac
 	fi
 done
 
