@@ -40,6 +40,11 @@
   APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                     # Notification library
   APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard                  # Clipboard manager
 
+### Screenshot & screen record
+  APT:grim                        PAC:grim                        XBP:grim                          # Screenshot
+  APT:slurp                       PAC:slurp                       XBP:slurp                         # Screen region selector
+                                  PAC:wf-recorder                 XBP:wf-recorder                   # Screen record
+
 ## Windows manager ------------------------------------------------------------
 
 ### Core
@@ -52,12 +57,6 @@
                                   PAC:swayidle                    XBP:swayidle                      # Idle management
                                   PAC:swaylock                    XBP:swaylock                      # Lock screen
                                   PAC:mako                        XBP:mako                          # Notification daemon
-  APT:conky                       AUR:conky-cli                   XBP:conky-cli                     # Desktop description (Rainmeter alternative for linux)
-
-### Screenshot & screen record
-  APT:grim                        PAC:grim                        XBP:grim                          # Screenshot
-  APT:slurp                       PAC:slurp                       XBP:slurp                         # Screen region selector
-                                  PAC:wf-recorder                 XBP:wf-recorder                   # Screen record
 
 
 # =============================================================================
@@ -66,8 +65,9 @@
 
 ### Core
   APT:fish                        PAC:fish                        XBP:fish-shell                    # Main shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#shell)
+  APT:dash                        PAC:dash                        XBP:dash                          # POSIX shell
   APT:bash                        PAC:bash                        XBP:bash                          # Legacy shell
-  APT:python                      PAC:python                      XBP:python                        # EZ & OP programming language
+  APT:python                      PAC:python                      XBP:python                        # Nerd programming language
   APT:nim                         PAC:nim                         XBP:nim                           # Cool programming language
 
 ### Info

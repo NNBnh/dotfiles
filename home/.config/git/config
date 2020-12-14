@@ -4,3 +4,6 @@
 
 [include]
 	path = ~/.local/share/git/gitalias.txt
+
+[alias]
+	qpush = !"git add --all && git commit --message \"${@:-$(date)}\" && !git push origin $(git branch-name) && git pull origin $(git branch-name)"

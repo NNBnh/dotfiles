@@ -1,0 +1,35 @@
+#!/bin/sh
+
+#    ______
+#   / ____/ __
+#  / / __(_) /___ _____
+# / /_/ / / __/ // / _ \
+# \____/_/\__/\_,_/ .__/
+#                /_/
+
+# File:         gitup
+# Description:  Git quick push up that SuperB
+# Author:       NNB
+#               └─ https://github.com/NNBnh
+# URL:          https://github.com/NNBnh/dots/blob/master/home/.local/bin/gitup
+# License:      GPLv3
+
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+# Start
+git add --all && git commit --message "${@:-$(date)}" && git push origin $(git branch-name) && git pull origin $(git branch-name)
+
+
+exit 0

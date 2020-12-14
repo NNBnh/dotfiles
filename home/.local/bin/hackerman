@@ -27,7 +27,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-# Start
+# Values
 	# Action
 	case $1 in
 		'i'|'ip')                action="curl --silent ifconfig.me"                                                                ;;

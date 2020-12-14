@@ -52,7 +52,6 @@ export EDITOR="/usr/bin/kak"
 export VISUAL="$EDITOR"
 export PAGER="$HOME/.local/bin/kak-pager"
 export MANPAGER="$HOME/.local/bin/kak-manpager"
-export RAWPAGER="$HOME/.local/bin/kak-rawpager"
 export TERMINAL="/usr/bin/kitty"
 export BROWSER="/usr/bin/firefox"
 
@@ -144,6 +143,7 @@ export BUI_COLOR_TEXTART="93"
 # =============================================================================
 
 export BFETCH_PROMPT_HEIGHT="3"
+export ABDUCO_CMD="$SHELL"
 
 
 exit 0
