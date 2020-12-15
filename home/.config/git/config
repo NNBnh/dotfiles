@@ -5,9 +5,6 @@
 	name = NNB
 	email = nnbnh@protonmail.com
 
-[github]
-	user = NNBnh
-
 [include]
 	path = ~/.local/share/git/gitalias.txt
 
