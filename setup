@@ -51,8 +51,8 @@ sudo stow -vt / root
 	echo 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
 
 	# Vimv
-	git clone https://github.com/thameera/vimv.git "$XDG_DATA_HOME/vimv"
-	ln -s "$XDG_DATA_HOME/vimv/vimv" "$HOME/.local/bin/"
+	curl -fsSL https://raw.githubusercontent.com/thameera/vimv/master/vimv --create-dirs -o "$HOME/.local/bin/vimv"
+	chmod +x "$HOME/.local/bin/vimv"
 
 	# Bfetch
 	git clone https://github.com/NNBnh/bfetch.git "$XDG_DATA_HOME/bfetch"
@@ -61,7 +61,7 @@ sudo stow -vt / root
 	# Fetchutils
 	git clone https://github.com/lptstr/fetchutils.git "$XDG_DATA_HOME/fetchutils"
 
-	# Git-alias
+	# Git
 	curl -fsSL https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt --create-dirs -o "$XDG_DATA_HOME/git/gitalias.txt"
 	curl -fsSL https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json --create-dirs -o "$XDG_DATA_HOME/git/gitmojis.json"
 
