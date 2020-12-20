@@ -1,5 +1,62 @@
-format = '$username$hostname$shlvl$kubernetes$directory$git_branch$git_commit$git_state$git_status$hg_branch$docker_context$package$cmake$dart$dotnet$elixir$elm$erlang$golang$helm$java$julia$nim$nodejs$ocaml$perl$php$purescript$python$ruby$rust$swift$terraform$zig$nix_shell$conda$memory_usage$aws$gcloud$openstack$env_var$crystal$lua$battery$cmd_duration$status$jobs$line_break$time$character'
+format = """
+${custom.bui}\
+$username\
+$hostname\
+$shlvl\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$cmake\
+$dart\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$java\
+$julia\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$purescript\
+$python\
+$ruby\
+$rust\
+$swift\
+$terraform\
+$zig\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$env_var\
+$crystal\
+$lua\
+$jobs\
+$battery\
+$time\
+$cmd_duration\
+$status\
+$line_break\
+$character\
+"""
 
+
+[custom.bui]
+format  = '$output'
+command = 'bui-terminal'
+when    = 'true'
 
 [username]
 format =     '[$user]($style)'
@@ -41,11 +98,8 @@ format   = '[$symbol$status]($style) '
 style    = 'bright-black'
 symbol   = 'E:'
 
-[time]
-disabled    = false
-format      = '[ $time ]($style)'
-style       = 'fg:black bg:bright-yellow'
-time_format = '%r'
-
 [character]
-format = '[](bright-yellow) '
+format         = '$symbol '
+success_symbol = '[ \$ ](fg:black bg:bright-yellow)[](bright-yellow)'
+error_symbol   = '[ # ](fg:black bg:red)[](red)'
+vicmd_symbol   = '[ V ](fg:black bg:green)[](green)'

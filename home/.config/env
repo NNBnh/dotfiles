@@ -146,7 +146,7 @@ export BUI_COLOR_TEXTART="93"
 # =============================================================================
 
 ### Skim
-export SKIM_DEFAULT_COMMAND=""
+export SKIM_DEFAULT_COMMAND="fd --hidden --type file"
 export SKIM_DEFAULT_OPTIONS="--height='66%'
                              --layout='reverse'
                              --prompt=' SELECT  '

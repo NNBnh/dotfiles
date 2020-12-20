@@ -69,6 +69,7 @@
   APT:rc                          AUR:rc                          XBP:rc                        # POSIX shell
   APT:python                      PAC:python                      XBP:python                    # Handy programming language
   APT:nim                         PAC:nim                         XBP:nim                       # Cool programming language
+                                  PAC:abduco                      XBP:abduco                    # Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
 
 ### Info
   APT:neofetch                    PAC:neofetch                    XBP:neofetch                  # System profilers ("CPU-Z alternative for linux")
@@ -88,16 +89,24 @@
 
 ## Work -----------------------------------------------------------------------
 
-### Work
-  APT:kakoune                     PAC:kakoune                     XBP:kakoune                   # Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
+### Utilitie
+  APT:coreutils                   PAC:coreutils                   XBP:coreutils                 # GNU core utilities (to get chown, chmod, shred, ...)
+                                  PAC:skim                        XBP:skim                      # Fuzzy finder
+  APT:fd-find                     PAC:fd                          XBP:fd                        # Find files
+  APT:ripgrep                     PAC:ripgrep                     XBP:ripgrep                   # Find regex
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate              # Calculator
   APT:translate-shell             PAC:translate-shell             XBP:translate-shell           # Translator
-  APT:ufw                         PAC:ufw                         XBP:ufw                       # Firewall (just run `sudo ufw enable`)
+  APT:ufw                         PAC:ufw                         XBP:ufw                       # Firewall
+
+### Files
+                                  PAC:exa                         XBP:exa                       # List files
+                                  PAC:bat                         XBP:bat                       # Files renderer
+  APT:kakoune                     PAC:kakoune                     XBP:kakoune                   # Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
+  APT:chafa                       PAC:chafa                       XBP:chafa                     # Image renderer
 
 ### Formats
   APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                # Shell script static analysis
   APT:p7zip                       PAC:p7zip                       XBP:p7zip                     # Files archive
-  APT:p7zip-rar                   PAC:unrar                       XBP:p7zip-unrar               # RAR support for archive
   APT:pandoc                      PAC:pandoc                      XBP:pandoc                    # Markup converter
   APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick               # Image converter
   APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                    # Media converter
@@ -105,18 +114,8 @@
 ## Other ----------------------------------------------------------------------
 
 ### Music
+  APT:playerctl                   PAC:playerctl                   XBP:playerctl                 # Music command
   APT:mpd                         PAC:mpd                         XBP:mpd                       # Music player
-  APT:playerctl                   PAC:playerctl                   XBP:playerctl                 # MPD command
-
-### Utilitie
-  APT:coreutils                   PAC:coreutils                   XBP:coreutils                 # GNU core utilities (to get chown, chmod, shred, ...)
-                                  PAC:exa                         XBP:exa                       # List files
-                                  PAC:bat                         XBP:bat                       # Files renderer
-  APT:chafa                       PAC:chafa                       XBP:chafa                     # Image renderer
-                                  PAC:skim                        XBP:skim                      # Fuzzy finder
-  APT:fd-find                     PAC:fd                          XBP:fd                        # Find files
-  APT:ripgrep                     PAC:ripgrep                     XBP:ripgrep                   # Find regex
-                                  PAC:abduco                      XBP:abduco                    # Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
 
 ### Fun
   APT:asciinema                   PAC:asciinema                   XBP:asciinema                 # Record terminal
