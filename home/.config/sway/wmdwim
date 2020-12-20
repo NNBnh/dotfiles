@@ -1,0 +1,27 @@
+#!/bin/sh
+
+
+# Values
+WORKSPACE="$1"
+DIRECTION="${2:-next}"
+MOVE="${3:-false}"
+
+
+# Start
+if [ "$(swaymsg --raw --type get_workspaces | jq  --raw-output '..|try select(.focused == true).num')" = "$WORKSPACE" ]; then
+	swaymsg focus_wrapping yes
+
+	if [ "$MOVE" = 'true' ]; then
+		swaymsg move "$DIRECTION"
+	else
+		swaymsg focus "$DIRECTION"
+	fi
+
+	swaymsg focus_wrapping no
+else
+	[ "$MOVE" = 'true' ] && swaymsg move workspace "$WORKSPACE"
+	swaymsg workspace "$WORKSPACE"
+fi
+
+
+exit 0

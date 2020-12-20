@@ -1,0 +1,9 @@
+#!/bin/sh
+
+
+gammastep &
+
+mpd &
+
+
+exit 0

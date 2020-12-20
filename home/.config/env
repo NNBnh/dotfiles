@@ -63,6 +63,9 @@ export BUI_CURSOR="block"
 export BUI_OPACITY="0.9"
 export BUI_FONT_FAMILY="Iosevka Extended"
 export BUI_FONT_SIZE="12.0"
+export BUI_BORDER_SIZE="2.0"
+export BUI_GAPS_SIZE="16.0"
+
 
 ## Colors ---------------------------------------------------------------------
 
@@ -142,8 +145,25 @@ export BUI_COLOR_TEXTART="93"
 # 4. Setting
 # =============================================================================
 
-export BFETCH_PROMPT_HEIGHT="3"
-export ABDUCO_CMD="$SHELL"
+### Skim
+export SKIM_DEFAULT_COMMAND=""
+export SKIM_DEFAULT_OPTIONS="--height='66%'
+                             --layout='reverse'
+                             --prompt=' SELECT  '
+                             --cmd-prompt=' COMMAND  '
+                             --no-clear-if-empty
+                             --ansi
+                             --tabstop='4'
+                             --color='fg:-1,bg:-1,matched:-1,matched_bg:$BUI_COLOR_FOREGROUND_ALT,current:$BUI_COLOR_BACKGROUND,current_bg:$BUI_COLOR_CURSOR,current_match:$BUI_COLOR_FOREGROUND,current_match_bg:$BUI_COLOR_FOREGROUND_ALT,query:-1,query_bg:-1,info:-1,border:$BUI_COLOR_FOREGROUND_ALT,prompt:$BUI_COLOR_CURSOR,pointer:$BUI_COLOR_CURSOR,marker:$BUI_COLOR_CURSOR_ALT,spinner:$BUI_COLOR_FOREGROUND_ALT,header:$BUI_COLOR_FOREGROUND_ALT'
 
+                             --bind='up:up,alt-up:preview-up,alt-shift-up:preview-page-down,down:down,alt-down:preview-down,alt-shift-down:preview-page-up,left:backward-char,shift-left:backward-word,right:forward-char,shift-right:forward-word,pgup:page-up,pgdn:page-down,home:beginning-of-line,end:end-of-line,bspace:backward-delete-char,tab:up,btab:down,del:delete-char,alt-i:up,alt-I:preview-page-down,alt-k:down,alt-K:preview-page-up,alt-j:backward-char,alt-J:beginning-of-line,alt-l:forward-char,alt-L:end-of-line,alt-u:backward-word,alt-U:page-up,alt-o:forward-word,alt-O:page-down,alt-w:deselect-all,alt-W:deselect-all,alt-s:toggle,alt-S:select-all,alt-a:append-and-select,alt-d:accept,alt-f:abort,alt-X:delete-char,alt-X:delete-charEOF,alt-c:yank,alt-q:toggle-preview,alt-Q:toggle-preview-wrap'
+
+                             --preview='bat {} || exa --color='always' --all --group-directories-first --long --header --git {}'
+                             --preview-window='66%'"
+
+### Other
+export ABDUCO_CMD="$SHELL"
+export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
+export BFETCH_PROMPT_HEIGHT="3"
 
 exit 0

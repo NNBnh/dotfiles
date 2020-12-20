@@ -50,15 +50,6 @@ sudo stow -vt / root
 	done
 	echo 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
 
-	# Git-alias
-	curl -fsSL https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt --create-dirs -o "$XDG_DATA_HOME/git/gitalias.txt"
-
-	# Wallpaper
-	git clone https://github.com/NNBnh/wallpaper-collections.git "$XDG_DATA_HOME/wallpapers"
-
-	# Textart
-	git clone https://github.com/NNBnh/textart-collections.git "$XDG_DATA_HOME/textart"
-
 	# Vimv
 	git clone https://github.com/thameera/vimv.git "$XDG_DATA_HOME/vimv"
 	ln -s "$XDG_DATA_HOME/vimv/vimv" "$HOME/.local/bin/"
@@ -69,6 +60,19 @@ sudo stow -vt / root
 
 	# Fetchutils
 	git clone https://github.com/lptstr/fetchutils.git "$XDG_DATA_HOME/fetchutils"
+
+	# Git-alias
+	curl -fsSL https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt --create-dirs -o "$XDG_DATA_HOME/git/gitalias.txt"
+	curl -fsSL https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json --create-dirs -o "$XDG_DATA_HOME/git/gitmojis.json"
+
+	# Wallpaper
+	git clone https://github.com/NNBnh/wallpaper-collections.git "$XDG_DATA_HOME/wallpapers"
+
+	# Textart
+	git clone https://github.com/NNBnh/textart-collections.git "$XDG_DATA_HOME/textart"
+
+	# Figlet fonts
+	git clone https://github.com/xero/figlet-fonts.git "$XDG_DATA_HOME/figlet/fonts"
 
 
 exit 0

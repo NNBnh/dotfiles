@@ -1,102 +1,51 @@
-format = """
-$username\
-$hostname\
-$shlvl\
-$kubernetes\
-$directory\
-$git_branch\
-$git_commit\
-$git_state\
-$git_status\
-$hg_branch\
-$docker_context\
-$package\
-$cmake\
-$dart\
-$dotnet\
-$elixir\
-$elm\
-$erlang\
-$golang\
-$helm\
-$java\
-$julia\
-$nim\
-$nodejs\
-$ocaml\
-$perl\
-$php\
-$purescript\
-$python\
-$ruby\
-$rust\
-$swift\
-$terraform\
-$zig\
-$nix_shell\
-$conda\
-$memory_usage\
-$aws\
-$gcloud\
-$openstack\
-$env_var\
-$crystal\
-$lua\
-$battery\
-$cmd_duration\
-$status\
-$jobs\
-$line_break\
-$time\
-$character
-"""
+format = '$username$hostname$shlvl$kubernetes$directory$git_branch$git_commit$git_state$git_status$hg_branch$docker_context$package$cmake$dart$dotnet$elixir$elm$erlang$golang$helm$java$julia$nim$nodejs$ocaml$perl$php$purescript$python$ruby$rust$swift$terraform$zig$nix_shell$conda$memory_usage$aws$gcloud$openstack$env_var$crystal$lua$battery$cmd_duration$status$jobs$line_break$time$character'
 
 
 [username]
-format =     "[$user]($style)"
-style_user = "bright-yellow"
-style_root = "bright-white"
+format =     '[$user]($style)'
+style_user = 'bright-yellow'
+style_root = 'bright-white'
 
 [hostname]
-format = "[@](bold)[$hostname]($style)"
-style  = ""
+format = '[@](bold)[$hostname]($style)'
+style  = ''
 
 [directory]
-format = " [$path]($style) [$read_only]($read_only_style)"
-style  = "bold bright-white"
-read_only  = " "
-read_only_style  = "bright-black"
+format = ' [$path]($style) [$read_only]($read_only_style)'
+style  = 'bold bright-white'
+read_only  = ' '
+read_only_style  = 'bright-black'
 truncation_length = 0
 truncate_to_repo  = false
 
 [git_status]
-format     = "($all_status$ahead_behind)"
-conflicted = "[~${count}](yellow) "
-ahead      = "[⇡${count}](green) "
-behind     = "[⇣${count}](red) "
-diverged   = "[⇣${count}](red) [⇡${count}](green) "
-untracked  = "[?${count}](purple) "
-stashed    = "[$${count}](cyan) "
-modified   = "[!${count}](yellow) "
-staged     = "[+${count}](green) "
-renamed    = "[»${count}](blue) "
-deleted    = "[-${count}](red) "
+format     = '($all_status$ahead_behind)'
+conflicted = '[~${count}](yellow) '
+ahead      = '[⇡${count}](green) '
+behind     = '[⇣${count}](red) '
+diverged   = '[⇣${count}](red) [⇡${count}](green) '
+untracked  = '[?${count}](purple) '
+stashed    = '[$${count}](cyan) '
+modified   = '[!${count}](yellow) '
+staged     = '[+${count}](green) '
+renamed    = '[=${count}](blue) '
+deleted    = '[-${count}](red) '
 
 [cmd_duration]
-format = "[took $duration]($style) "
-style  = "bright-black"
+format = '[took $duration]($style) '
+style  = 'bright-black'
 
 [status]
 disabled = false
-format   = "[$symbol$status]($style) "
-style    = "bright-black"
-symbol   = "E:"
+format   = '[$symbol$status]($style) '
+style    = 'bright-black'
+symbol   = 'E:'
 
 [time]
 disabled    = false
-format      = "[ $time ]($style)"
-style       = "fg:black bg:bright-yellow"
-time_format = "%r"
+format      = '[ $time ]($style)'
+style       = 'fg:black bg:bright-yellow'
+time_format = '%r'
 
 [character]
-format = "[](bright-yellow) "
+format = '[](bright-yellow) '

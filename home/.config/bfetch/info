@@ -3,19 +3,19 @@
 
 # Values
 COLOR="${BUI_COLOR_TEXTART:-32}"
-OS=$($XDG_DATA_HOME/fetchutils/src/os.sh)
+OS=$($XDG_DATA_HOME/fetchutils/src/os.sh | sed 's/^[[:lower:]]/\U&/g'); [ "${#OS}" -gt '16' ] && OS='Void Linux'
+WM=$($XDG_DATA_HOME/fetchutils/src/wm.sh | sed 's/^[[:lower:]]/\U&/g'); [ "${#WM}" -gt '16' ] && WM='Sway'
 SHELL=$(basename "$SHELL" | sed 's/^[[:lower:]]/\U&/g')
-WM='Sway'
 TERMINAL=$(basename "$TERMINAL" | sed 's/^[[:lower:]]/\U&/g')
-FONT='Iosevka'
+FONT="$BUI_FONT_FAMILY"
 
 
 # Start
-printf "\033[1;${COLOR}mOS        \033[0m${OS:-os}\033[0m
-\033[1;${COLOR}mWM        \033[0m${WM:-wm}\033[0m
-\033[1;${COLOR}mSHELL     \033[0m${SHELL:-shell}\033[0m
-\033[1;${COLOR}mTERMINAL  \033[0m${TERMINAL:-terminal}\033[0m
-\033[1;${COLOR}mFONT      \033[0m${FONT:-font}\033[0m"
+printf "\033[1;${COLOR}mOS        \033[0m${OS:-OS}\033[0m
+\033[1;${COLOR}mWM        \033[0m${WM:-WM}\033[0m
+\033[1;${COLOR}mSHELL     \033[0m${SHELL:-Shell}\033[0m
+\033[1;${COLOR}mTERMINAL  \033[0m${TERMINAL:-Terminal}\033[0m
+\033[1;${COLOR}mFONT      \033[0m${FONT:-Font}\033[0m"
 
 
 exit 0

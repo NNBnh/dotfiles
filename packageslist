@@ -15,48 +15,48 @@
 # =============================================================================
 
 ### Boot
-  APT:lightdm                     PAC:lightdm                     XBP:lightdm                       # Login manager
+  APT:lightdm                     PAC:lightdm                     XBP:lightdm                   # Login manager
 
 ### Screen
-  APT:brightnessctl               PAC:brightnessctl               XBP:brightnessctl                 # Screen backlight
-                                  PAC:gammastep                   XBP:gammastep                     # Blue light filter (F.lux alternative for linux)
+  APT:brightnessctl               PAC:brightnessctl               XBP:brightnessctl             # Screen backlight
+                                  PAC:gammastep                   XBP:gammastep                 # Blue light filter (F.lux alternative for linux)
 
 ### Audio
-  APT:alsa-utils                  PAC:alsa-utils                  XBP:alsa-utils                    # Sound server
-  APT:pulseaudio                  PAC:pulseaudio                  XBP:pulseaudio                    # Sound server but better
+  APT:alsa-utils                  PAC:alsa-utils                  XBP:alsa-utils                # Sound server
+  APT:pulseaudio                  PAC:pulseaudio                  XBP:pulseaudio                # Sound server but better
 
 ### Input
-  APT:ibus-unikey                 AUR:ibus-bamboo                 XBP:ibus-bamboo                   # Vietnamese input method
-                                  AUR:sc-controller               XBP:sc-controller                 # Controller
-                                  AUR:ydotool                     XBP:ydotool                       # Send inputs with shell
+  APT:ibus-unikey                 AUR:ibus-bamboo                 XBP:ibus-bamboo               # Vietnamese input method
+                                  AUR:sc-controller               XBP:sc-controller             # Controller
+                                  AUR:ydotool                     XBP:ydotool                   # Send inputs with shell
 
 ### Resource
-                                  AUR:ttf-iosevka                 XBP:font-iosevka                  # Font (WH.I.CH https://github.com/NNBnh/dots/wiki/which#font)
-                                  PAC:ttf-sarasa-gothic           XBP:font-sarasa-gothic            # Non Latin support for font
-                                  AUR:ttf-twemoji                 XBP:twemoji                       # Emoji support for font
-  APT:papirus-icon-theme          PAC:papirus-icon-theme          XBP:papirus-icon-theme            # Icon set that support nearly every app
-
-### Other
-  APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                     # Notification library
-  APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard                  # Clipboard manager
+                                  AUR:ttf-iosevka                 XBP:font-iosevka              # Font (WH.I.CH https://github.com/NNBnh/dots/wiki/which#font)
+                                  PAC:ttf-sarasa-gothic           XBP:font-sarasa-gothic        # Non Latin support for font
+                                  AUR:ttf-twemoji                 XBP:twemoji                   # Emoji support for font
+  APT:papirus-icon-theme          PAC:papirus-icon-theme          XBP:papirus-icon-theme        # Icon set that support nearly every app
 
 ### Screenshot & screen record
-  APT:grim                        PAC:grim                        XBP:grim                          # Screenshot
-  APT:slurp                       PAC:slurp                       XBP:slurp                         # Screen region selector
-                                  PAC:wf-recorder                 XBP:wf-recorder                   # Screen record
+  APT:grim                        PAC:grim                        XBP:grim                      # Screenshot
+  APT:slurp                       PAC:slurp                       XBP:slurp                     # Screen region selector
+                                  PAC:wf-recorder                 XBP:wf-recorder               # Screen record
+
+### Other
+  APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                 # Notification library
+  APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard              # Clipboard manager
 
 ## Windows manager ------------------------------------------------------------
 
 ### Core
-                                  AUR:sway                        XBP:sway                          # Windows manager (WH.I.CH *)
+                                  AUR:sway                        XBP:sway                      # Windows manager (WH.I.CH *)
 
 ### UI
-                                  PAC:swaybg                      XBP:swaybg                        # Wallpaper
-                                  PAC:waybar                      XBP:waybar                        # Bar
-                                  AUR:nwg-launchers               XBP:nwg-launchers                 # Menu
-                                  PAC:swayidle                    XBP:swayidle                      # Idle management
-                                  PAC:swaylock                    XBP:swaylock                      # Lock screen
-                                  PAC:mako                        XBP:mako                          # Notification daemon
+                                  PAC:swaybg                      XBP:swaybg                    # Wallpaper
+                                  PAC:waybar                      XBP:waybar                    # Bar
+                                  AUR:nwg-launchers               XBP:nwg-launchers             # Menu
+                                  PAC:swayidle                    XBP:swayidle                  # Idle management
+                                  PAC:swaylock                    XBP:swaylock                  # Lock screen
+                                  PAC:mako                        XBP:mako                      # Notification daemon
 
 
 # =============================================================================
@@ -64,66 +64,67 @@
 # =============================================================================
 
 ### Core
-  APT:fish                        PAC:fish                        XBP:fish-shell                    # Main shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#shell)
-  APT:dash                        PAC:dash                        XBP:dash                          # POSIX shell
-  APT:bash                        PAC:bash                        XBP:bash                          # Legacy shell
-  APT:python                      PAC:python                      XBP:python                        # Nerd programming language
-  APT:nim                         PAC:nim                         XBP:nim                           # Cool programming language
+  APT:fish                        PAC:fish                        XBP:fish-shell                # Main shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#shell)
+  APT:bash                        PAC:bash                        XBP:bash                      # Legacy shell
+  APT:rc                          AUR:rc                          XBP:rc                        # POSIX shell
+  APT:python                      PAC:python                      XBP:python                    # Handy programming language
+  APT:nim                         PAC:nim                         XBP:nim                       # Cool programming language
 
 ### Info
-  APT:neofetch                    PAC:neofetch                    XBP:neofetch                      # System profilers ("CPU-Z alternative for linux")
-  APT:glances                     PAC:glances                     XBP:glances                       # System monitor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#system-monitor)
+  APT:neofetch                    PAC:neofetch                    XBP:neofetch                  # System profilers ("CPU-Z alternative for linux")
+  APT:glances                     PAC:glances                     XBP:glances                   # System monitor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#system-monitor)
 
 ## Tranfer --------------------------------------------------------------------
 
 ### Local
-  APT:rsync                       PAC:rsync                       XBP:rsync                         # Sync files
-  APT:stow                        PAC:stow                        XBP:stow                          # Symlink files (for SuperB Bootstrap https://github.com/NNBnh/superb-bootstrap#installation-process)
+  APT:rsync                       PAC:rsync                       XBP:rsync                     # Sync files
+  APT:stow                        PAC:stow                        XBP:stow                      # Symlink files (for SuperB Bootstrap https://github.com/NNBnh/superb-bootstrap#installation-process)
 
 ### Online
-  APT:curl                        PAC:curl                        XBP:curl                          # Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
-  APT:aria2                       PAC:aria2                       XBP:aria2                         # Download manager
-  APT:git                         PAC:git                         XBP:git                           # Version control system
-  APT:youtube-dl                  PAC:youtube-dl                  XBP:youtube-dl                    # Download media
+  APT:curl                        PAC:curl                        XBP:curl                      # Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
+  APT:aria2                       PAC:aria2                       XBP:aria2                     # Download manager
+  APT:git                         PAC:git                         XBP:git                       # Version control system
+  APT:youtube-dl                  PAC:youtube-dl                  XBP:youtube-dl                # Download media
 
 ## Work -----------------------------------------------------------------------
 
 ### Work
-  APT:kakoune                     PAC:kakoune                     XBP:kakoune                       # Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
-  APT:libqalculate20              PAC:libqalculate                XBP:libqalculate                  # Calculator
-  APT:translate-shell             PAC:translate-shell             XBP:translate-shell               # Translator
-  APT:ufw                         PAC:ufw                         XBP:ufw                           # Firewall (just run `sudo ufw enable`)
+  APT:kakoune                     PAC:kakoune                     XBP:kakoune                   # Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
+  APT:libqalculate20              PAC:libqalculate                XBP:libqalculate              # Calculator
+  APT:translate-shell             PAC:translate-shell             XBP:translate-shell           # Translator
+  APT:ufw                         PAC:ufw                         XBP:ufw                       # Firewall (just run `sudo ufw enable`)
 
 ### Formats
-  APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                    # Shell script static analysis
-  APT:p7zip                       PAC:p7zip                       XBP:p7zip                         # Files archive
-  APT:p7zip-rar                   PAC:unrar                       XBP:p7zip-unrar                   # RAR support for archive
-  APT:pandoc                      PAC:pandoc                      XBP:pandoc                        # Markup converter
-  APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick                   # Image converter
-  APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                        # Media converter
+  APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                # Shell script static analysis
+  APT:p7zip                       PAC:p7zip                       XBP:p7zip                     # Files archive
+  APT:p7zip-rar                   PAC:unrar                       XBP:p7zip-unrar               # RAR support for archive
+  APT:pandoc                      PAC:pandoc                      XBP:pandoc                    # Markup converter
+  APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick               # Image converter
+  APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                    # Media converter
 
 ## Other ----------------------------------------------------------------------
 
 ### Music
-  APT:mpd                         PAC:mpd                         XBP:mpd                           # Music player
-  APT:playerctl                   PAC:playerctl                   XBP:playerctl                     # MPD command
+  APT:mpd                         PAC:mpd                         XBP:mpd                       # Music player
+  APT:playerctl                   PAC:playerctl                   XBP:playerctl                 # MPD command
 
 ### Utilitie
-  APT:coreutils                   PAC:coreutils                   XBP:coreutils                     # GNU core utilities (to get chown, chmod, shred, ...)
-                                  PAC:exa                         XBP:exa                           # List files
-                                  PAC:bat                         XBP:bat                           # Files renderer
-  APT:fd-find                     PAC:fd                          XBP:fd                            # Find files
-  APT:ripgrep                     PAC:ripgrep                     XBP:ripgrep                       # Find files with regex
-                                  PAC:abduco                      XBP:abduco                        # Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
+  APT:coreutils                   PAC:coreutils                   XBP:coreutils                 # GNU core utilities (to get chown, chmod, shred, ...)
+                                  PAC:exa                         XBP:exa                       # List files
+                                  PAC:bat                         XBP:bat                       # Files renderer
+  APT:chafa                       PAC:chafa                       XBP:chafa                     # Image renderer
+                                  PAC:skim                        XBP:skim                      # Fuzzy finder
+  APT:fd-find                     PAC:fd                          XBP:fd                        # Find files
+  APT:ripgrep                     PAC:ripgrep                     XBP:ripgrep                   # Find regex
+                                  PAC:abduco                      XBP:abduco                    # Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
 
 ### Fun
-  APT:asciinema                   PAC:asciinema                   XBP:asciinema                     # Record terminal
-  APT:figlet                      PAC:figlet                      XBP:figlet                        # Create fancy text (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
-                                  AUR:figlet-fonts                XBP:figlet-fonts                  # Add more fonts to figlet
-  APT:lolcat                      PAC:lolcat                      XBP:lolcat-c                      # Make outputs RGB
-                                  AUR:no-more-secrets             XBP:no-more-secrets               # Become a hackerman (Make outputs Minecraft enchanting table language)
-  APT:cmatrix                     PAC:cmatrix                     XBP:cmatrix                       # Simulates the display from "The Matrix" (WH.I.CH https://github.com/NNBnh/dots/wiki/which#matrix)
-                                  AUR:cava                        XBP:cava                          # Audio visualizer
+  APT:asciinema                   PAC:asciinema                   XBP:asciinema                 # Record terminal
+  APT:figlet                      PAC:figlet                      XBP:figlet                    # Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
+  APT:lolcat                      PAC:lolcat                      XBP:lolcat-c                  # Make outputs RGB
+                                  AUR:no-more-secrets             XBP:no-more-secrets           # Become a hackerman (Make outputs Minecraft enchanting table language)
+  APT:cmatrix                     PAC:cmatrix                     XBP:cmatrix                   # Simulates the display from "The Matrix" (WH.I.CH https://github.com/NNBnh/dots/wiki/which#matrix)
+                                  AUR:cava                        XBP:cava                      # Audio visualizer
 
 
 # =============================================================================
@@ -131,19 +132,19 @@
 # =============================================================================
 
 ### Files
-  APT:kitty                       PAC:kitty                       XBP:kitty                         # Terminal emulator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
-  APT:nemo                        PAC:nemo                        XBP:nemo                          # Files manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#files-manager)
-  APT:imv                         PAC:imv                         XBP:imv                           # Image viewer (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-viewer)
-  APT:mpv                         PAC:mpv                         XBP:mpv                           # Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
-  APT:firefox                     PAC:firefox                     XBP:firefox                       # Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
+  APT:kitty                       PAC:kitty                       XBP:kitty                     # Terminal emulator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
+  APT:nemo                        PAC:nemo                        XBP:nemo                      # Files manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#files-manager)
+  APT:imv                         PAC:imv                         XBP:imv                       # Image viewer (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-viewer)
+  APT:mpv                         PAC:mpv                         XBP:mpv                       # Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
+  APT:firefox                     PAC:firefox                     XBP:firefox                   # Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
 
 ### Edit
-  APT:gimp                        PAC:gimp                        XBP:gimp                          # Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
-  APT:blender                     PAC:blender                     XBP:blender                       # Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
-  APT:godot3                      AUR:godot-bin                   XBP:godot                         # Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
+  APT:gimp                        PAC:gimp                        XBP:gimp                      # Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
+  APT:blender                     PAC:blender                     XBP:blender                   # Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
+  APT:godot3                      AUR:godot-bin                   XBP:godot                     # Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
 
 ### Games
-                                  PAC:lutris                      XBP:lutris                        # Games manager
-                                  PAC:steam                       XBP:steam                         # Gamer mode
-  APT:retroarch                   PAC:retroarch                   XBP:retroarch                     # Retro emulators
-                                  AUR:multimc5                    XBP:MultiMC                       # Minecraft launcher and instance manager
+                                  PAC:lutris                      XBP:lutris                    # Games manager
+                                  PAC:steam                       XBP:steam                     # Gamer mode
+  APT:retroarch                   PAC:retroarch                   XBP:retroarch                 # Retro emulators
+                                  AUR:multimc5                    XBP:MultiMC                   # Minecraft launcher and instance manager

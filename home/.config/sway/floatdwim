@@ -1,0 +1,37 @@
+#!/bin/sh
+
+
+# Values
+DIRECTION="${1:-next}"
+
+STAGE=$(swaymsg --raw --type get_tree | jq '..|try select(.focused == true)')
+TYPE=$(echo "$STAGE" | --raw-output jq '.type')
+STICKY=$(echo "$STAGE" | --raw-output jq '.sticky')
+
+
+# Start
+case "$DIRECTION" in
+	'next')
+		if [ "$STICKY" = 'true' ]; then
+			swaymsg floating off
+			swaymsg sticky off
+		elif [ "$TYPE" = 'con' ]; then
+			swaymsg floating on
+		else
+			swaymsg sticky on
+		fi
+	;;
+	'prev')
+		if [ "$TYPE" = 'con' ]; then
+			swaymsg floating on
+			swaymsg sticky on
+		elif [ "$STICKY" = 'true' ]; then
+			swaymsg sticky off
+		else
+			swaymsg floating off
+		fi
+	;;
+esac
+
+
+exit 0

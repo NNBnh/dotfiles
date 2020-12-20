@@ -1,0 +1,50 @@
+#!/bin/sh
+
+
+# Values
+OPTIONS="$@"
+
+OPACITY_DEC=$(echo "$BUI_OPACITY * 100" | bc)
+OPACITY=$(echo "obase=16; ${OPACITY_DEC%%.*} * 256/100" | bc)
+
+
+# Start
+swaylock --line-uses-inside \
+         --ignore-empty-password \
+\
+         --color="${BUI_COLOR_BACKGROUND#\#}" \
+         --image="$XDG_DATA_HOME/wallpapers/johnn21/brown-wooden-table-and-chairs-near-white-concrete-building-during-daytime.jpg" \
+         --scaling='fill' \
+\
+         --indicator-radius='128' \
+         --indicator-thickness='32' \
+\
+         --ring-color="${BUI_COLOR_BACKGROUND#\#}$OPACITY" \
+         --ring-clear-color="${BUI_COLOR_BASE08#\#}" \
+         --ring-ver-color="${BUI_COLOR_CURSOR#\#}" \
+         --ring-caps-lock-color="${BUI_COLOR_BACKGROUND_ALT#\#}$OPACITY" \
+         --ring-wrong-color="${BUI_COLOR_BASE08#\#}" \
+\
+         --key-hl-color="${BUI_COLOR_CURSOR#\#}" \
+         --caps-lock-key-hl-color="${BUI_COLOR_BASE08#\#}" \
+         --bs-hl-color="${BUI_COLOR_BASE08#\#}" \
+         --caps-lock-bs-hl-color="${BUI_COLOR_CURSOR#\#}" \
+\
+         --text-color="00000000" \
+         --text-clear-color='00000000' \
+         --text-ver-color='00000000' \
+         --text-caps-lock-color='00000000' \
+         --text-wrong-color='00000000' \
+\
+         --inside-color='00000000' \
+         --inside-clear-color='00000000' \
+         --inside-ver-color='00000000' \
+         --inside-caps-lock-color='00000000' \
+         --inside-wrong-color='00000000' \
+\
+         --separator-color='00000000' \
+\
+         "$OPTIONS"
+
+
+exit 0

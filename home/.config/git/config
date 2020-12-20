@@ -1,6 +1,3 @@
-[credential]
-	helper = cache
-
 [user]
 	name = NNB
 	email = nnbnh@protonmail.com
@@ -9,4 +6,5 @@
 	path = ~/.local/share/git/gitalias.txt
 
 [alias]
-	qpush = !"git add --all; git commit --message \"${@:-$(date)}\"; git push origin $(git branch-name); git pull origin $(git branch-name)"
+	ce = !"git commit --message \"$(jq --raw-output '.gitmojis[] | [.emoji, .description] | join(\": \")' ~/.local/share/git/gitmojis.json | sk --preview-window='0' | sed 's/^\\(.\\).*/\\1}/;q') ${@:-$(date)\""
+	qpush = !"git add --all; git commit --message \"$(jq --raw-output '.gitmojis[] | [.emoji, .description] | join(\": \")' ~/.local/share/git/gitmojis.json | sk --preview-window='0' | sed 's/^\\(.\\).*/\\1}/;q') ${@:-$(date)\"; git push origin $(git branch-name); git pull origin $(git branch-name)"

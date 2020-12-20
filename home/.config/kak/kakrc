@@ -31,9 +31,7 @@ plug 'NNBnh/bui.kak' theme config %{
 	colorscheme bui
 }
 
-plug 'eraserhd/kak-ansi' config %{
-	hook global WinCreate \*stdin\* %{ ansi-render }
-}
+plug 'eraserhd/kak-ansi'
 
 ## Interactive ----------------------------------------------------------------
 
@@ -45,7 +43,7 @@ plug 'NNBnh/bmap.kak' config %{
 plug 'Screwtapello/kakoune-inc-dec' domain "gitlab.com"
 plug 'h-youhei/kakoune-surround'
 
-plug 'alexherbo2/auto-pairs.kak'
+# plug 'alexherbo2/auto-pairs.kak'
 
 ## Environment ----------------------------------------------------------------
 
