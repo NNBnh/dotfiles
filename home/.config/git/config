@@ -7,4 +7,4 @@
 
 [alias]
 	ce = !"git commit --message \"$(jq --raw-output '.gitmojis[] | [.emoji, .description] | join(\": \")' ~/.local/share/git/gitmojis.json | sk --preview-window='0' | sed 's/^\\(.\\).*/\\1/;q') ${@:-$(date)}\""
-	qpush = !"git aa; git commit --message \"$(jq --raw-output '.gitmojis[] | [.emoji, .description] | join(\": \")' ~/.local/share/git/gitmojis.json | sk --preview-window='0' | sed 's/^\\(.\\).*/\\1/;q') ${@:-$(date)}\"; git push origin $(git branch-name); git pull origin $(git branch-name)"
+	qpush = !"git add --all; git ce; git push origin $(git branch-name); git pull origin $(git branch-name)"
