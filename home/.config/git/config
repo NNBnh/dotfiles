@@ -6,6 +6,6 @@
 	path = ~/.local/share/git/gitalias.txt
 
 [alias]
-	ce = !"printf 'Message: '; read message; gitmoji=$(jq --raw-output '.gitmojis[] | [.emoji, .description] | join(\": \")' ~/.local/share/git/gitmojis.json | sk --header=\"$message\" --preview-window='0' | sed 's/^\\(.\\).*/\\1/;q'); git commit --message \"$gitmoji $message $gitmoji\""
+	ce = !"printf 'Message: '; read message; gitmoji=$(jq --raw-output '.gitmojis[] | [.emoji, .description] | join(\": \")' ~/.local/share/git/gitmojis.json | sk --header=\"$message\" --preview-window='0' --no-multi | sed 's/^\\(.\\).*/\\1/;q'); git commit --message \"$gitmoji $message $gitmoji\""
 	pullsh = !"git push origin $(git branch-name); git pull origin $(git branch-name)"
 	pushq = !"git add --all; git ce; git pullsh"

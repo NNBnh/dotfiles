@@ -36,12 +36,13 @@
                                   AUR:ttf-twemoji                 XBP:twemoji                   # Emoji support for font
   APT:papirus-icon-theme          PAC:papirus-icon-theme          XBP:papirus-icon-theme        # Icon set that support nearly every app
 
-### Screenshot & screen record
+### Screen capture
   APT:grim                        PAC:grim                        XBP:grim                      # Screenshot
   APT:slurp                       PAC:slurp                       XBP:slurp                     # Screen region selector
                                   PAC:wf-recorder                 XBP:wf-recorder               # Screen record
 
 ### Other
+  APT:xdg-utils                   PAC:xdg-utils                   XBP:xdg-utils                 # Assist applications
   APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                 # Notification library
   APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard              # Clipboard manager
 
@@ -52,11 +53,10 @@
 
 ### UI
                                   PAC:swaybg                      XBP:swaybg                    # Wallpaper
-                                  PAC:waybar                      XBP:waybar                    # Bar
-                                  AUR:nwg-launchers               XBP:nwg-launchers             # Menu
                                   PAC:swayidle                    XBP:swayidle                  # Idle management
                                   PAC:swaylock                    XBP:swaylock                  # Lock screen
                                   PAC:mako                        XBP:mako                      # Notification daemon
+                                  AUR:nwg-launchers               XBP:nwg-launchers             # Menu
 
 
 # =============================================================================
@@ -96,6 +96,7 @@
   APT:ripgrep                     PAC:ripgrep                     XBP:ripgrep                   # Find regex
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate              # Calculator
   APT:translate-shell             PAC:translate-shell             XBP:translate-shell           # Translator
+  APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                # Shell script static analysis
   APT:ufw                         PAC:ufw                         XBP:ufw                       # Firewall
 
 ### Files
@@ -105,7 +106,6 @@
   APT:chafa                       PAC:chafa                       XBP:chafa                     # Image renderer
 
 ### Formats
-  APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                # Shell script static analysis
   APT:p7zip                       PAC:p7zip                       XBP:p7zip                     # Files archive
   APT:pandoc                      PAC:pandoc                      XBP:pandoc                    # Markup converter
   APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick               # Image converter

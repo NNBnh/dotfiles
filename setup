@@ -25,7 +25,9 @@ curl -fsSL https://raw.githubusercontent.com/NNBnh/bawkpack/master/bawkpack --cr
 
 # Before symlink
 	# Create directories (to only symlink files inside, not the directory)
-	mkdir "$HOME/.local/bin" "$HOME/.config/fish" "$HOME/.config/kak" "$HOME/.config/retroarch"
+	mkdir "$HOME/.config" "$HOME/.config/fish" "$HOME/.config/kak" "$HOME/.config/retroarch" \
+	      "$HOME/.local" "$HOME/.local/bin" "$HOME/.local/share" \
+	      "$HOME/.cache"
 
 	# Remove junks (Spring cleaning your $HOME)
 	mkdir "$HOME/test"
@@ -51,16 +53,13 @@ sudo stow -vt / root
 	echo 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
 
 	# Vimv
-	curl -fsSL https://raw.githubusercontent.com/thameera/vimv/master/vimv --create-dirs -o "$HOME/.local/bin/vimv"
-	chmod +x "$HOME/.local/bin/vimv"
+	curl -fsSL https://raw.githubusercontent.com/thameera/vimv/master/vimv --create-dirs -o "$HOME/.local/bin/vimv" && chmod +x "$HOME/.local/bin/vimv"
 
 	# BUI terminal
-	git clone https://github.com/NNBnh/bui-terminal.git "$XDG_DATA_HOME/bui-terminal"
-	ln -s "$XDG_DATA_HOME/bfetch/bui-terminal" "$HOME/.local/bin/"
+	git clone https://github.com/NNBnh/bui-terminal.git "$XDG_DATA_HOME/bui-terminal" && ln -s "$XDG_DATA_HOME/bfetch/bui-terminal" "$HOME/.local/bin/"
 
 	# Bfetch
-	git clone https://github.com/NNBnh/bfetch.git "$XDG_DATA_HOME/bfetch"
-	ln -s "$XDG_DATA_HOME/bfetch/bfetch" "$HOME/.local/bin/"
+	git clone https://github.com/NNBnh/bfetch.git "$XDG_DATA_HOME/bfetch" && ln -s "$XDG_DATA_HOME/bfetch/bfetch" "$HOME/.local/bin/"
 
 	# Fetchutils
 	git clone https://github.com/lptstr/fetchutils.git "$XDG_DATA_HOME/fetchutils"

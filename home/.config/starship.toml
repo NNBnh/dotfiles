@@ -49,17 +49,17 @@ $time\
 $cmd_duration\
 $status\
 $line_break\
-$character\
+$character
 """
 
 
 [custom.bui]
+when    = 'true'
 format  = '$output'
 command = 'bui-terminal'
-when    = 'true'
 
 [username]
-format =     '[$user]($style)'
+format     = '[$user]($style)'
 style_user = 'bright-yellow'
 style_root = 'bright-white'
 
@@ -77,16 +77,16 @@ truncate_to_repo  = false
 
 [git_status]
 format     = '($all_status$ahead_behind)'
-conflicted = '[~${count}](yellow) '
-ahead      = '[⇡${count}](green) '
-behind     = '[⇣${count}](red) '
-diverged   = '[⇣${count}](red) [⇡${count}](green) '
-untracked  = '[?${count}](purple) '
-stashed    = '[$${count}](cyan) '
-modified   = '[!${count}](yellow) '
-staged     = '[+${count}](green) '
-renamed    = '[=${count}](blue) '
-deleted    = '[-${count}](red) '
+conflicted = '[~$count](yellow) '
+ahead      = '[⇡$count](green) '
+behind     = '[⇣$count](red) '
+diverged   = '[⇣$count](red) [⇡${count}](green) '
+untracked  = '[?$count](purple) '
+stashed    = '[$$count](cyan) '
+modified   = '[!$count](yellow) '
+staged     = '[+$count](green) '
+renamed    = '[=$count](blue) '
+deleted    = '[-$count](red) '
 
 [cmd_duration]
 format = '[took $duration]($style) '
@@ -101,5 +101,5 @@ symbol   = 'E:'
 [character]
 format         = '$symbol '
 success_symbol = '[ \$ ](fg:black bg:bright-yellow)[](bright-yellow)'
-error_symbol   = '[ # ](fg:black bg:red)[](red)'
-vicmd_symbol   = '[ V ](fg:black bg:green)[](green)'
+error_symbol   = '[ % ](fg:black bg:red)[](red)'
+vicmd_symbol   = '[ V ](fg:black bg:bright-white)[](bright-white)'
