@@ -48,18 +48,23 @@ sudo stow -vt / root
 
 	# Firefox CSS
 	for profile in $HOME/.mozilla/firefox/*.default-release; do
-		ln -s "$DOTS/extra/firefox/chrome" "$profile/"
-	done
-	echo 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
+		ln -fs "$DOTS/extra/firefox/chrome" "$profile/"
+	done && echo 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
+
+
+	# Starship
+	curl -fsSL https://starship.rs/install.sh --create-dirs -o "$TMPDIR/starship-installer"
+	chmod +x "$TMPDIR/starship-installer"
+	eval "$TMPDIR/starship-installer --yes --bin-dir '$HOME/.local/bin'"
 
 	# Vimv
 	curl -fsSL https://raw.githubusercontent.com/thameera/vimv/master/vimv --create-dirs -o "$HOME/.local/bin/vimv" && chmod +x "$HOME/.local/bin/vimv"
 
 	# BUI terminal
-	git clone https://github.com/NNBnh/bui-terminal.git "$XDG_DATA_HOME/bui-terminal" && ln -s "$XDG_DATA_HOME/bfetch/bui-terminal" "$HOME/.local/bin/"
+	git clone https://github.com/NNBnh/bui-terminal.git "$XDG_DATA_HOME/bui-terminal" && ln -fs "$XDG_DATA_HOME/bui-terminal/bui-terminal" "$HOME/.local/bin/"
 
 	# Bfetch
-	git clone https://github.com/NNBnh/bfetch.git "$XDG_DATA_HOME/bfetch" && ln -s "$XDG_DATA_HOME/bfetch/bfetch" "$HOME/.local/bin/"
+	git clone https://github.com/NNBnh/bfetch.git "$XDG_DATA_HOME/bfetch" && ln -fs "$XDG_DATA_HOME/bfetch/bfetch" "$HOME/.local/bin/"
 
 	# Fetchutils
 	git clone https://github.com/lptstr/fetchutils.git "$XDG_DATA_HOME/fetchutils"

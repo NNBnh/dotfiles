@@ -29,30 +29,30 @@
 
 # Values
 	# Action
-	case $1 in
-		'i'|'ip')                action="curl --silent ifconfig.me"                                                                ;;
-		'c'|'currency'|'money')  action="curl --silent rate.sx"                                                                    ;;
-		'r'|'rate')              action="curl --silent rate.sx/btc"                                                                ;;
-		'w'|'weather')           action="curl --silent wttr.in"                                                                    ;;
-		'2'|'weather2')          action="curl --silent V2.wttr.in"                                                                 ;;
-		'a'|'attack')            action="echo 'curl -s -L http://bit.ly/10hA8iC | bash'"                                           ;;
-		'M'|'matrix')            action="cmatrix"                                                                                  ;;
-		'I'|'info'|'system')     action="glances || { htop || top }"                                                               ;;
-		'R'|'run'|'rick')        action="curl -fsSL https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" ;;
-		'S'|'sneakers')          action="sneakers"                                                                                 ;;
-		'A'|'map')               action="telnet mapscii.me"                                                                        ;;
-		*)                       exit 1                                                                                            ;;
+	case "$1" in
+		'i'|'ip')               ACTION="curl --silent --location ifconfig.me"                                                   ;;
+		'c'|'currency'|'money') ACTION="curl --silent --location rate.sx"                                                       ;;
+		'r'|'rate')             ACTION="curl --silent --location rate.sx/btc"                                                   ;;
+		'w'|'weather')          ACTION="curl --silent --location wttr.in"                                                       ;;
+		'2'|'weather2')         ACTION="curl --silent --location V2.wttr.in"                                                    ;;
+		'a'|'attack')           ACTION="echo 'curl -sL http://bit.ly/10hA8iC | bash'"                                           ;;
+		'M'|'matrix')           ACTION="unimatrix || cmatrix"                                                                   ;;
+		'I'|'info'|'system')    ACTION="glances || { htop || top }"                                                             ;;
+		'R'|'run'|'rick')       ACTION="curl -sL https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" ;;
+		'S'|'sneakers')         ACTION="sneakers"                                                                               ;;
+		'A'|'map')              ACTION="telnet mapscii.me"                                                                      ;;
+		*)                      exit 1                                                                                          ;;
 	esac
 
 	# Effect
-	case $2 in
-		'r'|'l'|'rainbow'|'lolcat') effect="| lolcat" ;;
-		'd'|'n'|'decrypt'|'nms')    effect="| nms -a" ;;
+	case "$2" in
+		'r'|'l'|'rainbow'|'lolcat') EFFECT="lolcat"       ;;
+		'd'|'n'|'decrypt'|'nms')    EFFECT="sed -e 's/\x1B\[[0-9;]*[JKmsu]//g' | nms -a" ;;
 	esac
 
 
 # Start
-$action $effect
+eval "$ACTION ${EFFECT:+| $EFFECT}"
 
 
 exit 0

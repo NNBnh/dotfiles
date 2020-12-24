@@ -49,12 +49,13 @@ export PATH="$PATH:$HOME/.local/bin"
 # =============================================================================
 # 2. Default applications
 # =============================================================================
-export EDITOR="/usr/bin/kak"
+export LIST="exa"
+export EDITOR="kak"
 export VISUAL="$EDITOR"
-export PAGER="$HOME/.local/bin/kak-pager"
-export MANPAGER="$HOME/.local/bin/kak-man-pager"
-export TERMINAL="/usr/bin/kitty"
-export BROWSER="/usr/bin/firefox"
+export PAGER="sh -c \"col -b -x | kak\""
+export MANPAGER="sh -c \"col -b -x | kak -e 'set buffer filetype man'\""
+export TERMINAL="kitty"
+export BROWSER="firefox"
 
 # =============================================================================
 # 3. Visual
@@ -146,28 +147,70 @@ export BUI_COLOR_TEXTART="93"
 # 4. Setting
 # =============================================================================
 
-### Skim
-export SKIM_DEFAULT_COMMAND="fd --hidden"
-export SKIM_DEFAULT_COLOR="fg:-1,bg:-1,matched:-1,matched_bg:$BUI_COLOR_FOREGROUND_ALT,current:$BUI_COLOR_BACKGROUND,current_bg:$BUI_COLOR_CURSOR,current_match:$BUI_COLOR_FOREGROUND,current_match_bg:$BUI_COLOR_FOREGROUND_ALT,query:-1,query_bg:-1,info:-1,border:$BUI_COLOR_FOREGROUND_ALT,prompt:$BUI_COLOR_CURSOR,pointer:$BUI_COLOR_CURSOR,marker:$BUI_COLOR_CURSOR_ALT,spinner:$BUI_COLOR_FOREGROUND_ALT,header:$BUI_COLOR_FOREGROUND_ALT"
-# export SKIM_DEFAULT_BIND="up:up,alt-up:preview-up,alt-shift-up:preview-page-down,down:down,alt-down:preview-down,alt-shift-down:preview-page-up,left:backward-char,shift-left:backward-word,right:forward-char,shift-right:forward-word,pgup:page-up,pgdn:page-down,home:beginning-of-line,end:end-of-line,bspace:backward-delete-char,tab:up,btab:down,del:delete-char,alt-i:up,alt-I:preview-page-down,alt-k:down,alt-K:preview-page-up,alt-j:backward-char,alt-J:beginning-of-line,alt-l:forward-char,alt-L:end-of-line,alt-u:backward-word,alt-U:page-up,alt-o:forward-word,alt-O:page-down,alt-w:deselect-all,alt-W:deselect-all,alt-s:toggle,alt-S:select-all,alt-a:append-and-select,alt-d:accept,alt-f:abort,alt-X:delete-char,alt-X:delete-charEOF,alt-c:yank,alt-q:toggle-preview,alt-Q:toggle-preview-wrap"
-export SKIM_DEFAULT_OPTIONS="--height='66%'
-                             --layout='reverse'
-                             --prompt=' SELECT  '
-                             --cmd-prompt=' COMMAND  '
-                             --no-clear-if-empty
-                             --ansi
-                             --tabstop='4'
-
-                             --color='$SKIM_DEFAULT_COLOR'
-
-                             --bind='$SKIM_DEFAULT_BIND'
-
-                             --preview='bat {} || exa --color='always' --all --group-directories-first --long --header --git {}'
-                             --preview-window='66%'"
-
-### Other
+export EXA_OPTIONS="--color=always --all --group-directories-first --long --header --git"
 export ABDUCO_CMD="$SHELL"
 export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
 export BFETCH_PROMPT_HEIGHT="3"
+
+### Skim
+export FZF_DEFAULT_COMMAND="fd --hidden --max-depth 1"
+export FZF_DEFAULT_OPTS="--height=\"66%\"
+                         --layout=\"reverse\"
+                         --info=\"inline\"
+                         --prompt=\":\"
+                         --pointer=\">\"
+                         --marker=\"*\"
+                         --ansi
+                         --tabstop=\"4\"
+
+                         --color=\"fg:-1\"
+                         --color=\"fg+:$BUI_COLOR_BACKGROUND:regular\"
+                         --color=\"bg:-1\"
+                         --color=\"bg+:$BUI_COLOR_CURSOR\"
+                         --color=\"hl:-1:underline\"
+                         --color=\"hl+:$BUI_COLOR_BACKGROUND:underline\"
+                         --color=\"preview-fg:-1\"
+                         --color=\"preview-bg:-1\"
+                         --color=\"gutter:-1\"
+                         --color=\"info:$BUI_COLOR_CURSOR\"
+                         --color=\"border:$BUI_COLOR_FOREGROUND_ALT\"
+                         --color=\"prompt:$BUI_COLOR_CURSOR\"
+                         --color=\"pointer:$BUI_COLOR_CURSOR\"
+                         --color=\"marker:$BUI_COLOR_CURSOR_ALT\"
+                         --color=\"spinner:$BUI_COLOR_FOREGROUND_ALT\"
+                         --color=\"header:$BUI_COLOR_FOREGROUND_ALT\"
+
+                         --bind=\"up:up\"
+                         --bind=\"shift-up:preview-up\"
+                         --bind=\"down:down\"
+                         --bind=\"shift-down:preview-down\"
+                         --bind=\"left:backward-char\"
+                         --bind=\"shift-left:backward-word\"
+                         --bind=\"right:forward-char\"
+                         --bind=\"shift-right:forward-word\"
+                         --bind=\"pgup:page-up\"
+                         --bind=\"pgdn:page-down\"
+                         --bind=\"home:beginning-of-line\"
+                         --bind=\"end:end-of-line\"
+                         --bind=\"bspace:backward-delete-char\"
+                         --bind=\"del:delete-char\"
+                         --bind=\"tab:toggle-out\"
+                         --bind=\"btab:toggle-in\"
+                         --bind=\"ctrl-a:select-all\"
+                         --bind=\"ctrl-c:abort\"
+                         --bind=\"ctrl-q:abort\"
+                         --bind=\"alt-i:up\"
+                         --bind=\"alt-k:down\"
+                         --bind=\"alt-j:backward-char\"
+                         --bind=\"alt-l:forward-char\"
+                         --bind=\"alt-u:backward-word\"
+                         --bind=\"alt-o:forward-word\"
+                         --bind=\"alt-w:deselect-all\"
+                         --bind=\"alt-s:select-all\"
+                         --bind=\"alt-a:toggle\"
+                         --bind=\"alt-d:accept\"
+                         --bind=\"alt-f:abort\"
+                         --bind=\"alt-x:backward-delete-char\""
+
 
 exit 0

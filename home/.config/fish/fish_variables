@@ -25,9 +25,9 @@ SETUVAR fish_color_status:bryellow
 SETUVAR fish_color_user:brgreen
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
 SETUVAR fish_greeting:
-SETUVAR fish_key_bindings:fish_default_key_bindings
+SETUVAR fish_key_bindings:bmap
 SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:brblack\x1ebryellow
 SETUVAR fish_pager_color_prefix:brwhite\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:black\x1e\x2d\x2dbackground\x3dbryellow
-
+SETUVAR fish_prompt_pwd_dir_length:16

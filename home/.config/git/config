@@ -1,11 +1,16 @@
 [user]
-	name = NNB
-	email = nnbnh@protonmail.com
+	name  = "NNB"
+	email = "nnbnh@protonmail.com"
 
 [include]
-	path = ~/.local/share/git/gitalias.txt
+	path = "~/.local/share/git/gitalias.txt"
 
 [alias]
-	ce = !"printf 'Message: '; read message; gitmoji=$(jq --raw-output '.gitmojis[] | [.emoji, .description] | join(\": \")' ~/.local/share/git/gitmojis.json | sk --header=\"$message\" --preview-window='0' --no-multi | sed 's/^\\(.\\).*/\\1/;q'); git commit --message \"$gitmoji $message $gitmoji\""
-	pullsh = !"git push origin $(git branch-name); git pull origin $(git branch-name)"
-	pushq = !"git add --all; git ce; git pullsh"
+	a       = "add"
+	aa      = "add --all"
+	gitmoji = !"gitmoji_message="$@"; [ -z "$gitmoji_message" ] && {printf 'Message: '; read gitmoji_message}; gitmoji=$(jq --raw-output '.gitmojis[] | [.emoji, .description] | join(\": \")' ~/.local/share/git/gitmojis.json | fzf --header=\"$gitmoji_message\" --preview-window='' --no-multi | sed 's/^\\(.\\).*/\\1/;q'); git commit --message \"$gitmoji $gitmoji_message $gitmoji\""
+	c       = !"gitmoji_message="$@"; git gitmoji"
+	pull1   = !"git pull origin $(git branch-name)"
+	push1   = !"git push origin $(git branch-name)"
+	pulsh   = !"git pull1; git push1"
+	pushq   = !"gitmoji_message="$@"; git add --all; git gitmoji; git pulsh"

@@ -90,8 +90,7 @@
 ## Work -----------------------------------------------------------------------
 
 ### Utilitie
-  APT:coreutils                   PAC:coreutils                   XBP:coreutils                 # GNU core utilities (to get chown, chmod, shred, ...)
-                                  PAC:skim                        XBP:skim                      # Fuzzy finder
+  APT:fzf                         PAC:fzf                         XBP:fzf                       # Fuzzy finder
   APT:fd-find                     PAC:fd                          XBP:fd                        # Find files
   APT:ripgrep                     PAC:ripgrep                     XBP:ripgrep                   # Find regex
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate              # Calculator
