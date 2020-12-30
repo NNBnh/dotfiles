@@ -99,10 +99,10 @@
   APT:ufw                         PAC:ufw                         XBP:ufw                       # Firewall
 
 ### Files
-                                  PAC:exa                         XBP:exa                       # List files
-                                  PAC:bat                         XBP:bat                       # Files renderer
+                                  PAC:exa                         XBP:exa                       # Directory preview
+                                  PAC:bat                         XBP:bat                       # Files preview
+  APT:chafa                       PAC:chafa                       XBP:chafa                     # Image preview
   APT:kakoune                     PAC:kakoune                     XBP:kakoune                   # Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
-  APT:chafa                       PAC:chafa                       XBP:chafa                     # Image renderer
 
 ### Formats
   APT:p7zip                       PAC:p7zip                       XBP:p7zip                     # Files archive

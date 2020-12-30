@@ -1,0 +1,25 @@
+#!/bin/sh
+
+#       _                _         _    __
+#   ___| |__   ___  __ _| |_   ___| |__ \ \
+#  / __| '_ \ / _ \/ _` | __| / __| '_ \ \ \
+# | (__| | | |  __/ (_| | |_ _\__ \ | | |/ /
+#  \___|_| |_|\___|\__,_|\__(_)___/_| |_/_/
+#
+
+# File:         cheat
+# Description:  The only cheat sheet you need
+# Author:       Igor Chubin
+#               └─ https://github.com/chubin
+# URL:          https://github.com/chubin/cheat.sh
+
+
+# Values
+PAGE="$@"
+
+
+# Start
+curl --silent --location "cheat.sh/$PAGE"
+
+
+exit 0

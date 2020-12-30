@@ -62,23 +62,23 @@ function bmap --description 'Fish key-mapping that SuperB'
 	bind --preset \e\[D       backward-char
 	bind --preset --key sleft backward-bigword
 	bind --preset \e\[1\;5D   backward-word
-	bind --preset \e\[3D      prevd-or-backward-word
-	bind --preset \e\e\[D     prevd-or-backward-word
-	bind --preset \e\[1\;3D   prevd-or-backward-word
-	bind --preset \e\[1\;9D   prevd-or-backward-word
-	bind --preset \eO3D       prevd-or-backward-word
-	bind --preset \e\eOD      prevd-or-backward-word
+	bind --preset \e\[3D      "prevd; commandline --function repaint"
+	bind --preset \e\e\[D     "prevd; commandline --function repaint"
+	bind --preset \e\[1\;3D   "prevd; commandline --function repaint"
+	bind --preset \e\[1\;9D   "prevd; commandline --function repaint"
+	bind --preset \eO3D       "prevd; commandline --function repaint"
+	bind --preset \e\eOD      "prevd; commandline --function repaint"
 
 	bind --preset --key right  forward-char
 	bind --preset \e\[C        forward-char
 	bind --preset --key sright forward-bigword
 	bind --preset \e\[1\;5C    forward-word
-	bind --preset \e\[3C       nextd-or-forward-word
-	bind --preset \e\e\[C      nextd-or-forward-word
-	bind --preset \e\[1\;3C    nextd-or-forward-word
-	bind --preset \e\[1\;9C    nextd-or-forward-word
-	bind --preset \eO3C        nextd-or-forward-word
-	bind --preset \e\eOC       nextd-or-forward-word
+	bind --preset \e\[3C       "nextd; commandline --function repaint"
+	bind --preset \e\e\[C      "nextd; commandline --function repaint"
+	bind --preset \e\[1\;3C    "nextd; commandline --function repaint"
+	bind --preset \e\[1\;9C    "nextd; commandline --function repaint"
+	bind --preset \eO3C        "nextd; commandline --function repaint"
+	bind --preset \e\eOC       "nextd; commandline --function repaint"
 
 	bind --preset --key ppage beginning-of-history
 	bind --preset --key npage end-of-history
@@ -132,7 +132,8 @@ function bmap --description 'Fish key-mapping that SuperB'
 	bind --preset \eO forward-bigword
 
 	bind --preset \eh pager-toggle-search
-	bind --preset \eH "commandline --insert (echo (sk --multi)); commandline --function repaint" #TODO
+
+	bind --preset \ey "commandline --insert (echo ($FINDER --multi)); commandline --function repaint"
 
 	bind --preset \es edit_command_buffer
 

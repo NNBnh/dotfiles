@@ -46,19 +46,9 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 [ -z "$TMPDIR" ] && export TMPDIR="/tmp"
 export PATH="$PATH:$HOME/.local/bin"
 
-# =============================================================================
-# 2. Default applications
-# =============================================================================
-export LIST="exa"
-export EDITOR="kak"
-export VISUAL="$EDITOR"
-export PAGER="sh -c \"col -b -x | kak\""
-export MANPAGER="sh -c \"col -b -x | kak -e 'set buffer filetype man'\""
-export TERMINAL="kitty"
-export BROWSER="firefox"
 
 # =============================================================================
-# 3. Visual
+# 2. Visual
 # =============================================================================
 
 export BUI_CURSOR="block"
@@ -67,7 +57,6 @@ export BUI_FONT_FAMILY="Iosevka Extended"
 export BUI_FONT_SIZE="12.0"
 export BUI_BORDER_SIZE="2.0"
 export BUI_GAPS_SIZE="16.0"
-
 
 ## Colors ---------------------------------------------------------------------
 
@@ -144,73 +133,98 @@ export BUI_COLOR_TEXTART="93"
 
 
 # =============================================================================
-# 4. Setting
+# 4. Default applications
+# =============================================================================
+export FINDER="fzf"
+export LIST="exa"
+export EDITOR="kak"
+export VISUAL="$EDITOR"
+export PAGER="sh -c \"col -b -x | kak\""
+export MANPAGER="sh -c \"col -b -x | kak -e 'set buffer filetype man'\""
+export TERMINAL="kitty"
+export BROWSER="firefox"
+
+
+# =============================================================================
+# 3. Setting
 # =============================================================================
 
-export EXA_OPTIONS="--color=always --all --group-directories-first --long --header --git"
+export EXA_DEFAULT_OPTS="--all --group-directories-first --long --header --git --colour='always'"
 export ABDUCO_CMD="$SHELL"
 export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
 export BFETCH_PROMPT_HEIGHT="3"
 
-### Skim
-export FZF_DEFAULT_COMMAND="fd --hidden --max-depth 1"
-export FZF_DEFAULT_OPTS="--height=\"66%\"
-                         --layout=\"reverse\"
-                         --info=\"inline\"
-                         --prompt=\":\"
-                         --pointer=\">\"
-                         --marker=\"*\"
+### FZF
+export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git'"
+export FZF_DEFAULT_OPTS="--height='24'
+                         --layout='reverse'
+                         --info='inline'
+                         --prompt=':'
+                         --pointer='>'
+                         --marker='*'
                          --ansi
-                         --tabstop=\"4\"
+                         --tabstop='4'
 
-                         --color=\"fg:-1\"
-                         --color=\"fg+:$BUI_COLOR_BACKGROUND:regular\"
-                         --color=\"bg:-1\"
-                         --color=\"bg+:$BUI_COLOR_CURSOR\"
-                         --color=\"hl:-1:underline\"
-                         --color=\"hl+:$BUI_COLOR_BACKGROUND:underline\"
-                         --color=\"preview-fg:-1\"
-                         --color=\"preview-bg:-1\"
-                         --color=\"gutter:-1\"
-                         --color=\"info:$BUI_COLOR_CURSOR\"
-                         --color=\"border:$BUI_COLOR_FOREGROUND_ALT\"
-                         --color=\"prompt:$BUI_COLOR_CURSOR\"
-                         --color=\"pointer:$BUI_COLOR_CURSOR\"
-                         --color=\"marker:$BUI_COLOR_CURSOR_ALT\"
-                         --color=\"spinner:$BUI_COLOR_FOREGROUND_ALT\"
-                         --color=\"header:$BUI_COLOR_FOREGROUND_ALT\"
+                         --preview-window='right:60%:sharp:cycle:hidden'
 
-                         --bind=\"up:up\"
-                         --bind=\"shift-up:preview-up\"
-                         --bind=\"down:down\"
-                         --bind=\"shift-down:preview-down\"
-                         --bind=\"left:backward-char\"
-                         --bind=\"shift-left:backward-word\"
-                         --bind=\"right:forward-char\"
-                         --bind=\"shift-right:forward-word\"
-                         --bind=\"pgup:page-up\"
-                         --bind=\"pgdn:page-down\"
-                         --bind=\"home:beginning-of-line\"
-                         --bind=\"end:end-of-line\"
-                         --bind=\"bspace:backward-delete-char\"
-                         --bind=\"del:delete-char\"
-                         --bind=\"tab:toggle-out\"
-                         --bind=\"btab:toggle-in\"
-                         --bind=\"ctrl-a:select-all\"
-                         --bind=\"ctrl-c:abort\"
-                         --bind=\"ctrl-q:abort\"
-                         --bind=\"alt-i:up\"
-                         --bind=\"alt-k:down\"
-                         --bind=\"alt-j:backward-char\"
-                         --bind=\"alt-l:forward-char\"
-                         --bind=\"alt-u:backward-word\"
-                         --bind=\"alt-o:forward-word\"
-                         --bind=\"alt-w:deselect-all\"
-                         --bind=\"alt-s:select-all\"
-                         --bind=\"alt-a:toggle\"
-                         --bind=\"alt-d:accept\"
-                         --bind=\"alt-f:abort\"
-                         --bind=\"alt-x:backward-delete-char\""
+                         --color='fg:-1'
+                         --color='fg+:$BUI_COLOR_BACKGROUND:regular'
+                         --color='bg:-1'
+                         --color='bg+:$BUI_COLOR_CURSOR'
+                         --color='hl:-1:underline'
+                         --color='hl+:$BUI_COLOR_BACKGROUND:underline'
+                         --color='preview-fg:-1'
+                         --color='preview-bg:-1'
+                         --color='gutter:-1'
+                         --color='info:$BUI_COLOR_CURSOR'
+                         --color='border:$BUI_COLOR_FOREGROUND_ALT'
+                         --color='prompt:$BUI_COLOR_CURSOR'
+                         --color='pointer:$BUI_COLOR_CURSOR'
+                         --color='marker:$BUI_COLOR_CURSOR_ALT'
+                         --color='spinner:$BUI_COLOR_FOREGROUND_ALT'
+                         --color='header:$BUI_COLOR_FOREGROUND_ALT'
 
+                         --bind='left-click:accept'
+                         --bind='right-click:abort'
+                         --bind='double-click:accept'
+                         --bind='up:up'
+                         --bind='shift-up:preview-up'
+                         --bind='down:down'
+                         --bind='shift-down:preview-down'
+                         --bind='left:backward-char'
+                         --bind='shift-left:backward-word'
+                         --bind='right:forward-char'
+                         --bind='shift-right:forward-word'
+                         --bind='pgup:page-up'
+                         --bind='pgdn:page-down'
+                         --bind='home:beginning-of-line'
+                         --bind='end:end-of-line'
+                         --bind='bspace:backward-delete-char'
+                         --bind='del:delete-char'
+                         --bind='tab:toggle-out'
+                         --bind='btab:toggle-in'
+                         --bind='ctrl-a:select-all'
+                         --bind='ctrl-c:abort'
+                         --bind='ctrl-q:abort'
+                         --bind='alt-i:up'
+                         --bind='alt-k:down'
+                         --bind='alt-j:backward-char'
+                         --bind='alt-l:forward-char'
+                         --bind='alt-u:backward-word'
+                         --bind='alt-o:forward-word'
+                         --bind='alt-w:deselect-all'
+                         --bind='alt-s:select-all'
+                         --bind='alt-a:toggle'
+                         --bind='alt-y:toggle-preview'
+                         --bind='alt-d:accept'
+                         --bind='alt-f:abort'
+                         --bind='alt-x:backward-delete-char'"
+
+### FZF
+export BFM_LIST="bls"
+export BFM_RAW="bls true"
+export BFM_FINDER="fzf"
+export BFM_PREVIEWER="$LIST $EXA_DEFAULT_OPTS"
+export BFM_OPTIONS=""
 
 exit 0
