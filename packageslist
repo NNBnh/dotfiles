@@ -16,14 +16,14 @@
 
 ### Core
   APT:lightdm                     PAC:lightdm                     XBP:lightdm                   # Login manager
-  APT:herbstluftwm                AUR:herbstluftwm                XBP:herbstluftwm              # Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#window-managers)
-#                                 AUR:sway                        XBP:sway                      # Windows manager
+                                  AUR:sway                        XBP:sway                      # Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#window-managers)
+# APT:herbstluftwm                AUR:herbstluftwm                XBP:herbstluftwm              # Windows manager
 
 ### Screen
   APT:brightnessctl               PAC:brightnessctl               XBP:brightnessctl             # Screen backlight
                                   PAC:gammastep                   XBP:gammastep                 # Blue light filter (F.lux alternative for linux)
-  APT:xwallpaper                  PAC:xwallpaper                  XBP:xwallpaper                # Wallpaper
-#                                 PAC:swaybg                      XBP:swaybg                    # Wallpaper
+                                  PAC:swaybg                      XBP:swaybg                    # Wallpaper
+# APT:xwallpaper                  PAC:xwallpaper                  XBP:xwallpaper                # Wallpaper
 
 ### Audio
   APT:alsa-utils                  PAC:alsa-utils                  XBP:alsa-utils                # Sound server
@@ -32,8 +32,8 @@
 ### Input
   APT:ibus-unikey                 AUR:ibus-bamboo                 XBP:ibus-bamboo               # Vietnamese input method
                                   AUR:sc-controller               XBP:sc-controller             # Controller
-  APT:xdotool                     PAC:xdotool                     XBP:xdotool                   # Send inputs with shell
-#                                 AUR:ydotool                     XBP:ydotool                   # Send inputs with shell
+                                  AUR:ydotool                     XBP:ydotool                   # Send inputs with shell
+# APT:xdotool                     PAC:xdotool                     XBP:xdotool                   # Send inputs with shell
 
 ### Resource
                                   AUR:ttf-iosevka                 XBP:font-iosevka              # Font (WH.I.CH https://github.com/NNBnh/dots/wiki/which#font)
@@ -42,21 +42,21 @@
   APT:papirus-icon-theme          PAC:papirus-icon-theme          XBP:papirus-icon-theme        # Icon set that support nearly every app
 
 ### Screen capture
-  APT:maim                        PAC:maim                        XBP:maim                      # Screenshot
-# APT:grim                        PAC:grim                        XBP:grim                      # Screenshot
-# APT:slurp                       PAC:slurp                       XBP:slurp                     # Screen region selector
-#                                 PAC:wf-recorder                 XBP:wf-recorder               # Screen record
+  APT:grim                        PAC:grim                        XBP:grim                      # Screenshot
+  APT:slurp                       PAC:slurp                       XBP:slurp                     # Screen region selector
+                                  PAC:wf-recorder                 XBP:wf-recorder               # Screen record
+# APT:maim                        PAC:maim                        XBP:maim                      # Screenshot
 
 ### Power Managers
-  APT:i3lock                      PAC:i3lock                      XBP:i3lock                    # Lock screen
-#                                 PAC:swaylock                    XBP:swaylock                  # Lock screen
-#                                 PAC:swayidle                    XBP:swayidle                  # Idle management
+                                  PAC:swaylock                    XBP:swaylock                  # Lock screen
+                                  PAC:swayidle                    XBP:swayidle                  # Idle management
+# APT:i3lock                      PAC:i3lock                      XBP:i3lock                    # Lock screen
 
 ### Other
   APT:xdg-utils                   PAC:xdg-utils                   XBP:xdg-utils                 # Assist applications
   APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                 # Notification library
-  APT:xclip                       PAC:xclip                       XBP:xclip                     # Clipboard manager
-# APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard              # Clipboard manager
+  APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard              # Clipboard manager
+# APT:xclip                       PAC:xclip                       XBP:xclip                     # Clipboard manager
 
 
 # =============================================================================
