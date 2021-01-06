@@ -37,7 +37,7 @@
 		'2'|'weather2')         ACTION="curl --silent --location 'V2.wttr.in'"                                                                    ;;
 		'a'|'attack')           ACTION="echo 'curl --silent --location 'http://bit.ly/10hA8iC' | bash'"                                           ;;
 		'M'|'matrix')           ACTION="unimatrix || cmatrix"                                                                                     ;;
-		'I'|'info'|'system')    ACTION="glances || { htop || top }"                                                                               ;;
+		'I'|'info'|'system')    ACTION="glances || htop || top"                                                                                   ;;
 		'R'|'run'|'rick')       ACTION="curl --silent --location 'https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh' | bash" ;;
 		'S'|'sneakers')         ACTION="sneakers"                                                                                                 ;;
 		'A'|'map')              ACTION="telnet 'mapscii.me'"                                                                                      ;;

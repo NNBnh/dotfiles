@@ -54,7 +54,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export BUI_CURSOR="block"
 export BUI_OPACITY="0.9"
 export BUI_FONT_FAMILY="Iosevka Extended"
-export BUI_FONT_SIZE="10.0"
+export BUI_FONT_SIZE="12.0"
 export BUI_BORDER_SIZE="2.0"
 export BUI_GAPS_SIZE="16.0"
 
@@ -154,6 +154,15 @@ export ABDUCO_CMD="$SHELL"
 export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
 export BFETCH_PROMPT_HEIGHT="3"
 
+### Fcitx
+export GTK_IM_MODULE="fcitx"
+export QT_IM_MODULE="fcitx"
+export SDL_IM_MODULE="fcitx"
+export XMODIFIERS="@im=fcitx"
+
+### Firefox
+export MOZ_ENABLE_WAYLAND="1"
+
 ### FZF
 export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git'"
 export FZF_DEFAULT_OPTS="--height='24'
@@ -227,4 +236,5 @@ export BFM_FINDER="fzf"
 export BFM_PREVIEWER="$LIST $EXA_DEFAULT_OPTS"
 export BFM_OPTIONS=""
 
-exit 0
+
+# exit 0

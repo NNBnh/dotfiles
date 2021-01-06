@@ -3,11 +3,11 @@
 	"position": "left",
 
 	"modules-left":   ["custom/menu", "sway/workspaces"],
-	"modules-right":  ["pulseaudio#icon", "mpd#icon", "battery#icon", "clock#big", "clock#small"],
+	"modules-right":  ["pulseaudio#icon", "battery#icon", "clock#big", "clock#small"],
 
 	"custom/menu": {
 		"format": "\\\\",
-		"on-click": "nwggrid",
+		"on-click": "$TERMINAL",
 	},
 
 	"sway/workspaces": {
@@ -24,30 +24,6 @@
 			"9":  "09",
 			"10": "10",
 		}
-	},
-
-	"mpd#icon": {
-		"format": "{stateIcon}{consumeIcon}{randomIcon}{singleIcon}",
-		"format-disconnected": "",
-		"format-stopped": "{consumeIcon}{randomIcon}{singleIcon}",
-		"state-icons": {
-			"paused":  "",
-			"playing": "",
-		},
-		"consume-icons": {
-			"on": "\n",
-		},
-		"random-icons": {
-			"on": "\n",
-		},
-		"repeat-icons": {
-			"on": "\n凌",
-		},
-		"single-icons": {
-			"on": "\n綾",
-		},
-		"tooltip": false,
-		"interval": 2,
 	},
 
 	"pulseaudio#icon": {
@@ -76,5 +52,7 @@
 	"clock#small": {
 		"format": "{:%S%p}",
 		"interval": 1,
+		"today-format": "<span background=\"#F7CA88\" color=\"#181818\">{}</span>",
+		"tooltip-format": "{:%Y %B}\n{calendar}",
 	},
 }

@@ -28,6 +28,7 @@
 ### Audio
   APT:alsa-utils                  PAC:alsa-utils                  XBP:alsa-utils                # Sound server
   APT:pulseaudio                  PAC:pulseaudio                  XBP:pulseaudio                # Sound server but better
+  APT:playerctl                   PAC:playerctl                   XBP:playerctl                 # Music command
 
 ### Input
   APT:ibus-unikey                 AUR:ibus-bamboo                 XBP:ibus-bamboo               # Vietnamese input method
@@ -48,11 +49,13 @@
 # APT:maim                        PAC:maim                        XBP:maim                      # Screenshot
 
 ### Power Managers
-                                  PAC:swaylock                    XBP:swaylock                  # Lock screen
                                   PAC:swayidle                    XBP:swayidle                  # Idle management
+                                  PAC:swaylock                    XBP:swaylock                  # Lock screen
+# APT:xautolock                   PAC:xautolock                   XBP:xautolock                 # Idle management
 # APT:i3lock                      PAC:i3lock                      XBP:i3lock                    # Lock screen
 
 ### Other
+  APT:xwayland                    PAC:xorg-xwayland               XBP:xorg-server-xwayland      # Xwayland backend
   APT:xdg-utils                   PAC:xdg-utils                   XBP:xdg-utils                 # Assist applications
   APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                 # Notification library
   APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard              # Clipboard manager
@@ -74,19 +77,13 @@
   APT:neofetch                    PAC:neofetch                    XBP:neofetch                  # System profilers ("CPU-Z alternative for linux")
   APT:glances                     PAC:glances                     XBP:glances                   # System monitor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#system-monitor)
 
-## Tranfer --------------------------------------------------------------------
-
-### Local
+### Tranfer
   APT:rsync                       PAC:rsync                       XBP:rsync                     # Sync files
   APT:stow                        PAC:stow                        XBP:stow                      # Symlink files (for SuperB Bootstrap https://github.com/NNBnh/superb-bootstrap#installation-process)
-
-### Online
   APT:curl                        PAC:curl                        XBP:curl                      # Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
   APT:aria2                       PAC:aria2                       XBP:aria2                     # Download manager
   APT:git                         PAC:git                         XBP:git                       # Version control system
   APT:youtube-dl                  PAC:youtube-dl                  XBP:youtube-dl                # Download media
-
-## Work -----------------------------------------------------------------------
 
 ### Utilitie
   APT:fzf                         PAC:fzf                         XBP:fzf                       # Fuzzy finder
@@ -94,6 +91,7 @@
   APT:ripgrep                     PAC:ripgrep                     XBP:ripgrep                   # Find regex
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate              # Calculator
   APT:translate-shell             PAC:translate-shell             XBP:translate-shell           # Translator
+  APT:jq                          PAC:jq                          XBP:jq                        # JSON processor
   APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                # Shell script static analysis
   APT:ufw                         PAC:ufw                         XBP:ufw                       # Firewall
 
@@ -109,13 +107,7 @@
   APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick               # Image converter
   APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                    # Media converter
 
-## Other ----------------------------------------------------------------------
-
-### Music
-  APT:playerctl                   PAC:playerctl                   XBP:playerctl                 # Music command
-  APT:mpd                         PAC:mpd                         XBP:mpd                       # Music player
-
-### Fun
+### Other
   APT:asciinema                   PAC:asciinema                   XBP:asciinema                 # Record terminal
   APT:figlet                      PAC:figlet                      XBP:figlet                    # Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
   APT:lolcat                      PAC:lolcat                      XBP:lolcat-c                  # Make outputs RGB

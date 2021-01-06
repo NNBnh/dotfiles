@@ -2,6 +2,8 @@
 
 
 # Values
+. "$HOME/.config/env"
+
 OPTIONS="$@"
 
 OPACITY_DEC=$(echo "$BUI_OPACITY * 100" | bc)

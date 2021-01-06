@@ -4,9 +4,9 @@
 # Values
 DIRECTION="${1:-next}"
 
-STAGE=$(swaymsg --raw --type get_tree | jq '..|try select(.focused == true)')
-TYPE=$(echo "$STAGE" | --raw-output jq '.type')
-STICKY=$(echo "$STAGE" | --raw-output jq '.sticky')
+STAGE=$(swaymsg --raw --type get_tree | jq '.. | try select(.focused == true)')
+TYPE=$(echo "$STAGE" | jq --raw-output '.type')
+STICKY=$(echo "$STAGE" | jq --raw-output '.sticky')
 
 
 # Start

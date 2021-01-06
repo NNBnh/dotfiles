@@ -15,7 +15,8 @@
 
 # Values
 DOTS=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-XDG_DATA_HOME="$HOME/.local/share"
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+TMPDIR="${TMPDIR:-/tmp}"
 
 
 # Install packages
@@ -50,7 +51,6 @@ sudo stow -vt / root
 	for profile in $HOME/.mozilla/firefox/*.default-release; do
 		ln -fs "$DOTS/extra/firefox/chrome" "$profile/"
 	done && echo 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
-
 
 	# Starship
 	curl -fsSL https://starship.rs/install.sh --create-dirs -o "$TMPDIR/starship-installer"

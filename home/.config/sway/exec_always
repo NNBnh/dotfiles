@@ -1,17 +1,21 @@
 #!/bin/sh
 
 
+# Values
+. "$HOME/.config/env"
+
 SWAY_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
 
-swaymsg smart_borders no_gaps
+# Start
 swaymsg smart_gaps yes
+swaymsg smart_borders no_gaps
 swaymsg title_align center
 
 swaymsg font "pango:$BUI_FONT_FAMILY ${BUI_FONT_SIZE%%.*}"
 
-swaymsg gaps inner "$(( ${BUI_GAPS_SIZE%%.*} - ( ${BUI_BORDER_SIZE%%.*} * 2 ) ))px"
-swaymsg gaps outer "${BUI_GAPS_SIZE%%.*}px"
+swaymsg gaps inner all set "$(( ${BUI_GAPS_SIZE%%.*} - ( ${BUI_BORDER_SIZE%%.*} * 2 ) ))px"
+swaymsg gaps outer all set "${BUI_GAPS_SIZE%%.*}px"
 
 swaymsg default_border normal "${BUI_BORDER_SIZE%%.*}px"
 swaymsg titlebar_border_thickness "${BUI_BORDER_SIZE%%.*}"
@@ -22,172 +26,10 @@ swaymsg client.focused_inactive "$BUI_COLOR_SELECTION" "$BUI_COLOR_SELECTION" "$
 swaymsg client.unfocused        "$BUI_COLOR_SELECTION" "$BUI_COLOR_SELECTION" "$BUI_COLOR_FOREGROUND" "$BUI_COLOR_CURSOR_ALT" "$BUI_COLOR_SELECTION"
 swaymsg client.urgent           "$BUI_COLOR_BASE08"    "$BUI_COLOR_BASE08"    "$BUI_COLOR_BACKGROUND" "$BUI_COLOR_CURSOR_ALT" "$BUI_COLOR_BASE08"
 
-swaymsg focus_follows_mouse yes
+swaymsg focus_follows_mouse no
 swaymsg focus_wrapping      no
 
-
-
-up='i'
-down='k'
-left='j'
-right='l'
-
-
-swaymsg floating_modifier Mod4
-
-swaymsg bindsym button2 kill
-swaymsg bindsym       button3 exec "$SWAY_DIR/floatdwim next"
-swaymsg bindsym Shift+button3 exec "$SWAY_DIR/floatdwim prev"
-
-
-swaymsg bindsym Mod4+Escape exec $SWAY_DIR/lock
-swaymsg bindsym Mod4+Shift+Escape exec swaymsg exit
-swaymsg bindsym Mod4+Alt+Escape reload
-
-swaymsg bindsym Mod4+Left  focus left
-swaymsg bindsym Mod4+Down  focus down
-swaymsg bindsym Mod4+Up    focus up
-swaymsg bindsym Mod4+Right focus right
-
-swaymsg bindsym Mod4+$up    focus up
-swaymsg bindsym Mod4+$down  focus down
-swaymsg bindsym Mod4+$left  focus left
-swaymsg bindsym Mod4+$right focus right
-
-swaymsg bindsym Mod4+Alt+Left  move left  $(( "${BUI_GAPS_SIZE%%.*}" / 2 ))px
-swaymsg bindsym Mod4+Alt+Down  move down  $(( "${BUI_GAPS_SIZE%%.*}" / 2 ))px
-swaymsg bindsym Mod4+Alt+Up    move up    $(( "${BUI_GAPS_SIZE%%.*}" / 2 ))px
-swaymsg bindsym Mod4+Alt+Right move right $(( "${BUI_GAPS_SIZE%%.*}" / 2 ))px
-
-swaymsg bindsym Mod4+Alt+$up    move up    $(( "${BUI_GAPS_SIZE%%.*}" / 2 ))px
-swaymsg bindsym Mod4+Alt+$down  move down  $(( "${BUI_GAPS_SIZE%%.*}" / 2 ))px
-swaymsg bindsym Mod4+Alt+$left  move left  $(( "${BUI_GAPS_SIZE%%.*}" / 2 ))px
-swaymsg bindsym Mod4+Alt+$right move right $(( "${BUI_GAPS_SIZE%%.*}" / 2 ))px
-
-swaymsg bindsym Mod4+Alt+equal       resize grow   width  1px
-swaymsg bindsym Mod4+Alt+minus       resize shrink width  1px
-swaymsg bindsym Mod4+Alt+Ctrl+equal  resize grow   height 1px
-swaymsg bindsym Mod4+Alt+Ctrl+minus  resize shrink height 1px
-
-swaymsg bindsym Mod4+Alt+Shift+equal opacity plus  0.1
-swaymsg bindsym Mod4+Alt+Shift+minus opacity minus 0.1
-
-swaymsg bindsym Mod4+apostrophe resize set width 50ppt height 50ppt
-
-
-swaymsg bindsym Mod4+1           exec "$SWAY_DIR/wmdwim 1  next false"
-swaymsg bindsym Mod4+2           exec "$SWAY_DIR/wmdwim 2  next false"
-swaymsg bindsym Mod4+3           exec "$SWAY_DIR/wmdwim 3  next false"
-swaymsg bindsym Mod4+4           exec "$SWAY_DIR/wmdwim 4  next false"
-swaymsg bindsym Mod4+5           exec "$SWAY_DIR/wmdwim 5  next false"
-swaymsg bindsym Mod4+6           exec "$SWAY_DIR/wmdwim 6  next false"
-swaymsg bindsym Mod4+7           exec "$SWAY_DIR/wmdwim 7  next false"
-swaymsg bindsym Mod4+8           exec "$SWAY_DIR/wmdwim 8  next false"
-swaymsg bindsym Mod4+9           exec "$SWAY_DIR/wmdwim 9  next false"
-swaymsg bindsym Mod4+0           exec "$SWAY_DIR/wmdwim 10 next false"
-
-swaymsg bindsym Mod4+Shift+1     exec "$SWAY_DIR/wmdwim 1  prev false"
-swaymsg bindsym Mod4+Shift+2     exec "$SWAY_DIR/wmdwim 2  prev false"
-swaymsg bindsym Mod4+Shift+3     exec "$SWAY_DIR/wmdwim 3  prev false"
-swaymsg bindsym Mod4+Shift+4     exec "$SWAY_DIR/wmdwim 4  prev false"
-swaymsg bindsym Mod4+Shift+5     exec "$SWAY_DIR/wmdwim 5  prev false"
-swaymsg bindsym Mod4+Shift+6     exec "$SWAY_DIR/wmdwim 6  prev false"
-swaymsg bindsym Mod4+Shift+7     exec "$SWAY_DIR/wmdwim 7  prev false"
-swaymsg bindsym Mod4+Shift+8     exec "$SWAY_DIR/wmdwim 8  prev false"
-swaymsg bindsym Mod4+Shift+9     exec "$SWAY_DIR/wmdwim 9  prev false"
-swaymsg bindsym Mod4+Shift+0     exec "$SWAY_DIR/wmdwim 10 prev false"
-
-swaymsg bindsym Mod4+Alt+1       exec "$SWAY_DIR/wmdwim 1  next true"
-swaymsg bindsym Mod4+Alt+2       exec "$SWAY_DIR/wmdwim 2  next true"
-swaymsg bindsym Mod4+Alt+3       exec "$SWAY_DIR/wmdwim 3  next true"
-swaymsg bindsym Mod4+Alt+4       exec "$SWAY_DIR/wmdwim 4  next true"
-swaymsg bindsym Mod4+Alt+5       exec "$SWAY_DIR/wmdwim 5  next true"
-swaymsg bindsym Mod4+Alt+6       exec "$SWAY_DIR/wmdwim 6  next true"
-swaymsg bindsym Mod4+Alt+7       exec "$SWAY_DIR/wmdwim 7  next true"
-swaymsg bindsym Mod4+Alt+8       exec "$SWAY_DIR/wmdwim 8  next true"
-swaymsg bindsym Mod4+Alt+9       exec "$SWAY_DIR/wmdwim 9  next true"
-swaymsg bindsym Mod4+Alt+0       exec "$SWAY_DIR/wmdwim 10 next true"
-
-swaymsg bindsym Mod4+Shift+Alt+1 exec "$SWAY_DIR/wmdwim 1  prev true"
-swaymsg bindsym Mod4+Shift+Alt+2 exec "$SWAY_DIR/wmdwim 2  prev true"
-swaymsg bindsym Mod4+Shift+Alt+3 exec "$SWAY_DIR/wmdwim 3  prev true"
-swaymsg bindsym Mod4+Shift+Alt+4 exec "$SWAY_DIR/wmdwim 4  prev true"
-swaymsg bindsym Mod4+Shift+Alt+5 exec "$SWAY_DIR/wmdwim 5  prev true"
-swaymsg bindsym Mod4+Shift+Alt+6 exec "$SWAY_DIR/wmdwim 6  prev true"
-swaymsg bindsym Mod4+Shift+Alt+7 exec "$SWAY_DIR/wmdwim 7  prev true"
-swaymsg bindsym Mod4+Shift+Alt+8 exec "$SWAY_DIR/wmdwim 8  prev true"
-swaymsg bindsym Mod4+Shift+Alt+9 exec "$SWAY_DIR/wmdwim 9  prev true"
-swaymsg bindsym Mod4+Shift+Alt+0 exec "$SWAY_DIR/wmdwim 10 prev true"
-
-swaymsg bindsym Mod4+a           exec "$SWAY_DIR/wmdwim 1  next false"
-swaymsg bindsym Mod4+s           exec "$SWAY_DIR/wmdwim 2  next false"
-swaymsg bindsym Mod4+d           exec "$SWAY_DIR/wmdwim 3  next false"
-swaymsg bindsym Mod4+f           exec "$SWAY_DIR/wmdwim 4  next false"
-swaymsg bindsym Mod4+g           exec "$SWAY_DIR/wmdwim 5  next false"
-swaymsg bindsym Mod4+q           exec "$SWAY_DIR/wmdwim 6  next false"
-swaymsg bindsym Mod4+w           exec "$SWAY_DIR/wmdwim 7  next false"
-swaymsg bindsym Mod4+e           exec "$SWAY_DIR/wmdwim 8  next false"
-swaymsg bindsym Mod4+r           exec "$SWAY_DIR/wmdwim 9  next false"
-swaymsg bindsym Mod4+t           exec "$SWAY_DIR/wmdwim 10 next false"
-
-swaymsg bindsym Mod4+Shift+a     exec "$SWAY_DIR/wmdwim 1  prev false"
-swaymsg bindsym Mod4+Shift+s     exec "$SWAY_DIR/wmdwim 2  prev false"
-swaymsg bindsym Mod4+Shift+d     exec "$SWAY_DIR/wmdwim 3  prev false"
-swaymsg bindsym Mod4+Shift+f     exec "$SWAY_DIR/wmdwim 4  prev false"
-swaymsg bindsym Mod4+Shift+g     exec "$SWAY_DIR/wmdwim 5  prev false"
-swaymsg bindsym Mod4+Shift+q     exec "$SWAY_DIR/wmdwim 6  prev false"
-swaymsg bindsym Mod4+Shift+w     exec "$SWAY_DIR/wmdwim 7  prev false"
-swaymsg bindsym Mod4+Shift+e     exec "$SWAY_DIR/wmdwim 8  prev false"
-swaymsg bindsym Mod4+Shift+r     exec "$SWAY_DIR/wmdwim 9  prev false"
-swaymsg bindsym Mod4+Shift+t     exec "$SWAY_DIR/wmdwim 10 prev false"
-
-swaymsg bindsym Mod4+Alt+a       exec "$SWAY_DIR/wmdwim 1  next true"
-swaymsg bindsym Mod4+Alt+s       exec "$SWAY_DIR/wmdwim 2  next true"
-swaymsg bindsym Mod4+Alt+d       exec "$SWAY_DIR/wmdwim 3  next true"
-swaymsg bindsym Mod4+Alt+f       exec "$SWAY_DIR/wmdwim 4  next true"
-swaymsg bindsym Mod4+Alt+g       exec "$SWAY_DIR/wmdwim 5  next true"
-swaymsg bindsym Mod4+Alt+q       exec "$SWAY_DIR/wmdwim 6  next true"
-swaymsg bindsym Mod4+Alt+w       exec "$SWAY_DIR/wmdwim 7  next true"
-swaymsg bindsym Mod4+Alt+e       exec "$SWAY_DIR/wmdwim 8  next true"
-swaymsg bindsym Mod4+Alt+r       exec "$SWAY_DIR/wmdwim 9  next true"
-swaymsg bindsym Mod4+Alt+t       exec "$SWAY_DIR/wmdwim 10 next true"
-
-swaymsg bindsym Mod4+Shift+Alt+a exec "$SWAY_DIR/wmdwim 1  prev true"
-swaymsg bindsym Mod4+Shift+Alt+s exec "$SWAY_DIR/wmdwim 2  prev true"
-swaymsg bindsym Mod4+Shift+Alt+d exec "$SWAY_DIR/wmdwim 3  prev true"
-swaymsg bindsym Mod4+Shift+Alt+f exec "$SWAY_DIR/wmdwim 4  prev true"
-swaymsg bindsym Mod4+Shift+Alt+g exec "$SWAY_DIR/wmdwim 5  prev true"
-swaymsg bindsym Mod4+Shift+Alt+q exec "$SWAY_DIR/wmdwim 6  prev true"
-swaymsg bindsym Mod4+Shift+Alt+w exec "$SWAY_DIR/wmdwim 7  prev true"
-swaymsg bindsym Mod4+Shift+Alt+e exec "$SWAY_DIR/wmdwim 8  prev true"
-swaymsg bindsym Mod4+Shift+Alt+r exec "$SWAY_DIR/wmdwim 9  prev true"
-swaymsg bindsym Mod4+Shift+Alt+t exec "$SWAY_DIR/wmdwim 10 prev true"
-
-swaymsg bindsym Mod4+Slash exec nwgdmenu
-swaymsg bindsym Mod4+Shift+Slash exec "$TERMINAL"
-swaymsg bindsym Mod4+Alt+Slash split toggle
-
-swaymsg bindsym Mod4+x kill
-
-swaymsg bindsym Mod4+b focus mode_toggle
-swaymsg bindsym Mod4+Alt+b       exec "$SWAY_DIR/floatdwim next"
-swaymsg bindsym Mod4+Alt+Shift+b exec "$SWAY_DIR/floatdwim prev"
-
-swaymsg bindsym Mod4+z      focus parent
-swaymsg bindsym Mod4+Ctrl+z focus child
-
-swaymsg bindsym Mod4+Backslash       layout toggle tabbed splitv splith
-swaymsg bindsym Mod4+Shift+Backslash layout toggle splith splitv tabbed
-swaymsg bindsym Mod4+Alt+Backslash fullscreen
-
-
-
-
-
-
-
-
-
+$SWAY_DIR/bmap
 
 gsettings set org.gnome.desktop.interface gtk-theme  'Matcha-dark-aliz'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
@@ -196,8 +38,11 @@ gsettings set org.gnome.desktop.interface font-name  "$BUI_FONT_FAMILY ${BUI_FON
 
 swaybg --mode fill --image "$XDG_DATA_HOME/wallpapers/johnn21/brown-wooden-table-and-chairs-near-white-concrete-building-during-daytime.jpg" &
 
-swayidle -w before-sleep "$SWAY_DIR/lock --daemonize" \
+killall -p swayidle; swayidle -w before-sleep "$SWAY_DIR/lock --daemonize" \
             timeout $(( 15 * 60 )) "$SWAY_DIR/lock --daemonize; swaymsg 'output * dpms off'" \
             resume "swaymsg 'output * dpms on'" &
 
 killall -p waybar; waybar &
+
+
+exit 0

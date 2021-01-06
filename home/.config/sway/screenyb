@@ -1,0 +1,32 @@
+#!/bin/sh
+
+
+# Values
+. "$HOME/.config/env"
+
+MODE="${1:-output}"
+
+LOCATION="$XDG_PICTURES_DIR/screenshot_%Y-%m-%d_%H-%M-%S"
+NAME=$(date +"$LOCATION")
+TYPE='png'
+
+
+# Start
+case "$MODE" in
+	'output')
+		OUTPUT=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
+		grim -o "$OUTPUT" -t "$TYPE" "$NAME"
+		grim -o "$OUTPUT" - | wl-copy
+	;;
+	'region')
+		REGION=$(swaymsg --type get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)
+		grim -g "$REGION" -t "$TYPE" "$NAME"
+		grim -g "$REGION" - | wl-copy
+	;;
+	'color')
+		grim -g "$(slurp -p)" -t 'ppm' - | convert - -format '%[pixel:p{0,0}]' txt:- | wl-copy
+	;;
+esac
+
+
+exit 0

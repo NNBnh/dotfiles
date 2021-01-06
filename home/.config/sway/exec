@@ -1,9 +1,12 @@
 #!/bin/sh
 
 
+# Start
 gammastep &
 
-mpd &
+playerctld daemon &
+
+fcitx -d &
 
 
 exit 0
