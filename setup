@@ -15,12 +15,12 @@
 
 # Values
 DOTS=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
-TMPDIR="${TMPDIR:-/tmp}"
+
+. "$DOTS/home/.config/env"
 
 
 # Install packages
-curl -fsSL https://raw.githubusercontent.com/NNBnh/bawkpack/master/bawkpack --create-dirs -o "$DOTS/bawkpack" && chmod +x "$DOTS/bawkpack"
+curl -fsSL https://raw.githubusercontent.com/NNBnh/bawkpack/master/bawkpack --create-dirs --output "$DOTS/bawkpack" && chmod +x "$DOTS/bawkpack"
 "$DOTS/bawkpack" "$DOTS/packageslist"
 
 
@@ -41,46 +41,43 @@ sudo stow -vt / root
 
 
 # After symlink
-	# Change default shell
-	chsh -s /usr/bin/fish
+	# Install extra packages
+		# Python packages
+		pip install --upgrade auto-editor opentype-feature-freezer git+https://github.com/will8211/unimatrix.git
 
-	# Enable firewall
-	sudo ufw enable
+		# BUI terminal
+		git clone https://github.com/NNBnh/bui-terminal.git "$XDG_DATA_HOME/bui-terminal" && ln -fs "$XDG_DATA_HOME/bui-terminal/bui-terminal" "$HOME/.local/bin/"
 
-	# Firefox CSS
-	for profile in $HOME/.mozilla/firefox/*.default-release; do
-		ln -fs "$DOTS/extra/firefox/chrome" "$profile/"
-	done && echo 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
+		# Bfetch
+		git clone https://github.com/NNBnh/bfetch.git "$XDG_DATA_HOME/bfetch" && ln -fs "$XDG_DATA_HOME/bfetch/bfetch" "$HOME/.local/bin/"
 
-	# Starship
-	curl -fsSL https://starship.rs/install.sh --create-dirs -o "$TMPDIR/starship-installer"
-	chmod +x "$TMPDIR/starship-installer"
-	eval "$TMPDIR/starship-installer --yes --bin-dir '$HOME/.local/bin'"
+		# Fetchutils
+		git clone https://github.com/lptstr/fetchutils.git "$XDG_DATA_HOME/fetchutils"
 
-	# Vimv
-	curl -fsSL https://raw.githubusercontent.com/thameera/vimv/master/vimv --create-dirs -o "$HOME/.local/bin/vimv" && chmod +x "$HOME/.local/bin/vimv"
+		# Wallpapers
+		git clone https://github.com/NNBnh/wallpaper-collections.git "$XDG_DATA_HOME/wallpapers"
 
-	# BUI terminal
-	git clone https://github.com/NNBnh/bui-terminal.git "$XDG_DATA_HOME/bui-terminal" && ln -fs "$XDG_DATA_HOME/bui-terminal/bui-terminal" "$HOME/.local/bin/"
+		# Textarts
+		git clone https://github.com/NNBnh/textart-collections.git "$XDG_DATA_HOME/textart"
 
-	# Bfetch
-	git clone https://github.com/NNBnh/bfetch.git "$XDG_DATA_HOME/bfetch" && ln -fs "$XDG_DATA_HOME/bfetch/bfetch" "$HOME/.local/bin/"
+		# Figlet fonts
+		git clone https://github.com/xero/figlet-fonts.git "$XDG_DATA_HOME/figlet/fonts"
 
-	# Fetchutils
-	git clone https://github.com/lptstr/fetchutils.git "$XDG_DATA_HOME/fetchutils"
+		# Git enhancements
+		curl -fsSL https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt --create-dirs --output "$XDG_DATA_HOME/git/gitalias.txt"
+		curl -fsSL https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json --create-dirs --output "$XDG_DATA_HOME/git/gitmojis.json"
 
-	# Git
-	curl -fsSL https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt --create-dirs -o "$XDG_DATA_HOME/git/gitalias.txt"
-	curl -fsSL https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json --create-dirs -o "$XDG_DATA_HOME/git/gitmojis.json"
+	# Setup
+		# Change default shell
+		chsh -s /usr/bin/fish
 
-	# Wallpaper
-	git clone https://github.com/NNBnh/wallpaper-collections.git "$XDG_DATA_HOME/wallpapers"
+		# Enable firewall
+		sudo ufw enable
 
-	# Textart
-	git clone https://github.com/NNBnh/textart-collections.git "$XDG_DATA_HOME/textart"
-
-	# Figlet fonts
-	git clone https://github.com/xero/figlet-fonts.git "$XDG_DATA_HOME/figlet/fonts"
+		# Firefox CSS
+		for profile in $HOME/.mozilla/firefox/*.default-release; do
+			ln -fs "$DOTS/extra/firefox/chrome" "$profile/"
+		done && echo 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
 
 
 exit 0

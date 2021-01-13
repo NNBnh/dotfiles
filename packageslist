@@ -72,6 +72,8 @@
   APT:bash                        PAC:bash                        XBP:bash                      #  Legacy shell
   APT:python                      PAC:python                      XBP:python                    #  Handy programming language
   APT:nim                         PAC:nim                         XBP:nim                       #  Cool programming language
+                                  AUR:starship-bin                XBP:starship                  #  Shell prompt (WH.I.CH https://github.com/NNBnh/dots/wiki/which#prompt)
+  APT:fzf                         PAC:fzf                         XBP:fzf                       #C Fuzzy finder
                                   PAC:abduco                      XBP:abduco                    #  Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
 
 ### Info
@@ -88,7 +90,6 @@
 
 ### Utilitie
   APT:xdg-user-dirs               PAC:xdg-user-dirs               XBP:xdg-user-dirs             #  XDG directory managers
-  APT:fzf                         PAC:fzf                         XBP:fzf                       #C Fuzzy finder
   APT:fd-find                     PAC:fd                          XBP:fd                        #  Find files
   APT:ripgrep                     PAC:ripgrep                     XBP:ripgrep                   #  Find regex
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate              #  Calculator
@@ -114,7 +115,6 @@
   APT:figlet                      PAC:figlet                      XBP:figlet                    #  Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
   APT:lolcat                      PAC:lolcat                      XBP:lolcat-c                  #  Make outputs RGB
                                   AUR:no-more-secrets             XBP:no-more-secrets           #  Become a hackerman (Make outputs Minecraft enchanting table language)
-  APT:cmatrix                     PAC:cmatrix                     XBP:cmatrix                   #  Simulates the display from "The Matrix" (WH.I.CH https://github.com/NNBnh/dots/wiki/which#matrix)
                                   AUR:cava                        XBP:cava                      #  Audio visualizer
 
 

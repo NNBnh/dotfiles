@@ -45,6 +45,8 @@ plug 'h-youhei/kakoune-surround'
 
 # plug 'alexherbo2/auto-pairs.kak'
 
+plug 'occivink/kakoune-find'
+
 ## Environment ----------------------------------------------------------------
 
 plug 'lePerdu/kakboard' config %{
