@@ -31,6 +31,17 @@ swaymsg focus_wrapping      no
 
 $SWAY_DIR/bmap
 
+
+xdg-user-dirs-update --set DESKTOP "$XDG_DESKTOP_DIR"
+xdg-user-dirs-update --set DOCUMENTS "$XDG_DOCUMENTS_DIR"
+xdg-user-dirs-update --set DOWNLOAD "$XDG_DOWNLOAD_DIR"
+xdg-user-dirs-update --set MUSIC "$XDG_MUSIC_DIR"
+xdg-user-dirs-update --set PICTURES "$XDG_PICTURES_DIR"
+xdg-user-dirs-update --set PUBLICSHARE "$XDG_PUBLICSHARE_DIR"
+xdg-user-dirs-update --set TEMPLATES "$XDG_TEMPLATES_DIR"
+xdg-user-dirs-update --set VIDEOS "$XDG_VIDEOS_DIR"
+
+
 gsettings set org.gnome.desktop.interface gtk-theme  'Matcha-dark-aliz'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
 gsettings set org.gnome.desktop.interface font-name  "$BUI_FONT_FAMILY ${BUI_FONT_SIZE%%.*}"
@@ -38,11 +49,23 @@ gsettings set org.gnome.desktop.interface font-name  "$BUI_FONT_FAMILY ${BUI_FON
 
 swaybg --mode fill --image "$XDG_DATA_HOME/wallpapers/johnn21/brown-wooden-table-and-chairs-near-white-concrete-building-during-daytime.jpg" &
 
+killall -p waybar; waybar &
+
+killall -p mako; mako --max-visible='8' \
+                      --default-timeout='3000' \
+                      --anchor "top-right" \
+                      --font "$BUI_FONT_FAMILY ${BUI_FONT_SIZE%%.*}" \
+                      --margin="$(( ${BUI_GAPS_SIZE%%.*} - ( ${BUI_BORDER_SIZE%%.*} * 2 ) ))" \
+                      --padding="$(( ${BUI_GAPS_SIZE%%.*} - ( ${BUI_BORDER_SIZE%%.*} * 2 ) ))" \
+                      --border-size "${BUI_BORDER_SIZE%%.*}" \
+                      --text-color "$BUI_COLOR_FOREGROUND" \
+                      --background-color "$BUI_COLOR_BACKGROUND" \
+                      --border-color "$BUI_COLOR_CURSOR" \
+                      --progress-color "$BUI_COLOR_CURSOR" &
+
 killall -p swayidle; swayidle -w before-sleep "$SWAY_DIR/lock --daemonize" \
             timeout $(( 15 * 60 )) "$SWAY_DIR/lock --daemonize; swaymsg 'output * dpms off'" \
             resume "swaymsg 'output * dpms on'" &
-
-killall -p waybar; waybar &
 
 
 exit 0

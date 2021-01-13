@@ -133,7 +133,7 @@ export BUI_COLOR_TEXTART="93"
 
 
 # =============================================================================
-# 4. Default applications
+# 3. Default applications
 # =============================================================================
 export FINDER="fzf"
 export LIST="exa"
@@ -146,7 +146,7 @@ export BROWSER="firefox"
 
 
 # =============================================================================
-# 3. Setting
+# 4. Setting
 # =============================================================================
 
 export EXA_DEFAULT_OPTS="--all --group-directories-first --long --header --git --colour='always'"
@@ -154,14 +154,15 @@ export ABDUCO_CMD="$SHELL"
 export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
 export BFETCH_PROMPT_HEIGHT="3"
 
+### Wayland
+# export GDK_BACKEND="x11"
+export MOZ_ENABLE_WAYLAND="1"
+
 ### Fcitx
 export GTK_IM_MODULE="fcitx"
 export QT_IM_MODULE="fcitx"
 export SDL_IM_MODULE="fcitx"
 export XMODIFIERS="@im=fcitx"
-
-### Firefox
-export MOZ_ENABLE_WAYLAND="1"
 
 ### FZF
 export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git'"

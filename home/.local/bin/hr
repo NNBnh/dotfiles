@@ -1,17 +1,16 @@
 #!/bin/sh
 
-#     ____  __   _____
-#    / __ )/ /  / ___/
-#   / __  / /   \__ \
-#  / /_/ / /______/ /
-# /_____/_____/____/
+#    __
+#   / /  _ __
+#  / _ \/ '_/
+# /_//_/_/
 #
 
-# File:         bls
-# Description:  List file that SuperB
+# File:         hr
+# Description:  A horizontal ruler for your terminal
 # Author:       NNB
 #               └─ https://github.com/NNBnh
-# URL:          https://github.com/NNBnh/dots/blob/master/home/.local/bin/bls
+# URL:          https://github.com/NNBnh/dots/blob/master/home/.local/bin/hr
 # License:      GPLv3
 
 #    This program is free software: you can redistribute it and/or modify
@@ -29,30 +28,23 @@
 
 
 # Values
-RAW_MODE="${1:-false}"
-
-[ "$RAW_MODE" != 'true' ] && {
-	ICONS='true'
-	STYLE='true'
-}
-
-for file in .* *; do
-	if [ -h "$file" ]; then
-		check=$(readlink "$file")
-	else
-		check="$file"
-	fi
-
-	if [ -d "$check" ]; then
-		directories="${directories:+$directories\n}${STYLE:+\033[1m}${ICONS:+📁}$file\033[0m"
-	elif [ -e "$check" ] || [ -h "$file" ]; then
-		files="${files:+$files\n}${STYLE:+\033[0m}${ICONS:+📄}$file\033[0m"
-	fi
-done
+TERM_SIZE=$(stty size)
+TERM_WIDTH="${TERM_SIZE#* }"
 
 
 # Start
-printf "${directories:+$directories\n}$files"
+for text in "${@:-─}"; do
+	print=''
+	i='1'
+
+	while [ "$i" -le "$TERM_WIDTH" ]; do
+		print="$print$text"
+
+		i=$(( i + 1 ))
+	done
+
+	printf '%s' "$print" | sed -e "s/^\(.\{$TERM_WIDTH\}\).*/\1/"
+done
 
 
 exit 0

@@ -169,6 +169,8 @@ swaymsg bindsym Mod4+c      exec "$SWAY_DIR/screenyb output"
 swaymsg bindsym Mod4+Ctrl+c exec "$SWAY_DIR/screenyb region"
 swaymsg bindsym Mod4+Alt+c  exec "$SWAY_DIR/screenyb color"
 
+swaymsg bindsym Mod4+v exec "fcitx-remote -t"
+
 swaymsg bindsym Mod4+b focus mode_toggle
 swaymsg bindsym Mod4+Alt+b       exec "$SWAY_DIR/floatdwim next"
 swaymsg bindsym Mod4+Alt+Shift+b exec "$SWAY_DIR/floatdwim prev"

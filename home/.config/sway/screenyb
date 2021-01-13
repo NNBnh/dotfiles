@@ -7,8 +7,8 @@
 MODE="${1:-output}"
 
 LOCATION="$XDG_PICTURES_DIR/screenshot_%Y-%m-%d_%H-%M-%S"
-NAME=$(date +"$LOCATION")
 TYPE='png'
+NAME=$(date +"$LOCATION.$TYPE")
 
 
 # Start
