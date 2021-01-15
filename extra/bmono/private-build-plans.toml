@@ -1,0 +1,30 @@
+[buildPlans.bmono]
+family = "Bmono"
+spacing = "fontconfig-mono"
+serifs = "sans"
+
+  [buildPlans.bmono.variants]
+  inherits = "ss20"
+
+    [buildPlans.bmono.variants.design]
+    capital-g = "toothless-rounded"
+    l = "serifed-flat-tailed"
+    zero = "dotted"
+    three = "flattop"
+    six = "closed-contour"
+    eight = "two-circles"
+    nine = "closed-contour"
+    asterisk = "low"
+    caret = "low"
+    paren = "large-contour"
+    brace = "straight"
+    dollar = "open"
+    percent = "rings-connected"
+
+  [buildPlans.bmono.ligations]
+  inherits = "dlig"
+
+[buildPlans.bmono.widths.normal]
+shape = 576
+menu = 5
+css = "normal"

@@ -16,12 +16,14 @@
 # Values
 DOTS=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
-. "$DOTS/home/.config/env"
+. "$DOTS/home/.config/env" # Get my environment variables
+
+bawkpack_location="$DOTS/extra/bawkpack"
 
 
 # Install packages
-curl -fsSL https://raw.githubusercontent.com/NNBnh/bawkpack/master/bawkpack --create-dirs --output "$DOTS/bawkpack" && chmod +x "$DOTS/bawkpack"
-"$DOTS/bawkpack" "$DOTS/packageslist"
+curl -fsSL https://raw.githubusercontent.com/NNBnh/superb-bootstrap/master/extra/bawkpack --create-dirs --output "$bawkpack_location" && chmod +x "$DOTS/bawkpack"
+"$bawkpack_location" "$DOTS/packageslist"
 
 
 # Before symlink
@@ -43,7 +45,7 @@ sudo stow -vt / root
 # After symlink
 	# Install extra packages
 		# Python packages
-		pip install --upgrade auto-editor opentype-feature-freezer git+https://github.com/will8211/unimatrix.git
+		pip install --upgrade auto-editor git+https://github.com/will8211/unimatrix.git
 
 		# BUI terminal
 		git clone https://github.com/NNBnh/bui-terminal.git "$XDG_DATA_HOME/bui-terminal" && ln -fs "$XDG_DATA_HOME/bui-terminal/bui-terminal" "$HOME/.local/bin/"
@@ -71,8 +73,21 @@ sudo stow -vt / root
 		# Change default shell
 		chsh -s /usr/bin/fish
 
+		# Change XDG directories
+		xdg-user-dirs-update --set DESKTOP     "$XDG_DESKTOP_DIR"
+		xdg-user-dirs-update --set DOCUMENTS   "$XDG_DOCUMENTS_DIR"
+		xdg-user-dirs-update --set DOWNLOAD    "$XDG_DOWNLOAD_DIR"
+		xdg-user-dirs-update --set MUSIC       "$XDG_MUSIC_DIR"
+		xdg-user-dirs-update --set PICTURES    "$XDG_PICTURES_DIR"
+		xdg-user-dirs-update --set PUBLICSHARE "$XDG_PUBLICSHARE_DIR"
+		xdg-user-dirs-update --set TEMPLATES   "$XDG_TEMPLATES_DIR"
+		xdg-user-dirs-update --set VIDEOS      "$XDG_VIDEOS_DIR"
+
 		# Enable firewall
 		sudo ufw enable
+
+		# Fontconfig
+		fc-cache --really-force
 
 		# Firefox CSS
 		for profile in $HOME/.mozilla/firefox/*.default-release; do

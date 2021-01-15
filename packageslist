@@ -53,7 +53,6 @@
                                   PAC:swaylock                    XBP:swaylock                  #C Lock screen
 
 ### Resource
-                                  AUR:ttf-iosevka                 XBP:font-iosevka              #  Font (WH.I.CH https://github.com/NNBnh/dots/wiki/which#font)
                                   PAC:ttf-sarasa-gothic           XBP:font-sarasa-gothic        #  Non Latin support for font
                                   AUR:ttf-twemoji                 XBP:twemoji                   #  Emoji support for font
   APT:papirus-icon-theme          PAC:papirus-icon-theme          XBP:papirus-icon-theme        #  Icon set that support nearly every app
@@ -72,8 +71,8 @@
   APT:bash                        PAC:bash                        XBP:bash                      #  Legacy shell
   APT:python                      PAC:python                      XBP:python                    #  Handy programming language
   APT:nim                         PAC:nim                         XBP:nim                       #  Cool programming language
-                                  AUR:starship-bin                XBP:starship                  #  Shell prompt (WH.I.CH https://github.com/NNBnh/dots/wiki/which#prompt)
-  APT:fzf                         PAC:fzf                         XBP:fzf                       #C Fuzzy finder
+                                  AUR:starship-bin                XBP:starship                  #  Shell prompt
+  APT:fzf                         PAC:fzf                         XBP:fzf                       #C Fuzzy finder (WH.I.CH https://github.com/NNBnh/dots/wiki/which#finder)
                                   PAC:abduco                      XBP:abduco                    #  Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
 
 ### Info

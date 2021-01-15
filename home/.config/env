@@ -53,7 +53,7 @@ export PATH="$PATH:$HOME/.local/bin"
 
 export BUI_CURSOR="block"
 export BUI_OPACITY="0.9"
-export BUI_FONT_FAMILY="Iosevka Extended"
+export BUI_FONT_FAMILY="B Mono"
 export BUI_FONT_SIZE="12.0"
 export BUI_BORDER_SIZE="2.0"
 export BUI_GAPS_SIZE="16.0"

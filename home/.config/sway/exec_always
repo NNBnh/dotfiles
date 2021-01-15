@@ -32,16 +32,6 @@ swaymsg focus_wrapping      no
 $SWAY_DIR/bmap
 
 
-xdg-user-dirs-update --set DESKTOP "$XDG_DESKTOP_DIR"
-xdg-user-dirs-update --set DOCUMENTS "$XDG_DOCUMENTS_DIR"
-xdg-user-dirs-update --set DOWNLOAD "$XDG_DOWNLOAD_DIR"
-xdg-user-dirs-update --set MUSIC "$XDG_MUSIC_DIR"
-xdg-user-dirs-update --set PICTURES "$XDG_PICTURES_DIR"
-xdg-user-dirs-update --set PUBLICSHARE "$XDG_PUBLICSHARE_DIR"
-xdg-user-dirs-update --set TEMPLATES "$XDG_TEMPLATES_DIR"
-xdg-user-dirs-update --set VIDEOS "$XDG_VIDEOS_DIR"
-
-
 gsettings set org.gnome.desktop.interface gtk-theme  'Matcha-dark-aliz'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
 gsettings set org.gnome.desktop.interface font-name  "$BUI_FONT_FAMILY ${BUI_FONT_SIZE%%.*}"
