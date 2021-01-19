@@ -52,9 +52,12 @@ export PATH="$PATH:$HOME/.local/bin"
 # =============================================================================
 
 export BUI_CURSOR="block"
+export BUI_CURSOR_BLINK="true"
 export BUI_OPACITY="0.9"
-export BUI_FONT_FAMILY="B Mono"
-export BUI_FONT_SIZE="12.0"
+export BUI_FONT_MONO_FAMILY="Bmono"
+export BUI_FONT_MONO_SIZE="12.0"
+export BUI_FONT_FAMILY="$BUI_FONT_MONO_FAMILY"
+export BUI_FONT_SIZE="$BUI_FONT_MONO_SIZE"
 export BUI_BORDER_SIZE="2.0"
 export BUI_GAPS_SIZE="16.0"
 

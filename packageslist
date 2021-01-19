@@ -15,7 +15,8 @@
 # =============================================================================
 
 ### Core
-  APT:lightdm                     PAC:lightdm                     XBP:lightdm                   #C Login managers
+  APT:lightdm                     PAC:lightdm                     XBP:lightdm                   #T Login managers
+  APT:light-locker                PAC:light-locker                XBP:light-locker              #T Lock screen support for login managers
                                   AUR:sway                        XBP:sway                      #C Windows managers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#window-managers)
   APT:xwayland                    PAC:xorg-xwayland               XBP:xorg-server-xwayland      #  Xwayland backend
 
@@ -36,8 +37,9 @@
                                   AUR:ydotool                     XBP:ydotool                   #  Send inputs with shell
 
 ### User interface
-  APT:waybar                      PAC:waybar                      XBP:waybar                    #  Bar
-  APT:yad                         PAC:yad                         XBP:yad                       #  Graphical dialogs
+  APT:waybar                      PAC:waybar                      XBP:waybar                    #C Bar
+  APT:yad                         PAC:yad                         XBP:yad                       #C Graphical dialogs
+                                  PAC:swaylock                    XBP:swaylock                  #C Lock screen
 
 ### Notification
   APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                 #  Notification library
@@ -48,10 +50,6 @@
   APT:slurp                       PAC:slurp                       XBP:slurp                     #  Screen region selector
                                   PAC:wf-recorder                 XBP:wf-recorder               #  Screen record
 
-### Power Managers
-                                  PAC:swayidle                    XBP:swayidle                  #  Idle management
-                                  PAC:swaylock                    XBP:swaylock                  #C Lock screen
-
 ### Resource
                                   PAC:ttf-sarasa-gothic           XBP:font-sarasa-gothic        #  Non Latin support for font
                                   AUR:ttf-twemoji                 XBP:twemoji                   #  Emoji support for font
@@ -60,6 +58,7 @@
 ### Other
   APT:xdg-utils                   PAC:xdg-utils                   XBP:xdg-utils                 #  Applications managers
   APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard              #  Clipboard managers
+                                  PAC:swayidle                    XBP:swayidle                  #  Idle management
 
 
 # =============================================================================
@@ -70,7 +69,6 @@
   APT:fish                        PAC:fish                        XBP:fish-shell                #C Main shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#shell)
   APT:bash                        PAC:bash                        XBP:bash                      #  Legacy shell
   APT:python                      PAC:python                      XBP:python                    #  Handy programming language
-  APT:nim                         PAC:nim                         XBP:nim                       #  Cool programming language
                                   AUR:starship-bin                XBP:starship                  #  Shell prompt
   APT:fzf                         PAC:fzf                         XBP:fzf                       #C Fuzzy finder (WH.I.CH https://github.com/NNBnh/dots/wiki/which#finder)
                                   PAC:abduco                      XBP:abduco                    #  Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
@@ -81,7 +79,7 @@
 
 ### Tranfer
   APT:rsync                       PAC:rsync                       XBP:rsync                     #  Sync files
-  APT:stow                        PAC:stow                        XBP:stow                      #C Symlink files (for SuperB Bootstrap https://github.com/NNBnh/superb-bootstrap#installation-process)
+  APT:stow                        PAC:stow                        XBP:stow                      #R Symlink files (for SuperB Bootstrap https://github.com/NNBnh/superb-bootstrap#installation-process)
   APT:curl                        PAC:curl                        XBP:curl                      #  Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
   APT:aria2                       PAC:aria2                       XBP:aria2                     #  Download managers
   APT:git                         PAC:git                         XBP:git                       #  Version control system
