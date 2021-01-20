@@ -79,7 +79,6 @@
 
 ### Tranfer
   APT:rsync                       PAC:rsync                       XBP:rsync                     #  Sync files
-  APT:stow                        PAC:stow                        XBP:stow                      #R Symlink files (for SuperB Bootstrap https://github.com/NNBnh/superb-bootstrap#installation-process)
   APT:curl                        PAC:curl                        XBP:curl                      #  Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
   APT:aria2                       PAC:aria2                       XBP:aria2                     #  Download managers
   APT:git                         PAC:git                         XBP:git                       #  Version control system

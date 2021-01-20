@@ -18,17 +18,18 @@ DOTS=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
 . "$DOTS/home/.config/env" # Get my environment variables
 
-bawkpack_location="$DOTS/extra/bawkpack"
+bawkpack_path="$DOTS/extra/bawkpack"
+bsymlink_path="$DOTS/extra/bsymlink"
 
 
 # Install packages
-curl -fsSL 'https://raw.githubusercontent.com/NNBnh/superb-bootstrap/master/extra/bawkpack' --create-dirs --output "$bawkpack_location" && chmod +x "$bawkpack_location" # Update/download bawkpack
-"$bawkpack_location" "$DOTS/packageslist"
+curl -fsSL 'https://raw.githubusercontent.com/NNBnh/superb-bootstrap/master/extra/bawkpack' --create-dirs --output "$bawkpack_path" && chmod +x "$bawkpack_path" # Update/download bawkpack
+"$bawkpack_path" "$DOTS/packageslist"
 
 
 # Before symlink
 	# Create directories (to only symlink files inside, not the directory)
-	mkdir "$HOME/.config" "$HOME/.config/fcitx" "$HOME/.config/fish" "$HOME/.config/kak" "$HOME/.config/retroarch" \
+	mkdir "$HOME/.config" "$HOME/.config/fcitx" "$HOME/.config/kak" "$HOME/.config/retroarch" \
 	      "$HOME/.local" "$HOME/.local/bin" "$HOME/.local/share" \
 	      "$HOME/.cache"
 
@@ -38,8 +39,8 @@ curl -fsSL 'https://raw.githubusercontent.com/NNBnh/superb-bootstrap/master/extr
 
 
 # Symlink dotfiles
-stow -vt ~ home
-sudo stow -vt / root
+"$bsymlink_path" "$DOTS/home" "$HOME"
+sudo "$bsymlink_path" "$DOTS/root" '/'
 
 
 # After symlink
