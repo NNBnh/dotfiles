@@ -154,6 +154,7 @@ export BROWSER="firefox"
 
 export EXA_DEFAULT_OPTS="--all --group-directories-first --long --header --git --colour='always'"
 export ABDUCO_CMD="$SHELL"
+export ABDUCO_SOCKET_DIR="$TMPDIR"
 export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
 export BFETCH_PROMPT_HEIGHT="3"
 

@@ -23,7 +23,7 @@
 ### Screen
   APT:brightnessctl               PAC:brightnessctl               XBP:brightnessctl             #  Screen backlight
                                   PAC:gammastep                   XBP:gammastep                 #  Blue light filter (F.lux alternative for linux)
-                                  PAC:swaybg                      XBP:swaybg                    #  Wallpaper
+                                  PAC:swaybg                      XBP:swaybg                    #? Wallpaper
 
 ### Audio
   APT:alsa-utils                  PAC:alsa-utils                  XBP:alsa-utils                #  Sound server
@@ -43,7 +43,7 @@
 
 ### Notification
   APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                 #  Notification library
-                                  PAC:mako                        XBP:mako                      #  Notification daemon
+                                  PAC:mako                        XBP:mako                      #? Notification daemon
 
 ### Screen capture
   APT:grim                        PAC:grim                        XBP:grim                      #  Screenshot
@@ -58,7 +58,7 @@
 ### Other
   APT:xdg-utils                   PAC:xdg-utils                   XBP:xdg-utils                 #  Applications managers
   APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard              #  Clipboard managers
-                                  PAC:swayidle                    XBP:swayidle                  #  Idle management
+                                  PAC:swayidle                    XBP:swayidle                  #? Idle management
 
 
 # =============================================================================

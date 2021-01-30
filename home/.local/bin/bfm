@@ -45,7 +45,7 @@ DIRECTORY="${1:-$PWD}"
 PID="${2:-$$}"
 PREVIEW="$3"
 
-TEMPORARY="${BFM_TEMPORARY:-$TMPDIR/bfm}_$PID"
+TEMPORARY="${BFM_TEMPORARY:-$TMPDIR/bfm}/$PID"
 
 
 # Funtions
