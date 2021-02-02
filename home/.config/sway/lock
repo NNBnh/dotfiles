@@ -4,7 +4,7 @@
 # Values
 . "$HOME/.config/env"
 
-OPTIONS="$@"
+OPTIONS="$*"
 
 OPACITY_DEC=$(echo "$BUI_OPACITY * 100" | bc)
 OPACITY=$(echo "obase=16; ${OPACITY_DEC%%.*} * 256/100" | bc)

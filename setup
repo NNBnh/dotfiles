@@ -18,10 +18,10 @@ DOTS=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
 . "$DOTS/home/.config/env" # Get my environment variables
 
-BAWKPACK_PATH="$DOTS/home/.local/bawkpack"
-BSYMLINK_PATH="$DOTS/home/.local/bsymlink"
+BAWKPACK_PATH="$DOTS/home/.local/bin/bawkpack"
+BSYMLINK_PATH="$DOTS/home/.local/bin/bsymlink"
 
-STEPS="${@:-install extra before symlink after}"
+STEPS="${*:-install extra before symlink after}"
 
 
 # Functions
@@ -32,6 +32,12 @@ install_packages() {
 install_packages_extra() {
 	# Python packages
 	pip install --upgrade 'auto-editor' 'git+https://github.com/will8211/unimatrix.git'
+
+	# ClipB
+	git clone 'https://github.com/NNBnh/clipb.git' "$XDG_DATA_HOME/clipb" && ln -fs "$XDG_DATA_HOME/clipb/clipb" "$HOME/.local/bin/"
+
+	# Terminal Explorer
+	git clone 'https://github.com/NNBnh/terminal-explorer.git' "$XDG_DATA_HOME/terminal-explorer" && ln -fs "$XDG_DATA_HOME/terminal-explorer/te" "$HOME/.local/bin/"
 
 	# BUI terminal
 	git clone 'https://github.com/NNBnh/bui-terminal.git' "$XDG_DATA_HOME/bui-terminal" && ln -fs "$XDG_DATA_HOME/bui-terminal/bui-terminal" "$HOME/.local/bin/"
@@ -54,9 +60,16 @@ install_packages_extra() {
 	# Figlet fonts
 	git clone 'https://github.com/xero/figlet-fonts.git' "$XDG_DATA_HOME/figlet/fonts"
 
-	# Git enhancements
+	# Git alias
 	curl -fsSL 'https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt' --create-dirs --output "$XDG_DATA_HOME/git/gitalias.txt"
-	curl -fsSL 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json' --create-dirs --output "$XDG_DATA_HOME/git/gitmojis.json"
+
+	# Charater picker
+	mkdir -p "$XDG_DATA_HOME/charaters"
+	curl -fsSL 'https://www.unicode.org/Public/emoji/13.1/emoji-test.txt' | sed -e 's/ E[0-9.]*/:/g' -ne 's/^.*fully-qualified *# //p' > "$XDG_DATA_HOME/charaters/emoji"
+	curl -fsSL 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json' | jq --raw-output '.gitmojis[] | [.emoji, .description] | join(": ")' > "$XDG_DATA_HOME/charaters/gitmoji"
+
+	# Adblock
+	curl -fsSL 'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts' --create-dirs --output "$TMPDIR/hosts" && printf '%s' "127.0.1.1 $(hostname)" >> "$TMPDIR/hosts" && sudo mv "$TMPDIR/hosts" '/etc/hosts'
 }
 
 symlink_dotfiles() {
@@ -86,7 +99,6 @@ after_symlink() {
 
 	# Enable firewall
 	sudo ufw enable
-
 	# Firefox CSS
 	for profile in $HOME/.mozilla/firefox/*.default-release; do
 		ln -fs "$DOTS/extra/firefox/chrome" "$profile/"

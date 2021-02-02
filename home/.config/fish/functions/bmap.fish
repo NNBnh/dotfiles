@@ -134,6 +134,7 @@ function bmap --description 'Fish key-mapping that SuperB'
 	bind --preset \eh pager-toggle-search
 
 	bind --preset \ey "commandline --insert (echo ($FINDER --multi)); commandline --function repaint"
+	bind --preset \eY "commandline --insert (echo (chpick));          commandline --function repaint"
 
 	bind --preset \es edit_command_buffer
 

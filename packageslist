@@ -15,9 +15,9 @@
 # =============================================================================
 
 ### Core
-  APT:lightdm                     PAC:lightdm                     XBP:lightdm                   #T Login managers
-  APT:light-locker                PAC:light-locker                XBP:light-locker              #T Lock screen support for login managers
-                                  AUR:sway                        XBP:sway                      #C Windows managers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#window-managers)
+  APT:lightdm                     PAC:lightdm                     XBP:lightdm                   #T Login manager
+  APT:light-locker                PAC:light-locker                XBP:light-locker              #T Lock screen support for login manager
+                                  AUR:sway                        XBP:sway                      #C Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#window-managers)
   APT:xwayland                    PAC:xorg-xwayland               XBP:xorg-server-xwayland      #  Xwayland backend
 
 ### Screen
@@ -37,13 +37,10 @@
                                   AUR:ydotool                     XBP:ydotool                   #  Send inputs with shell
 
 ### User interface
-  APT:waybar                      PAC:waybar                      XBP:waybar                    #C Bar
-  APT:yad                         PAC:yad                         XBP:yad                       #C Graphical dialogs
-                                  PAC:swaylock                    XBP:swaylock                  #C Lock screen
-
-### Notification
-  APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                 #  Notification library
-                                  PAC:mako                        XBP:mako                      #? Notification daemon
+  APT:waybar                      PAC:waybar                      XBP:waybar                    #X Bar
+  APT:yad                         PAC:yad                         XBP:yad                       #X Graphical dialogs
+                                  PAC:swaylock                    XBP:swaylock                  #X Lock screen
+                                  PAC:mako                        XBP:mako                      #X Notification daemon
 
 ### Screen capture
   APT:grim                        PAC:grim                        XBP:grim                      #  Screenshot
@@ -56,8 +53,9 @@
   APT:papirus-icon-theme          PAC:papirus-icon-theme          XBP:papirus-icon-theme        #  Icon set that support nearly every app
 
 ### Other
-  APT:xdg-utils                   PAC:xdg-utils                   XBP:xdg-utils                 #  Applications managers
-  APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard              #  Clipboard managers
+  APT:xdg-utils                   PAC:xdg-utils                   XBP:xdg-utils                 #  Applications manager
+  APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                 #  Notification library
+  APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard              #  Clipboard manager
                                   PAC:swayidle                    XBP:swayidle                  #? Idle management
 
 
@@ -80,12 +78,13 @@
 ### Tranfer
   APT:rsync                       PAC:rsync                       XBP:rsync                     #  Sync files
   APT:curl                        PAC:curl                        XBP:curl                      #  Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
-  APT:aria2                       PAC:aria2                       XBP:aria2                     #  Download managers
+  APT:aria2                       PAC:aria2                       XBP:aria2                     #  Download manager
   APT:git                         PAC:git                         XBP:git                       #  Version control system
   APT:youtube-dl                  PAC:youtube-dl                  XBP:youtube-dl                #  Download media
+  APT:trash-cli                   PAC:trash-cli                   XBP:trash-cli                 #  Trash manager
 
 ### Utilitie
-  APT:xdg-user-dirs               PAC:xdg-user-dirs               XBP:xdg-user-dirs             #  XDG directory managers
+  APT:xdg-user-dirs               PAC:xdg-user-dirs               XBP:xdg-user-dirs             #  XDG directory manager
   APT:fd-find                     PAC:fd                          XBP:fd                        #  Find files
   APT:ripgrep                     PAC:ripgrep                     XBP:ripgrep                   #  Find regex
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate              #  Calculator
@@ -97,9 +96,9 @@
 
 ### Files
                                   PAC:exa                         XBP:exa                       #C Directory preview
-                                  PAC:bat                         XBP:bat                       #  Files preview
+                                  PAC:bat                         XBP:bat                       #C Files preview
   APT:chafa                       PAC:chafa                       XBP:chafa                     #  Image preview
-  APT:kakoune                     PAC:kakoune                     XBP:kakoune                   #  Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
+  APT:kakoune                     PAC:kakoune                     XBP:kakoune                   #C Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
 
 ### Formats
   APT:p7zip                       PAC:p7zip                       XBP:p7zip                     #  Files archive
@@ -109,9 +108,9 @@
 
 ### Other
   APT:figlet                      PAC:figlet                      XBP:figlet                    #  Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
-  APT:lolcat                      PAC:lolcat                      XBP:lolcat-c                  #  Make outputs RGB
+  APT:lolcat                      PAC:lolcat                      XBP:lolcat-c                  #X Make outputs RGB
                                   AUR:no-more-secrets             XBP:no-more-secrets           #  Become a hackerman (Make outputs Minecraft enchanting table language)
-                                  AUR:cava                        XBP:cava                      #  Audio visualizer
+                                  AUR:cava                        XBP:cava                      #X Audio visualizer
 
 
 # =============================================================================
@@ -120,7 +119,7 @@
 
 ### Files
   APT:kitty                       PAC:kitty                       XBP:kitty                     #C Terminal emulator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
-  APT:nemo                        PAC:nemo                        XBP:nemo                      #  Files managers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#files-managers)
+  APT:nemo                        PAC:nemo                        XBP:nemo                      #  Files manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#files-managers)
   APT:imv                         PAC:imv                         XBP:imv                       #  Image viewer (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-viewer)
   APT:mpv                         PAC:mpv                         XBP:mpv                       #  Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
   APT:firefox                     PAC:firefox                     XBP:firefox                   #  Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
@@ -131,7 +130,7 @@
   APT:godot3                      AUR:godot-bin                   XBP:godot                     #  Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
 
 ### Games
-                                  PAC:lutris                      XBP:lutris                    #  Games managers
+                                  PAC:lutris                      XBP:lutris                    #  Games manager
                                   PAC:steam                       XBP:steam                     #  Gamer mode
   APT:retroarch                   PAC:retroarch                   XBP:retroarch                 #  Retro emulators
-                                  AUR:multimc5                    XBP:MultiMC                   #  Minecraft launcher and instance managers
+                                  AUR:multimc5                    XBP:MultiMC                   #  Minecraft launcher and instance manager

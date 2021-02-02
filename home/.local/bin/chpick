@@ -1,0 +1,41 @@
+#!/bin/sh
+
+#    ________  __      _      __
+#   / ____/ / / /___  (_)____/ /__
+#  / /   / /_/ / __ \/ / ___/ //_/
+# / /___/ __  / /_/ / / /__/ ,<
+# \____/_/ /_/ .___/_/\___/_/|_|
+#           /_/
+
+# File:         chpick
+# Description:  Charater picker
+# Author:       NNB
+#               └─ https://github.com/NNBnh
+# URL:          https://github.com/NNBnh/dots/blob/master/home/.local/bin/chpick
+# License:      GPLv3
+
+
+# Values
+FINDER="${FINDER:-fzf}"
+CHARATERS_PATH="${CHPICK_CHARATERS_PATH:-${XDG_DATA_HOME:-$HOME/.local/share}/charaters}"
+
+CHARATERS_LIST="${1:-$(ls "$CHARATERS_PATH" | sed -e 's/^[[:lower:]]/\U&/g'  | eval "$FINDER --no-multi --preview-window='hidden'" | sed -e 's/[[:upper:]]/\L&/g' )}"
+
+
+# Functions
+charater_pick() {
+	cat "$CHARATERS_PATH/$CHARATERS_LIST" | eval "$FINDER --no-multi --preview-window='hidden'" | sed -e 's/^\(.\).*/\1/;q'
+}
+
+
+# Start
+[ ! -f "$CHARATERS_PATH/$CHARATERS_LIST" ] && exit 1
+
+if [ -t '1' ]; then
+	charater_pick  | tee '/dev/tty' | clipb copy
+else
+	charater_pick
+fi
+
+
+exit 0

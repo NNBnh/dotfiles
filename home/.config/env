@@ -57,7 +57,7 @@ export BUI_OPACITY="0.9"
 export BUI_FONT_MONO_FAMILY="Bmono"
 export BUI_FONT_MONO_SIZE="12.0"
 export BUI_FONT_FAMILY="$BUI_FONT_MONO_FAMILY"
-export BUI_FONT_SIZE="$BUI_FONT_MONO_SIZE"
+export BUI_FONT_SIZE="10.0"
 export BUI_BORDER_SIZE="2.0"
 export BUI_GAPS_SIZE="16.0"
 
@@ -168,6 +168,10 @@ export QT_IM_MODULE="fcitx"
 export SDL_IM_MODULE="fcitx"
 export XMODIFIERS="@im=fcitx"
 
+### Fcitx
+export TERMINALEXPLORER_COPY_COMMAND="rsync --recursive --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1"
+export TERMINALEXPLORER_CUT_COMMAND="rsync --recursive --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1 --remove-source-files"
+
 ### FZF
 export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git'"
 export FZF_DEFAULT_OPTS="--height='24'
@@ -234,7 +238,7 @@ export FZF_DEFAULT_OPTS="--height='24'
                          --bind='alt-f:abort'
                          --bind='alt-x:backward-delete-char'"
 
-### FZF
+### BFM
 export BFM_LIST="bls"
 export BFM_RAW="bls true"
 export BFM_FINDER="fzf"

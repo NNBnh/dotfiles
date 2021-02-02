@@ -8,8 +8,9 @@
 [alias]
 	a     = "add"
 	aa    = "add --all"
-	c     = !"printf 'Message: '; read -r gitmoji_message; gitmoji=$(jq --raw-output '.gitmojis[] | [.emoji, .description] | join(\": \")' ~/.local/share/git/gitmojis.json | $FINDER --header=\"$gitmoji_message\" --no-multi --preview-window='hidden' | sed 's/^\\(.\\).*/\\1/;q'); git commit --message \"$gitmoji $gitmoji_message $gitmoji\" $@"
+	c     = "commit"
+	cm    = "commit --message"
 	pull1 = !"git pull origin $(git branch-name)"
 	push1 = !"git push origin $(git branch-name)"
 	pulsh = !"git pull1; git push1"
-	pushq = !"git add --all; git c; git pulsh"
+	pushq = !"git-pushq"

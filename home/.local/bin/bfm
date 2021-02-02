@@ -31,21 +31,17 @@
 # Values
 TMPDIR="${TMPDIR:-/tmp}"
 
-LIST="${BFM_LIST:-ls -1}"
-RAW="${BFM_RAW:-$LIST}"
-
-FINDER="${BFM_FINDER:-fzf}"
-
-OPENER="${BFM_OPENER:-xdg-open}"
-PREVIEWER="${BFM_PREVIEWER:-$LIST}"
-
-OPTIONS=$(echo $BFM_OPTIONS)
-
 DIRECTORY="${1:-$PWD}"
 PID="${2:-$$}"
 PREVIEW="$3"
 
 TEMPORARY="${BFM_TEMPORARY:-$TMPDIR/bfm}/$PID"
+OPTIONS="$BFM_OPTIONS"
+LIST="${BFM_LIST:-ls -1}"
+RAW="${BFM_RAW:-$LIST}"
+FINDER="${BFM_FINDER:-fzf}"
+OPENER="${BFM_OPENER:-xdg-open}"
+PREVIEWER="${BFM_PREVIEWER:-$LIST}"
 
 
 # Funtions
@@ -73,16 +69,16 @@ else
 
 	echo '.' > "$TEMPORARY/selections"
 
-	while [ -n "$(< "$TEMPORARY/selections")" ]; do
+	while [ -n "$(cat "$TEMPORARY/selections")" ]; do
 		script --quiet /dev/null --command "$LIST" > "$TEMPORARY/list"
 		eval "$RAW" | sed -e 's/\x1B\[[0-9;]*[JKmsu]//g' > "$TEMPORARY/raw"
 		sed -e 's/\x1B\[[0-9;]*[JKmsu]//g' "$TEMPORARY/list" > "$TEMPORARY/match"
-		printf '%s' "$(< "$TEMPORARY/list")" | eval "$FINDER --ansi --multi --header=\"\$PWD\" --preview=\"$0 '.' '$PID' {}\" $OPTIONS" > "$TEMPORARY/selections"
+		printf '%s' "$(cat "$TEMPORARY/list")" | eval "$FINDER --ansi --multi --header=\"\$PWD\" --preview=\"$0 '.' '$PID' {}\" $OPTIONS" > "$TEMPORARY/selections"
 
 		while IFS= read -r selection || [ -n "$selection" ]; do
 			file=$(match_check "$selection")
 
-			cd "$file" &>/dev/null || eval "$OPENER \"$file\" &>/dev/null &"
+			cd "$file" >/dev/null 2>&1 || eval "$OPENER \"$file\" >/dev/null 2>&1 &"
 		done < "$TEMPORARY/selections"
 	done
 

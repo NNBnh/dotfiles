@@ -46,7 +46,7 @@
 
 	# Effect
 	case "$2" in
-		'r'|'l'|'rainbow'|'lolcat') EFFECT="lolcat"       ;;
+		'r'|'l'|'rainbow'|'lolcat') EFFECT="lolcat"                                      ;;
 		'd'|'n'|'decrypt'|'nms')    EFFECT="sed -e 's/\x1B\[[0-9;]*[JKmsu]//g' | nms -a" ;;
 	esac
 

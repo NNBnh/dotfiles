@@ -31,22 +31,16 @@ swaymsg focus_wrapping      no
 
 $SWAY_DIR/bmap
 
-
-gsettings set org.gnome.desktop.interface gtk-theme  'Matcha-dark-aliz'
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-gsettings set org.gnome.desktop.interface font-name  "$BUI_FONT_FAMILY ${BUI_FONT_SIZE%%.*}"
-
-
 swaybg --mode fill --image "$XDG_DATA_HOME/wallpapers/johnn21/brown-wooden-table-and-chairs-near-white-concrete-building-during-daytime.jpg" &
 
 killall -p waybar; waybar &
 
 killall -p mako; mako --max-visible='8' \
-                      --default-timeout='3000' \
+                      --default-timeout '3000' \
                       --anchor "top-right" \
                       --font "$BUI_FONT_FAMILY ${BUI_FONT_SIZE%%.*}" \
-                      --margin="$(( ${BUI_GAPS_SIZE%%.*} - ( ${BUI_BORDER_SIZE%%.*} * 2 ) ))" \
-                      --padding="$(( ${BUI_GAPS_SIZE%%.*} - ( ${BUI_BORDER_SIZE%%.*} * 2 ) ))" \
+                      --margin "$(( ${BUI_GAPS_SIZE%%.*} - ( ${BUI_BORDER_SIZE%%.*} * 2 ) ))" \
+                      --padding "$(( ${BUI_GAPS_SIZE%%.*} - ( ${BUI_BORDER_SIZE%%.*} * 2 ) ))" \
                       --border-size "${BUI_BORDER_SIZE%%.*}" \
                       --text-color "$BUI_COLOR_FOREGROUND" \
                       --background-color "$BUI_COLOR_BACKGROUND" \
@@ -54,8 +48,9 @@ killall -p mako; mako --max-visible='8' \
                       --progress-color "$BUI_COLOR_CURSOR" &
 
 killall -p swayidle; swayidle -w before-sleep "$SWAY_DIR/lock --daemonize" \
-            timeout $(( 15 * 60 )) "$SWAY_DIR/lock --daemonize; swaymsg 'output * dpms off'" \
-            resume "swaymsg 'output * dpms on'" &
+                                      timeout $(( 15 * 60 )) "swaymsg 'output * dpms off'" \
+                                      timeout $(( 20 * 60 )) "$SWAY_DIR/lock --daemonize" \
+                                       resume "swaymsg 'output * dpms on'" &
 
 
 exit 0

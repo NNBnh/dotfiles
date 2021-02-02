@@ -3,8 +3,8 @@
 
 # Values
 COLOR="${BUI_COLOR_TEXTART:-32}"
-OS=$($XDG_DATA_HOME/fetchutils/src/os.sh 2>&1 | sed 's/^[[:lower:]]/\U&/g'); [ -n "$OS" ] && [ "${#OS}" -gt '16' ] && OS='Void Linux'
-WM=$($XDG_DATA_HOME/fetchutils/src/wm.sh 2>&1 | sed 's/^[[:lower:]]/\U&/g'); [ -n "$WM" ] && [ "${#WM}" -gt '16' ] && WM='Sway'
+OS=$("$XDG_DATA_HOME"/fetchutils/src/os.sh 2>&- | sed -e 's/^[[:lower:]]/\U&/g'); [ -n "$OS" ] && [ "${#OS}" -gt '16' ] && OS='Void Linux'
+WM=$("$XDG_DATA_HOME"/fetchutils/src/wm.sh 2>&- | sed -e 's/^[[:lower:]]/\U&/g'); [ -n "$WM" ] && [ "${#WM}" -gt '16' ] && WM='Sway'
 SHELL=$(basename "$SHELL" | sed 's/^[[:lower:]]/\U&/g')
 TERMINAL=$(basename "$TERMINAL" | sed 's/^[[:lower:]]/\U&/g')
 FONT="$BUI_FONT_FAMILY"

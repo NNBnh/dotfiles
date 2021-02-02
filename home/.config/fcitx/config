@@ -27,7 +27,7 @@ UseExtraTriggerKeyOnlyWhenUseItToInactivate=False
 # Super+Right Ctrl
 # Disabled
 # Custom
-#SwitchKey=L_SHIFT
+SwitchKey=Disabled
 # Custom switch key
 #CustomSwitchKey=
 # Activate input method

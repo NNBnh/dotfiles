@@ -1,0 +1,14 @@
+#!/bin/sh
+
+
+# Values
+. "$HOME/.config/env"
+
+
+# Start
+gsettings set org.gnome.desktop.interface gtk-theme  'Matcha-dark-aliz'
+gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+gsettings set org.gnome.desktop.interface font-name  "$BUI_FONT_FAMILY ${BUI_FONT_SIZE%%.*}"
+
+
+exit 0

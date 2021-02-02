@@ -165,9 +165,9 @@ swaymsg bindsym Mod4+Alt+Slash split toggle
 
 swaymsg bindsym Mod4+x kill
 
-swaymsg bindsym Mod4+c      exec "$SWAY_DIR/screenyb output"
-swaymsg bindsym Mod4+Ctrl+c exec "$SWAY_DIR/screenyb region"
-swaymsg bindsym Mod4+Alt+c  exec "$SWAY_DIR/screenyb color"
+swaymsg bindsym Mod4+c      exec "screeny output"
+swaymsg bindsym Mod4+Ctrl+c exec "screeny region"
+swaymsg bindsym Mod4+Alt+c  exec "screeny color"
 
 swaymsg bindsym Mod4+v exec "fcitx-remote -t"
 
