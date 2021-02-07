@@ -20,11 +20,11 @@ FINDER="${FINDER:-fzf}"
 CHARATERS_PATH="${CHPICK_CHARATERS_PATH:-${XDG_DATA_HOME:-$HOME/.local/share}/charaters}"
 
 CHARATERS_LIST="${1:-$(ls "$CHARATERS_PATH" | sed -e 's/^[[:lower:]]/\U&/g'  | eval "$FINDER --no-multi --preview-window='hidden'" | sed -e 's/[[:upper:]]/\L&/g' )}"
-
+COPY_COMMAND="${CHPICK_COPY_COMMAND:-clipb copy}"
 
 # Functions
 charater_pick() {
-	cat "$CHARATERS_PATH/$CHARATERS_LIST" | eval "$FINDER --no-multi --preview-window='hidden'" | sed -e 's/^\(.\).*/\1/;q'
+	cat "$CHARATERS_PATH/$CHARATERS_LIST" | eval "$FINDER --no-multi --preview-window='hidden'" | sed -e 's/:.*//g'
 }
 
 
@@ -32,7 +32,7 @@ charater_pick() {
 [ ! -f "$CHARATERS_PATH/$CHARATERS_LIST" ] && exit 1
 
 if [ -t '1' ]; then
-	charater_pick  | tee '/dev/tty' | clipb copy
+	charater_pick  | tee '/dev/tty' | eval "$COPY_COMMAND"
 else
 	charater_pick
 fi

@@ -31,22 +31,39 @@
 # Values
 MODE="${1:-output}"
 
-SAVE_PATH="${SCREENY_SAVE_PATH:-${XDG_PICTURES_DIR:-~}/screenshot_%Y-%m-%d_%H-%M-%S}"
-TYPE="${SCREENY_TYPE:-png}"
+SAVE_PATH="${SCREENY_SAVE_PATH:-${XDG_PICTURES_DIR:-~}/screeny_%Y-%m-%d_%H-%M-%S}"
+TYPE_IMAGE="${SCREENY_TYPE_IMAGE:-png}"
+TYPE_VIDEO="${SCREENY_TYPE_VIDEO:-mp4}"
 
-NAME=$(date +"$SAVE_PATH.$TYPE")
+NAME=$(date +"$SAVE_PATH")
+
+
+# Functions
+get_output() {
+	swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name'
+}
+
+get_select() {
+	swaymsg --type get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp
+}
 
 
 # Start
 case "$MODE" in
-	'output')
-		grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" -t "$TYPE" "$NAME"
+	'o'|'output')
+		grim -o "$(get_output)" -t "$TYPE_IMAGE" "$NAME.$TYPE_IMAGE"
 	;;
-	'region')
-		grim -g "$(swaymsg --type get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)" -t "$TYPE" "$NAME"
+	's'|'select')
+		grim -g "$(get_select)" -t "$TYPE_IMAGE" "$NAME.$TYPE_IMAGE"
 	;;
-	'color')
+	'c'|'color')
 		grim -g "$(slurp -p)" -t 'ppm' - | convert - -format '%[pixel:p{0,0}]' txt:- | clipb copy
+	;;
+	'O'|'record-output')
+		wf-recorder --audio --output "$(get_output)" -f "$NAME.$TYPE_VIDEO"
+	;;
+	'S'|'record-select')
+		wf-recorder --audio --geometry "$(get_select)" -f "$NAME.$TYPE_VIDEO"
 	;;
 esac
 

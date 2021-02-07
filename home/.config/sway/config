@@ -8,4 +8,9 @@ exec_always "$HOME/.config/autostart/exec_always"
 exec_always "$HOME/.config/sway/exec_always"
 
 
+input "type:keyboard" {
+	xkb_options caps:swapescape
+}
+
+
 include /etc/sway/config.d/*

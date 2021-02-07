@@ -8,5 +8,7 @@ playerctld daemon &
 
 fcitx -d &
 
+ydotoold &
+
 
 exit 0

@@ -2,6 +2,9 @@
 	name  = "NNB"
 	email = "nnbnh@protonmail.com"
 
+[color]
+	ui = 1
+
 [include]
 	path = "~/.local/share/git/gitalias.txt"
 
