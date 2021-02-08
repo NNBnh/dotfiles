@@ -9,7 +9,7 @@ Welcome to the `Đotfiles`:
 
 > ⬤ ⬤ ⬤
 
-The most **ambitious** dotfiles for unix system, configured with a high level of **optimization** for **simplicity** and **minimalism**.
+The *SuperB* dotfiles for unix system, configured with a high level of **optimization** for **simplicity** and **minimalism**.
 
 ## Contents
 - [About](#about)
@@ -18,7 +18,7 @@ The most **ambitious** dotfiles for unix system, configured with a high level of
 
 ## Installation
 
-`Đotfiles` use [*SuperB Bootstrap*](https://github.com/NNBnh/superb-bootstrap) to install, just download this repository then `cd dots` and execute `./setup`
+`Đotfiles` use [*SuperB Bootstrap*](https://github.com/NNBnh/superb-bootstrap) to install, just download this repository then execute `./dots/setup`
 
 ###### For more information look at the [wiki](https://github.com/NNBnh/dots/wiki)
 
