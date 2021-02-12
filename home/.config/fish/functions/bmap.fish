@@ -95,7 +95,8 @@ function bmap --description 'Fish key-mapping that SuperB'
 	bind --preset --key dc        delete-char
 	bind --preset --key sdc       backward-delete-char
 	bind --preset --key backspace backward-delete-char
-	bind --preset \e             backward-kill-word
+	bind --preset \b              backward-kill-word
+	bind --preset \e\x7F          backward-kill-word
 
 	bind --preset \e cancel
 
@@ -105,8 +106,8 @@ function bmap --description 'Fish key-mapping that SuperB'
 	bind --preset \e\r "commandline --insert \n"
 
 
-	bind --preset \cc __fish_cancel_commandline
-	bind --preset \cx fish_clipboard_copy
+	bind --preset \cx __fish_cancel_commandline
+	bind --preset \cc fish_clipboard_copy
 	bind --preset \cv fish_clipboard_paste
 	bind --preset \cr "echo -n (clear | string replace \e\\[3J \"\"); commandline --function repaint"
 	bind --preset \cd exit

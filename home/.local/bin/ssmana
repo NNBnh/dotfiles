@@ -1,0 +1,46 @@
+#!/bin/sh
+
+#    __________
+#   / ___/ ___/____ ___  ____ _____  ____ _
+#   \__ \\__ \/ __ `__ \/ __ `/ __ \/ __ `/
+#  ___/ /__/ / / / / / / /_/ / / / / /_/ /
+# /____/____/_/ /_/ /_/\__,_/_/ /_/\__,_/
+#
+
+# File:         ssmana
+# Description:  Session management
+# Author:       NNB
+#               └─ https://github.com/NNBnh
+# URL:          https://github.com/NNBnh/dots/blob/master/home/.local/bin/ssmana
+# License:      GPLv3
+
+
+# Values
+FINDER="${FINDER:-fzf}"
+SESSION_NAMING="${SSMANA_SESSION_NAMING:-ssmana_}"
+
+
+# Start
+selection='
+'
+
+while [ -n "$selection" ]; do
+	sessions=$(abduco | sed -e '1d')
+
+	selection=$(printf "${sessions:+$sessions\n}\033[1m+ New session\033[0m" | eval "$FINDER --no-multi --preview-window='hidden'")
+
+	if [ "$selection" = '+ New session' ]; then
+		i='0'
+
+		while true; do
+			abduco -c "$SESSION_NAMING$i" 2>&- && break
+
+			i=$(( i + 1 ))
+		done
+	elif [ -n "$selection" ]; then
+		abduco -a "$(printf '%s' "$selection" | sed -e 's/^.*[0-9-]* [0-9:]*[[:space:]]//')"
+	fi
+done
+
+
+exit 0

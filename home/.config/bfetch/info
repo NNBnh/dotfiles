@@ -7,7 +7,7 @@ OS=$("$XDG_DATA_HOME"/fetchutils/src/os.sh 2>&- | sed -e 's/^[[:lower:]]/\U&/g')
 WM=$("$XDG_DATA_HOME"/fetchutils/src/wm.sh 2>&- | sed -e 's/^[[:lower:]]/\U&/g'); [ -n "$WM" ] && [ "${#WM}" -gt '16' ] && WM='Sway'
 SHELL=$(basename "$SHELL" | sed 's/^[[:lower:]]/\U&/g')
 TERMINAL=$(basename "$TERMINAL" | sed 's/^[[:lower:]]/\U&/g')
-FONT="$BUI_FONT_FAMILY"
+FONT="$BUI_FONT_MONO_FAMILY"
 
 
 # Start

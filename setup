@@ -21,7 +21,7 @@ DOTS=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 BAWKPACK_PATH="$DOTS/home/.local/bin/bawkpack"
 BSYMLINK_PATH="$DOTS/home/.local/bin/bsymlink"
 
-STEPS="${*:-install extra before symlink after}"
+STEPS="${*:-install extra before symlink symroot after}"
 
 
 # Functions
@@ -33,55 +33,80 @@ install_packages_extra() {
 	# Python packages
 	pip install --upgrade 'auto-editor' 'git+https://github.com/will8211/unimatrix.git'
 
-	# ClipB
-	git clone 'https://github.com/NNBnh/clipb.git' "$XDG_DATA_HOME/clipb" && ln -fs "$XDG_DATA_HOME/clipb/clipb" "$HOME/.local/bin/"
-
-	# Terminal Explorer
-	git clone 'https://github.com/NNBnh/terminal-explorer.git' "$XDG_DATA_HOME/terminal-explorer" && ln -fs "$XDG_DATA_HOME/terminal-explorer/te" "$HOME/.local/bin/"
-
 	# BUI terminal
-	git clone 'https://github.com/NNBnh/bui-terminal.git' "$XDG_DATA_HOME/bui-terminal" && ln -fs "$XDG_DATA_HOME/bui-terminal/bui-terminal" "$HOME/.local/bin/"
+	git clone 'https://github.com/NNBnh/bui-terminal.git' "$XDG_DATA_HOME/bui-terminal" \
+	&& ln -fs "$XDG_DATA_HOME/bui-terminal/bui-terminal" "$HOME/.local/bin/"
 
 	# Bfetch
-	git clone 'https://github.com/NNBnh/bfetch.git' "$XDG_DATA_HOME/bfetch" && ln -fs "$XDG_DATA_HOME/bfetch/bfetch" "$HOME/.local/bin/"
+	git clone 'https://github.com/NNBnh/bfetch.git' "$XDG_DATA_HOME/bfetch" \
+	&& ln -fs "$XDG_DATA_HOME/bfetch/bfetch" "$HOME/.local/bin/"
 
 	# Fetchutils
 	git clone 'https://github.com/lptstr/fetchutils.git' "$XDG_DATA_HOME/fetchutils"
 
-	# Wallpapers
-	git clone 'https://github.com/NNBnh/wallpaper-collections.git' "$XDG_DATA_HOME/wallpapers"
+	# Terminal Explorer
+	git clone 'https://github.com/NNBnh/terminal-explorer.git' "$XDG_DATA_HOME/terminal-explorer" \
+	&& ln -fs "$XDG_DATA_HOME/terminal-explorer/te" "$HOME/.local/bin/"
 
-	# Textarts
-	git clone 'https://github.com/NNBnh/textart-collections.git' "$XDG_DATA_HOME/textart"
-
-	# Fonts
-	aria2c --dir "$TMPDIR" $(curl --silent --location 'https://api.github.com/repos/NNBnh/bmono/releases/latest' | grep -e '/bmono-ttf.zip' | cut -d '"' -f '4') && 7z x -o"$TMPDIR/" "$TMPDIR/bmono-ttf.zip" && mv "$TMPDIR/ttf/"* "$XDG_DATA_HOME/fonts/"
-
-	# Figlet fonts
-	git clone 'https://github.com/xero/figlet-fonts.git' "$XDG_DATA_HOME/figlet/fonts"
+	# ClipB
+	git clone 'https://github.com/NNBnh/clipb.git' "$XDG_DATA_HOME/clipb" \
+	&& ln -fs "$XDG_DATA_HOME/clipb/clipb" "$HOME/.local/bin/"
 
 	# Git alias
 	curl -fsSL 'https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt' --create-dirs --output "$XDG_DATA_HOME/git/gitalias.txt"
 
-	# Charater picker
-	mkdir -p "$XDG_DATA_HOME/charaters"
-	curl -fsSL 'https://www.unicode.org/Public/emoji/13.1/emoji-test.txt' | sed -e 's/ E[0-9.]*/:/g' -ne 's/^.*fully-qualified *# //p' > "$XDG_DATA_HOME/charaters/emoji"
-	curl -fsSL 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json' | jq --raw-output '.gitmojis[] | [.emoji, .description] | join(": ")' > "$XDG_DATA_HOME/charaters/gitmoji"
+	# MPV
+	curl -fsSL 'https://raw.githubusercontent.com/occivink/mpv-image-viewer/master/scripts/detect-image.lua'      > "$XDG_CONFIG_HOME/mpv/scripts/detect-image.lua"
+	curl -fsSL 'https://raw.githubusercontent.com/occivink/mpv-image-viewer/master/scripts/freeze-window.lua'     > "$XDG_CONFIG_HOME/mpv/scripts/freeze-window.lua"
+	curl -fsSL 'https://raw.githubusercontent.com/occivink/mpv-image-viewer/master/scripts/image-positioning.lua' > "$XDG_CONFIG_HOME/mpv/scripts/image-positioning.lua"
+	curl -fsSL 'https://raw.githubusercontent.com/occivink/mpv-image-viewer/master/scripts/ruler.lua'             > "$XDG_CONFIG_HOME/mpv/scripts/ruler.lua"
 
 	# Adblock
-	curl -fsSL 'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts' --create-dirs --output "$TMPDIR/hosts" && printf '%s' "127.0.1.1 $(hostname)" >> "$TMPDIR/hosts" && sudo mv "$TMPDIR/hosts" '/etc/hosts'
+	curl -fsSL 'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts' --create-dirs --output "$TMPDIR/hosts" \
+	&& printf '%s' "127.0.1.1 $(hostname)" >> "$TMPDIR/hosts" \
+	&& sudo mv "$TMPDIR/hosts" '/etc/hosts'
+
+	# Resource
+		# Textarts
+		git clone 'https://github.com/NNBnh/textart-collections.git' "$XDG_DATA_HOME/textart"
+
+		# Figlet fonts
+		git clone 'https://github.com/xero/figlet-fonts.git' "$XDG_DATA_HOME/figlet/fonts"
+
+		# Mono fonts
+		aria2c --dir "$TMPDIR" $(curl --silent --location 'https://api.github.com/repos/NNBnh/bmono/releases/latest' | grep -e '/bmono-ttf.zip' | cut -d '"' -f '4') \
+		&& 7z x -o"$TMPDIR/" "$TMPDIR/bmono-ttf.zip" \
+		&& mv "$TMPDIR/ttf/"* "$XDG_DATA_HOME/fonts/"
+
+		# Wallpapers
+		git clone 'https://github.com/NNBnh/wallpaper-collections.git' "$XDG_DATA_HOME/wallpapers"
+
+		# Mouse cursor
+		aria2c --dir "$TMPDIR" 'https://github.com/ful1e5/Bibata_Cursor/releases/download/v1.0.3/Bibata-Original-Ice.tar.gz' \
+		&& 7z x -o"$TMPDIR/" "$TMPDIR/Bibata-Original-Ice.tar.gz" \
+		&& 7z x -o"$TMPDIR/" "$TMPDIR/Bibata-Original-Ice.tar" \
+		&& mv "$TMPDIR/Bibata-Original-Ice" "$XDG_DATA_HOME/icons/"
+
+		# Charater picker
+		mkdir -p "$XDG_DATA_HOME/charaters"
+		curl -fsSL 'https://www.unicode.org/Public/emoji/13.1/emoji-test.txt' | sed -e 's/ E[0-9.]*/:/g' -ne 's/^.*fully-qualified *# //p' > "$XDG_DATA_HOME/charaters/emoji"
+		curl -fsSL 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json' | jq --raw-output '.gitmojis[] | [.emoji, .description] | join(": ")' > "$XDG_DATA_HOME/charaters/gitmoji"
 }
 
-symlink_dotfiles() {
-	     "$BSYMLINK_PATH" "$DOTS/home" "$HOME"
+symlink_home() {
+	"$BSYMLINK_PATH" "$DOTS/home" "$HOME"
+}
+
+symlink_root() {
 	sudo "$BSYMLINK_PATH" "$DOTS/root" '/'
 }
 
 before_symlink() {
 	# Create directories (to only symlink files inside, not the directory)
-	mkdir "$HOME/.config" "$HOME/.config/fcitx" "$HOME/.config/kak" "$HOME/.config/retroarch" \
-	      "$HOME/.local" "$HOME/.local/bin" "$HOME/.local/share" \
-	      "$HOME/.cache"
+	mkdir -p "$XDG_CONFIG_HOME/fcitx" "$XDG_CONFIG_HOME/kak" "$XDG_CONFIG_HOME/mpv/scripts" "$XDG_CONFIG_HOME/retroarch" \
+	         "$XDG_DATA_HOME/fonts" "$XDG_DATA_HOME/icons" "$XDG_DATA_HOME/charaters" \
+	         "$XDG_CACHE_HOME" \
+	         "$HOME/.local/bin"
 
 	# Remove junks (Spring cleaning your $HOME)
 	mkdir "$HOME/test"
@@ -102,7 +127,8 @@ after_symlink() {
 	# Firefox CSS
 	for profile in $HOME/.mozilla/firefox/*.default-release; do
 		ln -fs "$DOTS/extra/firefox/chrome" "$profile/"
-	done && echo 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
+	done \
+	&& echo 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
 }
 
 # Start
@@ -111,7 +137,8 @@ for step in $STEPS; do
 		'i'|'install') install_packages       ;;
 		'e'|'extra')   install_packages_extra ;;
 		'b'|'before')  before_symlink         ;;
-		's'|'symlink') symlink_dotfiles       ;;
+		's'|'symlink') symlink_home           ;;
+		'r'|'symroot') symlink_root           ;;
 		'a'|'after')   after_symlink          ;;
 		*)             exit 1                 ;;
 	esac

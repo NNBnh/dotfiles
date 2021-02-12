@@ -11,9 +11,8 @@
 # URL:          https://github.com/NNBnh/dots/blob/master/packageslist
 
 #C: Need config
-#S: Need script
 #T: TODO
-#E: TODO: Editor
+#E: TODO Editor
 #M: Maybe remove
 #X: Will remove
 
@@ -24,29 +23,25 @@
 ### Core
   APT:lightdm                     PAC:lightdm                     XBP:lightdm                   #C Login manager
   APT:light-locker                PAC:light-locker                XBP:light-locker              #C Lock screen support for login manager
+                                  PAC:swaylock                    XBP:swaylock                  #X Lock screen
                                   AUR:sway                        XBP:sway                      #T Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#window-managers)
   APT:xwayland                    PAC:xorg-xwayland               XBP:xorg-server-xwayland      #  Xwayland backend
 
 ### Screen
-  APT:brightnessctl               PAC:brightnessctl               XBP:brightnessctl             #S Screen backlight
+  APT:brightnessctl               PAC:brightnessctl               XBP:brightnessctl             #  Screen backlight
                                   PAC:gammastep                   XBP:gammastep                 #  Blue light filter (F.lux alternative for linux)
-                                  PAC:swaybg                      XBP:swaybg                    #S Wallpaper
+                                  PAC:swaybg                      XBP:swaybg                    #M Set wallpaper
 
 ### Audio
   APT:alsa-utils                  PAC:alsa-utils                  XBP:alsa-utils                #  Sound server
-  APT:pulseaudio                  PAC:pulseaudio                  XBP:pulseaudio                #S Sound server but better
-  APT:playerctl                   PAC:playerctl                   XBP:playerctl                 #S Control media
+  APT:pulseaudio                  PAC:pulseaudio                  XBP:pulseaudio                #  Sound server but better
+  APT:playerctl                   PAC:playerctl                   XBP:playerctl                 #  Control media
 
 ### Input
   APT:fcitx-im                    AUR:fcitx-im                    XBP:fcitx-im                  #  Input method
   APT:fcitx-unikey                AUR:fcitx-unikey                XBP:fcitx-unikey              #  Vietnamese support for input method
                                   AUR:sc-controller               XBP:sc-controller             #  Controller setting
-                                  AUR:ydotool                     XBP:ydotool                   #S Send inputs with shell
-
-### User interface
-  APT:waybar                      PAC:waybar                      XBP:waybar                    #X Bar
-  APT:yad                         PAC:yad                         XBP:yad                       #M Graphical dialogs
-                                  PAC:swaylock                    XBP:swaylock                  #X Lock screen
+                                  AUR:ydotool                     XBP:ydotool                   #M Send inputs
 
 ### Screen capture
   APT:grim                        PAC:grim                        XBP:grim                      #  Screenshot
@@ -62,6 +57,7 @@
   APT:xdg-utils                   PAC:xdg-utils                   XBP:xdg-utils                 #  Applications manager
   APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                 #  Notification library
   APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard              #  Clipboard manager
+  APT:waybar                      PAC:waybar                      XBP:waybar                    #X Bar
                                   PAC:swayidle                    XBP:swayidle                  #M Idle management
 
 
@@ -75,7 +71,7 @@
   APT:python                      PAC:python                      XBP:python                    #  Handy programming language
                                   AUR:starship-bin                XBP:starship                  #  Shell prompt
   APT:fzf                         PAC:fzf                         XBP:fzf                       #E Fuzzy finder (WH.I.CH https://github.com/NNBnh/dots/wiki/which#finder)
-                                  PAC:abduco                      XBP:abduco                    #S Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
+                                  PAC:abduco                      XBP:abduco                    #  Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
 
 ### Info
   APT:neofetch                    PAC:neofetch                    XBP:neofetch                  #  System profilers ("CPU-Z alternative for linux")
@@ -101,8 +97,8 @@
   APT:ufw                         PAC:ufw                         XBP:ufw                       #  Firewall
 
 ### Files
-                                  PAC:exa                         XBP:exa                       #T Directory preview
-                                  PAC:bat                         XBP:bat                       #E Files preview
+  APT:libimage-exiftool-perl      PAC:perl-image-exiftool         XBP:exiftool                  #C Metadata preview
+                                  PAC:bat                         XBP:bat                       #E Text preview
   APT:chafa                       PAC:chafa                       XBP:chafa                     #  Image preview
   APT:kakoune                     PAC:kakoune                     XBP:kakoune                   #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
 
@@ -126,8 +122,7 @@
 ### Files
   APT:kitty                       PAC:kitty                       XBP:kitty                     #T Terminal emulator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
   APT:nemo                        PAC:nemo                        XBP:nemo                      #  Files manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#files-managers)
-  APT:imv                         PAC:imv                         XBP:imv                       #  Image viewer (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-viewer)
-  APT:mpv                         PAC:mpv                         XBP:mpv                       #C Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
+  APT:mpv                         PAC:mpv                         XBP:mpv                       #  Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
   APT:firefox                     PAC:firefox                     XBP:firefox                   #  Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
 
 ### Edit

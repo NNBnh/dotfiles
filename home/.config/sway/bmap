@@ -68,9 +68,25 @@ swaymsg bindsym Mod4+Alt+Down     resize shrink height 1px
 swaymsg bindsym Mod4+Alt+Left     resize grow   width  1px
 swaymsg bindsym Mod4+Alt+Right    resize shrink width  1px
 
-swaymsg bindsym Mod4+Alt+equal      opacity plus  0.1
-swaymsg bindsym Mod4+Alt+minus      opacity minus 0.1
-swaymsg bindsym Mod4+Alt+apostrophe resize set width 50ppt height 50ppt
+swaymsg bindsym Mod4+equal                exec "pactl set-sink-volume 0 +5%"
+swaymsg bindsym Mod4+minus                exec "pactl set-sink-volume 0 -5%"
+swaymsg bindsym Mod4+apostrophe           exec "pactl set-sink-mute 0 toggle"
+
+swaymsg bindsym Mod4+Ctrl+equal           exec "playerctl volume 0.05+"
+swaymsg bindsym Mod4+Ctrl+minus           exec "playerctl volume 0.05-"
+swaymsg bindsym Mod4+Ctrl+apostrophe      exec "playerctl play-pause"
+
+swaymsg bindsym Mod4+Shift+equal          exec "brightnessctl set +5%"
+swaymsg bindsym Mod4+Shift+minus          exec "brightnessctl set -5%"
+swaymsg bindsym Mod4+Shift+apostrophe     exec "brightnessctl set 1%"
+
+swaymsg bindsym Mod4+Alt+equal            exec "pactl set-source-volume 0 +5%"
+swaymsg bindsym Mod4+Alt+minus            exec "pactl set-source-volume 0 -5%"
+swaymsg bindsym Mod4+Alt+apostrophe       exec "pactl set-source-mute 0 toggle"
+
+swaymsg bindsym Mod4+Alt+Ctrl+equal       opacity plus  0.1
+swaymsg bindsym Mod4+Alt+Ctrl+minus       opacity minus 0.1
+swaymsg bindsym Mod4+Alt+Ctrl+apostrophe  resize set width 50ppt height 50ppt
 
 swaymsg bindsym Mod4+1           exec "$SWAY_DIR/wmdwim 1  next false"
 swaymsg bindsym Mod4+2           exec "$SWAY_DIR/wmdwim 2  next false"

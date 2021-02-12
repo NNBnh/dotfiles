@@ -6,9 +6,14 @@
 
 
 # Start
-gsettings set org.gnome.desktop.interface gtk-theme  'Matcha-dark-aliz'
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-gsettings set org.gnome.desktop.interface font-name  "$BUI_FONT_FAMILY ${BUI_FONT_SIZE%%.*}"
+killall -p swaybg; swaybg --mode "$BWALLPAPER_MODE" --image "$BWALLPAPER_FILE" &
+
+mkdir -p "$XDG_DATA_HOME/icons/default" && printf "[icon theme]\nInherits=$BUI_MOUSE_CURSOR" > "$XDG_DATA_HOME/icons/default/index.theme"
+
+gsettings set org.gnome.desktop.interface font-name    "$BUI_FONT_FAMILY ${BUI_FONT_SIZE%%.*}"
+gsettings set org.gnome.desktop.interface gtk-theme    "$BUI_GTK_THEME"
+gsettings set org.gnome.desktop.interface icon-theme   "$BUI_ICON_THEME"
+gsettings set org.gnome.desktop.interface cursor-theme "$BUI_MOUSE_CURSOR"
 
 
 exit 0

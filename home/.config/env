@@ -51,6 +51,9 @@ export PATH="$PATH:$HOME/.local/bin"
 # 2. Visual
 # =============================================================================
 
+export BUI_GTK_THEME="Matcha-dark-aliz"
+export BUI_ICON_THEME="Papirus-Dark"
+export BUI_MOUSE_CURSOR="Bibata-Original-Ice"
 export BUI_CURSOR="block"
 export BUI_CURSOR_BLINK="true"
 export BUI_OPACITY="0.9"
@@ -152,6 +155,8 @@ export BROWSER="firefox"
 # 4. Setting
 # =============================================================================
 
+export BWALLPAPER_FILE="$XDG_DATA_HOME/wallpapers/johnn21/red-paper-lantern-on-roof.jpg"
+export BWALLPAPER_MODE="fill"
 export EXA_DEFAULT_OPTS="--all --group-directories-first --long --header --git --colour='always'"
 export ABDUCO_CMD="$SHELL"
 export ABDUCO_SOCKET_DIR="$TMPDIR"
@@ -159,7 +164,6 @@ export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
 export BFETCH_PROMPT_HEIGHT="3"
 
 ### Wayland
-# export GDK_BACKEND="x11"
 export MOZ_ENABLE_WAYLAND="1"
 
 ### Fcitx
