@@ -15,7 +15,7 @@ swaylock --line-uses-inside \
          --ignore-empty-password \
 \
          --color="${BUI_COLOR_BACKGROUND#\#}" \
-         --image="$XDG_DATA_HOME/wallpapers/johnn21/brown-wooden-table-and-chairs-near-white-concrete-building-during-daytime.jpg" \
+         --image="$BWALLPAPER_FILE" \
          --scaling='fill' \
 \
          --indicator-radius='128' \

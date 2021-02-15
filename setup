@@ -21,7 +21,7 @@ DOTS=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 BAWKPACK_PATH="$DOTS/home/.local/bin/bawkpack"
 BSYMLINK_PATH="$DOTS/home/.local/bin/bsymlink"
 
-STEPS="${*:-install extra before symlink symroot after}"
+STEPS="${*:-install extra before home root after}"
 
 
 # Functions
@@ -47,6 +47,10 @@ install_packages_extra() {
 	# Terminal Explorer
 	git clone 'https://github.com/NNBnh/terminal-explorer.git' "$XDG_DATA_HOME/terminal-explorer" \
 	&& ln -fs "$XDG_DATA_HOME/terminal-explorer/te" "$HOME/.local/bin/"
+
+	# Coderun
+	git clone 'https://github.com/NNBnh/coderun.git' "$XDG_DATA_HOME/coderun" \
+	&& ln -fs "$XDG_DATA_HOME/coderun/coderun" "$HOME/.local/bin/"
 
 	# ClipB
 	git clone 'https://github.com/NNBnh/clipb.git' "$XDG_DATA_HOME/clipb" \
@@ -137,8 +141,8 @@ for step in $STEPS; do
 		'i'|'install') install_packages       ;;
 		'e'|'extra')   install_packages_extra ;;
 		'b'|'before')  before_symlink         ;;
-		's'|'symlink') symlink_home           ;;
-		'r'|'symroot') symlink_root           ;;
+		'h'|'home')    symlink_home           ;;
+		'r'|'root')    symlink_root           ;;
 		'a'|'after')   after_symlink          ;;
 		*)             exit 1                 ;;
 	esac

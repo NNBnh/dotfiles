@@ -2,15 +2,38 @@ workspace_layout tabbed
 xwayland enable
 
 
+bar {
+	position bottom
+
+	status_command "while true; date +'%I:%M'; do sleep 60; done"
+
+	mode hide
+	hidden_state hide
+	tray_output none
+
+	font 'pango:Bmono 10'
+
+	colors {
+		statusline '#D8D8D8'
+		background '#282828'
+
+		focused_workspace  '#F7CA88' '#F7CA88' '#181818'
+		active_workspace   '#282828' '#282828' '#D8D8D8'
+		inactive_workspace '#282828' '#282828' '#D8D8D8'
+		urgent_workspace   '#AB4642' '#AB4642' '#181818'
+	}
+
+	modifier 'Mod4'
+}
+
+
 exec        "$HOME/.config/autostart/exec"
 exec_always "$HOME/.config/autostart/exec_always"
 
 exec_always "$HOME/.config/sway/exec_always"
 
 
-input "type:keyboard" {
-	xkb_options caps:swapescape
-}
+input "type:keyboard" xkb_options caps:swapescape
 
 
 include /etc/sway/config.d/*

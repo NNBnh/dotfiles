@@ -31,8 +31,6 @@ swaymsg focus_wrapping      no
 
 $SWAY_DIR/bmap
 
-killall -p waybar; waybar &
-
 killall -p swayidle; swayidle -w before-sleep "$SWAY_DIR/lock --daemonize" \
                                       timeout $(( 15 * 60 )) "$SWAY_DIR/lock --daemonize; swaymsg 'output * dpms off'" \
                                        resume "swaymsg 'output * dpms on'" &

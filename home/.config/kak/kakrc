@@ -60,10 +60,12 @@ plug 'lePerdu/kakboard' config %{
 }
 
 plug 'kak-lsp/kak-lsp' config %{
-	cargo install --locked --force --path .
-	evaluate-commands %sh{kak-lsp --kakoune -s $kak_session}
-	lsp-enable
+	# cargo install --locked --force --path .
+	# evaluate-commands %sh{kak-lsp --kakoune -s $kak_session}
+	# lsp-enable
 }
+
+plug 'NNBnh/coderun.kak'
 
 
 # =============================================================================
