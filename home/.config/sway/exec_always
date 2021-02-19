@@ -8,14 +8,14 @@ SWAY_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
 
 # Start
-swaymsg smart_gaps yes
+swaymsg smart_gaps on
 swaymsg smart_borders no_gaps
 swaymsg title_align center
 
 swaymsg font "pango:$BUI_FONT_FAMILY ${BUI_FONT_SIZE%%.*}"
 
-swaymsg gaps inner all set "$(( ${BUI_GAPS_SIZE%%.*} - ( ${BUI_BORDER_SIZE%%.*} * 2 ) ))px"
-swaymsg gaps outer all set "${BUI_GAPS_SIZE%%.*}px"
+swaymsg gaps inner "$(( ${BUI_GAPS_SIZE%%.*} - ( ${BUI_BORDER_SIZE%%.*} * 2 ) ))px"
+swaymsg gaps outer "${BUI_GAPS_SIZE%%.*}px"
 
 swaymsg default_border normal "${BUI_BORDER_SIZE%%.*}px"
 swaymsg titlebar_border_thickness "${BUI_BORDER_SIZE%%.*}"

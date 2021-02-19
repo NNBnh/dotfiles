@@ -23,9 +23,9 @@
 ### Core
   APT:lightdm                     PAC:lightdm                     XBP:lightdm                   #C Login manager
                                   PAC:swaylock                    XBP:swaylock                  #X Lock screen
-# APT:light-locker                PAC:light-locker                XBP:light-locker              #C Lock screen support for login manager
-                                  AUR:sway                        XBP:sway                      #T Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#window-managers)
+  APT:light-locker                PAC:light-locker                XBP:light-locker              #C Lock screen support for login manager
   APT:xwayland                    PAC:xorg-xwayland               XBP:xorg-server-xwayland      #  Xwayland backend
+                                  AUR:sway                        XBP:sway                      #T Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#window-managers)
 
 ### Screen
   APT:brightnessctl               PAC:brightnessctl               XBP:brightnessctl             #  Screen backlight
@@ -38,8 +38,8 @@
   APT:playerctl                   PAC:playerctl                   XBP:playerctl                 #  Control media
 
 ### Input
-  APT:fcitx-im                    AUR:fcitx-im                    XBP:fcitx-im                  #  Input method
-  APT:fcitx-unikey                AUR:fcitx-unikey                XBP:fcitx-unikey              #  Vietnamese support for input method
+  APT:fcitx-im                    PAC:fcitx-im                    XBP:fcitx-im                  #  Input method
+  APT:fcitx-unikey                PAC:fcitx-unikey                XBP:fcitx-unikey              #  Vietnamese support for input method
                                   AUR:sc-controller               XBP:sc-controller             #  Controller setting
                                   AUR:ydotool                     XBP:ydotool                   #C Send inputs
 
@@ -47,6 +47,10 @@
   APT:slurp                       PAC:slurp                       XBP:slurp                     #  Screen region selector
   APT:grim                        PAC:grim                        XBP:grim                      #X Screenshot
                                   PAC:wf-recorder                 XBP:wf-recorder               #X Screen record
+
+### Notification
+  APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                 #  Notification library
+  APT:dunst                       PAC:dunst                       XBP:dunst                     #C Notification daemon
 
 ### Resource
                                   PAC:ttf-sarasa-gothic           XBP:font-sarasa-gothic        #  Non Latin support for font
@@ -56,8 +60,8 @@
 ### Other
   APT:xdg-utils                   PAC:xdg-utils                   XBP:xdg-utils                 #  Applications manager
   APT:xdg-user-dirs               PAC:xdg-user-dirs               XBP:xdg-user-dirs             #  XDG directory manager
-  APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                 #  Notification library
   APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard              #  Clipboard manager
+  APT:ufw                         PAC:ufw                         XBP:ufw                       #  Firewall
                                   PAC:swayidle                    XBP:swayidle                  #M Idle management
 
 
@@ -108,7 +112,6 @@
   APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                    #  Media converter
 
 ### Other
-  APT:ufw                         PAC:ufw                         XBP:ufw                       #  Firewall
   APT:figlet                      PAC:figlet                      XBP:figlet                    #  Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
   APT:lolcat                      PAC:lolcat                      XBP:lolcat-c                  #E Make outputs RGB
                                   AUR:no-more-secrets             XBP:no-more-secrets           #  Become a hackerman (Make outputs Minecraft enchanting table language)

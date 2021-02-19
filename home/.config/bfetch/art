@@ -2,7 +2,7 @@
 
 
 # Values
-FILE="$XDG_DATA_HOME/textart/other/gamebtw.textart"
+FILE="$XDG_DATA_HOME/textarts/other/gamebtw.textart"
 
 COLOR="${BUI_COLOR_TEXTART:-32}"
 

@@ -2,7 +2,7 @@
 
 
 # Values
-FILE="$XDG_DATA_HOME/textart/color/strip.textart"
+FILE="$XDG_DATA_HOME/textarts/color/strip.textart"
 WIDTH='4'
 
 i='0'

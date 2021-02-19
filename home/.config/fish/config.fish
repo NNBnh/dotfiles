@@ -16,7 +16,3 @@
 
 # Values
 source "$HOME/.config/env"
-
-
-# Start
-starship init fish | source

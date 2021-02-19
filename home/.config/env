@@ -154,14 +154,21 @@ export BROWSER="firefox"
 # =============================================================================
 # 4. Setting
 # =============================================================================
-
+export BASHER_FULL_CLONE="true"
 export BWALLPAPER_FILE="$XDG_DATA_HOME/wallpapers/johnn21/red-paper-lantern-on-roof.jpg"
 export BWALLPAPER_MODE="fill"
+export BFETCH_PROMPT_HEIGHT="3"
 export EXA_DEFAULT_OPTS="--all --group-directories-first --long --header --git --colour='always'"
 export ABDUCO_CMD="$SHELL"
 export ABDUCO_SOCKET_DIR="$TMPDIR"
 export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
-export BFETCH_PROMPT_HEIGHT="3"
+
+### Basher
+export BASHER_SHELL="fish"
+export BASHER_ROOT="$XDG_DATA_HOME/basher"
+export BASHER_PREFIX="$BASHER_ROOT/cellar"
+export BASHER_PACKAGES_PATH="$HOME/sh"
+export PATH="$PATH:$BASHER_PREFIX/bin"
 
 ### Wayland
 export MOZ_ENABLE_WAYLAND="1"
