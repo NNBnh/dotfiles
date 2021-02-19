@@ -122,7 +122,7 @@
 # 3. Applications
 # =============================================================================
 
-### Files
+### Interact
   APT:kitty                       PAC:kitty                       XBP:kitty                     #T Terminal emulator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
   APT:nemo                        PAC:nemo                        XBP:nemo                      #X Files manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#files-managers)
   APT:mpv                         PAC:mpv                         XBP:mpv                       #  Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
