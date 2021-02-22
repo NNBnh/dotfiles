@@ -19,7 +19,7 @@ The *SuperB* dotfiles for unix system, configured with a high level of **portabl
   - *Use programs that do one thing and do it well* (and do that thing with one program):
     > This is to reduce bloat and redundancy in programs
   - *Use programs to work together*:
-    > built a network of programs thought environment variables, turn it into a tight ecosystem for coder
+    > Built a network of programs thought environment variables, turn it into a tight ecosystem for coder
   - *Use programs to handle text streams, because that is a universal interface*:
     - Almost all program use [`CLI` (command-line interface)](https://en.wikipedia.org/wiki/Command-line_interface)
     - Only have 3 [`TUI` (text-based user interface)](https://en.wikipedia.org/wiki/Text-based_user_interface) applications
