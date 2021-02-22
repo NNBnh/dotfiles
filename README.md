@@ -16,8 +16,8 @@ The *SuperB* dotfiles for unix system, configured with a high level of **portabl
 ### Features
 - Super **portable**, because `Đotfiles` use ***SuperB Bootstrap*** to manager dotfiles, it work on almost any unix and unix-like operating system it support
 - Super **minimalism**, it follow the [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy) radically:
-  - *Use programs that do one thing and do it well*:
-    > this is to reduce bloat and redundancy in programs
+  - *Use programs that do one thing and do it well* (and do that thing with one program):
+    > This is to reduce bloat and redundancy in programs
   - *Use programs to work together*:
     > built a network of programs thought environment variables, turn it into a tight ecosystem for coder
   - *Use programs to handle text streams, because that is a universal interface*:
@@ -37,7 +37,7 @@ The *SuperB* dotfiles for unix system, configured with a high level of **portabl
   - Using tree-base tiling system for endless freedom, work with any use cases
   - Maximize your screen real estate
     - Auto show/hide infomation (time, workspace, playing music, ...)
-    - No taskbar, instead use title bar
+    - No taskbar, instead use title bar (learn more on [Title bar vs Taskbar](https://github.com/NNBnh/dots/wiki/bar))
   - Convenient smart shotcut
 
 ## Contents
