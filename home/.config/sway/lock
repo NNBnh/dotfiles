@@ -1,6 +1,9 @@
 #!/bin/sh
 
 
+# dm-tool lock
+
+
 # Values
 . "$HOME/.config/env"
 

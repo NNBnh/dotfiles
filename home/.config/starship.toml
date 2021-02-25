@@ -49,19 +49,14 @@ $time\
 $cmd_duration\
 $status\
 $line_break\
-$character
+${custom.character}
 """
 
 
-[custom.bui]
-when    = 'true'
-format  = '$output'
-command = 'bui-terminal'
-
 [username]
 format     = '[$user]($style)'
-style_user = 'bright-yellow'
-style_root = 'bright-white'
+style_user = 'bright-white'
+style_root = 'bold bright-white'
 
 [hostname]
 format = '[@](bold)[$hostname]($style)'
@@ -98,8 +93,7 @@ format   = '[$symbol$status]($style) '
 style    = 'bright-black'
 symbol   = 'E:'
 
-[character]
-format         = '$symbol '
-success_symbol = '[ \$ ](bold fg:black bg:bright-yellow)[](bright-yellow)'
-error_symbol   = '[ % ](bold fg:black bg:red)[](red)'
-vicmd_symbol   = '[ V ](bold fg:black bg:bright-white)[](bright-white)'
+[custom.character]
+when    = 'true'
+format  = '$output'
+command = 'bui-terminal; printf "\033[7;$BUI_COLOR_TEXTART;1m \$ \033[0;$BUI_COLOR_TEXTART;1m \033[0m"'

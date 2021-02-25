@@ -4,16 +4,48 @@
 # Values
 . "$HOME/.config/env"
 
+DUNST_POS=$(( ( ${BUI_GAPS_SIZE%%.*} * 2 ) - ${BUI_BORDER_SIZE%%.*} ))
+DUNST_OPACITY=$(printf '%x' $(printf '%.0f' $(bc <<< "( $BUI_OPACITY * 256 ) - 1")))
+
 
 # Start
 killall -p swaybg; swaybg --mode "$BWALLPAPER_MODE" --image "$BWALLPAPER_FILE" &
 
-mkdir -p "$XDG_DATA_HOME/icons/default" && printf "[icon theme]\nInherits=$BUI_MOUSE_CURSOR" > "$XDG_DATA_HOME/icons/default/index.theme"
-
 gsettings set org.gnome.desktop.interface font-name    "$BUI_FONT_FAMILY ${BUI_FONT_SIZE%%.*}"
 gsettings set org.gnome.desktop.interface gtk-theme    "$BUI_GTK_THEME"
 gsettings set org.gnome.desktop.interface icon-theme   "$BUI_ICON_THEME"
-gsettings set org.gnome.desktop.interface cursor-theme "$BUI_MOUSE_CURSOR"
+gsettings set org.gnome.desktop.interface cursor-theme "$BUI_MOUSE_CURSOR_THEME"
+
+killall -p dunst; dunst -font "$BUI_FONT_MONO_FAMILY $BUI_FONT_MONO_SIZE" \
+                        -geometry "0x0-$DUNST_POS+$DUNST_POS" \
+                        -separator_height "$BUI_BORDER_SIZE" \
+                        -padding "$BUI_BORDER_SIZE" \
+                        -horizontal_padding "$BUI_BORDER_SIZE" \
+                        -frame_width "$BUI_BORDER_SIZE" \
+                        -markup 'full' \
+                        -format '<b>%s</b>\n%b' \
+                        -icon_path '' \
+                        -icon_position 'left' \
+                        -max_icon_size "$(( ${BUI_GAPS_SIZE%%.*} * 2 ))" \
+                        -show_indicators 'false' \
+                        -separator_color 'frame' \
+                        -lf "$BUI_COLOR_FOREGROUND" \
+                        -nf "$BUI_COLOR_FOREGROUND" \
+                        -cf "$BUI_COLOR_FOREGROUND" \
+                        -lb "$BUI_COLOR_BACKGROUND$DUNST_OPACITY" \
+                        -nb "$BUI_COLOR_BACKGROUND$DUNST_OPACITY" \
+                        -cb "$BUI_COLOR_BACKGROUND$DUNST_OPACITY" \
+                        -lfr "$BUI_COLOR_SELECTION" \
+                        -nfr "$BUI_COLOR_SELECTION" \
+                        -cfr "$BUI_COLOR_BASE08" \
+                        -lto '1' \
+                        -nto '3' \
+                        -cto '5' \
+                        -mouse_left_click 'do_action' \
+                        -mouse_right_click 'close_current' \
+                        -mouse_middle_click 'close_current'
+
+# mkdir -p "$XDG_CONFIG_HOME/cava" && printf '%s' "$CAVA_OPTIONS" > "$XDG_CONFIG_HOME/cava/config"
 
 
 exit 0

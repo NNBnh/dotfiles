@@ -2,13 +2,15 @@
 
 
 # Values
+SWAY_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+
 WORKSPACE="$1"
 DIRECTION="${2:-next}"
 MOVE="${3:-false}"
 
 
 # Start
-if [ "$(swaymsg --raw --type get_workspaces | jq  --raw-output '.. | try select(.focused == true).num')" = "$WORKSPACE" ]; then
+if [ "$(swaymsg --raw --type get_workspaces | jq --raw-output '.. | try select(.focused == true).name')" = "$WORKSPACE" ]; then
 	swaymsg focus_wrapping yes
 
 	if [ "$MOVE" = 'true' ]; then
@@ -22,6 +24,8 @@ else
 	[ "$MOVE" = 'true' ] && swaymsg move workspace "$WORKSPACE"
 	swaymsg workspace "$WORKSPACE"
 fi
+
+eval "$SWAY_DIR/info"
 
 
 exit 0

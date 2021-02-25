@@ -53,7 +53,9 @@ export PATH="$PATH:$HOME/.local/bin"
 
 export BUI_GTK_THEME="Matcha-dark-aliz"
 export BUI_ICON_THEME="Papirus-Dark"
-export BUI_MOUSE_CURSOR="Bibata-Original-Ice"
+export BUI_MOUSE_CURSOR_THEME="Bibata-Original-Ice"
+export BUI_BORDER_SIZE="2.0"
+export BUI_GAPS_SIZE="32.0"
 export BUI_CURSOR="block"
 export BUI_CURSOR_BLINK="true"
 export BUI_OPACITY="0.9"
@@ -61,8 +63,6 @@ export BUI_FONT_MONO_FAMILY="Bmono"
 export BUI_FONT_MONO_SIZE="12.0"
 export BUI_FONT_FAMILY="$BUI_FONT_MONO_FAMILY"
 export BUI_FONT_SIZE="10.0"
-export BUI_BORDER_SIZE="2.0"
-export BUI_GAPS_SIZE="16.0"
 
 ## Colors ---------------------------------------------------------------------
 
@@ -154,14 +154,19 @@ export BROWSER="firefox"
 # =============================================================================
 # 4. Setting
 # =============================================================================
-export BASHER_FULL_CLONE="true"
+export TARGET_LANG="vi"
 export BWALLPAPER_FILE="$XDG_DATA_HOME/wallpapers/johnn21/red-paper-lantern-on-roof.jpg"
 export BWALLPAPER_MODE="fill"
 export BFETCH_PROMPT_HEIGHT="3"
-export EXA_DEFAULT_OPTS="--all --group-directories-first --long --header --git --colour='always'"
 export ABDUCO_CMD="$SHELL"
 export ABDUCO_SOCKET_DIR="$TMPDIR"
 export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
+export CAVA_OPTIONS="[general]
+                     bar_width = 4
+                     bar_spacing = 1
+
+                     [color]
+                     foreground = \"$BUI_COLOR_CURSOR\""
 
 ### Basher
 export BASHER_SHELL="fish"
@@ -169,6 +174,7 @@ export BASHER_ROOT="$XDG_DATA_HOME/basher"
 export BASHER_PREFIX="$BASHER_ROOT/cellar"
 export BASHER_PACKAGES_PATH="$HOME/sh"
 export PATH="$PATH:$BASHER_PREFIX/bin"
+export BASHER_FULL_CLONE="true"
 
 ### Wayland
 export MOZ_ENABLE_WAYLAND="1"
@@ -259,9 +265,19 @@ export BFM_OPTIONS=""
 ### Coderun
 export CODERUN_="chmod +x \$FULL && \$FULL"
 export CODERUN_sh="$CODERUN_"
+export CODERUN_textart="$CODERUN_sh"
 export CODERUN_bash="bash \$FULL"
 export CODERUN_zsh="zsh \$FULL"
 export CODERUN_fish="fish \$FULL"
+export CODERUN_1="man \$FULL"
+export CODERUN_2="$CODERUN_1"
+export CODERUN_3="$CODERUN_1"
+export CODERUN_4="$CODERUN_1"
+export CODERUN_5="$CODERUN_1"
+export CODERUN_6="$CODERUN_1"
+export CODERUN_7="$CODERUN_1"
+export CODERUN_8="$CODERUN_1"
+export CODERUN_9="$CODERUN_1"
 export CODERUN_js="node \$FULL"
 export CODERUN_cjs="$CODERUN_js"
 export CODERUN_mjs="$CODERUN_js"

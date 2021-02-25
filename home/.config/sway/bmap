@@ -19,8 +19,10 @@ swaymsg bindsym button2 kill
 swaymsg bindsym       button3 exec "$SWAY_DIR/floatdwim next"
 swaymsg bindsym Shift+button3 exec "$SWAY_DIR/floatdwim prev"
 
-swaymsg bindsym Mod4+Escape exec $SWAY_DIR/lock
-swaymsg bindsym Mod4+Shift+Escape exec swaymsg exit
+swaymsg bindsym Mod4+Space exec "$SWAY_DIR/info"
+
+swaymsg bindsym Mod4+Escape exec "$SWAY_DIR/lock"
+swaymsg bindsym Mod4+Shift+Escape exec 'swaymsg exit'
 swaymsg bindsym Mod4+Alt+Escape reload
 
 swaymsg bindsym Mod4+Up           focus up

@@ -1,3 +1,3 @@
-function l --wraps="$LIST $EXA_DEFAULT_OPTS" --description "Alias for $LIST $EXA_DEFAULT_OPTS"
-	eval "$LIST $EXA_DEFAULT_OPTS \$argv"
+function l --wraps="$LIST --all --group-directories-first --long --header --git --colour='always'" --description "Alias for $LIST --all --group-directories-first --long --header --git --colour='always'"
+	eval "$LIST --all --group-directories-first --long --header --git --colour='always' \$argv"
 end

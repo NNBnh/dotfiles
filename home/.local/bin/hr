@@ -35,12 +35,9 @@ TERM_WIDTH="${TERM_SIZE#* }"
 # Start
 for text in "${@:-─}"; do
 	print=''
-	i='1'
 
-	while [ "$i" -le "$TERM_WIDTH" ]; do
+	while [ "${#print}" -le "$TERM_WIDTH" ]; do
 		print="$print$text"
-
-		i=$(( i + 1 ))
 	done
 
 	printf '%s' "$print" | sed -e "s/^\(.\{$TERM_WIDTH\}\).*/\1/"

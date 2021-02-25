@@ -10,11 +10,11 @@
 #               └─ https://github.com/NNBnh
 # URL:          https://github.com/NNBnh/dots/blob/master/packageslist
 
-#C: Need config/script
-#T: TODO
-#E: TODO Editor
-#M: Maybe remove
-#X: Will remove in far future
+# C: Need config/script
+# T: TODO
+# W: TODO Window manager
+# E: TODO Editor
+# X: Will remove in far future
 
 # =============================================================================
 # 1. System
@@ -22,15 +22,15 @@
 
 ### Core
   APT:lightdm                     PAC:lightdm                     XBP:lightdm                   #C Login manager
-                                  PAC:swaylock                    XBP:swaylock                  #X Lock screen
   APT:light-locker                PAC:light-locker                XBP:light-locker              #C Lock screen support for login manager
   APT:xwayland                    PAC:xorg-xwayland               XBP:xorg-server-xwayland      #  Xwayland backend
-                                  AUR:sway                        XBP:sway                      #T Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#window-managers)
+                                  AUR:sway                        XBP:sway                      #W Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#window-managers)
+                                  PAC:swayidle                    XBP:swayidle                  #X Idle management
 
 ### Screen
   APT:brightnessctl               PAC:brightnessctl               XBP:brightnessctl             #  Screen backlight
                                   PAC:gammastep                   XBP:gammastep                 #  Blue light filter (F.lux alternative for linux)
-                                  PAC:swaybg                      XBP:swaybg                    #M Set wallpaper
+                                  PAC:swaybg                      XBP:swaybg                    #W Set wallpaper
 
 ### Audio
   APT:alsa-utils                  PAC:alsa-utils                  XBP:alsa-utils                #  Sound server
@@ -50,7 +50,7 @@
 
 ### Notification
   APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                 #  Notification library
-  APT:dunst                       PAC:dunst                       XBP:dunst                     #C Notification daemon
+  APT:dunst                       PAC:dunst                       XBP:dunst                     #  Notification daemon
 
 ### Resource
                                   PAC:ttf-sarasa-gothic           XBP:font-sarasa-gothic        #  Non Latin support for font
@@ -62,7 +62,6 @@
   APT:xdg-user-dirs               PAC:xdg-user-dirs               XBP:xdg-user-dirs             #  XDG directory manager
   APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard              #  Clipboard manager
   APT:ufw                         PAC:ufw                         XBP:ufw                       #  Firewall
-                                  PAC:swayidle                    XBP:swayidle                  #M Idle management
 
 
 # =============================================================================
@@ -79,8 +78,8 @@
                                   PAC:abduco                      XBP:abduco                    #  Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
 
 ### Info
-  APT:neofetch                    PAC:neofetch                    XBP:neofetch                  #  System profilers ("CPU-Z alternative for linux")
-  APT:glances                     PAC:glances                     XBP:glances                   #  System monitor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#system-monitor)
+  APT:neofetch                    PAC:neofetch                    XBP:neofetch                  #T System profilers ("CPU-Z alternative for linux")
+  APT:glances                     PAC:glances                     XBP:glances                   #T System monitor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#system-monitor)
 
 ### Tranfer
   APT:rsync                       PAC:rsync                       XBP:rsync                     #  Sync files
@@ -124,7 +123,6 @@
 
 ### Interact
   APT:kitty                       PAC:kitty                       XBP:kitty                     #T Terminal emulator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
-  APT:nemo                        PAC:nemo                        XBP:nemo                      #X Files manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#files-managers)
   APT:mpv                         PAC:mpv                         XBP:mpv                       #  Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
   APT:firefox                     PAC:firefox                     XBP:firefox                   #  Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
 

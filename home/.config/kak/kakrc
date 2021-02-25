@@ -59,11 +59,7 @@ plug 'lePerdu/kakboard' config %{
 	hook global RegisterModified \" %{ kakboard-push-clipboard }
 }
 
-plug 'kak-lsp/kak-lsp' config %{
-	# cargo install --locked --force --path .
-	# evaluate-commands %sh{kak-lsp --kakoune -s $kak_session}
-	# lsp-enable
-}
+plug 'kak-lsp/kak-lsp' #TODO
 
 plug 'NNBnh/coderun.kak'
 
