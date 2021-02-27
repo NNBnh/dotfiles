@@ -17,6 +17,8 @@
 # 1. Paths
 # =============================================================================
 
+[ -z "$TMPDIR" ] && export TMPDIR="/tmp"
+
 ### XDG base directory
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -32,7 +34,11 @@ export XDG_TEMPLATES_DIR="$XDG_DESKTOP_DIR"
 export XDG_VIDEOS_DIR="$XDG_DESKTOP_DIR"
 
 ### Spring cleaning
-# export XAUTHORITY="$XDG_DATA_HOME/xauthority/Xauthority" #FIXME bug
+# export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export USERXSESSION="$XDG_CACHE_HOME/xsession"
+export USERXSESSIONRC="$XDG_CACHE_HOME/xsessionrc"
+export ALTUSERXSESSION="$XDG_CACHE_HOME/Xsession"
+export ERRFILE="$XDG_CACHE_HOME/xsession-errors"
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
 export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
@@ -43,8 +49,11 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
-[ -z "$TMPDIR" ] && export TMPDIR="/tmp"
-export PATH="$PATH:$HOME/.local/bin"
+### Basher
+export BASHER_ROOT="$XDG_DATA_HOME/basher"
+export BASHER_PREFIX="$BASHER_ROOT/cellar"
+export BASHER_PACKAGES_PATH="$HOME/sh"
+export PATH="$PATH:$HOME/.local/bin:$HOME/dots/extra/scripts:$BASHER_PREFIX/bin"
 
 
 # =============================================================================
@@ -88,14 +97,12 @@ export BUI_COLOR_MAGENTA="#BA8BAF"
 export BUI_COLOR_PINK=""
 
 ### Elements
-export BUI_COLOR_MAIN="$BUI_COLOR_YELLOW"
-export BUI_COLOR_MAIN_ALT="$BUI_COLOR_GREY"
 export BUI_COLOR_FOREGROUND="$BUI_COLOR_WHITE"
 export BUI_COLOR_BACKGROUND="$BUI_COLOR_DARK"
 export BUI_COLOR_FOREGROUND_ALT="$BUI_COLOR_GRAY"
 export BUI_COLOR_BACKGROUND_ALT="$BUI_COLOR_DARK_ALT"
-export BUI_COLOR_CURSOR="$BUI_COLOR_MAIN"
-export BUI_COLOR_CURSOR_ALT="$BUI_COLOR_MAIN_ALT"
+export BUI_COLOR_CURSOR="$BUI_COLOR_YELLOW"
+export BUI_COLOR_CURSOR_ALT="$BUI_COLOR_GREY"
 export BUI_COLOR_SELECTION="$BUI_COLOR_GRAY"
 
 ### Base16
@@ -142,7 +149,6 @@ export BUI_COLOR_TEXTART="93"
 # 3. Default applications
 # =============================================================================
 export FINDER="fzf"
-export LIST="exa"
 export EDITOR="kak"
 export VISUAL="$EDITOR"
 export PAGER="sh -c \"col -b -x | kak\""
@@ -155,8 +161,8 @@ export BROWSER="firefox"
 # 4. Setting
 # =============================================================================
 export TARGET_LANG="vi"
-export BWALLPAPER_FILE="$XDG_DATA_HOME/wallpapers/johnn21/red-paper-lantern-on-roof.jpg"
-export BWALLPAPER_MODE="fill"
+export WALLPAPER_FILE="$XDG_DATA_HOME/wallpapers/johnn21/red-paper-lantern-on-roof.jpg"
+export WALLPAPER_MODE="fill"
 export BFETCH_PROMPT_HEIGHT="3"
 export ABDUCO_CMD="$SHELL"
 export ABDUCO_SOCKET_DIR="$TMPDIR"
@@ -170,10 +176,6 @@ export CAVA_OPTIONS="[general]
 
 ### Basher
 export BASHER_SHELL="fish"
-export BASHER_ROOT="$XDG_DATA_HOME/basher"
-export BASHER_PREFIX="$BASHER_ROOT/cellar"
-export BASHER_PACKAGES_PATH="$HOME/sh"
-export PATH="$PATH:$BASHER_PREFIX/bin"
 export BASHER_FULL_CLONE="true"
 
 ### Wayland
@@ -259,7 +261,7 @@ export FZF_DEFAULT_OPTS="--height='24'
 export BFM_LIST="bls"
 export BFM_RAW="bls true"
 export BFM_FINDER="fzf"
-export BFM_PREVIEWER="$LIST $EXA_DEFAULT_OPTS"
+export BFM_PREVIEWER="bat"
 export BFM_OPTIONS=""
 
 ### Coderun

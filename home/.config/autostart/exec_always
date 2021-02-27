@@ -9,12 +9,7 @@ DUNST_OPACITY=$(printf '%x' $(printf '%.0f' $(bc <<< "( $BUI_OPACITY * 256 ) - 1
 
 
 # Start
-killall -p swaybg; swaybg --mode "$BWALLPAPER_MODE" --image "$BWALLPAPER_FILE" &
-
-gsettings set org.gnome.desktop.interface font-name    "$BUI_FONT_FAMILY ${BUI_FONT_SIZE%%.*}"
-gsettings set org.gnome.desktop.interface gtk-theme    "$BUI_GTK_THEME"
-gsettings set org.gnome.desktop.interface icon-theme   "$BUI_ICON_THEME"
-gsettings set org.gnome.desktop.interface cursor-theme "$BUI_MOUSE_CURSOR_THEME"
+killall -p swaybg; swaybg --mode "$WALLPAPER_MODE" --image "$WALLPAPER_FILE" &
 
 killall -p dunst; dunst -font "$BUI_FONT_MONO_FAMILY $BUI_FONT_MONO_SIZE" \
                         -geometry "0x0-$DUNST_POS+$DUNST_POS" \
@@ -44,6 +39,8 @@ killall -p dunst; dunst -font "$BUI_FONT_MONO_FAMILY $BUI_FONT_MONO_SIZE" \
                         -mouse_left_click 'do_action' \
                         -mouse_right_click 'close_current' \
                         -mouse_middle_click 'close_current'
+
+bui-appearance
 
 # mkdir -p "$XDG_CONFIG_HOME/cava" && printf '%s' "$CAVA_OPTIONS" > "$XDG_CONFIG_HOME/cava/config"
 

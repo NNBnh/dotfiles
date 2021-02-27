@@ -28,19 +28,12 @@
 
 
 # Values
-TERM_SIZE=$(stty size)
-TERM_WIDTH="${TERM_SIZE#* }"
+TERM_WIDTH=$(tput cols)
 
 
 # Start
 for text in "${@:-─}"; do
-	print=''
-
-	while [ "${#print}" -le "$TERM_WIDTH" ]; do
-		print="$print$text"
-	done
-
-	printf '%s' "$print" | sed -e "s/^\(.\{$TERM_WIDTH\}\).*/\1/"
+	printf '%*s' "$TERM_WIDTH" | sed -e "s/ /$text/g" -e "s/^\(.\{$TERM_WIDTH\}\).*/\1/"
 done
 
 

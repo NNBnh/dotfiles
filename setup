@@ -64,7 +64,7 @@ install_packages_extra() {
 		git clone 'https://github.com/xero/figlet-fonts.git' "$XDG_DATA_HOME/figlet/fonts"
 
 		# Mono fonts
-		aria2c --dir "$TMPDIR" $(curl --silent --location 'https://api.github.com/repos/NNBnh/bmono/releases/latest' | grep -e '/bmono-ttf.zip' | cut -d '"' -f '4') \
+		aria2c --dir "$TMPDIR" $(curl --silent --location 'https://api.github.com/repos/NNBnh/bmono/releases/latest' | grep -e '/bmono-ttf.zip' | cut -f '4' -d '"') \
 		&& 7z x -o"$TMPDIR/" "$TMPDIR/bmono-ttf.zip" \
 		&& mv "$TMPDIR/ttf/"* "$XDG_DATA_HOME/fonts/"
 
@@ -79,8 +79,10 @@ install_packages_extra() {
 
 		# Charater picker
 		mkdir -p "$XDG_DATA_HOME/charaters"
-		curl -fsSL 'https://www.unicode.org/Public/emoji/13.1/emoji-test.txt' | sed -e 's/ E[0-9.]*/:/g' -ne 's/^.*fully-qualified *# //p' > "$XDG_DATA_HOME/charaters/emoji"
-		curl -fsSL 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json' | jq --raw-output '.gitmojis[] | [.emoji, .description] | join(": ")' > "$XDG_DATA_HOME/charaters/gitmoji"
+		curl -fsSL 'https://www.unicode.org/Public/emoji/13.1/emoji-test.txt' \
+		| sed -e 's/ E[0-9.]*/:/g' -ne 's/^.*fully-qualified *# //p' > "$XDG_DATA_HOME/charaters/emoji"
+		curl -fsSL 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json' \
+		| jq --raw-output '.gitmojis[] | [.emoji, .description] | join(": ")' > "$XDG_DATA_HOME/charaters/gitmoji"
 
 	# Adblock
 	curl -fsSL 'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts' --create-dirs --output "$TMPDIR/hosts" \
@@ -99,9 +101,12 @@ symlink_root() {
 before_symlink() {
 	# Remove junks (Spring cleaning your $HOME)
 	mkdir "$XDG_DESKTOP_DIR"
-	mv "$HOME/Desktop" "$HOME/Documents" "$HOME/Downloads" "$HOME/Music" "$HOME/Pictures" "$HOME/Public" "$HOME/Templates" "$HOME/Videos" "$HOME/.ICEauthority" "$HOME/.bash_history" "$HOME/.bash_logout" "$HOME/.bash_profile" "$HOME/.bashrc" "$HOME/.inputrc" "$HOME/.xinitrc" "$HOME/.xsession" "$HOME/.xsession-errors" "$XDG_DESKTOP_DIR/"
+	trash "$HOME/Desktop" "$HOME/Documents" "$HOME/Downloads" "$HOME/Music" "$HOME/Pictures" "$HOME/Public" "$HOME/Templates" "$HOME/Videos" \
+	      "$HOME/.inputrc" "$HOME/.xinitrc" "$HOME/.xsession" "$HOME/.xsession-errors" \
+	      "$HOME/.Xclients" "$HOME/.profile" "$HOME/.dmrc" "$HOME/.ICEauthority" "$HOME/.icons" \
+	      "$HOME/.bashrc" "$HOME/.bash_profile" "$HOME/.bash_history" "$HOME/.bash_logout" 2>&-
 
-	for config_directory_path in $XDG_CONFIG_HOME/.* $XDG_CONFIG_HOME/*; do
+	for config_directory_path in "$XDG_CONFIG_HOME/."* "$XDG_CONFIG_HOME/"*; do
 		config_directory_name="${config_directory_path#$XDG_CONFIG_HOME/}"
 
 		if [ "$config_directory_name" != '.' ] && [ "$config_directory_name" != '..' ] && [ -e "$HOME/dots/home/.config/$config_directory_name" ]; then
@@ -114,6 +119,10 @@ before_symlink() {
 	         "$XDG_DATA_HOME/fonts" "$XDG_DATA_HOME/icons" "$XDG_DATA_HOME/charaters" \
 	         "$XDG_CACHE_HOME" \
 	         "$HOME/.local/bin"
+
+	# Adblock
+	printf "$(< /etc/lightdm/lightdm.conf)\n\n[LightDM]\nuser-authority-in-system-dir=true" >> "$TMPDIR/lightdm.conf" \
+	&& sudo mv "$TMPDIR/lightdm.conf" '/etc/lightdm/lightdm.conf'
 }
 
 after_symlink() {
@@ -121,12 +130,12 @@ after_symlink() {
 	chsh --shell '/usr/bin/fish'
 
 	# Change XDG directories
-	for xdg_directory in DESKTOP DOCUMENTS DOWNLOAD MUSIC PICTURES PUBLICSHARE TEMPLATES VIDEOS; do
+	for xdg_directory in 'DESKTOP' 'DOCUMENTS' 'DOWNLOAD' 'MUSIC' 'PICTURES' 'PUBLICSHARE' 'TEMPLATES' 'VIDEOS'; do
 		eval "xdg-user-dirs-update --set '$xdg_directory' \"\$XDG_${xdg_directory}_DIR\""
 	done
 
 	# Firefox CSS
-	for profile in $HOME/.mozilla/firefox/*.default-release; do
+	for profile in "$HOME/.mozilla/firefox/"*".default-release"; do
 		ln -fs "$DOTS/extra/firefox/chrome" "$profile/"
 	done \
 	&& echo 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'

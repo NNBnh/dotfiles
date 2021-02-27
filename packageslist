@@ -77,10 +77,6 @@
   APT:fzf                         PAC:fzf                         XBP:fzf                       #E Fuzzy finder (WH.I.CH https://github.com/NNBnh/dots/wiki/which#finder)
                                   PAC:abduco                      XBP:abduco                    #  Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
 
-### Info
-  APT:neofetch                    PAC:neofetch                    XBP:neofetch                  #T System profilers ("CPU-Z alternative for linux")
-  APT:glances                     PAC:glances                     XBP:glances                   #T System monitor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#system-monitor)
-
 ### Tranfer
   APT:rsync                       PAC:rsync                       XBP:rsync                     #  Sync files
   APT:curl                        PAC:curl                        XBP:curl                      #  Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
@@ -111,6 +107,7 @@
   APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                    #  Media converter
 
 ### Other
+  APT:neofetch                    PAC:neofetch                    XBP:neofetch                  #T System profilers ("CPU-Z alternative for linux")
   APT:figlet                      PAC:figlet                      XBP:figlet                    #  Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
   APT:lolcat                      PAC:lolcat                      XBP:lolcat-c                  #E Make outputs RGB
                                   AUR:no-more-secrets             XBP:no-more-secrets           #  Become a hackerman (Make outputs Minecraft enchanting table language)
