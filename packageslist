@@ -50,7 +50,7 @@
 
 ### Notification
   APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                 #  Notification library
-  APT:dunst                       PAC:dunst                       XBP:dunst                     #  Notification daemon
+  APT:dunst                       PAC:dunst                       XBP:dunst                     #X Notification daemon
 
 ### Resource
                                   PAC:ttf-sarasa-gothic           XBP:font-sarasa-gothic        #  Non Latin support for font

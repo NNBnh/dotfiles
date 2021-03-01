@@ -1,5 +1,128 @@
 #!/bin/sh
 
+# Please skip to line 125!
+
+
+# Values
+WD="$PWD"
+
+TMPDIR="${TMPDIR:-/tmp}"
+TEMPORARY="$TMPDIR/superb-bootstrap"
+
+     APT_MARK='APT';      APT_COMMAND='sudo apt install --assume-yes'
+  Pacman_MARK='PAC';   Pacman_COMMAND='sudo pacman --sync --refresh --noconfirm --needed'
+    XBPS_MARK='XBP';     XBPS_COMMAND='sudo xbps-install --sync --yes'
+     AUR_MARK='AUR';      AUR_COMMAND='paru -Sy --nodiffmenu --save --noconfirm'
+ Flatpak_MARK='FLA';  Flatpak_COMMAND='sudo flatpak install'
+    Snap_MARK='SNA';     Snap_COMMAND='sudo snap install'
+Homebrew_MARK='HBR'; Homebrew_COMMAND='brew install'
+
+
+# Functions
+superbbootstrap_install_packages() {
+	if [ -f "$1" ]; then
+		packages_list=$(sed -e 's/#.*$//g' "$1")
+	else
+		printf '\n\033[1;7;31m%s\033[0m\n' 'Packages list not found'
+		exit 1
+	fi
+
+	case $(uname -s | sed -e 's/[[:upper:]]/\L&/g') in
+		'darwin'*)
+			packagemanager_main='Homebrew'
+		;;
+		*)
+			  if command -v apt          >/dev/null; then packagemanager_main='APT'
+			elif command -v pacman       >/dev/null; then packagemanager_main='Pacman'
+			elif command -v xbps-install >/dev/null; then packagemanager_main='XBPS'
+			else
+				printf '\n\033[1;7;31m%s\033[0m\n' "Packages manager not found"
+				exit 1
+			fi
+
+			[ "$packagemanager_main"  = 'Pacman' ] && packagemanager_list="$packagemanager_list AUR"
+			                                          packagemanager_list="$packagemanager_list Flatpak"
+			[ "$packagemanager_main" != 'XBPS'   ] && packagemanager_list="$packagemanager_list Snap"
+		;;
+	esac
+
+	packagemanager_list="$packagemanager_main${packagemanager_list:+ $packagemanager_list}"
+
+
+	for packagemanager in $packagemanager_list; do
+		eval "mark=\"\$${packagemanager}_MARK\""
+		eval "install_command=\"\$${packagemanager}_COMMAND\""
+
+		packages_installing=$(printf '%s' "$packages_list" | sed -e "s/^.*$mark://g" -e 's/[[:space:]].*$//g' -e '/^$/d' | tr '\n' ' ')
+
+		[ -n "$packages_installing" ] && {
+			packages_list=$(printf '%s' "$packages_list" | sed -e "s/^.*$mark.*\$//g")
+
+			printf '\n\033[1;7;35m%s\033[0m\n' "Setting up $packagemanager"
+			eval "superbbootstrap_$packagemanager"
+
+			printf '\n\033[1;7;32m%s\033[0m\n' "Installing $packagemanager Packages"
+			eval "$install_command $packages_installing"
+		}
+	done
+}
+
+superbbootstrap_APT() {
+	sudo apt update  --assume-yes
+	sudo apt upgrade --assume-yes
+}
+
+superbbootstrap_Pacman() {
+	sudo pacman --sync --sysupgrade --refresh --noconfirm --needed
+}
+
+superbbootstrap_XBPS() {
+	sudo xbps-install --sync --yes --update
+	sudo xbps-install --sync --yes --update
+	sudo xbps-install --sync --yes void-repo-nonfree void-repo-multilib void-repo-multilib-nonfree void-repo-debug
+}
+
+superbbootstrap_AUR() {
+	sudo pacman --sync --refresh --noconfirm --needed git base-devel
+	git clone 'https://aur.archlinux.org/paru.git' "$TEMPORARY/paru"
+	cd "$TEMPORARY/paru" || exit 1
+	makepkg -si
+	cd "$WD" || exit 1
+}
+
+superbbootstrap_Flatpak() {
+	case "$packagemanager_main" in
+	'Pacman') sudo pacman --sync --refresh --noconfirm --needed flatpak           ;;
+	'APT')    sudo apt install --assume-yes flatpak gnome-software-plugin-flatpak ;;
+	'XBPS')   sudo xbps-install --sync --yes flatpak                              ;;
+	esac
+
+	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+}
+
+superbbootstrap_Snap() {
+	if [ $packagemanager_main = 'Pacman' ]; then
+		sudo pacman --sync --refresh --noconfirm --needed git
+		git clone 'https://aur.archlinux.org/snapd.git' "$TEMPORARY/snap"
+		cd "$TEMPORARY/snap" || exit 1
+		makepkg -si
+		cd "$WD" || exit 1
+		sudo systemctl enable --now snapd.socket
+		sudo ln -s '/var/lib/snapd/snap' '/snap'
+	elif [ $packagemanager_main = 'APT' ]; then
+		sudo apt install --assume-yes snapd
+	fi
+
+	snap install core
+}
+
+superbbootstrap_Homebrew() {
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+}
+
+
+###############################################################################
+
 #    ____    __
 #   / __/__ / /___ _____
 #  _\ \/ -_) __/ // / _ \
@@ -14,105 +137,83 @@
 
 
 # Values
-DOTS=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+DOTFILES_PATH=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
-. "$DOTS/home/.config/env"
+. "$DOTFILES_PATH/home/.config/env"
 
-BAWKPACK_PATH="$DOTS/home/.local/bin/bawkpack"
-BSYMLINK_PATH="$DOTS/home/.local/bin/bsymlink"
-
-STEPS="${*:-install extra before home root after}"
+STEPS="${*:-install before home root after}"
 
 
 # Functions
 install_packages() {
-	"$BAWKPACK_PATH" "$DOTS/packageslist"
-}
+	printf '\n\033[1;7;34m%s\033[0m\n' 'Install packages'
+	superbbootstrap_install_packages "$DOTFILES_PATH/packageslist"
 
-install_packages_extra() {
-	# Python packages
-	pip install --upgrade 'auto-editor' 'git+https://github.com/will8211/unimatrix.git'
+	printf '\n\033[1;7;34m%s\033[0m\n' 'Install extra packages'
+		# Python packages
+		pip install --upgrade 'auto-editor' 'git+https://github.com/will8211/unimatrix.git'
 
-	# Basher packages
-	git clone 'https://github.com/basherpm/basher.git' "$XDG_DATA_HOME/basher" \
-	&& ln -sf "$XDG_DATA_HOME/basher/bin/basher" "$HOME/.local/bin/"
+		# Basher packages
+		git clone 'https://github.com/basherpm/basher.git' "$XDG_DATA_HOME/basher" \
+		&& for basher_package in 'NNBnh/bsymlink' 'NNBnh/bui-terminal' 'NNBnh/bfetch' 'NNBnh/terminal-explorer' 'NNBnh/clipb' 'NNBnh/coderun' 'NNBnh/hr'; do
+			basher install "$basher_package"
+		done
 
-	basher install 'NNBnh/bui-terminal'
-	basher install 'NNBnh/bfetch'
-	basher install 'NNBnh/terminal-explorer'
-	basher install 'NNBnh/coderun'
-	basher install 'NNBnh/clipb'
+		# Git alias
+		curl -fsSL 'https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt' --create-dirs --output "$XDG_DATA_HOME/git/gitalias.txt"
 
-	# Fetchutils
-	git clone 'https://github.com/lptstr/fetchutils.git' "$XDG_DATA_HOME/fetchutils"
+		# MPV
+		mkdir -p "$XDG_CONFIG_HOME/mpv/scripts" \
+		&& for mpv_script in 'detect-image.lua' 'freeze-window.lua' 'image-positioning.lua' 'ruler.lua'; do
+			curl -fsSL "https://raw.githubusercontent.com/occivink/mpv-image-viewer/master/scripts/$mpv_script" > "$XDG_CONFIG_HOME/mpv/scripts/$mpv_script"
+		done
 
-	# Git alias
-	curl -fsSL 'https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt' --create-dirs --output "$XDG_DATA_HOME/git/gitalias.txt"
+		# Resource
+			# Textarts and Fetchutils
+			git clone 'https://github.com/NNBnh/textart-collections.git' "$XDG_DATA_HOME/textarts"
+			git clone 'https://github.com/lptstr/fetchutils.git'         "$XDG_DATA_HOME/fetchutils"
 
-	# MPV
-	mkdir -p "$XDG_CONFIG_HOME/mpv/scripts"
-	curl -fsSL 'https://raw.githubusercontent.com/occivink/mpv-image-viewer/master/scripts/detect-image.lua'      > "$XDG_CONFIG_HOME/mpv/scripts/detect-image.lua"
-	curl -fsSL 'https://raw.githubusercontent.com/occivink/mpv-image-viewer/master/scripts/freeze-window.lua'     > "$XDG_CONFIG_HOME/mpv/scripts/freeze-window.lua"
-	curl -fsSL 'https://raw.githubusercontent.com/occivink/mpv-image-viewer/master/scripts/image-positioning.lua' > "$XDG_CONFIG_HOME/mpv/scripts/image-positioning.lua"
-	curl -fsSL 'https://raw.githubusercontent.com/occivink/mpv-image-viewer/master/scripts/ruler.lua'             > "$XDG_CONFIG_HOME/mpv/scripts/ruler.lua"
+			# Figlet fonts
+			git clone 'https://github.com/xero/figlet-fonts.git' "$XDG_DATA_HOME/figlet/fonts"
 
-	# Resource
-		# Textarts
-		git clone 'https://github.com/NNBnh/textart-collections.git' "$XDG_DATA_HOME/textarts"
+			# Mono fonts
+			aria2c --dir "$TMPDIR" $(curl --silent --location 'https://api.github.com/repos/NNBnh/bmono/releases/latest' | grep -e '/bmono-ttf.zip' | cut -f '4' -d '"') \
+			&& 7z x -o"$TMPDIR/" "$TMPDIR/bmono-ttf.zip" \
+			&& mkdir -p "$XDG_DATA_HOME/fonts" \
+			&& mv "$TMPDIR/ttf/"* "$XDG_DATA_HOME/fonts/"
 
-		# Figlet fonts
-		git clone 'https://github.com/xero/figlet-fonts.git' "$XDG_DATA_HOME/figlet/fonts"
+			# Wallpapers
+			git clone 'https://github.com/NNBnh/wallpaper-collections.git' "$XDG_DATA_HOME/wallpapers"
 
-		# Mono fonts
-		aria2c --dir "$TMPDIR" $(curl --silent --location 'https://api.github.com/repos/NNBnh/bmono/releases/latest' | grep -e '/bmono-ttf.zip' | cut -f '4' -d '"') \
-		&& 7z x -o"$TMPDIR/" "$TMPDIR/bmono-ttf.zip" \
-		&& mv "$TMPDIR/ttf/"* "$XDG_DATA_HOME/fonts/"
+			# Mouse cursor
+			aria2c --dir "$TMPDIR" 'https://github.com/ful1e5/Bibata_Cursor/releases/download/v1.0.3/Bibata-Original-Ice.tar.gz' \
+			&& 7z x -o"$TMPDIR/" "$TMPDIR/Bibata-Original-Ice.tar.gz" \
+			&& 7z x -o"$TMPDIR/" "$TMPDIR/Bibata-Original-Ice.tar" \
+			&& mv "$TMPDIR/Bibata-Original-Ice" "$XDG_DATA_HOME/icons/"
 
-		# Wallpapers
-		git clone 'https://github.com/NNBnh/wallpaper-collections.git' "$XDG_DATA_HOME/wallpapers"
-
-		# Mouse cursor
-		aria2c --dir "$TMPDIR" 'https://github.com/ful1e5/Bibata_Cursor/releases/download/v1.0.3/Bibata-Original-Ice.tar.gz' \
-		&& 7z x -o"$TMPDIR/" "$TMPDIR/Bibata-Original-Ice.tar.gz" \
-		&& 7z x -o"$TMPDIR/" "$TMPDIR/Bibata-Original-Ice.tar" \
-		&& mv "$TMPDIR/Bibata-Original-Ice" "$XDG_DATA_HOME/icons/"
-
-		# Charater picker
-		mkdir -p "$XDG_DATA_HOME/charaters"
-		curl -fsSL 'https://www.unicode.org/Public/emoji/13.1/emoji-test.txt' \
-		| sed -e 's/ E[0-9.]*/:/g' -ne 's/^.*fully-qualified *# //p' > "$XDG_DATA_HOME/charaters/emoji"
-		curl -fsSL 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json' \
-		| jq --raw-output '.gitmojis[] | [.emoji, .description] | join(": ")' > "$XDG_DATA_HOME/charaters/gitmoji"
-
-	# Adblock
-	curl -fsSL 'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts' --create-dirs --output "$TMPDIR/hosts" \
-	&& printf '%s' "127.0.1.1 $(hostname)" >> "$TMPDIR/hosts" \
-	&& sudo mv "$TMPDIR/hosts" '/etc/hosts'
+			# Charater picker
+			mkdir -p "$XDG_DATA_HOME/charaters" && {
+				curl -fsSL 'https://www.unicode.org/Public/emoji/13.1/emoji-test.txt' \
+				| sed -e 's/ E[0-9.]*/:/g' -ne 's/^.*fully-qualified *# //p' > "$XDG_DATA_HOME/charaters/emoji"
+				curl -fsSL 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json' \
+				| jq --raw-output '.gitmojis[] | [.emoji, .description] | join(": ")' > "$XDG_DATA_HOME/charaters/gitmoji"
+			}
 }
 
 symlink_home() {
-	"$BSYMLINK_PATH" "$DOTS/home" "$HOME"
+	printf '\n\033[1;7;36m%s\033[0m\n' "Symlink to home ($HOME)"
+
+	bsymlink "$DOTFILES_PATH/home" "$HOME"
 }
 
 symlink_root() {
-	sudo "$BSYMLINK_PATH" "$DOTS/root" '/'
+	printf '\n\033[1;7;36m%s\033[0m\n' 'Symlink to root (/)'
+
+	sudo bsymlink "$DOTFILES_PATH/root" '/'
 }
 
 before_symlink() {
-	# Remove junks (Spring cleaning your $HOME)
-	mkdir "$XDG_DESKTOP_DIR"
-	trash "$HOME/Desktop" "$HOME/Documents" "$HOME/Downloads" "$HOME/Music" "$HOME/Pictures" "$HOME/Public" "$HOME/Templates" "$HOME/Videos" \
-	      "$HOME/.inputrc" "$HOME/.xinitrc" "$HOME/.xsession" "$HOME/.xsession-errors" \
-	      "$HOME/.Xclients" "$HOME/.profile" "$HOME/.dmrc" "$HOME/.ICEauthority" "$HOME/.icons" \
-	      "$HOME/.bashrc" "$HOME/.bash_profile" "$HOME/.bash_history" "$HOME/.bash_logout" 2>&-
-
-	for config_directory_path in "$XDG_CONFIG_HOME/."* "$XDG_CONFIG_HOME/"*; do
-		config_directory_name="${config_directory_path#$XDG_CONFIG_HOME/}"
-
-		if [ "$config_directory_name" != '.' ] && [ "$config_directory_name" != '..' ] && [ -e "$HOME/dots/home/.config/$config_directory_name" ]; then
-			mv "$config_directory_path" "$XDG_DESKTOP_DIR/"
-		fi
-	done
+	printf '\n\033[1;7;33m%s\033[0m\n' 'Before symlink step'
 
 	# Create directories (to only symlink files inside, not the directory)
 	mkdir -p "$XDG_CONFIG_HOME/fcitx" "$XDG_CONFIG_HOME/kak" "$XDG_CONFIG_HOME/retroarch" \
@@ -120,42 +221,65 @@ before_symlink() {
 	         "$XDG_CACHE_HOME" \
 	         "$HOME/.local/bin"
 
-	# Adblock
+	# Remove junks (Spring cleaning your $HOME)
+	mkdir "$XDG_DESKTOP_DIR"
+	trash "$HOME/Desktop" "$HOME/Documents" "$HOME/Downloads" "$HOME/Music" "$HOME/Pictures" "$HOME/Public" "$HOME/Templates" "$HOME/Videos" \
+	      "$HOME/.inputrc" "$HOME/.xinitrc" "$HOME/.xsession" "$HOME/.xsession-errors" \
+	      "$HOME/.Xclients" "$HOME/.profile" "$HOME/.dmrc" "$HOME/.ICEauthority" "$HOME/.icons" \
+	      "$HOME/.bashrc" "$HOME/.bash_profile" "$HOME/.bash_history" "$HOME/.bash_logout" 2>&-
+
+	# Remove conflicting items in $XDG_CONFIG_HOME
+	[ -d "$XDG_CONFIG_HOME" ] && for config_directory_path in "$XDG_CONFIG_HOME/."* "$XDG_CONFIG_HOME/"*; do
+		config_directory_name="${config_directory_path#$XDG_CONFIG_HOME/}"
+
+		if [ "$config_directory_name" != '.' ] && [ "$config_directory_name" != '..' ] && [ -e "$HOME/dots/home/.config/$config_directory_name" ]; then
+			trash "$config_directory_path"
+		fi
+	done
+
+	# Stop LightDM from making $HOME/.Xauthority (Spring cleaning your $HOME)
 	printf "$(< /etc/lightdm/lightdm.conf)\n\n[LightDM]\nuser-authority-in-system-dir=true" >> "$TMPDIR/lightdm.conf" \
 	&& sudo mv "$TMPDIR/lightdm.conf" '/etc/lightdm/lightdm.conf'
 }
 
 after_symlink() {
+	printf '\n\033[1;7;33m%s\033[0m\n' 'After symlink step'
+
 	# Change default shell
 	chsh --shell '/usr/bin/fish'
 
 	# Change XDG directories
-	for xdg_directory in 'DESKTOP' 'DOCUMENTS' 'DOWNLOAD' 'MUSIC' 'PICTURES' 'PUBLICSHARE' 'TEMPLATES' 'VIDEOS'; do
+	command -v xdg-user-dirs-update >/dev/null && for xdg_directory in 'DESKTOP' 'DOCUMENTS' 'DOWNLOAD' 'MUSIC' 'PICTURES' 'PUBLICSHARE' 'TEMPLATES' 'VIDEOS'; do
 		eval "xdg-user-dirs-update --set '$xdg_directory' \"\$XDG_${xdg_directory}_DIR\""
 	done
 
-	# Firefox CSS
-	for profile in "$HOME/.mozilla/firefox/"*".default-release"; do
-		ln -fs "$DOTS/extra/firefox/chrome" "$profile/"
+	# Add Firefox CSS
+	command -v firefox >/dev/null && for profile in "$HOME/.mozilla/firefox/"*'.default-release'; do
+		ln -fs "$DOTFILES_PATH/extra/firefox/chrome" "$profile/"
 	done \
-	&& echo 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
+	&& printf '\033[1;93m%s\033[0m' 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
 
 	# Enable firewall
-	sudo ufw enable
+	command -v ufw >/dev/null && sudo ufw enable
 }
 
+
 # Start
-for step in $STEPS; do
-	case "$step" in
-		'i'|'install') install_packages       ;;
-		'e'|'extra')   install_packages_extra ;;
-		'b'|'before')  before_symlink         ;;
-		'h'|'home')    symlink_home           ;;
-		'r'|'root')    symlink_root           ;;
-		'a'|'after')   after_symlink          ;;
-		*)             exit 1                 ;;
+for step_check in $STEPS; do
+	case "$step_check" in
+		'i'|'install') steps_list="${steps_list:+$steps_list }install_packages;" ;;
+		'b'|'before')  steps_list="${steps_list:+$steps_list }before_symlink;"   ;;
+		'h'|'home')    steps_list="${steps_list:+$steps_list }symlink_home;"     ;;
+		'r'|'root')    steps_list="${steps_list:+$steps_list }symlink_root;"     ;;
+		'a'|'after')   steps_list="${steps_list:+$steps_list }after_symlink;"    ;;
+		*)
+			printf '\n\033[1;7;31m%s\033[0m\n' "Step '$step_check' not found"
+			exit 1
+		;;
 	esac
 done
+
+eval "$steps_list"
 
 
 exit 0

@@ -34,11 +34,11 @@ export XDG_TEMPLATES_DIR="$XDG_DESKTOP_DIR"
 export XDG_VIDEOS_DIR="$XDG_DESKTOP_DIR"
 
 ### Spring cleaning
-# export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
-export USERXSESSION="$XDG_CACHE_HOME/xsession"
-export USERXSESSIONRC="$XDG_CACHE_HOME/xsessionrc"
-export ALTUSERXSESSION="$XDG_CACHE_HOME/Xsession"
-export ERRFILE="$XDG_CACHE_HOME/xsession-errors"
+# export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export USERXSESSION="$XDG_CACHE_HOME/x11/xsession"
+export USERXSESSIONRC="$XDG_CACHE_HOME/x11/xsessionrc"
+export ALTUSERXSESSION="$XDG_CACHE_HOME/x11/Xsession"
+export ERRFILE="$XDG_CACHE_HOME/x11/xsession-errors"
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
 export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
