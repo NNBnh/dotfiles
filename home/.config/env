@@ -24,10 +24,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
-export XDG_DESKTOP_DIR="$HOME/test"
+export XDG_DESKTOP_DIR="$HOME/t"
 export XDG_DOCUMENTS_DIR="$XDG_DESKTOP_DIR"
 export XDG_DOWNLOAD_DIR="$XDG_DESKTOP_DIR"
-export XDG_MUSIC_DIR="$HOME/da/music"
+export XDG_MUSIC_DIR="$HOME/d/music"
 export XDG_PICTURES_DIR="$XDG_DESKTOP_DIR"
 export XDG_PUBLICSHARE_DIR="$XDG_DESKTOP_DIR"
 export XDG_TEMPLATES_DIR="$XDG_DESKTOP_DIR"
@@ -53,7 +53,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export BASHER_ROOT="$XDG_DATA_HOME/basher"
 export BASHER_PREFIX="$BASHER_ROOT/cellar"
 export BASHER_PACKAGES_PATH="$HOME/sh"
-export PATH="$PATH:$HOME/.local/bin:$HOME/dots/extra/scripts:$BASHER_PREFIX/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/c/extra/scripts:$BASHER_PREFIX/bin"
 
 
 # =============================================================================

@@ -51,7 +51,7 @@ The *SuperB* dotfiles for unix system, configured with a high level of **portabl
 `Đotfiles` use [*SuperB Bootstrap*](https://github.com/NNBnh/superb-bootstrap) to install, just download this repository then execute `./dots/setup`:
 
 ```sh
-git clone 'https://github.com/NNBnh/dots.git' "$HOME/d" && ~/d/setup
+git clone https://github.com/NNBnh/dots ~/c && ~/c/setup
 ```
 
 ###### For more information look at the [wiki](https://github.com/NNBnh/dots/wiki)
