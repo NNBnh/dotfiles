@@ -51,8 +51,7 @@ The *SuperB* dotfiles for unix system, configured with a high level of **portabl
 `Đotfiles` use [*SuperB Bootstrap*](https://github.com/NNBnh/superb-bootstrap) to install, just download this repository then execute `./dots/setup`:
 
 ```sh
-git clone https://github.com/NNBnh/dots
-./dots/setup
+git clone 'https://github.com/NNBnh/dots.git' "$HOME/d" && ~/d/setup
 ```
 
 ###### For more information look at the [wiki](https://github.com/NNBnh/dots/wiki)
@@ -61,6 +60,6 @@ git clone https://github.com/NNBnh/dots
 
 ---
 
-> <h1 align="center">Made with :heart: by <a href="https://github.com/NNBnh"><i>NNB</i></a></h1>
+> <h1 align="center">Made with ❤️ by <a href="https://github.com/NNBnh"><i>NNB</i></a></h1>
 >
 > <p align="center"><a href="https://www.buymeacoffee.com/nnbnh"><img src="https://img.shields.io/badge/buy_me_a_coffee%20-%23F7CA88.svg?logo=buy-me-a-coffee&logoColor=333333&style=for-the-badge" alt="Buy Me a Coffee"></p>
