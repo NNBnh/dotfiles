@@ -255,7 +255,7 @@ after_symlink() {
 
 	# Add Firefox CSS
 	command -v firefox >/dev/null && for profile in "$HOME/.mozilla/firefox/"*'.default-release'; do
-		ln -fs "$DOTFILES_PATH/extra/firefox/chrome" "$profile/"
+		ln -sf "$DOTFILES_PATH/extra/firefox/chrome" "$profile/"
 	done \
 	&& printf '\033[1;93m%s\033[0m' 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
 

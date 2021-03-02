@@ -52,7 +52,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 ### Basher
 export BASHER_ROOT="$XDG_DATA_HOME/basher"
 export BASHER_PREFIX="$BASHER_ROOT/cellar"
-export BASHER_PACKAGES_PATH="$HOME/sh"
+export BASHER_PACKAGES_PATH="$HOME/s"
 export PATH="$PATH:$HOME/.local/bin:$HOME/c/extra/scripts:$BASHER_PREFIX/bin"
 
 
@@ -402,6 +402,3 @@ export CODERUN_less="cd \$DIRECTORY && lessc \$FILE \$NAME.css"
 export CODERUN_f="cd \$DIRECTORY && gfortran \$FILE -o \$NAME && \$DIRECTORY/\$NAME"
 export CODERUN_for="$CODERUN_f"
 export CODERUN_f90="$CODERUN_f"
-
-
-# exit 0
