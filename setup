@@ -155,7 +155,7 @@ install_packages() {
 
 		# Basher packages
 		git clone 'https://github.com/basherpm/basher.git' "$XDG_DATA_HOME/basher" \
-		&& for basher_package in 'NNBnh/bsymlink' 'NNBnh/bui-terminal' 'NNBnh/bfetch' 'NNBnh/terminal-explorer' 'NNBnh/clipb' 'NNBnh/coderun' 'NNBnh/hr'; do
+		&& for basher_package in 'NNBnh/bsymlink' 'NNBnh/bui-terminal' 'NNBnh/bui-appearance' 'NNBnh/bfetch' 'NNBnh/terminal-explorer' 'NNBnh/clipb' 'NNBnh/coderun' 'NNBnh/hr'; do
 			basher install "$basher_package"
 		done
 
