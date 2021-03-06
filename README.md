@@ -2,7 +2,7 @@
 <p align="center">Đotfiles that <i>SuperB</i></p>
 <p align="center"><img width="25%" src="extra/logo.png"></p>
 <p align="center"><a href="https://github.com/NNBnh/dots/discussions/7"><img src="https://img.shields.io/badge/gallery%20-%23F7CA88.svg?style=for-the-badge" alt="Gallery"></a> <a href="packageslist"><img src="https://img.shields.io/badge/packages_list%20-%23F7CA88.svg?style=for-the-badge" alt="Packages list"></a> <a href="https://github.com/NNBnh/dots/wiki"><img src="https://img.shields.io/badge/wiki%20-%23F7CA88.svg?style=for-the-badge" alt="Wiki"></a></p>
-<p align="center"><img src="https://img.shields.io/github/watchers/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"> <img src="https://img.shields.io/github/stars/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"> <img src="https://img.shields.io/github/forks/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"> <img src="https://img.shields.io/github/issues/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"></p>
+<p align="center"><a href="https://github.com/NNBnh/dots/watchers"><img src="https://img.shields.io/github/watchers/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"></a> <a href="https://github.com/NNBnh/dots/stargazers"><img src="https://img.shields.io/github/stars/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"></a> <a href="https://github.com/NNBnh/dots/network/members"><img src="https://img.shields.io/github/forks/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"></a> <a href="https://github.com/NNBnh/dots/issues"><img src="https://img.shields.io/github/issues/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"></a></p>
 
 ## About
 Welcome to the `Đotfiles`:
@@ -36,8 +36,6 @@ The *SuperB* dotfiles for unix system, configured with a high level of **portabl
 - Super **optimization**:
   - Using tree-base tiling system for endless freedom, work with any use cases
   - Maximize your screen real estate
-    - Auto show/hide infomation (time, workspace, playing music, ...)
-    - No taskbar, instead use title bar (learn more on [Title bar vs Taskbar](https://github.com/NNBnh/dots/wiki/bar))
   - Convenient smart shotcut
 
 ## Contents

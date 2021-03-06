@@ -81,13 +81,12 @@
   APT:rsync                       PAC:rsync                       XBP:rsync                     #  Sync files
   APT:curl                        PAC:curl                        XBP:curl                      #  Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
   APT:aria2                       PAC:aria2                       XBP:aria2                     #  Download manager
-  APT:git                         PAC:git                         XBP:git                       #  Version control system
   APT:youtube-dl                  PAC:youtube-dl                  XBP:youtube-dl                #  Download media
   APT:trash-cli                   PAC:trash-cli                   XBP:trash-cli                 #  Trash manager
 
 ### Utilitie
+  APT:git                         PAC:git                         XBP:git                       #  Version control system
   APT:fd-find                     PAC:fd                          XBP:fd                        #  Find files
-  APT:ripgrep                     PAC:ripgrep                     XBP:ripgrep                   #  Find regex
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate              #  Calculator
   APT:translate-shell             PAC:translate-shell             XBP:translate-shell           #  Translator
   APT:jq                          PAC:jq                          XBP:jq                        #  JSON processor
@@ -121,15 +120,15 @@
 ### Interact
   APT:kitty                       PAC:kitty                       XBP:kitty                     #T Terminal emulator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
   APT:mpv                         PAC:mpv                         XBP:mpv                       #  Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
-  APT:firefox                     PAC:firefox                     XBP:firefox                   #  Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
+  FLA:org.mozilla.firefox         PAC:firefox                     XBP:firefox                   #  Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
 
 ### Edit
-  APT:gimp                        PAC:gimp                        XBP:gimp                      #  Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
-  APT:blender                     PAC:blender                     XBP:blender                   #  Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
-  APT:godot3                      AUR:godot-bin                   XBP:godot                     #  Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
+  FLA:org.gimp.GIMP               PAC:gimp                        XBP:gimp                      #  Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
+  FLA:org.blender.Blender         PAC:blender                     XBP:blender                   #  Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
+  FLA:org.godotengine.Godot       AUR:godot-bin                   XBP:godot                     #  Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
 
 ### Games
                                   PAC:lutris                      XBP:lutris                    #  Games manager
-                                  PAC:steam                       XBP:steam                     #  Gamer mode
-  APT:retroarch                   PAC:retroarch                   XBP:retroarch                 #  Retro emulators
+  FLA:com.valvesoftware.Steam     PAC:steam                       XBP:steam                     #  Gamer mode
+  FLA:org.libretro.RetroArch      PAC:retroarch                   XBP:retroarch                 #  Retro emulators
                                   AUR:multimc5                    XBP:MultiMC                   #  Minecraft launcher and instance manager

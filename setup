@@ -1,128 +1,5 @@
 #!/bin/sh
 
-# Please skip to line 125!
-
-
-# Values
-WD="$PWD"
-
-TMPDIR="${TMPDIR:-/tmp}"
-TEMPORARY="$TMPDIR/superb-bootstrap"
-
-     APT_MARK='APT';      APT_COMMAND='sudo apt install --assume-yes'
-  Pacman_MARK='PAC';   Pacman_COMMAND='sudo pacman --sync --refresh --noconfirm --needed'
-    XBPS_MARK='XBP';     XBPS_COMMAND='sudo xbps-install --sync --yes'
-     AUR_MARK='AUR';      AUR_COMMAND='paru -Sy --nodiffmenu --save --noconfirm'
- Flatpak_MARK='FLA';  Flatpak_COMMAND='sudo flatpak install'
-    Snap_MARK='SNA';     Snap_COMMAND='sudo snap install'
-Homebrew_MARK='HBR'; Homebrew_COMMAND='brew install'
-
-
-# Functions
-superbbootstrap_install_packages() {
-	if [ -f "$1" ]; then
-		packages_list=$(sed -e 's/#.*$//g' "$1")
-	else
-		printf '\n\033[1;7;31m%s\033[0m\n' 'Packages list not found'
-		exit 1
-	fi
-
-	case $(uname -s | sed -e 's/[[:upper:]]/\L&/g') in
-		'darwin'*)
-			packagemanager_main='Homebrew'
-		;;
-		*)
-			  if command -v apt          >/dev/null; then packagemanager_main='APT'
-			elif command -v pacman       >/dev/null; then packagemanager_main='Pacman'
-			elif command -v xbps-install >/dev/null; then packagemanager_main='XBPS'
-			else
-				printf '\n\033[1;7;31m%s\033[0m\n' "Packages manager not found"
-				exit 1
-			fi
-
-			[ "$packagemanager_main"  = 'Pacman' ] && packagemanager_list="$packagemanager_list AUR"
-			                                          packagemanager_list="$packagemanager_list Flatpak"
-			[ "$packagemanager_main" != 'XBPS'   ] && packagemanager_list="$packagemanager_list Snap"
-		;;
-	esac
-
-	packagemanager_list="$packagemanager_main${packagemanager_list:+ $packagemanager_list}"
-
-
-	for packagemanager in $packagemanager_list; do
-		eval "mark=\"\$${packagemanager}_MARK\""
-		eval "install_command=\"\$${packagemanager}_COMMAND\""
-
-		packages_installing=$(printf '%s' "$packages_list" | sed -e "s/^.*$mark://g" -e 's/[[:space:]].*$//g' -e '/^$/d' | tr '\n' ' ')
-
-		[ -n "$packages_installing" ] && {
-			packages_list=$(printf '%s' "$packages_list" | sed -e "s/^.*$mark.*\$//g")
-
-			printf '\n\033[1;7;35m%s\033[0m\n' "Setting up $packagemanager"
-			eval "superbbootstrap_$packagemanager"
-
-			printf '\n\033[1;7;32m%s\033[0m\n' "Installing $packagemanager Packages"
-			eval "$install_command $packages_installing"
-		}
-	done
-}
-
-superbbootstrap_APT() {
-	sudo apt update  --assume-yes
-	sudo apt upgrade --assume-yes
-}
-
-superbbootstrap_Pacman() {
-	sudo pacman --sync --sysupgrade --refresh --noconfirm --needed
-}
-
-superbbootstrap_XBPS() {
-	sudo xbps-install --sync --yes --update
-	sudo xbps-install --sync --yes --update
-	sudo xbps-install --sync --yes void-repo-nonfree void-repo-multilib void-repo-multilib-nonfree void-repo-debug
-}
-
-superbbootstrap_AUR() {
-	sudo pacman --sync --refresh --noconfirm --needed git base-devel
-	git clone 'https://aur.archlinux.org/paru.git' "$TEMPORARY/paru"
-	cd "$TEMPORARY/paru" || exit 1
-	makepkg -si
-	cd "$WD" || exit 1
-}
-
-superbbootstrap_Flatpak() {
-	case "$packagemanager_main" in
-	'Pacman') sudo pacman --sync --refresh --noconfirm --needed flatpak           ;;
-	'APT')    sudo apt install --assume-yes flatpak gnome-software-plugin-flatpak ;;
-	'XBPS')   sudo xbps-install --sync --yes flatpak                              ;;
-	esac
-
-	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-}
-
-superbbootstrap_Snap() {
-	if [ $packagemanager_main = 'Pacman' ]; then
-		sudo pacman --sync --refresh --noconfirm --needed git
-		git clone 'https://aur.archlinux.org/snapd.git' "$TEMPORARY/snap"
-		cd "$TEMPORARY/snap" || exit 1
-		makepkg -si
-		cd "$WD" || exit 1
-		sudo systemctl enable --now snapd.socket
-		sudo ln -s '/var/lib/snapd/snap' '/snap'
-	elif [ $packagemanager_main = 'APT' ]; then
-		sudo apt install --assume-yes snapd
-	fi
-
-	snap install core
-}
-
-superbbootstrap_Homebrew() {
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-}
-
-
-###############################################################################
-
 #    ____    __
 #   / __/__ / /___ _____
 #  _\ \/ -_) __/ // / _ \
@@ -261,6 +138,126 @@ after_symlink() {
 
 	# Enable firewall
 	command -v ufw >/dev/null && sudo ufw enable
+}
+
+
+# SBB #########################################################################
+
+# Values
+WD="$PWD"
+
+TMPDIR="${TMPDIR:-/tmp}"
+TEMPORARY="$TMPDIR/superb-bootstrap"
+
+     APT_MARK='APT';      APT_COMMAND='sudo apt install --assume-yes'
+  Pacman_MARK='PAC';   Pacman_COMMAND='sudo pacman --sync --refresh --noconfirm --needed'
+    XBPS_MARK='XBP';     XBPS_COMMAND='sudo xbps-install --sync --yes'
+     AUR_MARK='AUR';      AUR_COMMAND='paru -Sy --nodiffmenu --save --noconfirm'
+ Flatpak_MARK='FLA';  Flatpak_COMMAND='sudo flatpak install'
+    Snap_MARK='SNA';     Snap_COMMAND='sudo snap install'
+Homebrew_MARK='HBR'; Homebrew_COMMAND='brew install'
+
+
+# Functions
+superbbootstrap_install_packages() {
+	if [ -f "$1" ]; then
+		packages_list=$(sed -e 's/#.*$//g' "$1")
+	else
+		printf '\n\033[1;7;31m%s\033[0m\n' 'Packages list not found'
+		exit 1
+	fi
+
+	case $(uname -s | sed -e 's/[[:upper:]]/\L&/g') in
+		'darwin'*)
+			packagemanager_main='Homebrew'
+		;;
+		*)
+			  if command -v apt          >/dev/null; then packagemanager_main='APT'
+			elif command -v pacman       >/dev/null; then packagemanager_main='Pacman'
+			elif command -v xbps-install >/dev/null; then packagemanager_main='XBPS'
+			else
+				printf '\n\033[1;7;31m%s\033[0m\n' "Packages manager not found"
+				exit 1
+			fi
+
+			[ "$packagemanager_main"  = 'Pacman' ] && packagemanager_list="$packagemanager_list AUR"
+			                                          packagemanager_list="$packagemanager_list Flatpak"
+			[ "$packagemanager_main" != 'XBPS'   ] && packagemanager_list="$packagemanager_list Snap"
+		;;
+	esac
+
+	packagemanager_list="$packagemanager_main${packagemanager_list:+ $packagemanager_list}"
+
+
+	for packagemanager in $packagemanager_list; do
+		eval "mark=\"\$${packagemanager}_MARK\""
+		eval "install_command=\"\$${packagemanager}_COMMAND\""
+
+		packages_installing=$(printf '%s' "$packages_list" | sed -e "s/^.*$mark://g" -e 's/[[:space:]].*$//g' -e '/^$/d' | tr '\n' ' ')
+
+		[ -n "$packages_installing" ] && {
+			packages_list=$(printf '%s' "$packages_list" | sed -e "s/^.*$mark.*\$//g")
+
+			printf '\n\033[1;7;35m%s\033[0m\n' "Setting up $packagemanager"
+			eval "superbbootstrap_$packagemanager"
+
+			printf '\n\033[1;7;32m%s\033[0m\n' "Installing $packagemanager Packages"
+			eval "$install_command $packages_installing"
+		}
+	done
+}
+
+superbbootstrap_APT() {
+	sudo apt update  --assume-yes
+	sudo apt upgrade --assume-yes
+}
+
+superbbootstrap_Pacman() {
+	sudo pacman --sync --sysupgrade --refresh --noconfirm --needed
+}
+
+superbbootstrap_XBPS() {
+	sudo xbps-install --sync --yes --update
+	sudo xbps-install --sync --yes --update
+	sudo xbps-install --sync --yes void-repo-nonfree void-repo-multilib void-repo-multilib-nonfree void-repo-debug
+}
+
+superbbootstrap_AUR() {
+	sudo pacman --sync --refresh --noconfirm --needed git base-devel
+	git clone 'https://aur.archlinux.org/paru.git' "$TEMPORARY/paru"
+	cd "$TEMPORARY/paru" || exit 1
+	makepkg -si
+	cd "$WD" || exit 1
+}
+
+superbbootstrap_Flatpak() {
+	case "$packagemanager_main" in
+	'Pacman') sudo pacman --sync --refresh --noconfirm --needed flatpak           ;;
+	'APT')    sudo apt install --assume-yes flatpak gnome-software-plugin-flatpak ;;
+	'XBPS')   sudo xbps-install --sync --yes flatpak                              ;;
+	esac
+
+	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+}
+
+superbbootstrap_Snap() {
+	if [ $packagemanager_main = 'Pacman' ]; then
+		sudo pacman --sync --refresh --noconfirm --needed git
+		git clone 'https://aur.archlinux.org/snapd.git' "$TEMPORARY/snap"
+		cd "$TEMPORARY/snap" || exit 1
+		makepkg -si
+		cd "$WD" || exit 1
+		sudo systemctl enable --now snapd.socket
+		sudo ln -s '/var/lib/snapd/snap' '/snap'
+	elif [ $packagemanager_main = 'APT' ]; then
+		sudo apt install --assume-yes snapd
+	fi
+
+	snap install core
+}
+
+superbbootstrap_Homebrew() {
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
 
