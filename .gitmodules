@@ -1,0 +1,12 @@
+[submodule "home/.local/share/textarts"]
+	path = home/.local/share/textarts
+	url = https://github.com/NNBnh/textart-collections.git
+[submodule "extra/fetchutils"]
+	path = extra/fetchutils
+	url = https://github.com/lptstr/fetchutils.git
+[submodule "home/.local/share/figlet/fonts"]
+	path = home/.local/share/figlet/fonts
+	url = https://github.com/xero/figlet-fonts.git
+[submodule "extra/wallpapers"]
+	path = extra/wallpapers
+	url = https://github.com/NNBnh/wallpaper-collections.git

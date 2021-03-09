@@ -19,7 +19,7 @@
 FINDER="${FINDER:-fzf}"
 CHARATERS_PATH="${CHPICK_CHARATERS_PATH:-${XDG_DATA_HOME:-$HOME/.local/share}/charaters}"
 
-CHARATERS_LIST="${1:-$(ls "$CHARATERS_PATH" | sed -e 's/^[[:lower:]]/\U&/g'  | eval "$FINDER --no-multi --preview-window='hidden'" | sed -e 's/[[:upper:]]/\L&/g' )}"
+CHARATERS_LIST="${1:-$(ls "$CHARATERS_PATH" | tr '[:upper:]' '[:lower:]' | eval "$FINDER --no-multi --preview-window='hidden'" | tr '[:upper:]' '[:lower:]' )}"
 COPY_COMMAND="${CHPICK_COPY_COMMAND:-clipb copy}"
 
 # Functions

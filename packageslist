@@ -10,7 +10,7 @@
 #               └─ https://github.com/NNBnh
 # URL:          https://github.com/NNBnh/dots/blob/master/packageslist
 
-# C: Need config/script
+# C: Need config/scripting
 # T: TODO
 # W: TODO Window manager
 # E: TODO Editor
@@ -85,30 +85,26 @@
   APT:trash-cli                   PAC:trash-cli                   XBP:trash-cli                 #  Trash manager
 
 ### Utilitie
-  APT:git                         PAC:git                         XBP:git                       #  Version control system
   APT:fd-find                     PAC:fd                          XBP:fd                        #  Find files
+  APT:git                         PAC:git                         XBP:git                       #  Version control system
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate              #  Calculator
   APT:translate-shell             PAC:translate-shell             XBP:translate-shell           #  Translator
-  APT:jq                          PAC:jq                          XBP:jq                        #  JSON processor
   APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                #  Shell script static analysis
   APT:asciinema                   PAC:asciinema                   XBP:asciinema                 #  Record terminal
-
-### Files
-  APT:libimage-exiftool-perl      PAC:perl-image-exiftool         XBP:exiftool                  #C Metadata preview
-                                  PAC:bat                         XBP:bat                       #E Text preview
-  APT:chafa                       PAC:chafa                       XBP:chafa                     #  Image preview
   APT:kakoune                     PAC:kakoune                     XBP:kakoune                   #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
 
-### Formats
+### Data manipulation
+  APT:libimage-exiftool-perl      PAC:perl-image-exiftool         XBP:exiftool                  #C Metadata preview
   APT:p7zip                       PAC:p7zip                       XBP:p7zip                     #  Files archive
   APT:pandoc                      PAC:pandoc                      XBP:pandoc                    #  Markup converter
   APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick               #  Image converter
   APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                    #  Media converter
+  APT:jq                          PAC:jq                          XBP:jq                        #  JSON processor
 
 ### Other
   APT:neofetch                    PAC:neofetch                    XBP:neofetch                  #T System profilers ("CPU-Z alternative for linux")
   APT:figlet                      PAC:figlet                      XBP:figlet                    #  Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
-  APT:lolcat                      PAC:lolcat                      XBP:lolcat-c                  #E Make outputs RGB
+  APT:chafa                       PAC:chafa                       XBP:chafa                     #  Convert image to textart
                                   AUR:no-more-secrets             XBP:no-more-secrets           #  Become a hackerman (Make outputs Minecraft enchanting table language)
                                   AUR:cava                        XBP:cava                      #  Audio visualizer
 

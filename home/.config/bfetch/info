@@ -3,10 +3,10 @@
 
 # Values
 COLOR="${BUI_COLOR_TEXTART:-32}"
-OS=$("$XDG_DATA_HOME"/fetchutils/src/os.sh 2>&- | sed -e 's/^[[:lower:]]/\U&/g'); [ -n "$OS" ] && [ "${#OS}" -gt '16' ] && OS='Void Linux'
-WM=$("$XDG_DATA_HOME"/fetchutils/src/wm.sh 2>&- | sed -e 's/^[[:lower:]]/\U&/g'); [ -n "$WM" ] && [ "${#WM}" -gt '16' ] && WM='Sway'
-SHELL=$(basename "$SHELL" | sed 's/^[[:lower:]]/\U&/g')
-TERMINAL=$(basename "$TERMINAL" | sed 's/^[[:lower:]]/\U&/g')
+OS=$("$HOME/c/extra/fetchutils/src/os.sh" 2>&- | tr '[:upper:]' '[:lower:]'); [ -n "$OS" ] && [ "${#OS}" -gt '16' ] && OS='Linux'
+WM=$("$HOME/c/extra/fetchutils/src/wm.sh" 2>&- | tr '[:upper:]' '[:lower:]'); [ -n "$WM" ] && [ "${#WM}" -gt '16' ] && WM='River'
+SHELL=$(basename "$SHELL" | tr '[:upper:]' '[:lower:]')
+TERMINAL=$(basename "$TERMINAL" | tr '[:upper:]' '[:lower:]')
 FONT="$BUI_FONT_MONO_FAMILY"
 
 
