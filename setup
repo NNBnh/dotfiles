@@ -35,8 +35,9 @@ install_packages() {
 
 		# Basher packages
 		git clone 'https://github.com/basherpm/basher.git' "$XDG_DATA_HOME/basher"
-		ln -sf "$DOTFILES_PATH/extra/scripts/basher" "$XDG_DATA_HOME/basher/bin/basher"
-		for basher_package in 'NNBnh/bsymlink' 'NNBnh/bui-terminal' 'NNBnh/bui-appearance' 'NNBnh/bfetch' 'NNBnh/terminal-explorer' 'NNBnh/clipb' 'NNBnh/coderun' 'NNBnh/mk' 'NNBnh/hr'; do
+		mkdir -p "$HOME/.local/bin" \
+		&& ln -sf "$XDG_DATA_HOME/basher/bin/basher" "$HOME/.local/bin/" \
+		&& for basher_package in 'NNBnh/bsymlink' 'NNBnh/bui-terminal' 'NNBnh/bui-appearance' 'NNBnh/bfetch' 'NNBnh/terminal-explorer' 'NNBnh/clipb' 'NNBnh/coderun' 'NNBnh/mk' 'NNBnh/hr'; do
 			basher install "$basher_package"
 		done
 
