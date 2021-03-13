@@ -28,7 +28,9 @@ install_packages() {
 
 	printf '\n\033[1;7;34m%s\033[0m\n' 'Install extra packages'
 		# Download submodules
+		cd "$DOTFILES_PATH" || exit 1
 		git submodule update --init --recursive
+		cd "$WD" || exit 1
 
 		# Python packages
 		pip install --upgrade 'auto-editor' 'git+https://github.com/will8211/unimatrix.git'
