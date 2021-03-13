@@ -70,19 +70,14 @@
 
 ### Core
   APT:fish                        PAC:fish                        XBP:fish-shell                  TMP:fish                      #E Main shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#shell)
-  APT:dash                        PAC:dash                        XBP:dash                        TMP:dash                      #  POSIX shell
   APT:bash                        PAC:bash                        XBP:bash                        TMP:bash                      #  Legacy shell
-  APT:python                      PAC:python                      XBP:python                      TMP:python                    #  Handy programming language
                                   AUR:starship-bin                XBP:starship                    TMP:starship                  #  Shell prompt
   APT:fzf                         PAC:fzf                         XBP:fzf                         TMP:fzf                       #E Fuzzy finder (WH.I.CH https://github.com/NNBnh/dots/wiki/which#finder)
                                   PAC:abduco                      XBP:abduco                      TMP:abduco                    #  Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
 
-### Tranfer
-  APT:rsync                       PAC:rsync                       XBP:rsync                       TMP:rsync                     #  Sync files
-  APT:curl                        PAC:curl                        XBP:curl                        TMP:curl                      #  Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
-  APT:aria2                       PAC:aria2                       XBP:aria2                       TMP:aria2                     #  Download manager
-  APT:youtube-dl                  PAC:youtube-dl                  XBP:youtube-dl                  TMP:youtube-dl                #  Download media
-  APT:trash-cli                   PAC:trash-cli                   XBP:trash-cli                                                 #  Trash manager
+### Programming language
+  APT:dash                        PAC:dash                        XBP:dash                        TMP:dash                      #  POSIX shell
+  APT:python                      PAC:python                      XBP:python                      TMP:python                    #  Handy programming language
 
 ### Utilitie
   APT:fd-find                     PAC:fd                          XBP:fd                          TMP:fd                        #  Find files
@@ -92,6 +87,13 @@
   APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                                                #  Shell script static analysis
   APT:asciinema                   PAC:asciinema                   XBP:asciinema                   TMP:asciinema                 #  Record terminal
   APT:kakoune                     PAC:kakoune                     XBP:kakoune                     TMP:kakoune                   #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
+
+### Data tranfer
+  APT:rsync                       PAC:rsync                       XBP:rsync                       TMP:rsync                     #  Sync files
+  APT:curl                        PAC:curl                        XBP:curl                        TMP:curl                      #  Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
+  APT:aria2                       PAC:aria2                       XBP:aria2                       TMP:aria2                     #C Download manager
+  APT:youtube-dl                  PAC:youtube-dl                  XBP:youtube-dl                  TMP:youtube-dl                #  Download media
+  APT:trash-cli                   PAC:trash-cli                   XBP:trash-cli                                                 #  Trash manager
 
 ### Data manipulation
   APT:libimage-exiftool-perl      PAC:perl-image-exiftool         XBP:exiftool                    TMP:exiftool                  #C Metadata manipulation

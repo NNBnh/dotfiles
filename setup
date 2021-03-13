@@ -149,17 +149,6 @@ TEMPORARY="$TMPDIR/superb-bootstrap"
 
 DOTFILES_PATH=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
-KERNEL=$(uname -s | tr '[:upper:]' '[:lower:]')
-
-if [ -x "$(command -v sudo)" ]; then
-	PERMISSION_COMMAND='sudo'
-elif [ -x "$(command -v doas)" ]; then
-	PERMISSION_COMMAND='doas'
-elif [ "$KERNEL" = 'linux-android' ]; then
-	printf '\n\033[1;7;31m%s\033[0m\n' "Permission command not found or unsupported"
-	exit 1
-fi
-
      APT_MARK='APT';      APT_PM='apt'         ;      APT_COMMAND="$PERMISSION_COMMAND $APT_PM install --assume-yes"
   Mports_MARK='MPT';   Mports_PM='mports'      ;   Mports_COMMAND="$PERMISSION_COMMAND $Mports_PM install"
  OpenBSD_MARK='OBP';  OpenBSD_PM='pkg_add'     ;  OpenBSD_COMMAND="$PERMISSION_COMMAND $OpenBSD_PM -I"
@@ -179,15 +168,12 @@ MacPorts_MARK='MCP'; MacPorts_PM='port'        ; MacPorts_COMMAND="$PERMISSION_C
      SBO_MARK='SBO';      SBO_PM='sbopkg'      ;      SBO_COMMAND="$PERMISSION_COMMAND $SBO_PM -ifq"
     Snap_MARK='SNA';     Snap_PM='snap'        ;     Snap_COMMAND="$PERMISSION_COMMAND $Snap_PM install"
 
-case "$KERNEL" in
+case $(uname -s | tr '[:upper:]' '[:lower:]') in
 	'darwin'*)
 		PACKAGEMANAGER_LIST='Homebrew MacPorts MAS'
 	;;
 	'freebsd'*)
 		PACKAGEMANAGER_MAIN='PKGNG'
-	;;
-	'linux-android')
-		PACKAGEMANAGER_MAIN='Termux'
 	;;
 	'midnightbsd'*)
 		PACKAGEMANAGER_MAIN='Mports'
@@ -199,7 +185,7 @@ case "$KERNEL" in
 		PACKAGEMANAGER_MAIN='OpenBSD'
 	;;
 	*)
-		for packagemanager_check in 'APT' 'Pacman' 'Portage' 'Slackpkg' 'XBPS' 'Zypper'; do
+		for packagemanager_check in 'Termux' 'APT' 'Pacman' 'Portage' 'Slackpkg' 'XBPS' 'Zypper'; do
 			[ -x $(eval "command -v \"\$${packagemanager_check}_PM\"") ] && {
 				PACKAGEMANAGER_MAIN="$packagemanager_check"
 				break
@@ -218,6 +204,15 @@ case "$KERNEL" in
 esac
 
 PACKAGEMANAGER_LIST="$PACKAGEMANAGER_MAIN $PACKAGEMANAGER_LIST" # This is a list of package managers supported on bootstrapping OS
+
+if [ -x "$(command -v sudo)" ]; then
+	PERMISSION_COMMAND='sudo'
+elif [ -x "$(command -v doas)" ]; then
+	PERMISSION_COMMAND='doas'
+elif [ "$PACKAGEMANAGER_MAIN" != 'Termux' ]; then
+	printf '\n\033[1;7;31m%s\033[0m\n' "Permission command not found or unsupported"
+	exit 1
+fi
 
 
 # Functions
