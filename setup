@@ -34,8 +34,9 @@ install_packages() {
 		pip install --upgrade 'auto-editor' 'git+https://github.com/will8211/unimatrix.git'
 
 		# Basher packages
-		git clone 'https://github.com/basherpm/basher.git' "$XDG_DATA_HOME/basher" \
-		&& for basher_package in 'NNBnh/bsymlink' 'NNBnh/bui-terminal' 'NNBnh/bui-appearance' 'NNBnh/bfetch' 'NNBnh/terminal-explorer' 'NNBnh/clipb' 'NNBnh/coderun' 'NNBnh/mk' 'NNBnh/hr'; do
+		git clone 'https://github.com/basherpm/basher.git' "$XDG_DATA_HOME/basher"
+		ln -sf "$DOTFILES_PATH/extra/scripts/basher" "$XDG_DATA_HOME/basher/bin/basher"
+		for basher_package in 'NNBnh/bsymlink' 'NNBnh/bui-terminal' 'NNBnh/bui-appearance' 'NNBnh/bfetch' 'NNBnh/terminal-explorer' 'NNBnh/clipb' 'NNBnh/coderun' 'NNBnh/mk' 'NNBnh/hr'; do
 			basher install "$basher_package"
 		done
 
@@ -62,12 +63,11 @@ install_packages() {
 			&& mv "$TMPDIR/Bibata-Original-Ice" "$XDG_DATA_HOME/icons/"
 
 			# Charater picker
-			mkdir -p "$XDG_DATA_HOME/charaters" && {
-				curl -fsSL 'https://www.unicode.org/Public/emoji/13.1/emoji-test.txt' \
-				| sed -e 's/ E[0-9.]*/:/g' -ne 's/^.*fully-qualified *# //p' > "$XDG_DATA_HOME/charaters/emoji"
-				curl -fsSL 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json' \
-				| jq --raw-output '.gitmojis[] | [.emoji, .description] | join(": ")' > "$XDG_DATA_HOME/charaters/gitmoji"
-			}
+			mkdir -p "$XDG_DATA_HOME/charaters"
+			curl -fsSL 'https://www.unicode.org/Public/emoji/13.1/emoji-test.txt' \
+			| sed -e 's/ E[0-9.]*/:/g' -ne 's/^.*fully-qualified *# //p' > "$XDG_DATA_HOME/charaters/emoji"
+			curl -fsSL 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json' \
+			| jq --raw-output '.gitmojis[] | [.emoji, .description] | join(": ")' > "$XDG_DATA_HOME/charaters/gitmoji"
 }
 
 symlink_home() {
@@ -93,17 +93,17 @@ before_symlink() {
 
 	# Remove junks (Spring cleaning your $HOME)
 	mkdir "$XDG_DESKTOP_DIR"
-	trash "$HOME/Desktop" "$HOME/Documents" "$HOME/Downloads" "$HOME/Music" "$HOME/Pictures" "$HOME/Public" "$HOME/Templates" "$HOME/Videos" \
-	      "$HOME/.inputrc" "$HOME/.xinitrc" "$HOME/.xsession" "$HOME/.xsession-errors" \
-	      "$HOME/.Xclients" "$HOME/.profile" "$HOME/.dmrc" "$HOME/.ICEauthority" "$HOME/.icons" \
-	      "$HOME/.bashrc" "$HOME/.bash_profile" "$HOME/.bash_history" "$HOME/.bash_logout" 2>&-
+	rm -rf "$HOME/Desktop" "$HOME/Documents" "$HOME/Downloads" "$HOME/Music" "$HOME/Pictures" "$HOME/Public" "$HOME/Templates" "$HOME/Videos" \
+	       "$HOME/.inputrc" "$HOME/.xinitrc" "$HOME/.xsession" "$HOME/.xsession-errors" \
+	       "$HOME/.Xclients" "$HOME/.profile" "$HOME/.dmrc" "$HOME/.ICEauthority" "$HOME/.icons" \
+	       "$HOME/.bashrc" "$HOME/.bash_profile" "$HOME/.bash_history" "$HOME/.bash_logout" 2>&-
 
 	# Remove conflicting items in $XDG_CONFIG_HOME
-	[ -d "$XDG_CONFIG_HOME" ] && for config_directory_path in "$XDG_CONFIG_HOME/."* "$XDG_CONFIG_HOME/"*; do
+	for config_directory_path in "$XDG_CONFIG_HOME/."* "$XDG_CONFIG_HOME/"*; do
 		config_directory_name="${config_directory_path#$XDG_CONFIG_HOME/}"
 
 		if [ "$config_directory_name" != '.' ] && [ "$config_directory_name" != '..' ] && [ -e "$HOME/dots/home/.config/$config_directory_name" ]; then
-			trash "$config_directory_path"
+			rm -rf "$config_directory_path"
 		fi
 	done
 
@@ -116,7 +116,7 @@ after_symlink() {
 	printf '\n\033[1;7;33m%s\033[0m\n' 'After symlink step'
 
 	# Change default shell
-	chsh --shell '/usr/bin/fish'
+	chsh -s '/usr/bin/fish'
 
 	# Change XDG directories
 	command -v xdg-user-dirs-update >/dev/null && for xdg_directory in 'DESKTOP' 'DOCUMENTS' 'DOWNLOAD' 'MUSIC' 'PICTURES' 'PUBLICSHARE' 'TEMPLATES' 'VIDEOS'; do
@@ -192,10 +192,12 @@ case $(uname -s | tr '[:upper:]' '[:lower:]') in
 			}
 		done
 
-		[ "$PACKAGEMANAGER_MAIN"  = 'Pacman'   ] && PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST AUR"
-		[ "$PACKAGEMANAGER_MAIN"  = 'Slackpkg' ] && PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST SBO"
-		                                            PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST Flatpak"
-		                                            PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST Homebrew"
+		[ "$PACKAGEMANAGER_MAIN" != 'Termux' ] && {
+			[ "$PACKAGEMANAGER_MAIN"  = 'Pacman'   ] && PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST AUR"
+			[ "$PACKAGEMANAGER_MAIN"  = 'Slackpkg' ] && PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST SBO"
+			                                            PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST Flatpak"
+			                                            PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST Homebrew"
+		}
 
 		if [ "$PACKAGEMANAGER_MAIN" = 'APT' ] || [ "$PACKAGEMANAGER_MAIN" = 'Pacman' ]; then
 			PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST Snap"

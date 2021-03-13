@@ -92,7 +92,7 @@
   APT:rsync                       PAC:rsync                       XBP:rsync                       TMP:rsync                     #  Sync files
   APT:curl                        PAC:curl                        XBP:curl                        TMP:curl                      #  Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
   APT:aria2                       PAC:aria2                       XBP:aria2                       TMP:aria2                     #C Download manager
-  APT:youtube-dl                  PAC:youtube-dl                  XBP:youtube-dl                  TMP:youtube-dl                #  Download media
+  APT:youtube-dl                  PAC:youtube-dl                  XBP:youtube-dl                                                #  Download media
   APT:trash-cli                   PAC:trash-cli                   XBP:trash-cli                                                 #  Trash manager
 
 ### Data manipulation
