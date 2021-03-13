@@ -41,9 +41,14 @@ MESSAGE="$*"
 
 
 # Start
+[ -z "$MESSAGE" ] && {
+	printf '%s' 'Please include message' >&2
+	exit 1
+}
+
 git add --all
 git commit --message "$MESSAGE"
-git pull origin "$BRANCH_NAME"
+git pull --recurse-submodules origin "$BRANCH_NAME"
 git push origin "$BRANCH_NAME"
 
 

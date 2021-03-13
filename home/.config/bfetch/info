@@ -1,21 +1,39 @@
 #!/bin/sh
 
 
+# Functions
+capitalizing_first_character() {
+	text=$(cat -)
+	first=$(printf '%s' "$text" | tr '[:lower:]' '[:upper:]' | cut -c '1')
+	other=$(printf '%s' "$text" | cut -c '2-')
+
+	printf '%s' "$first$other"
+}
+
+
 # Values
 COLOR="${BUI_COLOR_TEXTART:-32}"
-OS=$("$HOME/c/extra/fetchutils/src/os.sh" 2>&- | tr '[:upper:]' '[:lower:]'); [ -n "$OS" ] && [ "${#OS}" -gt '16' ] && OS='Linux'
-WM=$("$HOME/c/extra/fetchutils/src/wm.sh" 2>&- | tr '[:upper:]' '[:lower:]'); [ -n "$WM" ] && [ "${#WM}" -gt '16' ] && WM='River'
-SHELL=$(basename "$SHELL" | tr '[:upper:]' '[:lower:]')
-TERMINAL=$(basename "$TERMINAL" | tr '[:upper:]' '[:lower:]')
+OS=$("$HOME/c/extra/fetchutils/src/os.sh" 2>&-); [ -n "$OS" ] && [ "${#OS}" -gt '16' ] && OS='Linux'
+WM=$("$HOME/c/extra/fetchutils/src/wm.sh" 2>&-); [ -n "$WM" ] && [ "${#WM}" -gt '16' ] && WM='River'
+SHELL=$(basename "$SHELL" | capitalizing_first_character)
+TERMINAL=$(basename "$TERMINAL" | capitalizing_first_character)
 FONT="$BUI_FONT_MONO_FAMILY"
+
+[ "$TERM" != 'linux' ] && {
+	      OS_ICON='💾'
+	      WM_ICON='🖼️'
+	   SHELL_ICON='🐚'
+	TERMINAL_ICON='📟'
+	    FONT_ICON='🏷️'
+}
 
 
 # Start
-printf "\033[1;${COLOR}mOS        \033[0m💾${OS:-OS}\033[0m
-\033[1;${COLOR}mWM        \033[0m🖼️${WM:-WM}\033[0m
-\033[1;${COLOR}mSHELL     \033[0m🐚${SHELL:-Shell}\033[0m
-\033[1;${COLOR}mTERMINAL  \033[0m📟${TERMINAL:-Terminal}\033[0m
-\033[1;${COLOR}mFONT      \033[0m🏷️${FONT:-Font}\033[0m"
+printf "\033[1;${COLOR}mOS        \033[0m$OS_ICON${OS:-OS}\033[0m
+\033[1;${COLOR}mWM        \033[0m$WM_ICON${WM:-WM}\033[0m
+\033[1;${COLOR}mSHELL     \033[0m$SHELL_ICON${SHELL:-Shell}\033[0m
+\033[1;${COLOR}mTERMINAL  \033[0m$TERMINAL_ICON${TERMINAL:-Terminal}\033[0m
+\033[1;${COLOR}mFONT      \033[0m$FONT_ICON${FONT:-Font}\033[0m"
 
 
 exit 0

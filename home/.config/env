@@ -4,7 +4,6 @@
 #   / __/ |/ / | / /
 #  / _//    /| |/ /
 # /___/_/|_/ |___/
-#
 
 # File:         env
 # Description:  Environment variables that SuperB
@@ -53,7 +52,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export BASHER_ROOT="$XDG_DATA_HOME/basher"
 export BASHER_PREFIX="$BASHER_ROOT/cellar"
 export BASHER_PACKAGES_PATH="$HOME/s"
-export PATH="$PATH:$HOME/.local/bin:$HOME/c/extra/scripts:$BASHER_PREFIX/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/c/extra/scripts"
 
 
 # =============================================================================
@@ -161,7 +160,7 @@ export BROWSER="firefox"
 # 4. Setting
 # =============================================================================
 export TARGET_LANG="vi"
-export WALLPAPER_FILE="$XDG_DATA_HOME/wallpapers/johnn21/red-paper-lantern-on-roof.jpg"
+export WALLPAPER_FILE="$HOME/c/extra/wallpapers/johnn21/red-paper-lantern-on-roof.jpg"
 export WALLPAPER_MODE="fill"
 export BFETCH_PROMPT_HEIGHT="3"
 export ABDUCO_CMD="$SHELL"
@@ -187,7 +186,7 @@ export QT_IM_MODULE="fcitx"
 export SDL_IM_MODULE="fcitx"
 export XMODIFIERS="@im=fcitx"
 
-### Fcitx
+### Terminal explorer
 export TERMINALEXPLORER_COPY_COMMAND="rsync --recursive --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1"
 export TERMINALEXPLORER_CUT_COMMAND="rsync --recursive --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1 --remove-source-files"
 

@@ -31,7 +31,7 @@ plug 'NNBnh/bui.kak' theme config %{
 	colorscheme bui
 }
 
-plug 'eraserhd/kak-ansi'
+# plug 'eraserhd/kak-ansi'
 
 ## Interactive ----------------------------------------------------------------
 

@@ -1,5 +1,4 @@
 format = """
-${custom.bui}\
 $username\
 $hostname\
 $shlvl\
@@ -51,7 +50,6 @@ $status\
 $line_break\
 ${custom.character}
 """
-
 
 [username]
 format     = '[$user]($style)'

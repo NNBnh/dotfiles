@@ -35,7 +35,7 @@ install_packages() {
 
 		# Basher packages
 		git clone 'https://github.com/basherpm/basher.git' "$XDG_DATA_HOME/basher" \
-		&& for basher_package in 'NNBnh/bsymlink' 'NNBnh/bui-terminal' 'NNBnh/bui-appearance' 'NNBnh/bfetch' 'NNBnh/terminal-explorer' 'NNBnh/clipb' 'NNBnh/coderun' 'NNBnh/hr'; do
+		&& for basher_package in 'NNBnh/bsymlink' 'NNBnh/bui-terminal' 'NNBnh/bui-appearance' 'NNBnh/bfetch' 'NNBnh/terminal-explorer' 'NNBnh/clipb' 'NNBnh/coderun' 'NNBnh/mk' 'NNBnh/hr'; do
 			basher install "$basher_package"
 		done
 
@@ -147,6 +147,8 @@ WD="$PWD"
 TMPDIR="${TMPDIR:-/tmp}"
 TEMPORARY="$TMPDIR/superb-bootstrap"
 
+DOTFILES_PATH=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+
 if [ -x "$(command -v sudo)" ]; then
 	PERMISSION_COMMAND='sudo'
 elif [ -x "$(command -v doas)" ]; then
@@ -164,20 +166,26 @@ fi
    PKGIN_MARK='PIN';    PKGIN_PM='pkgin'       ;    PKGIN_COMMAND="$PERMISSION_COMMAND $PKGIN_PM install -y"
    PKGNG_MARK='PNG';    PKGNG_PM='pkg'         ;    PKGNG_COMMAND="$PERMISSION_COMMAND $PKGNG_PM install -y"
 Slackpkg_MARK='SLK'; Slackpkg_PM='slackpkg'    ; Slackpkg_COMMAND="$PERMISSION_COMMAND $Slackpkg_PM install"
+  Termux_MARK='TMP';   Termux_PM='pkg'         ;   Termux_COMMAND="$Termux_PM install --assume-yes"
     XBPS_MARK='XBP';     XBPS_PM='xbps-install';     XBPS_COMMAND="$PERMISSION_COMMAND $XBPS_PM --yes"
   Zypper_MARK='ZPR';   Zypper_PM='zypper'      ;   Zypper_COMMAND="$PERMISSION_COMMAND $Zypper_PM --non-interactive install"
      AUR_MARK='AUR';      AUR_PM='paru'        ;      AUR_COMMAND="$AUR_PM --sync --skipreview --useask --noconfirm"
  Flatpak_MARK='FLA';  Flatpak_PM='flatpak'     ;  Flatpak_COMMAND="$PERMISSION_COMMAND $Flatpak_PM install"
 Homebrew_MARK='HBR'; Homebrew_PM='brew'        ; Homebrew_COMMAND="$Homebrew_PM install"
+MacPorts_MARK='MCP'; MacPorts_PM='port'        ; MacPorts_COMMAND="$PERMISSION_COMMAND $MacPorts_PM install"
+     MAS_MARK='MAS';      MAS_PM='mas'         ;      MAS_COMMAND="$MAS_PM install"
      SBO_MARK='SBO';      SBO_PM='sbopkg'      ;      SBO_COMMAND="$PERMISSION_COMMAND $SBO_PM -ifq"
     Snap_MARK='SNA';     Snap_PM='snap'        ;     Snap_COMMAND="$PERMISSION_COMMAND $Snap_PM install"
 
 case $(uname -s | tr '[:upper:]' '[:lower:]') in
 	'darwin'*)
-		PACKAGEMANAGER_MAIN='Homebrew'
+		PACKAGEMANAGER_LIST='Homebrew MacPorts MAS'
 	;;
 	'freebsd'*)
 		PACKAGEMANAGER_MAIN='PKGNG'
+	;;
+	'linux-android'*)
+		PACKAGEMANAGER_MAIN='Termux'
 	;;
 	'midnightbsd'*)
 		PACKAGEMANAGER_MAIN='Mports'
@@ -199,6 +207,7 @@ case $(uname -s | tr '[:upper:]' '[:lower:]') in
 		[ "$PACKAGEMANAGER_MAIN"  = 'Pacman'   ] && PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST AUR"
 		[ "$PACKAGEMANAGER_MAIN"  = 'Slackpkg' ] && PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST SBO"
 		                                            PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST Flatpak"
+		                                            PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST Homebrew"
 
 		if [ "$PACKAGEMANAGER_MAIN" = 'APT' ] || [ "$PACKAGEMANAGER_MAIN" = 'Pacman' ]; then
 			PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST Snap"
@@ -280,6 +289,11 @@ superbbootstrap_Slackpkg() {
 	$PERMISSION_COMMAND slackpkg update
 }
 
+superbbootstrap_Termux() {
+	pkg update  --assume-yes
+	pkg upgrade --assume-yes
+}
+
 superbbootstrap_XBPS() {
 	$PERMISSION_COMMAND xbps-install --sync --yes --update # Update XBPS itself so it can update other packages
 	$PERMISSION_COMMAND xbps-install --sync --yes --update # Update packages
@@ -333,15 +347,46 @@ superbbootstrap_Homebrew() {
 	fi
 }
 
+superbbootstrap_MacPorts() {
+	[ ! -x "$(command -v 'xcode')" ] && {
+		printf '\n\033[1;7;31m%s\033[0m\n' 'Please install XCode first: https://guide.macports.org/#installing.xcode'
+		exit 1
+	}
+
+	xcode-select --install
+	$PERMISSION_COMMAND xcodebuild -license
+	cd "$TEMPORARY" || exit 1
+	curl --remote-header-name --location --remote-name "https://github.com/macports/macports-base/releases/latest/download/MacPorts-$MACPORT_VERSION-$OS_VERSION_NUMBER-$OS_VERSION_NAME.pkg"
+	$PERMISSION_COMMAND installer -pkg "$TEMPORARY/MacPorts-$MACPORT_VERSION-$OS_VERSION_NUMBER-$OS_VERSION_NAME.pkg" -target '/'
+	cd "$WD" || exit 1
+}
+
+superbbootstrap_MAS() {
+	if [ ! -x "$(command -v "$MAS_PM")" ]; then
+		if   [ -x "$(command -v "$Homebrew_PM")" ]; then $Homebrew_COMMAND mas
+		elif [ -x "$(command -v "$MacPorts_PM")" ]; then $MacPorts_COMMAND mas
+		else
+			[ ! -x "$(command -v "$Homebrew_PM")" ] && superbbootstrap_Homebrew
+
+			$Homebrew_COMMAND mas
+		fi
+	else
+		printf '%s\n' "MAS has been installed"
+	fi
+
+	mas account
+	mas signin --dialog "$APPLE_ID"
+}
+
 superbbootstrap_SBO() {
 	if [ ! -x "$(command -v 'sbopkg')" ]; then
-		SLACKWARE_VERSION=$(cut -f '2' -d ' ' '/etc/slackware-version')
 		SBO_VERSION=$(curl -s "https://api.github.com/repos/sbopkg/sbopkg/releases/latest" | grep -e 'tag_name' | cut -f '4' -d '"')
+
 		cd "$TEMPORARY" || exit 1
 		curl --remote-header-name --location --remote-name "https://github.com/sbopkg/sbopkg/releases/download/$SBO_VERSION/sbopkg-$SBO_VERSION-noarch-1_wsr.tgz"
 		upgradepkg --install-new "$TEMPORARY/sbopkg-$SBO_VERSION-noarch-1_wsr.tgz"
 		cd "$WD" || exit 1
-		$PERMISSION_COMMAND mkdir -p "/var/lib/sbopkg/SBo/$SLACKWARE_VERSION" "/var/lib/sbopkg/queues" "/var/log/sbopkg" "/var/cache/sbopkg"
+		$PERMISSION_COMMAND mkdir -p "/var/lib/sbopkg/SBo/$(cut -f '2' -d ' ' '/etc/slackware-version')" "/var/lib/sbopkg/queues" "/var/log/sbopkg" "/var/cache/sbopkg"
 		$PERMISSION_COMMAND sbopkg -rq
 		$PERMISSION_COMMAND sqg -a
 	else
