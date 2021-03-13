@@ -149,11 +149,13 @@ TEMPORARY="$TMPDIR/superb-bootstrap"
 
 DOTFILES_PATH=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
+KERNEL=$(uname -s | tr '[:upper:]' '[:lower:]')
+
 if [ -x "$(command -v sudo)" ]; then
 	PERMISSION_COMMAND='sudo'
 elif [ -x "$(command -v doas)" ]; then
 	PERMISSION_COMMAND='doas'
-else
+elif [ "$KERNEL" = 'linux-android' ]; then
 	printf '\n\033[1;7;31m%s\033[0m\n' "Permission command not found or unsupported"
 	exit 1
 fi
@@ -177,14 +179,14 @@ MacPorts_MARK='MCP'; MacPorts_PM='port'        ; MacPorts_COMMAND="$PERMISSION_C
      SBO_MARK='SBO';      SBO_PM='sbopkg'      ;      SBO_COMMAND="$PERMISSION_COMMAND $SBO_PM -ifq"
     Snap_MARK='SNA';     Snap_PM='snap'        ;     Snap_COMMAND="$PERMISSION_COMMAND $Snap_PM install"
 
-case $(uname -s | tr '[:upper:]' '[:lower:]') in
+case "$KERNEL" in
 	'darwin'*)
 		PACKAGEMANAGER_LIST='Homebrew MacPorts MAS'
 	;;
 	'freebsd'*)
 		PACKAGEMANAGER_MAIN='PKGNG'
 	;;
-	'linux-android'*)
+	'linux-android')
 		PACKAGEMANAGER_MAIN='Termux'
 	;;
 	'midnightbsd'*)

@@ -52,7 +52,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export BASHER_ROOT="$XDG_DATA_HOME/basher"
 export BASHER_PREFIX="$BASHER_ROOT/cellar"
 export BASHER_PACKAGES_PATH="$HOME/s"
-export PATH="$PATH:$HOME/.local/bin:$HOME/c/extra/scripts"
+export PATH="$PATH:$HOME/.local/bin:$BASHER_PREFIX/bin:$HOME/c/extra/scripts"
 
 
 # =============================================================================
@@ -174,7 +174,6 @@ export CAVA_OPTIONS="[general]
                      foreground = \"$BUI_COLOR_CURSOR\""
 
 ### Basher
-export BASHER_SHELL="fish"
 export BASHER_FULL_CLONE="true"
 
 ### Wayland
