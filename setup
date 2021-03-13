@@ -80,11 +80,11 @@ symlink_home() {
 symlink_root() {
 	printf '\n\033[1;7;36m%s\033[0m\n' 'Symlink to root (/)'
 
-	sudo bsymlink "$DOTFILES_PATH/root" '/'
+	$PERMISSION_COMMAND bsymlink "$DOTFILES_PATH/root" '/'
 }
 
 before_symlink() {
-	printf '\n\033[1;7;33m%s\033[0m\n' 'Before symlink step'
+	printf '\n\033[1;7;33m%s\033[0m\n' 'Setup before symlink'
 
 	# Create directories (to only symlink files inside, not the directory)
 	mkdir -p "$XDG_CONFIG_HOME/fcitx" "$XDG_CONFIG_HOME/kak" "$XDG_CONFIG_HOME/retroarch" \
@@ -93,45 +93,45 @@ before_symlink() {
 	         "$HOME/.local/bin"
 
 	# Remove junks (Spring cleaning your $HOME)
-	mkdir "$XDG_DESKTOP_DIR"
-	rm -rf "$HOME/Desktop" "$HOME/Documents" "$HOME/Downloads" "$HOME/Music" "$HOME/Pictures" "$HOME/Public" "$HOME/Templates" "$HOME/Videos" \
-	       "$HOME/.inputrc" "$HOME/.xinitrc" "$HOME/.xsession" "$HOME/.xsession-errors" \
-	       "$HOME/.Xclients" "$HOME/.profile" "$HOME/.dmrc" "$HOME/.ICEauthority" "$HOME/.icons" \
-	       "$HOME/.bashrc" "$HOME/.bash_profile" "$HOME/.bash_history" "$HOME/.bash_logout" 2>&-
+	mkdir -p "$XDG_DESKTOP_DIR"
+	mv -f "$HOME/Desktop" "$HOME/Documents" "$HOME/Downloads" "$HOME/Music" "$HOME/Pictures" "$HOME/Public" "$HOME/Templates" "$HOME/Videos" \
+	      "$HOME/.inputrc" "$HOME/.xinitrc" "$HOME/.xsession" "$HOME/.xsession-errors" \
+	      "$HOME/.Xclients" "$HOME/.profile" "$HOME/.dmrc" "$HOME/.ICEauthority" "$HOME/.icons" \
+	      "$HOME/.bashrc" "$HOME/.bash_profile" "$HOME/.bash_history" "$HOME/.bash_logout"
 
 	# Remove conflicting items in $XDG_CONFIG_HOME
 	for config_directory_path in "$XDG_CONFIG_HOME/."* "$XDG_CONFIG_HOME/"*; do
 		config_directory_name="${config_directory_path#$XDG_CONFIG_HOME/}"
 
 		if [ "$config_directory_name" != '.' ] && [ "$config_directory_name" != '..' ] && [ -e "$HOME/dots/home/.config/$config_directory_name" ]; then
-			rm -rf "$config_directory_path"
+			mv -f "$config_directory_path"
 		fi
 	done
 
 	# Stop LightDM from making $HOME/.Xauthority (Spring cleaning your $HOME)
 	printf "$(< /etc/lightdm/lightdm.conf)\n\n[LightDM]\nuser-authority-in-system-dir=true" >> "$TMPDIR/lightdm.conf" \
-	&& sudo mv "$TMPDIR/lightdm.conf" '/etc/lightdm/lightdm.conf'
+	&& $PERMISSION_COMMAND mv "$TMPDIR/lightdm.conf" '/etc/lightdm/lightdm.conf'
 }
 
 after_symlink() {
-	printf '\n\033[1;7;33m%s\033[0m\n' 'After symlink step'
+	printf '\n\033[1;7;33m%s\033[0m\n' 'Setup after symlink step'
 
 	# Change default shell
-	chsh -s '/usr/bin/fish'
+	chsh -s "$(command -v fish)"
 
 	# Change XDG directories
-	command -v xdg-user-dirs-update >/dev/null && for xdg_directory in 'DESKTOP' 'DOCUMENTS' 'DOWNLOAD' 'MUSIC' 'PICTURES' 'PUBLICSHARE' 'TEMPLATES' 'VIDEOS'; do
+	[ -x "$(command -v xdg-user-dirs-update)" ] && for xdg_directory in 'DESKTOP' 'DOCUMENTS' 'DOWNLOAD' 'MUSIC' 'PICTURES' 'PUBLICSHARE' 'TEMPLATES' 'VIDEOS'; do
 		eval "xdg-user-dirs-update --set '$xdg_directory' \"\$XDG_${xdg_directory}_DIR\""
 	done
 
 	# Add Firefox CSS
-	command -v firefox >/dev/null && for profile in "$HOME/.mozilla/firefox/"*'.default-release'; do
+	[ -x "$(command -v firefox)" ] && for profile in "$HOME/.mozilla/firefox/"*'.default-release'; do
 		ln -sf "$DOTFILES_PATH/extra/firefox/chrome" "$profile/"
 	done \
 	&& printf '\033[1;93m%s\033[0m' 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
 
 	# Enable firewall
-	command -v ufw >/dev/null && sudo ufw enable
+	[ -x "$(command -v ufw)" ] && $PERMISSION_COMMAND ufw enable
 }
 
 
