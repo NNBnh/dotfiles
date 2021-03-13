@@ -1,41 +1,4 @@
-function __fish_commandline_insert_escaped --description 'Insert the first arg escaped if a second arg is given'
-	if set -q argv[2]
-		commandline --insert \\$argv[1]
-	else
-		commandline --insert $argv[1]
-	end
-end
-
-function __fish_start_bracketed_paste
-	# Save the last bind mode so we can restore it.
-	set --global __fish_last_bind_mode $fish_bind_mode
-	# If the token is currently single-quoted,
-	# we escape single-quotes (and backslashes).
-	__fish_commandline_is_singlequoted
-	and set --global __fish_paste_quoted 1
-end
-
-function __fish_stop_bracketed_paste
-	# Restore the last bind mode.
-	set fish_bind_mode $__fish_last_bind_mode
-	set --erase __fish_paste_quoted
-end
-
 function bmap --description 'Fish key-mapping that SuperB'
-	bind --preset \e\[I       'emit fish_focus_in'
-	bind --preset \e\[O       false
-	bind --preset \e\[\?1004h false
-	bind --preset --sets-mode paste \e\[200\~ __fish_start_bracketed_paste
-	bind --preset --mode      paste \e\[201\~ __fish_stop_bracketed_paste
-	bind --preset --mode      paste --key a1 self-insert
-	bind --preset --mode      paste \r "commandline --insert \\n"
-	bind --preset --mode      paste \' "__fish_commandline_insert_escaped \\' $__fish_paste_quoted"
-	bind --preset --mode      paste \\ "__fish_commandline_insert_escaped \\\\ $__fish_paste_quoted"
-	bind --preset --mode      paste ' ' self-insert-notfirst
-	bind --preset --key a1    self-insert
-	bind --preset ' '         self-insert expand-abbr
-
-
 	bind --preset --key f1 __fish_man_page
 
 	bind --preset --key up  up-or-search
