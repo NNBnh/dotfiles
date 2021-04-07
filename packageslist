@@ -15,6 +15,9 @@
 # W: TODO Window manager
 # E: TODO Editor
 # X: Will remove in far future
+# B: Bash
+# P: python
+# H: Haskel
 
 # =============================================================================
 # 1. System
@@ -69,46 +72,46 @@
 # =============================================================================
 
 ### Core
-  APT:fish                        PAC:fish                        XBP:fish-shell                  TMP:fish                      #E Main shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#shell)
-  APT:bash                        PAC:bash                        XBP:bash                        TMP:bash                      #  Legacy shell
-                                  AUR:starship-bin                XBP:starship                    TMP:starship                  #  Shell prompt
+  APT:fish                        PAC:fish                        XBP:fish-shell                  TMP:fish                      #X Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#shell)
+                                  AUR:starship-bin                XBP:starship                    TMP:starship                  #T Shell prompt
   APT:fzf                         PAC:fzf                         XBP:fzf                         TMP:fzf                       #E Fuzzy finder (WH.I.CH https://github.com/NNBnh/dots/wiki/which#finder)
-                                  PAC:abduco                      XBP:abduco                      TMP:abduco                    #  Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
+                                  PAC:abduco                      XBP:abduco                      TMP:abduco                    #T Terminal multiplexers (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-multiplexers)
 
 ### Programming language
-  APT:dash                        PAC:dash                        XBP:dash                        TMP:dash                      #  POSIX shell
+  APT:dash                        PAC:dash                        XBP:dash                        TMP:dash                      #X POSIX shell
+  APT:bash                        PAC:bash                        XBP:bash                        TMP:bash                      #X Legacy shell
   APT:python                      PAC:python                      XBP:python                      TMP:python                    #  Handy programming language
 
 ### Utilitie
   APT:fd-find                     PAC:fd                          XBP:fd                          TMP:fd                        #  Find files
   APT:git                         PAC:git                         XBP:git                         TMP:git                       #  Version control system
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate                TMP:qalc                      #  Calculator
-  APT:translate-shell             PAC:translate-shell             XBP:translate-shell             TMP:translate-shell           #  Translator
-  APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                                                #  Shell script static analysis
-  APT:asciinema                   PAC:asciinema                   XBP:asciinema                   TMP:asciinema                 #  Record terminal
+  APT:translate-shell             PAC:translate-shell             XBP:translate-shell             TMP:translate-shell           #B Translator
+  APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                                                #H Shell script static analysis
+  APT:asciinema                   PAC:asciinema                   XBP:asciinema                   TMP:asciinema                 #P Record terminal
   APT:kakoune                     PAC:kakoune                     XBP:kakoune                     TMP:kakoune                   #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
 
 ### Data tranfer
   APT:rsync                       PAC:rsync                       XBP:rsync                       TMP:rsync                     #  Sync files
   APT:curl                        PAC:curl                        XBP:curl                        TMP:curl                      #  Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
   APT:aria2                       PAC:aria2                       XBP:aria2                       TMP:aria2                     #C Download manager
-  APT:youtube-dl                  PAC:youtube-dl                  XBP:youtube-dl                                                #  Download media
-  APT:trash-cli                   PAC:trash-cli                   XBP:trash-cli                                                 #  Trash manager
+  APT:youtube-dl                  PAC:youtube-dl                  XBP:youtube-dl                                                #P Download media
+  APT:trash-cli                   PAC:trash-cli                   XBP:trash-cli                                                 #T Trash manager
 
 ### Data manipulation
   APT:libimage-exiftool-perl      PAC:perl-image-exiftool         XBP:exiftool                    TMP:exiftool                  #C Metadata manipulation
   APT:p7zip                       PAC:p7zip                       XBP:p7zip                       TMP:p7zip                     #  Files archive
-  APT:pandoc                      PAC:pandoc                      XBP:pandoc                                                    #  Markup converter
+  APT:pandoc                      PAC:pandoc                      XBP:pandoc                                                    #H Markup converter
   APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick                 TMP:imagemagick               #  Image manipulation
   APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                      TMP:ffmpeg                    #  Media manipulation
-  APT:jq                          PAC:jq                          XBP:jq                          TMP:jq                        #  JSON processor
+  APT:jq                          PAC:jq                          XBP:jq                          TMP:jq                        #C JSON processor
 
 ### Other
   APT:hardinfo                    PAC:hardinfo                    XBP:hardinfo                                                  #C System profilers ("CPU-Z alternative for linux")
   APT:figlet                      PAC:figlet                      XBP:figlet                      TMP:figlet                    #  Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
-  APT:chafa                       PAC:chafa                       XBP:chafa                                                     #  Convert image to textart
+  APT:chafa                       PAC:chafa                       XBP:chafa                                                     #X Convert image to textart
                                   AUR:no-more-secrets             XBP:no-more-secrets                                           #  Become a hackerman (Make outputs Minecraft enchanting table language)
-                                  AUR:cava                        XBP:cava                        TMP:cava                      #  Audio visualizer
+                                  AUR:cava                        XBP:cava                        TMP:cava                      #C Audio visualizer
 
 
 # =============================================================================
