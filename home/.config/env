@@ -12,11 +12,16 @@
 # URL:          https://github.com/NNBnh/dots/blob/master/home/.config/env
 
 
+# Values
+export TMPDIR="${TMPDIR:-/tmp}"
+PID="$$"
+
+mkdir -p "$TMPDIR/env/$PID"
+export > "$TMPDIR/env/$PID/default"
+
 # =============================================================================
 # 1. Paths
 # =============================================================================
-
-[ -z "$TMPDIR" ] && export TMPDIR="/tmp"
 
 ### XDG base directory
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -400,3 +405,11 @@ export CODERUN_less="cd \$DIRECTORY && lessc \$FILE \$NAME.css"
 export CODERUN_f="cd \$DIRECTORY && gfortran \$FILE -o \$NAME && \$DIRECTORY/\$NAME"
 export CODERUN_for="$CODERUN_f"
 export CODERUN_f90="$CODERUN_f"
+
+
+# Start
+export > "$TMPDIR/env/$PID/set"
+
+diff -f "$TMPDIR/env/$PID/default" "$TMPDIR/env/$PID/set" | sed -e '/^\(.\|[[:alpha:]]*[[:digit:]]*\)$/d'
+
+exit 0

@@ -80,7 +80,6 @@
   APT:python                      PAC:python                      XBP:python                      TMP:python                    #  Handy programming language
 
 ### Utilitie
-  APT:fd-find                     PAC:fd                          XBP:fd                          TMP:fd                        #  Find files
   APT:git                         PAC:git                         XBP:git                         TMP:git                       #  Version control system
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate                TMP:qalc                      #  Calculator
   APT:translate-shell             PAC:translate-shell             XBP:translate-shell             TMP:translate-shell           #  Translator

@@ -15,4 +15,4 @@
 
 
 # Values
-source "$HOME/.config/env"
+"$HOME/.config/env" | source

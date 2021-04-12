@@ -2,7 +2,7 @@
 
 
 # Values
-. "$HOME/.config/env"
+eval "$("$HOME/.config/env")"
 
 DUNST_POS=$(( ( ${BUI_GAPS_SIZE%%.*} * 2 ) - ${BUI_BORDER_SIZE%%.*} ))
 DUNST_OPACITY=$(printf '%x' $(printf '%.0f' $(bc <<< "( $BUI_OPACITY * 256 ) - 1")))

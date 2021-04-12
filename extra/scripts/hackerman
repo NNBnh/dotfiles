@@ -29,7 +29,7 @@
 # Values
 	# Action
 	case "$1" in
-		'i'|'ip')               ACTION="curl --silent --location 'ifconfig.me'"                                                                   ;;
+		'i'|'ip')               ACTION="curl --silent --location 'ifconfig.co/json'"                                                              ;;
 		'c'|'currency'|'money') ACTION="curl --silent --location 'rate.sx'"                                                                       ;;
 		'r'|'rate')             ACTION="curl --silent --location 'rate.sx/btc'"                                                                   ;;
 		'w'|'weather')          ACTION="curl --silent --location 'wttr.in'"                                                                       ;;
@@ -39,14 +39,14 @@
 		'S'|'sneakers')         ACTION="sneakers"                                                                                                 ;;
 		'A'|'map')              ACTION="telnet 'mapscii.me'"                                                                                      ;;
 		'I'|'info'|'system')
-			if command -v htop >/dev/null; then
+			if [ -n "$(command -v htop)" ]; then
 				ACTION="htop"
 			else
 				ACTION="top"
 			fi
 		;;
 		*)
-			if command -v unimatrix >/dev/null; then
+			if [ -n "$(command -v unimatrix)" ]; then
 				ACTION="unimatrix -s 96"
 			else
 				ACTION="cmatrix"

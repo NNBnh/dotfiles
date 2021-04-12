@@ -2,7 +2,7 @@
 
 
 # Start
-gammastep &
+# gammastep &
 
 playerctld daemon &
 
