@@ -171,12 +171,6 @@ export BFETCH_PROMPT_HEIGHT="3"
 export ABDUCO_CMD="$SHELL"
 export ABDUCO_SOCKET_DIR="$TMPDIR"
 export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
-export CAVA_OPTIONS="[general]
-                     bar_width = 4
-                     bar_spacing = 1
-
-                     [color]
-                     foreground = \"$BUI_COLOR_CURSOR\""
 
 ### Basher
 export BASHER_FULL_CLONE="true"

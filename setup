@@ -33,7 +33,7 @@ install_packages() {
 		cd "$WD" || exit 1
 
 		# Python packages
-		pip install --upgrade 'auto-editor' 'git+https://github.com/will8211/unimatrix.git'
+		pip install --upgrade 'asciinema' 'youtube-dl' 'auto-editor' 'git+https://github.com/will8211/unimatrix.git'
 
 		# Basher packages
 		git clone 'https://github.com/basherpm/basher.git' "$XDG_DATA_HOME/basher"
