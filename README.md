@@ -44,7 +44,7 @@ The *SuperB* dotfiles for unix system, configured with a high level of **portabl
 git clone https://github.com/NNBnh/dots ~/c && ~/c/setup
 ```
 
-> *For more information look at the [wiki](https://github.com/NNBnh/dots/wiki)*
+> *For more information, please take look at the [wiki](https://github.com/NNBnh/dots/wiki)*
 
 <br><br><br><br>
 
