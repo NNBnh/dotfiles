@@ -1,0 +1,30 @@
+#!/bin/sh
+
+#  _____________
+# |_            \
+#   |  |  _ _   |
+#   |  | | | |  |
+#   |  | | | |  |
+#   |  \_____/  |
+#   \___________/
+
+# File:                  mint.textart
+# Description:           Mint logo
+# Author:                Jschx
+#                        └─ https://gitlab.com/jschx
+# Converted to textart:  NNB
+#                        └─ https://github.com/NNBnh
+# URL:                   https://github.com/NNBnh/nnbs-text-art/blob/main/fetch/mint.textart
+
+
+# Start
+printf " \033[32m_____________\033[0m
+\033[32m|_            \\\\\033[0m
+  \033[32m|  \033[0m|  _ _   \033[32m|\033[0m
+  \033[32m|  \033[0m| | | |  \033[32m|\033[0m
+  \033[32m|  \033[0m| | | |  \033[32m|\033[0m
+  \033[32m|  \033[0m\\__\033[92m___/  \033[32m|\033[0m
+  \033[32m\\___________/\033[0m"
+
+
+exit 0

@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# ______
+# \  __ \        __
+#  \ \ \ \      / /
+#   \ \_\ \    / /
+#    \  __/   /_/
+#     \ \    _
+#    __\_\__(_)_
+#   (___________)
+
+# File:                  popos.textart
+# Description:           Popos logo
+# Author:                Jschx
+#                        └─ https://gitlab.com/jschx
+# Converted to textart:  NNB
+#                        └─ https://github.com/NNBnh
+# URL:                   https://github.com/NNBnh/nnbs-text-art/blob/main/fetch/popos.textart
+
+
+# Start
+printf "\033[36m______\033[0m
+\033[36m\\  __ \\        __\033[0m
+ \033[36m\\ \\ \\ \\      / /\033[0m
+  \033[36m\\ \\_\\ \\    / /\033[0m
+   \033[36m\\  __/   /_/\033[0m
+    \033[36m\\ \\    _\033[0m
+   \033[36m__\\_\\__(_)_\033[0m
+  \033[36m(___________)\033[0m"
+
+
+exit 0

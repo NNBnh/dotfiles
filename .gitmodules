@@ -1,3 +1,6 @@
+[submodule "extra/gitalias"]
+	path = extra/gitalias
+	url = https://github.com/GitAlias/gitalias.git
 [submodule "textarts"]
 	path = home/.local/share/textarts
 	url = https://github.com/NNBnh/textart-collections.git
@@ -7,6 +10,9 @@
 [submodule "figlet fonts"]
 	path = home/.local/share/figlet/fonts
 	url = https://github.com/xero/figlet-fonts.git
+[submodule "extra/mpv/image-viewer"]
+	path = extra/mpv/image-viewer
+	url = https://github.com/occivink/mpv-image-viewer.git
 [submodule "wallpapers"]
 	path = extra/wallpapers
 	url = https://github.com/NNBnh/wallpaper-collections.git

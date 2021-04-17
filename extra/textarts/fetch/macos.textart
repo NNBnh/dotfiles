@@ -1,0 +1,32 @@
+#!/bin/sh
+
+#         _
+#        (/
+#   .---__--.
+#  //////////\
+# |//////////
+# |/////////\_
+#  \//////////
+#   `.//".//'
+
+# File:                  macos.textart
+# Description:           Macos logo
+# Author:                Jschx
+#                        └─ https://gitlab.com/jschx
+# Converted to textart:  NNB
+#                        └─ https://github.com/NNBnh
+# URL:                   https://github.com/NNBnh/nnbs-text-art/blob/main/fetch/macos.textart
+
+
+# Start
+printf "        \033[32m_\033[0m
+       \033[32m(/\033[0m
+  \033[32m.---__--.\033[0m
+ \033[33m//////////\033[4m\\\\\033[0m
+\033[31m|//////////\033[0m
+\033[31m|/////////\\_\033[0m
+ \033[35m\//////////\033[0m
+  \033[34m\`.\033[4m/\033[0;34m/\".\033[4m/\033[0;34m/'\033[0m"
+
+
+exit 0

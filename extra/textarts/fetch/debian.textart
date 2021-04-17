@@ -1,0 +1,28 @@
+#!/bin/sh
+
+#   ,.---.
+#  /   __ `,
+# |   /    |
+# |   `.__.'
+#  \
+#   `-._
+
+# File:                  debian.textart
+# Description:           Debian logo
+# Author:                Jschx
+#                        └─ https://gitlab.com/jschx
+# Converted to textart:  NNB
+#                        └─ https://github.com/NNBnh
+# URL:                   https://github.com/NNBnh/nnbs-text-art/blob/main/fetch/debian.textart
+
+
+# Start
+printf "  \033[31m,.---.\033[0m
+ \033[31m/   __ \`,\033[0m
+\033[31m|   /    |\033[0m
+\033[31m|   \`.__.'\033[0m
+ \033[31m\\\\\033[0m
+  \033[31m\`-._\033[0m"
+
+
+exit 0

@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# ######  ######
+# ######  ######
+# ######  ######
+# ######  ######
+# ######
+# ##############
+# ##############
+
+# File:                  voyager.textart
+# Description:           Voyager logo
+# Author:                Jschx
+#                        └─ https://gitlab.com/jschx
+# Converted to textart:  NNB
+#                        └─ https://github.com/NNBnh
+# URL:                   https://github.com/NNBnh/nnbs-text-art/blob/main/fetch/voyager.textart
+
+
+# Start
+printf "\033[43;33m######\033[0m  \033[43;33m######\033[0m
+\033[43;33m######\033[0m  \033[43;33m######\033[0m
+\033[43;33m######\033[0m  \033[43;33m######\033[0m
+\033[43;33m######\033[0m  \033[43;33m######\033[0m
+\033[43;33m######\033[0m
+\033[43;33m##############\033[0m
+\033[43;33m##############\033[0m"
+
+
+exit 0

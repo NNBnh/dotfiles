@@ -1,0 +1,28 @@
+#!/bin/sh
+
+#       /\
+#      /  \
+#     /    \
+#    /  /\  \
+#   /  /  \  \
+#  /  / ___\  \
+# /__/   `.____\
+
+# File:         arco.textart
+# Description:  Arco logo
+# Author:       NNB
+#               └─ https://github.com/NNBnh
+# URL:          https://github.com/NNBnh/nnbs-text-art/blob/main/fetch/arco.textart
+
+
+# Start
+printf "      \033[34m/\\\\\033[0m
+     \033[34m/  \\\\\033[0m
+    \033[34m/    \\\\\033[0m
+   \033[34m/  /\\  \\\\\033[0m
+  \033[34m/  /  \\  \\\\\033[0m
+ \033[34m/  / ___\\  \\\\\033[0m
+\033[34m/__/   \`.____\\\\\033[0m"
+
+
+exit 0

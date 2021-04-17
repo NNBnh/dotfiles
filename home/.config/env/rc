@@ -1,0 +1,434 @@
+#!/bin/sh
+
+#    _____  ___   __
+#   / __/ |/ / | / /
+#  / _//    /| |/ /
+# /___/_/|_/ |___/
+
+# File:         env
+# Description:  Environment variables that SuperB
+# Author:       NNB
+#               └─ https://github.com/NNBnh
+# URL:          https://github.com/NNBnh/dots/blob/master/home/.config/env
+
+
+# Values
+export TMPDIR="${TMPDIR:-/tmp}"
+PID="$$"
+
+mkdir -p "$TMPDIR/env/$PID"
+export > "$TMPDIR/env/$PID/default"
+
+# =============================================================================
+# 1. Paths
+# =============================================================================
+
+### XDG base directory
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+export XDG_DESKTOP_DIR="$HOME/t"
+export XDG_DOCUMENTS_DIR="$XDG_DESKTOP_DIR"
+export XDG_DOWNLOAD_DIR="$XDG_DESKTOP_DIR"
+export XDG_MUSIC_DIR="$HOME/d/music"
+export XDG_PICTURES_DIR="$XDG_DESKTOP_DIR"
+export XDG_PUBLICSHARE_DIR="$XDG_DESKTOP_DIR"
+export XDG_TEMPLATES_DIR="$XDG_DESKTOP_DIR"
+export XDG_VIDEOS_DIR="$XDG_DESKTOP_DIR"
+
+### Spring cleaning
+# export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export USERXSESSION="$XDG_CACHE_HOME/x11/xsession"
+export USERXSESSIONRC="$XDG_CACHE_HOME/x11/xsessionrc"
+export ALTUSERXSESSION="$XDG_CACHE_HOME/x11/Xsession"
+export ERRFILE="$XDG_CACHE_HOME/x11/xsession-errors"
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
+export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export HISTFILE="$XDG_DATA_HOME/bash/history"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+
+### Basher
+export BASHER_ROOT="$XDG_DATA_HOME/basher"
+export BASHER_PREFIX="$BASHER_ROOT/cellar"
+export BASHER_PACKAGES_PATH="$HOME/s"
+export PATH="$PATH:$HOME/.local/bin:$BASHER_PREFIX/bin:$HOME/c/extra/scripts"
+
+
+# =============================================================================
+# 2. Visual
+# =============================================================================
+
+export BUI_GTK_THEME="Matcha-dark-aliz"
+export BUI_ICON_THEME="Papirus-Dark"
+export BUI_MOUSE_CURSOR_THEME="Bibata-Original-Ice"
+export BUI_BORDER_SIZE="2.0"
+export BUI_GAPS_SIZE="32.0"
+export BUI_CURSOR="block"
+export BUI_CURSOR_BLINK="true"
+export BUI_OPACITY="0.9"
+export BUI_FONT_MONO_FAMILY="Bmono"
+export BUI_FONT_MONO_SIZE="12.0"
+export BUI_FONT_FAMILY="$BUI_FONT_MONO_FAMILY"
+export BUI_FONT_SIZE="10.0"
+
+## Colors ---------------------------------------------------------------------
+
+export BUI_COLOR_DARK="#181818"
+export BUI_COLOR_DARK_ALT="#282828"
+export BUI_COLOR_BLACK="#383838"
+export BUI_COLOR_GRAY="#585858"
+export BUI_COLOR_GREY="#B8B8B8"
+export BUI_COLOR_WHITE="#D8D8D8"
+export BUI_COLOR_LIGHT_ALT="#E8E8E8"
+export BUI_COLOR_LIGHT="#F8F8F8"
+export BUI_COLOR_BROWN="#A16946"
+export BUI_COLOR_RED="#AB4642"
+export BUI_COLOR_ORANGE="#DC9656"
+export BUI_COLOR_YELLOW="#F7CA88"
+export BUI_COLOR_LIME="#A1B56C"
+export BUI_COLOR_GREEN=""
+export BUI_COLOR_TEAR=""
+export BUI_COLOR_CYAN="#86C1B9"
+export BUI_COLOR_BLUE="#7CAFC2"
+export BUI_COLOR_PURPLE=""
+export BUI_COLOR_MAGENTA="#BA8BAF"
+export BUI_COLOR_PINK=""
+
+### Elements
+export BUI_COLOR_FOREGROUND="$BUI_COLOR_WHITE"
+export BUI_COLOR_BACKGROUND="$BUI_COLOR_DARK"
+export BUI_COLOR_FOREGROUND_ALT="$BUI_COLOR_GRAY"
+export BUI_COLOR_BACKGROUND_ALT="$BUI_COLOR_DARK_ALT"
+export BUI_COLOR_CURSOR="$BUI_COLOR_YELLOW"
+export BUI_COLOR_CURSOR_ALT="$BUI_COLOR_GREY"
+export BUI_COLOR_SELECTION="$BUI_COLOR_GRAY"
+
+### Base16
+export BUI_COLOR_BASE00="$BUI_COLOR_DARK"
+export BUI_COLOR_BASE01="$BUI_COLOR_DARK_ALT"
+export BUI_COLOR_BASE02="$BUI_COLOR_BLACK"
+export BUI_COLOR_BASE03="$BUI_COLOR_GRAY"
+export BUI_COLOR_BASE04="$BUI_COLOR_GREY"
+export BUI_COLOR_BASE05="$BUI_COLOR_WHITE"
+export BUI_COLOR_BASE06="$BUI_COLOR_LIGHT_ALT"
+export BUI_COLOR_BASE07="$BUI_COLOR_LIGHT"
+export BUI_COLOR_BASE08="$BUI_COLOR_RED"
+export BUI_COLOR_BASE09="$BUI_COLOR_ORANGE"
+export BUI_COLOR_BASE0A="$BUI_COLOR_YELLOW"
+export BUI_COLOR_BASE0B="$BUI_COLOR_LIME"
+export BUI_COLOR_BASE0C="$BUI_COLOR_CYAN"
+export BUI_COLOR_BASE0D="$BUI_COLOR_BLUE"
+export BUI_COLOR_BASE0E="$BUI_COLOR_MAGENTA"
+export BUI_COLOR_BASE0F="$BUI_COLOR_BROWN"
+
+### Terminal
+export BUI_COLOR_TERMINAL000="$BUI_COLOR_DARK_ALT"
+export BUI_COLOR_TERMINAL001="$BUI_COLOR_RED"
+export BUI_COLOR_TERMINAL002="$BUI_COLOR_LIME"
+export BUI_COLOR_TERMINAL003="$BUI_COLOR_YELLOW"
+export BUI_COLOR_TERMINAL004="$BUI_COLOR_BLUE"
+export BUI_COLOR_TERMINAL005="$BUI_COLOR_MAGENTA"
+export BUI_COLOR_TERMINAL006="$BUI_COLOR_CYAN"
+export BUI_COLOR_TERMINAL007="$BUI_COLOR_GREY"
+export BUI_COLOR_TERMINAL008="$BUI_COLOR_GRAY"
+export BUI_COLOR_TERMINAL009="$BUI_COLOR_RED"
+export BUI_COLOR_TERMINAL010="$BUI_COLOR_LIME"
+export BUI_COLOR_TERMINAL011="$BUI_COLOR_YELLOW"
+export BUI_COLOR_TERMINAL012="$BUI_COLOR_BLUE"
+export BUI_COLOR_TERMINAL013="$BUI_COLOR_MAGENTA"
+export BUI_COLOR_TERMINAL014="$BUI_COLOR_CYAN"
+export BUI_COLOR_TERMINAL015="$BUI_COLOR_LIGHT_ALT"
+
+### Other
+export BUI_COLOR_TEXTART="93"
+
+
+# =============================================================================
+# 3. Default applications
+# =============================================================================
+export FINDER="fzf"
+export EDITOR="kak"
+export VISUAL="$EDITOR"
+export PAGER="sh -c \"col -b -x | kak\""
+export MANPAGER="sh -c \"col -b -x | kak -e 'set buffer filetype man'\""
+export TERMINAL="kitty"
+export BROWSER="firefox"
+
+
+# =============================================================================
+# 4. Setting
+# =============================================================================
+export TARGET_LANG="vi"
+export WALLPAPER_FILE="$HOME/c/extra/wallpapers/johnn21/red-paper-lantern-on-roof.jpg"
+export WALLPAPER_MODE="fill"
+export BFETCH_PROMPT_HEIGHT="3"
+export ABDUCO_CMD="$SHELL"
+export ABDUCO_SOCKET_DIR="$TMPDIR"
+export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
+
+### Basher
+export BASHER_FULL_CLONE="true"
+
+### Wayland
+export MOZ_ENABLE_WAYLAND="1"
+
+### Fcitx
+export GTK_IM_MODULE="fcitx"
+export QT_IM_MODULE="fcitx"
+export SDL_IM_MODULE="fcitx"
+export XMODIFIERS="@im=fcitx"
+
+### Terminal explorer
+export TERMINALEXPLORER_COPY_COMMAND="rsync --recursive --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1"
+export TERMINALEXPLORER_CUT_COMMAND="rsync --recursive --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1 --remove-source-files"
+
+### FZF
+export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git'"
+export FZF_DEFAULT_OPTS="--height='24'
+                         --layout='reverse'
+                         --info='inline'
+                         --prompt=':'
+                         --pointer='>'
+                         --marker='*'
+                         --ansi
+                         --tabstop='4'
+
+                         --preview-window='right:60%:sharp:cycle:hidden'
+
+                         --color='fg:-1'
+                         --color='fg+:$BUI_COLOR_BACKGROUND:regular'
+                         --color='bg:-1'
+                         --color='bg+:$BUI_COLOR_CURSOR'
+                         --color='hl:-1:underline'
+                         --color='hl+:$BUI_COLOR_BACKGROUND:underline'
+                         --color='preview-fg:-1'
+                         --color='preview-bg:-1'
+                         --color='gutter:-1'
+                         --color='info:$BUI_COLOR_CURSOR'
+                         --color='border:$BUI_COLOR_FOREGROUND_ALT'
+                         --color='prompt:$BUI_COLOR_CURSOR'
+                         --color='pointer:$BUI_COLOR_CURSOR'
+                         --color='marker:$BUI_COLOR_CURSOR_ALT'
+                         --color='spinner:$BUI_COLOR_FOREGROUND_ALT'
+                         --color='header:$BUI_COLOR_FOREGROUND_ALT'
+
+                         --bind='left-click:accept'
+                         --bind='right-click:abort'
+                         --bind='double-click:accept'
+                         --bind='up:up'
+                         --bind='shift-up:preview-up'
+                         --bind='down:down'
+                         --bind='shift-down:preview-down'
+                         --bind='left:backward-char'
+                         --bind='shift-left:backward-word'
+                         --bind='right:forward-char'
+                         --bind='shift-right:forward-word'
+                         --bind='pgup:page-up'
+                         --bind='pgdn:page-down'
+                         --bind='home:beginning-of-line'
+                         --bind='end:end-of-line'
+                         --bind='bspace:backward-delete-char'
+                         --bind='del:delete-char'
+                         --bind='tab:toggle-out'
+                         --bind='btab:toggle-in'
+                         --bind='ctrl-a:select-all'
+                         --bind='ctrl-c:abort'
+                         --bind='ctrl-q:abort'
+                         --bind='alt-i:up'
+                         --bind='alt-k:down'
+                         --bind='alt-j:backward-char'
+                         --bind='alt-l:forward-char'
+                         --bind='alt-u:backward-word'
+                         --bind='alt-o:forward-word'
+                         --bind='alt-w:deselect-all'
+                         --bind='alt-s:select-all'
+                         --bind='alt-a:toggle'
+                         --bind='alt-y:toggle-preview'
+                         --bind='alt-d:accept'
+                         --bind='alt-f:abort'
+                         --bind='alt-x:backward-delete-char'"
+
+### Dunst
+DUNST_POS=$(( ( ${BUI_GAPS_SIZE%%.*} * 2 ) - ${BUI_BORDER_SIZE%%.*} ))
+DUNST_OPACITY=$(printf '%x' $(printf '%.0f' $(bc <<< "( $BUI_OPACITY * 256 ) - 1") 2>&-))
+export DUNST_DEFAULT_OPTS="-font '$BUI_FONT_MONO_FAMILY $BUI_FONT_MONO_SIZE' \
+                           -geometry '0x0-$DUNST_POS+$DUNST_POS' \
+                           -separator_height '$BUI_BORDER_SIZE' \
+                           -padding '$BUI_BORDER_SIZE' \
+                           -horizontal_padding '$BUI_BORDER_SIZE' \
+                           -frame_width '$BUI_BORDER_SIZE' \
+                           -markup 'full' \
+                           -format '<b>%s</b>\n%b' \
+                           -icon_path '' \
+                           -icon_position 'left' \
+                           -max_icon_size '$(( ${BUI_GAPS_SIZE%%.*} * 2 ))' \
+                           -show_indicators 'false' \
+                           -separator_color 'frame' \
+                           -lf '$BUI_COLOR_FOREGROUND' \
+                           -nf '$BUI_COLOR_FOREGROUND' \
+                           -cf '$BUI_COLOR_FOREGROUND' \
+                           -lb '$BUI_COLOR_BACKGROUND$DUNST_OPACITY' \
+                           -nb '$BUI_COLOR_BACKGROUND$DUNST_OPACITY' \
+                           -cb '$BUI_COLOR_BACKGROUND$DUNST_OPACITY' \
+                           -lfr '$BUI_COLOR_SELECTION' \
+                           -nfr '$BUI_COLOR_SELECTION' \
+                           -cfr '$BUI_COLOR_BASE08' \
+                           -lto '1' \
+                           -nto '3' \
+                           -cto '5' \
+                           -mouse_left_click 'do_action' \
+                           -mouse_right_click 'close_current' \
+                           -mouse_middle_click 'close_curren'"
+
+### Coderun
+export CODERUN_="chmod +x \$FULL && \$FULL"
+export CODERUN_sh="$CODERUN_"
+export CODERUN_textart="$CODERUN_sh"
+export CODERUN_bash="bash \$FULL"
+export CODERUN_zsh="zsh \$FULL"
+export CODERUN_fish="fish \$FULL"
+export CODERUN_1="man \$FULL"
+export CODERUN_2="$CODERUN_1"
+export CODERUN_3="$CODERUN_1"
+export CODERUN_4="$CODERUN_1"
+export CODERUN_5="$CODERUN_1"
+export CODERUN_6="$CODERUN_1"
+export CODERUN_7="$CODERUN_1"
+export CODERUN_8="$CODERUN_1"
+export CODERUN_9="$CODERUN_1"
+export CODERUN_js="node \$FULL"
+export CODERUN_cjs="$CODERUN_js"
+export CODERUN_mjs="$CODERUN_js"
+export CODERUN_java="cd \$DIRECTORY && javac \$FILE && java \$NAME"
+export CODERUN_class="$CODERUN_java"
+export CODERUN_jar="$CODERUN_java"
+export CODERUN_c="cd \$DIRECTORY && gcc \$FILE -o \$NAME && \$DIRECTORY/\$NAME"
+export CODERUN_h="$CODERUN_c"
+export CODERUN_cc="cd \$DIRECTORY && g++ \$FILE -o \$NAME && \$DIRECTORY/\$NAME"
+export CODERUN_C="$CODERUN_cc"
+export CODERUN_cpp="$CODERUN_cc"
+export CODERUN_cxx="$CODERUN_cc"
+export CODERUN_hh="$CODERUN_cc"
+export CODERUN_H="$CODERUN_cc"
+export CODERUN_hpp="$CODERUN_cc"
+export CODERUN_hxx="$CODERUN_cc"
+export CODERUN_m="cd \$DIRECTORY && gcc -framework Cocoa \$FILE -o \$NAME && \$DIRECTORY/\$NAME"
+export CODERUN_mm="$CODERUN_m"
+export CODERUN_M="$CODERUN_m"
+export CODERUN_php="php \$FULL"
+export CODERUN_phtml="$CODERUN_php"
+export CODERUN_php3="$CODERUN_php"
+export CODERUN_php4="$CODERUN_php"
+export CODERUN_php5="$CODERUN_php"
+export CODERUN_php7="$CODERUN_php"
+export CODERUN_phps="$CODERUN_php"
+export CODERUN_php_s="$CODERUN_php"
+export CODERUN_pht="$CODERUN_php"
+export CODERUN_phar="$CODERUN_php"
+export CODERUN_py="python -u \$FULL"
+export CODERUN_pyi="$CODERUN_py"
+export CODERUN_pyc="$CODERUN_py"
+export CODERUN_pyd="$CODERUN_py"
+export CODERUN_pyo="$CODERUN_py"
+export CODERUN_pyw="$CODERUN_py"
+export CODERUN_pyz="$CODERUN_py"
+export CODERUN_perl="perl \$FULL"
+export CODERUN_plx="$CODERUN_perl"
+export CODERUN_pl="$CODERUN_perl"
+export CODERUN_pm="$CODERUN_perl"
+export CODERUN_xs="$CODERUN_perl"
+export CODERUN_t="$CODERUN_perl"
+export CODERUN_pod="$CODERUN_perl"
+export CODERUN_rb="ruby \$FULL"
+export CODERUN_go="go run \$FULL"
+export CODERUN_gccgo="$CODERUN_go"
+export CODERUN_lua="lua \$FULL"
+export CODERUN_groovy="groovy \$FULL"
+export CODERUN_gvy="$CODERUN_groovy"
+export CODERUN_gy="$CODERUN_groovy"
+export CODERUN_gsh="$CODERUN_groovy"
+export CODERUN_ps1="powershell -ExecutionPolicy ByPass -File \$FULL"
+export CODERUN_ps1xml="$CODERUN_ps1"
+export CODERUN_psc1="$CODERUN_ps1"
+export CODERUN_psd1="$CODERUN_ps1"
+export CODERUN_psm1="$CODERUN_ps1"
+export CODERUN_pssc="$CODERUN_ps1"
+export CODERUN_psrc="$CODERUN_ps1"
+export CODERUN_cdxml="$CODERUN_ps1"
+export CODERUN_cmd="cmd /c \$FULL"
+export CODERUN_bat="$CODERUN_cmd"
+export CODERUN_btm="$CODERUN_cmd"
+export CODERUN_fsi="fsi \$FULL"
+export CODERUN_fs="$CODERUN_fsi"
+export CODERUN_fsx="$CODERUN_fsi"
+export CODERUN_fsscript="$CODERUN_fsi"
+export CODERUN_cs="scriptcs \$FULL"
+export CODERUN_csx="$CODERUN_cs"
+export CODERUN_vbs="cscript //Nologo \$FULL"
+export CODERUN_vbe="$CODERUN_vbs"
+export CODERUN_wsf="$CODERUN_vbs"
+export CODERUN_wsc="$CODERUN_vbs"
+export CODERUN_ts="ts-node \$FULL"
+export CODERUN_tsx="$CODERUN_ts"
+export CODERUN_coffee="coffee \$FULL"
+export CODERUN_litcoffee="$CODERUN_coffee"
+export CODERUN_scala="scala \$FULL"
+export CODERUN_sc="$CODERUN_scala"
+export CODERUN_swift="swift \$FULL"
+export CODERUN_jl="julia \$FULL"
+export CODERUN_cr="crystal \$FULL"
+export CODERUN_ml="ocaml \$FULL"
+export CODERUN_mli="$CODERUN_ml"
+export CODERUN_r="Rscript \$FULL"
+export CODERUN_rdata="$CODERUN_r"
+export CODERUN_rds="$CODERUN_r"
+export CODERUN_rda="$CODERUN_r"
+export CODERUN_scpt="osascript \$FULL"
+export CODERUN_scptd="$CODERUN_scpt"
+export CODERUN_applescript="$CODERUN_scpt"
+export CODERUN_clj="lein exec \$FULL"
+export CODERUN_cljs="$CODERUN_clj"
+export CODERUN_cljc="$CODERUN_clj"
+export CODERUN_edn="$CODERUN_clj"
+export CODERUN_hx="haxe --cwd \$DIRECTORY --run \$NAME"
+export CODERUN_hxml="$CODERUN_hx"
+export CODERUN_rs="cd \$DIRECTORY && rustc \$FILE && \$DIRECTORY/\$NAME"
+export CODERUN_rlib="$CODERUN_rs"
+export CODERUN_rkt="racket \$FULL"
+export CODERUN_scm="csi -script \$FULL"
+export CODERUN_ss="$CODERUN_scm"
+export CODERUN_ahk="autohotkey \$FULL"
+export CODERUN_au3="autoit3 \$FULL"
+export CODERUN_dart="dart \$FULL"
+export CODERUN_pp="cd \$DIRECTORY && fpc \$FILE && \$DIRECTORY/\$NAME"
+export CODERUN_pas="$CODERUN_pp"
+export CODERUN_inc="$CODERUN_pp"
+export CODERUN_d="cd \$DIRECTORY && dmd \$FILE && \$DIRECTORY/\$NAME"
+export CODERUN_hs="runhaskell \$FULL"
+export CODERUN_lhs="$CODERUN_hs"
+export CODERUN_nim="nim compile --verbosity:0 --hints:off --run \$FULL"
+export CODERUN_nims="$CODERUN_nim"
+export CODERUN_nimbls="$CODERUN_nim"
+export CODERUN_lisp="sbcl --script \$FULL"
+export CODERUN_kit="kitc --run \$FULL"
+export CODERUN_v="v run \$FULL"
+export CODERUN_sass="sass --style expanded \$FULL"
+export CODERUN_scss="scss --style expanded \$FULL"
+export CODERUN_less="cd \$DIRECTORY && lessc \$FILE \$NAME.css"
+export CODERUN_f="cd \$DIRECTORY && gfortran \$FILE -o \$NAME && \$DIRECTORY/\$NAME"
+export CODERUN_for="$CODERUN_f"
+export CODERUN_f90="$CODERUN_f"
+
+
+# Start
+export > "$TMPDIR/env/$PID/set"
+
+diff -f "$TMPDIR/env/$PID/default" "$TMPDIR/env/$PID/set" | sed -e '/^\(.\|[[:alpha:]]*[[:digit:]]*\)$/d'
+
+exit 0

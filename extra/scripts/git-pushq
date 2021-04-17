@@ -35,17 +35,16 @@
 
 
 # Values
-BRANCH_NAME=$(git branch-name)
+BRANCH_NAME=$(git branch-name) || exit 1
 
 MESSAGE="$*"
-
-
-# Start
 [ -z "$MESSAGE" ] && {
 	printf '%s' 'Please include message' >&2
 	exit 1
 }
 
+
+# Start
 git add --all
 git commit --message "$MESSAGE"
 git pull --recurse-submodules origin "$BRANCH_NAME"

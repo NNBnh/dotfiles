@@ -1,0 +1,30 @@
+#!/bin/sh
+
+  #    *
+  #     *
+  #    **
+  #  /\__/\
+  # /      \
+  # \      /
+  #  \____/
+
+# File:                  mageia.textart
+# Description:           Mageia logo
+# Author:                Jschx
+#                        └─ https://gitlab.com/jschx
+# Converted to textart:  NNB
+#                        └─ https://github.com/NNBnh
+# URL:                   https://github.com/NNBnh/nnbs-text-art/blob/main/fetch/mageia.textart
+
+
+# Start
+printf "     \033[36m*\033[0m
+      \033[36m*\033[0m
+     \033[36m**\033[0m
+   \033[0m/\\__/\\\\\033[0m
+  \033[0m/      \\\\\033[0m
+  \033[0m\\      /\033[0m
+   \033[0m\\____/\033[0m"
+
+
+exit 0

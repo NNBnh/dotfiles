@@ -2,13 +2,13 @@
 
 
 # Start
-# gammastep &
+#gammastep &
 
-playerctld daemon &
+#playerctld daemon &
 
 fcitx -d &
 
-ydotoold &
+#ydotoold &
 
 
 exit 0

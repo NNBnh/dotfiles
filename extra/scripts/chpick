@@ -14,28 +14,40 @@
 # URL:          https://github.com/NNBnh/dots/blob/master/home/.local/bin/chpick
 # License:      GPLv3
 
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 
 # Values
 FINDER="${FINDER:-fzf}"
 CHARATERS_PATH="${CHPICK_CHARATERS_PATH:-${XDG_DATA_HOME:-$HOME/.local/share}/charaters}"
 
 CHARATERS_LIST="${1:-$(ls "$CHARATERS_PATH" | tr '[:upper:]' '[:lower:]' | eval "$FINDER --no-multi --preview-window='hidden'" | tr '[:upper:]' '[:lower:]' )}"
+[ ! -f "$CHARATERS_PATH/$CHARATERS_LIST" ] && exit 1
+
 COPY_COMMAND="${CHPICK_COPY_COMMAND:-clipb copy}"
 
-# Functions
-charater_pick() {
-	cat "$CHARATERS_PATH/$CHARATERS_LIST" | eval "$FINDER --no-multi --preview-window='hidden'" | sed -e 's/:.*//g'
-}
+CHARATER=$(cat "$CHARATERS_PATH/$CHARATERS_LIST" | eval "$FINDER --no-multi --preview-window='hidden'" | sed -e 's/:.*//g')
 
 
 # Start
-[ ! -f "$CHARATERS_PATH/$CHARATERS_LIST" ] && exit 1
-
-if [ -t '1' ]; then
-	charater_pick  | tee '/dev/tty' | eval "$COPY_COMMAND"
-else
-	charater_pick
-fi
+[ -n "$CHARATER" ] && {
+	if [ -t '1' ]; then
+		printf '%s' "$CHARATER" | tee '/dev/tty' | eval "$COPY_COMMAND"
+	else
+		printf '%s' "$CHARATER"
+	fi
+}
 
 
 exit 0

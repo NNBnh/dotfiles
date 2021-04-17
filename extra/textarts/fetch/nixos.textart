@@ -1,0 +1,30 @@
+#!/bin/sh
+
+#   \\   \\ //
+#  ==\\===\\/ //
+#    //    \\//
+# ==//      //==
+#  //\\    //
+# // /\\===\\==
+#   // \\   \\
+
+# File:                  nixos.textart
+# Description:           Nixos logo
+# Author:                Jschx
+#                        └─ https://gitlab.com/jschx
+# Converted to textart:  NNB
+#                        └─ https://github.com/NNBnh
+# URL:                   https://github.com/NNBnh/nnbs-text-art/blob/main/fetch/nixos.textart
+
+
+# Start
+printf "  \033[34m\\\\\   \033[94m\\\\\ //\033[0m
+ \033[34m==\\\\\===\033[94m\\\\\/ \033[34m//\033[0m
+   \033[94m//    \\\\\\\\\033[34m//\033[0m
+\033[94m==//      \033[34m//==\033[0m
+ \033[94m//\033[34m\\\\\    //\033[0m
+\033[94m// \033[34m/\\\\\\\\\033[94m===\033[94m\\\\\==\033[0m
+  \033[34m// \\\\\   \033[94m\\\\\\\\\033[0m"
+
+
+exit 0

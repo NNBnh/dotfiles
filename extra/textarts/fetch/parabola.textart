@@ -1,0 +1,28 @@
+#!/bin/sh
+
+#   __ __ __  _
+# .`_//_//_/ / `.
+#           /  .`
+#          / .`
+#         /.`
+#        /`
+
+# File:                  parabola.textart
+# Description:           Parabola logo
+# Author:                Jschx
+#                        └─ https://gitlab.com/jschx
+# Converted to textart:  NNB
+#                        └─ https://github.com/NNBnh
+# URL:                   https://github.com/NNBnh/nnbs-text-art/blob/main/fetch/parabola.textart
+
+
+# Start
+printf "  \033[35m__ __ __  _\033[0m
+\033[35m.\`_//_//_/ / \`.\033[0m
+          \033[35m/  .\`\033[0m
+         \033[35m/ .\`\033[0m
+        \033[35m/.\`\033[0m
+       \033[35m/\`\033[0m"
+
+
+exit 0

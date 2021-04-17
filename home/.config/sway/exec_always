@@ -2,7 +2,7 @@
 
 
 # Values
-eval "$("$HOME/.config/env")"
+eval "$("$HOME/.config/env/rc")"
 
 SWAY_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 

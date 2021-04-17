@@ -6,14 +6,7 @@
 	ui = 1
 
 [include]
-	path = "~/.local/share/git/gitalias.txt"
+	path = "~/c/extra/gitalias/gitalias.txt"
 
 [alias]
-	a     = "add"
-	aa    = "add --all"
-	c     = "commit"
-	cm    = "commit --message"
-	pull1 = !"git pull origin $(git branch-name)"
-	push1 = !"git push origin $(git branch-name)"
-	pulsh = !"git pull1; git push1"
 	pushq = !"git-pushq"

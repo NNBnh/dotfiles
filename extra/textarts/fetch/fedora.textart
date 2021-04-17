@@ -1,0 +1,32 @@
+#!/bin/sh
+
+  #       _____
+  #      /   __)\
+  #      |  /  \ \
+  #   ___|  |__/ /
+  #  / (_    _)_/
+  # / /  |  |
+  # \ \__/  |
+  #  \(_____/
+
+# File:                  fedora.textart
+# Description:           Fedora logo
+# Author:                Jschx
+#                        └─ https://gitlab.com/jschx
+# Converted to textart:  NNB
+#                        └─ https://github.com/NNBnh
+# URL:                   https://github.com/NNBnh/nnbs-text-art/blob/main/fetch/fedora.textart
+
+
+# Start
+printf "        \033[0m_____\033[0m
+       \033[0m/   __)\033[34m\\\\\033[0m
+       \033[0m|  /  \033[34m\\ \\\\\033[0m
+    \033[34m__\033[0m_|  |_\033[34m_/ /\033[0m
+   \033[34m/ \033[0m(_    _)\033[34m_/\033[0m
+  \033[34m/ /  \033[0m|  |\033[0m
+  \033[34m\\ \\\\\033[0m__/  |\033[0m
+   \033[34m\\\\\033[0m(_____/\033[0m"
+
+
+exit 0

@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# |.__          __.|
+# |__ \        / __|
+#    \ \      / /
+#     \ \    / /
+#      \ \  / /
+#       \ \/ /
+#        \__/
+
+# File:                  guix.textart
+# Description:           Guix logo
+# Author:                Jschx
+#                        └─ https://gitlab.com/jschx
+# Converted to textart:  NNB
+#                        └─ https://github.com/NNBnh
+# URL:                   https://github.com/NNBnh/nnbs-text-art/blob/main/fetch/guix.textart
+
+
+# Start
+printf "\033[33m|.__          __.|\033[0m
+\033[33m|__ \\        / __|\033[0m
+   \033[33m\\ \\      / /\033[0m
+    \033[33m\\ \\    / /\033[0m
+     \033[33m\\ \\  / /\033[0m
+      \033[33m\\ \\/ /\033[0m
+       \033[33m\\__/\033[0m"
+
+
+exit 0

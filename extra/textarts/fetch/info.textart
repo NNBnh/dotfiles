@@ -1,0 +1,51 @@
+#!/bin/sh
+
+# user@hostname
+# -------------
+# OS:        Linux
+# KERNEL:    Linux 6.9
+# UPTIME:    4 hours, 20 minutes
+# PACKAGES:  666
+# SHELL:     sh
+# WM:        wm
+# TERMINAL:  tty
+
+# File:         info.textart
+# Description:  Info template to customize and fetch
+# Author:       NNB
+#               └─ https://github.com/NNBnh
+# URL:          https://github.com/NNBnh/textart-collections/blob/main/fetch/info.textart
+
+
+# Values
+COLOR="${1:-97}"
+USER="$USER"
+HOSTNAME=$(hostname)
+OS=$(lsb_release -sd | sed -e 's/"//g')
+SEPARATOR=$(echo "${USER:-user}@${HOSTNAME:-hostname}" | sed -e 's/./-/g')
+KERNEL=$(uname -sr)
+UPTIME=$(uptime -p | sed -e 's/up //')
+PACKAGES="$PACKAGES"
+SHELL=$(basename "$SHELL")
+WM="$WM"
+TERMINAL=$(basename "$TERMINAL")
+
+# It's highly recommend to used with Fetchutils:
+# 	"A collection of small scripts to retrieve system information"
+#
+# URL:  https://github.com/lptstr/fetchutils
+
+
+# Start
+printf "\033[1;${COLOR}m${USER:-user}\033[0m@\033[1;${COLOR}m${HOSTNAME:-hostname}\033[0m
+\033[0m${SEPARATOR:----}\033[0m
+\033[1;${COLOR}mOS:        \033[0m${OS:-os}\033[0m
+\033[1;${COLOR}mKERNEL:    \033[0m${KERNEL:-kernel}\033[0m
+\033[1;${COLOR}mUPTIME:    \033[0m${UPTIME:-uptime}\033[0m
+\033[1;${COLOR}mPACKAGES:  \033[0m${PACKAGES:-packages}\033[0m
+\033[1;${COLOR}mSHELL:     \033[0m${SHELL:-shell}\033[0m
+\033[1;${COLOR}mWM:        \033[0m${WM:-wm}\033[0m
+\033[1;${COLOR}mTERMINAL:  \033[0m${TERMINAL:-terminal}\033[0m"
+
+
+exit 0
