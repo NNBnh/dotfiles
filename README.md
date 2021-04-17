@@ -4,7 +4,7 @@
 <p align="center"><a href="https://github.com/NNBnh/dots/discussions/7"><img src="https://img.shields.io/badge/gallery%20-%23F7CA88.svg?style=for-the-badge" alt="Gallery"></a> <a href="packageslist"><img src="https://img.shields.io/badge/packages_list%20-%23F7CA88.svg?style=for-the-badge" alt="Packages list"></a> <a href="https://github.com/NNBnh/dots/wiki"><img src="https://img.shields.io/badge/wiki%20-%23F7CA88.svg?style=for-the-badge" alt="Wiki"></a></p>
 <p align="center"><a href="https://github.com/NNBnh/dots/watchers"><img src="https://img.shields.io/github/watchers/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"></a> <a href="https://github.com/NNBnh/dots/stargazers"><img src="https://img.shields.io/github/stars/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"></a> <a href="https://github.com/NNBnh/dots/network/members"><img src="https://img.shields.io/github/forks/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"></a> <a href="https://github.com/NNBnh/dots/issues"><img src="https://img.shields.io/github/issues/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"></a></p>
 
-## About
+## 💡 About
 Welcome to the `Đotfiles`:
 
 > ⬤ ⬤ ⬤
@@ -13,46 +13,38 @@ The *SuperB* dotfiles for unix system, configured with a high level of **portabl
 
 <p align="center"><img src="https://user-images.githubusercontent.com/43980777/108480424-85941700-72c9-11eb-8380-89ddb5202607.png"></p>
 
-### Features
-- Super **portable**, because `Đotfiles` use ***SuperB Bootstrap*** to manager dotfiles, it work on almost any unix and unix-like operating system it support
+### ✨ Features
+- Super **portable**, because `Đotfiles` use ***SuperB Bootstrap*** to manager dotfiles, it work on almost any `*NIX` operating system SBB supported
 - Super **minimalism**, it follow the [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy) radically:
-  - *Use programs that do one thing and do it well* (and do that thing with one program):
+  - *"Use programs that do one thing and do it well"*:
     > This is to reduce bloat and redundancy in programs
-  - *Use programs to work together*:
-    > Built a network of programs thought environment variables, turn it into a tight ecosystem for coder
-  - *Use programs to handle text streams, because that is a universal interface*:
+  - *"Use programs to work together"*:
+    > Built a network of programs thought environment variables, turn it into a tight ecosystem for thinker
+  - *"Use programs to handle text streams, because that is a universal interface"*:
     - Almost all program use [`CLI` (command-line interface)](https://en.wikipedia.org/wiki/Command-line_interface)
-    - Only have 3 [`TUI` (text-based user interface)](https://en.wikipedia.org/wiki/Text-based_user_interface) applications
-      - [**FISH**](https://github.com/NNBnh/dots/wiki/which#shell): it's readline to interact with `CLI` tools
-      - [**FZF**](https://github.com/NNBnh/dots/wiki/which#finder): the general-purpose command-line finder
-      - [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#text-editor): the text-`$EDITOR` (also be use as the `$PAGER`)
-    - And 5 [`GUI` (Graphical user interface)](https://en.wikipedia.org/wiki/Graphical_user_interface) applications
-      - [**Kitty**](https://github.com/NNBnh/dots/wiki/which#terminal-emulator): terminal emulator
-      - [**MPV**](https://github.com/NNBnh/dots/wiki/which#image-viewer): media player + image viewer
-      - [**Firefox**](https://github.com/NNBnh/dots/wiki/which#web-browser): web browser
-      - [**GIMP**](https://github.com/NNBnh/dots/wiki/which#image-editor): image editor
-      - [**Blender**](https://github.com/NNBnh/dots/wiki/which#motion-graphics): motion graphics
-      - [**Godot**](https://github.com/NNBnh/dots/wiki/which#game-engine): game engine
+    - Only have 2 [`TUI` (text-based user interface)](https://en.wikipedia.org/wiki/Text-based_user_interface) applications:
+      - Menu: [**FZF**](https://github.com/NNBnh/dots/wiki/which#finder)
+      - Text-`$EDITOR` / `$PAGER`: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#text-editor)
+    - And 5 [`GUI` (Graphical user interface)](https://en.wikipedia.org/wiki/Graphical_user_interface) applications:
+      - Terminal emulator: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
+      - Media player / image viewer: [**MPV**](https://github.com/NNBnh/dots/wiki/which#image-viewer)
+      - Web browser: [**Firefox**](https://github.com/NNBnh/dots/wiki/which#web-browser)
+      - Image editor: [**GIMP**](https://github.com/NNBnh/dots/wiki/which#image-editor)
+      - Motion graphics: [**Blender**](https://github.com/NNBnh/dots/wiki/which#motion-graphics)
+      - Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#game-engine)
 - Super **optimization**:
   - Using tree-base tiling system for endless freedom, work with any use cases
   - Maximize your screen real estate
   - Convenient smart shotcut
 
-## Contents
-- [About](#about)
-  - [Features](#features)
-- [Contents](#contents)
-- [Installation](#installation)
-
-## Installation
-
-`Đotfiles` use [*SuperB Bootstrap*](https://github.com/NNBnh/superb-bootstrap) to install, just download this repository then execute `./dots/setup`:
+## 📥 Installation
+`Đotfiles` use [*SuperB Bootstrap*](https://github.com/NNBnh/superb-bootstrap) to install, just download this repository then execute `./c/setup`:
 
 ```sh
 git clone https://github.com/NNBnh/dots ~/c && ~/c/setup
 ```
 
-###### For more information look at the [wiki](https://github.com/NNBnh/dots/wiki)
+> *For more information, please take look at the [wiki](https://github.com/NNBnh/dots/wiki)*
 
 <br><br><br><br>
 
