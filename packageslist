@@ -15,7 +15,6 @@
 # W: TODO Window manager
 # E: TODO Editor
 # X: Will remove in far future
-# B: Bash
 
 # =============================================================================
 # 1. System
@@ -70,7 +69,7 @@
 # =============================================================================
 
 ### Core
-  APT:fish                        PAC:fish                        XBP:fish-shell                  TMP:fish                      #T Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#shell)
+  APT:fish                        PAC:fish                        XBP:fish-shell                  TMP:fish                      #  Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#shell)
   APT:fzf                         PAC:fzf                         XBP:fzf                         TMP:fzf                       #E Fuzzy finder (WH.I.CH https://github.com/NNBnh/dots/wiki/which#finder)
 
 ### Programming language
@@ -80,7 +79,7 @@
 ### Utilitie
   APT:git                         PAC:git                         XBP:git                         TMP:git                       #  Version control system
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate                TMP:qalc                      #  Calculator
-  APT:translate-shell             PAC:translate-shell             XBP:translate-shell             TMP:translate-shell           #B Translator
+  APT:translate-shell             PAC:translate-shell             XBP:translate-shell             TMP:translate-shell           #T Translator
   APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                                                #  Shell script static analysis
   APT:kakoune                     PAC:kakoune                     XBP:kakoune                     TMP:kakoune                   #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
 
@@ -92,9 +91,9 @@
 
 ### Data manipulation
   APT:libimage-exiftool-perl      PAC:perl-image-exiftool         XBP:exiftool                    TMP:exiftool                  #C Metadata manipulation
-  APT:p7zip                       PAC:p7zip                       XBP:p7zip                       TMP:p7zip                     #  Files archive
+  APT:p7zip                       PAC:p7zip                       XBP:p7zip                       TMP:p7zip                     #  Files archiving
   APT:pandoc                      PAC:pandoc                      XBP:pandoc                                                    #  Markup converter
-  APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick                 TMP:imagemagick               #  Image manipulation
+  APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick                 TMP:imagemagick               #X Image manipulation
   APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                      TMP:ffmpeg                    #  Media manipulation
   APT:jq                          PAC:jq                          XBP:jq                          TMP:jq                        #  JSON processor
 
@@ -102,7 +101,7 @@
   APT:hardinfo                    PAC:hardinfo                    XBP:hardinfo                                                  #C System profilers ("CPU-Z alternative for linux")
   APT:figlet                      PAC:figlet                      XBP:figlet                      TMP:figlet                    #  Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
   APT:chafa                       PAC:chafa                       XBP:chafa                                                     #X Convert image to textart
-                                  AUR:no-more-secrets             XBP:no-more-secrets                                           #  Become a hackerman (Make outputs Minecraft enchanting table language)
+                                  AUR:no-more-secrets             XBP:no-more-secrets                                           #T Become a hackerman (Make outputs Minecraft enchanting table language)
                                   AUR:cava                        XBP:cava                        TMP:cava                      #C Audio visualizer
 
 

@@ -2,8 +2,8 @@ workspace_layout tabbed
 xwayland enable
 
 
-exec        "$HOME/.config/autostart/exec"
-exec_always "$HOME/.config/autostart/exec_always"
+exec        "$HOME/.config/autostart/display"
+exec_always "$HOME/.config/autostart/displays"
 
 exec_always "$HOME/.config/sway/exec_always"
 
