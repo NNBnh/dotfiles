@@ -23,9 +23,9 @@ The *SuperB* dotfiles for unix system, configured with a high level of **portabl
   - *"Use programs to handle text streams, because that is a universal interface"*:
     - Almost all program use [`CLI` (command-line interface)](https://en.wikipedia.org/wiki/Command-line_interface)
     - Only have 2 [`TUI` (text-based user interface)](https://en.wikipedia.org/wiki/Text-based_user_interface) applications:
-      - Menu: [**FZF**](https://github.com/NNBnh/dots/wiki/which#finder)
+      - Selector: [**FZF**](https://github.com/NNBnh/dots/wiki/which#selector)
       - Text-`$EDITOR` / `$PAGER`: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#text-editor)
-    - And 5 [`GUI` (Graphical user interface)](https://en.wikipedia.org/wiki/Graphical_user_interface) applications:
+    - And 5 [`GUI` (graphical user interface)](https://en.wikipedia.org/wiki/Graphical_user_interface) applications:
       - Terminal emulator: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
       - Media player / image viewer: [**MPV**](https://github.com/NNBnh/dots/wiki/which#image-viewer)
       - Web browser: [**Firefox**](https://github.com/NNBnh/dots/wiki/which#web-browser)

@@ -70,24 +70,27 @@
 
 ### Core
   APT:fish                        PAC:fish                        XBP:fish-shell                  TMP:fish                      #  Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#shell)
-  APT:fzf                         PAC:fzf                         XBP:fzf                         TMP:fzf                       #E Fuzzy finder (WH.I.CH https://github.com/NNBnh/dots/wiki/which#finder)
+  APT:fzf                         PAC:fzf                         XBP:fzf                         TMP:fzf                       #E Fuzzy selector (WH.I.CH https://github.com/NNBnh/dots/wiki/which#selector)
+  APT:kakoune                     PAC:kakoune                     XBP:kakoune                     TMP:kakoune                   #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
 
-### Programming language
-  APT:dash                        PAC:dash                        XBP:dash                        TMP:dash                      #X POSIX shell
-  APT:python                      PAC:python                      XBP:python                      TMP:python                    #  Handy programming language
+### Programming language (WH.I.CH https://github.com/NNBnh/dots/wiki/which#programing-language)
+  APT:rust                        PAC:rust                        XBP:rust                        TMP:rust                      #  Compiled language to build software
+  APT:dash                        PAC:dash                        XBP:dash                        TMP:dash                      #  POSIX shell to write portable utilities
+  APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                                                #  Shell script static analysis
+  APT:python                      PAC:python                      XBP:python                      TMP:python                    #  Fun language to write small scripts
+  APT:typescript                  PAC:typescript                  XBP:typescript                  TMP:typescript                #  For web dev
 
 ### Utilitie
   APT:git                         PAC:git                         XBP:git                         TMP:git                       #  Version control system
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate                TMP:qalc                      #  Calculator
-  APT:translate-shell             PAC:translate-shell             XBP:translate-shell             TMP:translate-shell           #T Translator
-  APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                                                #  Shell script static analysis
-  APT:kakoune                     PAC:kakoune                     XBP:kakoune                     TMP:kakoune                   #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
+  APT:trash-cli                   PAC:trash-cli                   XBP:trash-cli                                                 #T Trash manager
+  APT:figlet                      PAC:figlet                      XBP:figlet                      TMP:figlet                    #  Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
+  APT:chafa                       PAC:chafa                       XBP:chafa                                                     #X Convert image to textart
 
 ### Data tranfer
   APT:rsync                       PAC:rsync                       XBP:rsync                       TMP:rsync                     #  Sync files
   APT:curl                        PAC:curl                        XBP:curl                        TMP:curl                      #  Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
   APT:aria2                       PAC:aria2                       XBP:aria2                       TMP:aria2                     #C Download manager
-  APT:trash-cli                   PAC:trash-cli                   XBP:trash-cli                                                 #T Trash manager
 
 ### Data manipulation
   APT:libimage-exiftool-perl      PAC:perl-image-exiftool         XBP:exiftool                    TMP:exiftool                  #C Metadata manipulation
@@ -96,13 +99,6 @@
   APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick                 TMP:imagemagick               #X Image manipulation
   APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                      TMP:ffmpeg                    #  Media manipulation
   APT:jq                          PAC:jq                          XBP:jq                          TMP:jq                        #  JSON processor
-
-### Other
-  APT:hardinfo                    PAC:hardinfo                    XBP:hardinfo                                                  #C System profilers ("CPU-Z alternative for linux")
-  APT:figlet                      PAC:figlet                      XBP:figlet                      TMP:figlet                    #  Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
-  APT:chafa                       PAC:chafa                       XBP:chafa                                                     #X Convert image to textart
-                                  AUR:no-more-secrets             XBP:no-more-secrets                                           #T Become a hackerman (Make outputs Minecraft enchanting table language)
-                                  AUR:cava                        XBP:cava                        TMP:cava                      #C Audio visualizer
 
 
 # =============================================================================
@@ -114,7 +110,7 @@
   APT:mpv                         PAC:mpv                         XBP:mpv                                                       #  Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
   FLA:org.mozilla.firefox         PAC:firefox                     XBP:firefox                                                   #  Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
 
-### Edit
+### Productivity
   FLA:org.gimp.GIMP               PAC:gimp                        XBP:gimp                                                      #  Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
   FLA:org.blender.Blender         PAC:blender                     XBP:blender                                                   #  Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
   FLA:org.godotengine.Godot       AUR:godot-bin                   XBP:godot                                                     #  Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
