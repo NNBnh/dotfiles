@@ -73,7 +73,7 @@ export BUI_CURSOR="block"
 export BUI_CURSOR_BLINK="true"
 export BUI_OPACITY="0.9"
 export BUI_FONT_MONO_FAMILY="Bmono"
-export BUI_FONT_MONO_SIZE="12.0"
+export BUI_FONT_MONO_SIZE="10.0"
 export BUI_FONT_FAMILY="$BUI_FONT_MONO_FAMILY"
 export BUI_FONT_SIZE="10.0"
 
@@ -257,7 +257,7 @@ export FZF_DEFAULT_OPTS="--height='24'
 ### Dunst
 DUNST_POS=$(( ( ${BUI_GAPS_SIZE%%.*} * 2 ) - ${BUI_BORDER_SIZE%%.*} ))
 DUNST_OPACITY=$(printf '%x' $(printf '%.0f' $(bc <<< "( $BUI_OPACITY * 256 ) - 1") 2>&-))
-export DUNST_DEFAULT_OPTS="-font '$BUI_FONT_MONO_FAMILY $BUI_FONT_MONO_SIZE' \
+export DUNST_DEFAULT_OPTS="-font '$BUI_FONT_FAMILY $BUI_FONT_SIZE' \
                            -geometry '0x0-$DUNST_POS+$DUNST_POS' \
                            -separator_height '$BUI_BORDER_SIZE' \
                            -padding '$BUI_BORDER_SIZE' \

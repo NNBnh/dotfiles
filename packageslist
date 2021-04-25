@@ -60,8 +60,10 @@
 ### Other
   APT:xdg-utils                   PAC:xdg-utils                   XBP:xdg-utils                                                 #  Applications manager
   APT:xdg-user-dirs               PAC:xdg-user-dirs               XBP:xdg-user-dirs                                             #  XDG directory manager
+  BSR:NNBnh/clipb                                                                                                               #  Clipboard managers warper
   APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard                                              #  Clipboard manager
   APT:ufw                         PAC:ufw                         XBP:ufw                                                       #  Firewall
+  BSR:NNBnh/bui-appearance                                                                                                      #  Widget toolkit theme
 
 
 # =============================================================================
@@ -70,27 +72,39 @@
 
 ### Core
   APT:fish                        PAC:fish                        XBP:fish-shell                  TMP:fish                      #  Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#shell)
-  APT:fzf                         PAC:fzf                         XBP:fzf                         TMP:fzf                       #E Fuzzy selector (WH.I.CH https://github.com/NNBnh/dots/wiki/which#selector)
   APT:kakoune                     PAC:kakoune                     XBP:kakoune                     TMP:kakoune                   #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
+  APT:fzf                         PAC:fzf                         XBP:fzf                         TMP:fzf                       #E Fuzzy selector (WH.I.CH https://github.com/NNBnh/dots/wiki/which#selector)
+  BSR:NNBnh/bui-terminal                                                                                                        #  Terminal theme
 
 ### Programming language (WH.I.CH https://github.com/NNBnh/dots/wiki/which#programing-language)
   APT:rust                        PAC:rust                        XBP:rust                        TMP:rust                      #  Compiled language to build software
   APT:dash                        PAC:dash                        XBP:dash                        TMP:dash                      #  POSIX shell to write portable utilities
   APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                                                #  Shell script static analysis
-  APT:python                      PAC:python                      XBP:python                      TMP:python                    #  Fun language to write small scripts
+  APT:python                      PAC:python                      XBP:python3                     TMP:python                    #  Fun language to write small scripts
   APT:typescript                  PAC:typescript                  XBP:typescript                  TMP:typescript                #  For web dev
 
 ### Utilitie
   APT:git                         PAC:git                         XBP:git                         TMP:git                       #  Version control system
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate                TMP:qalc                      #  Calculator
-  APT:trash-cli                   PAC:trash-cli                   XBP:trash-cli                                                 #T Trash manager
+  BSR:NNBnh/bsymlink                                                                                                            #  Batch symlink tool
+  BSR:NNBnh/mk                                                                                                                  #  Files and folders creation tool
+  PIP:trash-cli                                                                                                                 #T Trash manager
+  BSR:NNBnh/coderun                                                                                                             #  Code runner
+  PIP:asciinema                                                                                                                 #  Record terminal sessions
+  PIP:auto-editor                                                                                                               #  Automatically editing video
+  BSR:NNBnh/bfetch                                                                                                              #  Fetch displayer
   APT:figlet                      PAC:figlet                      XBP:figlet                      TMP:figlet                    #  Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
+  BSR:NNBnh/hr                                                                                                                  #  Horizontal ruler
   APT:chafa                       PAC:chafa                       XBP:chafa                                                     #X Convert image to textart
+  PIP:git+https://github.com/will8211/unimatrix.git                                                                             #T Simulates the display from "The Matrix"
+
 
 ### Data tranfer
+  BSR:NNBnh/terminal-explorer                                                                                                   #  CLI tool that mimic the way GUI's file manager do copy/cut/paste
   APT:rsync                       PAC:rsync                       XBP:rsync                       TMP:rsync                     #  Sync files
   APT:curl                        PAC:curl                        XBP:curl                        TMP:curl                      #  Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
   APT:aria2                       PAC:aria2                       XBP:aria2                       TMP:aria2                     #C Download manager
+  PIP:youtube-dl                                                                                                                #  Media downloader
 
 ### Data manipulation
   APT:libimage-exiftool-perl      PAC:perl-image-exiftool         XBP:exiftool                    TMP:exiftool                  #C Metadata manipulation

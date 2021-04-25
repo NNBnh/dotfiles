@@ -26,7 +26,7 @@ FONT="$BUI_FONT_MONO_FAMILY"
 	TERMINAL_ICON='📟'
 	    FONT_ICON='🏷️'
 }
-
+OS='Void Linux'
 
 # Start
 printf "\033[1;${COLOR}mOS        \033[0m$OS_ICON${OS:-OS}\033[0m

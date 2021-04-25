@@ -9,4 +9,5 @@
 	path = "~/c/extra/gitalias/gitalias.txt"
 
 [alias]
+	pullq = !"git-pullq"
 	pushq = !"git-pushq"

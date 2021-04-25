@@ -16,3 +16,6 @@
 [submodule "wallpapers"]
 	path = extra/wallpapers
 	url = https://github.com/NNBnh/wallpaper-collections.git
+[submodule "extra/sbb"]
+	path = extra/sbb
+	url = https://github.com/NNBnh/superb-bootstrap.git

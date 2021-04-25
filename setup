@@ -13,71 +13,59 @@
 # URL:          https://github.com/NNBnh/dots/blob/master/setup
 
 
-# Values
+# Imports
 DOTFILES_PATH=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
-. "$DOTFILES_PATH/home/.config/env"
+. "$DOTFILES_PATH/extra/sbb/sbb" # You can change SSB packages manager path here
 
-STEPS="${*:-install before home root after}"
+
+# Values
+eval "$("$DOTFILES_PATH/home/.config/env/rc")"
+
+STEPS="${*:-install before home root after}" # Default order of steps
 
 
 # Functions
 install_packages() {
-	printf '\n\033[1;7;34m%s\033[0m\n' 'Install packages'
-	superbbootstrap_install_packages "$DOTFILES_PATH/packageslist"
+	printf '\n\033[1;7;34m%s\033[0m\n' 'Install packages' >&2
 
-	printf '\n\033[1;7;34m%s\033[0m\n' 'Install extra packages'
-		# Download submodules
-		cd "$DOTFILES_PATH" || exit 1
-		git submodule update --init --recursive
-		cd "$WD" || exit 1
+	sbb_install_packages "$DOTFILES_PATH/packageslist"
 
-		# Python packages
-		pip install --upgrade 'asciinema' 'youtube-dl' 'auto-editor' 'git+https://github.com/will8211/unimatrix.git'
+	printf '\n\033[1;7;34m%s\033[0m\n' 'Install extra resource' >&2
+		# Mono fonts
+		aria2c --dir "$TMPDIR" $(curl --silent --location 'https://api.github.com/repos/NNBnh/bmono/releases/latest' | jq --raw-output '.assets | .[] | select(.name=="bmono-ttf.zip") | .browser_download_url') \
+		&& 7z x -o"$TMPDIR/" "$TMPDIR/bmono-ttf.zip" \
+		&& mkdir -p "$XDG_DATA_HOME/fonts" \
+		&& mv "$TMPDIR/ttf/"* "$XDG_DATA_HOME/fonts/"
 
-		# Basher packages
-		git clone 'https://github.com/basherpm/basher.git' "$XDG_DATA_HOME/basher"
-		mkdir -p "$HOME/.local/bin" \
-		&& ln -sf "$XDG_DATA_HOME/basher/bin/basher" "$HOME/.local/bin/" \
-		&& for basher_package in 'NNBnh/bsymlink' 'NNBnh/bui-terminal' 'NNBnh/bui-appearance' 'NNBnh/bfetch' 'NNBnh/terminal-explorer' 'NNBnh/clipb' 'NNBnh/coderun' 'NNBnh/mk' 'NNBnh/hr'; do
-			basher install "$basher_package"
-		done
+		# Mouse cursor
+		aria2c --dir "$TMPDIR" 'https://github.com/ful1e5/Bibata_Cursor/releases/download/v1.0.3/Bibata-Original-Ice.tar.gz' \
+		&& 7z x -o"$TMPDIR/" "$TMPDIR/Bibata-Original-Ice.tar.gz" \
+		&& 7z x -o"$TMPDIR/" "$TMPDIR/Bibata-Original-Ice.tar" \
+		&& mv "$TMPDIR/Bibata-Original-Ice" "$XDG_DATA_HOME/icons/"
 
-		# Resource
-			# Mono fonts
-			aria2c --dir "$TMPDIR" $(curl --silent --location 'https://api.github.com/repos/NNBnh/bmono/releases/latest' | grep -e '/bmono-ttf.zip' | cut -f '4' -d '"') \
-			&& 7z x -o"$TMPDIR/" "$TMPDIR/bmono-ttf.zip" \
-			&& mkdir -p "$XDG_DATA_HOME/fonts" \
-			&& mv "$TMPDIR/ttf/"* "$XDG_DATA_HOME/fonts/"
-
-			# Mouse cursor
-			aria2c --dir "$TMPDIR" 'https://github.com/ful1e5/Bibata_Cursor/releases/download/v1.0.3/Bibata-Original-Ice.tar.gz' \
-			&& 7z x -o"$TMPDIR/" "$TMPDIR/Bibata-Original-Ice.tar.gz" \
-			&& 7z x -o"$TMPDIR/" "$TMPDIR/Bibata-Original-Ice.tar" \
-			&& mv "$TMPDIR/Bibata-Original-Ice" "$XDG_DATA_HOME/icons/"
-
-			# Charater picker
-			mkdir -p "$XDG_DATA_HOME/charaters"
-			curl -fsSL 'https://www.unicode.org/Public/emoji/13.1/emoji-test.txt' \
-			| sed -e 's/ E[0-9.]*/:/g' -ne 's/^.*fully-qualified *# //p' > "$XDG_DATA_HOME/charaters/emoji"
-			curl -fsSL 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json' \
-			| jq --raw-output '.gitmojis[] | [.emoji, .description] | join(": ")' > "$XDG_DATA_HOME/charaters/gitmoji"
+		# Charater picker
+		mkdir -p "$XDG_DATA_HOME/charaters"
+		curl -fsSL 'https://www.unicode.org/Public/emoji/13.1/emoji-test.txt' \
+		| sed -e 's/ E[0-9.]*/:/g' -ne 's/^.*fully-qualified *# //p' > "$XDG_DATA_HOME/charaters/emoji"
+		curl -fsSL 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json' \
+		| jq --raw-output '.gitmojis[] | [.emoji, .description] | join(": ")' > "$XDG_DATA_HOME/charaters/gitmoji"
 }
 
 symlink_home() {
-	printf '\n\033[1;7;36m%s\033[0m\n' "Symlink to home ($HOME)"
+	printf '\n\033[1;7;36m%s\033[0m\n' "Symlink to home ($HOME)" >&2
 
 	bsymlink "$DOTFILES_PATH/home" "$HOME"
 }
 
 symlink_root() {
-	printf '\n\033[1;7;36m%s\033[0m\n' 'Symlink to root (/)'
+	printf '\n\033[1;7;36m%s\033[0m\n' 'Symlink to root (/)' >&2
 
 	$PERMISSION_COMMAND bsymlink "$DOTFILES_PATH/root" '/'
 }
 
 before_symlink() {
-	printf '\n\033[1;7;33m%s\033[0m\n' 'Setup before symlink'
+	printf '\n\033[1;7;33m%s\033[0m\n' 'Setup before symlink' >&2
 
 	# Create directories (to only symlink files inside, not the directory)
 	mkdir -p "$XDG_CONFIG_HOME/fcitx" "$XDG_CONFIG_HOME/kak" "$XDG_CONFIG_HOME/retroarch" \
@@ -107,350 +95,26 @@ before_symlink() {
 }
 
 after_symlink() {
-	printf '\n\033[1;7;33m%s\033[0m\n' 'Setup after symlink step'
+	printf '\n\033[1;7;33m%s\033[0m\n' 'Setup after symlink' >&2
 
 	# Change default shell
 	chsh -s "$(command -v fish)"
 
 	# Change XDG directories
-	[ -x "$(command -v xdg-user-dirs-update)" ] && for xdg_directory in 'DESKTOP' 'DOCUMENTS' 'DOWNLOAD' 'MUSIC' 'PICTURES' 'PUBLICSHARE' 'TEMPLATES' 'VIDEOS'; do
+	[ -x "$(command -v xdg-user-dirs-update)" ] \
+	&& for xdg_directory in 'DESKTOP' 'DOCUMENTS' 'DOWNLOAD' 'MUSIC' 'PICTURES' 'PUBLICSHARE' 'TEMPLATES' 'VIDEOS'; do
 		eval "xdg-user-dirs-update --set '$xdg_directory' \"\$XDG_${xdg_directory}_DIR\""
 	done
 
 	# Add Firefox CSS
-	[ -x "$(command -v firefox)" ] && for profile in "$HOME/.mozilla/firefox/"*'.default-release'; do
+	[ -x "$(command -v firefox)" ] \
+	&& for profile in "$HOME/.mozilla/firefox/"*'.default-release'; do
 		ln -sf "$DOTFILES_PATH/extra/firefox/chrome" "$profile/"
 	done \
 	&& printf '\033[1;93m%s\033[0m' 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
 
 	# Enable firewall
 	[ -x "$(command -v ufw)" ] && $PERMISSION_COMMAND ufw enable
-}
-
-
-# SBB #########################################################################
-
-# WARNING !!!
-# Don't touch anything from this point to the end of file
-# if you don't know what you are doing.
-
-
-# Values
-WD="$PWD"
-
-TMPDIR="${TMPDIR:-/tmp}"
-TEMPORARY="$TMPDIR/superb-bootstrap"
-
-DOTFILES_PATH=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-
-if [ -x "$(command -v sudo)" ]; then
-	PERMISSION_COMMAND='sudo'
-elif [ -x "$(command -v doas)" ]; then
-	PERMISSION_COMMAND='doas'
-elif [ -x "$(command -v termux-setup-storage)" ]; then
-	PACKAGEMANAGER_MAIN='Termux'
-else
-	printf '\n\033[1;7;31m%s\033[0m\n' "Permission command not found or unsupported"
-	exit 1
-fi
-
-     APT_MARK='APT';      APT_PM='apt'         ;      APT_COMMAND="$PERMISSION_COMMAND $APT_PM install --assume-yes"
-  Mports_MARK='MPT';   Mports_PM='mports'      ;   Mports_COMMAND="$PERMISSION_COMMAND $Mports_PM install"
- OpenBSD_MARK='OBP';  OpenBSD_PM='pkg_add'     ;  OpenBSD_COMMAND="$PERMISSION_COMMAND $OpenBSD_PM -I"
-  Pacman_MARK='PAC';   Pacman_PM='pacman'      ;   Pacman_COMMAND="$PERMISSION_COMMAND $Pacman_PM --sync --noconfirm --needed"
- Portage_MARK='PTG';  Portage_PM='emerge'      ;  Portage_COMMAND="$PERMISSION_COMMAND $Portage_PM"
-   PKGIN_MARK='PIN';    PKGIN_PM='pkgin'       ;    PKGIN_COMMAND="$PERMISSION_COMMAND $PKGIN_PM install -y"
-   PKGNG_MARK='PNG';    PKGNG_PM='pkg'         ;    PKGNG_COMMAND="$PERMISSION_COMMAND $PKGNG_PM install -y"
-Slackpkg_MARK='SLK'; Slackpkg_PM='slackpkg'    ; Slackpkg_COMMAND="$PERMISSION_COMMAND $Slackpkg_PM install"
-  Termux_MARK='TMP';   Termux_PM='pkg'         ;   Termux_COMMAND="$Termux_PM install --assume-yes"
-    XBPS_MARK='XBP';     XBPS_PM='xbps-install';     XBPS_COMMAND="$PERMISSION_COMMAND $XBPS_PM --yes"
-  Zypper_MARK='ZPR';   Zypper_PM='zypper'      ;   Zypper_COMMAND="$PERMISSION_COMMAND $Zypper_PM --non-interactive install"
-     AUR_MARK='AUR';      AUR_PM='paru'        ;      AUR_COMMAND="$AUR_PM --sync --skipreview --useask --noconfirm --needed"
- Flatpak_MARK='FLA';  Flatpak_PM='flatpak'     ;  Flatpak_COMMAND="$PERMISSION_COMMAND $Flatpak_PM install"
-Homebrew_MARK='HBR'; Homebrew_PM='brew'        ; Homebrew_COMMAND="$Homebrew_PM install"
-MacPorts_MARK='MCP'; MacPorts_PM='port'        ; MacPorts_COMMAND="$PERMISSION_COMMAND $MacPorts_PM install"
-     MAS_MARK='MAS';      MAS_PM='mas'         ;      MAS_COMMAND="$MAS_PM install"
-     SBO_MARK='SBO';      SBO_PM='sbopkg'      ;      SBO_COMMAND="$PERMISSION_COMMAND $SBO_PM -ifq"
-    Snap_MARK='SNA';     Snap_PM='snap'        ;     Snap_COMMAND="$PERMISSION_COMMAND $Snap_PM install"
-
-if [ -z "$PACKAGEMANAGER_MAIN" ]; then
-	case $(uname -s | tr '[:upper:]' '[:lower:]') in
-		'darwin'*)
-			PACKAGEMANAGER_LIST='Homebrew MacPorts MAS'
-		;;
-		'freebsd'*)
-			PACKAGEMANAGER_MAIN='PKGNG'
-		;;
-		'midnightbsd'*)
-			PACKAGEMANAGER_MAIN='Mports'
-		;;
-		'netbsd'*)
-			PACKAGEMANAGER_MAIN='PKGIN'
-		;;
-		'openbsd'*)
-			PACKAGEMANAGER_MAIN='OpenBSD'
-		;;
-		*)
-
-			for packagemanager_check in 'APT' 'Pacman' 'Portage' 'Slackpkg' 'XBPS' 'Zypper'; do
-				[ -x "$(eval command -v \$${packagemanager_check}_PM)" ] && {
-					PACKAGEMANAGER_MAIN="$packagemanager_check"
-					break
-				}
-			done
-
-			[ "$PACKAGEMANAGER_MAIN"  = 'Pacman'   ] && PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST AUR"
-			[ "$PACKAGEMANAGER_MAIN"  = 'Slackpkg' ] && PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST SBO"
-			                                            PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST Flatpak"
-			                                            PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST Homebrew"
-
-			if [ "$PACKAGEMANAGER_MAIN" = 'APT' ] || [ "$PACKAGEMANAGER_MAIN" = 'Pacman' ]; then
-				PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST Snap"
-			fi
-		;;
-	esac
-fi
-
-PACKAGEMANAGER_LIST="$PACKAGEMANAGER_MAIN $PACKAGEMANAGER_LIST" # This is a list of package managers supported on bootstrapping OS
-
-# Functions
-superbbootstrap_install_packages() {
-	if [ -f "$1" ]; then
-		packages_list=$(sed -e 's/#.*$//g' "$1")
-	elif [ -z "$PACKAGEMANAGER_MAIN" ]; then
-		printf '\n\033[1;7;31m%s\033[0m\n' "Main packages manager not found or unsupported"
-		exit 1
-	else
-		printf '\n\033[1;7;31m%s\033[0m\n' 'Packages list not found'
-		exit 1
-	fi
-
-	for packagemanager in $PACKAGEMANAGER_LIST; do
-		eval "mark=\"\$${packagemanager}_MARK\""
-		eval "install_command=\"\$${packagemanager}_COMMAND\""
-
-		# Find packages with mark
-		packages_installing=$(printf '%s' "$packages_list" | sed -e "/^.*$mark:.*\$/!d;s/.*$mark://g" -e 's/[[:space:]].*$//g;/^$/d' | tr '\n' ' ')
-
-		# If finded, setup package manager then install packages
-		[ -n "$packages_installing" ] && {
-			# Remove lines with current mark so packages don't get reinstall on another package managers later on
-			packages_list=$(printf '%s' "$packages_list" | sed -e "s/^.*$mark.*\$//g")
-
-			printf '\n\033[1;7;35m%s\033[0m\n' "Setting up $packagemanager"
-			eval "superbbootstrap_$packagemanager"
-
-			printf '\n\033[1;7;32m%s\033[0m\n' "Installing $packagemanager packages"
-			eval "$install_command $packages_installing"
-		}
-	done
-}
-
-superbbootstrap_APT() {
-	$PERMISSION_COMMAND apt update  --assume-yes
-	$PERMISSION_COMMAND apt upgrade --assume-yes
-}
-
-superbbootstrap_Mports() {
-	$PERMISSION_COMMAND mport index
-	$PERMISSION_COMMAND mport upgrade
-}
-
-superbbootstrap_OpenBSD() {
-	$PERMISSION_COMMAND syspatch
-}
-
-superbbootstrap_Pacman() {
-	yes | LC_ALL=en_US.UTF-8 $PERMISSION_COMMAND pacman --sync --sysupgrade --refresh --needed
-}
-
-superbbootstrap_Portage() {
-	$PERMISSION_COMMAND emerge --sync
-	$PERMISSION_COMMAND emerge --update --newuse --deep --with-bdeps=y @world
-}
-
-superbbootstrap_PKGIN() {
-	$PERMISSION_COMMAND pkgin update -y
-	$PERMISSION_COMMAND pkgin upgrade -y
-}
-
-superbbootstrap_PKGNG() {
-	$PERMISSION_COMMAND pkg update -y
-	$PERMISSION_COMMAND pkg upgrade -y
-}
-
-superbbootstrap_Slackpkg() {
-	$PERMISSION_COMMAND slackpkg update gpg
-	$PERMISSION_COMMAND slackpkg update
-}
-
-superbbootstrap_Termux() {
-	pkg update  --assume-yes
-	pkg upgrade --assume-yes
-}
-
-superbbootstrap_XBPS() {
-	$PERMISSION_COMMAND xbps-install --sync --yes --update # Update XBPS itself so it can update other packages
-	$PERMISSION_COMMAND xbps-install --sync --yes --update # Update packages
-	$PERMISSION_COMMAND xbps-install --sync --yes void-repo-nonfree void-repo-multilib void-repo-multilib-nonfree void-repo-debug
-}
-
-superbbootstrap_Zypper() {
-	$PERMISSION_COMMAND zypper --non-interactive update
-}
-
-superbbootstrap_AUR() {
-	if [ ! -x "$(command -v 'paru')" ]; then
-		$Pacman_COMMAND git base-devel
-		git clone 'https://aur.archlinux.org/paru.git' "$TEMPORARY/paru"
-		cd "$TEMPORARY/paru" || exit 1
-		makepkg --syncdeps --noconfirm
-		$PERMISSION_COMMAND $Pacman_PM --needed --noconfirm --upgrade paru-*.zst 
-		cd "$WD" || exit 1
-	else
-		printf '%s\n' "Paru has been installed"
-		$AUR_COMMAND --sysupgrade --refresh --aur
-	fi
-}
-
-superbbootstrap_Flatpak() {
-	if [ ! -x "$(command -v 'flatpak')" ]; then
-		case "$PACKAGEMANAGER_MAIN" in
-			'APT')         $APT_COMMAND flatpak gnome-software-plugin-flatpak ;;
-			'Portage') $Portage_COMMAND sys-apps/flatpak                      ;;
-			'Pacman')   $Pacman_COMMAND flatpak                               ;;
-			'XBPS')       $XBPS_COMMAND flatpak                               ;;
-			'Zypper')   $Zypper_COMMAND flatpak                               ;;
-			'Slackpkg')
-				if [ ! -x "$(command -v "$SBO_PM")" ]; then
-					superbbootstrap_SBO
-				fi
-
-				$SBO_COMMAND flatpak
-			;;
-		esac
-	else
-		printf '%s\n' "Flatpak has been installed"
-	fi
-
-	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-}
-
-superbbootstrap_Homebrew() {
-	if [ ! -x "$(command -v 'brew')" ] >/dev/null; then
-		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	else
-		printf '%s\n' "Homebrew has been installed"
-	fi
-}
-
-superbbootstrap_MacPorts() {
-	[ ! -x "$(command -v 'xcode')" ] && {
-		printf '\n\033[1;7;31m%s\033[0m\n' 'Please install XCode first: https://guide.macports.org/#installing.xcode'
-		exit 1
-	}
-
-	xcode-select --install
-	$PERMISSION_COMMAND xcodebuild -license
-	cd "$TEMPORARY" || exit 1
-	curl --remote-header-name --location --remote-name "https://github.com/macports/macports-base/releases/latest/download/MacPorts-$MACPORT_VERSION-$OS_VERSION_NUMBER-$OS_VERSION_NAME.pkg"
-	$PERMISSION_COMMAND installer -pkg "$TEMPORARY/MacPorts-$MACPORT_VERSION-$OS_VERSION_NUMBER-$OS_VERSION_NAME.pkg" -target '/'
-	cd "$WD" || exit 1
-}
-
-superbbootstrap_MAS() {
-	if [ ! -x "$(command -v "$MAS_PM")" ]; then
-		if   [ -x "$(command -v "$Homebrew_PM")" ]; then $Homebrew_COMMAND mas
-		elif [ -x "$(command -v "$MacPorts_PM")" ]; then $MacPorts_COMMAND mas
-		else
-			[ ! -x "$(command -v "$Homebrew_PM")" ] && superbbootstrap_Homebrew
-
-			$Homebrew_COMMAND mas
-		fi
-	else
-		printf '%s\n' "MAS has been installed"
-	fi
-
-	mas account
-	mas signin --dialog "$APPLE_ID"
-}
-
-superbbootstrap_SBO() {
-	if [ ! -x "$(command -v 'sbopkg')" ]; then
-		SBO_VERSION=$(curl -s "https://api.github.com/repos/sbopkg/sbopkg/releases/latest" | grep -e 'tag_name' | cut -f '4' -d '"')
-
-		cd "$TEMPORARY" || exit 1
-		curl --remote-header-name --location --remote-name "https://github.com/sbopkg/sbopkg/releases/download/$SBO_VERSION/sbopkg-$SBO_VERSION-noarch-1_wsr.tgz"
-		upgradepkg --install-new "$TEMPORARY/sbopkg-$SBO_VERSION-noarch-1_wsr.tgz"
-		cd "$WD" || exit 1
-		$PERMISSION_COMMAND mkdir -p "/var/lib/sbopkg/SBo/$(cut -f '2' -d ' ' '/etc/slackware-version')" "/var/lib/sbopkg/queues" "/var/log/sbopkg" "/var/cache/sbopkg"
-		$PERMISSION_COMMAND sbopkg -rq
-		$PERMISSION_COMMAND sqg -a
-	else
-		printf '%s\n' "Sbopkg has been installed"
-	fi
-}
-
-superbbootstrap_Snap() {
-	if [ ! -x "$(command -v 'snap')" ]; then
-		if [ $PACKAGEMANAGER_MAIN = 'Pacman' ]; then
-			$PERMISSION_COMMAND pacman --sync --noconfirm --needed git
-			git clone 'https://aur.archlinux.org/snapd.git' "$TEMPORARY/snap"
-			cd "$TEMPORARY/snap" || exit 1
-			makepkg -si
-			cd "$WD" || exit 1
-			$PERMISSION_COMMAND systemctl enable --now snapd.socket
-			$PERMISSION_COMMAND ln -s '/var/lib/snapd/snap' '/snap'
-		elif [ $PACKAGEMANAGER_MAIN = 'APT' ]; then
-			$APT_COMMAND snapd
-		fi
-	else
-		printf '%s\n' "Snapd has been installed"
-	fi
-
-	snap install core
-}
-
-superbbootstrap_batch_symlink() {
-	batch_symlink_directory="$1"
-	batch_symlink_target="$2"
-	batch_symlink_permission="$3"
-
-	[ -n "$TRASH_PATH" ] && mkdir -p "$TRASH_PATH"
-
-	if [ -d "$1" ]; then
-		superbbootstrap_scan_directory "$batch_symlink_directory"
-	else
-		printf '\n\033[1;7;31m%s\033[0m\n' "'$batch_symlink_directory' not found"
-	fi
-}
-
-superbbootstrap_scan_directory() {
-	[ -d "$1" ] || exit 1
-
-	for file in "$1"/.* "$1"/*; do
-		[ "$file" = "$1/." ] || [ "$file" = "$1/.." ] || [ "$file" = "$1/*" ] && continue
-
-		target="$batch_symlink_target${file#$batch_symlink_directory}"
-
-		if [ -e "$target" ]; then
-			if [ -d "$target" ] && [ ! -h "$target" ]; then
-				superbbootstrap_scan_directory "$file"
-			else
-				# You can change how batch symlink handle conflict files
-				if [ -n "$TRASH_PATH" ]; then
-					rm -rf "$TRASH_PATH/$(basename "$target")" 2>&-
-					$batch_symlink_permission mv -f "$target" "$TRASH_PATH/"
-				else
-					$batch_symlink_permission rm -rf "$target"
-				fi
-
-				$batch_symlink_permission ln -sf "$file" "$target"
-			fi
-		else
-			$batch_symlink_permission ln -sf "$file" "$target"
-		fi
-	done
 }
 
 
@@ -463,7 +127,7 @@ for step_check in $STEPS; do
 		'r'|'root')    steps_list="${steps_list:+$steps_list; }symlink_root"     ;;
 		'a'|'after')   steps_list="${steps_list:+$steps_list; }after_symlink"    ;;
 		*)
-			printf '\n\033[1;7;31m%s\033[0m\n' "Step '$step_check' not found"
+			printf '\n\033[1;7;31m%s\033[0m\n' "Step '$step_check' not found" >&2
 			exit 1
 		;;
 	esac
