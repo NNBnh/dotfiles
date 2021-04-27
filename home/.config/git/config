@@ -9,5 +9,10 @@
 	path = "~/c/extra/gitalias/gitalias.txt"
 
 [alias]
-	pullq = !"git-pullq"
-	pushq = !"git-pushq"
+	pulll = !"git smuir && git pull1" # Pull lazy
+	 ac   = !"git aa && git c"
+	pac   = !"git pulll && git ac"
+	pacp  = !"git pac && git push1"
+	 acm  = !"f() { [ -n \"$*\" ] && git aa && git cm \"$*\"; }; f"
+	pacm  = !"f() { [ -n \"$*\" ] && git pulll && git acm \"$*\"; }; f"
+	pacmp = !"f() { [ -n \"$*\" ] && git pacm \"$*\" && git push1; }; f"
