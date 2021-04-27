@@ -12,8 +12,9 @@
 
 # C: Need config/scripting
 # T: TODO
-# W: TODO Window manager
-# E: TODO Editor
+# S: TODO command shell
+# W: TODO window manager
+# E: TODO editor
 # X: Will remove in far future
 
 # =============================================================================
@@ -24,24 +25,24 @@
   APT:lightdm                     PAC:lightdm                     XBP:lightdm                                                   #C Login manager
   APT:light-locker                PAC:light-locker                XBP:light-locker                                              #C Lock screen support for login manager
   APT:xwayland                    PAC:xorg-xwayland               XBP:xorg-server-xwayland                                      #  Xwayland backend
-                                  AUR:sway                        XBP:sway                                                      #W Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#window-managers)
+                                  AUR:sway                        XBP:sway                                                      #W Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#windows-manager)
                                   PAC:swayidle                    XBP:swayidle                                                  #X Idle management
 
 ### Screen
   APT:brightnessctl               PAC:brightnessctl               XBP:brightnessctl                                             #  Screen backlight
-                                  PAC:gammastep                   XBP:gammastep                                                 #  Blue light filter (F.lux alternative for linux)
+                                  PAC:gammastep                   XBP:gammastep                                                 #X Blue light filter
                                   PAC:swaybg                      XBP:swaybg                                                    #W Set wallpaper
 
 ### Audio
-  APT:alsa-utils                  PAC:alsa-utils                  XBP:alsa-utils                                                #  Sound server
-  APT:pulseaudio                  PAC:pulseaudio                  XBP:pulseaudio                                                #  Sound server but better
+  APT:alsa-utils                  PAC:alsa-utils                  XBP:alsa-utils                                                #X Sound server
+  APT:pulseaudio                  PAC:pulseaudio                  XBP:pulseaudio                                                #X Sound server but better
   APT:playerctl                   PAC:playerctl                   XBP:playerctl                                                 #  Control media
 
 ### Input
-  APT:fcitx-im                    PAC:fcitx-im                    XBP:fcitx-im                                                  #  Input method
+  APT:fcitx                       PAC:fcitx-im                    XBP:fcitx5-qt5                                                #  Input method
   APT:fcitx-unikey                PAC:fcitx-unikey                XBP:fcitx-unikey                                              #  Vietnamese support for input method
                                   AUR:sc-controller               XBP:sc-controller                                             #  Controller setting
-                                  AUR:ydotool                     XBP:ydotool                                                   #C Send inputs
+                                  AUR:ydotool                                                                                   #C Send inputs
 
 ### Screeny
   APT:slurp                       PAC:slurp                       XBP:slurp                                                     #  Screen region selector
@@ -53,15 +54,15 @@
   APT:dunst                       PAC:dunst                       XBP:dunst                                                     #X Notification daemon
 
 ### Resource
-                                  PAC:ttf-sarasa-gothic           XBP:font-sarasa-gothic                                        #  Non Latin support for font
-                                  AUR:ttf-twemoji                 XBP:twemoji                                                   #  Emoji support for font
+                                  PAC:ttf-sarasa-gothic           XBP:font-sarasa-gothic                                        #T Non Latin support for font
+                                  AUR:ttf-twemoji                 XBP:twemoji                                                   #T Emoji support for font
   APT:papirus-icon-theme          PAC:papirus-icon-theme          XBP:papirus-icon-theme                                        #  Icon set that support nearly every app
 
 ### Other
   APT:xdg-utils                   PAC:xdg-utils                   XBP:xdg-utils                                                 #  Applications manager
   APT:xdg-user-dirs               PAC:xdg-user-dirs               XBP:xdg-user-dirs                                             #  XDG directory manager
-  BSR:NNBnh/clipb                                                                                                               #  Clipboard managers warper
-  APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard                                              #  Clipboard manager
+  BSR:NNBnh/clipb                                                                                                               #T Clipboard managers warper
+  APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard                                              #T Clipboard manager
   APT:ufw                         PAC:ufw                         XBP:ufw                                                       #  Firewall
   BSR:NNBnh/bui-appearance                                                                                                      #  Widget toolkit theme
 
@@ -70,49 +71,50 @@
 # 2. Terminal
 # =============================================================================
 
-### Core
-  APT:fish                        PAC:fish                        XBP:fish-shell                  TMP:fish                      #  Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#shell)
+### Interface
+  APT:fish                        PAC:fish                        XBP:fish-shell                  TMP:fish                      #S Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#interactive-shell)
   APT:kakoune                     PAC:kakoune                     XBP:kakoune                     TMP:kakoune                   #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
   APT:fzf                         PAC:fzf                         XBP:fzf                         TMP:fzf                       #E Fuzzy selector (WH.I.CH https://github.com/NNBnh/dots/wiki/which#selector)
   BSR:NNBnh/bui-terminal                                                                                                        #  Terminal theme
+  BSR:NNBnh/bfetch                                                                                                              #T Fetch displayer
 
-### Programming language (WH.I.CH https://github.com/NNBnh/dots/wiki/which#programing-language)
+### Programming (WH.I.CH https://github.com/NNBnh/dots/wiki/which#programing-language)
   APT:rust                        PAC:rust                        XBP:rust                        TMP:rust                      #  Compiled language to build software
   APT:dash                        PAC:dash                        XBP:dash                        TMP:dash                      #  POSIX shell to write portable utilities
-  APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                                                #  Shell script static analysis
   APT:python                      PAC:python                      XBP:python3                     TMP:python                    #  Fun language to write small scripts
-  APT:typescript                  PAC:typescript                  XBP:typescript                  TMP:typescript                #  For web dev
-
-### Utilitie
-  APT:git                         PAC:git                         XBP:git                         TMP:git                       #  Version control system
-  APT:libqalculate20              PAC:libqalculate                XBP:libqalculate                TMP:qalc                      #  Calculator
-  BSR:NNBnh/bsymlink                                                                                                            #  Batch symlink tool
-  BSR:NNBnh/mk                                                                                                                  #  Files and folders creation tool
-  PIP:trash-cli                                                                                                                 #T Trash manager
+  YRN:typescript                                                                                                                #  For web dev
+  YRN:shellcheck                                                                                                                #  Shell script static analysis
+  YRN:prettier                                                                                                                  #  Code formatter
   BSR:NNBnh/coderun                                                                                                             #  Code runner
-  PIP:asciinema                                                                                                                 #  Record terminal sessions
-  PIP:auto-editor                                                                                                               #  Automatically editing video
-  BSR:NNBnh/bfetch                                                                                                              #  Fetch displayer
-  APT:figlet                      PAC:figlet                      XBP:figlet                      TMP:figlet                    #  Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
-  BSR:NNBnh/hr                                                                                                                  #  Horizontal ruler
-  APT:chafa                       PAC:chafa                       XBP:chafa                                                     #X Convert image to textart
-  PIP:git+https://github.com/will8211/unimatrix.git                                                                             #T Simulates the display from "The Matrix"
-
+  YRN:markserv                                                                                                                  #  Live-reload markdown rendering server
 
 ### Data tranfer
+  BSR:NNBnh/mk                                                                                                                  #  Files and folders creation tool
+  APT:curl                        PAC:curl                        XBP:curl                        TMP:curl                      #  Download tool (WH.I.CH https://github.com/NNBnh/dots/wiki/which#download-tool)
+  PIP:youtube-dl                                                                                                                #  Media downloader
   BSR:NNBnh/terminal-explorer                                                                                                   #  CLI tool that mimic the way GUI's file manager do copy/cut/paste
   APT:rsync                       PAC:rsync                       XBP:rsync                       TMP:rsync                     #  Sync files
-  APT:curl                        PAC:curl                        XBP:curl                        TMP:curl                      #  Transfers data with server tool  (WH.I.CH https://github.com/NNBnh/dots/wiki/which#transfers-data-with-server-tool)
-  APT:aria2                       PAC:aria2                       XBP:aria2                       TMP:aria2                     #C Download manager
-  PIP:youtube-dl                                                                                                                #  Media downloader
+  BSR:NNBnh/bsymlink                                                                                                            #  Batch symlink tool
+  PIP:trash-cli                                                                                                                 #T Trash manager
 
 ### Data manipulation
-  APT:libimage-exiftool-perl      PAC:perl-image-exiftool         XBP:exiftool                    TMP:exiftool                  #C Metadata manipulation
+  APT:git                         PAC:git                         XBP:git                         TMP:git                       #  Version control system
+  APT:libimage-exiftool-perl      PAC:perl-image-exiftool         XBP:exiftool                    TMP:exiftool                  #S Metadata manipulation
+  APT:jq                          PAC:jq                          XBP:jq                          TMP:jq                        #S JSON processor
   APT:p7zip                       PAC:p7zip                       XBP:p7zip                       TMP:p7zip                     #  Files archiving
   APT:pandoc                      PAC:pandoc                      XBP:pandoc                                                    #  Markup converter
-  APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick                 TMP:imagemagick               #X Image manipulation
-  APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                      TMP:ffmpeg                    #  Media manipulation
-  APT:jq                          PAC:jq                          XBP:jq                          TMP:jq                        #  JSON processor
+  APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick                 TMP:imagemagick               #X Image manipulator
+  APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                      TMP:ffmpeg                    #  Media manipulator
+
+### Utilitie
+  APT:libqalculate20              PAC:libqalculate                XBP:libqalculate                TMP:qalc                      #S Calculator
+  PIP:asciinema                                                                                                                 #  Record terminal sessions
+  PIP:auto-editor                                                                                                               #  Automatically editing video
+  APT:figlet                      PAC:figlet                      XBP:figlet                      TMP:figlet                    #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
+  BSR:NNBnh/hr                                                                                                                  #  Horizontal ruler
+  APT:chafa                       PAC:chafa                       XBP:chafa                                                     #  Convert image to textart
+  PIP:git+https://github.com/will8211/unimatrix.git                                                                             #T Simulates the display from "The Matrix"
+                                  AUR:no-more-secrets             XBP:no-more-secrets                                           #T Become hackerman (Make outputs Minecraft enchanting table language)
 
 
 # =============================================================================
@@ -122,7 +124,7 @@
 ### Interact
   APT:kitty                       PAC:kitty                       XBP:kitty                                                     #T Terminal emulator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
   APT:mpv                         PAC:mpv                         XBP:mpv                                                       #  Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
-  FLA:org.mozilla.firefox         PAC:firefox                     XBP:firefox                                                   #  Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
+  APT:firefox-esr                 PAC:firefox                     XBP:firefox-esr                                               #  Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
 
 ### Productivity
   FLA:org.gimp.GIMP               PAC:gimp                        XBP:gimp                                                      #  Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
@@ -130,7 +132,7 @@
   FLA:org.godotengine.Godot       AUR:godot-bin                   XBP:godot                                                     #  Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
 
 ### Games
-                                  PAC:lutris                      XBP:lutris                                                    #  Games manager
+                                  PAC:lutris                      XBP:lutris                                                    #X Games manager
   FLA:com.valvesoftware.Steam     PAC:steam                       XBP:steam                                                     #  Gamer mode
   FLA:org.libretro.RetroArch      PAC:retroarch                   XBP:retroarch                                                 #  Retro emulators
                                   AUR:multimc5                    XBP:MultiMC                                                   #  Minecraft launcher and instance manager

@@ -15,7 +15,6 @@
 # =============================================================================
 # 1. Plugins
 # =============================================================================
-
 evaluate-commands %sh{
 	XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 	[ ! -f "$XDG_DATA_HOME/kak/plug/rc/plug.kak" ] && git clone --quiet https://github.com/robertmeta/plug.kak.git "$XDG_DATA_HOME/kak/plug"
@@ -24,7 +23,6 @@ evaluate-commands %sh{
 set-option global plug_always_ensure 'true'
 
 ## Visual ---------------------------------------------------------------------
-
 plug 'NNBnh/bui.kak' theme config %{
 	declare-option str-list bui_cursor_information 'true'
 
@@ -34,7 +32,6 @@ plug 'NNBnh/bui.kak' theme config %{
 # plug 'eraserhd/kak-ansi'
 
 ## Interactive ----------------------------------------------------------------
-
 plug 'NNBnh/bmap.kak' config %{
 	bmap-load
 	bmap-enable
@@ -48,7 +45,6 @@ plug 'h-youhei/kakoune-surround'
 plug 'occivink/kakoune-find'
 
 ## Environment ----------------------------------------------------------------
-
 plug 'lePerdu/kakboard' config %{
 	declare-option str-list kakboard_paste_keys ''
 	declare-option str-list kakboard_copy_keys  ''
@@ -67,7 +63,6 @@ plug 'NNBnh/coderun.kak'
 # =============================================================================
 # 2. Options
 # =============================================================================
-
 set-option global scrolloff '3,7'
 set-option global tabstop 4
 set-option global indentwidth 0

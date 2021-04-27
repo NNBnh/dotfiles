@@ -16,33 +16,47 @@
 # Imports
 DOTFILES_PATH=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
-. "$DOTFILES_PATH/extra/sbb/sbb" # You can change SSB packages manager path here
+cd "$DOTFILES_PATH" || exit 1
+git submodule update --init --recursive --remote --merge 2>&-
+cd "$WD" || exit 1
+
+. "$DOTFILES_PATH/extra/sbb/sbb"
 
 
 # Values
 eval "$("$DOTFILES_PATH/home/.config/env/rc")"
 
-STEPS="${*:-install before home root after}" # Default order of steps
+STEPS="${*:-install before home root after}"
 
 
 # Functions
 install_packages() {
 	printf '\n\033[1;7;34m%s\033[0m\n' 'Install packages' >&2
 
+	PIP_PM='sbb_pipx'
+	PIP_COMMAND="$PIP_PM"
+	sbb_setup_PIP() {
+		sbb_install_python
+
+		python -m pip install --user pipx
+		python -m pipx ensurepath
+
+		sbb_make_install_command 'pipx' "pipx install"
+	}
+
 	sbb_install_packages "$DOTFILES_PATH/packageslist"
 
 	printf '\n\033[1;7;34m%s\033[0m\n' 'Install extra resource' >&2
 		# Mono fonts
-		aria2c --dir "$TMPDIR" $(curl --silent --location 'https://api.github.com/repos/NNBnh/bmono/releases/latest' | jq --raw-output '.assets | .[] | select(.name=="bmono-ttf.zip") | .browser_download_url') \
+		curl $(curl --silent --location 'https://api.github.com/repos/NNBnh/bmono/releases/latest' | jq --raw-output '.assets | .[] | select(.name=="bmono-ttf.zip") | .browser_download_url') --output "$TMPDIR/bmono-ttf.zip" \
 		&& 7z x -o"$TMPDIR/" "$TMPDIR/bmono-ttf.zip" \
 		&& mkdir -p "$XDG_DATA_HOME/fonts" \
-		&& mv "$TMPDIR/ttf/"* "$XDG_DATA_HOME/fonts/"
+		&& mv -f "$TMPDIR/ttf/"* "$XDG_DATA_HOME/fonts/"
 
 		# Mouse cursor
-		aria2c --dir "$TMPDIR" 'https://github.com/ful1e5/Bibata_Cursor/releases/download/v1.0.3/Bibata-Original-Ice.tar.gz' \
-		&& 7z x -o"$TMPDIR/" "$TMPDIR/Bibata-Original-Ice.tar.gz" \
-		&& 7z x -o"$TMPDIR/" "$TMPDIR/Bibata-Original-Ice.tar" \
-		&& mv "$TMPDIR/Bibata-Original-Ice" "$XDG_DATA_HOME/icons/"
+		curl 'https://github.com/ful1e5/Bibata_Cursor/releases/download/v1.0.3/Bibata-Original-Ice.tar.gz' --output "$TMPDIR/Bibata-Original-Ice.zip" \
+		&& 7z x -o"$TMPDIR/" "$TMPDIR/Bibata-Original-Ice.zip" \
+		&& mv -f "$TMPDIR/Bibata-Original-Ice" "$XDG_DATA_HOME/icons/"
 
 		# Charater picker
 		mkdir -p "$XDG_DATA_HOME/charaters"
@@ -70,15 +84,15 @@ before_symlink() {
 	# Create directories (to only symlink files inside, not the directory)
 	mkdir -p "$XDG_CONFIG_HOME/fcitx" "$XDG_CONFIG_HOME/kak" "$XDG_CONFIG_HOME/retroarch" \
 	         "$XDG_DATA_HOME/fonts" "$XDG_DATA_HOME/icons" "$XDG_DATA_HOME/charaters" \
-	         "$XDG_CACHE_HOME" \
+	         "$XDG_CACHE_HOME" "$XDG_DESKTOP_DIR" \
 	         "$HOME/.local/bin"
 
 	# Remove junks (Spring cleaning your $HOME)
-	mkdir -p "$XDG_DESKTOP_DIR"
 	mv -f "$HOME/Desktop" "$HOME/Documents" "$HOME/Downloads" "$HOME/Music" "$HOME/Pictures" "$HOME/Public" "$HOME/Templates" "$HOME/Videos" \
 	      "$HOME/.inputrc" "$HOME/.xinitrc" "$HOME/.xsession" "$HOME/.xsession-errors" \
 	      "$HOME/.Xclients" "$HOME/.profile" "$HOME/.dmrc" "$HOME/.ICEauthority" "$HOME/.icons" \
-	      "$HOME/.bashrc" "$HOME/.bash_profile" "$HOME/.bash_history" "$HOME/.bash_logout"
+	      "$HOME/.bashrc" "$HOME/.bash_profile" "$HOME/.bash_history" "$HOME/.bash_logout" \
+	      "$XDG_DESKTOP_DIR"
 
 	# Remove conflicting items in $XDG_CONFIG_HOME
 	for config_directory_path in "$XDG_CONFIG_HOME/."* "$XDG_CONFIG_HOME/"*; do

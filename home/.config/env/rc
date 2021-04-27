@@ -57,14 +57,14 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export BASHER_ROOT="$XDG_DATA_HOME/basher"
 export BASHER_PREFIX="$BASHER_ROOT/cellar"
 export BASHER_PACKAGES_PATH="$HOME/s"
-export PATH="$PATH:$HOME/.local/bin:$BASHER_PREFIX/bin:$HOME/c/extra/scripts"
+export PATH="$PATH:$HOME/.local/bin:$BASHER_ROOT/bin:$BASHER_PREFIX/bin:$HOME/c/extra/scripts"
 
 
 # =============================================================================
 # 2. Visual
 # =============================================================================
 
-export BUI_GTK_THEME="Matcha-dark-aliz"
+export BUI_GTK_THEME="" #TODO
 export BUI_ICON_THEME="Papirus-Dark"
 export BUI_MOUSE_CURSOR_THEME="Bibata-Original-Ice"
 export BUI_BORDER_SIZE="2.0"
@@ -152,11 +152,11 @@ export BUI_COLOR_TEXTART="93"
 # =============================================================================
 # 3. Default applications
 # =============================================================================
-export FINDER="fzf"
+export SELECTOR="fzf"
 export EDITOR="kak"
 export VISUAL="$EDITOR"
-export PAGER="sh -c \"col -b -x | kak\""
-export MANPAGER="sh -c \"col -b -x | kak -e 'set buffer filetype man'\""
+# export PAGER="$EDITOR"
+# export MANPAGER="$EDITOR"
 export TERMINAL="kitty"
 export BROWSER="firefox"
 
@@ -164,12 +164,9 @@ export BROWSER="firefox"
 # =============================================================================
 # 4. Setting
 # =============================================================================
-export TARGET_LANG="vi"
-export WALLPAPER_FILE="$HOME/c/extra/wallpapers/johnn21/red-paper-lantern-on-roof.jpg"
+export WALLPAPER_FILE="$HOME/c/extra/wallpapers/porco-rosso.png"
 export WALLPAPER_MODE="fill"
 export BFETCH_PROMPT_HEIGHT="3"
-export ABDUCO_CMD="$SHELL"
-export ABDUCO_SOCKET_DIR="$TMPDIR"
 export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
 
 ### Basher
@@ -189,7 +186,7 @@ export TERMINALEXPLORER_COPY_COMMAND="rsync --recursive --archive -hh --partial 
 export TERMINALEXPLORER_CUT_COMMAND="rsync --recursive --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1 --remove-source-files"
 
 ### FZF
-export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git'"
+export FZF_DEFAULT_COMMAND="find"
 export FZF_DEFAULT_OPTS="--height='24'
                          --layout='reverse'
                          --info='inline'
@@ -256,7 +253,7 @@ export FZF_DEFAULT_OPTS="--height='24'
 
 ### Dunst
 DUNST_POS=$(( ( ${BUI_GAPS_SIZE%%.*} * 2 ) - ${BUI_BORDER_SIZE%%.*} ))
-DUNST_OPACITY=$(printf '%x' $(printf '%.0f' $(bc <<< "( $BUI_OPACITY * 256 ) - 1") 2>&-))
+DUNST_OPACITY='1' # DUNST_OPACITY=$(printf '%x' $(printf '%.0f' $(printf '%s\n' "( $BUI_OPACITY * 256 ) - 1" | bc)))
 export DUNST_DEFAULT_OPTS="-font '$BUI_FONT_FAMILY $BUI_FONT_SIZE' \
                            -geometry '0x0-$DUNST_POS+$DUNST_POS' \
                            -separator_height '$BUI_BORDER_SIZE' \
@@ -430,5 +427,6 @@ export CODERUN_f90="$CODERUN_f"
 export > "$TMPDIR/env/$PID/set"
 
 diff -f "$TMPDIR/env/$PID/default" "$TMPDIR/env/$PID/set" | sed -e '/^\(.\|[[:alpha:]]*[[:digit:]]*\)$/d'
+
 
 exit 0

@@ -13,8 +13,8 @@ capitalizing_first_character() {
 
 # Values
 COLOR="${BUI_COLOR_TEXTART:-32}"
-OS=$("$HOME/c/extra/fetchutils/src/os.sh" 2>&-); [ -n "$OS" ] && [ "${#OS}" -gt '16' ] && OS='Linux'
-WM=$("$HOME/c/extra/fetchutils/src/wm.sh" 2>&-); [ -n "$WM" ] && [ "${#WM}" -gt '16' ] && WM='River'
+OS=$( (uname -n; uname -s) | tr '\n' ' ' | capitalizing_first_character)
+WM=$("$HOME/c/extra/fetchutils/src/wm.sh" 2>&-); [ -n "$WM" ] && [ "${#WM}" -gt '16' ] && WM='Sway'
 SHELL=$(basename "$SHELL" | capitalizing_first_character)
 TERMINAL=$(basename "$TERMINAL" | capitalizing_first_character)
 FONT="$BUI_FONT_MONO_FAMILY"
@@ -26,14 +26,14 @@ FONT="$BUI_FONT_MONO_FAMILY"
 	TERMINAL_ICON='📟'
 	    FONT_ICON='🏷️'
 }
-OS='Void Linux'
+
 
 # Start
-printf "\033[1;${COLOR}mOS        \033[0m$OS_ICON${OS:-OS}\033[0m
-\033[1;${COLOR}mWM        \033[0m$WM_ICON${WM:-WM}\033[0m
-\033[1;${COLOR}mSHELL     \033[0m$SHELL_ICON${SHELL:-Shell}\033[0m
-\033[1;${COLOR}mTERMINAL  \033[0m$TERMINAL_ICON${TERMINAL:-Terminal}\033[0m
-\033[1;${COLOR}mFONT      \033[0m$FONT_ICON${FONT:-Font}\033[0m"
+printf "\033[1;${COLOR}mOS        \033[0m$OS_ICON ${OS:-OS}\033[0m
+\033[1;${COLOR}mWM        \033[0m$WM_ICON ${WM:-WM}\033[0m
+\033[1;${COLOR}mSHELL     \033[0m$SHELL_ICON ${SHELL:-Shell}\033[0m
+\033[1;${COLOR}mTERMINAL  \033[0m$TERMINAL_ICON ${TERMINAL:-Terminal}\033[0m
+\033[1;${COLOR}mFONT      \033[0m$FONT_ICON ${FONT:-Font}\033[0m"
 
 
 exit 0

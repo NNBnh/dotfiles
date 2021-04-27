@@ -14,19 +14,18 @@
 # URL:          https://github.com/NNBnh/dots/blob/master/home/.config/fish/config.fish
 
 
-# Values
 "$HOME/.config/env/rc" | source
 
-alias e "$EDITOR"
-alias g "git"
-alias o "xdg-open"
-alias l "exa --all --group-directories-first --long --header --git --colour='always'"
+abbr e "$EDITOR"
+abbr g "git"
+abbr o "xdg-open"
+abbr l "ls -Ahl"
+
 alias ifjson "curl --silent --location 'ifconfig.co/json'"
 alias roll "curl --silent --location 'https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh' | bash"
 alias rollout "clipb copy 'curl -sL http://bit.ly/10hA8iC | bash'"
-alias mapscii "telnet 'mapscii.me'"
 
-function cheat --description   'cheat.sh'; curl --silent --location   "cheat.sh/$argv"; end
+function cht   --description   'cheat.sh'; curl --silent --location   "cheat.sh/$argv"; end
 function wttr  --description    'wttr.in'; curl --silent --location    "wttr.in/$argv"; end
 function wttr2 --description 'v2.wttr.in'; curl --silent --location "v2.wttr.in/$argv"; end
 function rate  --description    'rate.sx'; curl --silent --location    "rate.sx/$argv"; end
@@ -173,7 +172,7 @@ function bmap --description 'Fish key-mapping that SuperB'
 
 	bind --preset \eh pager-toggle-search
 
-	bind --preset \ey "commandline --insert (echo ($FINDER --multi)); commandline --function repaint"
+	bind --preset \ey "commandline --insert (echo ($SELECTOR --multi)); commandline --function repaint"
 	bind --preset \eY "commandline --insert (echo (chpick));          commandline --function repaint"
 
 	bind --preset \es edit_command_buffer
@@ -202,5 +201,4 @@ function fish_greeting
 	# stty intr '^X' susp '^P' eof '^Q' start '^A' stop '^E' -echo
 	bui-terminal
 	bfetch
-	starship init fish | source
 end
