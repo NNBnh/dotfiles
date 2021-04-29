@@ -39,7 +39,7 @@
   APT:playerctl                   PAC:playerctl                   XBP:playerctl                                                 #  Control media
 
 ### Input
-  APT:fcitx                       PAC:fcitx-im                    XBP:fcitx5-qt5                                                #  Input method
+  APT:fcitx                       PAC:fcitx-im                    XBP:fcitx                                                     #  Input method
   APT:fcitx-unikey                PAC:fcitx-unikey                XBP:fcitx-unikey                                              #  Vietnamese support for input method
                                   AUR:sc-controller               XBP:sc-controller                                             #  Controller setting
                                   AUR:ydotool                                                                                   #C Send inputs
