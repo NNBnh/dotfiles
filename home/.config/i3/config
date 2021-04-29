@@ -1,5 +1,5 @@
 workspace_layout tabbed
-xwayland enable
+# xwayland enable
 
 
 exec        "$HOME/.config/autostart/display"

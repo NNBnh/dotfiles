@@ -29,6 +29,7 @@ function cht   --description   'cheat.sh'; curl --silent --location   "cheat.sh/
 function wttr  --description    'wttr.in'; curl --silent --location    "wttr.in/$argv"; end
 function wttr2 --description 'v2.wttr.in'; curl --silent --location "v2.wttr.in/$argv"; end
 function rate  --description    'rate.sx'; curl --silent --location    "rate.sx/$argv"; end
+function 0x0   --description     '0x0.st'; curl --form "$argv[1]=$argv[2]" --location "0x0.st"; end
 
 function fish_title
 	prompt_pwd

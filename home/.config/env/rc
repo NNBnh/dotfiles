@@ -64,7 +64,7 @@ export PATH="$PATH:$HOME/.local/bin:$BASHER_ROOT/bin:$BASHER_PREFIX/bin:$HOME/c/
 # 2. Visual
 # =============================================================================
 
-export BUI_GTK_THEME="" #TODO
+export BUI_GTK_THEME="Adwaita-dark"
 export BUI_ICON_THEME="Papirus-Dark"
 export BUI_MOUSE_CURSOR_THEME="Bibata-Original-Ice"
 export BUI_BORDER_SIZE="2.0"
