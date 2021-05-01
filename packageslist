@@ -39,7 +39,7 @@
   APT:playerctl                   PAC:playerctl                   XBP:playerctl                                                 #  Control media
 
 ### Input
-  APT:fcitx                       PAC:fcitx-im                    XBP:fcitx5-qt5                                                #  Input method
+  APT:fcitx                       PAC:fcitx-im                    XBP:fcitx                                                     #  Input method
   APT:fcitx-unikey                PAC:fcitx-unikey                XBP:fcitx-unikey                                              #  Vietnamese support for input method
                                   AUR:sc-controller               XBP:sc-controller                                             #  Controller setting
                                   AUR:ydotool                                                                                   #C Send inputs
@@ -83,7 +83,7 @@
   APT:dash                        PAC:dash                        XBP:dash                        TMP:dash                      #  POSIX shell to write portable utilities
   APT:python                      PAC:python                      XBP:python3                     TMP:python                    #  Fun language to write small scripts
   YRN:typescript                                                                                                                #  For web dev
-  YRN:shellcheck                                                                                                                #  Shell script static analysis
+  APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                                                #  Shell script static analysis
   YRN:prettier                                                                                                                  #  Code formatter
   BSR:NNBnh/coderun                                                                                                             #  Code runner
   YRN:markserv                                                                                                                  #  Live-reload markdown rendering server

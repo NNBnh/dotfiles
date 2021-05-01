@@ -35,6 +35,38 @@ function fish_title
 	prompt_pwd
 end
 
+function fish_prompt
+	bui-terminal
+
+	if [ "$status" = '0' ]
+		set command_status '$'
+		set prompt_color '93'
+	else
+		set command_status "$status"
+		set prompt_color '91'
+	end
+
+	set command_duration "$CMD_DURATION$cmd_duration"
+	[ "$command_duration" -gt '2000' ] && set command_duration_print ' took '(math "$command_duration" / '1000')'s'
+
+	set jobs_count (count (jobs -p))
+	[ "$jobs_count" -gt '0'  ] && set jobs_count_print " $jobs_count&"
+
+    set git_status (fish_git_prompt | string trim -c ' ()')
+	[ -n "$git_status" ] && set git_count_print " $git_status"
+
+	set prompt_ls (ls -Ahl | string split0)
+	if [ "$prompt_ls" != "$PROMPT_LS" ]
+		printf "\n$prompt_ls"
+		set -g PROMPT_LS "$prompt_ls"
+	end
+
+    set prompt_status "$jobs_count_print$git_count_print$command_duration_print"
+    [ -n "$prompt_status" ] && printf '\n%s' "$prompt_status"
+
+    printf '\n\033[1;7;%sm %s \033[0;%sm\033[0m ' "$prompt_color" "$command_status" "$prompt_color"
+end
+
 
 
 function __fish_commandline_insert_escaped --description 'Insert the first arg escaped if a second arg is given'
@@ -173,8 +205,8 @@ function bmap --description 'Fish key-mapping that SuperB'
 
 	bind --preset \eh pager-toggle-search
 
-	bind --preset \ey "commandline --insert (echo ($SELECTOR --multi)); commandline --function repaint"
-	bind --preset \eY "commandline --insert (echo (chpick));          commandline --function repaint"
+	bind --preset \ey "commandline --insert (find -maxdepth 1 -printf '%P\n' | sed -e '1d' | $SELECTOR --multi); commandline --function repaint"
+	bind --preset \eY "commandline --insert (find             -printf '%P\n' | sed -e '1d' | $SELECTOR --multi); commandline --function repaint"
 
 	bind --preset \es edit_command_buffer
 
@@ -186,6 +218,8 @@ function bmap --description 'Fish key-mapping that SuperB'
 	bind --preset \ev fish_clipboard_paste
 
 	bind --preset \ed execute
+
+	bind --preset \ee "commandline --insert (chpick); commandline --function repaint"
 
 	bind --preset \ef __fish_cancel_commandline
 
@@ -200,6 +234,5 @@ end
 
 function fish_greeting
 	# stty intr '^X' susp '^P' eof '^Q' start '^A' stop '^E' -echo
-	bui-terminal
 	bfetch
 end

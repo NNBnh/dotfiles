@@ -17,7 +17,7 @@
 DOTFILES_PATH=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
 cd "$DOTFILES_PATH" || exit 1
-git submodule update --init --recursive --remote --merge 2>&-
+git submodule update --init --recursive --remote --merge
 cd "$WD" || exit 1
 
 . "$DOTFILES_PATH/extra/sbb/sbb"
@@ -38,6 +38,7 @@ install_packages() {
 	sbb_setup_PIP() {
 		sbb_install_python
 
+		python -m pip install --upgrade pip
 		python -m pip install --user pipx
 		python -m pipx ensurepath
 
@@ -48,14 +49,15 @@ install_packages() {
 
 	printf '\n\033[1;7;34m%s\033[0m\n' 'Install extra resource' >&2
 		# Mono fonts
-		curl $(curl --silent --location 'https://api.github.com/repos/NNBnh/bmono/releases/latest' | jq --raw-output '.assets | .[] | select(.name=="bmono-ttf.zip") | .browser_download_url') --output "$TMPDIR/bmono-ttf.zip" \
-		&& 7z x -o"$TMPDIR/" "$TMPDIR/bmono-ttf.zip" \
+		curl --silent --location $(curl --silent --location 'https://api.github.com/repos/NNBnh/bmono/releases/latest' | jq --raw-output '.assets | .[] | select(.name=="bmono-ttf.zip") | .browser_download_url') --output "$TMPDIR/bmono-ttf.zip" \
+		&& 7z x "$TMPDIR/bmono-ttf.zip" -o"$TMPDIR/" \
 		&& mkdir -p "$XDG_DATA_HOME/fonts" \
 		&& mv -f "$TMPDIR/ttf/"* "$XDG_DATA_HOME/fonts/"
 
 		# Mouse cursor
-		curl 'https://github.com/ful1e5/Bibata_Cursor/releases/download/v1.0.3/Bibata-Original-Ice.tar.gz' --output "$TMPDIR/Bibata-Original-Ice.zip" \
-		&& 7z x -o"$TMPDIR/" "$TMPDIR/Bibata-Original-Ice.zip" \
+		curl --silent --location 'https://github.com/ful1e5/Bibata_Cursor/releases/download/v1.0.3/Bibata-Original-Ice.tar.gz' --output "$TMPDIR/Bibata-Original-Ice.tar.gz" \
+		&& 7z x "$TMPDIR/Bibata-Original-Ice.tar.gz" -o"$TMPDIR/" \
+		&& 7z x "$TMPDIR/Bibata-Original-Ice.tar"    -o"$TMPDIR/" \
 		&& mv -f "$TMPDIR/Bibata-Original-Ice" "$XDG_DATA_HOME/icons/"
 
 		# Charater picker
@@ -122,7 +124,7 @@ after_symlink() {
 
 	# Add Firefox CSS
 	[ -x "$(command -v firefox)" ] \
-	&& for profile in "$HOME/.mozilla/firefox/"*'.default-release'; do
+	&& for profile in "$HOME/.mozilla/firefox/"*'.default-'*; do
 		ln -sf "$DOTFILES_PATH/extra/firefox/chrome" "$profile/"
 	done \
 	&& printf '\033[1;93m%s\033[0m' 'Remember to enable the option toolkit.legacyUserProfileCustomizations.stylesheets in about:config'
