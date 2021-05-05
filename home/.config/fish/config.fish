@@ -36,8 +36,6 @@ function fish_title
 end
 
 function fish_prompt
-	bui-terminal
-
 	if [ "$status" = '0' ]
 		set command_status '$'
 		set prompt_color '93'
@@ -55,16 +53,12 @@ function fish_prompt
     set git_status (fish_git_prompt | string trim -c ' ()')
 	[ -n "$git_status" ] && set git_count_print " $git_status"
 
-	set prompt_ls (ls -Ahl | string split0)
-	if [ "$prompt_ls" != "$PROMPT_LS" ]
-		printf "\n$prompt_ls"
-		set -g PROMPT_LS "$prompt_ls"
-	end
-
     set prompt_status "$jobs_count_print$git_count_print$command_duration_print"
     [ -n "$prompt_status" ] && printf '\n%s' "$prompt_status"
 
     printf '\n\033[1;7;%sm %s \033[0;%sm\033[0m ' "$prompt_color" "$command_status" "$prompt_color"
+
+	bui-terminal
 end
 
 

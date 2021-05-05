@@ -77,6 +77,8 @@
   APT:fzf                         PAC:fzf                         XBP:fzf                         TMP:fzf                       #E Fuzzy selector (WH.I.CH https://github.com/NNBnh/dots/wiki/which#selector)
   BSR:NNBnh/bui-terminal                                                                                                        #  Terminal theme
   BSR:NNBnh/bfetch                                                                                                              #T Fetch displayer
+  BSR:NNBnh/pathshortener                                                                                                       #  File system's path shortener
+  BSR:NNBnh/status2signal                                                                                                       #  Status code to signal name converter
 
 ### Programming (WH.I.CH https://github.com/NNBnh/dots/wiki/which#programing-language)
   APT:rust                        PAC:rust                        XBP:rust                        TMP:rust                      #  Compiled language to build software
