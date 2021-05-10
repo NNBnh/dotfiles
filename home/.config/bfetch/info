@@ -21,10 +21,10 @@ FONT="$BUI_FONT_MONO_FAMILY"
 
 [ "$TERM" != 'linux' ] && {
 	      OS_ICON='💾'
-	      WM_ICON='🖼️'
+	      WM_ICON='🖼 '
 	   SHELL_ICON='🐚'
 	TERMINAL_ICON='📟'
-	    FONT_ICON='🏷️'
+	    FONT_ICON='🏷 '
 }
 
 

@@ -29,7 +29,7 @@ plug 'NNBnh/bui.kak' theme config %{
 	colorscheme bui
 }
 
-# plug 'eraserhd/kak-ansi'
+# plug 'eraserhd/kak-ansi' #TODO
 
 ## Interactive ----------------------------------------------------------------
 plug 'NNBnh/bmap.kak' config %{
@@ -45,17 +45,11 @@ plug 'h-youhei/kakoune-surround'
 plug 'occivink/kakoune-find'
 
 ## Environment ----------------------------------------------------------------
-plug 'lePerdu/kakboard' config %{
-	declare-option str-list kakboard_paste_keys ''
-	declare-option str-list kakboard_copy_keys  ''
-
-	hook global WinCreate        .* %{ kakboard-enable }
-	hook global WinCreate        .* %{ kakboard-pull-clipboard }
-	hook global FocusIn          .* %{ kakboard-pull-clipboard }
-	hook global RegisterModified \" %{ kakboard-push-clipboard }
+plug 'NNBnh/clipb.kak' config %{
+	clipb-enable
 }
 
-plug 'kak-lsp/kak-lsp' #TODO
+# plug 'kak-lsp/kak-lsp' #TODO
 
 plug 'NNBnh/coderun.kak'
 

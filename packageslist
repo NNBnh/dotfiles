@@ -54,8 +54,8 @@
   APT:dunst                       PAC:dunst                       XBP:dunst                                                     #X Notification daemon
 
 ### Resource
-                                  PAC:ttf-sarasa-gothic           XBP:font-sarasa-gothic                                        #T Non Latin support for font
-                                  AUR:ttf-twemoji                 XBP:twemoji                                                   #T Emoji support for font
+                                  PAC:ttf-sarasa-gothic           XBP:font-sarasa-gothic                                        #  Non Latin support for font
+                                  AUR:ttf-twemoji                 XBP:twemoji                                                   #  Emoji support for font
   APT:papirus-icon-theme          PAC:papirus-icon-theme          XBP:papirus-icon-theme                                        #  Icon set that support nearly every app
 
 ### Other
@@ -71,7 +71,7 @@
 # 2. Terminal
 # =============================================================================
 
-### Interface
+### Interactive
   APT:fish                        PAC:fish                        XBP:fish-shell                  TMP:fish                      #S Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#interactive-shell)
   APT:kakoune                     PAC:kakoune                     XBP:kakoune                     TMP:kakoune                   #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
   APT:fzf                         PAC:fzf                         XBP:fzf                         TMP:fzf                       #E Fuzzy selector (WH.I.CH https://github.com/NNBnh/dots/wiki/which#selector)
@@ -86,32 +86,33 @@
   APT:python                      PAC:python                      XBP:python3                     TMP:python                    #  Fun language to write small scripts
   YRN:typescript                                                                                                                #  For web dev
   APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                                                #  Shell script static analysis
-  YRN:prettier                                                                                                                  #  Code formatter
+  YRN:prettier                                                                                                                  #  Multi-languages code formatter
+  PIP:black                                                                                                                     #  Python code formatter
   BSR:NNBnh/coderun                                                                                                             #  Code runner
   YRN:markserv                                                                                                                  #  Live-reload markdown rendering server
 
 ### Data tranfer
-  BSR:NNBnh/mk                                                                                                                  #  Files and folders creation tool
+  BSR:NNBnh/mk                                                                                                                  #S Files and folders creation tool
   APT:curl                        PAC:curl                        XBP:curl                        TMP:curl                      #  Download tool (WH.I.CH https://github.com/NNBnh/dots/wiki/which#download-tool)
   PIP:youtube-dl                                                                                                                #  Media downloader
-  BSR:NNBnh/terminal-explorer                                                                                                   #  CLI tool that mimic the way GUI's file manager do copy/cut/paste
+  BSR:NNBnh/terminal-explorer                                                                                                   #S CLI tool that mimic the way GUI's file manager do copy/cut/paste
   APT:rsync                       PAC:rsync                       XBP:rsync                       TMP:rsync                     #  Sync files
-  BSR:NNBnh/bsymlink                                                                                                            #  Batch symlink tool
+  BSR:NNBnh/bsymlink                                                                                                            #S Batch symlink tool
   PIP:trash-cli                                                                                                                 #T Trash manager
 
 ### Data manipulation
-  APT:git                         PAC:git                         XBP:git                         TMP:git                       #  Version control system
   APT:libimage-exiftool-perl      PAC:perl-image-exiftool         XBP:exiftool                    TMP:exiftool                  #S Metadata manipulation
   APT:jq                          PAC:jq                          XBP:jq                          TMP:jq                        #S JSON processor
   APT:p7zip                       PAC:p7zip                       XBP:p7zip                       TMP:p7zip                     #  Files archiving
   APT:pandoc                      PAC:pandoc                      XBP:pandoc                                                    #  Markup converter
   APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick                 TMP:imagemagick               #X Image manipulator
   APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                      TMP:ffmpeg                    #  Media manipulator
+  PIP:auto-editor                                                                                                               #  Automatically editing video
 
 ### Utilitie
+  APT:git                         PAC:git                         XBP:git                         TMP:git                       #  Version control system
   APT:libqalculate20              PAC:libqalculate                XBP:libqalculate                TMP:qalc                      #S Calculator
   PIP:asciinema                                                                                                                 #  Record terminal sessions
-  PIP:auto-editor                                                                                                               #  Automatically editing video
   APT:figlet                      PAC:figlet                      XBP:figlet                      TMP:figlet                    #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
   BSR:NNBnh/hr                                                                                                                  #  Horizontal ruler
   APT:chafa                       PAC:chafa                       XBP:chafa                                                     #  Convert image to textart

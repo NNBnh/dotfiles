@@ -48,7 +48,7 @@ export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
 export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-export HISTFILE="$XDG_DATA_HOME/bash/history"
+export HISTFILE="$XDG_DATA_HOME/shell/history"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
@@ -152,12 +152,12 @@ export BUI_COLOR_TEXTART="93"
 # =============================================================================
 # 3. Default applications
 # =============================================================================
-export SELECTOR="fzf"
 export EDITOR="kak"
 export VISUAL="$EDITOR"
-# export PAGER="$EDITOR"
-# export MANPAGER="$EDITOR"
-export TERMINAL="kitty"
+#export PAGER="$EDITOR"
+#export MANPAGER="$EDITOR"
+export SELECTOR="fzf"
+export TERMINAL="bt"
 export BROWSER="firefox"
 
 

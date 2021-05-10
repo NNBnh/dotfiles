@@ -4,36 +4,41 @@
 # Values
 eval "$("$HOME/.config/env/rc")"
 
-SWAY_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+WM_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
 
 # Start
-swaymsg smart_gaps on
-swaymsg smart_borders no_gaps
-swaymsg title_align center
+printf '%s' "
+	workspace_layout tabbed
 
-swaymsg font "pango:$BUI_FONT_FAMILY ${BUI_FONT_SIZE%%.*}"
+	smart_gaps on
+	smart_borders no_gaps
+	title_align center
 
-swaymsg gaps inner "$(( ${BUI_GAPS_SIZE%%.*} - ( ${BUI_BORDER_SIZE%%.*} * 2 ) ))px"
-swaymsg gaps outer "${BUI_BORDER_SIZE%%.*}px"
+	font \"pango:$BUI_FONT_FAMILY ${BUI_FONT_SIZE%%.*}\"
 
-swaymsg default_border normal "${BUI_BORDER_SIZE%%.*}px"
-swaymsg titlebar_border_thickness "${BUI_BORDER_SIZE%%.*}"
-swaymsg titlebar_padding "${BUI_GAPS_SIZE%%.*} ${BUI_BORDER_SIZE%%.*}"
+	gaps inner all set \"$(( ${BUI_GAPS_SIZE%%.*} - ( ${BUI_BORDER_SIZE%%.*} * 2 ) ))px\"
+	gaps outer all set \"${BUI_BORDER_SIZE%%.*}px\"
 
-swaymsg client.focused          "$BUI_COLOR_CURSOR"    "$BUI_COLOR_CURSOR"    "$BUI_COLOR_BACKGROUND" "$BUI_COLOR_CURSOR_ALT" "$BUI_COLOR_CURSOR"
-swaymsg client.focused_inactive "$BUI_COLOR_SELECTION" "$BUI_COLOR_SELECTION" "$BUI_COLOR_FOREGROUND" "$BUI_COLOR_CURSOR_ALT" "$BUI_COLOR_SELECTION"
-swaymsg client.unfocused        "$BUI_COLOR_SELECTION" "$BUI_COLOR_SELECTION" "$BUI_COLOR_FOREGROUND" "$BUI_COLOR_CURSOR_ALT" "$BUI_COLOR_SELECTION"
-swaymsg client.urgent           "$BUI_COLOR_BASE08"    "$BUI_COLOR_BASE08"    "$BUI_COLOR_BACKGROUND" "$BUI_COLOR_CURSOR_ALT" "$BUI_COLOR_BASE08"
+	default_border normal \"${BUI_BORDER_SIZE%%.*}px\"
+	titlebar_border_thickness \"${BUI_BORDER_SIZE%%.*}\"
+	titlebar_padding \"${BUI_GAPS_SIZE%%.*} ${BUI_BORDER_SIZE%%.*}\"
 
-swaymsg focus_follows_mouse no
-swaymsg focus_wrapping      no
+	client.focused          \"$BUI_COLOR_CURSOR\"    \"$BUI_COLOR_CURSOR\"    \"$BUI_COLOR_BACKGROUND\" \"$BUI_COLOR_CURSOR_ALT\" \"$BUI_COLOR_CURSOR\"
+	client.focused_inactive \"$BUI_COLOR_SELECTION\" \"$BUI_COLOR_SELECTION\" \"$BUI_COLOR_FOREGROUND\" \"$BUI_COLOR_CURSOR_ALT\" \"$BUI_COLOR_SELECTION\"
+	client.unfocused        \"$BUI_COLOR_SELECTION\" \"$BUI_COLOR_SELECTION\" \"$BUI_COLOR_FOREGROUND\" \"$BUI_COLOR_CURSOR_ALT\" \"$BUI_COLOR_SELECTION\"
+	client.urgent           \"$BUI_COLOR_BASE08\"    \"$BUI_COLOR_BASE08\"    \"$BUI_COLOR_BACKGROUND\" \"$BUI_COLOR_CURSOR_ALT\" \"$BUI_COLOR_BASE08\"
 
-$SWAY_DIR/bmap
+	focus_follows_mouse no
+	focus_wrapping      no
 
-killall -p swayidle; swayidle -w before-sleep "$SWAY_DIR/lock" \
-                                      timeout $(( 15 * 60 )) "$SWAY_DIR/lock; swaymsg output * dpms off" \
-                                       resume "swaymsg output * dpms on" &
+	$($WM_DIR/bmap)
+"
+
+
+# killall -p swayidle; swayidle -w before-sleep "$WM_DIR/lock" \
+#                                       timeout $(( 15 * 60 )) "$WM_DIR/lock; $MSG_COMMAND output * dpms off" \
+#                                        resume "$MSG_COMMAND output * dpms on" &
 
 
 exit 0
