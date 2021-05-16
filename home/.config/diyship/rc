@@ -1,0 +1,61 @@
+#!/bin/sh
+
+
+# Functions
+powerprompt() {
+	COLOR_CURRENT="${2:-0}"
+
+	[ -n "$INFO" ] && {
+		if [ "$COLOR_CURRENT" = "$COLOR_LAST" ]; then
+			INFO="$INFO\033[0;48;5;${COLOR_CURRENT}m$POWERPROMPT_SEPARATOR_SAME"
+		else
+			INFO="$INFO\033[38;5;${COLOR_CURRENT}m$POWERPROMPT_SEPARATOR_LEFT\033[0;38;5;$COLOR_LAST;48;5;${COLOR_CURRENT}m$POWERPROMPT_SEPARATOR_RIGHT"
+		fi
+	}
+
+	INFO="$INFO\033[0;48;5;${COLOR_CURRENT}m$1"
+
+	COLOR_LAST="$COLOR_CURRENT"
+	COLOR_FIRST="${COLOR_FIRST:-$COLOR_CURRENT}"
+}
+
+
+# Values
+POWERPROMPT_LEFTEND_OUTER=' '
+POWERPROMPT_LEFTEND_INNER=' '
+POWERPROMPT_RIGHTEND_OUTER=' '
+POWERPROMPT_RIGHTEND_INNER=' '
+POWERPROMPT_SEPARATOR_LEFT=' '
+POWERPROMPT_SEPARATOR_RIGHT=' '
+POWERPROMPT_SEPARATOR_SAME=' \033[90m '
+
+[ "0$DIYSHIP_DURATION" -gt '2000' ] && DURATION="took $(( DIYSHIP_DURATION / 1000 ))s"
+
+[ "$DIYSHIP_STATUS" != '0' ] && powerprompt "\033[1;30m$(status2signal "$DIYSHIP_STATUS"):$DIYSHIP_STATUS" '1'
+
+[ -d "$PWD/.git" ] && {
+	git_branch=$(git rev-parse --abbrev-ref 'HEAD' 2>/dev/null) \
+	&& powerprompt "on \033[1;95m $git_branch"
+
+	git symbolic-ref 'HEAD' 2>&1 >/dev/null || {
+		git_hash=$(git rev-parse --verify --short 'HEAD' 2>/dev/null) \
+		&& powerprompt "\033[1;92m#$git_hash"
+	}
+
+	git_tag=$(git tag --points-at 'HEAD' 2>/dev/null) \
+	&& [ -n "$git_tag" ] && powerprompt "\033[1;93m🏷 $git_tag"
+}
+
+[ "0$DIYSHIP_JOBS" -gt '0' ] && powerprompt "\033[1;30m$DIYSHIP_JOBS&" '12'
+
+INFO="${INFO:+\033[38;5;${COLOR_FIRST}m$POWERPROMPT_LEFTEND_OUTER\033[0;48;5;${COLOR_FIRST}m$POWERPROMPT_LEFTEND_INNER$INFO$POWERPROMPT_RIGHTEND_INNER\033[0;38;5;${COLOR_LAST}m$POWERPROMPT_RIGHTEND_OUTER\033[0m }"
+
+
+# Start
+printf '\033[4:3;58:5:7;90m%*s\033[0m%b\n\033[0;1;93m$\033[0m ' \
+       $(( ${COLUMNS:-$(tput cols)} - $(printf '%b' "$INFO" | sed -e 's/\x1b\[[0-9;:]*[a-zA-Z]//g' | wc --chars) )) \
+       "$DURATION " \
+       "$INFO"
+
+
+exit 0

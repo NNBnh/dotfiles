@@ -36,11 +36,16 @@ install_packages() {
 	PIP_PM='sbb_pipx'
 	PIP_COMMAND="$PIP_PM"
 	sbb_setup_PIP() {
+		sbb_install_curl
 		sbb_install_python
 
-		python -m pip install --upgrade pip
-		python -m pip install --user pipx
-		python -m pipx ensurepath
+		cd "$TEMPORARY" || exit 1
+		curl --remote-header-name --location --remote-name "https://bootstrap.pypa.io/get-pip.py"
+		python get-pip.py
+
+		pip install --upgrade pip
+		pip install --user pipx
+		pipx ensurepath
 
 		sbb_make_install_command 'pipx' "pipx install"
 	}

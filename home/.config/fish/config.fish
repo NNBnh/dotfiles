@@ -35,31 +35,7 @@ function fish_title
 	prompt_pwd
 end
 
-function fish_prompt
-	if [ "$status" = '0' ]
-		set command_status '$'
-		set prompt_color '93'
-	else
-		set command_status "$status"
-		set prompt_color '91'
-	end
-
-	set command_duration "$CMD_DURATION$cmd_duration"
-	[ "$command_duration" -gt '2000' ] && set command_duration_print ' took '(math "$command_duration" / '1000')'s'
-
-	set jobs_count (count (jobs -p))
-	[ "$jobs_count" -gt '0'  ] && set jobs_count_print " $jobs_count&"
-
-    set git_status (fish_git_prompt | string trim -c ' ()')
-	[ -n "$git_status" ] && set git_count_print " $git_status"
-
-    set prompt_status "$jobs_count_print$git_count_print$command_duration_print"
-    [ -n "$prompt_status" ] && printf '\n%s' "$prompt_status"
-
-    printf '\n\033[1;7;%sm %s \033[0;%sm\033[0m ' "$prompt_color" "$command_status" "$prompt_color"
-
-	bui-terminal
-end
+diyship init fish | source
 
 
 
@@ -229,4 +205,6 @@ end
 function fish_greeting
 	# stty intr '^X' susp '^P' eof '^Q' start '^A' stop '^E' -echo
 	bfetch
+
+	bui-terminal
 end

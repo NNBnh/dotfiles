@@ -73,7 +73,7 @@ export BUI_CURSOR="block"
 export BUI_CURSOR_BLINK="true"
 export BUI_OPACITY="0.9"
 export BUI_FONT_MONO_FAMILY="Bmono"
-export BUI_FONT_MONO_SIZE="10.0"
+export BUI_FONT_MONO_SIZE="9.9"
 export BUI_FONT_FAMILY="$BUI_FONT_MONO_FAMILY"
 export BUI_FONT_SIZE="10.0"
 
@@ -166,7 +166,7 @@ export BROWSER="firefox"
 # =============================================================================
 export WALLPAPER_FILE="$HOME/c/extra/wallpapers/porco-rosso.png"
 export WALLPAPER_MODE="fill"
-export BFETCH_PROMPT_HEIGHT="3"
+export BFETCH_PROMPT_HEIGHT="2"
 export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
 
 ### Basher
