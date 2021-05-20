@@ -9,7 +9,7 @@
 # Description:  Environment variables that SuperB
 # Author:       NNB
 #               └─ https://github.com/NNBnh
-# URL:          https://github.com/NNBnh/dots/blob/master/home/.config/env
+# URL:          https://github.com/NNBnh/dots/blob/master/home/.config/env/rc
 
 
 # Values
@@ -38,7 +38,7 @@ export XDG_TEMPLATES_DIR="$XDG_DESKTOP_DIR"
 export XDG_VIDEOS_DIR="$XDG_DESKTOP_DIR"
 
 ### Spring cleaning
-# export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+#export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export USERXSESSION="$XDG_CACHE_HOME/x11/xsession"
 export USERXSESSIONRC="$XDG_CACHE_HOME/x11/xsessionrc"
 export ALTUSERXSESSION="$XDG_CACHE_HOME/x11/Xsession"
@@ -58,6 +58,9 @@ export BASHER_ROOT="$XDG_DATA_HOME/basher"
 export BASHER_PREFIX="$BASHER_ROOT/cellar"
 export BASHER_PACKAGES_PATH="$HOME/s"
 export PATH="$PATH:$HOME/.local/bin:$BASHER_ROOT/bin:$BASHER_PREFIX/bin:$HOME/c/extra/scripts"
+
+### Figlet
+export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
 
 
 # =============================================================================
@@ -146,7 +149,7 @@ export BUI_COLOR_TERMINAL014="$BUI_COLOR_CYAN"
 export BUI_COLOR_TERMINAL015="$BUI_COLOR_LIGHT_ALT"
 
 ### Other
-export BUI_COLOR_TEXTART="93"
+export BUI_COLOR_TEXTART="11"
 
 
 # =============================================================================
@@ -167,7 +170,6 @@ export BROWSER="firefox"
 export WALLPAPER_FILE="$HOME/c/extra/wallpapers/porco-rosso.png"
 export WALLPAPER_MODE="fill"
 export BFETCH_PROMPT_HEIGHT="2"
-export FIGLET_FONTDIR="$XDG_DATA_HOME/figlet/fonts"
 
 ### Basher
 export BASHER_FULL_CLONE="true"

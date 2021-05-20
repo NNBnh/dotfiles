@@ -2,60 +2,77 @@
 
 
 # Functions
-powerprompt() {
-	COLOR_CURRENT="${2:-0}"
+ms2duration() {
+	MILISECONDS="$1"
 
-	[ -n "$INFO" ] && {
-		if [ "$COLOR_CURRENT" = "$COLOR_LAST" ]; then
-			INFO="$INFO\033[0;48;5;${COLOR_CURRENT}m$POWERPROMPT_SEPARATOR_SAME"
-		else
-			INFO="$INFO\033[38;5;${COLOR_CURRENT}m$POWERPROMPT_SEPARATOR_LEFT\033[0;38;5;$COLOR_LAST;48;5;${COLOR_CURRENT}m$POWERPROMPT_SEPARATOR_RIGHT"
-		fi
-	}
+	       days=$(( MILISECONDS / 1000 / 60 / 60 / 24 )); [        "$days" -gt '0' ] && duration="${duration:+$duration }${days}day"
+	      hours=$(( MILISECONDS / 1000 / 60 / 60 % 24 )); [       "$hours" -gt '0' ] && duration="${duration:+$duration }${hours}hr"
+	    minutes=$(( MILISECONDS / 1000 / 60 % 60      )); [     "$minutes" -gt '0' ] && duration="${duration:+$duration }${minutes}min"
+	    seconds=$(( MILISECONDS / 1000 % 60           )); [     "$seconds" -gt '0' ] && duration="${duration:+$duration }${seconds}sec"
+	miliseconds=$(( MILISECONDS % 1000                )); [ "$miliseconds" -gt '0' ] && duration="${duration:+$duration }${miliseconds}ms"
 
-	INFO="$INFO\033[0;48;5;${COLOR_CURRENT}m$1"
 
-	COLOR_LAST="$COLOR_CURRENT"
-	COLOR_FIRST="${COLOR_FIRST:-$COLOR_CURRENT}"
+	printf '%s' "$duration"
 }
 
 
 # Values
-POWERPROMPT_LEFTEND_OUTER=' '
-POWERPROMPT_LEFTEND_INNER=' '
-POWERPROMPT_RIGHTEND_OUTER=' '
-POWERPROMPT_RIGHTEND_INNER=' '
-POWERPROMPT_SEPARATOR_LEFT=' '
-POWERPROMPT_SEPARATOR_RIGHT=' '
-POWERPROMPT_SEPARATOR_SAME=' \033[90m '
+PROMPT_COLOR="${BUI_COLOR_TEXTART:-15}"
 
-[ "0$DIYSHIP_DURATION" -gt '2000' ] && DURATION="took $(( DIYSHIP_DURATION / 1000 ))s"
+[ "$DIYSHIP_DURATION" -gt '2000' ] && DURATION="\033[30mtook \033[1;33m$(ms2duration "$DIYSHIP_DURATION")"
 
-[ "$DIYSHIP_STATUS" != '0' ] && powerprompt "\033[1;30m$(status2signal "$DIYSHIP_STATUS"):$DIYSHIP_STATUS" '1'
+[ "$DIYSHIP_STATUS" -gt '0' ] && {
+	case "$DIYSHIP_STATUS" in
+		'126') STATUS_SYMBOL='🚫' ;;
+		'127') STATUS_SYMBOL='🔍' ;;
+		'130') STATUS_SYMBOL='🧱' ;;
+		*)     STATUS_SYMBOL='⚡' ;;
+	esac
 
-[ -d "$PWD/.git" ] && {
-	git_branch=$(git rev-parse --abbrev-ref 'HEAD' 2>/dev/null) \
-	&& powerprompt "on \033[1;95m $git_branch"
-
-	git symbolic-ref 'HEAD' 2>&1 >/dev/null || {
-		git_hash=$(git rev-parse --verify --short 'HEAD' 2>/dev/null) \
-		&& powerprompt "\033[1;92m#$git_hash"
-	}
-
-	git_tag=$(git tag --points-at 'HEAD' 2>/dev/null) \
-	&& [ -n "$git_tag" ] && powerprompt "\033[1;93m🏷 $git_tag"
+	STATUS="\033[1;30m$STATUS_SYMBOL$(status2signal "$DIYSHIP_STATUS"):$DIYSHIP_STATUS"
 }
 
-[ "0$DIYSHIP_JOBS" -gt '0' ] && powerprompt "\033[1;30m$DIYSHIP_JOBS&" '12'
+[ -d "$PWD/.git" ] && {
+	GIT_BRANCH=$(git rev-parse --abbrev-ref 'HEAD' 2>/dev/null) \
+	&& GIT_BRANCH="on \033[1;95m $GIT_BRANCH"
 
-INFO="${INFO:+\033[38;5;${COLOR_FIRST}m$POWERPROMPT_LEFTEND_OUTER\033[0;48;5;${COLOR_FIRST}m$POWERPROMPT_LEFTEND_INNER$INFO$POWERPROMPT_RIGHTEND_INNER\033[0;38;5;${COLOR_LAST}m$POWERPROMPT_RIGHTEND_OUTER\033[0m }"
+	git symbolic-ref 'HEAD' 2>&1 >/dev/null || {
+		GIT_HASH=$(git rev-parse --verify --short 'HEAD' 2>/dev/null) \
+		&& GIT_HASH="\033[1;92m#$GIT_HASH"
+	}
+
+	GIT_TAG=$(git tag --points-at 'HEAD' 2>/dev/null) \
+	&& [ -n "$GIT_TAG" ] && GIT_TAG="\033[1;93m🏷 $GIT_TAG"
+}
+
+[ "$DIYSHIP_JOBS" -gt '0' ] && JOBS="\033[1;30m$DIYSHIP_JOBS&"
+
+INFO=$(
+	POWERBG_LEFTEND_OUTER=' ' \
+	POWERBG_LEFTEND_INNER=' ' \
+	POWERBG_RIGHTEND_OUTER=' ' \
+	POWERBG_RIGHTEND_INNER=' ' \
+	POWERBG_SEPARATOR_LEFT=' ' \
+	POWERBG_SEPARATOR_RIGHT=' ' \
+	POWERBG_SEPARATOR_SAME=' \033[90m ' \
+	powerbg '1' "$STATUS" '8' "$DURATION" '0' "$GIT_BRANCH" '0' "$GIT_HASH" '0' "$GIT_TAG" '12' "$JOBS"
+)
+
+case "$PWD/" in
+	"$HOME/d/"*) CWD_SYMBOL='🗃 ' ;;
+	"$HOME/c/"*) CWD_SYMBOL='⚙ ' ;;
+	"$HOME/t/"*) CWD_SYMBOL='⚗ ' ;;
+	"$HOME/")    CWD_SYMBOL='🏠' ;;
+	"$HOME/"*)   CWD_SYMBOL='📂' ;;
+	*)           CWD_SYMBOL='📁' ;;
+esac
 
 
 # Start
-printf '\033[4:3;58:5:7;90m%*s\033[0m%b\n\033[0;1;93m$\033[0m ' \
-       $(( ${COLUMNS:-$(tput cols)} - $(printf '%b' "$INFO" | sed -e 's/\x1b\[[0-9;:]*[a-zA-Z]//g' | wc --chars) )) \
-       "$DURATION " \
-       "$INFO"
+printf '\033[4:3;58:5:7m%*s\033[0m%b\n%b\033[0m\n%b\033[0m ' \
+       $(( ${COLUMNS:-$(tput cols)} - $(printf '%b' "$INFO" | sed -e 's/\x1b\[[0-9;:]*[a-zA-Z]//g' | wc --chars) )) '' "$INFO" \
+	   " $CWD_SYMBOL$(PATHSHORTENER_TRUNCATION_LENGTH='0' pathshortener "$PWD")" \
+       "\033[1;7${PROMPT_COLOR:+;38;5;$PROMPT_COLOR}m $(date +'%r') \033[0${PROMPT_COLOR:+;38;5;$PROMPT_COLOR}m"
 
 
 exit 0

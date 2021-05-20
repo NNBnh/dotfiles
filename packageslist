@@ -112,7 +112,6 @@
 
 ### Utilitie
   APT:git                         PAC:git                         XBP:git                         TMP:git                       #  Version control system
-  APT:libqalculate20              PAC:libqalculate                XBP:libqalculate                TMP:qalc                      #S Calculator
   PIP:asciinema                                                                                                                 #  Record terminal sessions
   APT:figlet                      PAC:figlet                      XBP:figlet                      TMP:figlet                    #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
   BSR:NNBnh/hr                                                                                                                  #  Horizontal ruler
