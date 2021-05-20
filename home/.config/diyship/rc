@@ -22,14 +22,14 @@ PROMPT_COLOR="${BUI_COLOR_TEXTART:-15}"
 [ "$DIYSHIP_DURATION" -gt '2000' ] && DURATION="\033[30mtook \033[1;33m$(ms2duration "$DIYSHIP_DURATION")"
 
 [ "$DIYSHIP_STATUS" -gt '0' ] && {
-	case "$DIYSHIP_STATUS" in
-		'126') STATUS_SYMBOL='🚫' ;;
-		'127') STATUS_SYMBOL='🔍' ;;
-		'130') STATUS_SYMBOL='🧱' ;;
-		*)     STATUS_SYMBOL='⚡' ;;
-	esac
+	# case "$DIYSHIP_STATUS" in
+	# 	'126') STATUS_SYMBOL='🚫' ;;
+	# 	'127') STATUS_SYMBOL='🔍' ;;
+	# 	'130') STATUS_SYMBOL='🧱' ;;
+	# 	*)     STATUS_SYMBOL='⚡' ;;
+	# esac
 
-	STATUS="\033[1;30m$STATUS_SYMBOL$(status2signal "$DIYSHIP_STATUS"):$DIYSHIP_STATUS"
+	STATUS="\033[1;30m$(status2signal "$DIYSHIP_STATUS"):$DIYSHIP_STATUS"
 }
 
 [ -d "$PWD/.git" ] && {
