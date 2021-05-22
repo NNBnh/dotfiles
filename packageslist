@@ -17,54 +17,54 @@
 # E: TODO editor
 # X: Will remove in far future
 
+
 # =============================================================================
 # 1. System
 # =============================================================================
 
 ### Core
-  APT:lightdm                     PAC:lightdm                     XBP:lightdm                                                   #C Login manager
-  APT:light-locker                PAC:light-locker                XBP:light-locker                                              #C Lock screen support for login manager
-  APT:xwayland                    PAC:xorg-xwayland               XBP:xorg-server-xwayland                                      #  Xwayland backend
-                                  AUR:sway                        XBP:sway                                                      #W Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#windows-manager)
-                                  PAC:swayidle                    XBP:swayidle                                                  #X Idle management
+# NIX:nixpkgs.lightdm                                          #C Login manager
+# NIX:nixpkgs.lightlocker                                      #C Lock screen support for login manager
+# NIX:nixpkgs.xwayland                                         #  Xwayland backend
+# NIX:nixpkgs.sway                                             #W Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#windows-manager)
+# NIX:nixpkgs.swayidle                                         #X Idle management
 
 ### Screen
-  APT:brightnessctl               PAC:brightnessctl               XBP:brightnessctl                                             #  Screen backlight
-                                  PAC:gammastep                   XBP:gammastep                                                 #X Blue light filter
-                                  PAC:swaybg                      XBP:swaybg                                                    #W Set wallpaper
+# NIX:nixpkgs.brightnessctl                                    #  Screen backlight
+# NIX:nixpkgs.gammastep                                        #X Blue light filter
+# NIX:nixpkgs.swaybg                                           #W Set wallpaper
 
 ### Audio
-  APT:alsa-utils                  PAC:alsa-utils                  XBP:alsa-utils                                                #X Sound server
-  APT:pulseaudio                  PAC:pulseaudio                  XBP:pulseaudio                                                #X Sound server but better
-  APT:playerctl                   PAC:playerctl                   XBP:playerctl                                                 #  Control media
+# NIX:nixpkgs.alsaUtils                                        #X Sound server
+# NIX:nixpkgs.pulseaudio                                       #X Sound server but better
+  NIX:nixpkgs.playerctl                                        #  Control media
 
 ### Input
-  APT:fcitx                       PAC:fcitx-im                    XBP:fcitx                                                     #  Input method
-  APT:fcitx-unikey                PAC:fcitx-unikey                XBP:fcitx-unikey                                              #  Vietnamese support for input method
-                                  AUR:sc-controller               XBP:sc-controller                                             #  Controller setting
-                                  AUR:ydotool                                                                                   #C Send inputs
+# NIX:nixpkgs.fcitx                                            #  Input method
+# NIX:nixpkgs.fcitx-engines.unikey                             #  Vietnamese support for input method
+  NIX:nixpkgs.sc-controller                                    #  Controller setting
+  NIX:nixpkgs.ydotool                                          #C Send inputs
 
 ### Screeny
-  APT:slurp                       PAC:slurp                       XBP:slurp                                                     #  Screen region selector
-  APT:grim                        PAC:grim                        XBP:grim                                                      #X Screenshot
-                                  PAC:wf-recorder                 XBP:wf-recorder                                               #X Screen record
+  NIX:nixpkgs.slurp                                            #  Screen region selector
+# NIX:nixpkgs.grim                                             #X Screenshot
+# NIX:nixpkgs.wf-recorder                                      #X Screen record
 
 ### Notification
-  APT:libnotify-bin               PAC:libnotify                   XBP:libnotify                                                 #  Notification library
-  APT:dunst                       PAC:dunst                       XBP:dunst                                                     #X Notification daemon
+  NIX:nixpkgs.libnotify                                        #  Notification library
+# NIX:nixpkgs.dunst                                            #X Notification daemon
 
 ### Resource
-                                  PAC:ttf-sarasa-gothic           XBP:font-sarasa-gothic                                        #  Non Latin support for font
-                                  AUR:ttf-twemoji                 XBP:twemoji                                                   #  Emoji support for font
-  APT:papirus-icon-theme          PAC:papirus-icon-theme          XBP:papirus-icon-theme                                        #  Icon set that support nearly every app
+  NIX:nixpkgs.sarasa-gothic                                    #  Non Latin support for font
+  NIX:nixpkgs.twemoji-color-font                               #  Emoji support for font
+  NIX:nixpkgs.papirus-icon-theme                               #  Icon set that support nearly every app
 
 ### Other
-  APT:xdg-utils                   PAC:xdg-utils                   XBP:xdg-utils                                                 #  Applications manager
-  APT:xdg-user-dirs               PAC:xdg-user-dirs               XBP:xdg-user-dirs                                             #  XDG directory manager
-  BSR:NNBnh/clipb                                                                                                               #T Clipboard managers warper
-  APT:wl-clipboard                PAC:wl-clipboard                XBP:wl-clipboard                                              #T Clipboard manager
-  APT:ufw                         PAC:ufw                         XBP:ufw                                                       #  Firewall
-  BSR:NNBnh/bui-appearance                                                                                                      #  Widget toolkit theme
+  NIX:nixpkgs.xdg_utils                                        #  Applications manager
+  NIX:nixpkgs.xdg-user-dirs                                    #  XDG directory manager
+  BSR:NNBnh/clipb                                              #S Clipboard managers warper
+# NIX:nixpkgs.wl-clipboard                                     #X Clipboard manager
+  BSR:NNBnh/bui-appearance                                     #  Widget toolkit theme
 
 
 # =============================================================================
@@ -72,52 +72,52 @@
 # =============================================================================
 
 ### Interactive
-  APT:fish                        PAC:fish                        XBP:fish-shell                  TMP:fish                      #S Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#interactive-shell)
-  APT:kakoune                     PAC:kakoune                     XBP:kakoune                     TMP:kakoune                   #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
-  APT:fzf                         PAC:fzf                         XBP:fzf                         TMP:fzf                       #E Fuzzy selector (WH.I.CH https://github.com/NNBnh/dots/wiki/which#selector)
-  BSR:NNBnh/bui-terminal                                                                                                        #  Terminal theme
-  BSR:NNBnh/bfetch                                                                                                              #T Fetch displayer
-  BSR:info-mono/ditship                                                                                                         #  Cross-shell prompt
-  BSR:info-mono/pathshortener                                                                                                   #  File system's path shortener
-  BSR:info-mono/status2signal                                                                                                   #  Status code to signal name converter
+  NIX:nixpkgs.fish                                             #S Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#interactive-shell)
+  NIX:nixpkgs.kakoune                                          #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
+  NIX:nixpkgs.fzf                                              #E Fuzzy selector (WH.I.CH https://github.com/NNBnh/dots/wiki/which#selector)
+  BSR:NNBnh/bui-terminal                                       #  Terminal theme
+  BSR:NNBnh/bfetch                                             #T Fetch displayer
+  BSR:info-mono/diyship                                        #  Cross-shell prompt
+  BSR:info-mono/pathshortener                                  #  File system's path shortener
+  BSR:info-mono/status2signal                                  #  Status code to signal name converter
 
 ### Programming (WH.I.CH https://github.com/NNBnh/dots/wiki/which#programing-language)
-  APT:rust                        PAC:rust                        XBP:rust                        TMP:rust                      #  Compiled language to build software
-  APT:dash                        PAC:dash                        XBP:dash                        TMP:dash                      #  POSIX shell to write portable utilities
-  APT:python                      PAC:python                      XBP:python3                     TMP:python                    #  Fun language to write small scripts
-  YRN:typescript                                                                                                                #  For web dev
-  APT:shellcheck                  PAC:shellcheck                  XBP:shellcheck                                                #  Shell script static analysis
-  YRN:prettier                                                                                                                  #  Multi-languages code formatter
-  PIP:black                                                                                                                     #  Python code formatter
-  BSR:NNBnh/coderun                                                                                                             #  Code runner
-  YRN:markserv                                                                                                                  #  Live-reload markdown rendering server
+  NIX:nixpkgs.rustc                                            #  Compiled language to build software
+  NIX:nixpkgs.dash                                             #  POSIX shell to write portable utilities
+  NIX:nixpkgs.python3                                          #  Fun language to write small scripts
+  YRN:typescript                                               #  For web dev
+  NIX:nixpkgs.shellcheck                                       #  Shell script static analysis
+  YRN:prettier                                                 #  Multi-languages code formatter
+  PIP:black                                                    #  Python code formatter
+  BSR:NNBnh/coderun                                            #  Code runner
+  YRN:markserv                                                 #  Live-reload markdown rendering server
 
 ### Data tranfer
-  BSR:NNBnh/mk                                                                                                                  #S Files and folders creation tool
-  APT:curl                        PAC:curl                        XBP:curl                        TMP:curl                      #  Download tool (WH.I.CH https://github.com/NNBnh/dots/wiki/which#download-tool)
-  PIP:youtube-dl                                                                                                                #  Media downloader
-  BSR:NNBnh/terminal-explorer                                                                                                   #S CLI tool that mimic the way GUI's file manager do copy/cut/paste
-  APT:rsync                       PAC:rsync                       XBP:rsync                       TMP:rsync                     #  Sync files
-  BSR:NNBnh/bsymlink                                                                                                            #S Batch symlink tool
-  PIP:trash-cli                                                                                                                 #T Trash manager
+  BSR:NNBnh/mk                                                 #S Files and folders creation tool
+  NIX:nixpkgs.curl                                             #  Download tool (WH.I.CH https://github.com/NNBnh/dots/wiki/which#download-tool)
+  PIP:youtube-dl                                               #  Media downloader
+  BSR:NNBnh/terminal-explorer                                  #S CLI tool that mimic the way GUI's file manager do copy/cut/paste
+  NIX:nixpkgs.rsync                                            #  Sync files
+  BSR:NNBnh/bsymlink                                           #S Batch symlink tool
+  PIP:trash-cli                                                #T Trash manager
 
 ### Data manipulation
-  APT:libimage-exiftool-perl      PAC:perl-image-exiftool         XBP:exiftool                    TMP:exiftool                  #S Metadata manipulation
-  APT:jq                          PAC:jq                          XBP:jq                          TMP:jq                        #S JSON processor
-  APT:p7zip                       PAC:p7zip                       XBP:p7zip                       TMP:p7zip                     #  Files archiving
-  APT:pandoc                      PAC:pandoc                      XBP:pandoc                                                    #  Markup converter
-  APT:imagemagick                 PAC:imagemagick                 XBP:ImageMagick                 TMP:imagemagick               #X Image manipulator
-  APT:ffmpeg                      PAC:ffmpeg                      XBP:ffmpeg                      TMP:ffmpeg                    #  Media manipulator
-  PIP:auto-editor                                                                                                               #  Automatically editing video
+  NIX:nixpkgs.exiftool                                         #S Metadata manipulation
+  NIX:nixpkgs.jq                                               #S JSON processor
+  NIX:nixpkgs.p7zip                                            #  Files archiving
+  NIX:nixpkgs.pandoc                                           #  Markup converter
+  NIX:nixpkgs.imagemagick7                                     #X Image manipulator
+  NIX:nixpkgs.ffmpeg                                           #  Media manipulator
 
 ### Utilitie
-  APT:git                         PAC:git                         XBP:git                         TMP:git                       #  Version control system
-  PIP:asciinema                                                                                                                 #  Record terminal sessions
-  APT:figlet                      PAC:figlet                      XBP:figlet                      TMP:figlet                    #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
-  BSR:NNBnh/hr                                                                                                                  #  Horizontal ruler
-  APT:chafa                       PAC:chafa                       XBP:chafa                                                     #  Convert image to textart
-  PIP:git+https://github.com/will8211/unimatrix.git                                                                             #T Simulates the display from "The Matrix"
-                                  AUR:no-more-secrets             XBP:no-more-secrets                                           #T Become hackerman (Make outputs Minecraft enchanting table language)
+  NIX:nixpkgs.git                                              #  Version control system
+  PIP:asciinema                                                #  Record terminal sessions
+  PIP:auto-editor                                              #  Automatically editing video
+  NIX:nixpkgs.figlet                                           #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
+  BSR:NNBnh/hr                                                 #  Horizontal ruler
+  NIX:nixpkgs.chafa                                            #X Convert image to textart
+  PIP:git+https://github.com/will8211/unimatrix.git            #T Simulates the display from "The Matrix"
+  NIX:nixpkgs.nms                                              #T Become hackerman (Make outputs Minecraft enchanting table language)
 
 
 # =============================================================================
@@ -125,16 +125,16 @@
 # =============================================================================
 
 ### Interact
-  APT:mpv                         PAC:mpv                         XBP:mpv                                                       #  Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
-  APT:firefox-esr                 PAC:firefox                     XBP:firefox-esr                                               #  Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
+  NIX:nixpkgs.mpv                                              #  Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
+  NIX:nixpkgs.firefox-esr                                      #  Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
 
 ### Productivity
-  FLA:org.gimp.GIMP               PAC:gimp                        XBP:gimp                                                      #  Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
-  FLA:org.blender.Blender         PAC:blender                     XBP:blender                                                   #  Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
-  FLA:org.godotengine.Godot       AUR:godot-bin                   XBP:godot                                                     #  Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
+  NIX:nixpkgs.gimp                                             #  Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
+  NIX:nixpkgs.blender                                          #  Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
+  NIX:nixpkgs.godot                                            #  Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
 
 ### Games
-                                  PAC:lutris                      XBP:lutris                                                    #X Games manager
-  FLA:com.valvesoftware.Steam     PAC:steam                       XBP:steam                                                     #  Gamer mode
-  FLA:org.libretro.RetroArch      PAC:retroarch                   XBP:retroarch                                                 #  Retro emulators
-                                  AUR:multimc5                    XBP:MultiMC                                                   #  Minecraft launcher and instance manager
+# NIX:nixpkgs.lutris                                           #X Games manager
+# NIX:nixpkgs.steam                                            #  Gamer mode
+  NIX:nixpkgs.retroarch                                        #  Retro emulators
+  NIX:nixpkgs.multimc                                          #  Minecraft launcher and instance manager

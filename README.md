@@ -26,7 +26,7 @@ The *SuperB* dotfiles for unix system, configured with a high level of **portabl
       - Selector: [**FZF**](https://github.com/NNBnh/dots/wiki/which#selector)
       - Text-`$EDITOR` / `$PAGER`: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#text-editor)
     - And 5 [`GUI` (graphical user interface)](https://en.wikipedia.org/wiki/Graphical_user_interface) applications:
-      - Terminal emulator: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
+      - Terminal emulator: [**SuperB ST**](https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
       - Media player / image viewer: [**MPV**](https://github.com/NNBnh/dots/wiki/which#image-viewer)
       - Web browser: [**Firefox**](https://github.com/NNBnh/dots/wiki/which#web-browser)
       - Image editor: [**GIMP**](https://github.com/NNBnh/dots/wiki/which#image-editor)

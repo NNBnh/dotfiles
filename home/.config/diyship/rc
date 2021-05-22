@@ -19,7 +19,7 @@ ms2duration() {
 # Values
 PROMPT_COLOR="${BUI_COLOR_TEXTART:-15}"
 
-[ "$DIYSHIP_DURATION" -gt '2000' ] && DURATION="\033[30mtook \033[1;33m$(ms2duration "$DIYSHIP_DURATION")"
+[ "$DIYSHIP_DURATION" -gt '2000' ] && DURATION="\033[30mtook \033[1m$(ms2duration "$DIYSHIP_DURATION")"
 
 [ "$DIYSHIP_STATUS" -gt '0' ] && {
 	# case "$DIYSHIP_STATUS" in
@@ -55,7 +55,7 @@ INFO=$(
 	POWERBG_SEPARATOR_LEFT=' ' \
 	POWERBG_SEPARATOR_RIGHT=' ' \
 	POWERBG_SEPARATOR_SAME=' \033[90m ' \
-	powerbg '1' "$STATUS" '8' "$DURATION" '0' "$GIT_BRANCH" '0' "$GIT_HASH" '0' "$GIT_TAG" '12' "$JOBS"
+	powerbg '1' "$STATUS" '3' "$DURATION" '0' "$GIT_BRANCH" '0' "$GIT_HASH" '0' "$GIT_TAG" '12' "$JOBS"
 )
 
 case "$PWD/" in

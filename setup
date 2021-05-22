@@ -33,23 +33,6 @@ STEPS="${*:-install before home root after}"
 install_packages() {
 	printf '\n\033[1;7;34m%s\033[0m\n' 'Install packages' >&2
 
-	PIP_PM='sbb_pipx'
-	PIP_COMMAND="$PIP_PM"
-	sbb_setup_PIP() {
-		sbb_install_curl
-		sbb_install_python
-
-		cd "$TEMPORARY" || exit 1
-		curl --remote-header-name --location --remote-name "https://bootstrap.pypa.io/get-pip.py"
-		python get-pip.py
-
-		pip install --upgrade pip
-		pip install --user pipx
-		pipx ensurepath
-
-		sbb_make_install_command 'pipx' "pipx install"
-	}
-
 	sbb_install_packages "$DOTFILES_PATH/packageslist"
 
 	printf '\n\033[1;7;34m%s\033[0m\n' 'Install extra resource' >&2
