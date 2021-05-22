@@ -9,12 +9,12 @@ Welcome to the `Đotfiles`:
 
 > ⬤ ⬤ ⬤
 
-The *SuperB* dotfiles for unix system, configured with a high level of **portable** for **minimalism** and **optimization**.
+The *SuperB* dotfiles for `*NIX` system, configured with a high level of **portable** for **minimalism** and **optimization**.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/43980777/108480424-85941700-72c9-11eb-8380-89ddb5202607.png"></p>
 
 ### ✨ Features
-- Super **portable**, because `Đotfiles` use ***SuperB Bootstrap*** to manager dotfiles, it work on almost any `*NIX` operating system SBB supported
+- Super **portable**, because `Đotfiles` use [*SuperB Bootstrap*](https://github.com/NNBnh/superb-bootstrap) to manager dotfiles, it work on [any `*NIX` operating system that SBB supported](https://github.com/NNBnh/superb-bootstrap#-features)
 - Super **minimalism**, it follow the [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy) radically:
   - *"Use programs that do one thing and do it well"*:
     > This is to reduce bloat and redundancy in programs
@@ -23,15 +23,15 @@ The *SuperB* dotfiles for unix system, configured with a high level of **portabl
   - *"Use programs to handle text streams, because that is a universal interface"*:
     - Almost all program use [`CLI` (command-line interface)](https://en.wikipedia.org/wiki/Command-line_interface)
     - Only have 2 [`TUI` (text-based user interface)](https://en.wikipedia.org/wiki/Text-based_user_interface) applications:
-      - Selector: [**FZF**](https://github.com/NNBnh/dots/wiki/which#selector)
-      - Text-`$EDITOR` / `$PAGER`: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#text-editor)
+      - 📝 Text Editor: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#text-editor) (also used as a `$PAGER`)
+      - ➡️ Selector: [**FZF**](https://github.com/NNBnh/dots/wiki/which#selector)
     - And 5 [`GUI` (graphical user interface)](https://en.wikipedia.org/wiki/Graphical_user_interface) applications:
-      - Terminal emulator: [**SuperB ST**](https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
-      - Media player / image viewer: [**MPV**](https://github.com/NNBnh/dots/wiki/which#image-viewer)
-      - Web browser: [**Firefox**](https://github.com/NNBnh/dots/wiki/which#web-browser)
-      - Image editor: [**GIMP**](https://github.com/NNBnh/dots/wiki/which#image-editor)
-      - Motion graphics: [**Blender**](https://github.com/NNBnh/dots/wiki/which#motion-graphics)
-      - Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#game-engine)
+      - 📟 Terminal emulator: [**SuperB ST**](https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
+      - 🎞️ Media player: [**MPV**](https://github.com/NNBnh/dots/wiki/which#media-player) (also used as a [image viewer](https://github.com/NNBnh/dots/wiki/which#image-viewer))
+      - 🌏 Web browser: [**Firefox**](https://github.com/NNBnh/dots/wiki/which#web-browser)
+      - 🎨 Image editor: [**GIMP**](https://github.com/NNBnh/dots/wiki/which#image-editor)
+      - 🎥 Motion graphics: [**Blender**](https://github.com/NNBnh/dots/wiki/which#motion-graphics)
+      - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#game-engine)
 - Super **optimization**:
   - Using tree-base tiling system for endless freedom, work with any use cases
   - Maximize your screen real estate

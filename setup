@@ -43,7 +43,7 @@ install_packages() {
 		&& mv -f "$TMPDIR/ttf/"* "$XDG_DATA_HOME/fonts/"
 
 		# Mouse cursor
-		curl --silent --location 'https://github.com/ful1e5/Bibata_Cursor/releases/download/v1.0.3/Bibata-Original-Ice.tar.gz' --output "$TMPDIR/Bibata-Original-Ice.tar.gz" \
+		curl --silent --location 'https://github.com/ful1e5/Bibata_Cursor/releases/download/v1.1.1/Bibata-Original-Ice.tar.gz' --output "$TMPDIR/Bibata-Original-Ice.tar.gz" \
 		&& 7z x "$TMPDIR/Bibata-Original-Ice.tar.gz" -o"$TMPDIR/" \
 		&& 7z x "$TMPDIR/Bibata-Original-Ice.tar"    -o"$TMPDIR/" \
 		&& mv -f "$TMPDIR/Bibata-Original-Ice" "$XDG_DATA_HOME/icons/"
