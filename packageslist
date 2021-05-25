@@ -59,6 +59,7 @@
   NIX:nixpkgs.papirus-icon-theme                               #  Icon set that support nearly every app
 
 ### Other
+  APT:ufw    PAC:ufw    XBP:ufw                                #  Firewall
   NIX:nixpkgs.xdg_utils                                        #  Applications manager
   NIX:nixpkgs.xdg-user-dirs                                    #  XDG directory manager
   BSR:NNBnh/clipb                                              #S Clipboard managers warper
@@ -115,7 +116,7 @@
   BSR:NNBnh/hr                                                 #  Horizontal ruler
   NIX:nixpkgs.chafa                                            #X Convert image to textart
   PIP:git+https://github.com/will8211/unimatrix.git            #T Simulates the display from "The Matrix"
-  NIX:nixpkgs.nms                                              #T Become hackerman (Make outputs Minecraft enchanting table language)
+  NIX:nixpkgs.nms                                              #T Become hackerman (Make outputs = Minecraft enchanting table language)
 
 
 # =============================================================================
@@ -124,7 +125,7 @@
 
 ### Interact
   NIX:nixpkgs.mpv                                              #  Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
-  NIX:nixpkgs.firefox-esr                                      #  Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
+  NIX:nixpkgs.firefox                                          #  Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
 
 ### Productivity
   NIX:nixpkgs.gimp                                             #  Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
@@ -132,7 +133,7 @@
   NIX:nixpkgs.godot                                            #  Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
 
 ### Games
-# NIX:nixpkgs.lutris                                           #X Games manager
-# NIX:nixpkgs.steam                                            #  Gamer mode
+  NIX:nixpkgs.lutris                                           #X Games manager
+  NIX:nixpkgs.steam                                            #  Gamer mode
   NIX:nixpkgs.retroarch                                        #  Retro emulators
   NIX:nixpkgs.multimc                                          #  Minecraft launcher and instance manager
