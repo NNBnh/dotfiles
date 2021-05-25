@@ -31,7 +31,6 @@
 
 ### Screen
 # NIX:nixpkgs.brightnessctl                                    #  Screen backlight
-# NIX:nixpkgs.gammastep                                        #X Blue light filter
 # NIX:nixpkgs.swaybg                                           #W Set wallpaper
 
 ### Audio
@@ -99,14 +98,13 @@
   BSR:NNBnh/terminal-explorer                                  #S CLI tool that mimic the way GUI's file manager do copy/cut/paste
   NIX:nixpkgs.rsync                                            #  Sync files
   BSR:NNBnh/bsymlink                                           #S Batch symlink tool
-  PIP:trash-cli                                                #T Trash manager
+  PIP:trash-cli                                                #S Trash manager
 
 ### Data manipulation
   NIX:nixpkgs.exiftool                                         #S Metadata manipulation
   NIX:nixpkgs.jq                                               #S JSON processor
   NIX:nixpkgs.p7zip                                            #  Files archiving
   NIX:nixpkgs.pandoc                                           #  Markup converter
-  NIX:nixpkgs.imagemagick7                                     #X Image manipulator
   NIX:nixpkgs.ffmpeg                                           #  Media manipulator
 
 ### Utilitie
