@@ -25,7 +25,7 @@ The *SuperB* dotfiles for `*NIX` system, configured with a high level of **porta
     - Only have 2 [`TUI` (text-based user interface)](https://en.wikipedia.org/wiki/Text-based_user_interface) applications:
       - 📝 Text Editor: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#text-editor) (also used as a `$PAGER`)
       - ➡️ Selector: [**FZF**](https://github.com/NNBnh/dots/wiki/which#selector)
-    - And 5 [`GUI` (graphical user interface)](https://en.wikipedia.org/wiki/Graphical_user_interface) applications:
+    - And 6 [`GUI` (graphical user interface)](https://en.wikipedia.org/wiki/Graphical_user_interface) applications:
       - 📟 Terminal emulator: [**SuperB ST**](https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
       - 🎞️ Media player: [**MPV**](https://github.com/NNBnh/dots/wiki/which#media-player) (also used as a [image viewer](https://github.com/NNBnh/dots/wiki/which#image-viewer))
       - 🌏 Web browser: [**Firefox**](https://github.com/NNBnh/dots/wiki/which#web-browser)
