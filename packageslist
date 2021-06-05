@@ -86,7 +86,7 @@
   NIX:nixpkgs.dash                                             #  POSIX shell to write portable utilities
   NIX:nixpkgs.python3                                          #  Fun language to write small scripts
   YRN:typescript                                               #  For web dev
-  NIX:nixpkgs.shellcheck                                       #  Shell script static analysis
+  NIX:nixpkgs.shellharden                                      #  Shell script static analysis
   YRN:prettier                                                 #  Multi-languages code formatter
   PIP:black                                                    #  Python code formatter
   BSR:NNBnh/coderun                                            #  Code runner
@@ -94,7 +94,7 @@
 
 ### Data tranfer
   BSR:NNBnh/mk                                                 #S Files and folders creation tool
-  NIX:nixpkgs.curl                                             #  Download tool (WH.I.CH https://github.com/NNBnh/dots/wiki/which#download-tool)
+  NIX:nixpkgs.curl                                             #S Download tool (WH.I.CH https://github.com/NNBnh/dots/wiki/which#download-tool)
   PIP:youtube-dl                                               #  Media downloader
   BSR:NNBnh/terminal-explorer                                  #S CLI tool that mimic the way GUI's file manager do copy/cut/paste
   NIX:nixpkgs.rsync                                            #  Sync files
@@ -104,12 +104,13 @@
 ### Data manipulation
   NIX:nixpkgs.exiftool                                         #S Metadata manipulation
   NIX:nixpkgs.jq                                               #S JSON processor
-  NIX:nixpkgs.p7zip                                            #  Files archiving
+  NIX:nixpkgs.p7zip                                            #S Files archiving
   NIX:nixpkgs.pandoc                                           #  Markup converter
   NIX:nixpkgs.ffmpeg                                           #  Media manipulator
 
 ### Utilitie
-  NIX:nixpkgs.git                                              #  Version control system
+  NIX:nixpkgs.git                                              #X Version control system
+  PIP:gitless                                                  #  A better version control system
   PIP:asciinema                                                #  Record terminal sessions
   PIP:auto-editor                                              #  Automatically editing video
   NIX:nixpkgs.figlet                                           #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
