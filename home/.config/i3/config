@@ -1,16 +1,11 @@
 # xwayland enable
 
 
-exec --no-startup-id "$HOME/.config/autostart/display"
-exec_always --no-startup-id "$HOME/.config/autostart/displays"
-
-exec_always --no-startup-id "$HOME/.config/i3/exec_always"
+exec_always --no-startup-id "$HOME/.config/i3/rc"
 
 bindsym Mod4+e exit
 bindsym Mod4+r reload
 bindsym Mod4+Return exec i3-sensible-terminal
 
 
-# input "type:keyboard" xkb_options caps:swapescape
-
-bar
+#input "type:keyboard" xkb_options caps:swapescape
