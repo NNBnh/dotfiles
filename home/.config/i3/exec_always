@@ -8,6 +8,16 @@ WM_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
 
 # Start
+killall -p swaybg; swaybg --mode "$WALLPAPER_MODE" --image "$WALLPAPER_FILE" &
+
+killall -p playerctld; playerctld daemon &
+
+killall -p fcitx; fcitx -d &
+
+killall -p dunst; eval "dunst $DUNST_DEFAULT_OPTS"
+
+bui-appearance
+
 printf '%s' "
 	workspace_layout tabbed
 
@@ -36,9 +46,9 @@ printf '%s' "
 "
 
 
-# killall -p swayidle; swayidle -w before-sleep "$WM_DIR/lock" \
-#                                       timeout $(( 15 * 60 )) "$WM_DIR/lock; $MSG_COMMAND output * dpms off" \
-#                                        resume "$MSG_COMMAND output * dpms on" &
+#killall -p swayidle; swayidle -w before-sleep "$WM_DIR/lock" \
+#                                      timeout $(( 15 * 60 )) "$WM_DIR/lock; $MSG_COMMAND output * dpms off" \
+#                                       resume "$MSG_COMMAND output * dpms on" &
 
 
 exit 0
