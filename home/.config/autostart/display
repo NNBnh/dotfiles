@@ -1,12 +1,12 @@
 #!/bin/sh
 
 
-# Values
-eval "$("$HOME/.config/env/rc")"
-
-
 # Start
 killall -p swaybg; swaybg --mode "$WALLPAPER_MODE" --image "$WALLPAPER_FILE" &
+
+killall -p playerctld; playerctld daemon &
+
+killall -p fcitx; fcitx -d &
 
 killall -p dunst; eval "dunst $DUNST_DEFAULT_OPTS"
 
