@@ -14,31 +14,27 @@
 # URL:          https://github.com/NNBnh/dots/blob/master/home/.config/fish/config.fish
 
 
+# Values
 "$HOME/.config/env/rc" | source
 
+# Functions
+abbr l "ls -Ahl"
+abbr o "xdg-open"
 abbr e "$EDITOR"
 abbr g "git"
-abbr o "xdg-open"
-abbr l "ls -Ahl"
+abbr music-dl "youtube-dl --add-metadata --embed-thumbnail --audio-format 'mp3'"
 
-alias ifjson "curl --silent --location 'ifconfig.co/json'"
-alias roll "curl --silent --location 'https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh' | bash"
+alias ifjson  "curl --silent --location 'ifconfig.co/json'"
+alias roll    "curl --silent --location 'https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh' | bash"
 alias rollout "clipb copy 'curl -sL http://bit.ly/10hA8iC | bash'"
 
 function cht   --description   'cheat.sh'; curl --silent --location   "cheat.sh/$argv"; end
 function wttr  --description    'wttr.in'; curl --silent --location    "wttr.in/$argv"; end
 function wttr2 --description 'v2.wttr.in'; curl --silent --location "v2.wttr.in/$argv"; end
 function rate  --description    'rate.sx'; curl --silent --location    "rate.sx/$argv"; end
-function 0x0   --description     '0x0.st'; curl --form "$argv[1]=$argv[2]" --location "0x0.st"; end
-
-function fish_title
-	prompt_pwd
-end
-
-diyship init fish | source
 
 
-
+# Keymap
 function __fish_commandline_insert_escaped --description 'Insert the first arg escaped if a second arg is given'
 	if set -q argv[2]
 		commandline --insert \\$argv[1]
@@ -201,9 +197,16 @@ function bmap --description 'Fish key-mapping that SuperB'
 end
 
 
+# Start
+diyship init fish | source
+
+function fish_title
+	prompt_pwd
+end
 
 function fish_greeting
-	# stty intr '^X' susp '^P' eof '^Q' start '^A' stop '^E' -echo
+	stty intr '^X' susp '^P' eof '^Q' start '^A' stop '^E' -echo
+
 	bfetch
 
 	bui-terminal
