@@ -15,27 +15,21 @@ The *SuperB* dotfiles for `*NIX` system, configured with a high level of **porta
 
 ### ✨ Features
 - Super **portable**, because `Đotfiles` use [*SuperB Bootstrap*](https://github.com/NNBnh/superb-bootstrap) to manager dotfiles, it work on [any `*NIX` operating system that SBB supported](https://github.com/NNBnh/superb-bootstrap#-features)
-- Super **minimalism**, it follow the [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy) radically:
-  - *"Use programs that do one thing and do it well"*:
-    > This is to reduce bloat and redundancy in programs
-  - *"Use programs to work together"*:
-    > Built a network of programs thought environment variables, turn it into a tight ecosystem for thinker
-  - *"Use programs to handle text streams, because that is a universal interface"*:
-    - Almost all program use [`CLI` (command-line interface)](https://en.wikipedia.org/wiki/Command-line_interface)
-    - Only have 2 [`TUI` (text-based user interface)](https://en.wikipedia.org/wiki/Text-based_user_interface) applications:
-      - 📝 Text Editor: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#text-editor) (also used as a `$PAGER`)
-      - ➡️ Selector: [**FZF**](https://github.com/NNBnh/dots/wiki/which#selector)
-    - And 6 [`GUI` (graphical user interface)](https://en.wikipedia.org/wiki/Graphical_user_interface) applications:
-      - 📟 Terminal emulator: [**SuperB ST**](https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
-      - 🎞️ Media player: [**MPV**](https://github.com/NNBnh/dots/wiki/which#media-player) (also used as a [image viewer](https://github.com/NNBnh/dots/wiki/which#image-viewer))
-      - 🌏 Web browser: [**Firefox**](https://github.com/NNBnh/dots/wiki/which#web-browser)
-      - 🎨 Image editor: [**GIMP**](https://github.com/NNBnh/dots/wiki/which#image-editor)
-      - 🎥 Motion graphics: [**Blender**](https://github.com/NNBnh/dots/wiki/which#motion-graphics)
-      - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#game-engine)
+- Super **minimalism**:
+  - Almost all program use [`CLI` (command-line interface)](https://en.wikipedia.org/wiki/Command-line_interface)
+  - Only have 2 [`TUI` (text-based user interface)](https://en.wikipedia.org/wiki/Text-based_user_interface) applications:
+    - 📝 Text Editor: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#text-editor "Also used as a $PAGER")
+    - ➡️ Selector: [**FZF**](https://github.com/NNBnh/dots/wiki/which#selector)
+  - And 6 [`GUI` (graphical user interface)](https://en.wikipedia.org/wiki/Graphical_user_interface) applications:
+    - 📟 Terminal emulator: [**SuperB ST**](https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
+    - 🎞️ Media player: [**MPV**](https://github.com/NNBnh/dots/wiki/which#media-player "Also used as a image viewer")
+    - 🌏 Web browser: [**Firefox**](https://github.com/NNBnh/dots/wiki/which#web-browser)
+    - 🎨 Image editor: [**GIMP**](https://github.com/NNBnh/dots/wiki/which#image-editor)
+    - 🎥 Motion graphics: [**Blender**](https://github.com/NNBnh/dots/wiki/which#motion-graphics)
+    - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#game-engine)
 - Super **optimization**:
   - Using tree-base tiling system for endless freedom, work with any use cases
   - Maximize your screen real estate
-  - Convenient smart shotcut
 
 ## 📥 Installation
 `Đotfiles` use [*SuperB Bootstrap*](https://github.com/NNBnh/superb-bootstrap) to install, just download this repository then execute `./c/setup`:
@@ -52,4 +46,4 @@ git clone https://github.com/NNBnh/dots ~/c && ~/c/setup
 
 > <h1 align="center">Made with ❤️ by <a href="https://github.com/NNBnh"><i>NNB</i></a></h1>
 >
-> <p align="center"><a href="https://www.buymeacoffee.com/nnbnh"><img src="https://img.shields.io/badge/buy_me_a_coffee%20-%23F7CA88.svg?logo=buy-me-a-coffee&logoColor=333333&style=for-the-badge" alt="Buy Me a Coffee"></p>
+> <p align="center"><a href="https://www.buymeacoffee.com/nnbnh"><img src="https://img.shields.io/badge/buy_me_a_coffee%20-%23F7CA88.svg?logo=buy-me-a-coffee&logoColor=333333&style=for-the-badge" alt="Buy Me a Coffee"></a></p>
