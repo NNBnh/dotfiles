@@ -63,7 +63,7 @@
   NIX:nixpkgs.xdg-user-dirs                                    #  XDG directory manager
   BSR:NNBnh/clipb                                              #S Clipboard managers warper
 # NIX:nixpkgs.wl-clipboard                                     #X Clipboard manager
-  BSR:NNBnh/bui-appearance                                     #  Widget toolkit theming
+  BSR:superb-ui/evc-appearance                                 #  Widget toolkit theming
 
 
 # =============================================================================
@@ -74,7 +74,8 @@
   NIX:nixpkgs.fish                                             #S Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#interactive-shell)
   NIX:nixpkgs.kakoune                                          #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
   NIX:nixpkgs.fzf                                              #E Fuzzy selector (WH.I.CH https://github.com/NNBnh/dots/wiki/which#selector)
-  BSR:NNBnh/bui-terminal                                       #  Terminal theming
+  BSR:superb-ui/evc-terminal                                   #  Terminal theming
+  BSR:superb-ui/evc-st                                         #  Simple terminal theming
   BSR:NNBnh/bfetch                                             #T Fetch displayer
   BSR:info-mono/diyship                                        #  Cross-shell prompt
   BSR:info-mono/pathshortener                                  #  File system's path shortener
@@ -109,7 +110,6 @@
 
 ### Utilitie
   NIX:nixpkgs.git                                              #X Version control system
-  PIP:gitless                                                  #  A better version control system
   PIP:asciinema                                                #  Record terminal sessions
   PIP:auto-editor                                              #  Automatically editing video
   NIX:nixpkgs.figlet                                           #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
