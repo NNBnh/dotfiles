@@ -1,21 +1,6 @@
 #!/bin/sh
 
 
-# Functions
-ms2duration() {
-	MILISECONDS="$1"
-
-	       days=$(( MILISECONDS / 1000 / 60 / 60 / 24 )); [        "$days" -gt '0' ] && duration="${duration:+$duration }${days}day"
-	      hours=$(( MILISECONDS / 1000 / 60 / 60 % 24 )); [       "$hours" -gt '0' ] && duration="${duration:+$duration }${hours}hr"
-	    minutes=$(( MILISECONDS / 1000 / 60 % 60      )); [     "$minutes" -gt '0' ] && duration="${duration:+$duration }${minutes}min"
-	    seconds=$(( MILISECONDS / 1000 % 60           )); [     "$seconds" -gt '0' ] && duration="${duration:+$duration }${seconds}sec"
-	miliseconds=$(( MILISECONDS % 1000                )); [ "$miliseconds" -gt '0' ] && duration="${duration:+$duration }${miliseconds}ms"
-
-
-	printf '%s' "$duration"
-}
-
-
 # Values
 PROMPT_COLOR="${BUI_COLOR_TEXTART:-15}"
 
