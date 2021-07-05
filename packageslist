@@ -83,37 +83,35 @@
 
 ### Programming (WH.I.CH https://github.com/NNBnh/dots/wiki/which#programing-language)
   NIX:nixpkgs.rustc                                            #  Compiled language to build software
-  NIX:nixpkgs.dash                                             #  POSIX shell to write portable utilities
   NIX:nixpkgs.python3                                          #  Fun language to write small scripts
+  NIX:nixpkgs.dash                                             #  POSIX shell to write portable utilities
   YRN:typescript                                               #  For web dev
+  PIP:black                                                    #  Python code formatter
   NIX:nixpkgs.shellharden                                      #  Shell script static analysis
   YRN:prettier                                                 #  Multi-languages code formatter
-  PIP:black                                                    #  Python code formatter
   BSR:NNBnh/coderun                                            #  Code runner
-  YRN:markserv                                                 #  Live-reload markdown rendering server
 
 ### Data tranfer
   BSR:NNBnh/mk                                                 #S Files and folders creation tool
   NIX:nixpkgs.curl                                             #S Download tool (WH.I.CH https://github.com/NNBnh/dots/wiki/which#download-tool)
   PIP:youtube-dl                                               #  Media downloader
   BSR:NNBnh/terminal-explorer                                  #S CLI tool that mimic the way GUI's file manager do copy/cut/paste
-  NIX:nixpkgs.rsync                                            #  Sync files
   BSR:NNBnh/bsymlink                                           #S Batch symlink tool
   PIP:trash-cli                                                #S Trash manager
 
 ### Data manipulation
   NIX:nixpkgs.jq                                               #S JSON processor
   NIX:nixpkgs.exiftool                                         #S Metadata manipulation
-  NIX:nixpkgs.p7zip                                            #S Files archiving
+  NIX:nixpkgs.patool                                           #S Files archiving
   NIX:nixpkgs.pandoc                                           #  Markup converter
   NIX:nixpkgs.ffmpeg                                           #  Media manipulator
 
 ### Utilitie
-  NIX:nixpkgs.git                                              #X Version control system
+  NIX:nixpkgs.git                                              #  Version control system
   PIP:asciinema                                                #  Record terminal sessions
   PIP:auto-editor                                              #  Automatically editing video
   NIX:nixpkgs.figlet                                           #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
-  BSR:NNBnh/hr                                                 #  Horizontal ruler
+  BSR:NNBnh/hr                                                 #T Horizontal ruler
   NIX:nixpkgs.chafa                                            #X Convert image to textart
   PIP:git+https://github.com/will8211/unimatrix.git            #T Simulates the display from "The Matrix"
   NIX:nixpkgs.nms                                              #T Become hackerman (Make outputs => Minecraft enchanting table language)
