@@ -2,7 +2,6 @@
 <p align="center">Đotfiles that <i>SuperB</i></p>
 <p align="center"><a href="https://github.com/NNBnh/dots"><img width="25%" src="extra/logo.png"></a></p>
 <p align="center"><a href="https://github.com/NNBnh/dots/discussions/7"><img src="https://img.shields.io/badge/gallery%20-%23F7CA88.svg?style=for-the-badge" alt="Gallery"></a> <a href="packageslist"><img src="https://img.shields.io/badge/packages_list%20-%23F7CA88.svg?style=for-the-badge" alt="Packages list"></a> <a href="https://github.com/NNBnh/dots/wiki"><img src="https://img.shields.io/badge/wiki%20-%23F7CA88.svg?style=for-the-badge" alt="Wiki"></a></p>
-<p align="center"><a href="https://gist.github.com/NNBnh/9ef453aba3efce26046e0d3119dab5a7#active-development"><img src="https://img.shields.io/github/last-commit/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"></a> <a href="https://gist.github.com/NNBnh/9ef453aba3efce26046e0d3119dab5a7#active-development"><img src="https://img.shields.io/github/commit-activity/y/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"></a> <a href="https://github.com/NNBnh/dots"><img src="https://img.shields.io/github/repo-size/NNBnh/dots?labelColor=585858&color=F7CA88&style=flat-square"></a></p>
 
 ## 💡 About
 Welcome to the `Đotfiles`:
