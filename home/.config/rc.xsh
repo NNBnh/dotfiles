@@ -194,7 +194,7 @@ def _roll():
 	pyperclip.copy("curl -sL 'http://bit.ly/10hA8iC' | bash")
 aliases["roll"] = "_roll()"
 
-def _ifjson():
+def _ifjson(): #TODO
 	"ifconfig.co/json"
 	print(requests.get("https://ifconfig.co/json").text)
 aliases["ifjson"] = "_ifjson()"
@@ -264,6 +264,34 @@ def _diyship(): #TODO
 			STATUS_SYMBOL = "🧱"
 		else:
 			STATUS_SYMBOL = "⚡"
+
+	if os.path.exists(os.getcwd() + "/.git"):
+		# GIT_BRANCH=$(git rev-parse --abbrev-ref 'HEAD' 2>/dev/null) \
+		# && GIT_BRANCH="on \033[1;95m $GIT_BRANCH"
+
+		# git symbolic-ref 'HEAD' 2>&1 >/dev/null || {
+		# 	GIT_HASH=$(git rev-parse --verify --short 'HEAD' 2>/dev/null) \
+		# 	&& GIT_HASH="\033[1;92m#$GIT_HASH"
+		# }
+
+		# GIT_TAG=$(git tag --points-at 'HEAD' 2>/dev/null) \
+		# && [ -n "$GIT_TAG" ] && GIT_TAG="\033[1;93m🏷 $GIT_TAG"
+		pass
+
+	CWD  = os.getcwd()
+	HOME = os.path.expanduser("~")
+	if   CWD == HOME + "d/":
+		CWD_SYMBOL = "🗃 "
+	elif CWD == HOME + "c/":
+		CWD_SYMBOL = "⚙ "
+	elif CWD == HOME + "t/":
+		CWD_SYMBOL = "⚗ "
+	elif CWD == HOME:
+		CWD_SYMBOL = "🏠"
+	elif CWD == HOME:
+		CWD_SYMBOL = "📂"
+	else:
+		CWD_SYMBOL = "📁"
 
 
 # stty intr '^X' susp '^P' eof '^Q' start '^A' stop '^E' -echo
