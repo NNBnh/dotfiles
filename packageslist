@@ -12,6 +12,7 @@
 
 # C: Need config/scripting
 # T: TODO
+# U: TODO superb ui
 # S: TODO command shell
 # W: TODO window manager
 # E: TODO editor
@@ -63,7 +64,6 @@
   NIX:nixpkgs.xdg-user-dirs                                    #  XDG directory manager
   BSR:NNBnh/clipb                                              #S Clipboard managers warper
 # NIX:nixpkgs.wl-clipboard                                     #X Clipboard manager
-  BSR:superb-ui/evc-appearance                                 #  Widget toolkit theming
 
 
 # =============================================================================
@@ -74,27 +74,27 @@
   NIX:nixpkgs.fish                                             #S Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#interactive-shell)
   NIX:nixpkgs.kakoune                                          #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
   NIX:nixpkgs.fzf                                              #E Fuzzy selector (WH.I.CH https://github.com/NNBnh/dots/wiki/which#selector)
-  BSR:superb-ui/evc-terminal                                   #  Terminal theming
-  BSR:superb-ui/evc-st                                         #  Simple terminal theming
+  BSR:superb-ui/evc-terminal                                   #U Terminal theming
+  BSR:superb-ui/evc-st                                         #U Simple terminal theming
   BSR:NNBnh/bfetch                                             #T Fetch displayer
   BSR:info-mono/diyship                                        #  Cross-shell prompt
-  BSR:info-mono/pathshortener                                  #  File system's path shortener
-  BSR:info-mono/status2signal                                  #  Status code to signal name converter
+  BSR:info-mono/pathshortener                                  #X File system's path shortener
+  BSR:info-mono/status2signal                                  #X Status code to signal name converter
 
 ### Programming (WH.I.CH https://github.com/NNBnh/dots/wiki/which#programing-language)
   NIX:nixpkgs.rustc                                            #  Compiled language to build software
   NIX:nixpkgs.python3                                          #  Fun language to write small scripts
   NIX:nixpkgs.dash                                             #  POSIX shell to write portable utilities
-  YRN:typescript                                               #  For web dev
+  YRN:typescript                                               #  For web-dev
   PIP:black                                                    #  Python code formatter
   NIX:nixpkgs.shellharden                                      #  Shell script static analysis
   YRN:prettier                                                 #  Multi-languages code formatter
-  BSR:NNBnh/coderun                                            #  Code runner
+  BSR:NNBnh/coderun                                            #T Code runner
 
 ### Data tranfer
   BSR:NNBnh/mk                                                 #S Files and folders creation tool
   NIX:nixpkgs.curl                                             #S Download tool (WH.I.CH https://github.com/NNBnh/dots/wiki/which#download-tool)
-  PIP:youtube-dl                                               #  Media downloader
+  PIP:youtube-dl                                               #X Media downloader
   BSR:NNBnh/terminal-explorer                                  #S CLI tool that mimic the way GUI's file manager do copy/cut/paste
   BSR:NNBnh/bsymlink                                           #S Batch symlink tool
   PIP:trash-cli                                                #S Trash manager
