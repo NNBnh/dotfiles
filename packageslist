@@ -24,46 +24,35 @@
 # =============================================================================
 
 ### Core
-# NIX:nixpkgs.lightdm                                          #C Login manager
-# NIX:nixpkgs.lightlocker                                      #C Lock screen support for login manager
-# NIX:nixpkgs.xwayland                                         #  Xwayland backend
-# NIX:nixpkgs.sway                                             #W Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#windows-manager)
-# NIX:nixpkgs.swayidle                                         #X Idle management
-
-### Screen
-# NIX:nixpkgs.brightnessctl                                    #  Screen backlight
-# NIX:nixpkgs.swaybg                                           #W Set wallpaper
-
-### Audio
-# NIX:nixpkgs.pipewire                                         #  Sound server
-  NIX:nixpkgs.playerctl                                        #  Control media
+  NIX:nixpkgs.lightdm                                          #C Login manager
+  NIX:nixpkgs.lightlocker                                      #C Lock screen support for login manager
+  PIP:qtile                                                    #W Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#windows-manager)
+  PIP:qtile-plasma                                             #W Tree-based layout for Qtile
+  NIX:nixpkgs.pipewire                                         #  Sound server
 
 ### Input
-# NIX:nixpkgs.fcitx                                            #  Input method
-# NIX:nixpkgs.fcitx-engines.unikey                             #  Vietnamese support for input method
+  NIX:nixpkgs.fcitx                                            #  Input method
+  NIX:nixpkgs.fcitx-engines.unikey                             #  Vietnamese support for input method
   NIX:nixpkgs.sc-controller                                    #  Controller setting
-  NIX:nixpkgs.ydotool                                          #C Send inputs
-
-### Screeny
-  NIX:nixpkgs.slurp                                            #  Screen region selector
-# NIX:nixpkgs.grim                                             #X Screenshot
-# NIX:nixpkgs.wf-recorder                                      #X Screen record
 
 ### Notification
   NIX:nixpkgs.libnotify                                        #  Notification library
-# NIX:nixpkgs.dunst                                            #W Notification daemon
+  NIX:nixpkgs.dunst                                            #W Notification daemon
 
 ### Resource
   NIX:nixpkgs.sarasa-gothic                                    #  Non Latin support for font
   NIX:nixpkgs.twemoji-color-font                               #  Emoji support for font
   NIX:nixpkgs.papirus-icon-theme                               #  Icon set that support nearly every app
 
+### Utilitie
+  NIX:nixpkgs.brightnessctl                                    #  Screen backlight
+  NIX:nixpkgs.playerctl                                        #  Control media
+  BSR:NNBnh/clipb                                              #S Clipboard managers warper
+
 ### Other
   APT:ufw PAC:ufw XBP:ufw                                      #  Firewall
   NIX:nixpkgs.xdg_utils                                        #  Applications manager
   NIX:nixpkgs.xdg-user-dirs                                    #  XDG directory manager
-  BSR:NNBnh/clipb                                              #S Clipboard managers warper
-# NIX:nixpkgs.wl-clipboard                                     #X Clipboard manager
 
 
 # =============================================================================
@@ -71,15 +60,10 @@
 # =============================================================================
 
 ### Interactive
-  NIX:nixpkgs.fish                                             #S Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#interactive-shell)
+  PIP:xonsh[full]                                              #S Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#interactive-shell)
   NIX:nixpkgs.kakoune                                          #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
-  NIX:nixpkgs.fzf                                              #E Fuzzy selector (WH.I.CH https://github.com/NNBnh/dots/wiki/which#selector)
   BSR:superb-ui/evc-terminal                                   #U Terminal theming
-  BSR:superb-ui/evc-st                                         #U Simple terminal theming
-  BSR:NNBnh/bfetch                                             #T Fetch displayer
   BSR:info-mono/diyship                                        #  Cross-shell prompt
-  BSR:info-mono/pathshortener                                  #X File system's path shortener
-  BSR:info-mono/status2signal                                  #X Status code to signal name converter
 
 ### Programming (WH.I.CH https://github.com/NNBnh/dots/wiki/which#programing-language)
   NIX:nixpkgs.rustc                                            #  Compiled language to build software
@@ -91,27 +75,18 @@
   YRN:prettier                                                 #  Multi-languages code formatter
   BSR:NNBnh/coderun                                            #T Code runner
 
-### Data tranfer
+### Utilitie
   BSR:NNBnh/mk                                                 #S Files and folders creation tool
-  NIX:nixpkgs.curl                                             #S Download tool (WH.I.CH https://github.com/NNBnh/dots/wiki/which#download-tool)
-  PIP:youtube-dl                                               #X Media downloader
-  BSR:NNBnh/terminal-explorer                                  #S CLI tool that mimic the way GUI's file manager do copy/cut/paste
   BSR:NNBnh/bsymlink                                           #S Batch symlink tool
-  PIP:trash-cli                                                #S Trash manager
-
-### Data manipulation
-  NIX:nixpkgs.jq                                               #S JSON processor
   NIX:nixpkgs.exiftool                                         #S Metadata manipulation
-  NIX:nixpkgs.patool                                           #S Files archiving
+  PIP:patool                                                   #S Files archiving
+  NIX:nixpkgs.git                                              #  Version control system
   NIX:nixpkgs.pandoc                                           #  Markup converter
   NIX:nixpkgs.ffmpeg                                           #  Media manipulator
-
-### Utilitie
-  NIX:nixpkgs.git                                              #  Version control system
+  PIP:python-ffmpeg[full]                                      #  A python interface for FFmpeg
   PIP:asciinema                                                #  Record terminal sessions
   PIP:auto-editor                                              #  Automatically editing video
-  NIX:nixpkgs.figlet                                           #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
-  BSR:NNBnh/hr                                                 #T Horizontal ruler
+  PIP:pyfiglet                                                 #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
   NIX:nixpkgs.chafa                                            #X Convert image to textart
   PIP:git+https://github.com/will8211/unimatrix.git            #T Simulates the display from "The Matrix"
   NIX:nixpkgs.nms                                              #T Become hackerman (Make outputs => Minecraft enchanting table language)
