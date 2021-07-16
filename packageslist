@@ -83,7 +83,7 @@
   NIX:nixpkgs.git                                              #  Version control system
   NIX:nixpkgs.pandoc                                           #  Markup converter
   NIX:nixpkgs.ffmpeg                                           #  Media manipulator
-  PIP:python-ffmpeg[full]                                      #  A python interface for FFmpeg
+  PIP:python-ffmpeg                                            #  A python interface for FFmpeg
   PIP:asciinema                                                #  Record terminal sessions
   PIP:auto-editor                                              #  Automatically editing video
   PIP:pyfiglet                                                 #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
