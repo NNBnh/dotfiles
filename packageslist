@@ -66,26 +66,22 @@
   BSR:info-mono/diyship                                        #  Cross-shell prompt
 
 ### Programming (WH.I.CH https://github.com/NNBnh/dots/wiki/which#programing-language)
-  NIX:nixpkgs.rustc                                            #  Compiled language to build software
-  NIX:nixpkgs.python3                                          #  Fun language to write small scripts
-  NIX:nixpkgs.dash                                             #  POSIX shell to write portable utilities
-  YRN:typescript                                               #  For web-dev
+  NIX:nixpkgs.python3                                          #  Convenient language to write scripts
   PIP:black                                                    #  Python code formatter
-  NIX:nixpkgs.shellharden                                      #  Shell script static analysis
-  YRN:prettier                                                 #  Multi-languages code formatter
+  NIX:nixpkgs.rustc                                            #  Compiled language to build software
+  YRN:typescript                                               #  For web-dev
+  YRN:prettier                                                 #  Multi-languages (web-dev) code formatter
   BSR:NNBnh/coderun                                            #T Code runner
 
 ### Utilitie
   BSR:NNBnh/mk                                                 #S Files and folders creation tool
-  BSR:NNBnh/bsymlink                                           #S Batch symlink tool
-  NIX:nixpkgs.exiftool                                         #S Metadata manipulation
-  PIP:patool                                                   #S Files archiving
   NIX:nixpkgs.git                                              #  Version control system
-  NIX:nixpkgs.pandoc                                           #  Markup converter
+  PIP:patool                                                   #S Files archiving
+  PIP:pandoc                                                   #  Markup converter
   NIX:nixpkgs.ffmpeg                                           #  Media manipulator
   PIP:python-ffmpeg                                            #  A python interface for FFmpeg
-  PIP:asciinema                                                #  Record terminal sessions
   PIP:auto-editor                                              #  Automatically editing video
+  PIP:asciinema                                                #  Record terminal sessions
   PIP:pyfiglet                                                 #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
   NIX:nixpkgs.chafa                                            #X Convert image to textart
   PIP:git+https://github.com/will8211/unimatrix.git            #T Simulates the display from "The Matrix"
