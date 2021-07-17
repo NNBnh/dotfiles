@@ -79,7 +79,7 @@
   PIP:patool                                                   #S Files archiving
   PIP:pandoc                                                   #  Markup converter
   NIX:nixpkgs.ffmpeg                                           #  Media manipulator
-  PIP:python-ffmpeg                                            #  A python interface for FFmpeg
+  PIP:ffmpeg-python                                            #  Python interface for FFmpeg
   PIP:auto-editor                                              #  Automatically editing video
   PIP:asciinema                                                #  Record terminal sessions
   PIP:pyfiglet                                                 #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
