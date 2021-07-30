@@ -47,7 +47,6 @@
 ### Utilitie
   NIX:nixpkgs.brightnessctl                                    #  Screen backlight
   NIX:nixpkgs.playerctl                                        #  Control media
-  BSR:NNBnh/clipb                                              #S Clipboard managers warper
 
 ### Other
   APT:ufw PAC:ufw XBP:ufw                                      #  Firewall
@@ -65,17 +64,13 @@
   BSR:superb-ui/evc-terminal                                   #U Terminal theming
   BSR:info-mono/diyship                                        #  Cross-shell prompt
 
-### Programming (WH.I.CH https://github.com/NNBnh/dots/wiki/which#programing-language)
-  NIX:nixpkgs.python3                                          #  Convenient language to write scripts
-  PIP:black                                                    #  Python code formatter
-  NIX:nixpkgs.rustc                                            #  Compiled language to build software
-  YRN:typescript                                               #  For web-dev
-  YRN:prettier                                                 #  Multi-languages (web-dev) code formatter
-  BSR:NNBnh/coderun                                            #T Code runner
-
-### Utilitie
-  BSR:NNBnh/mk                                                 #S Files and folders creation tool
+### Programming
+  NIX:nixpkgs.rustc                                            #  Compiled language (WH.I.CH https://github.com/NNBnh/dots/wiki/which#programing-language)
   NIX:nixpkgs.git                                              #  Version control system
+
+### Scripting/utilities
+  NIX:nixpkgs.python3                                          #  Scripting language (WH.I.CH https://github.com/NNBnh/dots/wiki/which#scripting-language)
+  PIP:black                                                    #  Python code formatter
   PIP:patool                                                   #S Files archiving
   PIP:pandoc                                                   #  Markup converter
   NIX:nixpkgs.ffmpeg                                           #  Media manipulator
@@ -87,6 +82,9 @@
   PIP:git+https://github.com/will8211/unimatrix.git            #T Simulates the display from "The Matrix"
   NIX:nixpkgs.nms                                              #T Become hackerman (Make outputs => Minecraft enchanting table language)
 
+### Web development
+  YRN:typescript                                               #  Web-dev language (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-development-language)
+  YRN:prettier                                                 #  Multi-languages (web-dev) code formatter
 
 # =============================================================================
 # 3. Applications
@@ -105,4 +103,4 @@
   NIX:nixpkgs.lutris                                           #  Games manager
   NIX:nixpkgs.steam                                            #  Gamer mode
   NIX:nixpkgs.retroarch                                        #  Retro emulators
-  NIX:nixpkgs.multimc                                          #  Minecraft launcher and instance manager
+  NIX:nixpkgs.multimc                                          #  Multi-instances Minecraft launcher
