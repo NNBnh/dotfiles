@@ -19,39 +19,40 @@
 # X: Will remove in far future
 
 
+packages:
+
 # =============================================================================
 # 1. System
 # =============================================================================
 
 ### Core
-  NIX:nixpkgs.lightdm                                          #C Login manager
-  NIX:nixpkgs.lightlocker                                      #C Lock screen support for login manager
-  PIP:qtile                                                    #W Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#windows-manager)
-  PIP:qtile-plasma                                             #W Tree-based layout for Qtile
-  NIX:nixpkgs.pipewire                                         #  Sound server
+- lightdm                                                      #C Login manager
+- lightlocker                                                  #C Lock screen support for login manager
+- qtile: pip                                                   #W Windows manager (WH.I.CH https://github.com/NNBnh/dots/wiki/which#windows-manager)
+- qtile-plasma: pip                                            #W Tree-based layout for Qtile
+- pipewire                                                     #  Sound server
 
 ### Input
-  NIX:nixpkgs.fcitx                                            #  Input method
-  NIX:nixpkgs.fcitx-engines.unikey                             #  Vietnamese support for input method
-  NIX:nixpkgs.sc-controller                                    #  Controller setting
+- fcitx5-unikey                                                #  Vietnamese input method
+- sc-controller                                                #  Controller setting
 
 ### Notification
-  NIX:nixpkgs.libnotify                                        #  Notification library
-  NIX:nixpkgs.dunst                                            #W Notification daemon
+- libnotify                                                    #  Notification library
+- dunst                                                        #W Notification daemon
 
 ### Resource
-  NIX:nixpkgs.sarasa-gothic                                    #  Non Latin support for font
-  NIX:nixpkgs.twemoji-color-font                               #  Emoji support for font
-  NIX:nixpkgs.papirus-icon-theme                               #  Icon set that support nearly every app
+- sarasa-gothic                                                #  Non Latin support for font
+- twemoji-color                                                #  Emoji support for font
+- papirus-icon-theme                                           #  Icon set that support nearly every app
 
 ### Utilitie
-  NIX:nixpkgs.brightnessctl                                    #  Screen backlight
-  NIX:nixpkgs.playerctl                                        #  Control media
+- brightnessctl                                                #  Screen backlight
+- playerctl                                                    #  Control media
 
 ### Other
-  APT:ufw PAC:ufw XBP:ufw                                      #  Firewall
-  NIX:nixpkgs.xdg_utils                                        #  Applications manager
-  NIX:nixpkgs.xdg-user-dirs                                    #  XDG directory manager
+- ufw                                                          #  Firewall
+- xdg-utils                                                    #  Applications manager
+- xdg-user-dirs                                                #  XDG directory manager
 
 
 # =============================================================================
@@ -59,48 +60,48 @@
 # =============================================================================
 
 ### Interactive
-  PIP:xonsh[full]                                              #S Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#interactive-shell)
-  NIX:nixpkgs.kakoune                                          #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
-  BSR:superb-ui/evc-terminal                                   #U Terminal theming
-  BSR:info-mono/diyship                                        #  Cross-shell prompt
+- xonsh[full]: pip                                             #S Interactive shell (WH.I.CH https://github.com/NNBnh/dots/wiki/which#interactive-shell)
+- kakoune                                                      #E Text editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-editor)
+- superb-ui/evc-terminal: basher                               #U Terminal theming
+- info-mono/diyship: basher                                    #  Cross-shell prompt
 
 ### Programming
-  NIX:nixpkgs.rustc                                            #  Compiled language (WH.I.CH https://github.com/NNBnh/dots/wiki/which#programing-language)
-  NIX:nixpkgs.git                                              #  Version control system
+- rust                                                         #  Compiled language (WH.I.CH https://github.com/NNBnh/dots/wiki/which#programing-language)
+- git                                                          #  Version control system
 
 ### Scripting/utilities
-  NIX:nixpkgs.python3                                          #  Scripting language (WH.I.CH https://github.com/NNBnh/dots/wiki/which#scripting-language)
-  PIP:black                                                    #  Python code formatter
-  PIP:patool                                                   #S Files archiving
-  PIP:pandoc                                                   #  Markup converter
-  NIX:nixpkgs.ffmpeg                                           #  Media manipulator
-  PIP:ffmpeg-python                                            #  Python interface for FFmpeg
-  PIP:auto-editor                                              #  Automatically editing video
-  PIP:asciinema                                                #  Record terminal sessions
-  PIP:pyfiglet                                                 #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
-  NIX:nixpkgs.chafa                                            #X Convert image to textart
-  PIP:git+https://github.com/will8211/unimatrix.git            #T Simulates the display from "The Matrix"
-  NIX:nixpkgs.nms                                              #T Become hackerman (Make outputs => Minecraft enchanting table language)
+- python                                                       #  Scripting language (WH.I.CH https://github.com/NNBnh/dots/wiki/which#scripting-language)
+- black: pip                                                   #  Python code formatter
+- patool: pip                                                  #S Files archiving
+- pandoc: pip                                                  #  Markup converter
+- ffmpeg                                                       #  Media manipulator
+- ffmpeg-python: pip                                           #  Python interface for FFmpeg
+- auto-editor: pip                                             #  Automatically editing video
+- asciinema: pip                                               #  Record terminal sessions
+- pyfiglet: pip                                                #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
+- chafa                                                        #X Convert image to textart
+- git+https://github.com/will8211/unimatrix.git: pip           #T Simulates the display from "The Matrix"
+- no-more-secrets                                              #T Become hackerman (Make outputs => Minecraft enchanting table language)
 
 ### Web development
-  YRN:typescript                                               #  Web-dev language (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-development-language)
-  YRN:prettier                                                 #  Multi-languages (web-dev) code formatter
+- typescript: yarn                                             #  Web-dev language (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-development-language)
+- prettier: yarn                                               #  Multi-languages (web-dev) code formatter
 
 # =============================================================================
 # 3. Applications
 # =============================================================================
 
 ### Interact
-  NIX:nixpkgs.mpv                                              #  Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
-  NIX:nixpkgs.firefox                                          #  Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
+- mpv                                                          #  Media player (WH.I.CH https://github.com/NNBnh/dots/wiki/which#media-player)
+- firefox                                                      #  Web browser (WH.I.CH https://github.com/NNBnh/dots/wiki/which#web-browser)
 
 ### Productivity
-  NIX:nixpkgs.gimp                                             #  Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
-  NIX:nixpkgs.blender                                          #  Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
-  NIX:nixpkgs.godot                                            #  Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
+- gimp                                                         #  Image editor (WH.I.CH https://github.com/NNBnh/dots/wiki/which#image-editor)
+- blender                                                      #  Motion graphics (WH.I.CH https://github.com/NNBnh/dots/wiki/which#motion-graphics)
+- godot                                                        #  Game engine (WH.I.CH https://github.com/NNBnh/dots/wiki/which#game-engine)
 
 ### Games
-  NIX:nixpkgs.lutris                                           #  Games manager
-  NIX:nixpkgs.steam                                            #  Gamer mode
-  NIX:nixpkgs.retroarch                                        #  Retro emulators
-  NIX:nixpkgs.multimc                                          #  Multi-instances Minecraft launcher
+- lutris                                                       #  Games manager
+- steam                                                        #  Gamer mode
+- retroarch                                                    #  Retro emulators
+- multimc                                                      #  Multi-instances Minecraft launcher
