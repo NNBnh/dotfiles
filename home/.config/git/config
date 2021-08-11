@@ -1,6 +1,5 @@
-[user]
-	name  = "NNB"
-	email = "nnbnh@protonmail.com"
+[credntial]
+	helper = "cache"
 
 [color]
 	ui = 1
