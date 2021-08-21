@@ -1,5 +1,5 @@
-[credntial]
-	helper = "cache"
+[credential]
+	helper = "store"
 
 [color]
 	ui = 1
