@@ -35,6 +35,7 @@ packages:
 ### Input
 - repology: fcitx-unikey                                       #  Vietnamese input method
 - repology: sc-controller                                      #  Controller setting
+- pypi:     keyboard                                           #  Keyboard manager
 
 ### Notification
 - repology: libnotify                                          #  Notification library
@@ -71,13 +72,17 @@ packages:
 
 ### Utilities
 - repology: git                                                #  Version control system
+- pypi:     GitPython                                          #  Python interface for Git
+- pypi:     dploy                                              #  Symlink manager
 - pypi:     patool                                             #S Files archiving
-- pypi:     pandoc                                             #  Markup converter
+- pypi:     Send2Trash                                         #S Trash manager
+- pypi:     pyperclip                                          #S Clipboard manager
+- pypi:     googletrans                                        #  Google translator
 - repology: ffmpeg                                             #  Media manipulator
 - pypi:     ffmpeg-python                                      #  Python interface for FFmpeg
 - pypi:     auto-editor                                        #  Automatically editing video
 - pypi:     asciinema                                          #  Record terminal sessions
-- pypi:     pyfiglet                                           #T Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
+- pypi:     pyfiglet                                           #  Text banner generator (WH.I.CH https://github.com/NNBnh/dots/wiki/which#text-banner-generator)
 - repology: chafa                                              #X Convert image to textart
 - pypi:     git+https://github.com/will8211/unimatrix.git      #T Simulates the display from "The Matrix"
 - repology: no-more-secrets                                    #T Become hackerman (Make outputs => Minecraft enchanting table language)
