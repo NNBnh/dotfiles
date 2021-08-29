@@ -32,11 +32,6 @@ packages:
 - pypi:     qtile-plasma                                       #W Tree-based layout for Qtile
 - repology: pipewire                                           #  Sound server
 
-### Input
-- repology: fcitx-unikey                                       #  Vietnamese input method
-- repology: sc-controller                                      #  Controller setting
-- pypi:     keyboard                                           #  Keyboard manager
-
 ### Notification
 - repology: libnotify                                          #  Notification library
 - repology: dunst                                              #W Notification daemon
@@ -47,13 +42,13 @@ packages:
 - repology: papirus-icon-theme                                 #  Icon set that support nearly every app
 
 ### Utilitie
-- repology: brightnessctl                                      #  Screen backlight
-- repology: playerctl                                          #  Control media
-
-### Other
 - repology: ufw                                                #  Firewall
 - repology: xdg-utils                                          #  Applications manager
 - repology: xdg-user-dirs                                      #  XDG directory manager
+- repology: brightnessctl                                      #  Screen backlight
+- repology: playerctl                                          #  Control media
+- repology: fcitx-unikey                                       #  Vietnamese input method
+- pypi:     keyboard                                           #  Keyboard manager
 
 
 # =============================================================================
