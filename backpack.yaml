@@ -12,7 +12,6 @@
 
 # C: Need config/scripting
 # T: TODO
-# U: TODO superb ui
 # S: TODO command shell
 # W: TODO window manager
 # E: TODO editor
@@ -32,14 +31,13 @@ packages:
 - pypi:     qtile-plasma                                       #W Tree-based layout for Qtile
 - repology: pipewire                                           #  Sound server
 
-### Notification
-- repology: libnotify                                          #  Notification library
-- repology: dunst                                              #W Notification daemon
-
 ### Resource
-- repology: fonts:sarasa-gothic                                #  Non Latin support for font
+# todo:     fonts:atkinson-hyperlegible                        #  Sans Serif font
+# todo:     fonts:bmono                                        #  Mono font
+- repology: fonts:sarasa-gothic                                #  Non Latin characters support for font
 - repology: fonts:twemoji-color                                #  Emoji support for font
-- repology: papirus-icon-theme                                 #  Icon set that support nearly every app
+- repology: papirus-icon-theme                                 #  Icon set
+# todo:     cursors:bibata                                     #  Cursor theme
 
 ### Utilitie
 - repology: ufw                                                #  Firewall
@@ -49,6 +47,8 @@ packages:
 - repology: playerctl                                          #  Control media
 - repology: fcitx-unikey                                       #  Vietnamese input method
 - pypi:     keyboard                                           #  Keyboard manager
+- repology: libnotify                                          #  Notification library
+- repology: dunst                                              #W Notification daemon
 
 
 # =============================================================================
@@ -59,8 +59,6 @@ packages:
 - pypi:     xonsh[full]                                        #S Interactive shell
 - repology: kakoune                                            #E Text editor
 - pypi:     EditorConfig                                       #  EditorConfig core
-- basher:   superb-ui/evc-terminal                             #U Terminal theming
-- basher:   info-mono/diyship                                  #  Cross-shell prompt
 
 ### Programming
 - repology: python                                             #  Scripting language
@@ -81,7 +79,6 @@ packages:
 - pypi:     pyfiglet                                           #  Text banner generator
 - repology: chafa                                              #X Convert image to textart
 - pypi:     git+https://github.com/will8211/unimatrix.git      #T Simulates the display from "The Matrix"
-- repology: no-more-secrets                                    #T Become hackerman (Make outputs => Minecraft enchanting table language)
 
 
 # =============================================================================
@@ -89,6 +86,7 @@ packages:
 # =============================================================================
 
 ### Interact
+# todo:     superb-st                                          #  Terminal emulator
 - repology: mpv                                                #  Media player
 - repology: firefox                                            #  Web browser
 
