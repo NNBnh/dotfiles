@@ -56,7 +56,7 @@ packages:
 # =============================================================================
 
 ### Interactive
-- pypi:     xonsh[full]                                        #S Interactive shell
+- repology: xonsh                                              #S Interactive shell
 - repology: kakoune                                            #E Text editor
 - pypi:     EditorConfig                                       #  EditorConfig core
 
