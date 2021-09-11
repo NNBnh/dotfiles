@@ -40,7 +40,11 @@ plug 'NNBnh/bmap.kak' config %{
 plug 'Screwtapello/kakoune-inc-dec' domain 'gitlab.com'
 plug 'h-youhei/kakoune-surround'
 
-# plug 'alexherbo2/auto-pairs.kak'
+plug "alexherbo2/auto-pairs.kak" config %{
+	set-option global auto_pairs '(' ')' '{' '}' '[' ']' '"' '"' '`' '`'
+
+	enable-auto-pairs
+}
 
 plug 'occivink/kakoune-find'
 
@@ -60,8 +64,8 @@ plug 'NNBnh/coderun.kak'
 set-option global scrolloff '3,7'
 set-option global tabstop 4
 set-option global indentwidth 0
+set-option global ui_options terminal_padding_char=
 set-option global modelinefmt '{{context_info}} {{mode_info}} %val{cursor_line}/%val{buf_line_count} %val{cursor_char_column} '
-set-option global ui_options terminal_padding_char='·'
 
 add-highlighter global/ number-lines -relative -hlcursor -separator ' ' -min-digits '3'
 add-highlighter global/ show-whitespaces -tab '▏' -tabpad ' ' -lf ' ' -spc ' ' -nbsp '·'
