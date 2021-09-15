@@ -36,3 +36,9 @@ os.system("sudo chsh -s " + shutil.which("xonsh"))
 # Enable firewall
 if shutil.which("ufw"):
 	os.system("sudo ufw enable")
+<<<<<<< HEAD
+=======
+
+# Symlinks
+dploy.stow(["home"], os.environ["HOME"])
+>>>>>>> 157339e (1)
