@@ -17,16 +17,17 @@ The *SuperB* dotfiles for `*NIX` system, configured with a high level of **porta
 - Super **minimalism**:
   - Almost all program use [`CLI` (command-line interface)](https://en.wikipedia.org/wiki/Command-line_interface).
   - And 7 [`GUI`](https://en.wikipedia.org/wiki/Graphical_user_interface "Graphical user interface")/[`TUI`](https://en.wikipedia.org/wiki/Text-based_user_interface "Text-based user interface") applications:
-    - 📝 Text Editor: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#text-editor "Also used as a $PAGER").
-    - 📟 Terminal emulator: [**SuperB ST**](https://github.com/NNBnh/dots/wiki/which#terminal-emulator).
-    - 🎞️ Media player: [**MPV**](https://github.com/NNBnh/dots/wiki/which#media-player "Also used as a image viewer").
-    - 🌏 Web browser: [**Firefox**](https://github.com/NNBnh/dots/wiki/which#web-browser).
-    - 🎨 Image editor: [**GIMP**](https://github.com/NNBnh/dots/wiki/which#image-editor).
-    - 🎥 Motion graphics: [**Blender**](https://github.com/NNBnh/dots/wiki/which#motion-graphics).
-    - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#game-engine).
+    - 📝 Text Editor: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#-text-editor "Also used as a $PAGER").
+    - 📟 Terminal emulator: [**SuperB ST**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator).
+    - 🎞️ Media player: [**MPV**](https://github.com/NNBnh/dots/wiki/which#%EF%B8%8F-media-player "Also used as a image viewer").
+    - 🌏 Web browser: [**Brave**](https://github.com/NNBnh/dots/wiki/which#-web-browser).
+    - 🎨 Image editor: [**GIMP**](https://github.com/NNBnh/dots/wiki/which#%EF%B8%8F-image-editor).
+    - 🎥 Motion graphics: [**Blender**](https://github.com/NNBnh/dots/wiki/which#-motion-graphics).
+    - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine).
 - Super **optimization**:
-  - Using [**Qtile**](http://www.qtile.org): a tree-base tiling windows manager for endless freedom.
-  - Maximize the screen real estate.
+  - 🪟 Windows manager: [**Qtile**](https://github.com/NNBnh/dots/wiki/which#-windows-manager):
+    - A tree-base tiling windows manager for endless freedom.
+    - Maximize the screen real estate.
 
 ## 📥 Installation
 `Đotfiles` use [*SuperB Bootstrap*](https://github.com/NNBnh/superb-bootstrap) to install, just download this repository then execute `./c/setup`:
