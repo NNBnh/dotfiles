@@ -8,27 +8,25 @@ Welcome to the `Đotfiles`:
 
 > ⬤ ⬤ ⬤
 
-The *SuperB* dotfiles for `*NIX` system, configured with a high level of **portable** for **minimalism** and **optimization**.
-
 <p align="center"><img src="https://user-images.githubusercontent.com/43980777/108480424-85941700-72c9-11eb-8380-89ddb5202607.png"></p>
 
+The *SuperB* dotfiles for `*NIX` system, configured with a high level of **portable** for **minimalism** and **optimization**.
+
 ### ✨ Features
-- Super **portable**, because `Đotfiles` use [*SuperB Bootstrap*](https://github.com/NNBnh/superb-bootstrap) to manager dotfiles, it work on [any `*NIX` operating system that SBB supported](https://github.com/NNBnh/superb-bootstrap#-features)
+- Super **portable**, because `Đotfiles` use [*SuperB Bootstrap*](https://github.com/NNBnh/superb-bootstrap) to manager dotfiles, it work on [any `*NIX` operating system that SBB supported](https://github.com/NNBnh/superb-bootstrap#-features).
 - Super **minimalism**:
-  - Almost all program use [`CLI` (command-line interface)](https://en.wikipedia.org/wiki/Command-line_interface)
-  - Only have 2 [`TUI` (text-based user interface)](https://en.wikipedia.org/wiki/Text-based_user_interface) applications:
-    - 📝 Text Editor: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#text-editor "Also used as a $PAGER")
-    - ➡️ Selector: [**FZF**](https://github.com/NNBnh/dots/wiki/which#selector)
-  - And 6 [`GUI` (graphical user interface)](https://en.wikipedia.org/wiki/Graphical_user_interface) applications:
-    - 📟 Terminal emulator: [**SuperB ST**](https://github.com/NNBnh/dots/wiki/which#terminal-emulator)
-    - 🎞️ Media player: [**MPV**](https://github.com/NNBnh/dots/wiki/which#media-player "Also used as a image viewer")
-    - 🌏 Web browser: [**Firefox**](https://github.com/NNBnh/dots/wiki/which#web-browser)
-    - 🎨 Image editor: [**GIMP**](https://github.com/NNBnh/dots/wiki/which#image-editor)
-    - 🎥 Motion graphics: [**Blender**](https://github.com/NNBnh/dots/wiki/which#motion-graphics)
-    - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#game-engine)
+  - Almost all program use [`CLI` (command-line interface)](https://en.wikipedia.org/wiki/Command-line_interface).
+  - And 7 [`GUI`](https://en.wikipedia.org/wiki/Graphical_user_interface "Graphical user interface")/[`TUI`](https://en.wikipedia.org/wiki/Text-based_user_interface "Text-based user interface") applications:
+    - 📝 Text Editor: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#text-editor "Also used as a $PAGER").
+    - 📟 Terminal emulator: [**SuperB ST**](https://github.com/NNBnh/dots/wiki/which#terminal-emulator).
+    - 🎞️ Media player: [**MPV**](https://github.com/NNBnh/dots/wiki/which#media-player "Also used as a image viewer").
+    - 🌏 Web browser: [**Firefox**](https://github.com/NNBnh/dots/wiki/which#web-browser).
+    - 🎨 Image editor: [**GIMP**](https://github.com/NNBnh/dots/wiki/which#image-editor).
+    - 🎥 Motion graphics: [**Blender**](https://github.com/NNBnh/dots/wiki/which#motion-graphics).
+    - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#game-engine).
 - Super **optimization**:
-  - Using tree-base tiling system for endless freedom, work with any use cases
-  - Maximize your screen real estate
+  - Using [**Qtile**](http://www.qtile.org): a tree-base tiling windows manager for endless freedom.
+  - Maximize the screen real estate.
 
 ## 📥 Installation
 `Đotfiles` use [*SuperB Bootstrap*](https://github.com/NNBnh/superb-bootstrap) to install, just download this repository then execute `./c/setup`:
