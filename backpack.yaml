@@ -56,7 +56,7 @@ packages:
 # =============================================================================
 
 ### Interactive
-- pypi:     xonsh[full]                                        #S Interactive shell
+- repology: xonsh                                              #S Interactive shell
 - repology: kakoune                                            #E Text editor
 - pypi:     EditorConfig                                       #  EditorConfig core
 
@@ -94,9 +94,11 @@ packages:
 - repology: gimp                                               #  Image editor
 - repology: blender                                            #  Motion graphics
 - repology: godot                                              #  Game engine
+- web:      http://www.keyboard-layout-editor.com              #  Keyboard layout editor
 
 ### Games
 - repology: lutris                                             #  Games manager
 - repology: steam                                              #  Gamer mode
 - repology: retroarch                                          #  Retro emulators
 - repology: multimc                                            #  Multi-instances Minecraft launcher
+- web:      https://tetr.io                                    #  Tetris
