@@ -50,32 +50,28 @@ abbrevs["g"] = "git"
 def _roll():
 	"Reload the Rickroll"
 	pyperclip.copy("curl -sL 'http://bit.ly/10hA8iC' | bash")
-aliases["roll"] = "_roll()"
-
-def _ifjson(): #TODO
-	"ifconfig.co/json"
-	print(requests.get("https://ifconfig.co/json").text)
-aliases["ifjson"] = "_ifjson()"
+aliases["roll"] = _roll
+aliases["rollout"] = "curl -sL 'http://bit.ly/10hA8iC' | bash"
 
 def _cht(arg):
 	"cheat.sh"
 	print(requests.get("https://cheat.sh/" + str(arg)).text)
-aliases["cht"] = "_cht()"
+aliases["cht"] = _cht
 
 def _wttr(arg):
 	"wttr.in"
 	print(requests.get("https://wttr.in/" + str(arg)).text)
-aliases["wttr"] = "_wttr()"
+aliases["wttr"] = _wttr
 
 def _wttr2(arg):
 	"v2.wttr.in"
 	print(requests.get("https://v2.wttr.in/" + str(arg)).text)
-aliases["wttr2"] = "_wttr2()"
+aliases["wttr2"] = _wttr2
 
 def _rate(arg):
 	"rate.sx"
 	print(requests.get("https://rate.sx/" + str(arg)).text)
-aliases["rate"] = "_rate()"
+aliases["rate"] = _rate
 
 def _sysfetch():
 	elements = ["os", "wm", "shell", "terminal", "font"]
@@ -136,17 +132,20 @@ def _diyship(): #TODO
 		# && [ -n "$GIT_TAG" ] && GIT_TAG="\033[1;93m🏷 $GIT_TAG"
 		pass
 
-	CWD  = os.getcwd() #TODO
-	HOME = os.path.expanduser("~")
-	if   CWD == HOME + "d/":
-		CWD_SYMBOL = "🗃 "
-	elif CWD == HOME + "c/":
+	cwd = os.getcwd() + "/"
+	if   cwd == $HOME + "/c/":
 		CWD_SYMBOL = "⚙ "
-	elif CWD == HOME + "t/":
+	elif cwd == $HOME + "/d/":
+		CWD_SYMBOL = "📄 "
+	elif cwd == $HOME + "/i/":
+		CWD_SYMBOL = "🖼 "
+	elif cwd == $HOME + "/m/":
+		CWD_SYMBOL = "🎧 "
+	elif cwd == $HOME + "/t/":
 		CWD_SYMBOL = "⚗ "
-	elif CWD == HOME:
+	elif cwd == $HOME + "/":
 		CWD_SYMBOL = "🏠"
-	elif CWD == HOME:
+	elif cwd == $HOME:
 		CWD_SYMBOL = "📂"
 	else:
 		CWD_SYMBOL = "📁"
