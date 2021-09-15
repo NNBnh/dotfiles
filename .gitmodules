@@ -4,9 +4,9 @@
 [submodule "MPV image-viewer"]
 	path = extra/mpv/image-viewer
 	url = https://github.com/occivink/mpv-image-viewer.git
-[submodule "ANSI art"]
-	path = extra/ansi
-	url = https://github.com/NNBnh/ansi.git
 [submodule "Wallpapers"]
 	path = extra/wallpapers
-	url = https://github.com/NNBnh/wallpaper-collections.git
+	url = https://github.com/NNBnh/wallpapers.git
+[submodule "ANSI arts"]
+	path = extra/ansi
+	url = https://github.com/NNBnh/ansi.git
