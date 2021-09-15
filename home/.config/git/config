@@ -10,9 +10,3 @@
 
 [include]
 	path = "~/c/extra/gitalias/gitalias.txt"
-
-[alias]
-	pulll = !"git smuir && git pull1" # Pull lazy
-	ac    = !"git aa && git c"
-	acm   = !"f() { [ -n \"$*\" ] && git aa && git cm \"$*\"; }; f"
-	acmp  = !"f() { [ -n \"$*\" ] && git acm \"$*\" && git push1; }; f"
