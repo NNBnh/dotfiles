@@ -71,7 +71,7 @@ packages:
 - pypi:     patool                                             #S Files archiving
 - pypi:     Send2Trash                                         #S Trash manager
 - pypi:     pyperclip                                          #S Clipboard manager
-- pypi:     googletrans                                        #  Google translator
+- pypi:     googletrans                                        #C Google translator
 - repology: ffmpeg                                             #  Media manipulator
 - pypi:     ffmpeg-python                                      #  Python interface for FFmpeg
 - pypi:     auto-editor                                        #  Automatically editing video
