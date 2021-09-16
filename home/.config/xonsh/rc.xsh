@@ -53,27 +53,27 @@ def _roll():
 aliases["roll"] = _roll
 aliases["rollout"] = "curl -sL 'http://bit.ly/10hA8iC' | bash"
 
-def _cht(arg):
+def cht(arg):
 	"cheat.sh"
 	print(requests.get("https://cheat.sh/" + str(arg)).text)
-aliases["cht"] = _cht
+aliases["cht"] = cht #TODO
 
-def _wttr(arg):
+def wttr(arg):
 	"wttr.in"
 	print(requests.get("https://wttr.in/" + str(arg)).text)
-aliases["wttr"] = _wttr
+aliases["wttr"] = wttr #TODO
 
-def _wttr2(arg):
+def wttr2(arg):
 	"v2.wttr.in"
 	print(requests.get("https://v2.wttr.in/" + str(arg)).text)
-aliases["wttr2"] = _wttr2
+aliases["wttr2"] = wttr2 #TODO
 
-def _rate(arg):
+def rate(arg):
 	"rate.sx"
 	print(requests.get("https://rate.sx/" + str(arg)).text)
-aliases["rate"] = _rate
+aliases["rate"] = rate #TODO
 
-def _sysfetch():
+def sysfetch():
 	elements = ["os", "wm", "shell", "terminal", "font"]
 	pad = len(max(elements, key = len))
 	infos = {
@@ -102,7 +102,7 @@ def _sysfetch():
 
 	print(sysfetch_info)
 
-def _diyship(): #TODO
+def diyship(): #TODO
 	duration = os.environ.get("DIYSHIP_DURATION")
 	status   = os.environ.get("DIYSHIP_STATUS")
 
