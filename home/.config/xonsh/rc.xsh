@@ -17,6 +17,8 @@ $XDG_DOWNLOAD_DIR = $XDG_DESKTOP_DIR
 $XDG_PUBLICSHARE_DIR = $XDG_DESKTOP_DIR
 $XDG_TEMPLATES_DIR = $XDG_DESKTOP_DIR
 
+$PATH += [$XDG_DATA_HOME + "/gem/ruby/3.0.0/bin"]
+
 # XAUTHORITY = $XDG_RUNTIME_DIR + "/Xauthority"
 $USERXSESSION = $XDG_CACHE_HOME + "/x11/xsession"
 $USERXSESSIONRC = $XDG_CACHE_HOME + "/x11/xsessionrc"
@@ -47,31 +49,32 @@ abbrevs["o"] = "xdg-open"
 abbrevs["e"] = $EDITOR
 abbrevs["g"] = "git"
 
+aliases["ddg"] = "$BROWSER https://duckduckgo.com/?q=@($args) all>/dev/null &; disown"
+
 def _roll():
 	"Reload the Rickroll"
 	pyperclip.copy("curl -sL 'http://bit.ly/10hA8iC' | bash")
 aliases["roll"] = _roll
 aliases["rollout"] = "curl -sL 'http://bit.ly/10hA8iC' | bash"
 
-def cht(arg):
-	"cheat.sh"
-	print(requests.get("https://cheat.sh/" + str(arg)).text)
-aliases["cht"] = cht #TODO
+def _cht(args, stdin=None):
+	print(requests.get("https://cheat.sh/" + ' '.join(args)).text)
+aliases["cht"] = _cht
 
-def wttr(arg):
+def _wttr(args, stdin=None):
 	"wttr.in"
-	print(requests.get("https://wttr.in/" + str(arg)).text)
-aliases["wttr"] = wttr #TODO
+	print(requests.get("https://wttr.in/" + ' '.join(args)).text)
+aliases["wttr"] = _wttr
 
-def wttr2(arg):
+def _wttr2(args, stdin=None):
 	"v2.wttr.in"
-	print(requests.get("https://v2.wttr.in/" + str(arg)).text)
-aliases["wttr2"] = wttr2 #TODO
+	print(requests.get("https://v2.wttr.in/" + ' '.join(args)).text)
+aliases["wttr2"] = _wttr2
 
-def rate(arg):
+def _rate(args, stdin=None):
 	"rate.sx"
-	print(requests.get("https://rate.sx/" + str(arg)).text)
-aliases["rate"] = rate #TODO
+	print(requests.get("https://rate.sx/" + ' '.join(args)).text)
+aliases["rate"] = _rate
 
 def sysfetch():
 	elements = ["os", "wm", "shell", "terminal", "font"]
