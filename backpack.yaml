@@ -88,7 +88,7 @@ packages:
 ### Interact
 # todo:     superb-st                                          #  Terminal emulator
 - repology: mpv                                                #  Media player
-- repology: brave                                              #  Web browser
+- repology: firefox                                            #  Web browser
 
 ### Productivity
 - repology: gimp                                               #  Image editor
