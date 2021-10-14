@@ -1,7 +1,7 @@
 <h1 align="center"><code>Đotfiles</code></h1>
 <p align="center">Đotfiles that <i>SuperB</i></p>
 <p align="center"><a href="https://github.com/NNBnh/dots"><img width="25%" src="extra/logo.png"></a></p>
-<p align="center"><a href="https://github.com/NNBnh/dots/discussions/7"><img src="https://img.shields.io/badge/gallery%20-%23F7CA88.svg?style=for-the-badge" alt="Gallery"></a> <a href="packageslist"><img src="https://img.shields.io/badge/packages_list%20-%23F7CA88.svg?style=for-the-badge" alt="Packages list"></a> <a href="https://github.com/NNBnh/dots/wiki"><img src="https://img.shields.io/badge/wiki%20-%23F7CA88.svg?style=for-the-badge" alt="Wiki"></a></p>
+<p align="center"><a href="https://github.com/NNBnh/dots/discussions/7"><img src="https://img.shields.io/badge/gallery%20-%23F7CA88.svg?style=for-the-badge" alt="Gallery"></a> <a href="backpack.yaml"><img src="https://img.shields.io/badge/packages_list%20-%23F7CA88.svg?style=for-the-badge" alt="Packages list"></a> <a href="https://github.com/NNBnh/dots/wiki"><img src="https://img.shields.io/badge/wiki%20-%23F7CA88.svg?style=for-the-badge" alt="Wiki"></a></p>
 
 ## 💡 About
 Welcome to the `Đotfiles`:
@@ -20,7 +20,7 @@ The *SuperB* dotfiles for `*NIX` system, configured with a high level of **porta
     - 📝 Text Editor: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#-text-editor "Also used as a $PAGER").
     - 📟 Terminal emulator: [**SuperB ST**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator).
     - 🎞️ Media player: [**MPV**](https://github.com/NNBnh/dots/wiki/which#%EF%B8%8F-media-player "Also used as a image viewer").
-    - 🌏 Web browser: [**Brave**](https://github.com/NNBnh/dots/wiki/which#-web-browser).
+    - 🌏 Web browser: [**Firefox**](https://github.com/NNBnh/dots/wiki/which#-web-browser).
     - 🎨 Image editor: [**GIMP**](https://github.com/NNBnh/dots/wiki/which#%EF%B8%8F-image-editor).
     - 🎥 Motion graphics: [**Blender**](https://github.com/NNBnh/dots/wiki/which#-motion-graphics).
     - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine).
