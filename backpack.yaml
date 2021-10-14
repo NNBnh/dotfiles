@@ -28,7 +28,6 @@ packages:
 - repology: lightdm                                            #C Login manager
 - repology: light-locker                                       #C Lock screen support for login manager
 - repology: qtile                                              #W Windows manager
-- pypi:     qtile-plasma                                       #W Tree-based layout for Qtile
 - repology: pipewire                                           #  Sound server
 
 ### Resource
