@@ -4,14 +4,14 @@ import os, shutil, glob, dploy
 
 # Create directories (to only symlink files inside, not the directory)
 for directory in [
-	os.environ["XDG_CONFIG_DIR"] + "/fcitx",  os.environ["XDG_CONFIG_DIR"] + "/kak",  os.environ["XDG_CONFIG_DIR"] + "/retroarch",
-	os.environ["XDG_DATA_DIR"] + "/fonts",  os.environ["XDG_DATA_DIR"] + "/icons",
-	os.environ["XDG_CACHE_DIR"], os.environ["XDG_DESKTOP_DIR"], os.environ["HOME"] + "/.local/bin"
+	os.environ["XDG_CONFIG_HOME"] + "/fcitx",  os.environ["XDG_CONFIG_HOME"] + "/kak",  os.environ["XDG_CONFIG_HOME"] + "/retroarch",
+	os.environ["XDG_DATA_HOME"] + "/fonts",  os.environ["XDG_DATA_HOME"] + "/icons",
+	os.environ["XDG_DATA_HOME"], os.environ["XDG_DESKTOP_DIR"], os.environ["HOME"] + "/.local/bin"
 ]:
 	os.makedirs(directory, exist_ok=True)
 
 # Remove junks (Spring cleaning your $HOME)
-junk_path = os.environ["XDG_CACHE_DIR"] + "/junks"
+junk_path = os.environ["XDG_CACHE_HOME"] + "/junks"
 os.makedirs(junk_path, exist_ok=True)
 for junk in os.listdir(os.environ["HOME"]):
 	if junk not in [".config", ".local", ".cache", "c", "d", "i", "m", "t"]:
