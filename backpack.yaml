@@ -10,12 +10,10 @@
 #               └─ https://github.com/NNBnh
 # URL:          https://github.com/NNBnh/dots/blob/main/backpack.yaml
 
-# C: Need config/scripting
-# T: TODO
+# C: Need config
 # S: TODO command shell
 # W: TODO window manager
 # E: TODO editor
-# X: Will remove in far future
 
 
 packages:
@@ -42,10 +40,10 @@ packages:
 - repology: ufw                                                #  Firewall
 - repology: xdg-utils                                          #  Applications manager
 - repology: xdg-user-dirs                                      #  XDG directory manager
-- repology: brightnessctl                                      #  Screen backlight
-- repology: playerctl                                          #  Control media
+- repology: brightnessctl                                      #C Screen backlight
+- repology: playerctl                                          #C Control media
 - repology: fcitx-unikey                                       #  Vietnamese input method
-- pypi:     keyboard                                           #  Keyboard manager
+- pypi:     keyboard                                           #C Keyboard manager
 - repology: libnotify                                          #  Notification library
 - repology: dunst                                              #W Notification daemon
 
@@ -66,7 +64,7 @@ packages:
 ### Utilities
 - repology: git                                                #  Version control system
 - pypi:     GitPython                                          #  Python interface for Git
-- pypi:     dploy                                              #  Symlink manager
+- pypi:     dploy                                              #S Symlink manager
 - pypi:     patool                                             #S Files archiving
 - pypi:     Send2Trash                                         #S Trash manager
 - pypi:     pyperclip                                          #S Clipboard manager
@@ -76,8 +74,7 @@ packages:
 - pypi:     auto-editor                                        #  Automatically editing video
 - pypi:     asciinema                                          #  Record terminal sessions
 - pypi:     pyfiglet                                           #  Text banner generator
-- repology: chafa                                              #X Convert image to textart
-- pypi:     git+https://github.com/will8211/unimatrix.git      #T Simulates the display from "The Matrix"
+- repology: chafa                                              #  Convert image to textart
 
 
 # =============================================================================
@@ -96,7 +93,6 @@ packages:
 - web:      http://www.keyboard-layout-editor.com              #  Keyboard layout editor
 
 ### Games
-- repology: lutris                                             #  Games manager
 - repology: steam                                              #  Gamer mode
 - repology: retroarch                                          #  Retro emulators
 - repology: multimc                                            #  Multi-instances Minecraft launcher
