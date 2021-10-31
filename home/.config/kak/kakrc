@@ -27,7 +27,7 @@ set-option global plug_always_ensure 'true'
 plug 'superb-ui/evc.kak' theme config %{
 	declare-option str-list bui_cursor_information 'true'
 
-	colorscheme bui
+	colorscheme evc
 }
 
 ## Interactive ----------------------------------------------------------------
