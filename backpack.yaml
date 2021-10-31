@@ -64,6 +64,7 @@ packages:
 ### Utilities
 - repology: git                                                #  Version control system
 - pypi:     GitPython                                          #  Python interface for Git
+- pypi:     edir                                               #S Edit the files system using text editor
 - pypi:     dploy                                              #S Symlink manager
 - pypi:     patool                                             #S Files archiving
 - pypi:     Send2Trash                                         #S Trash manager
