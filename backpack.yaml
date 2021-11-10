@@ -43,7 +43,7 @@ packages:
 - repology: brightnessctl                                      #C Screen backlight
 - repology: playerctl                                          #C Control media
 - repology: fcitx-unikey                                       #  Vietnamese input method
-- pypi:     keyboard                                           #C Keyboard manager
+# todo:     kmonad                                             #C Keyboard manager
 - repology: libnotify                                          #  Notification library
 - repology: dunst                                              #W Notification daemon
 
@@ -65,7 +65,6 @@ packages:
 - repology: git                                                #  Version control system
 - pypi:     GitPython                                          #  Python interface for Git
 - pypi:     edir                                               #S Edit the files system using text editor
-- pypi:     dploy                                              #S Symlink manager
 - pypi:     patool                                             #S Files archiving
 - pypi:     Send2Trash                                         #S Trash manager
 - pypi:     pyperclip                                          #S Clipboard manager
