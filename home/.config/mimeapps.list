@@ -1,0 +1,10 @@
+[Default Applications]
+audio/*=mpv.desktop;
+video/*=mpv.desktop;
+image/*=mpv.desktop;gimp.desktop;
+x-content/*=mpv.desktop;
+text/*=mousepad.desktop;
+message/*=mousepad.desktop;
+
+[Added Associations]
+application/pdf=firefox.desktop;

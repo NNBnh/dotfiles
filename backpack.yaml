@@ -55,10 +55,10 @@ packages:
 ### Interactive
 - repology: xonsh                                              #S Interactive shell
 - repology: kakoune                                            #E Text editor
-- pypi:     EditorConfig                                       #  EditorConfig core
 
 ### Programming
 - repology: python                                             #  Scripting language
+- pypi:     EditorConfig                                       #  EditorConfig core
 - pypi:     black                                              #  Python code formatter
 
 ### Utilities
