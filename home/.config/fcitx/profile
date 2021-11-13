@@ -19,3 +19,4 @@ EnabledIMList=fcitx-keyboard-us:True,unikey:True,pinyin:False,shuangpin:False,wu
 # Available Value:
 # True False
 #PreeditStringInClientWindow=True
+

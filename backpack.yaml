@@ -10,10 +10,8 @@
 #               └─ https://github.com/NNBnh
 # URL:          https://github.com/NNBnh/dots/blob/main/backpack.yaml
 
-# C: Need config
 # S: TODO command shell
 # W: TODO window manager
-# E: TODO editor
 
 
 packages:
@@ -23,8 +21,8 @@ packages:
 # =============================================================================
 
 ### Core
-- repology: lightdm                                            #C Login manager
-- repology: light-locker                                       #C Lock screen support for login manager
+- repology: lightdm                                            #W Login manager
+- repology: light-locker                                       #W Lock screen support for login manager
 - repology: qtile                                              #W Windows manager
 - repology: pipewire                                           #  Sound server
 
@@ -40,10 +38,10 @@ packages:
 - repology: ufw                                                #  Firewall
 - repology: xdg-utils                                          #  Applications manager
 - repology: xdg-user-dirs                                      #  XDG directory manager
-- repology: brightnessctl                                      #C Screen backlight
-- repology: playerctl                                          #C Control media
+- repology: brightnessctl                                      #W Screen backlight
+- repology: playerctl                                          #W Control media
 - repology: fcitx-unikey                                       #  Vietnamese input method
-# todo:     kmonad                                             #C Keyboard manager
+# todo:     kmonad                                             #W Keyboard manager
 - repology: libnotify                                          #  Notification library
 - repology: dunst                                              #W Notification daemon
 
@@ -54,21 +52,20 @@ packages:
 
 ### Interactive
 - repology: xonsh                                              #S Interactive shell
-- repology: kakoune                                            #E Text editor
+- repology: kakoune                                            #  Text editor
+# repology: helix                                              #  Text editor
 
 ### Programming
 - repology: python                                             #  Scripting language
 - pypi:     EditorConfig                                       #  EditorConfig core
-- pypi:     black                                              #  Python code formatter
 
 ### Utilities
-- repology: git                                                #  Version control system
-- pypi:     GitPython                                          #  Python interface for Git
 - pypi:     edir                                               #S Edit the files system using text editor
 - pypi:     patool                                             #S Files archiving
 - pypi:     Send2Trash                                         #S Trash manager
 - pypi:     pyperclip                                          #S Clipboard manager
-- pypi:     googletrans                                        #C Google translator
+- repology: git                                                #  Version control system
+- pypi:     GitPython                                          #  Python interface for Git
 - repology: ffmpeg                                             #  Media manipulator
 - pypi:     ffmpeg-python                                      #  Python interface for FFmpeg
 - pypi:     auto-editor                                        #  Automatically editing video
