@@ -4,12 +4,6 @@
 # /_/   \_,_/\__/_/\_\\_,_/\_, /\__/___/ /_/_/___/\__/
 #                         /___/
 
-# File:         packageslist
-# Description:  Packages list that SuperB
-# Author:       NNB
-#               └─ https://github.com/NNBnh
-# URL:          https://github.com/NNBnh/dots/blob/main/backpack.yaml
-
 # S: TODO command shell
 # W: TODO window manager
 
@@ -24,24 +18,20 @@ packages:
 - repology: lightdm                                            #W Login manager
 - repology: light-locker                                       #W Lock screen support for login manager
 - repology: qtile                                              #W Windows manager
-- repology: pipewire                                           #  Sound server
+- repology: xdg-utils                                          #  Applications manager
+- repology: xdg-user-dirs                                      #  XDG directory manager
 
 ### Resource
 # todo:     fonts:atkinson-hyperlegible                        #  Sans Serif font
 # todo:     fonts:bmono                                        #  Mono font
 - repology: fonts:sarasa-gothic                                #  Non Latin characters support for font
 - repology: fonts:twemoji-color                                #  Emoji support for font
-- repology: papirus-icon-theme                                 #  Icon set
 # todo:     cursors:bibata                                     #  Cursor theme
 
 ### Utilitie
-- repology: ufw                                                #  Firewall
-- repology: xdg-utils                                          #  Applications manager
-- repology: xdg-user-dirs                                      #  XDG directory manager
 - repology: brightnessctl                                      #W Screen backlight
 - repology: playerctl                                          #W Control media
 - repology: fcitx-unikey                                       #  Vietnamese input method
-# todo:     kmonad                                             #W Keyboard manager
 - repology: libnotify                                          #  Notification library
 - repology: dunst                                              #W Notification daemon
 
@@ -65,9 +55,7 @@ packages:
 - pypi:     Send2Trash                                         #S Trash manager
 - pypi:     pyperclip                                          #S Clipboard manager
 - repology: git                                                #  Version control system
-- pypi:     GitPython                                          #  Python interface for Git
 - repology: ffmpeg                                             #  Media manipulator
-- pypi:     ffmpeg-python                                      #  Python interface for FFmpeg
 - pypi:     auto-editor                                        #  Automatically editing video
 - pypi:     asciinema                                          #  Record terminal sessions
 - pypi:     pyfiglet                                           #  Text banner generator
@@ -79,9 +67,9 @@ packages:
 # =============================================================================
 
 ### Interact
-# todo:     superb-st                                          #  Terminal emulator
-- repology: mpv                                                #  Media player
-- repology: firefox                                            #  Web browser
+# todo:     superb-st                                          #W Terminal emulator
+- repology: mpv                                                #W Media player
+- repology: firefox                                            #W Web browser
 
 ### Productivity
 - repology: gimp                                               #  Image editor

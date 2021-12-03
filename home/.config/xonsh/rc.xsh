@@ -105,54 +105,26 @@ def sysfetch():
 
 	print(sysfetch_info)
 
-def diyship(): #TODO
-	duration = os.environ.get("DIYSHIP_DURATION")
-	status   = os.environ.get("DIYSHIP_STATUS")
+def diyship_prompt():
+	last_cmd = __xonsh__.history[-1] if __xonsh__.history else None
 
-	if duration >= 2000:
-		datetime.timedelta(milliseconds = duration)
+	status = last_cmd.rtn if last_cmd else 0
+	duration = round(last_cmd.ts[1] - last_cmd.ts[0]) if last_cmd else 0
 
-	if status >= 0:
-		if status == "126":
-			STATUS_SYMBOL = "🚫"
-		if status == "127":
-			STATUS_SYMBOL = "🔍"
-		if status == "130":
-			STATUS_SYMBOL = "🧱"
-		else:
-			STATUS_SYMBOL = "⚡"
+	command_info = ""
 
-	if os.path.exists(os.getcwd() + "/.git"):
-		# GIT_BRANCH=$(git rev-parse --abbrev-ref 'HEAD' 2>/dev/null) \
-		# && GIT_BRANCH="on \033[1;95m $GIT_BRANCH"
+	if status != 0:
+		command_info += " \033[91mE:" + str(status) + "\033[0m"
 
-		# git symbolic-ref 'HEAD' 2>&1 >/dev/null || {
-		# 	GIT_HASH=$(git rev-parse --verify --short 'HEAD' 2>/dev/null) \
-		# 	&& GIT_HASH="\033[1;92m#$GIT_HASH"
-		# }
+	if duration >= 2:
+		command_info += " \033[90mtook\033[0m \033[93m" + str(datetime.timedelta(seconds = duration)) + "\033[0m"
 
-		# GIT_TAG=$(git tag --points-at 'HEAD' 2>/dev/null) \
-		# && [ -n "$GIT_TAG" ] && GIT_TAG="\033[1;93m🏷 $GIT_TAG"
-		pass
+	if (status != 0) or (duration >= 2):
+		command_info += "\n"
 
-	cwd = os.getcwd() + "/"
-	if   cwd == $HOME + "/c/":
-		CWD_SYMBOL = "⚙ "
-	elif cwd == $HOME + "/d/":
-		CWD_SYMBOL = "📄 "
-	elif cwd == $HOME + "/i/":
-		CWD_SYMBOL = "🖼 "
-	elif cwd == $HOME + "/m/":
-		CWD_SYMBOL = "🎧 "
-	elif cwd == $HOME + "/t/":
-		CWD_SYMBOL = "⚗ "
-	elif cwd == $HOME + "/":
-		CWD_SYMBOL = "🏠"
-	elif cwd == $HOME:
-		CWD_SYMBOL = "📂"
-	else:
-		CWD_SYMBOL = "📁"
+	return "\n\033[0m" + command_info + "\033[1;94m:\033[0m "
+$PROMPT = diyship_prompt
 
-
-# bfetch
-# bui-terminal
+def diyship_title():
+	return os.getcwd().replace(os.path.expanduser("~"), "~")
+$TITLE = diyship_title
