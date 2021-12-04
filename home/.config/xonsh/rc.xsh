@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import os, platform, requests, datetime, pyperclip
+import os, requests, distro, datetime, re, pyperclip
 xontrib load abbrevs
 
 
@@ -19,7 +19,6 @@ $XDG_TEMPLATES_DIR = $XDG_DESKTOP_DIR
 
 $PATH += [$XDG_DATA_HOME + "/gem/ruby/3.0.0/bin"]
 
-# XAUTHORITY = $XDG_RUNTIME_DIR + "/Xauthority"
 $USERXSESSION = $XDG_CACHE_HOME + "/x11/xsession"
 $USERXSESSIONRC = $XDG_CACHE_HOME + "/x11/xsessionrc"
 $ALTUSERXSESSION = $XDG_CACHE_HOME + "/x11/Xsession"
@@ -29,9 +28,7 @@ $XSERVERRC = $XDG_CONFIG_HOME + "/X11/xserverrc"
 $ICEAUTHORITY = $XDG_CACHE_HOME + "/ICEauthority"
 $INPUTRC = $XDG_CONFIG_HOME + "/readline/inputrc"
 $GNUPGHOME = $XDG_DATA_HOME + "/gnupg"
-$CARGO_HOME = $XDG_DATA_HOME + "/cargo"
-$GTK_RC_FILES = $XDG_CONFIG_HOME + "/gtk-1.0/gtkrc"
-$GTK2_RC_FILES = $XDG_CONFIG_HOME + "/gtk-2.0/gtkrc"
+
 
 $EDITOR = "kak"
 $VISUAL = $EDITOR
@@ -40,17 +37,32 @@ $MANPAGER = $EDITOR
 $TERMINAL = "st"
 $BROWSER = "brave"
 
+
 $GTK_IM_MODULE = "fcitx"
 $QT_IM_MODULE = $GTK_IM_MODULE
 $SDL_IM_MODULE = $GTK_IM_MODULE
 $XMODIFIERS = "@im=" + $GTK_IM_MODULE
 
+
+$XONSH_CAPTURE_ALWAYS = True
+$AUTO_CD = True
+$COMPLETE_DOTS = True
+$DOTGLOB = True
+$MULTILINE_PROMPT = "│"
+$XONSH_AUTOPAIR = True
+$XONSH_CTRL_BKSP_DELETION = True
+$COMPLETIONS_DISPLAY = "single"
+
+
+aliases["-"] = "cd -"
+aliases["."] = "exa --all --group-directories-first --long --header --across --git"
+
 abbrevs["o"] = "xdg-open"
 abbrevs["e"] = $EDITOR
 abbrevs["g"] = "git"
 
-aliases["ddg"] = "$BROWSER https://duckduckgo.com/?q=@($args) all>/dev/null &; disown"
 
+#TODO
 def _roll():
 	"Reload the Rickroll"
 	pyperclip.copy("curl -sL 'http://bit.ly/10hA8iC' | bash")
@@ -76,55 +88,60 @@ def _rate(args, stdin=None):
 	print(requests.get("https://rate.sx/" + ' '.join(args)).text)
 aliases["rate"] = _rate
 
+
+def pretty_ls():
+	exa --all --group-directories-first
+
+def hr():
+	print("\033[?7l\033[38;5;8m" + "_" * os.get_terminal_size().columns + "\033[?7h")
+
+@events.on_postcommand
+def command_info(cmd, rtn, out, ts, **kw):
+	info_string = ""
+
+	if rtn != 0:
+		info_string += " \033[38;5;9mE:" + str(rtn)
+
+	duration = round(ts[1] - ts[0])
+	if duration >= 2:
+		info_string += " \033[38;5;8mtook \033[38;5;11m" + str(datetime.timedelta(seconds = duration))
+
+	if out or info_string:
+		hr()
+
+	if info_string:
+		print("\033[A\033[" + str(os.get_terminal_size().columns - len(re.sub("\\033\\[[0-9;]*[JKmsu]", "", info_string)) - 1) + f"C{info_string} ")
+
+@events.on_chdir
+def auto_ls(olddir, newdir, **kw):
+	print(f"\033[38;5;8m{olddir} -> {newdir}:\033[0m")
+	pretty_ls()
+	print("\033[A")
+
+$PROMPT = "\033[1m$ "
+
+$TITLE = lambda: os.getcwd().replace(os.path.expanduser("~"), "~")
+
 def sysfetch():
-	elements = ["os", "wm", "shell", "terminal", "font"]
+	elements = ["os", "wm", "shell", "terminal", "editor"]
 	pad = len(max(elements, key = len))
 	infos = {
-		"os": platform.system() + " " + platform.release(), #TODO
-		"wm": "Qtile", #TODO
-		"shell": os.environ.get("SHELL"),
-		"terminal": os.environ.get("TERMINAL"),
-		"font": os.environ.get("FONT_MONO_FAMILY")
-	}
-	icons = {
-		"os": "💾",
-		"wm": "🖼 ",
-		"shell": "🐚",
-		"terminal": "📟",
-		"font": "🏷 "
+		"os":       distro.name(),
+		"wm":       "Qtile",
+		"shell":    os.path.basename($SHELL).capitalize(),
+		"terminal": $TERMINAL.capitalize(),
+		"editor":   $EDITOR.capitalize()
 	}
 
 	sysfetch_info = ""
 	for element in elements:
-		sysfetch_info += "\033[1;38;5;{color}m{lable}  \033[0m{icon} {info}\n".format(
-				color = 2, #TODO
-				lable = element.upper().ljust(pad),
-				icon  = icons[element],
-				info  = infos[element]
+		sysfetch_info += "\033[1;38;5;12m{lable}  \033[0m{info}\n".format( #TODO
+			lable = element.upper().ljust(pad),
+			info  = infos[element]
 		)
 
 	print(sysfetch_info)
 
-def diyship_prompt():
-	last_cmd = __xonsh__.history[-1] if __xonsh__.history else None
-
-	status = last_cmd.rtn if last_cmd else 0
-	duration = round(last_cmd.ts[1] - last_cmd.ts[0]) if last_cmd else 0
-
-	command_info = ""
-
-	if status != 0:
-		command_info += " \033[91mE:" + str(status) + "\033[0m"
-
-	if duration >= 2:
-		command_info += " \033[90mtook\033[0m \033[93m" + str(datetime.timedelta(seconds = duration)) + "\033[0m"
-
-	if (status != 0) or (duration >= 2):
-		command_info += "\n"
-
-	return "\n\033[0m" + command_info + "\033[1;94m:\033[0m "
-$PROMPT = diyship_prompt
-
-def diyship_title():
-	return os.getcwd().replace(os.path.expanduser("~"), "~")
-$TITLE = diyship_title
+sysfetch()
+pretty_ls()
+hr()

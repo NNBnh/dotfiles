@@ -50,6 +50,7 @@ packages:
 - pypi:     EditorConfig                                       #  EditorConfig core
 
 ### Utilities
+- repology: exa                                                #  Pretty LS
 - pypi:     edir                                               #S Edit the files system using text editor
 - pypi:     patool                                             #S Files archiving
 - pypi:     Send2Trash                                         #S Trash manager
@@ -58,7 +59,7 @@ packages:
 - repology: ffmpeg                                             #  Media manipulator
 - pypi:     auto-editor                                        #  Automatically editing video
 - pypi:     asciinema                                          #  Record terminal sessions
-- pypi:     pyfiglet                                           #  Text banner generator
+- repology: figlet                                             #  Text banner generator
 - repology: chafa                                              #  Convert image to textart
 
 
@@ -69,10 +70,10 @@ packages:
 ### Interact
 # todo:     superb-st                                          #W Terminal emulator
 - repology: mpv                                                #W Media player
-- repology: firefox                                            #W Web browser
+- repology: brave                                              #W Web browser
 
 ### Productivity
-- repology: gimp                                               #  Image editor
+- repology: krita                                              #  Image editor
 - repology: blender                                            #  Motion graphics
 - repology: godot                                              #  Game engine
 - web:      http://www.keyboard-layout-editor.com              #  Keyboard layout editor
