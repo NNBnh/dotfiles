@@ -43,11 +43,14 @@ packages:
 ### Interactive
 - repology: xonsh                                              #S Interactive shell
 - repology: kakoune                                            #  Text editor
-# repology: helix                                              #  Text editor
+# repology: helix                                              #  Future text editor
+- repology: editorconfig-core-c                                #  EditorConfig core
 
 ### Programming
 - repology: python                                             #  Scripting language
-- pypi:     EditorConfig                                       #  EditorConfig core
+- repology: ruby                                               #  Cooler scripting language
+- repology: rust                                               #  Compiled language
+- repology: crystal-lang                                       #  Cooler compiled language
 
 ### Utilities
 - repology: exa                                                #  Pretty LS
@@ -61,6 +64,7 @@ packages:
 - pypi:     asciinema                                          #  Record terminal sessions
 - repology: figlet                                             #  Text banner generator
 - repology: chafa                                              #  Convert image to textart
+- repology: no-more-secrets                                    #  Hacker mode
 
 
 # =============================================================================

@@ -1,98 +1,84 @@
 # -*- coding: utf-8 -*-
 
-import os, requests, distro, datetime, re, pyperclip
+import os, subprocess, distro, pyperclip, re, datetime, requests
+
+xontrib load onepath
 xontrib load abbrevs
 
 
-$XDG_CONFIG_HOME = $HOME + "/.config"
-$XDG_CACHE_HOME = $HOME + "/.cache"
-$XDG_DATA_HOME = $HOME + "/.local/share"
+$PATH += [f"{$HOME}/.local/bin"]
 
-$XDG_DOCUMENTS_DIR = $HOME + "/d"
-$XDG_PICTURES_DIR = $HOME + "/i"
-$XDG_VIDEOS_DIR = $XDG_PICTURES_DIR
-$XDG_MUSIC_DIR = $HOME + "/m"
-$XDG_DESKTOP_DIR = $HOME + "/t"
-$XDG_DOWNLOAD_DIR = $XDG_DESKTOP_DIR
-$XDG_PUBLICSHARE_DIR = $XDG_DESKTOP_DIR
-$XDG_TEMPLATES_DIR = $XDG_DESKTOP_DIR
+if os.path.exists(f"{$HOME}/.nix-profile") and not __xonsh__.env.get("NIX_PATH"):
+	$NIX_REMOTE           = "daemon"
+	$NIX_USER_PROFILE_DIR = f"/nix/var/nix/profiles/per-user/{$HOME}"
+	$NIX_PROFILES         = f"/nix/var/nix/profiles/default {$HOME}/.nix-profile"
+	$NIX_SSL_CERT_FILE    = "/etc/ssl/certs/ca-certificates.crt"
+	$NIX_PATH             = "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixpkgs:/nix/var/nix/profiles/per-user/root/channels"
 
-$PATH += [$XDG_DATA_HOME + "/gem/ruby/3.0.0/bin"]
+	$PATH += [f"{$HOME}/.nix-profile/bin", "/nix/var/nix/profiles/default/bin"]
 
-$USERXSESSION = $XDG_CACHE_HOME + "/x11/xsession"
-$USERXSESSIONRC = $XDG_CACHE_HOME + "/x11/xsessionrc"
-$ALTUSERXSESSION = $XDG_CACHE_HOME + "/x11/Xsession"
-$ERRFILE = $XDG_CACHE_HOME + "/x11/xsession-errors"
-$XINITRC = $XDG_CONFIG_HOME + "/X11/xinitrc"
-$XSERVERRC = $XDG_CONFIG_HOME + "/X11/xserverrc"
-$ICEAUTHORITY = $XDG_CACHE_HOME + "/ICEauthority"
-$INPUTRC = $XDG_CONFIG_HOME + "/readline/inputrc"
-$GNUPGHOME = $XDG_DATA_HOME + "/gnupg"
+$INPUTRC   = f"{$XDG_CONFIG_HOME}/readline/inputrc"
+$GNUPGHOME = f"{$XDG_DATA_HOME}/gnupg"
 
 
-$EDITOR = "kak"
-$VISUAL = $EDITOR
-$PAGER = $EDITOR
+$EDITOR   = "kak"
+$VISUAL   = $EDITOR
+$PAGER    = $EDITOR
 $MANPAGER = $EDITOR
 $TERMINAL = "st"
-$BROWSER = "brave"
+$BROWSER  = "brave"
 
 
 $GTK_IM_MODULE = "fcitx"
-$QT_IM_MODULE = $GTK_IM_MODULE
+$QT_IM_MODULE  = $GTK_IM_MODULE
 $SDL_IM_MODULE = $GTK_IM_MODULE
-$XMODIFIERS = "@im=" + $GTK_IM_MODULE
+$XMODIFIERS    = f"@im={$GTK_IM_MODULE}"
 
 
-$XONSH_CAPTURE_ALWAYS = True
-$AUTO_CD = True
-$COMPLETE_DOTS = True
-$DOTGLOB = True
-$MULTILINE_PROMPT = "│"
-$XONSH_AUTOPAIR = True
+
+$XONSH_CAPTURE_ALWAYS     = True
+$AUTO_CD                  = True
+$COMPLETE_DOTS            = True
+$DOTGLOB                  = True
+$MULTILINE_PROMPT         = "│"
+$XONSH_AUTOPAIR           = True
 $XONSH_CTRL_BKSP_DELETION = True
-$COMPLETIONS_DISPLAY = "single"
+$COMPLETIONS_DISPLAY      = "single"
 
 
-aliases["-"] = "cd -"
+$XONTRIB_ONEPATH_ACTIONS = {
+	"text/":   $EDITOR,
+	"<FILE>":  "xdg-open",
+	"<XFILE>": "<RUN>"
+}
+
+aliases[","] = "clear"
 aliases["."] = "exa --all --group-directories-first --long --header --across --git"
+aliases["-"] = "cd -"
 
-abbrevs["o"] = "xdg-open"
 abbrevs["e"] = $EDITOR
+abbrevs["o"] = "xdg-open"
 abbrevs["g"] = "git"
 
+aliases["hr"] = lambda args=["#"]: [print("\033[?7l" + string * os.get_terminal_size().columns + "\033[?7h") for string in args]
 
-#TODO
-def _roll():
-	"Reload the Rickroll"
-	pyperclip.copy("curl -sL 'http://bit.ly/10hA8iC' | bash")
-aliases["roll"] = _roll
-aliases["rollout"] = "curl -sL 'http://bit.ly/10hA8iC' | bash"
+aliases["cht"]   = lambda args: print(requests.get("https://cheat.sh/"   + " ".join(args)).text)
+aliases["wttr"]  = lambda args: print(requests.get("https://wttr.in/"    + " ".join(args)).text)
+aliases["wttr2"] = lambda args: print(requests.get("https://v2.wttr.in/" + " ".join(args)).text)
+aliases["rate"]  = lambda args: print(requests.get("https://rate.sx/"    + " ".join(args)).text)
 
-def _cht(args, stdin=None):
-	print(requests.get("https://cheat.sh/" + ' '.join(args)).text)
-aliases["cht"] = _cht
+$roll = "curl -sL 'http://bit.ly/10hA8iC' | bash"
+aliases["roll"] = lambda: pyperclip.copy($roll)
+aliases["rollout"] = $roll
 
-def _wttr(args, stdin=None):
-	"wttr.in"
-	print(requests.get("https://wttr.in/" + ' '.join(args)).text)
-aliases["wttr"] = _wttr
-
-def _wttr2(args, stdin=None):
-	"v2.wttr.in"
-	print(requests.get("https://v2.wttr.in/" + ' '.join(args)).text)
-aliases["wttr2"] = _wttr2
-
-def _rate(args, stdin=None):
-	"rate.sx"
-	print(requests.get("https://rate.sx/" + ' '.join(args)).text)
-aliases["rate"] = _rate
+$lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+aliases["lorem"] = lambda args=[1]: pyperclip.copy("\n".join([$lorem] * int(args[0]))) #FIXME
 
 
 def pretty_ls():
 	exa --all --group-directories-first
 
-def hr():
+def prompt_hr():
 	print("\033[?7l\033[38;5;8m" + "_" * os.get_terminal_size().columns + "\033[?7h")
 
 @events.on_postcommand
@@ -107,7 +93,7 @@ def command_info(cmd, rtn, out, ts, **kw):
 		info_string += " \033[38;5;8mtook \033[38;5;11m" + str(datetime.timedelta(seconds = duration))
 
 	if out or info_string:
-		hr()
+		prompt_hr()
 
 	if info_string:
 		print("\033[A\033[" + str(os.get_terminal_size().columns - len(re.sub("\\033\\[[0-9;]*[JKmsu]", "", info_string)) - 1) + f"C{info_string} ")
@@ -120,12 +106,10 @@ def auto_ls(olddir, newdir, **kw):
 
 $PROMPT = "\033[1m$ "
 
-$TITLE = lambda: os.getcwd().replace(os.path.expanduser("~"), "~")
+$TITLE = lambda: os.getcwd().replace($HOME, "~")
 
 def sysfetch():
-	elements = ["os", "wm", "shell", "terminal", "editor"]
-	pad = len(max(elements, key = len))
-	infos = {
+	fetch = {
 		"os":       distro.name(),
 		"wm":       "Qtile",
 		"shell":    os.path.basename($SHELL).capitalize(),
@@ -133,15 +117,19 @@ def sysfetch():
 		"editor":   $EDITOR.capitalize()
 	}
 
-	sysfetch_info = ""
-	for element in elements:
-		sysfetch_info += "\033[1;38;5;12m{lable}  \033[0m{info}\n".format( #TODO
-			lable = element.upper().ljust(pad),
-			info  = infos[element]
-		)
+	pad = len(max([lable for lable, _ in fetch.items()], key = len))
+
+	sysfetch_info = "\n".join(
+		[
+			"\033[1;38;5;{color}m{format_lable}  \033[0m{format_info}".format(
+				color = 12, #TODO
+				format_lable = lable.upper().ljust(pad),
+				format_info  = info
+			) for lable, info in fetch.items()
+		]
+	)
 
 	print(sysfetch_info)
 
 sysfetch()
-pretty_ls()
-hr()
+prompt_hr()
