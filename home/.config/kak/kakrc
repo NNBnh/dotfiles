@@ -4,12 +4,6 @@
 #  / /| |/ _ `/  '_/ _ \/ // / _ \/ -_)
 # /_/ |_|\_,_/_/\_\\___/\_,_/_//_/\__/
 
-# File:         kakrc
-# Description:  Kakoune config that SuperB
-# Author:       NNB
-#               └─ https://github.com/NNBnh
-# URL:          https://github.com/NNBnh/dots/blob/main/home/.config/kak/kakrc
-
 
 # =============================================================================
 # 1. Plugins

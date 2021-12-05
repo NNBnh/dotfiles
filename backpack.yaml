@@ -22,7 +22,6 @@ packages:
 - repology: xdg-user-dirs                                      #  XDG directory manager
 
 ### Resource
-# todo:     fonts:atkinson-hyperlegible                        #  Sans Serif font
 # todo:     fonts:bmono                                        #  Mono font
 - repology: fonts:sarasa-gothic                                #  Non Latin characters support for font
 - repology: fonts:twemoji-color                                #  Emoji support for font
@@ -53,7 +52,7 @@ packages:
 - repology: crystal-lang                                       #  Cooler compiled language
 
 ### Utilities
-- repology: exa                                                #  Pretty LS
+- repology: exa                                                #S Pretty LS
 - pypi:     edir                                               #S Edit the files system using text editor
 - pypi:     patool                                             #S Files archiving
 - pypi:     Send2Trash                                         #S Trash manager
