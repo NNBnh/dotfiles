@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-import prompt_toolkit, os, subprocess, distro, pyperclip, re, datetime, requests
+import prompt_toolkit, os, pyperclip, re, datetime, requests
 from prompt_toolkit.keys import Keys
 
 xontrib load onepath
@@ -39,29 +39,46 @@ $EDITOR   = "kak"
 $VISUAL   = $EDITOR
 $PAGER    = $EDITOR
 $MANPAGER = $EDITOR
+
 $TERMINAL = "st"
 $BROWSER  = "brave"
 
+## Bfetch Setting -------------------------------------------------------------
+
+$BFETCH_INFO  = f"{$HOME}/c/extra/info"
+$BFETCH_ART   = "cat \"$HOME/.local/share/ansi/arch.ansi\""
+$BFETCH_COLOR = "color-strip \"\\033[7m   \""
+
+$BFETCH_PROMPT_HEIGHT = 2
+
 ## Xonsh Setting --------------------------------------------------------------
 
-$XONSH_CAPTURE_ALWAYS     = True
-$AUTO_CD                  = True
-$COMPLETE_DOTS            = True
-$DOTGLOB                  = True
-$IGNOREEOF                = True
-$MULTILINE_PROMPT         = "│"
-$PROMPT                   = "\033[1m$ "
-$TITLE                    = lambda: $PWD.replace($HOME, "~")
-$XONSH_AUTOPAIR           = True
-$XONSH_CTRL_BKSP_DELETION = True
-$COMPLETIONS_CONFIRM      = False
-$COMPLETIONS_DISPLAY      = "single"
+### Display
+$MULTILINE_PROMPT = "░"
+$PROMPT           = lambda: "\033[1;7;37m " + datetime.datetime.now().strftime("%H:%M") + " \033[0m "
+$TITLE            = lambda: $PWD.replace($HOME, "~")
 
+### Navigation
+$COMPLETE_DOTS = True
+$DOTGLOB       = True
+$AUTO_CD       = True
 $XONTRIB_ONEPATH_ACTIONS = {
 	"text/":   $EDITOR,
 	"<FILE>":  "xdg-open",
 	"<XFILE>": "<RUN>"
 }
+
+### Interactive
+$IGNOREEOF                = True
+$XONSH_AUTOPAIR           = True
+$XONSH_CTRL_BKSP_DELETION = True
+
+### Completions
+$COMPLETIONS_CONFIRM = False
+$COMPLETIONS_DISPLAY = "single"
+
+### Environment
+$XONSH_CAPTURE_ALWAYS = True
 
 # =============================================================================
 # 2. Function
@@ -78,29 +95,6 @@ def pretty_ls():
 	exa --all --group-directories-first
 	print("\033[A")
 
-def sysfetch():
-	fetch = {
-		"os":       distro.name(),
-		"wm":       "Qtile",
-		"shell":    os.path.basename($SHELL).capitalize(),
-		"terminal": $TERMINAL.capitalize(),
-		"editor":   $EDITOR.capitalize()
-	}
-
-	pad = len(max([lable for lable, _ in fetch.items()], key = len))
-
-	sysfetch_info = "\n".join(
-		[
-			"\033[1;38;5;{color}m{format_lable}  \033[0m{format_info}".format(
-				color = 12, #TODO
-				format_lable = lable.upper().ljust(pad),
-				format_info  = info
-			) for lable, info in fetch.items()
-		]
-	)
-
-	print(sysfetch_info)
-
 ## Events ---------------------------------------------------------------------
 
 @events.on_chdir
@@ -115,9 +109,14 @@ def command_info(cmd, rtn, out, ts, **kw):
 	if rtn != 0:
 		info_string += " \033[38;5;9mE:" + str(rtn)
 
-	duration = round(ts[1] - ts[0])
+	duration = ts[1] - ts[0]
 	if duration >= 2:
-		info_string += " \033[38;5;8mtook \033[38;5;11m" + str(datetime.timedelta(seconds = duration))
+		info_string += " \033[38;5;8mtook \033[38;5;11m"
+
+		if duration >= 60:
+			info_string += str(datetime.timedelta(seconds = round(duration)))
+		else:
+			info_string += "{:.3f}s".format(duration)
 
 	if out or info_string:
 		prompt_hr()
@@ -127,13 +126,12 @@ def command_info(cmd, rtn, out, ts, **kw):
 
 ## Aliases --------------------------------------------------------------------
 
-### Navigation
-aliases["-"] = "cd -" #TODO Map to Alt-Left and Alt-Right
-
 ### Display
 aliases["."] = "exa --all --group-directories-first --long --header --across --git"
-aliases[","] = "clear; pretty_ls()" #TODO Map to Ctrl-R
 aliases["hr"] = lambda args=["#"]: [hr(string) for string in args] #FIXME default parameter
+
+### Navigation
+aliases["-"] = "cd -" #TODO Map to Alt-Left and Alt-Right
 
 ### Services
 aliases["cht"]   = lambda args: print(requests.get("https://cheat.sh/"   + " ".join(args)).text)
@@ -156,5 +154,6 @@ abbrevs["g"] = "git"
 
 ## Startup --------------------------------------------------------------------
 
-sysfetch()
+bfetch
+
 prompt_hr()

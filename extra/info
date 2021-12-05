@@ -1,0 +1,22 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import os, distro
+
+print(
+	"\n".join(
+		[
+			"\033[1;38;5;{color}m{format_lable}  \033[0m{format_info}".format(
+				color = 12, #TODO
+				format_lable = lable.upper().ljust(10),
+				format_info  = str(info).capitalize()
+			) for lable, info in {
+				"os":       distro.name(),
+				"wm":       "qtile",
+				"shell":    os.path.basename(os.environ["SHELL"]),
+				"terminal": os.environ["TERMINAL"],
+				"editor":   os.environ["EDITOR"]
+			}.items()
+		]
+	)
+)
