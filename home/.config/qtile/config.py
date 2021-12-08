@@ -1,24 +1,73 @@
-from typing import List 
-from libqtile import bar, layout, widget
+# -*- coding: utf-8 -*-
+#    ____  __  _ __
+#   / __ \/ /_(_) /__
+#  / / / / __/ / / _ \
+# / /_/ / /_/ / /  __/
+# \___\_\__/_/_/\___/
+
+
+from typing          import List #TODO
+from libqtile        import layout
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
-from libqtile.lazy import lazy
-from pathlib import Path
-
-terminal = "st"
+from libqtile.lazy   import lazy
+from pathlib         import Path #TODO
 
 
-keys = [
-	# Key(["mod4"], "Super_R", lazy.layout.next(), desc="Move window focus to other window"),
-	Key(["mod4"], "slash", lazy.spawn(terminal), desc="Launch terminal"),
-	Key(["mod4"], "x", lazy.window.kill(), desc="Kill focused window"),
-	Key(["mod4"], "r", lazy.layout.normalize(), desc="Reset all window sizes"),
-	Key(["mod4", "control"], "r", lazy.restart(), desc="Restart Qtile"),
-	Key(["mod4", "control"], "Escape", lazy.shutdown(), desc="Shutdown Qtile"),
+# =============================================================================
+# 1. Setting
+# =============================================================================
+
+layouts = [
+	layout.Columns(
+		border_normal       = "#000000", #TODO
+		border_normal_stack = "#000000", #TODO
+		border_focus        = "#FFFFFF", #TODO
+		border_focus_stack  = "#FFFFFF", #TODO
+		border_width        = 1,
+
+		grow_amount     = 1,
+		insert_position = 1,
+		margin          = 16, #TODO
+		num_columns     = 2,  #TODO
+
+		wrap_focus_columns = False,
+		wrap_focus_rows    = False,
+		wrap_focus_stacks  = False
+	)
 ]
+
+screens = [
+	Screen(
+		wallpaper = str(Path.home()) + "/.config/background", #TODO
+		wallpaper_mode = "fill"
+		)
+	)
+]
+
+bring_front_click = "floating_only"
+auto_minimize     = True
+
+
+# =============================================================================
+# 1. Interactive
+# =============================================================================
 
 mouse = [
 	Drag(["mod4"],          "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-	Drag(["mod4", "shift"], "Button1", lazy.window.set_size_floating(),     start=lazy.window.get_size()),
+	Drag(["mod4", "shift"], "Button1", lazy.window.set_size_floating(),     start=lazy.window.get_size()    )
+]
+
+keys = [
+	Key(["mod4", "mod1"], "u", lazy.layout.swap_column_left() ),
+	Key(["mod4", "mod1"], "o", lazy.layout.swap_column_right()),
+
+	Key(["mod4"], "h", lazy.layout.toggle_split()),
+	Key(["mod4"], "y", lazy.layout.normalize()   ),
+
+	Key(["mod4"],            ";",      lazy.spawn("st")  ), #TODO
+	Key(["mod4"],            "x",      lazy.window.kill()),
+	Key(["mod4", "control"], "z",      lazy.restart()    ),
+	Key(["mod4", "control"], "Escape", lazy.shutdown()   )
 ]
 
 for direction, key in {
@@ -28,68 +77,13 @@ for direction, key in {
 	"right": "l",
 }.items():
 	keys.extend([
-		Key(["mod4"],          key, getattr(lazy.layout,              direction)(), desc=f"Move focus {direction}"),
+		Key(["mod4"],          key, getattr(lazy.layout,              direction)(), desc=f"Move focus {direction}" ),
 		Key(["mod4", "mod1"],  key, getattr(lazy.layout, "shuffle_" + direction)(), desc=f"Move window {direction}"),
-		Key(["mod4", "shift"], key, getattr(lazy.layout,    "grow_" + direction)(), desc=f"Grow window {direction}"),
+		Key(["mod4", "shift"], key, getattr(lazy.layout,    "grow_" + direction)(), desc=f"Grow window {direction}")
 	])
 
-groups = [Group(i) for i in "qwe"]
-for group in groups:
+for group in [Group(i) for i in "asdfgqwert"]:
 	keys.extend([
 		Key(["mod4"],         group.name, lazy.group[group.name].toscreen(),                  desc=f"Switch to group {group.name}"),
 		Key(["mod4", "mod1"], group.name, lazy.window.togroup(group.name, switch_group=True), desc=f"Move window to group {group.name}"),
 	])
-
-
-layouts = [layout.Columns()]
-
-
-widget_defaults = dict(
-	font="Bmono",
-	fontsize=12,
-	padding=3,
-)
-extension_defaults = widget_defaults.copy()
-
-screens = [
-	Screen(
-		wallpaper = str(Path.home()) + "/c/extra/wallpapers/live-from-squid-research-lab/the-reef.jpg",
-		wallpaper_mode = "fill",
-		bottom=bar.Bar(
-			[
-				widget.GroupBox(),
-				widget.Prompt(),
-				widget.WindowName(),
-				widget.Chord(
-					chords_colors={
-						'launch': ("#ff0000", "#ffffff"),
-					},
-					name_transform=lambda name: name.upper(),
-				),
-				widget.Systray(),
-				widget.Clock(format='%d/%m/%Y %I:%M %p'),
-			],
-			24,
-		),
-	),
-]
-
-dgroups_key_binder = None
-dgroups_app_rules = []  # type: List
-floating_layout = layout.Floating(float_rules=[
-	# Run the utility of `xprop` to see the wm class and name of an X client.
-	*layout.Floating.default_float_rules,
-	Match(wm_class='confirmreset'),  # gitk
-	Match(wm_class='makebranch'),  # gitk
-	Match(wm_class='maketag'),  # gitk
-	Match(wm_class='ssh-askpass'),  # ssh-askpass
-	Match(title='branchdialog'),  # gitk
-	Match(title='pinentry'),  # GPG key password entry
-])
-auto_fullscreen = True
-focus_on_window_activation = "smart"
-reconfigure_screens = True
-
-# If things like steam games want to auto-minimize themselves when losing
-# focus, should we respect this or not?
-auto_minimize = True

@@ -15,24 +15,24 @@ packages:
 # =============================================================================
 
 ### Core
-- repology: lightdm                                            #W Login manager
-- repology: light-locker                                       #W Lock screen support for login manager
-- repology: qtile                                              #W Windows manager
-- repology: xdg-utils                                          #  Applications manager
-- repology: xdg-user-dirs                                      #  XDG directory manager
+- repology: lightdm                    #W Login manager
+- repology: light-locker               #W Lock screen support for login manager
+- repology: qtile                      #W Windows manager
+- repology: xdg-utils                  #  Applications manager
+- repology: xdg-user-dirs              #  XDG directory manager
 
 ### Resource
-# todo:     fonts:bmono                                        #  Mono font
-- repology: fonts:sarasa-gothic                                #  Non Latin characters support for font
-- repology: fonts:twemoji-color                                #  Emoji support for font
-# todo:     cursors:bibata                                     #  Cursor theme
+# todo:     fonts:bmono                #  Mono font
+- repology: fonts:sarasa-gothic        #  Non Latin characters support for font
+- repology: fonts:twemoji-color        #  Emoji support for font
+# todo:     cursors:bibata             #  Cursor theme
 
 ### Utilitie
-- repology: brightnessctl                                      #W Screen backlight
-- repology: playerctl                                          #W Control media
-- repology: fcitx-unikey                                       #  Vietnamese input method
-- repology: libnotify                                          #  Notification library
-- repology: dunst                                              #W Notification daemon
+- repology: brightnessctl              #W Screen backlight
+- repology: playerctl                  #W Control media
+- repology: fcitx-unikey               #  Vietnamese input method
+- repology: libnotify                  #  Notification library
+- repology: dunst                      #W Notification daemon
 
 
 # =============================================================================
@@ -40,37 +40,37 @@ packages:
 # =============================================================================
 
 ### Interactive
-- repology: xonsh                                              #S Interactive shell
-- repology: kakoune                                            #  Text editor
-# repology: helix                                              #  Future text editor
-- repology: editorconfig-core-c                                #  EditorConfig core
+- repology: xonsh                      #S Interactive shell
+- repology: kakoune                    #  Text editor
+# repology: helix                      #  Future text editor
+- repology: editorconfig-core-c        #  EditorConfig core
 
 ### Programming
-- repology: python                                             #  Scripting language
-- repology: ruby                                               #  Cooler scripting language
-- repology: rust                                               #  Compiled language
-- repology: crystal-lang                                       #  Cooler compiled language
+- repology: python                     #  Scripting language
+- repology: ruby                       #  Cooler scripting language
+- repology: rust                       #  Compiled language
+- repology: crystal-lang               #  Cooler compiled language
 
 ### Utilities
-- repology: exa                                                #S Pretty LS
-- pypi:     edir                                               #S Edit the files system using text editor
-- pypi:     patool                                             #S Files archiving
-- pypi:     Send2Trash                                         #S Trash manager
-- pypi:     pyperclip                                          #S Clipboard manager
-- repology: git                                                #  Version control system
-- repology: ffmpeg                                             #  Media manipulator
-- pypi:     auto-editor                                        #  Automatically editing video
-- pypi:     asciinema                                          #  Record terminal sessions
-- repology: figlet                                             #  Text banner generator
-- repology: chafa                                              #  Convert image to textart
-- repology: no-more-secrets                                    #  Hacker mode
+- repology: exa                        #S Pretty LS
+- pypi:     edir                       #S Edit files system with text editor
+- pypi:     patool                     #S Files archiving
+- pypi:     Send2Trash                 #S Trash manager
+- pypi:     pyperclip                  #S Clipboard manager
+- repology: git                        #  Version control system
+- repology: ffmpeg                     #  Media manipulator
+- pypi:     auto-editor                #  Automatically editing video
+- pypi:     asciinema                  #  Record terminal sessions
+- repology: figlet                     #  Text banner generator
+- repology: chafa                      #  Convert image to textart
+- repology: no-more-secrets            #  Hacker mode
 
 
 # =============================================================================
 # 3. Applications
 # =============================================================================
 
-### Interact
+### Interactive
 # todo:     superb-st                                          #W Terminal emulator
 - repology: mpv                                                #W Media player
 - repology: brave                                              #W Web browser
@@ -79,6 +79,7 @@ packages:
 - repology: krita                                              #  Image editor
 - repology: blender                                            #  Motion graphics
 - repology: godot                                              #  Game engine
+- web:      https://wareya.github.io/webtyler                  #  Auto complete tilesets
 - web:      http://www.keyboard-layout-editor.com              #  Keyboard layout editor
 
 ### Games

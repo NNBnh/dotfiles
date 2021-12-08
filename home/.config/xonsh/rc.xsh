@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
+#    _  __                 __
+#   | |/ /___  ____  _____/ /_
+#   |   / __ \/ __ \/ ___/ __ \
+#  /   / /_/ / / / (__  ) / / /
+# /_/|_\____/_/ /_/____/_/ /_/
 
 
-import prompt_toolkit, os, pyperclip, re, datetime, requests
-from prompt_toolkit.keys import Keys
+import os, pyperclip, re, datetime, requests
+from send2trash import send2trash
 
 xontrib load onepath
 xontrib load abbrevs
@@ -30,9 +35,6 @@ if os.path.exists(f"{$HOME}/.nix-profile") and not __xonsh__.env.get("NIX_PATH")
 
 	$PATH += [f"{$HOME}/.nix-profile/bin", "/nix/var/nix/profiles/default/bin"]
 
-$INPUTRC   = f"{$XDG_CONFIG_HOME}/readline/inputrc"
-$GNUPGHOME = f"{$XDG_DATA_HOME}/gnupg"
-
 ## Default Applications -------------------------------------------------------
 
 $EDITOR   = "kak"
@@ -45,7 +47,7 @@ $BROWSER  = "brave"
 
 ## Bfetch Setting -------------------------------------------------------------
 
-$BFETCH_INFO  = f"{$HOME}/c/extra/info"
+$BFETCH_INFO  = f"{$HOME}/c/extra/info.py"
 $BFETCH_ART   = "cat \"$HOME/.local/share/ansi/arch.ansi\""
 $BFETCH_COLOR = "color-strip \"\\033[7m   \""
 
@@ -72,13 +74,11 @@ $XONTRIB_ONEPATH_ACTIONS = {
 $IGNOREEOF                = True
 $XONSH_AUTOPAIR           = True
 $XONSH_CTRL_BKSP_DELETION = True
-
-### Completions
-$COMPLETIONS_CONFIRM = False
-$COMPLETIONS_DISPLAY = "single"
+$COMPLETIONS_DISPLAY      = "single"
 
 ### Environment
-$XONSH_CAPTURE_ALWAYS = True
+$XONSH_CAPTURE_ALWAYS  = True
+
 
 # =============================================================================
 # 2. Function
@@ -94,6 +94,24 @@ def prompt_hr():
 def pretty_ls():
 	exa --all --group-directories-first
 	print("\033[A")
+
+### Selection
+$SELECTION = None
+
+def set_file_select(paths):
+	$SELECTION = [os.path.abspath(path) for path in paths]
+
+def get_file_select():
+	return " ".join(["'" + path.replace("\\", "\\\\").replace("'", "\\'") + "'" for path in $SELECTION])
+
+def get_abbr_select(buffer):
+	if buffer != "$":
+		if $SELECTION:
+			return get_file_select()
+		else:
+			return "$"
+	else:
+		return "$SELECTION ="
 
 ## Events ---------------------------------------------------------------------
 
@@ -127,11 +145,24 @@ def command_info(cmd, rtn, out, ts, **kw):
 ## Aliases --------------------------------------------------------------------
 
 ### Display
-aliases["."] = "exa --all --group-directories-first --long --header --across --git"
 aliases["hr"] = lambda args=["#"]: [hr(string) for string in args] #FIXME default parameter
 
-### Navigation
-aliases["-"] = "cd -" #TODO Map to Alt-Left and Alt-Right
+### File system
+aliases["."]  = "exa --all --group-directories-first --long --header --across --git"
+aliases["-"]  = "cd -" #TODO Map to Alt-Left and Alt-Right
+abbrevs["e"]  = lambda buffer, word: $EDITOR           if buffer.text.startswith(word) else word
+abbrevs["g"]  = lambda buffer, word: "git"             if buffer.text.startswith(word) else word
+aliases["dl"] = lambda args: send2trash(args)
+abbrevs["mk"] = lambda buffer, word: "mkdir --parents" if buffer.text.startswith(word) else word
+abbrevs["cp"] = lambda buffer, word: "cp --recursive"  if buffer.text.startswith(word) else word
+abbrevs["ln"] = lambda buffer, word: "ln --symbolic"   if buffer.text.startswith(word) else word
+
+### Selection
+aliases["s"]   = lambda args: set_file_select(args)
+abbrevs["$"]   = lambda buffer, word: get_abbr_select(buffer.text)
+abbrevs["mvs"] = lambda buffer, word: f"mv {get_file_select()} ."             if (buffer.text.startswith(word) and $SELECTION) else word
+abbrevs["cps"] = lambda buffer, word: f"cp --recursive {get_file_select()} ." if (buffer.text.startswith(word) and $SELECTION) else word
+abbrevs["lns"] = lambda buffer, word: f"ln --symbolic {get_file_select()} ."  if (buffer.text.startswith(word) and $SELECTION) else word
 
 ### Services
 aliases["cht"]   = lambda args: print(requests.get("https://cheat.sh/"   + " ".join(args)).text)
@@ -140,17 +171,13 @@ aliases["wttr2"] = lambda args: print(requests.get("https://v2.wttr.in/" + " ".j
 aliases["rate"]  = lambda args: print(requests.get("https://rate.sx/"    + " ".join(args)).text)
 
 ### Rickroll
-$roll = "curl -sL 'http://bit.ly/10hA8iC' | bash"
-aliases["roll"] = lambda: pyperclip.copy($roll)
+$roll              = "curl -sL 'http://bit.ly/10hA8iC' | bash"
+aliases["roll"]    = lambda: pyperclip.copy($roll)
 aliases["rollout"] = $roll
 
 ### Lorem
 $lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 aliases["lorem"] = lambda args=[1]: pyperclip.copy("\n".join([$lorem] * int(args[0]))) #FIXME default parameter #TODO lorem word
-
-### Abbrevs
-abbrevs["e"] = $EDITOR
-abbrevs["g"] = "git"
 
 ## Startup --------------------------------------------------------------------
 
