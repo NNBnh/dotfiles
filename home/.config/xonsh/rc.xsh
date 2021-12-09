@@ -6,11 +6,16 @@
 # /_/|_\____/_/ /_/____/_/ /_/
 
 
-import os, pyperclip, re, datetime, requests
-from send2trash import send2trash
+import os, re, datetime, importlib
+import requests  as rq
+import pyperclip as cb
+
+if not importlib.util.find_spec("edir"):
+	os.system("python -m pip install xonsh[full] xontrib-onepath xontrib-hist_navigator edir patool trash-cli")
 
 xontrib load onepath
 xontrib load abbrevs
+xontrib load hist_navigator
 
 
 # =============================================================================
@@ -77,7 +82,7 @@ $XONSH_CTRL_BKSP_DELETION = True
 $COMPLETIONS_DISPLAY      = "single"
 
 ### Environment
-$XONSH_CAPTURE_ALWAYS  = True
+$XONSH_CAPTURE_ALWAYS = True
 
 
 # =============================================================================
@@ -90,6 +95,7 @@ def hr(string="#"):
 def prompt_hr():
 	print(end="\033[38;5;8m")
 	hr("_")
+	print(end="\033[0m")
 
 def pretty_ls():
 	exa --all --group-directories-first
@@ -103,15 +109,6 @@ def set_file_select(paths):
 
 def get_file_select():
 	return " ".join(["'" + path.replace("\\", "\\\\").replace("'", "\\'") + "'" for path in $SELECTION])
-
-def get_abbr_select(buffer):
-	if buffer != "$":
-		if $SELECTION:
-			return get_file_select()
-		else:
-			return "$"
-	else:
-		return "$SELECTION ="
 
 ## Events ---------------------------------------------------------------------
 
@@ -144,25 +141,41 @@ def command_info(cmd, rtn, out, ts, **kw):
 
 ## Aliases --------------------------------------------------------------------
 
+def abbrev_is_command(buffer, word):
+	if re.search(f"(^|;)\\s*{word}", buffer, re.MULTILINE): #FIXME "\"
+		return True
+
 ### Display
 aliases["hr"] = lambda args=["#"]: [hr(string) for string in args] #FIXME default parameter
 
 ### File system
 aliases["."]  = "exa --all --group-directories-first --long --header --across --git"
-aliases["-"]  = "cd -" #TODO Map to Alt-Left and Alt-Right
-abbrevs["e"]  = lambda buffer, word: $EDITOR           if buffer.text.startswith(word) else word
-abbrevs["g"]  = lambda buffer, word: "git"             if buffer.text.startswith(word) else word
-aliases["dl"] = lambda args: send2trash(args)
-abbrevs["mk"] = lambda buffer, word: "mkdir --parents" if buffer.text.startswith(word) else word
-abbrevs["cp"] = lambda buffer, word: "cp --recursive"  if buffer.text.startswith(word) else word
-abbrevs["ln"] = lambda buffer, word: "ln --symbolic"   if buffer.text.startswith(word) else word
+aliases["dl"] = "trash-put"
+abbrevs["e"]  = lambda buffer, word: $EDITOR     if abbrev_is_command(buffer.text, word) else word
+aliases["mk"] = "mkdir --parents"
+aliases["a"]  = "patool"
+abbrevs["ae"] = lambda buffer, word: "a extract" if abbrev_is_command(buffer.text, word) else word
+abbrevs["ac"] = lambda buffer, word: "a create"  if abbrev_is_command(buffer.text, word) else word
+abbrevs["cp"] = lambda buffer, word: "cp -r"     if abbrev_is_command(buffer.text, word) else word
+abbrevs["ln"] = lambda buffer, word: "ln -s"     if abbrev_is_command(buffer.text, word) else word
+aliases["r"]  = "edir"
 
 ### Selection
 aliases["s"]   = lambda args: set_file_select(args)
-abbrevs["$"]   = lambda buffer, word: get_abbr_select(buffer.text)
-abbrevs["mvs"] = lambda buffer, word: f"mv {get_file_select()} ."             if (buffer.text.startswith(word) and $SELECTION) else word
-abbrevs["cps"] = lambda buffer, word: f"cp --recursive {get_file_select()} ." if (buffer.text.startswith(word) and $SELECTION) else word
-abbrevs["lns"] = lambda buffer, word: f"ln --symbolic {get_file_select()} ."  if (buffer.text.startswith(word) and $SELECTION) else word
+abbrevs["$"]   = lambda buffer, word: (get_file_select() if $SELECTION else "$") if not abbrev_is_command(buffer.text, word) else "$SELECTION ="
+abbrevs["mvs"] = lambda buffer, word: f"mv {get_file_select()} ."    if (abbrev_is_command(buffer.text, word) and $SELECTION) else word
+abbrevs["cps"] = lambda buffer, word: f"cp -r {get_file_select()} ." if (abbrev_is_command(buffer.text, word) and $SELECTION) else word
+abbrevs["lns"] = lambda buffer, word: f"ln -s {get_file_select()} ." if (abbrev_is_command(buffer.text, word) and $SELECTION) else word
+
+### Git
+abbrevs["g"]   = lambda buffer, word: "git"                      if abbrev_is_command(buffer.text, word) else word
+abbrevs["ga"]  = lambda buffer, word: "git add"                  if abbrev_is_command(buffer.text, word) else word
+abbrevs["gaa"] = lambda buffer, word: "git add -A"               if abbrev_is_command(buffer.text, word) else word
+abbrevs["gc"]  = lambda buffer, word: "git commit"               if abbrev_is_command(buffer.text, word) else word
+abbrevs["gcm"] = lambda buffer, word: "git commit -m \"<edit>\"" if abbrev_is_command(buffer.text, word) else word
+abbrevs["gcl"] = lambda buffer, word: "git clone"                if abbrev_is_command(buffer.text, word) else word
+aliases["get"] = "git fetch --prune && git pull --rebase && git submodule update --init --recursive"
+aliases["put"] = "git commit --all && git push"
 
 ### Services
 aliases["cht"]   = lambda args: print(requests.get("https://cheat.sh/"   + " ".join(args)).text)

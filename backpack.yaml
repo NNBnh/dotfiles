@@ -15,8 +15,8 @@ packages:
 # =============================================================================
 
 ### Core
-- repology: lightdm                    #W Login manager
-- repology: light-locker               #W Lock screen support for login manager
+- repology: efibootmgr                 #  Boot manager
+- repology: greetd                     #  Login manager
 - repology: qtile                      #W Windows manager
 - repology: xdg-utils                  #  Applications manager
 - repology: xdg-user-dirs              #  XDG directory manager
@@ -53,14 +53,9 @@ packages:
 
 ### Utilities
 - repology: exa                        #S Pretty LS
-- pypi:     edir                       #S Edit files system with text editor
-- pypi:     patool                     #S Files archiving
-- pypi:     Send2Trash                 #S Trash manager
-- pypi:     pyperclip                  #S Clipboard manager
 - repology: git                        #  Version control system
 - repology: ffmpeg                     #  Media manipulator
-- pypi:     auto-editor                #  Automatically editing video
-- pypi:     asciinema                  #  Record terminal sessions
+- repology: asciinema                  #  Record terminal sessions
 - repology: figlet                     #  Text banner generator
 - repology: chafa                      #  Convert image to textart
 - repology: no-more-secrets            #  Hacker mode
@@ -71,9 +66,9 @@ packages:
 # =============================================================================
 
 ### Interactive
-# todo:     superb-st                                          #W Terminal emulator
-- repology: mpv                                                #W Media player
-- repology: brave                                              #W Web browser
+# todo:     superb-st                  #W Terminal emulator
+- repology: mpv                        #W Media player
+- repology: brave                      #W Web browser
 
 ### Productivity
 - repology: krita                                              #  Image editor
@@ -83,7 +78,8 @@ packages:
 - web:      http://www.keyboard-layout-editor.com              #  Keyboard layout editor
 
 ### Games
-- repology: steam                                              #  Gamer mode
-- repology: retroarch                                          #  Retro emulators
-- repology: multimc                                            #  Multi-instances Minecraft launcher
-- web:      https://tetr.io                                    #  Tetris
+- repology: steam                      #  Gamer mode
+- repology: retroarch                  #  Retro emulators
+- repology: multimc                    #  Multi-instances Minecraft launcher
+- web:      https://tetr.io            #  Tetris
+- repology: osu-lazer                  #  Rhythm game
