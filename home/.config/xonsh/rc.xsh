@@ -142,7 +142,7 @@ def command_info(cmd, rtn, out, ts, **kw):
 ## Aliases --------------------------------------------------------------------
 
 def abbrev_is_command(buffer, word):
-	if re.search(f"(^|;)\\s*{word}", buffer, re.MULTILINE): #FIXME "\"
+	if re.search(f"(^|;)\\s*{word}", buffer, re.MULTILINE): #FIXME `\`, `'` and `"`
 		return True
 
 ### Display

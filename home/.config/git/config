@@ -4,9 +4,3 @@
 
 [credential]
 	helper = "store"
-
-[color]
-	ui = 1
-
-[include]
-	path = "~/c/extra/gitalias/gitalias.txt"
