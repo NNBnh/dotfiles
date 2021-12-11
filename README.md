@@ -25,7 +25,7 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
   - And only 5 [`GUI`](https://en.wikipedia.org/wiki/Graphical_user_interface "Graphical user interface") applications:
     - 🎞️ Media player: [**MPV**](https://github.com/NNBnh/dots/wiki/which#%EF%B8%8F-media-player "Also used as a image viewer")
     - 🌏 Web browser: [**Brave**](https://github.com/NNBnh/dots/wiki/which#-web-browser)
-    - 🎨 Image editor: [**GIMP**](https://github.com/NNBnh/dots/wiki/which#%EF%B8%8F-image-editor)
+    - 🎨 Image editor: [**Krita**](https://github.com/NNBnh/dots/wiki/which#%EF%B8%8F-image-editor)
     - 🎥 Motion graphics: [**Blender**](https://github.com/NNBnh/dots/wiki/which#-motion-graphics)
     - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine)
 - Super **optimization**:
