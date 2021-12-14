@@ -1,1 +1,0 @@
-/home/nnb/c/extra/mpv/image-viewer/scripts/ruler.lua
