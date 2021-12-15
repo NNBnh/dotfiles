@@ -21,7 +21,7 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
   - Almost all actions are through the [`CLI`](https://en.wikipedia.org/wiki/Command-line_interface) powered by:
     - 📟 Terminal: [**SuperB ST**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
     - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
-    - 📝 Text editor: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#-text-editor "Also used as a $PAGER")
+    - 📝 Text editor: [**Helix**](https://github.com/NNBnh/dots/wiki/which#-text-editor "Also used as a $PAGER")
   - And only 4 [`GUI`](https://en.wikipedia.org/wiki/Graphical_user_interface "Graphical user interface") applications:
     - 🌏 Browser: [**Brave**](https://github.com/NNBnh/dots/wiki/which#-web-browser)
     - 🎨 Image editor: [**Krita**](https://github.com/NNBnh/dots/wiki/which#%EF%B8%8F-image-editor)
