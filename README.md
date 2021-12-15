@@ -22,9 +22,8 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
     - 📟 Terminal: [**SuperB ST**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
     - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
     - 📝 Text editor: [**Kakoune**](https://github.com/NNBnh/dots/wiki/which#-text-editor "Also used as a $PAGER")
-  - And only 5 [`GUI`](https://en.wikipedia.org/wiki/Graphical_user_interface "Graphical user interface") applications:
-    - 🎞️ Media player: [**MPV**](https://github.com/NNBnh/dots/wiki/which#%EF%B8%8F-media-player "Also used as a image viewer")
-    - 🌏 Web browser: [**Brave**](https://github.com/NNBnh/dots/wiki/which#-web-browser)
+  - And only 4 [`GUI`](https://en.wikipedia.org/wiki/Graphical_user_interface "Graphical user interface") applications:
+    - 🌏 Browser: [**Brave**](https://github.com/NNBnh/dots/wiki/which#-web-browser)
     - 🎨 Image editor: [**Krita**](https://github.com/NNBnh/dots/wiki/which#%EF%B8%8F-image-editor)
     - 🎥 Motion graphics: [**Blender**](https://github.com/NNBnh/dots/wiki/which#-motion-graphics)
     - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine)
