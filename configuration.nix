@@ -3,28 +3,31 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.useDHCP = false;
-  networking.interfaces.enp7s0.useDHCP = true;
-  networking.interfaces.wlp13s0.useDHCP = true;
-
-  #services.xserver.displayManager.sddm.enable = true;
-  services.greetd.enable = true;
-  services.greetd.settings = {
-    default_session = {
-      command = "${pkgs.greetd.greetd}/bin/agreety --cmd 'gnome-shell --wayland'";
+  boot = {
+    supportedFilesystems = [ "ntfs" ];
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
     };
   };
 
-  services.xserver.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  i18n.inputMethod.fcitx.engines = with pkgs.fcitx-engines; [ unikey ];
-
+  programs.xonsh.enable = true;
   users.users.nnb = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    shell = pkgs.xonsh;
+  };
+
+  services.xserver = {
+    enable = true;
+    xkbOptions = "terminate:ctrl_alt_bksp,caps:escape";
+    displayManager.sddm.enable = true; #TODO
+    desktopManager.gnome.enable = true; #TODO
+  };
+
+  i18n.inputMethod = { #FIXME
+    enabled = "fcitx";
+    fcitx.engines = with pkgs.fcitx-engines; [ unikey ];
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -36,31 +39,26 @@
     dunst                # Notification daemon
 
     # Resource
-    #bmono               # Mono font #TODO
+    #bmono               # Mono font
     sarasa-gothic        # Non Latin support for font
     twemoji-color-font   # Emoji support for font
     bibata-cursors       # Cursor theme
 
     # Terminal
-    #superb-st           # Terminal emulator #TODO
-    xonsh                # Interactive shell
-    kakoune              # Text editor
-    helix                # Future text editor
-    editorconfig-core-c  # EditorConfig core
-
-    # Programming
-    ruby_3_0             # Scripting language
-    crystal              # Compiled language
-
-    # Utilities
+    #superb-st           # Terminal emulator
+    helix                # Text editor
     git                  # Version control system
     ffmpeg               # Media manipulator
     asciinema            # Record terminal sessions
     figlet               # Text banner generator
     nms                  # Hacker mode
 
+    # Programming
+    ruby_3_0             # Scripting language
+    crystal              # Compiled language
+
     # Applications
-    brave                # Web browser
+    brave                # Browser
     krita                # Image editor
     blender              # Motion graphics
     godot                # Game engine
@@ -71,5 +69,14 @@
     osu-lazer            # Rhythm game
   ];
 
-  #programs.steam.enable = true; #FIXME
+  #programs.git = { #TODO
+  #  enable = true;
+  #  userName  = "NNB";
+  #  userEmail = "nnbnh@protonmail.com";
+  #  extraConfig = {
+  #    credential.helper = "store";
+  #  };
+  #};
+
+  #programs.steam.enable = true;
 }
