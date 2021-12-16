@@ -14,6 +14,7 @@
 
     # Terminal
     #superb-st           # Terminal emulator
+    exa                  # Pretty LS
     helix                # Text editor
     ffmpeg               # Media manipulator
     asciinema            # Record terminal sessions
@@ -41,11 +42,6 @@
     userName  = "NNB";
     userEmail = "nnbnh@protonmail.com";
     extraConfig.credential.helper = "store";
-  };
-
-  i18n.inputMethod = { #TODO config
-    enabled = "fcitx";
-    fcitx.engines = with pkgs.fcitx-engines; [ unikey ];
   };
 
   xresources = {

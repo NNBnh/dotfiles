@@ -30,6 +30,11 @@ in
     desktopManager.gnome.enable = true; #TODO change
   };
 
+  i18n.inputMethod = { #TODO config
+    enabled = "fcitx";
+    fcitx.engines = with pkgs.fcitx-engines; [ unikey ];
+  };
+
   programs.xonsh.enable = true;
   programs.git.enable = true;
 

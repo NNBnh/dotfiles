@@ -22,8 +22,8 @@ layouts = [
 
 		grow_amount     = 1,
 		insert_position = 1,
-		margin          = 32, #TODO
-		num_columns     = 2,  #TODO
+		margin          = 32,
+		num_columns     = 2,
 
 		wrap_focus_columns = False,
 		wrap_focus_rows    = False,
@@ -31,13 +31,12 @@ layouts = [
 	)
 ]
 
-screens = [
-	Screen(
-		wallpaper = str(Path.home()) + "/.config/background",
-		wallpaper_mode = "fill"
-		)
-	)
-]
+#screens = [
+#	Screen(
+#		wallpaper = str(Path.home()) + "/.config/background", #TODO
+#		wallpaper_mode = "fill"
+#	)
+#]
 
 bring_front_click = "floating_only"
 auto_minimize     = True

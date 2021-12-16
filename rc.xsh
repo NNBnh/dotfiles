@@ -8,13 +8,9 @@
 
 import os, re, datetime, importlib
 
-if not importlib.util.find_spec("edir"):
-	os.system("python -m pip install xonsh[full] xontrib-onepath xontrib-hist_navigator edir patool trash-cli")
+#if not importlib.util.find_spec("edir"):
+#	os.system("python -m pip install xonsh[full] xontrib-hist_navigator edir patool trash-cli")
 
-import requests  as rq
-import pyperclip as cb
-
-xontrib load onepath
 xontrib load hist_navigator
 
 
@@ -92,8 +88,6 @@ def hr(string="#"):
 $SELECTION = None
 def set_file_select(paths):
 	$SELECTION = [os.path.abspath(path) for path in paths]
-
-## Events ---------------------------------------------------------------------
 
 @events.on_chdir
 def auto_ls(olddir, newdir, **kw):
