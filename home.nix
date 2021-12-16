@@ -1,15 +1,12 @@
 { config, pkgs, ... }:
 
 {
-  #home.username = "$USER";
-  #home.homeDirectory = "$HOME";
-
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-    # Utilitie
+    # Core
+    qtile                # Windows manager
     brightnessctl        # Screen backlight
     playerctl            # Control media
-    dunst                # Notification daemon
 
     # Resource
     #bmono               # Mono font
@@ -20,7 +17,6 @@
     # Terminal
     #superb-st           # Terminal emulator
     helix                # Text editor
-    git                  # Version control system
     ffmpeg               # Media manipulator
     asciinema            # Record terminal sessions
     figlet               # Text banner generator
@@ -45,7 +41,7 @@
   programs = {
     home-manager.enable = true;
 
-    #xonsh.enable = true;
+    #FIXME xonsh.enable = true;
 
     git = {
       enable = true;
@@ -54,11 +50,20 @@
       extraConfig.credential.helper = "store";
     };
 
-    #steam.enable = true;
+    #FIXME steam.enable = true;
+  };
+
+  i18n.inputMethod = { #TODO config
+    enabled = "fcitx";
+    fcitx.engines = with pkgs.fcitx-engines; [ unikey ];
   };
 
   home.file = {
-    ".config/xonsh/rc.xsh".source = ./rc.xsh;
     ".config/qtile/config.py".source = ./qtile.py;
+    ".config/xonsh/rc.xsh".source = ./rc.xsh;
+    ".config/X11/xresources".text = ''
+      *.font: Bmono:pixelsize=10.0
+      *.alpha: 9.0
+    '';
   };
 }

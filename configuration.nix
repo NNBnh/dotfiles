@@ -26,15 +26,9 @@ in
 
   services.xserver = {
     enable = true;
-    displayManager.sddm.enable = true; #TODO
-    desktopManager.gnome.enable = true; #TODO
+    displayManager.sddm.enable = true; #TODO remove
+    desktopManager.gnome.enable = true; #TODO change
   };
 
-  i18n.inputMethod = { #TODO
-    enabled = "fcitx";
-    fcitx.engines = with pkgs.fcitx-engines; [ unikey ];
-  };
-
-  programs.xonsh.enable = true;
   programs.git.enable = true;
 }
