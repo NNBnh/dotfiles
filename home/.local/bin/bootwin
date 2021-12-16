@@ -1,9 +1,0 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-import os
-
-for line in os.popen("efibootmgr").read().split("\n"):
-	if line.__contains__("Windows"):
-		os.system("sudo efibootmgr --bootnext" + line.split()[0].strip("Boot*"))
-		os.system("reboot")
