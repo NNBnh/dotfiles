@@ -30,5 +30,8 @@ in
     desktopManager.gnome.enable = true; #TODO change
   };
 
+  programs.xonsh.enable = true;
   programs.git.enable = true;
+
+  #FIXME programs.steam.enable = true;
 }

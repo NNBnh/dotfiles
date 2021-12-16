@@ -6,11 +6,10 @@
 # \___\_\__/_/_/\___/
 
 
-from typing          import List #TODO
 from libqtile        import layout
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy   import lazy
-from pathlib         import Path #TODO
+from pathlib         import Path
 
 
 # =============================================================================
@@ -19,15 +18,11 @@ from pathlib         import Path #TODO
 
 layouts = [
 	layout.Columns(
-		border_normal       = "#000000", #TODO
-		border_normal_stack = "#000000", #TODO
-		border_focus        = "#FFFFFF", #TODO
-		border_focus_stack  = "#FFFFFF", #TODO
-		border_width        = 1,
+		border_width    = 0,
 
 		grow_amount     = 1,
 		insert_position = 1,
-		margin          = 16, #TODO
+		margin          = 32, #TODO
 		num_columns     = 2,  #TODO
 
 		wrap_focus_columns = False,
@@ -38,7 +33,7 @@ layouts = [
 
 screens = [
 	Screen(
-		wallpaper = str(Path.home()) + "/.config/background", #TODO
+		wallpaper = str(Path.home()) + "/.config/background",
 		wallpaper_mode = "fill"
 		)
 	)
@@ -49,7 +44,7 @@ auto_minimize     = True
 
 
 # =============================================================================
-# 1. Interactive
+# 2. Interactive
 # =============================================================================
 
 mouse = [
@@ -66,8 +61,8 @@ keys = [
 
 	Key(["mod4"],            ";",      lazy.spawn("st")  ), #TODO
 	Key(["mod4"],            "x",      lazy.window.kill()),
-	Key(["mod4", "control"], "z",      lazy.restart()    ),
-	Key(["mod4", "control"], "Escape", lazy.shutdown()   )
+	Key(["mod4", "control"], "Escape", lazy.restart()    ),
+	Key(["mod4", "shift"],   "Escape", lazy.shutdown()   )
 ]
 
 for direction, key in {
