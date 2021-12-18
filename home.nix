@@ -29,7 +29,7 @@
 
   home.file.".config/qtile/config.py".source = ./qtile.py;
 
-  i18n.inputMethod = { #TODO config
+  i18n.inputMethod = {
     enabled = "fcitx";
     fcitx.engines = with pkgs.fcitx-engines; [ unikey ];
   };

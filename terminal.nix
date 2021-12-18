@@ -18,7 +18,7 @@
 
   programs.git = {
     enable = true;
-    userName  = "NNB";
+    userName = "NNB";
     userEmail = "nnbnh@protonmail.com";
     extraConfig.credential.helper = "store";
   };

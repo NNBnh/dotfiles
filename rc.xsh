@@ -23,38 +23,55 @@ def set_file_select(paths):
 def hr(string="#"):
 	print("\033[?7l" + string * os.get_terminal_size().columns + "\033[?7h")
 
+last_cmd = None
 @events.on_postcommand
-def command_info(cmd, rtn, out, ts, **kw):
-	info_string = ""
+def save_command_info(cmd, rtn, out, ts, **kw):
+	global last_cmd
+	last_cmd = {
+		"rtn": rtn,
+		"out": out,
+		"ts": ts
+	}
 
-	if rtn != 0:
-		info_string += " \033[38;5;9mE:" + str(rtn)
+@events.on_pre_prompt
+def print_command_info():
+	global last_cmd
 
-	duration = ts[1] - ts[0]
-	if duration >= 2:
-		info_string += " \033[38;5;8mtook \033[38;5;11m"
+	if last_cmd:
+		info_string = ""
 
-		if duration >= 60:
-			info_string += str(datetime.timedelta(seconds = round(duration)))
-		else:
-			info_string += "{:.3f}s".format(duration)
+		if last_cmd["rtn"] != 0:
+			info_string += " \033[38;5;9mE:" + str(last_cmd["rtn"])
 
-	print(end="\033[38;5;8m")
-	hr("_")
-	print(end="\033[0m")
+		duration = last_cmd["ts"][1] - last_cmd["ts"][0]
+		if duration >= 2:
+			info_string += " \033[38;5;8mtook \033[38;5;11m"
+	
+			if duration >= 60:
+				info_string += str(datetime.timedelta(seconds = round(duration)))
+			else:
+				info_string += "{:.3f}s".format(duration)
 
-	if info_string:
-		print(
-			"\033[A\033[" + str(
-				os.get_terminal_size().columns
-				- len(re.sub("\\033\\[[0-9;]*[JKmsu]", "", info_string))
-				- 1
-			) + f"C{info_string} "
-		)
+		if last_cmd["out"] or info_string:
+			print(end="\033[38;5;8m")
+			hr("_")
+			print(end="\033[0m")
+
+		if info_string:
+			print(
+				"\033[A\033[" + str(
+					os.get_terminal_size().columns
+					- len(re.sub("\\033\\[[0-9;]*[JKmsu]", "", info_string))
+					- 1
+				) + f"C{info_string} "
+			)
+
+	last_cmd = None
 
 @events.on_chdir
 def auto_ls(olddir, newdir, **kw):
 	exa --all --group-directories-first
+	print(end="\033[A")
 
 
 # =============================================================================
@@ -62,13 +79,13 @@ def auto_ls(olddir, newdir, **kw):
 # =============================================================================
 
 # Display
-$MULTILINE_PROMPT  = "░"
-$DYNAMIC_CWD_WIDTH = "25%"
-$PROMPT            = lambda: "\033[0;1;7;37m {cwd} \033[0m "
-$TITLE             = lambda: $PWD.replace($HOME, "~") + "/"
+$XONSH_CAPTURE_ALWAYS = True
+$MULTILINE_PROMPT     = "░"
+$DYNAMIC_CWD_WIDTH    = "25%"
+$PROMPT               = lambda: "\033[0;1;7;37m {cwd} \033[0m "
+$TITLE                = lambda: $PWD.replace($HOME, "~") + "/"
 
 # Interactive
-$IGNOREEOF                = True
 $XONSH_AUTOPAIR           = True
 $XONSH_CTRL_BKSP_DELETION = True
 $COMPLETIONS_DISPLAY      = "single"
@@ -95,13 +112,11 @@ if os.path.exists(f"{$HOME}/.nix-profile") and not __xonsh__.env.get("NIX_PATH")
 
 	$PATH += [f"{$HOME}/.nix-profile/bin", "/nix/var/nix/profiles/default/bin"]
 
-## Applications
+## Editor
 $EDITOR   = "hx"
 $VISUAL   = $EDITOR
 $PAGER    = $EDITOR
 $MANPAGER = $EDITOR
-$TERMINAL = "st"
-$BROWSER  = "brave"
 
 # SuperB Fetch
 $BFETCH_INFO  = f"{$HOME}/c/ricefetch"
@@ -133,11 +148,11 @@ aliases["cp"] = lambda args: execx("cp -r @($SELECTION) .") if not args else exe
 aliases["ln"] = lambda args: execx("ln -s @($SELECTION) .") if not args else execx("ln -s " + " ".join(args))
 
 ### Git
-aliases["g"]   = "git"
-aliases["ga"]  = "git add -A"
-aliases["gc"]  = "git commit -m"
-aliases["get"] = "git fetch --prune && git pull --rebase && git submodule update --init --recursive"
-aliases["put"] = "git commit --all && git push"
+aliases["g"]    = "git"
+aliases["ga"]   = "git add -A"
+aliases["gc"]   = "git commit -m"
+aliases["gget"] = "git fetch --prune && git pull --rebase && git submodule update --init --recursive"
+aliases["gput"] = "git commit --all && git push"
 
 ### Services
 aliases["cht"]   = lambda args: print(requests.get("https://cheat.sh/"   + " ".join(args)).text)

@@ -30,7 +30,6 @@ in {
     desktopManager.gnome.enable = true; #TODO change
   };
 
-  programs.git.enable = true; #TODO flakes
-
+  networking.wireless.iwd.enable = true;
   #FIXME programs.steam.enable = true;
 }
