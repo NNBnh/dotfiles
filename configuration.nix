@@ -2,11 +2,15 @@
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-in {
+in
+
+{
   imports = [
     /etc/nixos/hardware-configuration.nix
     (import "${home-manager}/nixos")
   ];
+
+  home-manager.users.nnb = import ./home.nix;
 
   boot = {
     supportedFilesystems = [ "ntfs" ];
@@ -24,12 +28,5 @@ in {
 
   programs.xonsh.enable = true;
 
-  services.xserver = {
-    enable = true;
-    displayManager.sddm.enable = true; #TODO remove
-    desktopManager.gnome.enable = true; #TODO change
-  };
-
-  networking.wireless.iwd.enable = true;
-  #FIXME programs.steam.enable = true;
+  services.xserver.desktopManager.gnome.enable = true; #TODO change
 }

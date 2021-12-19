@@ -4,7 +4,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    xonsh      # Interactive shell
+    xonsh      # Command shell
     exa        # Pretty LS
     helix      # Text editor
     ffmpeg     # Media manipulator
