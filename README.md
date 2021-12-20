@@ -19,7 +19,7 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
 - Super **portable** using [**Home Manager**](https://nixos.wiki/wiki/Home_Manager) which can be run on pretty much any os.
 - Super **minimalism**:
   - Almost all actions are through the [`CLI`](https://en.wikipedia.org/wiki/Command-line_interface) powered by:
-    - 📟 Terminal: [**SuperB ST**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
+    - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
     - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
     - 📝 Text editor: [**Helix**](https://github.com/NNBnh/dots/wiki/which#-text-editor "Also used as a $PAGER")
   - And only 4 [`GUI`](https://en.wikipedia.org/wiki/Graphical_user_interface "Graphical user interface") applications:
