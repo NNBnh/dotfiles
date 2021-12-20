@@ -15,7 +15,6 @@
     bibata-cursors      # Cursor theme
 
     # Applications
-    #superb-st          # Terminal emulator
     brave               # Browser
     krita               # Image editor
     blender             # Motion graphics
@@ -34,11 +33,29 @@
     fcitx.engines = with pkgs.fcitx-engines; [ unikey ];
   };
 
-  xresources = {
-    properties = {
-      "*.font" = "Bmono:pixelsize=10.0";
-      "*.alpha" = 9;
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "Bmono";
+      size = 10;
     };
-    path = ".config/X11/xresources";
+    settings = {
+      background_opacity = 0.9;
+      allow_remote_control = true;
+      dynamic_background_opacity = true;
+      disable_ligatures = "cursor";
+      url_style = false;
+      kitty_mod = "ctrl+shift";
+      clear_all_shortcuts = true;
+      terminal_select_modifiers = "shift";
+      open_url_modifiers = "kitty_mod";
+    };
+    keybindings = {
+      "kitty_mod+c" = "copy_to_clipboard";
+      "kitty_mod+v" = "paste_from_clipboard";
+      "ctrl+equal" = "change_font_size all +2";
+      "ctrl+minus" = "change_font_size all -2";
+      "ctrl+apostrophe" = "change_font_size all 0";
+    };
   };
 }
