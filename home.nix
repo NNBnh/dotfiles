@@ -15,7 +15,6 @@
     bibata-cursors      # Cursor theme
 
     # Applications
-    brave               # Browser
     krita               # Image editor
     blender             # Motion graphics
     godot               # Game engine
@@ -28,11 +27,6 @@
 
   home.file.".config/qtile/config.py".source = ./qtile.py;
 
-  i18n.inputMethod = {
-    enabled = "fcitx";
-    fcitx.engines = with pkgs.fcitx-engines; [ unikey ];
-  };
-
   programs.kitty = {
     enable = true;
     font = {
@@ -40,15 +34,10 @@
       size = 10;
     };
     settings = {
-      background_opacity = 0.9;
-      allow_remote_control = true;
+      background_opacity = "0.9";
       dynamic_background_opacity = true;
       disable_ligatures = "cursor";
-      url_style = false;
-      kitty_mod = "ctrl+shift";
       clear_all_shortcuts = true;
-      terminal_select_modifiers = "shift";
-      open_url_modifiers = "kitty_mod";
     };
     keybindings = {
       "kitty_mod+c" = "copy_to_clipboard";
@@ -57,5 +46,11 @@
       "ctrl+minus" = "change_font_size all -2";
       "ctrl+apostrophe" = "change_font_size all 0";
     };
+  };
+
+  programs.chromium = {
+    enable = true;
+    package = pkgs.ungoogled-chromium;
+    extensions = [ "cjpalhdlnbpafiamejdnhcphjbkeiagm" ]; #FIXME
   };
 }

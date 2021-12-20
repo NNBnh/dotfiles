@@ -96,10 +96,13 @@ $DOTGLOB       = True
 $AUTO_CD       = True
 
 # Input method
-$GTK_IM_MODULE = "fcitx"
-$QT_IM_MODULE  = $GTK_IM_MODULE
-$SDL_IM_MODULE = $GTK_IM_MODULE
-$XMODIFIERS    = f"@im={$GTK_IM_MODULE}"
+$GTK_IM_MODULE     = "ibus"
+$QT_IM_MODULE      = $GTK_IM_MODULE
+$QT4_IM_MODULE     = $GTK_IM_MODULE
+$CLUTTER_IM_MODULE = $GTK_IM_MODULE
+$GLFW_IM_MODULE    = $GTK_IM_MODULE
+$SDL_IM_MODULE     = $GTK_IM_MODULE
+$XMODIFIERS        = f"@im={$GTK_IM_MODULE}"
 
 # Paths
 $PATH += [f"{$HOME}/.local/bin"]
@@ -177,13 +180,13 @@ aliases["lorem"] = lambda args=[1]: pyperclip.copy("\n".join([$lorem] * int(args
 print(
 	end="".join(
 		[
-			"\033[0 q",
+			"\033[1 q",
 			"\033]10;#FFFFFF\033\\",
 			"\033]11;#171726\033\\",
 			"\033]12;#6BB8FF\033\\",
 			"\033]708;#171726\033\\",
 		] + [
-			f"\033]P{'%X' % index}{color}\033]4;{index};#{color}\033\\"
+			f"\033]P{'%X' % index}{color}\007\033]4;{index};#{color}\007"
 			for index, color in enumerate(
 				[
 					"22273D",

@@ -29,4 +29,9 @@ in
   programs.xonsh.enable = true;
 
   services.xserver.desktopManager.gnome.enable = true; #TODO change
+
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [ bamboo ];
+  };
 }
