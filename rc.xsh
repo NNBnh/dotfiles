@@ -121,12 +121,6 @@ $VISUAL   = $EDITOR
 $PAGER    = $EDITOR
 $MANPAGER = $EDITOR
 
-# SuperB Fetch
-$BFETCH_INFO  = f"{$HOME}/c/ricefetch"
-$BFETCH_ART   = "cat \"$HOME/.local/share/ansi/arch.ansi\""
-$BFETCH_COLOR = "color-strip \"\\033[7m   \""
-$BFETCH_PROMPT_HEIGHT = 2
-
 
 # =============================================================================
 # 3. Aliases
@@ -210,5 +204,3 @@ print(
 		]
 	)
 )
-
-#TODO bfetch

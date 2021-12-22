@@ -28,9 +28,14 @@ in
 
   programs.xonsh.enable = true;
 
-  services.xserver.desktopManager.gnome.enable = true; #TODO change
+  services.xserver = {
+    enable = true;
+    displayManager.sddm.enable = true; #TODO remove
+    desktopManager.gnome.enable = true; #TODO remove
+    windowManager.qtile.enable = true;
+  };
 
-  i18n.inputMethod = {
+  i18n.inputMethod = { #TODO move back to home manager
     enabled = "ibus";
     ibus.engines = with pkgs.ibus-engines; [ bamboo ];
   };

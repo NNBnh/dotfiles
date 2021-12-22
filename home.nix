@@ -27,6 +27,11 @@
 
   home.file.".config/qtile/config.py".source = ./qtile.py;
 
+  services.picom = {
+    enable = true;
+    blur = true;
+  };
+
   programs.kitty = {
     enable = true;
     font = {
@@ -34,17 +39,15 @@
       size = 10;
     };
     settings = {
-      background_opacity = "0.9";
+      background_opacity = "0.75";
       dynamic_background_opacity = true;
       disable_ligatures = "cursor";
       clear_all_shortcuts = true;
     };
     keybindings = {
-      "kitty_mod+c" = "copy_to_clipboard";
-      "kitty_mod+v" = "paste_from_clipboard";
       "ctrl+equal" = "change_font_size all +2";
       "ctrl+minus" = "change_font_size all -2";
-      "ctrl+apostrophe" = "change_font_size all 0";
+      "ctrl+0" = "change_font_size all 0";
     };
   };
 
