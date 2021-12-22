@@ -16,8 +16,9 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
 
 ### ✨ Features
 
-- Super **portable** using [**Home Manager**](https://nixos.wiki/wiki/Home_Manager) which can be run on pretty much any OS.
-- Super **minimalism**:
+- **Portable**
+  - Using [**Home Manager**](https://nixos.wiki/wiki/Home_Manager) which can be run on pretty much any OS.
+- **Minimalism**
   - Almost all actions are through the [`CLI`](https://en.wikipedia.org/wiki/Command-line_interface) powered by:
     - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
     - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
@@ -27,7 +28,7 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
     - 🎨 Image editor: [**Krita**](https://github.com/NNBnh/dots/wiki/which#%EF%B8%8F-image-editor)
     - 🎥 Motion graphics: [**Blender**](https://github.com/NNBnh/dots/wiki/which#-motion-graphics)
     - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine)
-- Super **optimization**:
+- **Optimization**
   - 🪟 Windows manager: [**Qtile**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
     - A tree-base tiling windows manager for endless freedom.
     - Maximize the screen real estate.
@@ -35,7 +36,7 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
 
 ## 📥 Installation
 
-### On [NixOS](https://nixos.org)
+### ❄️ On [NixOS](https://nixos.org)
 
 Follow [this instruction](https://nixos.org/manual/nixos/stable/index.html) from the beginning to section [2.3. Installing](https://nixos.org/manual/nixos/stable/index.html#sec-installation-installing), right after step 3 then:
 
@@ -45,9 +46,20 @@ Follow [this instruction](https://nixos.org/manual/nixos/stable/index.html) from
 sudo nixos-generate-config --root /mnt
 ```
 
-_#TODO_
+2. Clone this repository:
 
-### On other OS
+```sh
+nix-env -iA nixos.git
+git clone https://github.com/NNBnh/dots.git ~/c
+```
+
+3. Finally run the installation:
+
+```sh
+sudo nixos-install -I nixos-config=~/c/configuration.nix
+```
+
+### 🎲 On other OS
 
 _#TODO_
 
