@@ -3,7 +3,7 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/43980777/108480424-85941700-72c9-11eb-8380-89ddb5202607.png"></p>
 <p align="center">
   <a href="home.nix"><img src="https://img.shields.io/badge/home.nix%20-%235890F8.svg?style=for-the-badge" alt="home.nix"></a>
-  <a href="https://github.com/NNBnh/dots/discussions/7"><img src="https://img.shields.io/badge/gallery%20-%2376A85D.svg?style=for-the-badge" alt="Gallery"></a>
+  <a href="https://https://github.com/NNBnh/dots/releases"><img src="https://img.shields.io/badge/gallery%20-%2376A85D.svg?style=for-the-badge" alt="Gallery"></a>
   <a href="https://github.com/NNBnh/dots/wiki/which"><img src="https://img.shields.io/badge/which%20-%23FF9470.svg?style=for-the-badge" alt="WHICH"></a>
   <a href="https://github.com/NNBnh/dots/wiki"><img src="https://img.shields.io/badge/wiki%20-%23DE5D6E.svg?style=for-the-badge" alt="Wiki"></a>
 </p>
