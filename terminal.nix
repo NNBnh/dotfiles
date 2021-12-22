@@ -5,7 +5,7 @@
 
   home.packages = with pkgs; [
     xonsh      # Command shell
-    exa        # Pretty LS
+    exa        # Pretty file list
     helix      # Text editor
     ffmpeg     # Media manipulator
     asciinema  # Record terminal sessions
