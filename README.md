@@ -3,7 +3,7 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/43980777/108480424-85941700-72c9-11eb-8380-89ddb5202607.png"></p>
 <p align="center">
   <a href="home.nix"><img src="https://img.shields.io/badge/home.nix%20-%235890F8.svg?style=for-the-badge" alt="home.nix"></a>
-  <a href="https://https://github.com/NNBnh/dots/releases"><img src="https://img.shields.io/badge/gallery%20-%2376A85D.svg?style=for-the-badge" alt="Gallery"></a>
+  <a href="https://github.com/NNBnh/dots/releases"><img src="https://img.shields.io/badge/gallery%20-%2376A85D.svg?style=for-the-badge" alt="Gallery"></a>
   <a href="https://github.com/NNBnh/dots/wiki/which"><img src="https://img.shields.io/badge/which%20-%23FF9470.svg?style=for-the-badge" alt="WHICH"></a>
   <a href="https://github.com/NNBnh/dots/wiki"><img src="https://img.shields.io/badge/wiki%20-%23DE5D6E.svg?style=for-the-badge" alt="Wiki"></a>
 </p>
@@ -16,7 +16,7 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
 
 ### ✨ Features
 
-- Super **portable** using [**Home Manager**](https://nixos.wiki/wiki/Home_Manager) which can be run on pretty much any os.
+- Super **portable** using [**Home Manager**](https://nixos.wiki/wiki/Home_Manager) which can be run on pretty much any OS.
 - Super **minimalism**:
   - Almost all actions are through the [`CLI`](https://en.wikipedia.org/wiki/Command-line_interface) powered by:
     - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
@@ -34,6 +34,20 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
     - No bar!
 
 ## 📥 Installation
+
+### On [NixOS](https://nixos.org)
+
+Follow [this instruction](https://nixos.org/manual/nixos/stable/index.html) from the beginning to section [2.3. Installing](https://nixos.org/manual/nixos/stable/index.html#sec-installation-installing), right after step 3 then:
+
+1. generate an initial configuration file for your system:
+
+```sh
+sudo nixos-generate-config --root /mnt
+```
+
+_#TODO_
+
+### On other OS
 
 _#TODO_
 
