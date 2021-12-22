@@ -32,7 +32,7 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
   - 🪟 Windows manager: [**Qtile**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
     - A tree-base tiling windows manager for endless freedom.
     - Maximize the screen real estate.
-    - No bar!
+    - No menu! No bar! No notification!
 
 ## 📥 Installation
 
@@ -53,15 +53,43 @@ nix-env -iA nixos.git
 git clone https://github.com/NNBnh/dots.git ~/c
 ```
 
-3. Finally run the installation:
+3. Run the installation:
 
 ```sh
 sudo nixos-install -I nixos-config=~/c/configuration.nix
 ```
 
+4. Install [the standalone Home manager tool](https://nix-community.github.io/home-manager/index.html#sec-install-standalone).
+
+5. Finally activate this dotfiles:
+
+```sh
+home-manager switch -f ~/c/home.nix
+```
+
 ### 🎲 On other OS
 
-_#TODO_
+1. Do a [quick install of Nix](https://nixos.org/download.html#nix-quick-install):
+
+```sh
+curl -L https://nixos.org/nix/install | sh
+```
+
+> _Make sure to follow the instructions output by the script._
+
+2. Clone this repository:
+
+```
+git clone https://github.com/NNBnh/dots.git ~/c
+```
+
+3. Install [the standalone Home manager tool](https://nix-community.github.io/home-manager/index.html#sec-install-standalone).
+
+4. Finally activate this dotfiles:
+
+```sh
+home-manager switch -f ~/c/home.nix
+```
 
 <br><br><br><br>
 
