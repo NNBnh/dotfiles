@@ -15,8 +15,8 @@
     bibata-cursors      # Cursor theme
 
     # Applications
-    krita               # Image editor
-    blender             # Motion graphics
+    ungoogled-chromium  # Web browser
+    blender             # Graphic editor
     godot               # Game engine
 
     # Games
@@ -51,11 +51,5 @@
       "ctrl+minus" = "change_font_size all -2";
       "ctrl+0" = "change_font_size all 0";
     };
-  };
-
-  programs.chromium = {
-    enable = true;
-    package = pkgs.ungoogled-chromium;
-    extensions = [ "cjpalhdlnbpafiamejdnhcphjbkeiagm" ]; #FIXME
   };
 }
