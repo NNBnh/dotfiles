@@ -33,42 +33,34 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
     - Maximize the screen real estate.
     - No menu! No bar! No notification!
 
-## 📥 Installation
+## 🚀 Setup
 
-### ❄️ On [NixOS](https://nixos.org)
+### 🚧 Pre-Install
 
-Follow [this instruction](https://nixos.org/manual/nixos/stable/index.html) from the beginning to section [2.3. Installing](https://nixos.org/manual/nixos/stable/index.html#sec-installation-installing), right after step 3 then:
+#### ❄️ NixOS
 
-1. generate an initial configuration file for your system:
+On [NixOS](https://nixos.org), follow [this instruction](https://nixos.org/manual/nixos/stable/index.html) from the beginning to section [2.3. Installing](https://nixos.org/manual/nixos/stable/index.html#sec-installation-installing).
+Right after step 3, generate an initial configuration file for your system:
 
 ```sh
 sudo nixos-generate-config --root /mnt
 ```
 
-2. Clone this repository:
-
-```sh
-nix-env -iA nixos.git
-git clone https://github.com/NNBnh/dots.git ~/c
-```
-
-3. Run the installation:
+Then run the installation:
 
 ```sh
 sudo nixos-install -I nixos-config=~/c/configuration.nix
 ```
 
-4. Install [the standalone Home manager tool](https://nix-community.github.io/home-manager/index.html#sec-install-standalone).
+Finally reboot your system.
 
-5. Finally activate this dotfiles:
+#### 📱 Android
 
-```sh
-home-manager switch -f ~/c/home.nix
-```
+Install [Nix-on-Droid](https://github.com/t184256/nix-on-droid) as a Termux replacement.
 
-### 🎲 On other OS
+#### 🎲 Other OS
 
-1. Do a [quick install of Nix](https://nixos.org/download.html#nix-quick-install):
+Do a [quick install of Nix](https://nixos.org/download.html#nix-quick-install):
 
 ```sh
 curl -L https://nixos.org/nix/install | sh
@@ -76,15 +68,18 @@ curl -L https://nixos.org/nix/install | sh
 
 > _Make sure to follow the instructions output by the script._
 
-2. Clone this repository:
+### 📥 Installation
+
+1. Clone this repository:
 
 ```
+nix-env -iA nixos.git
 git clone https://github.com/NNBnh/dots.git ~/c
 ```
 
-3. Install [the standalone Home manager tool](https://nix-community.github.io/home-manager/index.html#sec-install-standalone).
+2. Install [the standalone Home manager tool](https://nix-community.github.io/home-manager/index.html#sec-install-standalone).
 
-4. Finally activate this dotfiles:
+3. Finally activate the dotfiles:
 
 ```sh
 home-manager switch -f ~/c/home.nix
