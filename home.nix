@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./terminal.nix ];
+  imports = [ ./tty.nix ];
 
   programs.home-manager.enable = true;
 
