@@ -10,7 +10,6 @@
     ffmpeg     # Media manipulator
     asciinema  # Record terminal sessions
     figlet     # Text banner generator
-    nms        # Hacker mode
     ruby_3_0   # Scripting language
   ];
 
