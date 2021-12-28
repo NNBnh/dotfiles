@@ -18,11 +18,6 @@
     ungoogled-chromium  # Web browser
     blender             # Graphic editor
     godot               # Game engine
-
-    # Games
-    retroarch           # Retro emulators
-    multimc             # Minecraft launcher
-    osu-lazer           # Rhythm game
   ];
 
   home.file.".config/qtile/config.py".source = ./qtile.py;
