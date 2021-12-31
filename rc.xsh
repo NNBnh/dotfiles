@@ -13,21 +13,7 @@ import os, re, datetime, importlib
 
 
 # =============================================================================
-# 1. Events
-# =============================================================================
-
-@events.on_postcommand
-def save_command_info(cmd, rtn, out, ts, **kw):
-	if rtn:
-		print(f"\033[7;38;5;9m E:{str(rtn)} \033[0m")
-
-@events.on_chdir
-def auto_ls(olddir, newdir, **kw):
-	exa --all --group-directories-first
-
-
-# =============================================================================
-# 2. Setting
+# 1. Setting
 # =============================================================================
 
 # Display
@@ -74,6 +60,20 @@ $MANPAGER = $EDITOR
 
 
 # =============================================================================
+# 2. Events
+# =============================================================================
+
+@events.on_postcommand
+def save_command_info(cmd, rtn, out, ts, **kw):
+	if rtn:
+		print(f"\033[7;38;5;9m E:{str(rtn)} \033[0m")
+
+@events.on_chdir
+def auto_ls(olddir, newdir, **kw):
+	exa --all --group-directories-first
+
+
+# =============================================================================
 # 3. Aliases
 # =============================================================================
 
@@ -89,8 +89,8 @@ aliases["b"]  = "edir"
 
 # Selection
 $SELECTION = None
-def set_file_select(paths):
-	$SELECTION = [os.path.abspath(path) for path in paths]
+def set_file_select(items):
+	$SELECTION = [os.path.abspath(item) for path in items]
 aliases["s"]   = lambda args: set_file_select(args)
 aliases["mv"]  = lambda args: execx("mv    @($SELECTION) .") if not args else execx("mv "    + " ".join(args))
 aliases["cp"]  = lambda args: execx("cp -r @($SELECTION) .") if not args else execx("cp -r " + " ".join(args))
