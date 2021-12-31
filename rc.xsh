@@ -24,7 +24,6 @@ def save_command_info(cmd, rtn, out, ts, **kw):
 @events.on_chdir
 def auto_ls(olddir, newdir, **kw):
 	exa --all --group-directories-first
-	print(end="\033[A")
 
 
 # =============================================================================
@@ -67,7 +66,7 @@ if os.path.exists(f"{$HOME}/.nix-profile") and not __xonsh__.env.get("NIX_PATH")
 
 	$PATH += [f"{$HOME}/.nix-profile/bin", "/nix/var/nix/profiles/default/bin"]
 
-## Editor
+# Editor
 $EDITOR   = "hx"
 $VISUAL   = $EDITOR
 $PAGER    = $EDITOR
@@ -78,49 +77,37 @@ $MANPAGER = $EDITOR
 # 3. Aliases
 # =============================================================================
 
-### Display
-def hr(string="#"):
-	print("\033[?7l" + string * os.get_terminal_size().columns + "\033[?7h")
-aliases["hr"] = lambda args=["#"]: [hr(string) for string in args] #FIXME default parameter
-
-### File system
+# File system
 aliases["."]  = "exa --all --group-directories-first --long --header --across --git"
 aliases["dl"] = "trash-put"
 aliases["e"]  = $EDITOR
 aliases["md"] = "mkdir --parents"
 aliases["ex"] = "patool extract"
 aliases["ar"] = "patool create"
+aliases["g"]  = "git"
 aliases["b"]  = "edir"
 
-### Selection
+# Selection
 $SELECTION = None
 def set_file_select(paths):
 	$SELECTION = [os.path.abspath(path) for path in paths]
 aliases["s"]   = lambda args: set_file_select(args)
-aliases["mv"]  = lambda args: execx("mv @($SELECTION) ."   ) if not args else execx("mv "    + " ".join(args))
+aliases["mv"]  = lambda args: execx("mv    @($SELECTION) .") if not args else execx("mv "    + " ".join(args))
 aliases["cp"]  = lambda args: execx("cp -r @($SELECTION) .") if not args else execx("cp -r " + " ".join(args))
 aliases["ln"]  = lambda args: execx("ln -s @($SELECTION) .") if not args else execx("ln -s " + " ".join(args))
 aliases["hln"] = lambda args: execx("ln    @($SELECTION) .") if not args else execx("ln -s " + " ".join(args))
 
-### Git
-aliases["g"]    = "git"
-aliases["ga"]   = "git add -A"
-aliases["gc"]   = "git commit -m"
-aliases["gget"] = "git fetch --prune && git pull --rebase && git submodule update --init --recursive"
-aliases["gput"] = "git commit --all && git push"
-
-### Services
+# Services
 aliases["cht"]   = lambda args: print(requests.get("https://cheat.sh/"   + " ".join(args)).text)
 aliases["rate"]  = lambda args: print(requests.get("https://rate.sx/"    + " ".join(args)).text)
 
-### Rickroll
+# Rickroll
 $roll              = "curl -sL 'http://bit.ly/10hA8iC' | bash"
 aliases["roll"]    = lambda: pyperclip.copy($roll)
 aliases["rollout"] = $roll
 
-### Lorem
+# Lorem
 $lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-aliases["lorem"] = lambda args=[1]: pyperclip.copy("\n".join([$lorem] * int(args[0]))) #FIXME default parameter #TODO lorem word
 
 
 # =============================================================================
