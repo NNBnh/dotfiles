@@ -98,8 +98,8 @@ aliases["ln"]  = lambda args: execx("ln -s @($SELECTION) .") if not args else ex
 aliases["hln"] = lambda args: execx("ln    @($SELECTION) .") if not args else execx("ln -s " + " ".join(args))
 
 # Services
-aliases["cht"]   = lambda args: print(requests.get("https://cheat.sh/"   + " ".join(args)).text)
-aliases["rate"]  = lambda args: print(requests.get("https://rate.sx/"    + " ".join(args)).text)
+aliases["cht"]   = lambda args: print(requests.get("https://cheat.sh/" + " ".join(args)).text)
+aliases["rate"]  = lambda args: print(requests.get("https://rate.sx/"  + " ".join(args)).text)
 
 # Rickroll
 $roll              = "curl -sL 'http://bit.ly/10hA8iC' | bash"
@@ -107,8 +107,12 @@ aliases["roll"]    = lambda: pyperclip.copy($roll)
 aliases["rollout"] = $roll
 
 # Lorem
-$lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
+$lorem = (
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+	"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+	"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+	"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+)
 
 # =============================================================================
 # 4. Startup
