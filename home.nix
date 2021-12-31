@@ -1,17 +1,15 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./tty.nix ];
-
   programs.home-manager.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
+  imports = [ ./tty.nix ];
+
   home.packages = with pkgs; [
     # Core
     qtile               # Windows manager
-    #bmono              # Mono font
-    sarasa-gothic       # Non Latin support for font
-    twemoji-color-font  # Emoji support for font
+    sarasa-gothic       # Non Latin support
+    twemoji-color-font  # Emoji support
     bibata-cursors      # Cursor theme
 
     # Applications
@@ -38,6 +36,7 @@
       dynamic_background_opacity = true;
       disable_ligatures = "cursor";
       clear_all_shortcuts = true;
+      allow_remote_control = true;
     };
     keybindings = {
       "kitty_mod+c" = "copy_to_clipboard";

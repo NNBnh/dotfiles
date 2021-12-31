@@ -1,16 +1,7 @@
 { config, pkgs, ... }:
 
-let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-in
-
 {
-  imports = [
-    /etc/nixos/hardware-configuration.nix
-    (import "${home-manager}/nixos")
-  ];
-
-  home-manager.users.nnb = import ./home.nix;
+  imports = [ /etc/nixos/hardware-configuration.nix ];
 
   boot = {
     supportedFilesystems = [ "ntfs" ];

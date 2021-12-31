@@ -8,7 +8,6 @@
     exa        # Pretty file list
     helix      # Text editor
     ffmpeg     # Media manipulator
-    asciinema  # Record terminal sessions
     figlet     # Text banner generator
     ruby_3_0   # Scripting language
   ];

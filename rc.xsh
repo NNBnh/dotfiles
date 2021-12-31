@@ -13,60 +13,13 @@ import os, re, datetime, importlib
 
 
 # =============================================================================
-# 1. Function
+# 1. Events
 # =============================================================================
 
-$SELECTION = None
-def set_file_select(paths):
-	$SELECTION = [os.path.abspath(path) for path in paths]
-
-def hr(string="#"):
-	print("\033[?7l" + string * os.get_terminal_size().columns + "\033[?7h")
-
-last_cmd = None
 @events.on_postcommand
 def save_command_info(cmd, rtn, out, ts, **kw):
-	global last_cmd
-	last_cmd = {
-		"rtn": rtn,
-		"out": out,
-		"ts": ts
-	}
-
-@events.on_pre_prompt
-def print_command_info():
-	global last_cmd
-
-	if last_cmd:
-		info_string = ""
-
-		if last_cmd["rtn"] != 0:
-			info_string += " \033[38;5;9mE:" + str(last_cmd["rtn"])
-
-		duration = last_cmd["ts"][1] - last_cmd["ts"][0]
-		if duration >= 2:
-			info_string += " \033[38;5;8mtook \033[38;5;11m"
-	
-			if duration >= 60:
-				info_string += str(datetime.timedelta(seconds = round(duration)))
-			else:
-				info_string += "{:.3f}s".format(duration)
-
-		if last_cmd["out"] or info_string:
-			print(end="\033[38;5;8m")
-			hr("_")
-			print(end="\033[0m")
-
-		if info_string:
-			print(
-				"\033[A\033[" + str(
-					os.get_terminal_size().columns
-					- len(re.sub("\\033\\[[0-9;]*[JKmsu]", "", info_string))
-					- 1
-				) + f"C{info_string} "
-			)
-
-	last_cmd = None
+	if rtn:
+		print(f"\033[7;38;5;9m E:{str(rtn)} \033[0m")
 
 @events.on_chdir
 def auto_ls(olddir, newdir, **kw):
@@ -79,10 +32,9 @@ def auto_ls(olddir, newdir, **kw):
 # =============================================================================
 
 # Display
-$XONSH_CAPTURE_ALWAYS = True
 $MULTILINE_PROMPT     = "░"
 $DYNAMIC_CWD_WIDTH    = "25%"
-$PROMPT               = lambda: "\033[0;1;7;37m {cwd} \033[0m "
+$PROMPT               = lambda: "\n\033[0;1;7;37m {cwd} \033[0m "
 $TITLE                = lambda: $PWD.replace($HOME, "~") + "/"
 
 # Interactive
@@ -127,6 +79,8 @@ $MANPAGER = $EDITOR
 # =============================================================================
 
 ### Display
+def hr(string="#"):
+	print("\033[?7l" + string * os.get_terminal_size().columns + "\033[?7h")
 aliases["hr"] = lambda args=["#"]: [hr(string) for string in args] #FIXME default parameter
 
 ### File system
@@ -139,10 +93,14 @@ aliases["ar"] = "patool create"
 aliases["b"]  = "edir"
 
 ### Selection
-aliases["s"]  = lambda args: set_file_select(args)
-aliases["mv"] = lambda args: execx("mv @($SELECTION) ."   ) if not args else execx("mv "    + " ".join(args))
-aliases["cp"] = lambda args: execx("cp -r @($SELECTION) .") if not args else execx("cp -r " + " ".join(args))
-aliases["ln"] = lambda args: execx("ln -s @($SELECTION) .") if not args else execx("ln -s " + " ".join(args))
+$SELECTION = None
+def set_file_select(paths):
+	$SELECTION = [os.path.abspath(path) for path in paths]
+aliases["s"]   = lambda args: set_file_select(args)
+aliases["mv"]  = lambda args: execx("mv @($SELECTION) ."   ) if not args else execx("mv "    + " ".join(args))
+aliases["cp"]  = lambda args: execx("cp -r @($SELECTION) .") if not args else execx("cp -r " + " ".join(args))
+aliases["ln"]  = lambda args: execx("ln -s @($SELECTION) .") if not args else execx("ln -s " + " ".join(args))
+aliases["hln"] = lambda args: execx("ln    @($SELECTION) .") if not args else execx("ln -s " + " ".join(args))
 
 ### Git
 aliases["g"]    = "git"
@@ -153,8 +111,6 @@ aliases["gput"] = "git commit --all && git push"
 
 ### Services
 aliases["cht"]   = lambda args: print(requests.get("https://cheat.sh/"   + " ".join(args)).text)
-aliases["wttr"]  = lambda args: print(requests.get("https://wttr.in/"    + " ".join(args)).text)
-aliases["wttr2"] = lambda args: print(requests.get("https://v2.wttr.in/" + " ".join(args)).text)
 aliases["rate"]  = lambda args: print(requests.get("https://rate.sx/"    + " ".join(args)).text)
 
 ### Rickroll
