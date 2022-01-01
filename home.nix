@@ -8,7 +8,7 @@
   home.packages = with pkgs; [
     # Core
     qtile               # Windows manager
-    sarasa-gothic       # Non Latin support
+    sarasa-gothic       # CJK support
     twemoji-color-font  # Emoji support
     bibata-cursors      # Cursor theme
 

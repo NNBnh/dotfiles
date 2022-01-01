@@ -6,9 +6,8 @@
 # /_/|_\____/_/ /_/____/_/ /_/
 
 
-import os, re, datetime, importlib
+import os
 
-#TODO xontrib-hist_navigator trash-cli patool edir
 #FIXME xontrib load hist_navigator
 
 
@@ -17,10 +16,10 @@ import os, re, datetime, importlib
 # =============================================================================
 
 # Display
-$MULTILINE_PROMPT     = "░"
-$DYNAMIC_CWD_WIDTH    = "25%"
-$PROMPT               = lambda: "\n\033[0;1;7;37m {cwd} \033[0m "
-$TITLE                = lambda: $PWD.replace($HOME, "~") + "/"
+$MULTILINE_PROMPT  = "|"
+$DYNAMIC_CWD_WIDTH = "80%"
+$PROMPT            = lambda: "\n\033[0;1;94;40m| {cwd} \033[0;30m▓▒░\n\033[0;1m{prompt_end} "
+$TITLE             = lambda: $PWD.replace($HOME, "~") + "/"
 
 # Interactive
 $XONSH_AUTOPAIR           = True
@@ -130,22 +129,8 @@ print(
 			f"\033]P{'%X' % index}{color}\007\033]4;{index};#{color}\007"
 			for index, color in enumerate(
 				[
-					"22273D",
-					"DE5D6E",
-					"76A85D",
-					"FF9470",
-					"5890F8",
-					"C173D1",
-					"64B5A7",
-					"878D96",
-					"525866",
-					"FA7883",
-					"98C379",
-					"FFC387",
-					"6BB8FF",
-					"E799FF",
-					"8AF5FF",
-					"C8C8C8"
+					"22273D", "DE5D6E", "76A85D", "FF9470", "5890F8", "C173D1", "64B5A7", "878D96",
+					"525866", "FA7883", "98C379", "FFC387", "6BB8FF", "E799FF", "8AF5FF", "C8C8C8"
 				]
 			)
 		]
