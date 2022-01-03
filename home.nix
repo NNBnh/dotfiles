@@ -22,7 +22,15 @@
 
   services.picom = {
     enable = true;
+    experimentalBackends = true;
     blur = true;
+    extraOptions = ''
+      blur: {
+        method = "dual_kawase";
+        strength = 7;
+        kern = "3x3box";
+      }
+    '';
   };
 
   programs.kitty = {

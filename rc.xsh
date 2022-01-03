@@ -17,9 +17,8 @@ import os
 
 # Display
 $MULTILINE_PROMPT  = "|"
-$DYNAMIC_CWD_WIDTH = "80%"
-$PROMPT            = lambda: "\n\033[0;1;94;40m| {cwd} \033[0;30m▓▒░\n\033[0;1m{prompt_end} "
-$TITLE             = lambda: $PWD.replace($HOME, "~") + "/"
+$PROMPT            = "\n\033[0;1;94;40m| {cwd} \033[0;30m▓▒░\n\033[0;1m{prompt_end} "
+$TITLE             = "{cwd}"
 
 # Interactive
 $XONSH_AUTOPAIR           = True
@@ -65,7 +64,7 @@ $MANPAGER = $EDITOR
 @events.on_postcommand
 def save_command_info(cmd, rtn, out, ts, **kw):
 	if rtn:
-		print(f"\033[7;38;5;9m E:{str(rtn)} \033[0m")
+		print(f"\033[7;91m E:{str(rtn)} \033[0m")
 
 @events.on_chdir
 def auto_ls(olddir, newdir, **kw):
@@ -89,23 +88,18 @@ aliases["b"]  = "edir"
 # Selection
 $SELECTION = None
 def set_file_select(items):
-	$SELECTION = [os.path.abspath(item) for path in items]
+	$SELECTION = [os.path.abspath(item) for item in items]
 aliases["s"]   = lambda args: set_file_select(args)
-aliases["mv"]  = lambda args: execx("mv    @($SELECTION) .") if not args else execx("mv "    + " ".join(args))
-aliases["cp"]  = lambda args: execx("cp -r @($SELECTION) .") if not args else execx("cp -r " + " ".join(args))
-aliases["ln"]  = lambda args: execx("ln -s @($SELECTION) .") if not args else execx("ln -s " + " ".join(args))
-aliases["hln"] = lambda args: execx("ln    @($SELECTION) .") if not args else execx("ln -s " + " ".join(args))
+aliases["mv"]  = lambda args: execx("mv    @($SELECTION) .") if not args else execx(" ".join(["mv"]    + args))
+aliases["cp"]  = lambda args: execx("cp -r @($SELECTION) .") if not args else execx(" ".join(["cp -r"] + args))
+aliases["ln"]  = lambda args: execx("ln -s @($SELECTION) .") if not args else execx(" ".join(["ln -s"] + args))
+aliases["hln"] = lambda args: execx("ln    @($SELECTION) .") if not args else execx(" ".join(["ln"]    + args))
 
-# Services
-aliases["cht"]   = lambda args: print(requests.get("https://cheat.sh/" + " ".join(args)).text)
-aliases["rate"]  = lambda args: print(requests.get("https://rate.sx/"  + " ".join(args)).text)
-
-# Rickroll
-$roll              = "curl -sL 'http://bit.ly/10hA8iC' | bash"
-aliases["roll"]    = lambda: pyperclip.copy($roll)
-aliases["rollout"] = $roll
-
-# Lorem
+# Other
+aliases["bye"]  = "systemctl suspend"
+aliases["cht"]  = lambda args: print(requests.get("https://cheat.sh/" + " ".join(args)).text)
+aliases["rate"] = lambda args: print(requests.get("https://rate.sx/"  + " ".join(args)).text)
+aliases["roll"] = "curl -sL 'https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh' | bash"
 $lorem = (
 	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."

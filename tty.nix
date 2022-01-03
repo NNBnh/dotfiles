@@ -1,12 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  git-alias = pkgs.fetchFromGitHub { #TODO move to Flakes
-    owner = "GitAlias";
-    repo = "gitalias";
-    rev = "38f82c9ff8d70032e21e61779846545df6986dba";
-    sha256 = "0j577nfyr97spv186rab8i992c8rjv93zq02kz06i4q3crznpm6j";
-  };
+  git-alias = builtins.fetchTarball "https://github.com/GitAlias/gitalias/archive/main.tar.gz";
 in {
   programs.home-manager.enable = true;
 
@@ -18,7 +13,6 @@ in {
     edir       # Bulk edit
     helix      # Text editor
     ffmpeg     # Media manipulator
-    figlet     # Text banner generator
     ruby_3_0   # Scripting language
   ];
 

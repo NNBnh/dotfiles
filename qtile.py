@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-#    ____  __  _ __
-#   / __ \/ /_(_) /__
-#  / / / / __/ / / _ \
-# / /_/ / /_/ / /  __/
-# \___\_\__/_/_/\___/
-
 
 from libqtile        import layout
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
