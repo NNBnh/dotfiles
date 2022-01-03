@@ -24,13 +24,6 @@
     enable = true;
     experimentalBackends = true;
     blur = true;
-    extraOptions = ''
-      blur: {
-        method = "dual_kawase";
-        strength = 7;
-        kern = "3x3box";
-      }
-    '';
   };
 
   programs.kitty = {
@@ -40,7 +33,7 @@
       size = 10;
     };
     settings = {
-      background_opacity = "0.75";
+      background_opacity = "0.85";
       dynamic_background_opacity = true;
       disable_ligatures = "cursor";
       clear_all_shortcuts = true;

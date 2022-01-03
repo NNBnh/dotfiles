@@ -76,14 +76,15 @@ def auto_ls(olddir, newdir, **kw):
 # =============================================================================
 
 # File system
-aliases["."]  = "exa --all --group-directories-first --long --header --across --git"
-aliases["dl"] = "trash-put"
-aliases["e"]  = $EDITOR
-aliases["md"] = "mkdir --parents"
-aliases["ex"] = "patool extract"
-aliases["ar"] = "patool create"
-aliases["g"]  = "git"
-aliases["b"]  = "edir"
+aliases["."]    = "exa --all --group-directories-first --long --header --across --git"
+aliases["dl"]   = "trash-put"
+aliases["e"]    = $EDITOR
+aliases["icat"] = "kitty +kitten icat"
+aliases["md"]   = "mkdir --parents"
+aliases["ex"]   = "patool extract"
+aliases["ar"]   = "patool create"
+aliases["g"]    = "git"
+aliases["b"]    = "edir"
 
 # Selection
 $SELECTION = None
