@@ -19,12 +19,7 @@
 
   programs.xonsh.enable = true;
 
-  services.xserver = {
-    enable = true;
-    displayManager.sddm.enable = true; #TODO remove
-    desktopManager.gnome.enable = true; #TODO remove
-    windowManager.qtile.enable = true;
-  };
+  services.xserver.enable = true;
 
   i18n.inputMethod = { #TODO move back to home manager
     enabled = "ibus";

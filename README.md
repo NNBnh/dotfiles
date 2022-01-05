@@ -29,10 +29,9 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
     - 🎥 Graphic editor: [**Blender**](https://github.com/NNBnh/dots/wiki/which#-graphic-editor)
     - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine)
 - **Optimization**
-  - 🪟 Windows manager: [**Qtile**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
+  - 🪟 Windows manager: [**Wayfire**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
     - A tree-base tiling windows manager for endless freedom.
-    - Maximize the screen real estate.
-    - No menu! No bar! No notification!
+    - [Maximize the screen real estate](https://github.com/NNBnh/dots/wiki/which#-bar).
 
 ## 🚀 Setup
 

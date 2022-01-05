@@ -1,13 +1,15 @@
 { config, pkgs, ... }:
 
-{
+let
+  bmono = builtins.fetchTarball "https://github.com/NNBnh/bmono/archive/main.tar.gz";
+in {
   programs.home-manager.enable = true;
 
   imports = [ ./tty.nix ];
 
   home.packages = with pkgs; [
     # Core
-    qtile               # Windows manager
+    wayfire             # Windows manager
     sarasa-gothic       # CJK support
     twemoji-color-font  # Emoji support
     bibata-cursors      # Cursor theme
@@ -18,13 +20,7 @@
     godot               # Game engine
   ];
 
-  home.file.".config/qtile/config.py".source = ./qtile.py;
-
-  services.picom = {
-    enable = true;
-    experimentalBackends = true;
-    blur = true;
-  };
+  home.file.".local/share/fonts/bmono".source = "${bmono}/dist/bmono/ttf";
 
   programs.kitty = {
     enable = true;

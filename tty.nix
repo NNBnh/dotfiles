@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
-let
-  git-alias = builtins.fetchTarball "https://github.com/GitAlias/gitalias/archive/main.tar.gz";
-in {
+{
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
@@ -24,7 +22,7 @@ in {
     userEmail = "nnbnh@protonmail.com";
     extraConfig = {
       credential.helper = "store";
-      include.path = "${git-alias}/gitalias.txt";
+      include.path = builtins.fetchurl "https://raw.githubusercontent.com/GitAlias/gitalias/main/gitalias.txt";
     };
   };
 }

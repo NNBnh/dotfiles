@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-#    _  __                 __
-#   | |/ /___  ____  _____/ /_
-#   |   / __ \/ __ \/ ___/ __ \
-#  /   / /_/ / / / (__  ) / / /
-# /_/|_\____/_/ /_/____/_/ /_/
 
 
 import os
@@ -77,9 +72,9 @@ def auto_ls(olddir, newdir, **kw):
 
 # File system
 aliases["."]    = "exa --all --group-directories-first --long --header --across --git"
+aliases["icat"] = "kitty +kitten icat"
 aliases["dl"]   = "trash-put"
 aliases["e"]    = $EDITOR
-aliases["icat"] = "kitty +kitten icat"
 aliases["md"]   = "mkdir --parents"
 aliases["ex"]   = "patool extract"
 aliases["ar"]   = "patool create"
