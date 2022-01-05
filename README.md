@@ -30,7 +30,6 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
     - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine)
 - **Optimization**
   - 🪟 Windows manager: [**Wayfire**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
-    - A tree-base tiling windows manager for endless freedom.
     - [Maximize the screen real estate](https://github.com/NNBnh/dots/wiki/which#-bar).
 
 ## 🚀 Setup
