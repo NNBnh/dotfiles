@@ -10,6 +10,14 @@ in {
   home.packages = with pkgs; [
     # Core
     wayfire             # Windows manager
+    swaybg              # Set wallpaper
+    pamixer             # Audio control
+    brightnessctl       # Brightness control
+    slurp               # Region selector
+    grim                # Screen shot
+    wf-recorder         # Screen record
+
+    # Resource
     sarasa-gothic       # CJK support
     twemoji-color-font  # Emoji support
     bibata-cursors      # Cursor theme
@@ -22,6 +30,8 @@ in {
 
   home.file.".local/share/fonts/bmono".source = "${bmono}/dist/bmono/ttf";
 
+  home.file.".config/wayfire.conf".source = ./wayfire.conf;
+
   programs.kitty = {
     enable = true;
     font = {
@@ -29,7 +39,7 @@ in {
       size = 10;
     };
     settings = {
-      background_opacity = "0.85";
+      background_opacity = "0.75";
       dynamic_background_opacity = true;
       disable_ligatures = "cursor";
       clear_all_shortcuts = true;
