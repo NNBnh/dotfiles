@@ -48,7 +48,7 @@ sudo nixos-generate-config --root /mnt
 Then run the installation:
 
 ```sh
-sudo nixos-install -I nixos-config=~/c/configuration.nix
+sudo nixos-install -I nixos-config=~/c/system.nix
 ```
 
 Finally reboot your system.
@@ -82,6 +82,12 @@ git clone https://github.com/NNBnh/dots.git ~/c
 
 ```sh
 home-manager switch -f ~/c/home.nix
+```
+
+Or if you just want to activate only for terminal use:
+
+```sh
+home-manager switch -f ~/c/tty.nix
 ```
 
 <br><br><br><br>
