@@ -11,7 +11,13 @@
     };
   };
 
+  networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
+
+  services = {
+    xserver.enable = true;
+    pipewire.enable = true;
+  };
 
   users.users.nnb = {
     isNormalUser = true;
@@ -20,9 +26,4 @@
   };
 
   programs.xonsh.enable = true;
-
-  services.xserver = {
-    enable = true;
-    libinput.enable = true;
-  };
 }

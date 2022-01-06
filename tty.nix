@@ -5,7 +5,7 @@
 
   home.packages = with pkgs; [
     xonsh      # Command shell
-    exa        # Pretty file list
+    exa        # Pretty files list
     trash-cli  # Trash manager
     patool     # Archive
     edir       # Bulk edit

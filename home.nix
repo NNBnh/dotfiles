@@ -2,6 +2,7 @@
 
 let
   bmono = builtins.fetchTarball "https://github.com/NNBnh/bmono/archive/main.tar.gz";
+  wallpaper = builtins.fetchurl "https://github.com/NNBnh/wallpapers/raw/main/brown-concrete-house-surrounded-by-plants.jpg";
 in {
   programs.home-manager.enable = true;
 
@@ -11,16 +12,11 @@ in {
     # Core
     wayfire             # Windows manager
     swaybg              # Set wallpaper
-    pamixer             # Audio control
     brightnessctl       # Brightness control
     slurp               # Region selector
     grim                # Screen shot
     wf-recorder         # Screen record
-
-    # Resource
     sarasa-gothic       # CJK support
-    twemoji-color-font  # Emoji support
-    bibata-cursors      # Cursor theme
 
     # Applications
     ungoogled-chromium  # Web browser
@@ -29,6 +25,7 @@ in {
   ];
 
   home.file.".local/share/fonts/bmono".source = "${bmono}/dist/bmono/ttf";
+  home.file.".local/share/wallpaper.png".source = wallpaper;
 
   home.file.".config/wayfire.conf".source = ./wayfire.conf;
 
@@ -44,7 +41,7 @@ in {
       size = 10;
     };
     settings = {
-      background_opacity = "0.75";
+      background_opacity = "0.90";
       dynamic_background_opacity = true;
       disable_ligatures = "cursor";
       clear_all_shortcuts = true;
