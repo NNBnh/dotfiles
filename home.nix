@@ -32,6 +32,11 @@ in {
 
   home.file.".config/wayfire.conf".source = ./wayfire.conf;
 
+  i18n.inputMethod = {
+    enabled = "fcitx";
+    fcitx.engines = with pkgs.fcitx-engines; [ unikey ];
+  };
+
   programs.kitty = {
     enable = true;
     font = {

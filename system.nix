@@ -11,6 +11,8 @@
     };
   };
 
+  hardware.bluetooth.enable = true;
+
   users.users.nnb = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -19,10 +21,8 @@
 
   programs.xonsh.enable = true;
 
-  services.xserver.enable = true;
-
-  i18n.inputMethod = { #TODO move back to home manager
-    enabled = "ibus";
-    ibus.engines = with pkgs.ibus-engines; [ bamboo ];
+  services.xserver = {
+    enable = true;
+    libinput.enable = true;
   };
 }
