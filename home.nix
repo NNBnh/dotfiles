@@ -11,12 +11,12 @@ in {
   home.packages = with pkgs; [
     # Core
     wayfire             # Windows manager
-    swaybg              # Set wallpaper
     brightnessctl       # Brightness control
     slurp               # Region selector
     grim                # Screen shot
     wf-recorder         # Screen record
     sarasa-gothic       # CJK support
+    blueberry           # Bluetooth manager
 
     # Applications
     ungoogled-chromium  # Web browser
@@ -24,10 +24,17 @@ in {
     godot               # Game engine
   ];
 
-  home.file.".local/share/fonts/bmono".source = "${bmono}/dist/bmono/ttf";
-  home.file.".local/share/wallpaper.png".source = wallpaper;
+  home.file = {
+    ".local/share/fonts/bmono".source = "${bmono}/dist/bmono/ttf";
 
-  home.file.".config/wayfire.conf".source = ./wayfire.conf;
+    ".local/share/wallpaper.png".source = wallpaper;
+    ".config/wf-shell.ini".text =''
+      [background]
+      image = /home/nnb/.local/share/wallpaper.png
+    '';
+
+    ".config/wayfire.conf".source = ./wayfire.conf;
+  };
 
   i18n.inputMethod = {
     enabled = "fcitx";
@@ -48,11 +55,11 @@ in {
       allow_remote_control = true;
     };
     keybindings = {
-      "kitty_mod+c" = "copy_to_clipboard";
-      "kitty_mod+v" = "paste_from_clipboard";
-      "ctrl+equal" = "change_font_size all +2";
-      "ctrl+minus" = "change_font_size all -2";
-      "ctrl+0" = "change_font_size all 0";
+      "super+c" = "copy_to_clipboard";
+      "super+v" = "paste_from_clipboard";
+      "super+equal" = "change_font_size all +2";
+      "super+minus" = "change_font_size all -2";
+      "super+0" = "change_font_size all 0";
     };
   };
 }

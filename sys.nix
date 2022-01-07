@@ -11,14 +11,6 @@
     };
   };
 
-  networking.networkmanager.enable = true;
-  hardware.bluetooth.enable = true;
-
-  services = {
-    xserver.enable = true;
-    pipewire.enable = true;
-  };
-
   users.users.nnb = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -26,4 +18,13 @@
   };
 
   programs.xonsh.enable = true;
+
+  networking.networkmanager.enable = true;
+
+  hardware = {
+    pulseaudio.enable = true;
+    bluetooth.enable = true;
+  };
+
+  services.xserver.enable = true;
 }
