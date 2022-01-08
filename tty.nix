@@ -15,6 +15,7 @@
   ];
 
   home.file.".config/xonsh/rc.xsh".source = ./rc.xsh;
+  home.file.".local/share/colorscheme.cat".source = builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/da-one/main/da-one-ocean.cat";
 
   programs.git = {
     enable = true;

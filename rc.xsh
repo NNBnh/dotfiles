@@ -47,6 +47,10 @@ aliases["ar"] = "patool create"
 aliases["b"] = "edir"
 aliases["g"] = "git"
 
+aliases["n"] = "nohup kitty &>/dev/null &"
+aliases["l"] = lambda args: execx(" ".join(["exec nohup"] + args + [">~/.cache/nohup.out"]))
+aliases["www"] = lambda args: execx(" ".join(["exec nohup chromium"] + args + [">/dev/null"]))
+
 aliases["bye"] = "systemctl suspend"
 
 aliases["roll"] = "curl -sL 'https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh' | bash"
@@ -54,21 +58,4 @@ aliases["roll"] = "curl -sL 'https://raw.githubusercontent.com/keroserene/rickro
 
 # =============================================================================
 
-print(
-	end="".join(
-		[
-			"\033]10;#FFFFFF\033\\",
-			"\033]11;#171726\033\\",
-			"\033]12;#6BB8FF\033\\",
-			"\033]708;#171726\033\\",
-		] + [
-			f"\033]P{'%X' % index}{color}\007\033]4;{index};#{color}\007"
-			for index, color in enumerate(
-				[
-					"22273D", "DE5D6E", "76A85D", "FF9470", "5890F8", "C173D1", "64B5A7", "878D96",
-					"525866", "FA7883", "98C379", "FFC387", "6BB8FF", "E799FF", "8AF5FF", "C8C8C8"
-				]
-			)
-		]
-	)
-)
+cat "~/.local/share/colorscheme.cat"
