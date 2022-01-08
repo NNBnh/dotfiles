@@ -5,9 +5,13 @@
   <a href="https://github.com/NNBnh/dots/wiki"><img src="https://img.shields.io/badge/wiki%20-%23DE5D6E.svg?style=for-the-badge" alt="Wiki"></a>
   <a href="https://github.com/NNBnh/dots/wiki/which"><img src="https://img.shields.io/badge/which%20-%23FF9470.svg?style=for-the-badge" alt="WHICH"></a>
   <a href="https://github.com/NNBnh/dots/releases"><img src="https://img.shields.io/badge/gallery%20-%2376A85D.svg?style=for-the-badge" alt="Gallery"></a>
-  <a href="home.nix"><img src="https://img.shields.io/badge/home.nix%20-%235890F8.svg?style=for-the-badge" alt="home.nix"></a>
-  <a href="tty.nix"><img src="https://img.shields.io/badge/tty.nix%20-%23C173D1.svg?style=for-the-badge" alt="tty.nix"></a>
 </p>
+<p align="center">
+  <a href="sys.nix"><img src="https://img.shields.io/badge/sys.nix%20-%238AF5FF.svg?style=flat-square" alt="sys.nix"></a>
+  <a href="home.nix"><img src="https://img.shields.io/badge/home.nix%20-%235890F8.svg?style=flat-square" alt="home.nix"></a>
+  <a href="tty.nix"><img src="https://img.shields.io/badge/tty.nix%20-%23C173D1.svg?style=flat-square" alt="tty.nix"></a>
+</p>
+
 
 ## 💡 About
 
