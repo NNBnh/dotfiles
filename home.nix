@@ -11,9 +11,6 @@ in {
     # Core
     wayfire             # Windows manager
     brightnessctl       # Brightness control
-    slurp               # Region selector
-    grim                # Screen shot
-    wf-recorder         # Screen record
     sarasa-gothic       # CJK support
     blueberry           # Bluetooth manager
 

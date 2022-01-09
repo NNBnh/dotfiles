@@ -14,19 +14,15 @@
 
 ## 💡 About
 
-Welcome to my `Đotfiles` configured with a high level of **portable** for **minimalism** and **optimization**:
-
 > ⬤ ⬤ ⬤
+
+Welcome to my `Đotfiles` configured with a high level of **portable** for **minimalism** and **optimization**.
 
 ### ✨ Features
 
 - **Portable**
   - Using [**Home Manager**](https://nixos.wiki/wiki/Home_Manager) which can be run on pretty much any OS.
 - **Minimalism**
-  - Almost all actions are through the [`CLI`](https://en.wikipedia.org/wiki/Command-line_interface) powered by:
-    - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
-    - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
-    - 📝 Text editor: [**Helix**](https://github.com/NNBnh/dots/wiki/which#-text-editor "Also used as a $PAGER")
   - And only 3 [`GUI`](https://en.wikipedia.org/wiki/Graphical_user_interface "Graphical user interface") applications:
     - 🌏 Browser: [**UG Chromium**](https://github.com/NNBnh/dots/wiki/which#-web-browser)
     - 🎥 Graphic editor: [**Blender**](https://github.com/NNBnh/dots/wiki/which#-graphic-editor)
@@ -34,6 +30,10 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
 - **Optimization**
   - 🪟 Windows manager: [**Wayfire**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
     - [Maximize the screen real estate](https://github.com/NNBnh/dots/wiki/which#-bar).
+  - Almost all actions are through the [`CLI`](https://en.wikipedia.org/wiki/Command-line_interface) powered by:
+    - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
+    - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
+    - 📝 Text editor: [**Helix**](https://github.com/NNBnh/dots/wiki/which#-text-editor "Also used as a $PAGER")
 
 ## 🚀 Setup
 
