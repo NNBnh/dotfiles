@@ -20,20 +20,25 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
 
 ### ✨ Features
 
-- **Portable**
-  - Using [**Home Manager**](https://nixos.wiki/wiki/Home_Manager) which can be run on pretty much any OS.
-- **Minimalism**
-  - And only 3 [`GUI`](https://en.wikipedia.org/wiki/Graphical_user_interface "Graphical user interface") applications:
-    - 🌏 Browser: [**UG Chromium**](https://github.com/NNBnh/dots/wiki/which#-web-browser)
-    - 🎥 Graphic editor: [**Blender**](https://github.com/NNBnh/dots/wiki/which#-graphic-editor)
-    - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine)
-- **Optimization**
-  - 🪟 Windows manager: [**Wayfire**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
-    - [Maximize the screen real estate](https://github.com/NNBnh/dots/wiki/which#-bar).
-  - Almost all actions are through the [`CLI`](https://en.wikipedia.org/wiki/Command-line_interface) powered by:
+- **Portable:**
+  - Using [**Home Manager**](https://nixos.wiki/wiki/Home_Manager) which can be run on pretty much [any OS](https://github.com/NNBnh/dots#-pre-install), even on [Android](https://github.com/NNBnh/dots#-android).
+- **Minimalism:**
+  - Ricing on Nix is so convenient and elegant. I can sink my dotfiles from a big and mess structure config into some small tightly optimize `.nix` files. My whole dotfile is now just 200~ sloc!
+  - No need for tiling WM, a simple and quick floating WM is perfect for my workflow:
+    - 🪟 Windows manager: [**Wayfire**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
+  - Almost all actions are through the CLI powered by:
     - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
     - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
     - 📝 Text editor: [**Helix**](https://github.com/NNBnh/dots/wiki/which#-text-editor "Also used as a $PAGER")
+  - And only 3 GUI applications:
+    - 🌏 Browser: [**UG Chromium**](https://github.com/NNBnh/dots/wiki/which#-web-browser)
+    - 🎥 Graphic editor: [**Blender**](https://github.com/NNBnh/dots/wiki/which#-graphic-editor)
+    - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine)
+- **Optimization:**
+  - [Maximize the screen real estate](https://github.com/NNBnh/dots/wiki/which#-bar).
+  - [Non idiotic keyboard workflow](https://github.com/NNBnh/dots/wiki/keyboard) <sup><i>#TODO</i></sup>.
+  - [Clean home file structure with short file naming](https://github.com/NNBnh/dots/wiki/spring-cleaning#-file-structure).
+  - [Convenient CLI files management](https://github.com/NNBnh/dots/wiki/files-manager).
 
 ## 🚀 Setup
 
