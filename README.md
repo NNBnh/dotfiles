@@ -36,7 +36,7 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
     - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine)
 - **Optimization:**
   - [Maximize the screen real estate](https://github.com/NNBnh/dots/wiki/which#-bar).
-  - [Non idiotic keyboard workflow](https://github.com/NNBnh/dots/wiki/keyboard) <sup><i>#TODO</i></sup>.
+  - [Non idiotic keyboard workflow](https://github.com/NNBnh/dots/wiki/keyboard#-workflow).
   - [Clean home file structure with short file naming](https://github.com/NNBnh/dots/wiki/spring-cleaning#-file-structure).
   - [Convenient CLI files management](https://github.com/NNBnh/dots/wiki/files-manager).
 
