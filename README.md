@@ -1,6 +1,6 @@
 <h1 align="center"><code>Đotfiles</code></h1>
 <p align="center">End-game Đotfiles</p>
-<p align="center"><img src="https://user-images.githubusercontent.com/43980777/147937099-2d781835-7db1-45c5-a687-b90630c8755d.png"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/43980777/149177182-62417ac8-6d51-41da-8cc5-b4f90a4963bf.png"></p>
 <p align="center">
   <a href="https://github.com/NNBnh/dots/wiki"><img src="https://img.shields.io/badge/wiki%20-%23DE5D6E.svg?style=for-the-badge" alt="Wiki"></a>
   <a href="https://github.com/NNBnh/dots/wiki/which"><img src="https://img.shields.io/badge/which%20-%23FF9470.svg?style=for-the-badge" alt="WHICH"></a>
@@ -10,7 +10,6 @@
   <a href="home.nix"><img src="https://img.shields.io/badge/home.nix%20-%235890F8.svg?style=flat-square" alt="home.nix"></a>
   <a href="tty.nix"><img src="https://img.shields.io/badge/tty.nix%20-%23C173D1.svg?style=flat-square" alt="tty.nix"></a>
 </p>
-
 
 ## 💡 About
 
