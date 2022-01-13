@@ -9,14 +9,11 @@ in {
   imports = [ ./tty.nix ];
 
   home.packages = with pkgs; [
-    # Core
     berry               # Windows manager
     xwallpaper          # Set wallpaper
     brightnessctl       # Brightness control
     sarasa-gothic       # CJK support
-    blueberry           # Bluetooth manager
-
-    # Applications
+    blueberry           # Bluetooth manager #TODO remove
     ungoogled-chromium  # Web browser
     blender             # Graphic editor
     godot               # Game engine
@@ -31,15 +28,7 @@ in {
       berryc border_width 0
       berryc inner_border_width 0
       berryc title_height 0
-      berryc resize_mask "Mod4" #FIXME "mod4|ctrl"
-
-      export GTK_IM_MODULE="fcitx"
-      export QT_IM_MODULE="$GTK_IM_MODULE"
-      export QT4_IM_MODULE="$GTK_IM_MODULE"
-      export CLUTTER_IM_MODULE="$GTK_IM_MODULE"
-      export GLFW_IM_MODULE="$GTK_IM_MODULE"
-      export SDL_IM_MODULE="$GTK_IM_MODULE"
-      export XMODIFIERS="@im={$GTK_IM_MODULE}"
+      berryc resize_mask "Mod4" #TODO "mod4|ctrl"
 
       xwallpaper --zoom "${wallpaper}" &
       sxhkd &
@@ -55,7 +44,7 @@ in {
       "{_,ctrl} + {_,shift} + Print" = "{,region | }{shot,record}"; #TODO
       "super + space" = "fcitx-remote -t";
       "super + {Up,Down,Left,Right,Tab}" = "berryc {window_monocle,window_close,snap_left,snap_right,cycle_focus}";
-      "super + Return" = "kitty";
+      "super + Return" = "kitty"; #TODO
     };
   };
 
@@ -70,10 +59,7 @@ in {
       name = "Bmono";
       size = 10;
     };
-    settings = {
-      clear_all_shortcuts = true;
-      allow_remote_control = true;
-    };
+    settings.clear_all_shortcuts = true;
     keybindings = {
       "super+c" = "copy_to_clipboard";
       "super+v" = "paste_from_clipboard";
