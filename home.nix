@@ -2,6 +2,7 @@
 
 let
   bmono = builtins.fetchTarball "https://github.com/NNBnh/bmono/archive/main.tar.gz";
+  wallpaper = builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/wallpapers/main/brown-concrete-house-surrounded-by-plants.jpg";
 in {
   programs.home-manager.enable = true;
 
@@ -9,7 +10,8 @@ in {
 
   home.packages = with pkgs; [
     # Core
-    wayfire             # Windows manager
+    berry               # Windows manager
+    xwallpaper          # Set wallpaper
     brightnessctl       # Brightness control
     sarasa-gothic       # CJK support
     blueberry           # Bluetooth manager
@@ -22,56 +24,39 @@ in {
 
   home.file = {
     ".local/share/fonts/bmono".source = "${bmono}/dist/bmono/ttf";
-    ".config/wayfire.conf".text = ''
-      [core]
-      plugins = command scale move resize alpha wrot grid autostart
-      background_color = 0.13671875 0.15625 0.2421875 1.0
+    ".config/berry/autostart".text = ''
+      #!/bin/sh
 
-      close_top_view = <super> KEY_BACKSPACE
+      berryc edge_gap 0 0 0 0
+      berryc border_width 0
+      berryc inner_border_width 0
+      berryc title_height 0
+      berryc resize_mask "Mod4" #FIXME "mod4|ctrl"
 
-      [command]
-      binding_terminal = <super> KEY_ENTER
-      command_terminal = kitty
+      export GTK_IM_MODULE="fcitx"
+      export QT_IM_MODULE="$GTK_IM_MODULE"
+      export QT4_IM_MODULE="$GTK_IM_MODULE"
+      export CLUTTER_IM_MODULE="$GTK_IM_MODULE"
+      export GLFW_IM_MODULE="$GTK_IM_MODULE"
+      export SDL_IM_MODULE="$GTK_IM_MODULE"
+      export XMODIFIERS="@im={$GTK_IM_MODULE}"
 
-      binding_switch_input = <super> KEY_SPACE
-      command_switch_input = fcitx-remote -t
-
-      repeatable_binding_volume_up = KEY_VOLUMEUP
-      command_volume_up = amixer set Master 5%+
-      repeatable_binding_volume_down = KEY_VOLUMEDOWN
-      command_volume_down = amixer set Master 5%-
-      binding_mute = KEY_MUTE
-      command_mute = amixer set Master toggle
-
-      repeatable_binding_light_up = KEY_BRIGHTNESSUP
-      command_light_up = brightnessctl set 5%+
-      repeatable_binding_light_down = KEY_BRIGHTNESSDOWN
-      command_light_down = brightnessctl set 5%-
-
-      binding_screen_shot = <super> KEY_S
-      command_screen_shot = grim
-
-      [scale]
-      duration = 180
-      inactive_alpha = 0.5
-      toggle = <super>
-
-      [move]
-      activate = <super> BTN_LEFT
-
-      [resize]
-      activate = <super> BTN_RIGHT
-
-      [alpha]
-      modifier = <super>
-
-      [wrot]
-      activate = <super> BTN_MIDDLE
-
-      [autostart]
-      autostart_wf_shell = false
-      language_input = fcitx
+      xwallpaper --zoom "${wallpaper}" &
+      sxhkd &
+      fcitx &
     '';
+  };
+
+  services.sxhkd = {
+    enable = true;
+    keybindings = {
+      "XF86Audio{Mute,RaiseVolume,LowerVolume}" = "amixer set Master {toggle,5%+,5%-}";
+      "XF86MonBrightness{Up,Down}" = "brightnessctl set 5%{+,-}";
+      "{_,ctrl} + {_,shift} + Print" = "{,region | }{shot,record}"; #TODO
+      "super + space" = "fcitx-remote -t";
+      "super + {Up,Down,Left,Right,Tab}" = "berryc {window_monocle,window_close,snap_left,snap_right,cycle_focus}";
+      "super + Return" = "kitty";
+    };
   };
 
   i18n.inputMethod = {
@@ -86,7 +71,6 @@ in {
       size = 10;
     };
     settings = {
-      disable_ligatures = "cursor";
       clear_all_shortcuts = true;
       allow_remote_control = true;
     };

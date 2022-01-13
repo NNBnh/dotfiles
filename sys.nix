@@ -14,10 +14,7 @@
   users.users.nnb = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    shell = pkgs.xonsh;
   };
-
-  programs.xonsh.enable = true;
 
   networking.networkmanager.enable = true;
 
@@ -26,5 +23,12 @@
     bluetooth.enable = true;
   };
 
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    libinput.enable = true;
+
+    #TODO remove
+    displayManager.sddm.enable = true;
+    windowManager.berry.enable = true;
+  };
 }
