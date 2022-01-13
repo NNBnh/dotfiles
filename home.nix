@@ -3,6 +3,7 @@
 let
   bmono = builtins.fetchTarball "https://github.com/NNBnh/bmono/archive/main.tar.gz";
   wallpaper = builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/wallpapers/main/brown-concrete-house-surrounded-by-plants.jpg";
+  bye = pkgs.writeScriptBin "bye" "systemctl suspend";
 in {
   programs.home-manager.enable = true;
 
@@ -13,10 +14,10 @@ in {
     xwallpaper          # Set wallpaper
     brightnessctl       # Brightness control
     sarasa-gothic       # CJK support
-    blueberry           # Bluetooth manager #TODO remove
     ungoogled-chromium  # Web browser
     blender             # Graphic editor
     godot               # Game engine
+    bye                 # Go to sleep
   ];
 
   home.file = {

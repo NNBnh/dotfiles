@@ -23,8 +23,11 @@
 
     ".config/elvish/rc.elv".text = ''
       cat ~/.local/share/colorscheme.cat
-
-      set edit:prompt = { styled "$ " bold }
+      if (==s (tty)[0:7] "/dev/tty" ) {
+        set edit:prompt = { styled "> " bold }
+      } else {
+        set edit:prompt = { styled "❯ " bold }
+      }
       set edit:rprompt = { styled (tilde-abbr $pwd)" " bright-black }
 
       set-env EDITOR "hx"
@@ -39,12 +42,6 @@
       fn ar [@a]{ patool create $@a }
       fn ff [@a]{ ffmpeg $@a }
       fn g [@a]{ git $@a }
-
-      fn W [@a]{ nohup chromium $@a >/dev/null }
-      fn G [@a]{ nohup godot $@a >/dev/null }
-      fn B [@a]{ nohup blender $@a >/dev/null }
-
-      fn bye { systemctl suspend }
     '';
 
     ".config/helix/config.toml".text = ''
