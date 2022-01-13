@@ -55,7 +55,7 @@ sudo nixos-generate-config --root /mnt
 Then run the installation:
 
 ```sh
-sudo nixos-install -I nixos-config=~/c/system.nix
+sudo nixos-install -I nixos-config=~/c/sys.nix
 ```
 
 Finally reboot your system.
