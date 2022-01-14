@@ -15,7 +15,7 @@
 
   programs.bash = {
     enable = true;
-    initExtra = "elvish";
+    initExtra = "[ $SHLVL == 1 ] && exec elvish";
   };
 
   home.file = {
@@ -23,8 +23,8 @@
 
     ".config/elvish/rc.elv".text = ''
       cat ~/.local/share/colorscheme.cat
-      if (==s (tty)[0:7] "/dev/tty" ) {
-        set edit:prompt = { styled "> " bold }
+      if (==s (tty)[0:8] "/dev/tty" ) {
+        set edit:prompt = { print ">" }
       } else {
         set edit:prompt = { styled "❯ " bold }
       }
@@ -35,12 +35,11 @@
       set-env PAGER "hx"
       set-env MANPAGER "hx"
 
-      fn e [@a]{ hx $@a }
       fn dl [@a]{ trash-put $@a }
       fn md [@a]{ mkdir --parents $@a }
       fn ex [@a]{ patool extract $@a }
       fn ar [@a]{ patool create $@a }
-      fn ff [@a]{ ffmpeg $@a }
+      fn e [@a]{ hx $@a }
       fn g [@a]{ git $@a }
     '';
 
