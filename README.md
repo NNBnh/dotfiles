@@ -24,10 +24,10 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
 - **Minimalism:**
   - Ricing on Nix is so convenient and elegant. I can sink my dotfiles from a big and mess structure config into some small tightly optimize `.nix` files. My whole dotfile is now just 200~ sloc!
   - No need for tiling WM, a simple and quick floating WM is perfect for my workflow:
-    - 🪟 Windows manager: [**Wayfire**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
+    - 🪟 Windows manager: [**Berry**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
   - Almost all actions are through the CLI powered by:
     - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
-    - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
+    - 🐚 Shell: [**Elvish**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
     - 📝 Text editor: [**Helix**](https://github.com/NNBnh/dots/wiki/which#-text-editor "Also used as a $PAGER")
   - And only 3 GUI applications:
     - 🌏 Browser: [**UG Chromium**](https://github.com/NNBnh/dots/wiki/which#-web-browser)
@@ -35,7 +35,7 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
     - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine)
 - **Optimization:**
   - [Maximize the screen real estate](https://github.com/NNBnh/dots/wiki/which#-bar).
-  - [Non idiotic keyboard workflow](https://github.com/NNBnh/dots/wiki/keyboard#-workflow).
+  - [Harmony workflow](https://github.com/NNBnh/dots/wiki/keyboard#-workflow).
   - [Clean home file structure with short file naming](https://github.com/NNBnh/dots/wiki/spring-cleaning#-file-structure).
   - [Convenient CLI files management](https://github.com/NNBnh/dots/wiki/files-manager).
 
@@ -79,7 +79,7 @@ curl -L https://nixos.org/nix/install | sh
 1. Clone this repository:
 
 ```
-nix-env -iA nixos.git
+nix-env -iA nixos.git # Use "nixpkgs.git" if you are not on NixOS
 git clone https://github.com/NNBnh/dots.git ~/c
 ```
 
