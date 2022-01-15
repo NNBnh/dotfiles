@@ -2,50 +2,50 @@
 
 let
   bmono = builtins.fetchTarball "https://github.com/NNBnh/bmono/archive/main.tar.gz";
-  wallpaper = builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/wallpapers/main/brown-concrete-house-surrounded-by-plants.jpg";
-  bye = pkgs.writeScriptBin "bye" "echo 'Bye~'; systemctl suspend; clear; sleep 1; echo 'Welcome back!'";
+  bye = pkgs.writeScriptBin "bye" "echo 'Good bye~'; systemctl suspend; clear; sleep 1; echo 'Welcome back!'";
 in {
   programs.home-manager.enable = true;
 
   imports = [ ./tty.nix ];
 
   home.packages = with pkgs; [
-    berry               # Windows manager
-    bye                 # Go to sleep
-    xwallpaper          # Set wallpaper
-    brightnessctl       # Brightness control
-    sarasa-gothic       # CJK support
-    ungoogled-chromium  # Web browser
-    blender             # Graphic editor
-    godot               # Game engine
+    river                  # Windows manager
+    bye                    # Go to sleep
+    brightnessctl          # Brightness control
+    slurp grim wf-recorder # Screen capture
+    wl-clipboard           # Clipboard manager
+    sarasa-gothic          # CJK support
+    ungoogled-chromium     # Web browser
+    blender                # Graphic editor
+    godot                  # Game engine
   ];
 
   home.file = {
     ".local/share/fonts/bmono".source = "${bmono}/dist/bmono/ttf";
-    ".config/berry/autostart".text = ''
-      #!/bin/sh
+    ".config/river/init" = {
+      executable = true;
+      text = ''
+        #!/bin/sh
 
-      berryc edge_gap 0 0 0 0
-      berryc border_width 0
-      berryc inner_border_width 0
-      berryc title_height 0
-      #TODO berryc resize_mask "mod4|ctrl"
+        riverctl background-color '0x000000'
+        riverctl map normal None XF86AudioMute spawn 'amixer set Master toggle'
+        riverctl map normal None XF86AudioRaiseVolume spawn 'amixer set Master 5%+'
+        riverctl map normal None XF86AudioLowerVolume spawn 'amixer set Master 5%-'
+        riverctl map normal None XF86MonBrightnessUp spawn 'brightnessctl set 5%+'
+        riverctl map normal None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'
+        riverctl map normal None Print spawn 'grim | tee "$(date +%Y-%m-%d_%H-%M-%S_%N).png" | wl-copy'
+        riverctl map normal Shift Print spawn 'grim -g "$(slurp)" | tee "$(date +%Y-%m-%d_%H-%M-%S_%N).png" | wl-copy'
+        riverctl map normal Control Print spawn 'pkill wf-recorder || wf-recorder --audio --file="$(date +%Y-%m-%d_%H-%M-%S_%N).png"'
+        riverctl map normal Control+Shift Print spawn 'pkill wf-recorder || wf-recorder -g "$(slurp)" --audio --file="$(date +%Y-%m-%d_%H-%M-%S_%N).png"'
+        riverctl map normal Mod4 Space spawn 'fcitx-remote -t'
+        riverctl map normal Mod4 Up toggle-fullscreen
+        riverctl map normal Mod4 Down close
+        riverctl map normal Mod4 Left focus-view previous
+        riverctl map normal Mod4 Right focus-view next
+        riverctl map normal Mod4 Return spawn 'kitty'
 
-      xwallpaper --zoom "${wallpaper}" &
-      sxhkd &
-      fcitx &
-    '';
-  };
-
-  services.sxhkd = {
-    enable = true;
-    keybindings = {
-      "XF86Audio{Mute,RaiseVolume,LowerVolume}" = "amixer set Master {toggle,5%+,5%-}";
-      "XF86MonBrightness{Up,Down}" = "brightnessctl set 5%{+,-}";
-      "{_,ctrl} + {_,shift} + Print" = "{,region | }{shot,record}"; #TODO
-      "super + space" = "fcitx-remote -t";
-      "super + {Up,Down,Left,Right,Tab}" = "berryc {window_monocle,window_close,snap_left,snap_right,cycle_focus}";
-      "super + Return" = "kitty"; #TODO
+        fcitx &
+      '';
     };
   };
 
