@@ -3,7 +3,7 @@
 let
   bmono = builtins.fetchTarball "https://github.com/NNBnh/bmono/archive/main.tar.gz";
   wallpaper = builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/wallpapers/main/brown-concrete-house-surrounded-by-plants.jpg";
-  bye = pkgs.writeScriptBin "bye" "systemctl suspend";
+  bye = pkgs.writeScriptBin "bye" "echo 'Bye~'; systemctl suspend";
 in {
   programs.home-manager.enable = true;
 
@@ -11,13 +11,12 @@ in {
 
   home.packages = with pkgs; [
     berry               # Windows manager
-    xwallpaper          # Set wallpaper
+    bye                 # Go to sleep
     brightnessctl       # Brightness control
     sarasa-gothic       # CJK support
     ungoogled-chromium  # Web browser
     blender             # Graphic editor
     godot               # Game engine
-    bye                 # Go to sleep
   ];
 
   home.file = {
@@ -29,7 +28,10 @@ in {
       berryc border_width 0
       berryc inner_border_width 0
       berryc title_height 0
-      berryc resize_mask "Mod4" #TODO "mod4|ctrl"
+
+      #TODO
+      #berryc decorate_new false
+      #berryc resize_mask "mod4|ctrl"
 
       xwallpaper --zoom "${wallpaper}" &
       sxhkd &

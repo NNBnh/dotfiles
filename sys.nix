@@ -14,6 +14,7 @@
   users.users.nnb = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    shell = pkgs.elvish;
   };
 
   networking.networkmanager.enable = true;
@@ -26,9 +27,6 @@
   services.xserver = {
     enable = true;
     libinput.enable = true;
-
-    #TODO remove
-    displayManager.sddm.enable = true;
-    windowManager.berry.enable = true;
+    displayManager.startx.enable = true;
   };
 }
