@@ -24,10 +24,10 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
 - **Minimalism:**
   - Ricing on Nix is so convenient and elegant. I can sink my dotfiles from a big and mess structure config into some small tightly optimize `.nix` files. My whole dotfile is now just 200~ sloc!
   - No need for tiling WM, a simple and quick floating WM is perfect for my workflow:
-    - 🪟 Windows manager: [**Berry**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
+    - 🪟 Windows manager: [**Wayfire**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
   - Almost all actions are through the CLI powered by:
     - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
-    - 🐚 Shell: [**Elvish**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
+    - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
     - 📝 Text editor: [**Helix**](https://github.com/NNBnh/dots/wiki/which#-text-editor "Also used as a $PAGER")
   - And only 3 GUI applications:
     - 🌏 Browser: [**UG Chromium**](https://github.com/NNBnh/dots/wiki/which#-web-browser)

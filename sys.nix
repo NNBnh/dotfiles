@@ -11,12 +11,6 @@
     };
   };
 
-  users.users.nnb = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    shell = pkgs.elvish;
-  };
-
   networking.networkmanager.enable = true;
 
   hardware = {
@@ -25,4 +19,10 @@
   };
 
   services.xserver.enable = true;
+
+  users.users.nnb = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+    shell = pkgs.xonsh;
+  };
 }

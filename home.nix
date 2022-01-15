@@ -2,6 +2,7 @@
 
 let
   bmono = builtins.fetchTarball "https://github.com/NNBnh/bmono/archive/main.tar.gz";
+  wallpaper = builtins.fetchurl "https://github.com/NNBnh/wallpapers/raw/main/brown-concrete-house-surrounded-by-plants.jpg";
   bye = pkgs.writeScriptBin "bye" "echo 'Good bye~'; systemctl suspend; clear; sleep 1; echo 'Welcome back!'";
 in {
   programs.home-manager.enable = true;
@@ -9,7 +10,8 @@ in {
   imports = [ ./tty.nix ];
 
   home.packages = with pkgs; [
-    river                  # Windows manager
+    wayfire                # Windows manager
+    swaybg                 # Wallpaper setter
     bye                    # Go to sleep
     brightnessctl          # Brightness control
     slurp grim wf-recorder # Screen capture
@@ -22,31 +24,62 @@ in {
 
   home.file = {
     ".local/share/fonts/bmono".source = "${bmono}/dist/bmono/ttf";
-    ".config/river/init" = {
-      executable = true;
-      text = ''
-        #!/bin/sh
+    ".config/wayfire.conf".text = ''
+      [core]
+      plugins = animate wobbly blur command scale move resize alpha wrot grid autostart
 
-        riverctl background-color '0x000000'
-        riverctl map normal None XF86AudioMute spawn 'amixer set Master toggle'
-        riverctl map normal None XF86AudioRaiseVolume spawn 'amixer set Master 5%+'
-        riverctl map normal None XF86AudioLowerVolume spawn 'amixer set Master 5%-'
-        riverctl map normal None XF86MonBrightnessUp spawn 'brightnessctl set 5%+'
-        riverctl map normal None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'
-        riverctl map normal None Print spawn 'grim | tee "$(date +%Y-%m-%d_%H-%M-%S_%N).png" | wl-copy'
-        riverctl map normal Shift Print spawn 'grim -g "$(slurp)" | tee "$(date +%Y-%m-%d_%H-%M-%S_%N).png" | wl-copy'
-        riverctl map normal Control Print spawn 'pkill wf-recorder || wf-recorder --audio --file="$(date +%Y-%m-%d_%H-%M-%S_%N).png"'
-        riverctl map normal Control+Shift Print spawn 'pkill wf-recorder || wf-recorder -g "$(slurp)" --audio --file="$(date +%Y-%m-%d_%H-%M-%S_%N).png"'
-        riverctl map normal Mod4 Space spawn 'fcitx-remote -t'
-        riverctl map normal Mod4 Up toggle-fullscreen
-        riverctl map normal Mod4 Down close
-        riverctl map normal Mod4 Left focus-view previous
-        riverctl map normal Mod4 Right focus-view next
-        riverctl map normal Mod4 Return spawn 'kitty'
+      close_top_view = <super> KEY_BACKSPACE
 
-        fcitx &
-      '';
-    };
+      [command]
+      binding_switch_input = <super> KEY_SPACE
+      command_switch_input = fcitx-remote -t
+
+      repeatable_binding_volume_up = KEY_VOLUMEUP
+      command_volume_up = amixer set Master 5%+
+      repeatable_binding_volume_down = KEY_VOLUMEDOWN
+      command_volume_down = amixer set Master 5%-
+      binding_mute = KEY_MUTE
+      command_mute = amixer set Master toggle
+
+      repeatable_binding_light_up = KEY_BRIGHTNESSUP
+      command_light_up = brightnessctl set 5%+
+      repeatable_binding_light_down = KEY_BRIGHTNESSDOWN
+      command_light_down = brightnessctl set 5%-
+
+      binding_screen_shot = KEY_SYSRQ
+      command_screen_shot = grim - | tee "$HOME/t/$(date +%Y-%m-%d_%H-%M-%S_%N).png" | wl-copy
+      binding_screen_shot_region = <ctrl> KEY_SYSRQ
+      command_screen_shot_region = grim -g "$(slurp)" - | tee "$HOME/t/$(date +%Y-%m-%d_%H-%M-%S_%N).png" | wl-copy
+      binding_screen_record = <shift> KEY_SYSRQ
+      command_screen_record = pkill wf-recorder || wf-recorder --audio --file="$HOME/t/$(date +%Y-%m-%d_%H-%M-%S_%N).mkv"
+      binding_screen_record_region = <shift> <ctrl> KEY_SYSRQ
+      command_screen_record_region = pkill wf-recorder || wf-recorder --geometry "$(slurp)" --audio --file="$HOME/t/$(date +%Y-%m-%d_%H-%M-%S_%N).mkv"
+
+      binding_terminal = <super> KEY_ENTER
+      command_terminal = kitty
+
+      [scale]
+      duration = 180
+      inactive_alpha = 0.5
+      toggle = <super>
+
+      [move]
+      activate = <super> BTN_LEFT
+
+      [resize]
+      activate = <super> BTN_RIGHT
+
+      [alpha]
+      modifier = <super>
+
+      [wrot]
+      activate = <super> BTN_MIDDLE
+
+      [autostart]
+      autostart_wf_shell = false
+      background = swaybg -i ${wallpaper}
+      language_input = fcitx
+    '';
   };
 
   i18n.inputMethod = {
@@ -60,7 +93,13 @@ in {
       name = "Bmono";
       size = 10;
     };
-    settings.clear_all_shortcuts = true;
+    settings = {
+      disable_ligatures = "cursor";
+      background_opacity = "0.85";
+      dynamic_background_opacity = true;
+      allow_remote_control = true;
+      clear_all_shortcuts = true;
+    };
     keybindings = {
       "super+c" = "copy_to_clipboard";
       "super+v" = "paste_from_clipboard";

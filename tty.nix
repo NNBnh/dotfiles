@@ -4,7 +4,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    elvish     # Command shell
+    xonsh      # Command shell
     trash-cli  # Trash manager
     patool     # Archive
     edir       # Bulk edit
@@ -16,30 +16,53 @@
   home.file = {
     ".local/share/colorscheme.cat".source = builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/da-one/main/da-one-ocean.cat";
 
-    ".config/elvish/rc.elv".text = ''
+    ".config/xonsh/rc.xsh".text = ''
+      import os
       cat ~/.local/share/colorscheme.cat
-      set edit:prompt = { styled "❯ " bold }
-      if (==s (tty)[0:8] "/dev/tty" ) { set edit:prompt = { print ">" } }
-      set edit:rprompt = { styled (tilde-abbr $pwd)" " bright-black }
 
-      set-env EDITOR "hx"
-      set-env VISUAL $E:EDITOR
-      set-env PAGER $E:EDITOR
-      set-env MANPAGER $E:PAGER
+      $TITLE = "{cwd}"
+      $PROMPT = "\033[0;1;90m {cwd}\033[0m\n\033[1;94m❯ "
+      $MULTILINE_PROMPT = "|"
 
-      fn dl [@a]{ trash-put $@a }
-      fn md [@a]{ mkdir --parents $@a }
-      fn ex [@a]{ patool extract $@a }
-      fn ar [@a]{ patool create $@a }
-      fn e [@a]{ hx $@a }
-      fn g [@a]{ git $@a }
+      $XONSH_AUTOPAIR = True
+      $XONSH_CTRL_BKSP_DELETION = True
+
+      $COMPLETE_DOTS = True
+      $DOTGLOB = True
+      $AUTO_CD = True
+
+      @events.on_postcommand
+      def print_exitcode(cmd, rtn, out, ts, **kw):
+        if rtn:
+          print(f"\033[7;91m E:{str(rtn)} \033[0m")
+
+      @events.on_chdir
+      def auto_ls(olddir, newdir, **kw):
+        .
+
+      $SELECTION = None
+      def set_file_select(items):
+        $SELECTION = [os.path.abspath(item) for item in items]
+
+      aliases["s"] = lambda args: set_file_select(args)
+      aliases["mv"] = lambda args: execx("mv @($SELECTION) .") if not args else execx(" ".join(["mv"] + args))
+      aliases["cp"] = lambda args: execx("cp -r @($SELECTION) .") if not args else execx(" ".join(["cp -r"] + args))
+      aliases["ln"] = lambda args: execx("ln -s @($SELECTION) .") if not args else execx(" ".join(["ln -s"] + args))
+
+      aliases["."] = "ls --almost-all --group-directories-first"
+      aliases["dl"] = "trash-put"
+      aliases["md"] = "mkdir --parents"
+      aliases["ex"] = "patool extract"
+      aliases["ar"] = "patool create"
+      aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "hx"
+      aliases["g"] = "git"
     '';
 
     ".config/helix/config.toml".text = ''
       theme = "base16_terminal"
 
       [editor]
-      line-number = "absolute"
+      line-number = "relative"
     '';
   };
 
