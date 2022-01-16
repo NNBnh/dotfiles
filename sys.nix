@@ -11,12 +11,12 @@
     };
   };
 
-  networking.networkmanager.enable = true;
-
   hardware = {
     pulseaudio.enable = true;
     bluetooth.enable = true;
   };
+
+  networking.networkmanager.enable = true;
 
   services.xserver.enable = true;
 

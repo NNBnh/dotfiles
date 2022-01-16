@@ -21,7 +21,7 @@
       cat ~/.local/share/colorscheme.cat
 
       $TITLE = "{cwd}"
-      $PROMPT = "\033[0;1;90m {cwd}\033[0m\n\033[1;94m❯ "
+      $PROMPT = "\033[0;1;37m {cwd}\033[0m\n\033[1;94m❯ "
       $MULTILINE_PROMPT = "|"
 
       $XONSH_AUTOPAIR = True

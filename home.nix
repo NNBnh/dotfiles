@@ -3,7 +3,7 @@
 let
   bmono = builtins.fetchTarball "https://github.com/NNBnh/bmono/archive/main.tar.gz";
   wallpaper = builtins.fetchurl "https://github.com/NNBnh/wallpapers/raw/main/brown-concrete-house-surrounded-by-plants.jpg";
-  bye = pkgs.writeScriptBin "bye" "echo 'Good bye~'; systemctl suspend; clear; sleep 1; echo 'Welcome back!'";
+  bye = pkgs.writeScriptBin "bye" "systemctl suspend";
 in {
   programs.home-manager.enable = true;
 
@@ -24,15 +24,35 @@ in {
 
   home.file = {
     ".local/share/fonts/bmono".source = "${bmono}/dist/bmono/ttf";
-    ".config/wayfire.conf".text = ''
+    ".config/wayfire.ini".text = ''
       [core]
-      plugins = animate wobbly blur command scale move resize alpha wrot grid autostart
+      plugins = animate wobbly blur wm-actions scale switcher command grid move resize alpha wrot autostart
 
-      close_top_view = <super> KEY_BACKSPACE
+      vwidth = 1
+      vheight = 1
+
+      close_top_view = <super> KEY_BACKSPACE | <super> KEY_DELETE
+
+      [wm-actions]
+      toggle_fullscreen = <super> <shift>
+
+      [scale]
+      duration = 180
+      inactive_alpha = 0.5
+      toggle = <super> | hotspot bottom-left 16x16 0
+
+      [switcher]
+      speed = 50
+      next_view = <super> KEY_TAB
+      prev_view = <super> <shift> KEY_TAB
 
       [command]
-      binding_switch_input = <super> KEY_SPACE
+      binding_sleep = <super> KEY_ESC
+      command_sleep = bye
+      binding_switch_input = <super> <alt>
       command_switch_input = fcitx-remote -t
+      binding_terminal = <super> KEY_SPACE
+      command_terminal = kitty
 
       repeatable_binding_volume_up = KEY_VOLUMEUP
       command_volume_up = amixer set Master 5%+
@@ -49,19 +69,11 @@ in {
       binding_screen_shot = KEY_SYSRQ
       command_screen_shot = grim - | tee "$HOME/t/$(date +%Y-%m-%d_%H-%M-%S_%N).png" | wl-copy
       binding_screen_shot_region = <ctrl> KEY_SYSRQ
-      command_screen_shot_region = grim -g "$(slurp)" - | tee "$HOME/t/$(date +%Y-%m-%d_%H-%M-%S_%N).png" | wl-copy
+      command_screen_shot_region = grim -g "$(slurp || echo 'canceled')" - | tee "$HOME/t/$(date +%Y-%m-%d_%H-%M-%S_%N).png" | wl-copy
       binding_screen_record = <shift> KEY_SYSRQ
       command_screen_record = pkill wf-recorder || wf-recorder --audio --file="$HOME/t/$(date +%Y-%m-%d_%H-%M-%S_%N).mkv"
       binding_screen_record_region = <shift> <ctrl> KEY_SYSRQ
-      command_screen_record_region = pkill wf-recorder || wf-recorder --geometry "$(slurp)" --audio --file="$HOME/t/$(date +%Y-%m-%d_%H-%M-%S_%N).mkv"
-
-      binding_terminal = <super> KEY_ENTER
-      command_terminal = kitty
-
-      [scale]
-      duration = 180
-      inactive_alpha = 0.5
-      toggle = <super>
+      command_screen_record_region = pkill wf-recorder || wf-recorder --geometry "$(slurp || echo 'canceled')" --audio --file="$HOME/t/$(date +%Y-%m-%d_%H-%M-%S_%N).mkv"
 
       [move]
       activate = <super> BTN_LEFT
@@ -78,7 +90,7 @@ in {
       [autostart]
       autostart_wf_shell = false
       background = swaybg -i ${wallpaper}
-      language_input = fcitx
+      input_method = fcitx
     '';
   };
 
