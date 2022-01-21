@@ -22,7 +22,10 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
 - **Portable:**
   - Using [**Home Manager**](https://nixos.wiki/wiki/Home_Manager) which can be run on pretty much [any OS](https://github.com/NNBnh/dots#-pre-install), even on [Android](https://github.com/NNBnh/dots#-android).
 - **Minimalism:**
-  - Ricing on Nix is so convenient and elegant. I can sink my dotfiles from a big and mess structure config into some small tightly optimize `.nix` files. My whole dotfile is now just 200~ sloc!
+  > Ricing on Nix is so convenient and elegant. I can sink my dotfiles from a big and mess structure config into some small tightly optimize `.nix` files. My whole dotfile is now just 200~ sloc!
+  >
+  > ![File count](https://img.shields.io/badge/files-3%20-%235890F8.svg?labelColor=525866&style=flat-square)
+  > ![Lines of code](https://img.shields.io/tokei/lines/github/NNBnh/dots?labelColor=525866&color=5890F8&style=flat-square)
   - No need for tiling WM, a simple and quick floating WM is perfect for my workflow:
     - 🪟 Windows manager: [**Wayfire**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
   - Almost all actions are through the CLI powered by:
@@ -34,10 +37,10 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
     - 🎥 Graphic editor: [**Blender**](https://github.com/NNBnh/dots/wiki/which#-graphic-editor)
     - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine)
 - **Optimization:**
-  - [Maximize the screen real estate](https://github.com/NNBnh/dots/wiki/which#-bar).
-  - [Harmony workflow](https://github.com/NNBnh/dots/wiki/keyboard#-workflow).
-  - [Clean home file structure with short file naming](https://github.com/NNBnh/dots/wiki/spring-cleaning#-file-structure).
-  - [Convenient CLI files management](https://github.com/NNBnh/dots/wiki/files-manager).
+  - [Maximize the screen real estate.](https://github.com/NNBnh/dots/wiki/which#-bar)
+  - [Harmony workflow.](https://github.com/NNBnh/dots/wiki/keyboard#-workflow)
+  - [Clean home file structure with short file naming.](https://github.com/NNBnh/dots/wiki/spring-cleaning#-file-structure)
+  - [Convenient CLI files management.](https://github.com/NNBnh/dots/wiki/files-manager)
 
 ## 🚀 Setup
 
