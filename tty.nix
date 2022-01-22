@@ -8,7 +8,6 @@
     trash-cli  # Trash manager
     patool     # Archive
     edir       # Bulk edit
-    #helix     # Text editor
     ffmpeg     # Media manipulator
     ruby_3_0   # Scripting language
   ];
@@ -58,15 +57,9 @@
       aliases["g"] = "git"
 
       aliases["www"] = "exec nohup chromium &>/dev/null"
-      aliases["dev"] = "exec nohup godot &>/dev/null"
+      aliases["dev"] = "exec nohup codium &>/dev/null"
+      aliases["dot"] = "exec nohup godot &>/dev/null"
       aliases["art"] = "exec nohup blender &>/dev/null"
-    '';
-
-    ".config/helix/config.toml".text = ''
-      theme = "base16_terminal"
-
-      [editor]
-      line-number = "relative"
     '';
   };
 
