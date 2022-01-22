@@ -21,7 +21,7 @@
       cat ~/.local/share/colorscheme.cat
 
       $TITLE = "{cwd}"
-      $PROMPT = "\033[0;1;37m {cwd}\033[0m\n\033[1;94m❯ "
+      $PROMPT = "\033[0;1;90m {cwd}\033[0m\n\033[1;94m❯ "
       $MULTILINE_PROMPT = "|"
 
       $XONSH_AUTOPAIR = True
@@ -56,6 +56,10 @@
       aliases["ar"] = "patool create"
       aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "hx"
       aliases["g"] = "git"
+
+      aliases["www"] = "exec nohup chromium &>/dev/null"
+      aliases["dev"] = "exec nohup godot &>/dev/null"
+      aliases["art"] = "exec nohup blender &>/dev/null"
     '';
 
     ".config/helix/config.toml".text = ''

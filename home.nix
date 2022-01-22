@@ -10,16 +10,17 @@ in {
   imports = [ ./tty.nix ];
 
   home.packages = with pkgs; [
-    wayfire                # Windows manager
-    swaybg                 # Wallpaper setter
-    bye                    # Go to sleep
-    brightnessctl          # Brightness control
-    slurp grim wf-recorder # Screen capture
-    wl-clipboard           # Clipboard manager
-    sarasa-gothic          # CJK support
-    ungoogled-chromium     # Web browser
-    blender                # Graphic editor
-    godot                  # Game engine
+    wayfire                 # Windows manager
+    swaybg                  # Wallpaper setter
+    bye                     # Go to sleep
+    brightnessctl           # Brightness control
+    slurp grim wf-recorder  # Screen capture
+    wl-clipboard            # Clipboard manager
+    sarasa-gothic           # CJK support
+    ungoogled-chromium      # Web browser
+    vscodium                # Text editor
+    blender                 # Graphic editor
+    godot                   # Game engine
   ];
 
   home.file = {
