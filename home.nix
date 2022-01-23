@@ -2,23 +2,22 @@
 
 let
   bmono = builtins.fetchTarball "https://github.com/NNBnh/bmono/archive/main.tar.gz";
-  wallpaper = builtins.fetchurl "https://github.com/NNBnh/wallpapers/raw/main/brown-concrete-house-surrounded-by-plants.jpg";
   bye = pkgs.writeScriptBin "bye" "systemctl suspend";
 in {
   programs.home-manager.enable = true;
 
   imports = [ ./tty.nix ];
 
+  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     wayfire                 # Windows manager
-    swaybg                  # Wallpaper setter
     bye                     # Go to sleep
     brightnessctl           # Brightness control
     slurp grim wf-recorder  # Screen capture
     wl-clipboard            # Clipboard manager
     sarasa-gothic           # CJK support
     ungoogled-chromium      # Web browser
-    vscodium                # Text editor
+    vscode                  # Text editor
     blender                 # Graphic editor
     godot                   # Game engine
   ];
@@ -26,8 +25,8 @@ in {
   home.file = {
     ".local/share/fonts/bmono".source = "${bmono}/dist/bmono/ttf";
     ".config/wayfire.ini".text = ''
-      [core]
-      plugins = animate wobbly blur wm-actions scale switcher command grid move resize alpha wrot autostart
+      [core] #TODO
+      plugins = animate wm-actions scale switcher command grid move resize alpha autostart
 
       vwidth = 1
       vheight = 1
@@ -85,12 +84,8 @@ in {
       [alpha]
       modifier = <super>
 
-      [wrot]
-      activate = <super> BTN_MIDDLE
-
       [autostart]
       autostart_wf_shell = false
-      background = swaybg -i ${wallpaper}
       input_method = fcitx
     '';
   };
@@ -99,26 +94,3 @@ in {
     enabled = "fcitx";
     fcitx.engines = with pkgs.fcitx-engines; [ unikey ];
   };
-
-  programs.kitty = {
-    enable = true;
-    font = {
-      name = "Bmono";
-      size = 10;
-    };
-    settings = {
-      disable_ligatures = "cursor";
-      background_opacity = "0.85";
-      dynamic_background_opacity = true;
-      allow_remote_control = true;
-      clear_all_shortcuts = true;
-    };
-    keybindings = {
-      "super+c" = "copy_to_clipboard";
-      "super+v" = "paste_from_clipboard";
-      "super+equal" = "change_font_size all +2";
-      "super+minus" = "change_font_size all -2";
-      "super+0" = "change_font_size all 0";
-    };
-  };
-}

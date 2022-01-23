@@ -18,10 +18,7 @@
 
   networking.networkmanager.enable = true;
 
-  services = {
-    xserver.enable = true;
-    gnome3.gnome-keyring.enable = true;
-  };
+  services.xserver.enable = true;
 
   users.users.nnb = {
     isNormalUser = true;
