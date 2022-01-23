@@ -28,9 +28,12 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
   > ![Lines of code](https://img.shields.io/tokei/lines/github/NNBnh/dots?labelColor=525866&color=5890F8&style=flat-square)
   - No need for tiling WM, a simple and quick floating WM is perfect for my workflow:
     - 🪟 Windows manager: [**Wayfire**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
-  - And only 4 GUI applications:
+  - Almost all actions are through the CLI powered by:
+    - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
+    - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
+    - 📝 Text editor: [**Helix**](https://github.com/NNBnh/dots/wiki/which#-text-editor "Also used as a $PAGER")
+  - And only 3 GUI applications:
     - 🌏 Browser: [**UG Chromium**](https://github.com/NNBnh/dots/wiki/which#-web-browser)
-    - 📝 Text editor: [**VScode**](https://github.com/NNBnh/dots/wiki/which#-text-editor)
     - 🎥 Graphic editor: [**Blender**](https://github.com/NNBnh/dots/wiki/which#-graphic-editor)
     - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine)
 - **Optimization:**
@@ -38,13 +41,6 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
   - [Harmony workflow.](https://github.com/NNBnh/dots/wiki/keyboard#-workflow)
   - [Clean home file structure with short file naming.](https://github.com/NNBnh/dots/wiki/spring-cleaning#-file-structure)
   - [Convenient CLI files management.](https://github.com/NNBnh/dots/wiki/files-manager)
-
-<!--
-  - Almost all actions are through the CLI powered by:
-    - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
-    - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
-    - 📝 Text editor: [**Helix**](https://github.com/NNBnh/dots/wiki/which#-text-editor)
--->
 
 ## 🚀 Setup
 

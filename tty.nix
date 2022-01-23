@@ -7,13 +7,19 @@
     xonsh      # Command shell
     trash-cli  # Trash manager
     patool     # Archive
+    edir       # Bulk edit
+    #helix     # Text editor
     ffmpeg     # Media manipulator
     ruby_3_0   # Scripting language
   ];
 
   home.file = {
+    ".local/share/colorscheme.cat".source = builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/da-one/main/da-one-ocean.cat";
+
     ".config/xonsh/rc.xsh".text = ''
       import os
+      cat ~/.local/share/colorscheme.cat
+
       $TITLE = "{cwd}"
       $PROMPT = "\033[0;1;90m {cwd}\033[0m\n\033[1;94m❯ "
       $MULTILINE_PROMPT = "|"
@@ -48,7 +54,15 @@
       aliases["md"] = "mkdir --parents"
       aliases["ex"] = "patool extract"
       aliases["ar"] = "patool create"
+      aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "hx"
       aliases["g"] = "git"
+    '';
+
+    ".config/helix/config.toml".text = ''
+      theme = "base16_terminal"
+
+      [editor]
+      line-number = "relative"
     '';
   };
 
