@@ -2,7 +2,6 @@
 
 let
   bmono = builtins.fetchTarball "https://github.com/NNBnh/bmono/archive/main.tar.gz";
-  wallpaper = builtins.fetchurl "https://github.com/NNBnh/wallpapers/raw/main/brown-concrete-house-surrounded-by-plants.jpg";
   bye = pkgs.writeScriptBin "bye" "systemctl suspend";
 in {
   programs.home-manager.enable = true;
@@ -12,7 +11,6 @@ in {
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     wayfire                 # Windows manager
-    swaybg                  # Wallpaper setter
     bye                     # Go to sleep
     brightnessctl           # Brightness control
     slurp grim wf-recorder  # Screen capture
@@ -87,7 +85,6 @@ in {
 
       [autostart]
       autostart_wf_shell = false
-      background = swaybg -i ${wallpaper}
       input_method = fcitx
     '';
   };

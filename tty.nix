@@ -56,6 +56,10 @@
       aliases["ar"] = "patool create"
       aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "hx"
       aliases["g"] = "git"
+
+      aliases["www"] = "exec nohup chromium >/dev/null"
+      aliases["dev"] = "exec nohup godot >/dev/null"
+      aliases["art"] = "exec nohup blender >/dev/null"
     '';
 
     ".config/helix/config.toml".text = ''
