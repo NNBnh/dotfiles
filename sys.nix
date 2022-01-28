@@ -19,7 +19,6 @@
   networking.networkmanager.enable = true;
 
   services.xserver.enable = true;
-  programs.dconf.enable = true;
 
   users.users.nnb = {
     isNormalUser = true;
