@@ -116,10 +116,4 @@
       "super+0" = "change_font_size all 0";
     };
   };
-
-  gtk = {
-    enable = true;
-    theme.name = "Adwaita-dark";
-    gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
-  };
 }
