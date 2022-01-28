@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
-let
-  bmono = builtins.fetchTarball "https://github.com/NNBnh/bmono/archive/main.tar.gz";
-  bye = pkgs.writeScriptBin "bye" "systemctl suspend";
-in {
+{
   programs.home-manager.enable = true;
 
   imports = [ ./tty.nix ];
@@ -11,7 +8,6 @@ in {
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     wayfire                 # Windows manager
-    bye                     # Go to sleep
     brightnessctl           # Brightness control
     slurp grim wf-recorder  # Screen capture
     wl-clipboard            # Clipboard manager
@@ -22,7 +18,7 @@ in {
   ];
 
   home.file = {
-    ".local/share/fonts/bmono".source = "${bmono}/dist/bmono/ttf";
+    ".local/share/fonts/bmono".source = "${builtins.fetchTarball "https://github.com/NNBnh/bmono/archive/main.tar.gz"}/dist/bmono/ttf";
     ".config/wayfire.ini".text = ''
       [core]
       plugins = animate wm-actions scale switcher command grid move resize alpha autostart
@@ -41,17 +37,15 @@ in {
       toggle = <super> | hotspot bottom-left 16x16 0
 
       [switcher]
-      speed = 50
-      next_view = <super> KEY_TAB
-      prev_view = <super> <shift> KEY_TAB
+      speed = 0
+      prev_view = <super> KEY_TAB
+      next_view = <super> <shift> KEY_TAB
 
       [command]
       binding_sleep = <super> KEY_ESC
-      command_sleep = bye
+      command_sleep = systemctl suspend
       binding_switch_input = <super> <alt>
       command_switch_input = fcitx-remote -t
-      binding_terminal = <super> KEY_SPACE
-      command_terminal = kitty
 
       repeatable_binding_volume_up = KEY_VOLUMEUP
       command_volume_up = amixer set Master 5%+
@@ -73,6 +67,15 @@ in {
       command_screen_record = pkill wf-recorder || wf-recorder --audio --file="$HOME/t/$(date +%Y-%m-%d_%H-%M-%S_%N).mkv"
       binding_screen_record_region = <shift> <ctrl> KEY_SYSRQ
       command_screen_record_region = pkill wf-recorder || wf-recorder --geometry "$(slurp || echo 'canceled')" --audio --file="$HOME/t/$(date +%Y-%m-%d_%H-%M-%S_%N).mkv"
+
+      binding_terminal = <super> KEY_D
+      command_terminal = kitty
+      binding_web_browser = <super> KEY_F
+      command_web_browser = chromium
+      binding_graphic_editor = <super> KEY_S
+      command_graphic_editor = blender
+      binding_game_engine = <super> KEY_E
+      command_game_engine = godot
 
       [move]
       activate = <super> BTN_LEFT
@@ -112,5 +115,11 @@ in {
       "super+minus" = "change_font_size all -2";
       "super+0" = "change_font_size all 0";
     };
+  };
+
+  gtk = {
+    enable = true;
+    theme.name = "Adwaita-dark";
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
   };
 }
