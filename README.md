@@ -55,10 +55,14 @@ Right after step 3, generate an initial configuration file for your system:
 sudo nixos-generate-config --root /mnt
 ```
 
+```sh
+sudo curl https://raw.githubusercontent.com/NNBnh/dots/main/sys.nix -o /mnt/etc/nixos/configuration.nix
+```
+
 Then run the installation:
 
 ```sh
-sudo nixos-install -I nixos-config=~/c/sys.nix
+sudo nixos-install
 ```
 
 Finally reboot your system.
