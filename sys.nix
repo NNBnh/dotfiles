@@ -21,7 +21,7 @@
   services.xserver = {
     enable = true;
     displayManager.startx.enable = true;
-  }
+  };
 
   users.users.nnb = {
     isNormalUser = true;
