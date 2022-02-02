@@ -8,7 +8,7 @@
     trash-cli  # Trash manager
     patool     # Archive
     edir       # Bulk edit
-    helix     # Text editor
+    helix      # Text editor
     ffmpeg     # Media manipulator
     ruby_3_0   # Scripting language
   ];

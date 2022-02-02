@@ -21,6 +21,8 @@
   services.xserver = {
     enable = true;
     displayManager.startx.enable = true;
+    libinput.enable = true;
+    xkbOptions = "terminate:ctrl_alt_bksp,caps:escape";
   };
 
   users.users.nnb = {
