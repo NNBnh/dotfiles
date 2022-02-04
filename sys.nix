@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ /mnt/etc/nixos/hardware-configuration.nix ];
+  imports = [ /etc/nixos/hardware-configuration.nix ];
 
   boot = {
     supportedFilesystems = [ "ntfs" ];

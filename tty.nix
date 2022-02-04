@@ -17,28 +17,13 @@
     ".local/share/colorscheme.cat".source = builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/da-one/main/da-one-ocean.cat";
 
     ".config/xonsh/rc.xsh".text = ''
-      import os
       cat ~/.local/share/colorscheme.cat
+      import os
 
       $TITLE = "{cwd}"
       $PROMPT = "\033[0;90m {cwd}\033[0m\n\033[1;94m❯ "
       $MULTILINE_PROMPT = "|"
-
-      $XONSH_AUTOPAIR = True
-      $XONSH_CTRL_BKSP_DELETION = True
-
-      $COMPLETE_DOTS = True
-      $DOTGLOB = True
-      $AUTO_CD = True
-
-      @events.on_postcommand
-      def print_exitcode(cmd, rtn, out, ts, **kw):
-        if rtn:
-          print(f"\033[7;91m E:{str(rtn)} \033[0m")
-
-      @events.on_chdir
-      def auto_ls(olddir, newdir, **kw):
-        .
+      $XONSH_AUTOPAIR = $XONSH_CTRL_BKSP_DELETION = $COMPLETE_DOTS = $DOTGLOB = $AUTO_CD = True
 
       $SELECTION = None
       def set_file_select(items):
@@ -56,6 +41,15 @@
       aliases["ar"] = "patool create"
       aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "hx"
       aliases["g"] = "git"
+
+      @events.on_postcommand
+      def print_exitcode(cmd, rtn, out, ts, **kw):
+        if rtn:
+          print(f"\033[7;91m E:{str(rtn)} \033[0m")
+
+      @events.on_chdir
+      def auto_ls(olddir, newdir, **kw):
+        .
     '';
 
     ".config/helix/config.toml".text = ''
