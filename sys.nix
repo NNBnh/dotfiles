@@ -28,6 +28,5 @@
   users.users.nnb = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    shell = pkgs.xonsh;
   };
 }
