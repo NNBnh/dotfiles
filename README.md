@@ -27,7 +27,7 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
   > ![File count](https://img.shields.io/badge/files-3%20-%235890F8.svg?labelColor=525866&style=flat-square)
   > ![Lines of code](https://img.shields.io/tokei/lines/github/NNBnh/dots?labelColor=525866&color=5890F8&style=flat-square)
   - No need for tiling WM, a simple and quick floating WM is perfect for my workflow:
-    - 🪟 Windows manager: [**Wayfire**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
+    - 🪟 Windows manager: [**Berry**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
   - Almost all actions are through the CLI powered by:
     - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
     - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)

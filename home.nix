@@ -22,7 +22,7 @@
       #TODO berryc resize_mask "mod4|ctrl"
       picom &
       ${pkgs.xwallpaper}/bin/xwallpaper --zoom ${builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/wallpapers/main/i5yal/colorful.png"} &
-      ${pkgs.xcape}/bin/xcape -e "Super_L=Super_L|s"
+      ${pkgs.xcape}/bin/xcape -e "Super_L=Super_L|z"
       sxhkd &
       fcitx &
     '';
@@ -49,13 +49,11 @@
         "{_,ctrl} + {_,shift} + Print" = "{_,region | }{shot,record}"; #TODO
         "~button{1,2,3}" = "berryc pointer_focus";
         "super + button{4,5}" = "picom-trans -c -- {+,-}5";
+        "super + {_,shift,ctrl} + {Escape,Capslock}" = "{lock,bye,berryc quit}";
+        "super + Alt_{L,R}" = "fcitx-remote -t";
         "super + {Tab,Up,Down,Left,Right}" = "berryc {cycle_focus,window_monocle,window_close,snap_left,snap_right}";
-        "super + s" = "menu4all";
+        "super + z" = "menu4all";
       };
-    };
-    screen-locker = {
-      enable = true;
-      lockCmd = "lock";
     };
   };
 
@@ -65,24 +63,14 @@
   };
 
   programs = {
-    rofi = {
+    rofi = { #TODO
       enable = true;
       font = "Bmono 12";
     };
     kitty = {
       enable = true;
       font = { name = "Bmono"; size = 10; };
-      settings = {
-        disable_ligatures = "cursor";
-        clear_all_shortcuts = true;
-      };
-      keybindings = {
-        "super+c" = "copy_to_clipboard";
-        "super+v" = "paste_from_clipboard";
-        "super+equal" = "change_font_size all +2";
-        "super+minus" = "change_font_size all -2";
-        "super+0" = "change_font_size all 0";
-      };
+      settings.disable_ligatures = "cursor";
     };
   };
 }

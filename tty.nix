@@ -37,7 +37,7 @@
       bashrcExtra = ''
         for env in EDITOR VISUAL PAGER MANPAGER; do eval export $env=hx; done
         theme
-        export PS1="\[\e]0;\w\a\e[0;90m\] \w\[\e[0m\]\n\[\033[1;94m\]❯\[\e[m\] " #TODO exitcode display
+        export PS1="\[\e]0;\w\a\e[0;90m\] \w [E:\$?]\n\[\033[0;1;94m\]❯\[\e[m\] " #TODO better error display
       '';
     };
     git = {
