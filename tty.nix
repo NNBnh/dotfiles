@@ -4,27 +4,33 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    trash-cli  # Trash manager
-    patool     # Archive
-    edir       # Bulk edit
-    helix      # Text editor
-    ffmpeg     # Media manipulator
-    ruby_3_0   # Scripting language
+    trash-cli patool edir ffmpeg
     (pkgs.writeScriptBin "theme" "cat ${builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/da-one/main/da-one-ocean.cat"}")
   ];
 
-  home.file.".config/helix/config.toml".text = ''
-    theme = "base16_terminal"
-
-    [editor]
-    line-number = "relative"
-  '';
-
   programs = {
-    bash = {
+    zsh = {
       enable = true;
-      historyFile = ".cache/bash_history";
-      historyControl = ["erasedups" "ignorespace"];
+      dotDir = ".config/zsh";
+      zplug = {
+        enable = true;
+        zplugHome = ~/.local/share/zplug;
+        plugins = [ { name = "marlonrichert/zsh-autocomplete"; } ];
+      };
+      enableAutosuggestions = true;
+      enableCompletion = true;
+      enableSyntaxHighlighting = true;
+      autocd = true;
+      history = {
+        expireDuplicatesFirst = true;
+        path = ".cache/zsh_history";
+      };
+      localVariables = {
+        EDITOR = "hx";
+        VISUAL = "hx";
+        PAGER = "hx";
+        MANPAGER = "hx";
+      };
       shellAliases = {
         l = "ls --almost-all --group-directories-first";
         dl = "trash-put";
@@ -34,10 +40,11 @@
         e = "$EDITOR";
         g = "git";
       };
-      bashrcExtra = ''
-        for env in EDITOR VISUAL PAGER MANPAGER; do eval export $env=hx; done
+      initExtra = ''
+        bindkey "''${key[Up]}" up-line-or-search
         theme
         export PS1="\[\e]0;\w\a\e[0;90m\] \w [E:\$?]\n\[\033[0;1;94m\]❯\[\e[m\] " #TODO better error display
+        function chpwd() { l }
       '';
     };
     git = {

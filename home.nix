@@ -17,9 +17,20 @@
 
     ".config/berry/autostart".text = ''
       #!/bin/sh
-      berryc decorate_new false
+
+      berryc border_width 8
+      berryc inner_border_width 2
+      berryc title_height 32
+      berryc set_font Bmono-12
       berryc edge_gap 0 0 0 0
+      berryc focus_color FFFFFF
+      berryc unfocus_color FFFFFF
+      berryc inner_focus_color 5890F8
+      berryc inner_unfocus_color 4C988B
+      berryc text_focus_color 171726
+      berryc text_unfocus_color 171726
       #TODO berryc resize_mask "mod4|ctrl"
+
       picom &
       ${pkgs.xwallpaper}/bin/xwallpaper --zoom ${builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/wallpapers/main/i5yal/colorful.png"} &
       ${pkgs.xcape}/bin/xcape -e "Super_L=Super_L|z"
@@ -40,7 +51,11 @@
   xresources.path = ".config/X11/xresources";
 
   services = {
-    picom.enable = true;
+    picom = {
+      enable = true;
+      fade = true;
+      shadow = true;
+    };
     sxhkd = {
       enable = true;
       keybindings = {
@@ -49,9 +64,9 @@
         "{_,ctrl} + {_,shift} + Print" = "{_,region | }{shot,record}"; #TODO
         "~button{1,2,3}" = "berryc pointer_focus";
         "super + button{4,5}" = "picom-trans -c -- {+,-}5";
-        "super + {_,shift,ctrl} + {Escape,Capslock}" = "{lock,bye,berryc quit}";
+        "super + {_,shift,ctrl} + Escape" = "{lock,bye,berryc quit}";
         "super + Alt_{L,R}" = "fcitx-remote -t";
-        "super + {Tab,Up,Down,Left,Right}" = "berryc {cycle_focus,window_monocle,window_close,snap_left,snap_right}";
+        "super + {Tab,Up,Down,Left,Right}" = "berryc {cycle_focus,fullscreen,window_close,snap_left,snap_right}";
         "super + z" = "menu4all";
       };
     };
