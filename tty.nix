@@ -3,49 +3,43 @@
 {
   programs.home-manager.enable = true;
 
-  home.packages = with pkgs; [
-    trash-cli patool edir ffmpeg
+  home.packages = with pkgs; (
+    with (import <unstable> {}); [ helix ]
+  ) ++ [
+    xonsh trash-cli patool edir ffmpeg
     (pkgs.writeScriptBin "theme" "cat ${builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/da-one/main/da-one-ocean.cat"}")
   ];
 
+  home.file.".config/xonsh/rc.xsh".text = ''
+    theme
+
+    $TITLE = "{cwd}"
+    $PROMPT = "\033[0;1;90m {cwd}\033[0m\n\033[1;94m❯ "
+    $MULTILINE_PROMPT = "|"
+    $XONSH_AUTOPAIR = $XONSH_CTRL_BKSP_DELETION = $COMPLETE_DOTS = $DOTGLOB = $AUTO_CD = True
+
+    aliases["."] = "ls --almost-all --group-directories-first"
+    aliases["icat"] = "kitty +kitten icat"
+    aliases["dl"] = "trash-put"
+    aliases["md"] = "mkdir --parents"
+    aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "hx"
+    aliases["g"] = "git"
+
+    @events.on_postcommand
+    def print_exitcode(cmd, rtn, out, ts, **kw):
+      if rtn:
+        print(f"\033[7;91m E:{str(rtn)} \033[0m")
+
+    @events.on_chdir
+    def auto_ls(olddir, newdir, **kw):
+      .
+  '';
+
   programs = {
-    zsh = {
+    bash = {
       enable = true;
-      dotDir = ".config/zsh";
-      zplug = {
-        enable = true;
-        zplugHome = ~/.local/share/zplug;
-        plugins = [ { name = "marlonrichert/zsh-autocomplete"; } ];
-      };
-      enableAutosuggestions = true;
-      enableCompletion = true;
-      enableSyntaxHighlighting = true;
-      autocd = true;
-      history = {
-        expireDuplicatesFirst = true;
-        path = ".cache/zsh_history";
-      };
-      localVariables = {
-        EDITOR = "hx";
-        VISUAL = "hx";
-        PAGER = "hx";
-        MANPAGER = "hx";
-      };
-      shellAliases = {
-        l = "ls --almost-all --group-directories-first";
-        dl = "trash-put";
-        md = "mkdir --parents";
-        ex = "patool extract";
-        ar = "patool create";
-        e = "$EDITOR";
-        g = "git";
-      };
-      initExtra = ''
-        bindkey "''${key[Up]}" up-line-or-search
-        theme
-        export PS1="\[\e]0;\w\a\e[0;90m\] \w [E:\$?]\n\[\033[0;1;94m\]❯\[\e[m\] " #TODO better error display
-        function chpwd() { l }
-      '';
+      historyFile = ".cache/bash_history";
+      initExtra = "[ -z $XONSH_AUTOPAIR ] && exec xonsh";
     };
     git = {
       enable = true;

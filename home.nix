@@ -3,9 +3,11 @@
 {
   imports = [ ./tty.nix ];
 
-  home.packages = with pkgs; [
-    ungoogled-chromium blender godot
-    (pkgs.writeScriptBin "wm" "startx $(which berry)") berry
+  home.packages = with pkgs; (
+    with (import <unstable> {}); [ berry ] # Window manager
+  ) ++ [
+    xdotool # WM utilities
+    ungoogled-chromium blender godot # Applications
     (pkgs.writeScriptBin "bye" "systemctl suspend")
     (pkgs.writeScriptBin "lock" "${pkgs.i3lock}/bin/i3lock --color 000000")
     (pkgs.writeScriptBin "menu4all" "rofi -show drun") #TODO
@@ -19,7 +21,7 @@
       #!/bin/sh
 
       berryc border_width 8
-      berryc inner_border_width 2
+      berryc inner_border_width 0
       berryc title_height 32
       berryc set_font Bmono-12
       berryc edge_gap 0 0 0 0
@@ -29,15 +31,20 @@
       berryc inner_unfocus_color 4C988B
       berryc text_focus_color 171726
       berryc text_unfocus_color 171726
-      #TODO berryc resize_mask "mod4|ctrl"
+      berryc move_mask "Mod2"
+      berryc resize_mask "Mod4"
 
       picom &
-      ${pkgs.xwallpaper}/bin/xwallpaper --zoom ${builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/wallpapers/main/i5yal/colorful.png"} &
+      ${pkgs.xwallpaper}/bin/xwallpaper --tile ${builtins.fetchurl "https://i.imgur.com/dHbVnhz.png"} &
+      xdotool behave_screen_edge --quiesce 1 top-right exec berryc fullscreen &
+      xdotool behave_screen_edge --quiesce 1 top-left exec menu4all &
       ${pkgs.xcape}/bin/xcape -e "Super_L=Super_L|z"
       sxhkd &
       fcitx &
     '';
   };
+
+  programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which berry)";
 
   xsession = {
     enable = true;
@@ -53,6 +60,7 @@
   services = {
     picom = {
       enable = true;
+      experimentalBackends = true;
       fade = true;
       shadow = true;
     };
