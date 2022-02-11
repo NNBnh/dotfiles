@@ -23,24 +23,29 @@
       berryc border_width 8
       berryc inner_border_width 0
       berryc title_height 32
-      berryc set_font Bmono-12
+      berryc set_font Bmono-10
       berryc edge_gap 0 0 0 0
       berryc focus_color FFFFFF
       berryc unfocus_color FFFFFF
       berryc inner_focus_color 5890F8
-      berryc inner_unfocus_color 4C988B
+      berryc inner_unfocus_color 878D96
       berryc text_focus_color 171726
       berryc text_unfocus_color 171726
-      berryc move_mask "Mod2"
+      berryc move_mask "Mod3"
       berryc resize_mask "Mod4"
 
-      picom &
+      ${pkgs.picom}/bin/picom &
       ${pkgs.xwallpaper}/bin/xwallpaper --tile ${builtins.fetchurl "https://i.imgur.com/dHbVnhz.png"} &
-      xdotool behave_screen_edge --quiesce 1 top-right exec berryc fullscreen &
-      xdotool behave_screen_edge --quiesce 1 top-left exec menu4all &
+      xdotool behave_screen_edge top-right exec berryc fullscreen &
+      xdotool behave_screen_edge top-left exec menu4all &
       ${pkgs.xcape}/bin/xcape -e "Super_L=Super_L|z"
       sxhkd &
       fcitx &
+    '';
+
+    ".config/picom/picom.conf".text = ''
+      fading = true;
+      shadow = true;
     '';
   };
 
@@ -57,26 +62,18 @@
   };
   xresources.path = ".config/X11/xresources";
 
-  services = {
-    picom = {
-      enable = true;
-      experimentalBackends = true;
-      fade = true;
-      shadow = true;
-    };
-    sxhkd = {
-      enable = true;
-      keybindings = {
-        "XF86Audio{Mute,RaiseVolume,LowerVolume}" = "amixer set Master {toggle,5%+,5%-}";
-        "XF86MonBrightness{Up,Down}" = "${pkgs.brightnessctl}/bin/brightnessctl set 5%{+,-}";
-        "{_,ctrl} + {_,shift} + Print" = "{_,region | }{shot,record}"; #TODO
-        "~button{1,2,3}" = "berryc pointer_focus";
-        "super + button{4,5}" = "picom-trans -c -- {+,-}5";
-        "super + {_,shift,ctrl} + Escape" = "{lock,bye,berryc quit}";
-        "super + Alt_{L,R}" = "fcitx-remote -t";
-        "super + {Tab,Up,Down,Left,Right}" = "berryc {cycle_focus,fullscreen,window_close,snap_left,snap_right}";
-        "super + z" = "menu4all";
-      };
+  services.sxhkd = {
+    enable = true;
+    keybindings = {
+      "XF86Audio{Mute,RaiseVolume,LowerVolume}" = "amixer set Master {toggle,5%+,5%-}";
+      "XF86MonBrightness{Up,Down}" = "${pkgs.brightnessctl}/bin/brightnessctl set 5%{+,-}";
+      "{_,ctrl} + {_,shift} + Print" = "{_,region | }{shot,record}"; #TODO
+      "~button{1,2,3}" = "berryc pointer_focus";
+      "super + button{4,5}" = "picom-trans -c -- {+,-}5";
+      "super + {_,shift,ctrl} + Escape" = "{lock,bye,berryc quit}";
+      "super + Alt_{L,R}" = "fcitx-remote -t";
+      "super + {Tab,Up,Down,Left,Right}" = "berryc {cycle_focus,fullscreen,window_close,snap_left,snap_right}";
+      "super + z" = "menu4all";
     };
   };
 
