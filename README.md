@@ -1,6 +1,6 @@
 <h1 align="center"><code>Đotfiles</code></h1>
 <p align="center">End-game Đotfiles</p>
-<p align="center"><img src="https://user-images.githubusercontent.com/43980777/149666467-fe0c9390-a03d-45e4-bda8-21826f6a58b0.png"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/43980777/153572240-92d411e0-22e7-40bd-abb2-e8ddde447792.png"></p>
 <p align="center">
   <a href="https://github.com/NNBnh/dots/wiki"><img src="https://img.shields.io/badge/wiki%20-%23DE5D6E.svg?style=for-the-badge" alt="Wiki"></a>
   <a href="https://github.com/NNBnh/dots/wiki/which"><img src="https://img.shields.io/badge/which%20-%23FF9470.svg?style=for-the-badge" alt="WHICH"></a>
