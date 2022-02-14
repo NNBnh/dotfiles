@@ -41,6 +41,7 @@
       historyFile = ".cache/bash_history";
       initExtra = "[ -z $XONSH_AUTOPAIR ] && exec xonsh";
     };
+
     git = {
       enable = true;
       userName = "NNB";
