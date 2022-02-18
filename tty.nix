@@ -6,11 +6,11 @@
   home.packages = with pkgs; (
     with (import <unstable> {}); [ helix ]
   ) ++ [
-    xonsh trash-cli patool edir ffmpeg
+    ruby_3_0 xonsh trash-cli patool edir ffmpeg
     (pkgs.writeScriptBin "theme" "cat ${builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/da-one/main/da-one-ocean.cat"}")
   ];
 
-  home.file.".config/xonsh/rc.xsh".text = ''
+  home.file."${config.xdg.configHome}/xonsh/rc.xsh".text = ''
     theme
 
     $TITLE = "{cwd}"
@@ -38,7 +38,7 @@
   programs = {
     bash = {
       enable = true;
-      historyFile = ".cache/bash_history";
+      historyFile = "${config.xdg.cacheHome}/bash_history";
       initExtra = "[ -z $XONSH_AUTOPAIR ] && exec xonsh";
     };
 
