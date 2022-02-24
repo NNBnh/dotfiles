@@ -3,10 +3,8 @@
 {
   programs.home-manager.enable = true;
 
-  home.packages = with pkgs; (
-    with (import <unstable> {}); [ helix ]
-  ) ++ [
-    ruby_3_0 xonsh trash-cli patool edir ffmpeg
+  home.packages = with pkgs; [
+    ruby_3_0 xonsh trash-cli patool edir ffmpeg kakoune
     (pkgs.writeScriptBin "theme" "cat ${builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/da-one/main/da-one-ocean.cat"}")
   ];
 
@@ -22,7 +20,7 @@
     aliases["icat"] = "kitty +kitten icat"
     aliases["dl"] = "trash-put"
     aliases["md"] = "mkdir --parents"
-    aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "hx"
+    aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "kak"
     aliases["g"] = "git"
 
     @events.on_postcommand

@@ -24,9 +24,9 @@
     with (import <unstable> {}); [ berry ]
   ) ++ [
     sarasa-gothic # CJK support for font
-    picom xdotool main
+    xdotool maim
     (pkgs.writeShellScriptBin "recky" "ffmpeg -f x11grab -i $DISPLAY -f alsa -i default $(date +%Y-%m-%d_%H-%M-%S_%N).mp4")
-    ( # Will be remove
+    (
       pkgs.writeShellScriptBin "wmdwim" ''
         DECORATION=$(xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5) BERRY_WINDOW_STATUS | cut -d "," -f 7 | tr -d ' "')
         xdotool getwindowfocus windowstate --remove FULLSCREEN
@@ -44,7 +44,7 @@
   ];
 
   home.file = {
-    "${config.xdg.configData}/fonts/bmono".source = "${builtins.fetchTarball "https://github.com/NNBnh/bmono/archive/main.tar.gz"}/dist/bmono/ttf";
+    "${config.xdg.dataHome}/fonts/bmono".source = "${builtins.fetchTarball "https://github.com/NNBnh/bmono/archive/main.tar.gz"}/dist/bmono/ttf";
 
     "${config.xdg.configHome}/berry/autostart".text = ''
       #!/bin/sh
@@ -67,12 +67,12 @@
       berryc move_mask Mod3 # To disable
       berryc resize_mask Mod4
 
-      picom --shadow --shadow-exclude _NET_FRAME_EXTENTS@:c &
+      ${pkgs.picom}/bin/picom --shadow --shadow-exclude _NET_FRAME_EXTENTS@:c &
       ${pkgs.xwallpaper}/bin/xwallpaper --tile ${builtins.fetchurl "https://i.imgur.com/dHbVnhz.png"} &
 
       xdotool behave_screen_edge --quiesce 1 top-right exec wmdwim max &
       xdotool behave_screen_edge --quiesce 1 top-left exec menu4all &
-      ${pkgs.xcape}/bin/xcape -e "Super_L=Super_L|z"
+      ${pkgs.xcape}/bin/xcape -e "Super_L=Super_L|minus"
       sxhkd &
       fcitx &
     '';
@@ -84,9 +84,10 @@
       "~button{1,2,3}" = "berryc pointer_focus";
       "XF86Audio{Mute,RaiseVolume,LowerVolume}" = "amixer set Master {toggle,5%+,5%-}";
       "XF86MonBrightness{Up,Down}" = "${pkgs.brightnessctl}/bin/brightnessctl set 5%{+,-}";
-      "{_,ctrl,alt} + Print" = "{maim,maim --select,${pkgs.xcolor}/bin/xcolor} | xclip -selection clipboard -t image/png";
-      "super + button{4,5}" = "picom-trans -c -- {+,-}5";
-      "super + z" = "menu4all";
+      "{_,ctrl} + Print" = "{maim,maim --select} | tee $(date +%Y-%m-%d_%H-%M-%S_%N).png | ${pkgs.xclip}/bin/xclip -selection clipboard -target image/png";
+      "alt + Print" = "${pkgs.xcolor}/bin/xcolor --selection clipboard";
+      "super + button{4,5}" = "${pkgs.picom}/bin/picom-trans -c -- {+,-}5";
+      "super + minus" = "menu4all";
 
       # Will be remove
       "super + Alt_{L,R}" = "fcitx-remote -t";
