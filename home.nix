@@ -103,9 +103,10 @@
   };
 
   programs = {
-    rofi = { #TODO
+    rofi = {
       enable = true;
       font = "Bmono 12";
+      theme = builtins.fetchurl "https://raw.githubusercontent.com/malbiruk/i3-dotfiles/4d4fdc29ef880445077b18fe2bd12382e8227716/theme.rasi";
     };
 
     kitty = {
