@@ -3,31 +3,32 @@
 {
   imports = [ ./tty.nix ];
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") { inherit pkgs; };
-  };
-
-  xsession = {
-    enable = true;
-    profilePath = "${config.xdg.cacheHome}/X11/xprofile";
-    scriptPath = "${config.xdg.cacheHome}/X11/xsession";
-    pointerCursor = {
-      package = pkgs.capitaine-cursors;
-      name = "capitaine-cursors";
-    };
-  };
-  xresources.path = "${config.xdg.configHome}/X11/xresources";
+  programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which berry)"; # To use TTY as login manager.
 
   home.packages = with pkgs; [
     berry xdotool sarasa-gothic blender godot
-    (pkgs.writeShellScriptBin "recky" "ffmpeg -f x11grab -i $DISPLAY -f alsa -i default $(date +%Y-%m-%d_%H-%M-%S_%N).mp4")
     (pkgs.writeShellScriptBin "icat" "kitty +kitten icat $@")
     ( # TODO rofi -dmenu -auto-select -matching prefix -format "i"
       pkgs.writeShellScriptBin "menu4all" "rofi -show drun"
     )
   ];
 
-  home.file."${config.xdg.configHome}/berry/autostart".text = ''
+  xsession = {
+    enable = true;
+    profilePath = "${config.xdg.cacheHome}/X11/xprofile";
+    scriptPath = "${config.xdg.cacheHome}/X11/xsession";
+    pointerCursor = { package = pkgs.capitaine-cursors; name = "capitaine-cursors"; };
+  };
+  xresources.path = "${config.xdg.configHome}/X11/xresources";
+
+  gtk = {
+    enable = true;
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+    theme = { package = pkgs.materia-theme; name = "Materia-dark"; };
+    iconTheme = { package = pkgs.papirus-icon-theme; name = "Papirus-Dark"; };
+  };
+
+  xdg.configFile."berry/autostart".text = ''
     #!/bin/sh
 
     berryc edge_gap 0 0 0 0
@@ -79,8 +80,6 @@
   };
 
   programs = {
-    bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which berry)";
-
     rofi = {
       enable = true;
       font = "Bmono 12";
@@ -115,15 +114,13 @@
               "newElementCount": 3
             }
           '';
+          "browser.download.autohideButton" = false;
 
           "general.autoScroll" = true;
           "browser.ctrlTab.sortByRecentlyUsed" = true;
           "browser.startup.homepage" = "about:blank";
           "browser.startup.page" = 3;
           "browser.newtabpage.enabled" = false;
-          "browser.download.autohideButton" = false;
-          "browser.download.dir" = builtins.getEnv "HOME";
-          "browser.download.folderList" = 2;
 
           "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
           "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
@@ -143,5 +140,12 @@
         };
       };
     };
+  };
+
+  home.sessionVariables.MOZ_USE_XINPUT2 = "1"; # Support precise scrolling in Firefox.
+
+  xdg.userDirs = { # Prevent Firefox from create these directories.
+    desktop = "$HOME";
+    download = "$HOME";
   };
 }

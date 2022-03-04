@@ -30,5 +30,5 @@
     extraGroups = [ "wheel" ];
   };
 
-  environment.sessionVariables.MOZ_USE_XINPUT2 = "1";
+  programs.dconf.enable = true; # For GTK theme to load.
 }
