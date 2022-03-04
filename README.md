@@ -28,9 +28,9 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
   - Almost all actions are through the CLI powered by:
     - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
     - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
-    - 📝 Text editor: [**Helix**](https://github.com/NNBnh/dots/wiki/which#-text-editor "Also used as a $PAGER")
+    - 📝 Text editor: [**Helix**](https://github.com/NNBnh/dots/wiki/which#-text-editor)
   - And only 3 GUI applications:
-    - 🌏 Browser: [**UG Chromium**](https://github.com/NNBnh/dots/wiki/which#-web-browser)
+    - 🌏 Browser: [**Firefox**](https://github.com/NNBnh/dots/wiki/which#-web-browser)
     - 🎥 Graphic editor: [**Blender**](https://github.com/NNBnh/dots/wiki/which#-graphic-editor)
     - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine)
 - **Optimization:**
@@ -62,7 +62,7 @@ Then run the installation:
 sudo nixos-install
 ```
 
-Finally reboot your system.
+Finally reboot your system, login with `root` user then change the main user password with [`passwd`](https://cheat.sh/passwd).
 
 #### 📱 Android
 
@@ -95,11 +95,22 @@ git clone https://github.com/NNBnh/dots.git ~/c
 home-manager switch -f ~/c/home.nix
 ```
 
-Or if you just want to activate only for terminal use:
+Or if you just want to activate only for terminal usage:
 
 ```sh
 home-manager switch -f ~/c/tty.nix
 ```
+
+> _To switch systemwide config, run:_
+>
+> ```sh
+> sudo nixos-rebuild switch -I nixos-config=~/c/sys.nix
+> ```
+
+## 💌 Credits
+
+Special thanks to:
+- [**NixOS tutorial series**](https://www.youtube.com/playlist?list=PL-saUBvIJzOkjAw_vOac75v-x6EzNzZq-) by [Wil T](https://www.youtube.com/user/wilfridtaylor)
 
 <br><br><br><br>
 

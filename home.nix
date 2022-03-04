@@ -53,7 +53,7 @@
 
     ${pkgs.xcape}/bin/xcape -e "Super_L=Super_L|minus"
     sxhkd &
-    fcitx &
+    fcitx5 &
   '';
 
   services.sxhkd = {
@@ -68,16 +68,16 @@
       "super + minus" = "menu4all";
 
       # Will be remove
-      "super + Alt_{L,R}" = "fcitx-remote -t";
       "super + {_,ctrl} + Escape" = "{systemctl suspend,berryc quit}";
       "super + {Tab,Down,Up,Left,Right}" = "berryc {cycle_focus,window_close,fullscreen,snap_left,snap_right}";
     };
   };
 
   i18n.inputMethod = {
-    enabled = "fcitx";
-    fcitx.engines = with pkgs.fcitx-engines; [ unikey ];
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [ unstable.fcitx5-unikey ];
   };
+  home.sessionVariables.GLFW_IM_MODULE = "ibus";
 
   programs = {
     rofi = {
