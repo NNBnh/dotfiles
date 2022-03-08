@@ -6,13 +6,14 @@
   programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which berry)"; # To use TTY as login manager.
 
   home.packages = with pkgs; [
-    berry xdotool sarasa-gothic blender godot
+    berry xdotool nur.repos.nnb.bmono sarasa-gothic blender godot
     (pkgs.writeShellScriptBin "icat" "kitty +kitten icat $@")
     ( # TODO rofi -dmenu -auto-select -matching prefix -format "i"
       pkgs.writeShellScriptBin "menu4all" "rofi -show drun"
     )
   ];
 
+  xdg.dataFile."fonts/nix-fonts".source = ../.nix-profile/share/fonts;
   xsession = {
     enable = true;
     profilePath = "${config.xdg.cacheHome}/X11/xprofile";
@@ -64,7 +65,6 @@
       "XF86MonBrightness{Up,Down}" = "${pkgs.brightnessctl}/bin/brightnessctl set 5%{+,-}";
       "{_,ctrl} + Print" = "${pkgs.maim}/bin/maim {_,--select} | tee $(date +%Y-%m-%d_%H-%M-%S_%N).png"
                                                             + "| ${pkgs.xclip}/bin/xclip -selection clipboard -target image/png";
-      "alt + Print" = "${pkgs.xcolor}/bin/xcolor --selection clipboard";
       "super + minus" = "menu4all";
 
       # Will be remove
@@ -77,8 +77,7 @@
     enabled = "fcitx5";
     fcitx5.addons = with pkgs; [ unstable.fcitx5-unikey ];
   };
-  home.sessionVariables.GLFW_IM_MODULE = "ibus";
-
+  home.sessionVariables.GLFW_IM_MODULE = "ibus"; # To make Kitty use Fcitx5 (some how).
   programs = {
     rofi = {
       enable = true;

@@ -8,7 +8,7 @@
   };
 
   home.packages = with pkgs; [
-    ruby_3_0 xonsh trash-cli patool edir ffmpeg
+    ruby_3_0 xonsh trash-cli patool edir ffmpeg unstable.helix nur.repos.nnb.pepper-lsp
     (pkgs.writeScriptBin "theme" "cat ${builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/da-one/main/da-one-sea.cat"}")
   ];
 
@@ -31,8 +31,7 @@
 
       aliases["."] = "ls --almost-all --group-directories-first"
       aliases["dl"] = "trash-put"
-      aliases["md"] = "mkdir --parents"
-      aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "pepper"
+      aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "hx"
       aliases["g"] = "git"
 
       @events.on_postcommand
