@@ -83,7 +83,7 @@ curl -L https://nixos.org/nix/install | sh
 1. Clone this repository:
 
 ```
-nix-env -iA nixos.git # Use "nixpkgs.git" if you are not on NixOS
+nix-shell -p git
 git clone https://github.com/NNBnh/dots.git ~/c
 ```
 
