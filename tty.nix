@@ -2,15 +2,20 @@
 
 {
   programs.home-manager.enable = true;
-  nixpkgs.config.packageOverrides = pkgs: {
-    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") { inherit pkgs; };
-    unstable = import (builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/nixpkgs-unstable.tar.gz") { inherit pkgs; };
+  nixpkgs.config = {
+    allowUnfree = true;
+    packageOverrides = pkgs: {
+      unstable = import (builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/nixpkgs-unstable.tar.gz") { inherit pkgs; };
+      nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") { inherit pkgs; };
+    };
   };
 
+
   home.packages = with pkgs; [
-    ruby_3_0 xonsh trash-cli patool edir ffmpeg unstable.helix nur.repos.nnb.pepper-lsp
+    ruby_3_0 xonsh trash-cli p7zip edir ffmpeg nur.repos.nnb.pepper-lsp
     (pkgs.writeScriptBin "theme" "cat ${builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/da-one/main/da-one-sea.cat"}")
   ];
+
 
   programs.bash = {
     enable = true;
@@ -31,7 +36,7 @@
 
       aliases["."] = "ls --almost-all --group-directories-first"
       aliases["dl"] = "trash-put"
-      aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "hx"
+      aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "pepper"
       aliases["g"] = "git"
 
       @events.on_postcommand

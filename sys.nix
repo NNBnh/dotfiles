@@ -35,9 +35,5 @@
     extraGroups = [ "wheel" ];
   };
 
-  nixpkgs.config.allowUnfree = true;
-  programs = {
-    dconf.enable = true; # For GTK theme to load.
-    # steam.enable = true;
-  };
+  programs.dconf.enable = true; # For GTK theme to load.
 }
