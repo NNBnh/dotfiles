@@ -23,12 +23,11 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
   - Using [**Home Manager**](https://nixos.wiki/wiki/Home_Manager) which can be run on pretty much [any OS](https://github.com/NNBnh/dots#-pre-install), even on [Android](https://github.com/NNBnh/dots#-android).
 - **Minimalism:**
   > Ricing on Nix is so convenient and elegant. I can sink my dotfiles from a big and mess structure config into some small tightly optimize `.nix` files.
-  - No need for tiling WM, a simple and quick floating WM is perfect for my workflow:
-    - 🪟 Windows manager: [**Berry**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
+  - 🪟 Windows manager: [**AwesomeWM**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
   - Almost all actions are through the CLI powered by:
     - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
     - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
-    - 📝 Text editor: [**Helix**](https://github.com/NNBnh/dots/wiki/which#-text-editor)
+    - 📝 Text editor: [**Pepper**](https://github.com/NNBnh/dots/wiki/which#-text-editor)
   - And only 3 GUI applications:
     - 🌏 Browser: [**Firefox**](https://github.com/NNBnh/dots/wiki/which#-web-browser)
     - 🎥 Graphic editor: [**Blender**](https://github.com/NNBnh/dots/wiki/which#-graphic-editor)
