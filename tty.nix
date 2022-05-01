@@ -12,7 +12,7 @@
 
 
   home.packages = with pkgs; [
-    unstable.ruby_3_1 xonsh trash-cli p7zip edir ffmpeg nur.repos.nnb.pepper-lsp
+    unstable.ruby_3_1 xonsh nur.repos.nnb.pepper-lsp trash-cli p7zip edir ffmpeg
     (pkgs.writeScriptBin "theme" "cat ${builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/da-one/main/da-one-sea.cat"}")
   ];
 

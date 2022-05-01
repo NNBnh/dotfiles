@@ -6,8 +6,10 @@
   programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which awesome)"; # To use TTY as login manager.
 
   home.packages = with pkgs; [
-    awesome nur.repos.nnb.bmono sarasa-gothic
-    nextcloud-client blender godot bottles
+    awesome nur.repos.reedrw.picom-next-ibhagwan
+    brightnessctl scrot xclip
+    nur.repos.nnb.bmono sarasa-gothic
+    nextcloud-client blender godot
     retroarch multimc osu-lazer
   ];
 
@@ -33,12 +35,8 @@
 
 
   xdg.configFile = {
-    "awesome" = {
-      recursive = true;
-      source = ./awesome;
-    };
-    "awesome/wallpaper.png".source = builtins.fetchurl "https://i.imgur.com/dHbVnhz.png";
-    "awesome/nice".source = builtins.fetchTarball "https://github.com/NNBnh/awesome-wm-nice/archive/awesome-4v3-stable.tar.gz";
+    "awesome/rc.lua".source = ./rc.lua;
+    "awesome/wallpaper.png".source = builtins.fetchurl "https://i.imgur.com/kmGmba4.png";
   };
 
 
@@ -53,7 +51,10 @@
     kitty = {
       enable = true;
       font = { name = "Bmono"; size = 10; };
-      settings.disable_ligatures = "cursor";
+      settings = {
+        background_opacity = "0.75";
+        disable_ligatures = "cursor";
+      };
     };
 
     firefox = {
