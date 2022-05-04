@@ -2,18 +2,13 @@ local gears = require("gears")
 local awful = require("awful")
 
 
-awful.screen.connect_for_each_screen(
-	function(s)
-		awful.tag({"main"}, s, awful.layout.suit.floating)
-	end
-)
+local function set_wallpaper()
+	gears.wallpaper.maximized(awful.util.get_configuration_dir() .. "wallpaper.png")
+end
 
-screen.connect_signal(
-	"property::geometry",
-	function()
-		gears.wallpaper.maximized(awful.util.get_configuration_dir() .. "wallpaper.png")
-	end
-)
+set_wallpaper()
+
+screen.connect_signal("property::geometry", set_wallpaper)
 
 
 globalkeys = gears.table.join(
@@ -50,6 +45,12 @@ clientbuttons = gears.table.join(
 root.keys(globalkeys)
 
 
+awful.screen.connect_for_each_screen(
+	function(s)
+		awful.tag({"main"}, s, awful.layout.suit.floating)
+	end
+)
+
 awful.rules.rules = {
 	{
 		rule = {},
@@ -59,12 +60,16 @@ awful.rules.rules = {
 			keys = clientkeys,
 			buttons = clientbuttons,
 			screen = awful.screen.preferred,
-			placement = awful.placement.no_overlap + awful.placement.no_offscreen
+			placement = awful.placement.centered
 		}
 	},
 	{
 		rule_any = {type = {"normal"}},
 		properties = {fullscreen = true}
+	},
+	{
+		rule_any = {role = {"PictureInPicture"}},
+		properties = {above = true}
 	}
 }
 
@@ -79,6 +84,6 @@ client.connect_signal(
 
 awful.spawn.with_shell([[
 	xset r rate 300 30
-	kill picom; picom --experimental-backends --backend glx --blur-method dual_kawase --shadow --corner-radius 16 &
+	kill picom; picom --experimental-backends --backend glx --blur-method dual_kawase --shadow &
 	kill fcitx5; fcitx5 &
 ]])

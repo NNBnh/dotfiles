@@ -6,7 +6,7 @@
   programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which awesome)"; # To use TTY as login manager.
 
   home.packages = with pkgs; [
-    awesome nur.repos.reedrw.picom-next-ibhagwan
+    awesome picom-next
     brightnessctl scrot xclip
     nur.repos.nnb.bmono sarasa-gothic
     nextcloud-client blender godot
