@@ -68,8 +68,8 @@ awful.rules.rules = {
 		properties = {fullscreen = true}
 	},
 	{
-		rule_any = {role = {"PictureInPicture"}},
-		properties = {above = true}
+		rule_any = {icon_name = {"Picture-in-Picture"}},
+		properties = {ontop = true}
 	}
 }
 
