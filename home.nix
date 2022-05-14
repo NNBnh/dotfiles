@@ -3,13 +3,11 @@
 {
   imports = [ ./tty.nix ];
 
-  programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which awesome)"; # To use TTY as login manager.
+  programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which bspwm)"; # To use TTY as login manager.
 
   home.packages = with pkgs; [
-    awesome picom-next
-    brightnessctl scrot xclip
     nur.repos.nnb.bmono sarasa-gothic
-    nextcloud-client blender godot
+    btop nextcloud-client blender godot
     retroarch multimc osu-lazer
   ];
 
@@ -17,11 +15,8 @@
   xdg.dataFile."fonts/nix-fonts".source = ../.nix-profile/share/fonts;
   xsession = {
     enable = true;
-    profilePath = "${config.xdg.cacheHome}/X11/xprofile";
-    scriptPath = "${config.xdg.cacheHome}/X11/xsession";
-    pointerCursor = { package = pkgs.capitaine-cursors; name = "capitaine-cursors"; };
+    pointerCursor = { package = pkgs.unstable.phinger-cursors; name = "phinger-cursors-light"; };
   };
-  xresources.path = "${config.xdg.configHome}/X11/xresources";
 
   gtk = {
     enable = true;
@@ -29,14 +24,44 @@
       gtk-application-prefer-dark-theme = true;
       gtk-decoration-layout = "menu";
     };
-    theme = { package = pkgs.materia-theme; name = "Materia-dark"; };
+    theme = { package = pkgs.gnome.gnome-themes-extra; name = "Adwaita"; };
     iconTheme = { package = pkgs.papirus-icon-theme; name = "Papirus-Dark"; };
   };
 
 
-  xdg.configFile = {
-    "awesome/rc.lua".source = ./rc.lua;
-    "awesome/wallpaper.png".source = builtins.fetchurl "https://i.imgur.com/kmGmba4.png";
+  xsession.windowManager.bspwm = {
+    enable = true;
+    settings = {
+      border_width = 0;
+      pointer_modifier = "mod4";
+    };
+    rules = {
+      "*".state = "floating"; # TODO fullscreen
+      "*:*:Picture in Picture" = {
+        layer = "above";
+      };
+    };
+    extraConfig = "bspc desktop --layout monocle";
+    startupPrograms = [
+      "${pkgs.picom-next}/bin/picom --experimental-backends --backend glx --blur-method dual_kawase --shadow"
+      "${pkgs.xwallpaper}/bin/xwallpaper --zoom ${builtins.fetchurl "https://i.imgur.com/kmGmba4.png"}"
+      "sxhkd"
+      "fcitx5"
+      "${pkgs.xcape}/bin/xcape -e 'Super_L=Super_L|minus'"
+      "xset r rate 300 30"
+    ];
+  };
+
+  services.sxhkd = {
+    enable = true;
+    keybindings = {
+      "XF86Audio{Mute,RaiseVolume,LowerVolume}" = "pactl set-sink-{mute,volume,volume} @DEFAULT_SINK@ {toggle,+5%,-5%}";
+      "XF86MonBrightness{Up,Down}" = "${pkgs.brightnessctl}/bin/brightnessctl set 5%{+,-}";
+      "{_,ctrl} + Print" = "${pkgs.maim}/bin/maim {_,--select} | tee $(date +%Y-%m-%d_%H-%M-%S_%N).png" # TODO
+                                                            + "| ${pkgs.xclip}/bin/xclip -selection clipboard -target image/png";
+      "super + minus" = "kitty"; # TODO
+      "super + {_,shift} + Tab" = "bspc node -f {next,prev}.window"; # TODO
+    };
   };
 
 
@@ -46,6 +71,14 @@
   };
   home.sessionVariables.GLFW_IM_MODULE = "ibus"; # To make Kitty use Fcitx5 (some how).
 
+
+  xdg.configFile."btop/btop.conf".text = ''
+     color_theme = "TTY"
+     theme_background = False
+     rounded_corners = False
+     update_ms = 500
+     clock_format = "%r"
+   '';
 
   programs = {
     kitty = {
