@@ -3,20 +3,22 @@
 {
   imports = [ ./tty.nix ];
 
-  programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which bspwm)"; # To use TTY as login manager.
-
   home.packages = with pkgs; [
+    herbstluftwm brightnessctl maim xclip btop
     nur.repos.nnb.bmono sarasa-gothic
-    btop nextcloud-client blender godot
+    nextcloud-client blender godot
     retroarch multimc osu-lazer
   ];
 
 
-  xdg.dataFile."fonts/nix-fonts".source = ../.nix-profile/share/fonts;
+  programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which herbstluftwm)"; # To use TTY as a display manager.
+
   xsession = {
     enable = true;
     pointerCursor = { package = pkgs.unstable.phinger-cursors; name = "phinger-cursors-light"; };
   };
+
+  # FIXME xdg.dataFile."fonts/nix-fonts".source = ../.nix-profile/share/fonts;
 
   gtk = {
     enable = true;
@@ -29,39 +31,39 @@
   };
 
 
-  xsession.windowManager.bspwm = {
-    enable = true;
-    settings = {
-      border_width = 0;
-      pointer_modifier = "mod4";
-    };
-    rules = {
-      "*".state = "floating"; # TODO fullscreen
-      "*:*:Picture in Picture" = {
-        layer = "above";
-      };
-    };
-    extraConfig = "bspc desktop --layout monocle";
-    startupPrograms = [
-      "${pkgs.picom-next}/bin/picom --experimental-backends --backend glx --blur-method dual_kawase --shadow"
-      "${pkgs.xwallpaper}/bin/xwallpaper --zoom ${builtins.fetchurl "https://i.imgur.com/kmGmba4.png"}"
-      "sxhkd"
-      "fcitx5"
-      "${pkgs.xcape}/bin/xcape -e 'Super_L=Super_L|minus'"
-      "xset r rate 300 30"
-    ];
-  };
+  xdg.configFile."herbstluftwm/autostart" = {
+    executable = true;
+    text = ''
+      #!/bin/sh
 
-  services.sxhkd = {
-    enable = true;
-    keybindings = {
-      "XF86Audio{Mute,RaiseVolume,LowerVolume}" = "pactl set-sink-{mute,volume,volume} @DEFAULT_SINK@ {toggle,+5%,-5%}";
-      "XF86MonBrightness{Up,Down}" = "${pkgs.brightnessctl}/bin/brightnessctl set 5%{+,-}";
-      "{_,ctrl} + Print" = "${pkgs.maim}/bin/maim {_,--select} | tee $(date +%Y-%m-%d_%H-%M-%S_%N).png" # TODO
-                                                            + "| ${pkgs.xclip}/bin/xclip -selection clipboard -target image/png";
-      "super + minus" = "kitty"; # TODO
-      "super + {_,shift} + Tab" = "bspc node -f {next,prev}.window"; # TODO
-    };
+      herbstclient mousebind Super-Button1 move
+      herbstclient mousebind Super-Shift-Button1 resize
+
+      herbstclient keybind XF86AudioMute         spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+      herbstclient keybind XF86AudioRaiseVolume  spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+      herbstclient keybind XF86AudioLowerVolume  spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+      herbstclient keybind XF86MonBrightnessUp   spawn "brightnessctl set 5%+"
+      herbstclient keybind XF86MonBrightnessDown spawn "brightnessctl set 5%-"
+      herbstclient keybind Print                 spawn "scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f'"
+      herbstclient keybind Ctrl-Print            spawn "scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f' --select --freeze"
+
+      # TODO
+      herbstclient keybind Super-Return spawn "kitty"
+      herbstclient keybind Super-Tab cycle_all +1
+      herbstclient keybind Super-Shift-Tab cycle_all -1
+      herbstclient keybind Super-Up fullscreen toggle
+      herbstclient keybind Super-Down close_and_remove
+
+      herbstclient rule --focus=on
+      herbstclient rule --floating=true
+      herbstclient rule windowtype="_NET_WM_WINDOW_TYPE_NORMAL" --fullscreen=true
+
+      ${pkgs.picom-next}/bin/picom --experimental-backends --backend glx --blur-method dual_kawase --shadow &
+      ${pkgs.xwallpaper}/bin/xwallpaper --zoom ${builtins.fetchurl "https://i.imgur.com/kmGmba4.png"} &
+      fcitx5 &
+      ${pkgs.xcape}/bin/xcape -e "Super_L=Super_L|minus"
+      xset r rate 300 30
+    '';
   };
 
 
@@ -73,12 +75,12 @@
 
 
   xdg.configFile."btop/btop.conf".text = ''
-     color_theme = "TTY"
-     theme_background = False
-     rounded_corners = False
-     update_ms = 500
-     clock_format = "%r"
-   '';
+    color_theme = "TTY"
+    theme_background = False
+    rounded_corners = False
+    update_ms = 500
+    clock_format = "%r"
+  '';
 
   programs = {
     kitty = {
