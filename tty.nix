@@ -13,7 +13,7 @@
 
   home.packages = with pkgs; [
     unstable.ruby_3_1 xonsh nur.repos.nnb.pepper-lsp
-    trash-cli p7zip edir ffmpeg
+    btop trash-cli p7zip edir ffmpeg
     (pkgs.writeScriptBin "theme" "cat ${builtins.fetchurl "https://raw.githubusercontent.com/NNBnh/da-one/main/da-one-sea.cat"}")
   ];
 
@@ -27,28 +27,39 @@
   xdg = {
     enable = true;
 
-    configFile."xonsh/rc.xsh".text = ''
-      theme
+    configFile = {
+      "xonsh/rc.xsh".text = ''
+        theme
 
-      $PROMPT = "\033[0;1;90m {cwd}\033[0m\n\033[1;94m❯ "
-      $MULTILINE_PROMPT = "|"
-      $XONSH_AUTOPAIR = $XONSH_CTRL_BKSP_DELETION = $COMPLETE_DOTS = $DOTGLOB = $AUTO_CD = True
+        $PROMPT = "\033[0;1;90m {cwd}\033[0m\n\033[1;94m❯ "
+        $MULTILINE_PROMPT = "|"
+        $XONSH_AUTOPAIR = $XONSH_CTRL_BKSP_DELETION = $COMPLETE_DOTS = $DOTGLOB = $AUTO_CD = True
 
-      aliases["."] = "ls --almost-all --group-directories-first"
-      aliases["dl"] = "trash-put"
-      aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "pepper"
-      aliases["g"] = "git"
+        aliases["."] = "ls --almost-all --group-directories-first"
+        aliases["dl"] = "trash-put"
+        aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "pepper"
+        aliases["g"] = "git"
 
-      @events.on_postcommand
-      def print_exitcode(cmd, rtn, out, ts, **kw):
-        if rtn:
-          print(f"\033[7;91m E:{str(rtn)} \033[0m")
+        @events.on_postcommand
+        def print_exitcode(cmd, rtn, out, ts, **kw):
+          if rtn:
+            print(f"\033[7;91m E:{str(rtn)} \033[0m")
 
-      @events.on_chdir
-      def auto_ls(olddir, newdir, **kw):
-        .
-    '';
+        @events.on_chdir
+        def auto_ls(olddir, newdir, **kw):
+          .
+      '';
+
+      "btop/btop.conf".text = ''
+        color_theme = "TTY"
+        theme_background = False
+        rounded_corners = False
+        update_ms = 500
+        clock_format = "%r"
+      '';
+    };
   };
+
 
   programs.git = {
     enable = true;

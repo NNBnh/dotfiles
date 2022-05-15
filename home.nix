@@ -4,8 +4,7 @@
   imports = [ ./tty.nix ];
 
   home.packages = with pkgs; [
-    picom-next xwallpaper xcape
-    brightnessctl maim xclip wmfocus btop
+    picom-next xwallpaper xcape wmfocus brightnessctl
     nur.repos.nnb.bmono sarasa-gothic
     nextcloud-client blender godot
     retroarch multimc osu-lazer
@@ -13,6 +12,7 @@
 
 
   programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which i3)"; # To use TTY as a display manager.
+
 
   xsession = {
     enable = true;
@@ -35,28 +35,37 @@
   xsession.windowManager.i3 = {
     enable = true;
     config = {
+      fonts = { names = [ "Bmono" ]; size = 10.0; };
       bars = [];
+      workspaceLayout = "tabbed";
+      window.border = 0;
+      floating.border = 0;
+      colors = {
+      	focused         = { background = "#878D96"; border = "#878D96"; childBorder = "#878D96"; indicator = "#878D96"; text = "#FFFFFF"; };
+      	focusedInactive = { background = "#525866"; border = "#525866"; childBorder = "#525866"; indicator = "#525866"; text = "#FFFFFF"; };
+      	unfocused       = { background = "#525866"; border = "#525866"; childBorder = "#525866"; indicator = "#525866"; text = "#FFFFFF"; };
+      	urgent          = { background = "#FFC387"; border = "#FFC387"; childBorder = "#FFC387"; indicator = "#FFC387"; text = "#000000"; };
+      };
       modifier = "Mod4";
       focus.followMouse = false;
       keybindings = {
+        "button4" = "floating disable";
+        "button5" = "floating enable";
+        "button2" = "kill";
         "XF86AudioMute"        = "exec pactl set-sink-mute   @DEFAULT_SINK@ toggle";
         "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
         "XF86MonBrightnessUp"   = "exec brightnessctl set 5%+";
         "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
-        "Print"      = "exec scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f'"; # FIXME
+             "Print" = "exec scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f'"; # FIXME
         "Ctrl+Print" = "exec scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f' --select --freeze"; # FIXME
-
-        # TODO
-        "Mod4+minus" = "exec wmfocus";
-        "Mod4+Return" = "exec kitty";
-        "Mod4+Up" = "fullscreen toggle";
-        "Mod4+Down" = "kill";
+        "Mod4+minus" = "exec wmfocus --font Bmono:32 --chars kdjflsmcie"; # TODO
+        "Mod4+Return" = "exec kitty"; # TODO
+        "Mod4+Up" = "floating toggle"; # TODO
+        "Mod4+Down" = "kill"; # TODO
       };
-      floating.criteria = [ { all = true; } ];
-      window.commands = [ { command = "fullscreen enable"; criteria = { window_type = "normal"; } ; } ];
       startup = [
-        { command = "picom --experimental-backends --backend glx --blur-method dual_kawase --shadow"; }
+        { command = "picom --experimental-backends --backend glx --blur-method dual_kawase --shadow --shadow-exclude _NET_FRAME_EXTENTS@:c"; }
         { command = "xwallpaper --zoom ${builtins.fetchurl "https://i.imgur.com/kmGmba4.png"}"; }
         { command = "fcitx5"; }
         { command = "xcape -e 'Super_L=Super_L|minus'"; }
@@ -71,14 +80,6 @@
   };
   home.sessionVariables.GLFW_IM_MODULE = "ibus"; # To make Kitty use Fcitx5 (some how).
 
-
-  xdg.configFile."btop/btop.conf".text = ''
-    color_theme = "TTY"
-    theme_background = False
-    rounded_corners = False
-    update_ms = 500
-    clock_format = "%r"
-  '';
 
   programs = {
     kitty = {
