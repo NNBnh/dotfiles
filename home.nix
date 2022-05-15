@@ -4,14 +4,15 @@
   imports = [ ./tty.nix ];
 
   home.packages = with pkgs; [
-    herbstluftwm brightnessctl maim xclip btop
+    picom-next xwallpaper xcape
+    brightnessctl maim xclip wmfocus btop
     nur.repos.nnb.bmono sarasa-gothic
     nextcloud-client blender godot
     retroarch multimc osu-lazer
   ];
 
 
-  programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which herbstluftwm)"; # To use TTY as a display manager.
+  programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which i3)"; # To use TTY as a display manager.
 
   xsession = {
     enable = true;
@@ -31,41 +32,38 @@
   };
 
 
-  xdg.configFile."herbstluftwm/autostart" = {
-    executable = true;
-    text = ''
-      #!/bin/sh
+  xsession.windowManager.i3 = {
+    enable = true;
+    config = {
+      bars = [];
+      modifier = "Mod4";
+      focus.followMouse = false;
+      keybindings = {
+        "XF86AudioMute"        = "exec pactl set-sink-mute   @DEFAULT_SINK@ toggle";
+        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+        "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+        "XF86MonBrightnessUp"   = "exec brightnessctl set 5%+";
+        "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
+        "Print"      = "exec scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f'"; # FIXME
+        "Ctrl+Print" = "exec scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f' --select --freeze"; # FIXME
 
-      herbstclient mousebind Super-Button1 move
-      herbstclient mousebind Super-Shift-Button1 resize
-
-      herbstclient keybind XF86AudioMute         spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-      herbstclient keybind XF86AudioRaiseVolume  spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%"
-      herbstclient keybind XF86AudioLowerVolume  spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%"
-      herbstclient keybind XF86MonBrightnessUp   spawn "brightnessctl set 5%+"
-      herbstclient keybind XF86MonBrightnessDown spawn "brightnessctl set 5%-"
-      herbstclient keybind Print                 spawn "scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f'"
-      herbstclient keybind Ctrl-Print            spawn "scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f' --select --freeze"
-
-      # TODO
-      herbstclient keybind Super-Return spawn "kitty"
-      herbstclient keybind Super-Tab cycle_all +1
-      herbstclient keybind Super-Shift-Tab cycle_all -1
-      herbstclient keybind Super-Up fullscreen toggle
-      herbstclient keybind Super-Down close_and_remove
-
-      herbstclient rule --focus=on
-      herbstclient rule --floating=true
-      herbstclient rule windowtype="_NET_WM_WINDOW_TYPE_NORMAL" --fullscreen=true
-
-      ${pkgs.picom-next}/bin/picom --experimental-backends --backend glx --blur-method dual_kawase --shadow &
-      ${pkgs.xwallpaper}/bin/xwallpaper --zoom ${builtins.fetchurl "https://i.imgur.com/kmGmba4.png"} &
-      fcitx5 &
-      ${pkgs.xcape}/bin/xcape -e "Super_L=Super_L|minus"
-      xset r rate 300 30
-    '';
+        # TODO
+        "Mod4+minus" = "exec wmfocus";
+        "Mod4+Return" = "exec kitty";
+        "Mod4+Up" = "fullscreen toggle";
+        "Mod4+Down" = "kill";
+      };
+      floating.criteria = [ { all = true; } ];
+      window.commands = [ { command = "fullscreen enable"; criteria = { window_type = "normal"; } ; } ];
+      startup = [
+        { command = "picom --experimental-backends --backend glx --blur-method dual_kawase --shadow"; }
+        { command = "xwallpaper --zoom ${builtins.fetchurl "https://i.imgur.com/kmGmba4.png"}"; }
+        { command = "fcitx5"; }
+        { command = "xcape -e 'Super_L=Super_L|minus'"; }
+        { command = "xset r rate 300 30"; }
+      ];
+    };
   };
-
 
   i18n.inputMethod = {
     enabled = "fcitx5";
