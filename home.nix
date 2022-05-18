@@ -4,14 +4,15 @@
   imports = [ ./tty.nix ];
 
   home.packages = with pkgs; [
-    picom-next xwallpaper xcape wmfocus brightnessctl
+    awesome picom-next
+    brightnessctl scrot xclip xsecurelock
     nur.repos.nnb.bmono sarasa-gothic
     nextcloud-client blender godot
     retroarch multimc osu-lazer
   ];
 
 
-  programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which i3)"; # To use TTY as a display manager.
+  programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which awesome)"; # To use TTY as a display manager.
 
 
   xsession = {
@@ -31,48 +32,19 @@
     iconTheme = { package = pkgs.papirus-icon-theme; name = "Papirus-Dark"; };
   };
 
-
-  xsession.windowManager.i3 = {
-    enable = true;
-    config = {
-      fonts = { names = [ "Bmono" ]; size = 10.0; };
-      bars = [];
-      workspaceLayout = "tabbed";
-      window.border = 0;
-      floating.border = 0;
-      colors = {
-      	focused         = { background = "#878D96"; border = "#878D96"; childBorder = "#878D96"; indicator = "#878D96"; text = "#FFFFFF"; };
-      	focusedInactive = { background = "#525866"; border = "#525866"; childBorder = "#525866"; indicator = "#525866"; text = "#FFFFFF"; };
-      	unfocused       = { background = "#525866"; border = "#525866"; childBorder = "#525866"; indicator = "#525866"; text = "#FFFFFF"; };
-      	urgent          = { background = "#FFC387"; border = "#FFC387"; childBorder = "#FFC387"; indicator = "#FFC387"; text = "#000000"; };
-      };
-      modifier = "Mod4";
-      focus.followMouse = false;
-      keybindings = {
-        "button4" = "floating disable";
-        "button5" = "floating enable";
-        "button2" = "kill";
-        "XF86AudioMute"        = "exec pactl set-sink-mute   @DEFAULT_SINK@ toggle";
-        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
-        "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
-        "XF86MonBrightnessUp"   = "exec brightnessctl set 5%+";
-        "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
-             "Print" = "exec scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f'"; # FIXME
-        "Ctrl+Print" = "exec scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f' --select --freeze"; # FIXME
-        "Mod4+minus" = "exec wmfocus --font Bmono:32 --chars kdjflsmcie"; # TODO
-        "Mod4+Return" = "exec kitty"; # TODO
-        "Mod4+Up" = "floating toggle"; # TODO
-        "Mod4+Down" = "kill"; # TODO
-      };
-      startup = [
-        { command = "picom --experimental-backends --backend glx --blur-method dual_kawase --shadow --shadow-exclude _NET_FRAME_EXTENTS@:c"; }
-        { command = "xwallpaper --zoom ${builtins.fetchurl "https://i.imgur.com/kmGmba4.png"}"; }
-        { command = "fcitx5"; }
-        { command = "xcape -e 'Super_L=Super_L|minus'"; }
-        { command = "xset r rate 300 30"; }
-      ];
-    };
+  xdg.configFile = {
+    "awesome/rc.lua".source = ./rc.lua;
+    "awesome/wallpaper.png".source = builtins.fetchurl "https://i.imgur.com/kmGmba4.png";
   };
+
+  home.sessionVariables = {
+    XSECURELOCK_FONT = "Bmono";
+  	XSECURELOCK_SHOW_DATETIME = true;
+    XSECURELOCK_DATETIME_FORMAT = "%r";
+  	XSECURELOCK_SHOW_HOSTNAME = 0;
+  	XSECURELOCK_SHOW_USERNAME = 0;
+  };
+
 
   i18n.inputMethod = {
     enabled = "fcitx5";
@@ -86,7 +58,7 @@
       enable = true;
       font = { name = "Bmono"; size = 10; };
       settings = {
-        background_opacity = "0.75";
+        background_opacity = "0.9";
         disable_ligatures = "cursor";
       };
     };
