@@ -31,7 +31,7 @@
       "xonsh/rc.xsh".text = ''
         theme
 
-        $PROMPT = "\033[0;1;90m {cwd}\033[0m\n\033[1;94m❯ "
+        $PROMPT = "\n\033[0;1;90m {cwd}\033[0m\n\033[1;94m❯ "
         $MULTILINE_PROMPT = "|"
         $XONSH_AUTOPAIR = $XONSH_CTRL_BKSP_DELETION = $COMPLETE_DOTS = $DOTGLOB = $AUTO_CD = True
 

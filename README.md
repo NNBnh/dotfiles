@@ -19,7 +19,7 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
   - Using [**Home Manager**](https://nixos.wiki/wiki/Home_Manager) which can be run on pretty much any where.
 - **Minimalism:**
   > Ricing on Nix is so convenient and elegant. I can sink my dotfiles from a big and mess structure config into some small tightly optimize `.nix` files.
-  - 🪟 Windows manager: [**AwesomeWM**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
+  - 🪟 Windows manager: [**HerbstLuftWM**](https://github.com/NNBnh/dots/wiki/which#-windows-manager)
   - Almost all actions are through the CLI powered by:
     - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dots/wiki/which#-terminal-emulator)
     - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dots/wiki/which#-interactive-shell)
@@ -41,8 +41,7 @@ Welcome to my `Đotfiles` configured with a high level of **portable** for **min
 2. Clone this repository:
 
 ```
-nix-shell -p git
-git clone https://github.com/NNBnh/dots.git ~/c
+nix-shell -p git --command "git clone https://github.com/NNBnh/dots.git ~/c"
 ```
 
 3. Install [the standalone Home manager tool](https://nix-community.github.io/home-manager/index.html#sec-install-standalone).

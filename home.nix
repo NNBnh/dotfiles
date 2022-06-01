@@ -4,7 +4,7 @@
   imports = [ ./tty.nix ];
 
   home.packages = with pkgs; [
-    awesome picom-next
+    herbstluftwm picom-next xwallpaper xcape
     brightnessctl scrot xclip xsecurelock
     nur.repos.nnb.bmono sarasa-gothic
     nextcloud-client blender godot
@@ -12,7 +12,8 @@
   ];
 
 
-  programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which awesome)"; # To use TTY as a display manager.
+  # Use TTY as a display manager.
+  programs.bash.profileExtra = "[ $(tty) = '/dev/tty1' ] && exec startx $(which herbstluftwm)";
 
 
   xsession = {
@@ -32,10 +33,37 @@
     iconTheme = { package = pkgs.papirus-icon-theme; name = "Papirus-Dark"; };
   };
 
-  xdg.configFile = {
-    "awesome/rc.lua".source = ./rc.lua;
-    "awesome/wallpaper.png".source = builtins.fetchurl "https://i.imgur.com/kmGmba4.png";
+
+  xdg.configFile."herbstluftwm/autostart" = {
+    executable = true;
+    text = ''
+      #!/bin/sh
+      herbstclient mousebind Super-Button1 move
+      herbstclient mousebind Super-Shift-Button1 resize
+      herbstclient keybind XF86AudioMute         spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+      herbstclient keybind XF86AudioRaiseVolume  spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+      herbstclient keybind XF86AudioLowerVolume  spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+      herbstclient keybind XF86MonBrightnessUp   spawn "brightnessctl set 5%+"
+      herbstclient keybind XF86MonBrightnessDown spawn "brightnessctl set 5%-"
+      herbstclient keybind Print                 spawn "scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f'"
+      herbstclient keybind Ctrl-Print            spawn "scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f' --select --freeze"
+      # TODO
+      herbstclient keybind Super-Return spawn "kitty"
+      herbstclient keybind Super-Tab cycle_all +1
+      herbstclient keybind Super-Shift-Tab cycle_all -1
+      herbstclient keybind Super-Up fullscreen toggle
+      herbstclient keybind Super-Down close_and_remove
+      herbstclient rule --focus=on
+      herbstclient rule --floating=true
+      herbstclient rule windowtype="_NET_WM_WINDOW_TYPE_NORMAL" --fullscreen=true
+      picom --experimental-backends --backend glx --blur-method dual_kawase --shadow &
+      xwallpaper --zoom ${builtins.fetchurl "https://i.imgur.com/kmGmba4.png"} &
+      fcitx5 &
+      xcape -e "Super_L=Super_L|minus"
+      xset r rate 300 30
+    '';
   };
+
 
   home.sessionVariables = {
     XSECURELOCK_FONT = "Bmono";
@@ -50,7 +78,8 @@
     enabled = "fcitx5";
     fcitx5.addons = with pkgs; [ unstable.fcitx5-unikey ];
   };
-  home.sessionVariables.GLFW_IM_MODULE = "ibus"; # To make Kitty use Fcitx5 (some how).
+  # Make Kitty use Fcitx5 (some how).
+  home.sessionVariables.GLFW_IM_MODULE = "ibus";
 
 
   programs = {
@@ -67,7 +96,6 @@
       enable = true;
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [ ublock-origin bitwarden ];
       profiles."NNB" = {
-        userChrome = "#window-controls { display: none !important; }";
         settings = {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "browser.ctrlTab.sortByRecentlyUsed" = true;
@@ -95,5 +123,6 @@
     };
   };
 
-  home.sessionVariables.MOZ_USE_XINPUT2 = "1"; # Support precise scrolling in Firefox.
+  # Support precise scrolling in Firefox.
+  home.sessionVariables.MOZ_USE_XINPUT2 = "1";
 }
