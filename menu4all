@@ -7,6 +7,7 @@ ACTIONS = [
   { key: 'a', description: 'Toggle fullscreen', command: 'xdotool getwindowfocus windowstate --toggle FULLSCREEN' },
   { key: 'x', description: 'Close window', command: 'xdotool getwindowfocus windowclose' },
   { key: 'z', description: 'Lock screen', command: 'xsecurelock' },
+  { key: 'q', description: 'Suspend the system', command: 'xsecurelock & systemctl suspend'},
   { key: '-', description: 'Switch to last focused window', command: 'echo' } # TODO
 ]
 
@@ -31,7 +32,8 @@ keys.flatten!
 menu = [
   windows.each_with_index.map { |window, index| "___#{keys[index].ljust(4, '_')}@ #{window[:title]}" }.join("\n"),
   ACTIONS.map { |action| "___#{action[:key].ljust(4, '_')}! #{action[:description]}" }.join("\n")
-].join("\n")
+]
+.select { |entry| !entry.empty? } .join("\n")
 
 input = `rofi -dmenu -auto-select -matching prefix -format i -filter "___" <<< "#{menu}"`
 exit if input.empty? || input == "-1\n"
