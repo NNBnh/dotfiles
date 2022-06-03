@@ -20,7 +20,6 @@
 
   programs.bash = {
     enable = true;
-    historyFile = "${config.xdg.cacheHome}/bash_history";
     initExtra = "[ -z $XONSH_AUTOPAIR ] && exec xonsh";
   };
 

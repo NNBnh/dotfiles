@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+KEYS = "kdjflseimcnvhgow"
+
+ACTIONS = [
+  { key: ';', description: 'Launch a terminal', command: 'kitty' },
+  { key: 'a', description: 'Toggle fullscreen', command: 'xdotool getwindowfocus windowstate --toggle FULLSCREEN' },
+  { key: 'x', description: 'Close window', command: 'xdotool getwindowfocus windowclose' },
+  { key: 'z', description: 'Lock screen', command: 'xsecurelock' },
+  { key: '-', description: 'Switch to last focused window', command: 'echo' } # TODO
+]
+
+
+windows = `xprop -root _NET_CLIENT_LIST`[38..-2].split(", ").map do |id|
+  {
+    id: id,
+    title: `xprop -id #{id} _NET_WM_NAME`[29..-3].gsub('\"', '"')
+  }
+end
+.sort_by { |window| `xprop -id #{window[:id]} WM_CLASS`[19..-2].split(", ").reverse }
+
+keys = KEYS.chars
+if windows.size > keys.size
+  [*1..(windows.size / keys.size)].each do |i|
+    keys[-i] = KEYS.chars.map { |j| KEYS[-i] + j }
+  end
+end
+keys.flatten!
+
+
+menu = [
+  windows.each_with_index.map { |window, index| "___#{keys[index].ljust(4, '_')}@ #{window[:title]}" }.join("\n"),
+  ACTIONS.map { |action| "___#{action[:key].ljust(4, '_')}! #{action[:description]}" }.join("\n")
+].join("\n")
+
+input = `rofi -dmenu -auto-select -matching prefix -format i -filter "___" <<< "#{menu}"`
+exit if input.empty? || input == "-1\n"
+
+input = input.to_i
+if input < windows.size
+  `xdotool windowactivate #{windows[input][:id]}`
+else
+  exec ACTIONS[input - windows.size][:command]
+end

@@ -5,7 +5,8 @@
 
   home.packages = with pkgs; [
     herbstluftwm picom-next xwallpaper xcape
-    brightnessctl scrot xclip xsecurelock
+    xdotool brightnessctl scrot xclip xsecurelock
+    (pkgs.writeScriptBin "menu4all" (builtins.readFile ./menu4all))
     nur.repos.nnb.bmono sarasa-gothic
     nextcloud-client blender godot
     retroarch multimc osu-lazer
@@ -38,21 +39,18 @@
     executable = true;
     text = ''
       #!/bin/sh
+      herbstclient set frame_gap 99999
+      herbstclient set snap_gap 0
       herbstclient mousebind Super-Button1 move
       herbstclient mousebind Super-Shift-Button1 resize
-      herbstclient keybind XF86AudioMute         spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-      herbstclient keybind XF86AudioRaiseVolume  spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%"
-      herbstclient keybind XF86AudioLowerVolume  spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%"
-      herbstclient keybind XF86MonBrightnessUp   spawn "brightnessctl set 5%+"
-      herbstclient keybind XF86MonBrightnessDown spawn "brightnessctl set 5%-"
-      herbstclient keybind Print                 spawn "scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f'"
-      herbstclient keybind Ctrl-Print            spawn "scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f' --select --freeze"
-      # TODO
-      herbstclient keybind Super-Return spawn "kitty"
-      herbstclient keybind Super-Tab cycle_all +1
-      herbstclient keybind Super-Shift-Tab cycle_all -1
-      herbstclient keybind Super-Up fullscreen toggle
-      herbstclient keybind Super-Down close_and_remove
+      herbstclient keybind XF86AudioMute         spawn pactl set-sink-mute @DEFAULT_SINK@ toggle
+      herbstclient keybind XF86AudioRaiseVolume  spawn pactl set-sink-volume @DEFAULT_SINK@ +5%
+      herbstclient keybind XF86AudioLowerVolume  spawn pactl set-sink-volume @DEFAULT_SINK@ -5%
+      herbstclient keybind XF86MonBrightnessUp   spawn brightnessctl set 5%+
+      herbstclient keybind XF86MonBrightnessDown spawn brightnessctl set 5%-
+      herbstclient keybind Print                 spawn scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f'
+      herbstclient keybind Ctrl-Print            spawn scrot '%Y-%m-%d.png' -e 'xclip -selection clipboard -target image/png $f' --select --freeze
+      herbstclient keybind Super-minus spawn menu4all
       herbstclient rule --focus=on
       herbstclient rule --floating=true
       herbstclient rule windowtype="_NET_WM_WINDOW_TYPE_NORMAL" --fullscreen=true
@@ -87,7 +85,7 @@
       enable = true;
       font = { name = "Bmono"; size = 10; };
       settings = {
-        background_opacity = "0.9";
+        background_opacity = "0.75";
         disable_ligatures = "cursor";
       };
     };
@@ -97,7 +95,6 @@
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [ ublock-origin bitwarden ];
       profiles."NNB" = {
         settings = {
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "browser.ctrlTab.sortByRecentlyUsed" = true;
           "browser.startup.homepage" = "about:blank";
           "browser.startup.page" = 3;
