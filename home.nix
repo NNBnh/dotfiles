@@ -41,6 +41,12 @@
       #!/bin/sh
       herbstclient set frame_gap 99999
       herbstclient set snap_gap 0
+      herbstclient attr theme.title_height 32
+      herbstclient attr theme.border_width 8
+      herbstclient attr theme.outer_width 8
+      herbstclient attr theme.color "#5890F8"
+      herbstclient attr theme.title_color "#5890F8"
+      herbstclient attr theme.outer_color "#FFFFFF"
       herbstclient mousebind Super-Button1 move
       herbstclient mousebind Super-Shift-Button1 resize
       herbstclient keybind XF86AudioMute         spawn pactl set-sink-mute @DEFAULT_SINK@ toggle
