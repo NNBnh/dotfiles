@@ -1,5 +1,4 @@
 <h1 align="center"><code>Đotfiles</code></h1>
-<p align="center">End-game Đotfiles</p>
 <p align="center"><img src="https://user-images.githubusercontent.com/43980777/172338839-482602d7-d57b-4152-a368-2333cf4c0d79.png"></p>
 <p align="center">
   <a href="https://github.com/NNBnh/dots/wiki"><img src="https://img.shields.io/badge/wiki%20-%23DE5D6E.svg?style=for-the-badge" alt="Wiki"></a>
@@ -25,6 +24,12 @@ _#TODO_
 - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dots/wiki/which#-game-engine)
 
 ## 🚀 Setup
+
+_#TODO_
+
+```sh
+BINDIR="~/.local/bin" sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply NNBnh
+```
 
 <br><br><br><br>
 
