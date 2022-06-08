@@ -1,5 +1,4 @@
 import os
-theme # TODO
 
 $PROMPT = "\n\033[0;1;90m {cwd}\033[0m\n\033[1;94m❯ "
 $MULTILINE_PROMPT = "|"
@@ -18,12 +17,14 @@ $SELECTION = None
 def set_file_select(items):
   $SELECTION = [os.path.abspath(item) for item in items]
 
-aliases["."]   = "ls --almost-all --group-directories-first"
-aliases["dl"]  = "trash-put"
-aliases["e"]   = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "nvim"
-aliases["g"]   = "git"
-aliases["s"]   = lambda args: set_file_select(args)
-aliases["mv"]  = lambda args: execx("mv    @($SELECTION) .") if not args else execx(" ".join(["mv"]    + args))
-aliases["cp"]  = lambda args: execx("cp -r @($SELECTION) .") if not args else execx(" ".join(["cp -r"] + args))
-aliases["ln"]  = lambda args: execx("ln -s @($SELECTION) .") if not args else execx(" ".join(["ln -s"] + args))
-aliases["hln"] = lambda args: execx("ln    @($SELECTION) .") if not args else execx(" ".join(["ln"]    + args))
+aliases["."] = "ls --almost-all --group-directories-first"
+aliases["dl"] = "trash-put"
+aliases["e"] = $EDITOR = $VISUAL = $PAGER = $MANPAGER = "nvim"
+aliases["g"] = "git"
+aliases["s"] = lambda args: set_file_select(args)
+aliases["mv"] = lambda args: execx("mv    @($SELECTION) .") if not args else execx(" ".join(["mv"]    + args))
+aliases["cp"] = lambda args: execx("cp -r @($SELECTION) .") if not args else execx(" ".join(["cp -r"] + args))
+aliases["ln"] = lambda args: execx("ln -s @($SELECTION) .") if not args else execx(" ".join(["ln -s"] + args))
+aliases["theme"] = "cat ~/.local/share/theme.cat"
+
+theme
