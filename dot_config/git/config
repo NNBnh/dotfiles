@@ -1,5 +1,5 @@
 [include]
-	path = "TODO/path/to/gitalias.txt"
+	path = "~/.local/share/theme/gitalias.txt"
 
 [user]
 	email = "nnbnh@protonmail.com"
