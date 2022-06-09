@@ -1,6 +1,6 @@
 .local/share/theme.cat:
   type: file
   url: https://raw.githubusercontent.com/NNBnh/da-one/main/da-one-sea.cat
-.local/share/theme/gitalias.txt:
+.local/share/gitalias.txt:
   type: file
   url: https://raw.githubusercontent.com/GitAlias/gitalias/main/gitalias.txt
