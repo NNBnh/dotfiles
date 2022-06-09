@@ -14,11 +14,11 @@ _#TODO_
 
 ### ✨ Starring
 
-- 🏞️ DE: [**Gnome**](https://github.com/NNBnh/dotfiles/wiki/which#%EF%B8%8F-desktop-environment) _#TODO_
-- 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dotfiles/wiki/which#-terminal-emulator) _#TODO_
+- 🏞️ DE: [**Gnome**](https://github.com/NNBnh/dotfiles/wiki/which#%EF%B8%8F-desktop-environment)
+- 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dotfiles/wiki/which#-terminal-emulator)
 - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dotfiles/wiki/which#-interactive-shell)
-- 📝 Text editor: [**Neovim**](https://github.com/NNBnh/dotfiles/wiki/which#-text-editor) _#TODO_
-- 🌏 Browser: [**LiberWorf**](https://github.com/NNBnh/dotfiles/wiki/which#-web-browser) _#TODO_
+- 📝 Text editor: [**Neovim**](https://github.com/NNBnh/dotfiles/wiki/which#-text-editor)
+- 🌏 Browser: [**LiberWorf**](https://github.com/NNBnh/dotfiles/wiki/which#-web-browser)
 - 🎥 Graphic editor: [**Blender**](https://github.com/NNBnh/dotfiles/wiki/which#-graphic-editor)
 - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dotfiles/wiki/which#-game-engine)
 
@@ -27,7 +27,7 @@ _#TODO_
 Install [Arch](https://archlinux.org) then run this command on the terminal:
 
 ```sh
-BINDIR="$HOME/.local/bin" sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply NNBnh
+sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply NNBnh
 ```
 
 That's all fork!
