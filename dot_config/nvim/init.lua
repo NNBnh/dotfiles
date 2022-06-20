@@ -40,7 +40,9 @@ vim.opt.number = true
 vim.opt.signcolumn = 'yes'
 
 vim.opt.laststatus = 0
-vim.opt.rulerformat = '%w%h%r%m %l:%v · %L'
+vim.opt.rulerformat = '%w%h%r%m %l:%v · %L'
+
+vim.opt.termguicolors = true
 
 vim.opt.sidescrolloff = 7
 vim.opt.scrolloff = 3
@@ -61,7 +63,8 @@ vim.opt.fillchars = {
 vim.opt.wrap = false
 vim.opt.breakindent = true
 
-vim.opt.foldmethod = 'marker'
+vim.opt.foldenable = false
+vim.opt.foldmethod = 'indent'
 
 vim.opt.completeopt = { 'menuone', 'noselect' }
 
@@ -167,3 +170,5 @@ cmp.setup {
 require('luasnip.loaders.from_vscode').lazy_load()
 
 -- }}}
+
+-- vim: foldenable foldmethod=marker
