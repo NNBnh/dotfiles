@@ -10,10 +10,11 @@
 
 > ⬤ ⬤ ⬤
 
-_#TODO_
+My tiny and simple personal Đotfiles that can be [bootstrap with a single command](#-setup)!
 
 ### ✨ Starring
 
+- 💾 OS: [**Arch Linux**](https://github.com/NNBnh/dotfiles/wiki/which#-operating-system)
 - 🏞️ DE: [**Gnome**](https://github.com/NNBnh/dotfiles/wiki/which#%EF%B8%8F-desktop-environment)
 - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dotfiles/wiki/which#-terminal-emulator)
 - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dotfiles/wiki/which#-interactive-shell)
@@ -24,7 +25,7 @@ _#TODO_
 
 ## 🚀 Setup
 
-Install [Arch](https://archlinux.org) then run this command on the terminal:
+[Install Arch](https://wiki.archlinux.org/title/Installation_guide) then run this command on the terminal:
 
 ```sh
 sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply NNBnh
