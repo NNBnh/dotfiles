@@ -18,7 +18,7 @@ _#TODO_
 - 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dotfiles/wiki/which#-terminal-emulator)
 - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dotfiles/wiki/which#-interactive-shell)
 - 📝 Text editor: [**Neovim**](https://github.com/NNBnh/dotfiles/wiki/which#-text-editor)
-- 🌏 Browser: [**LiberWorf**](https://github.com/NNBnh/dotfiles/wiki/which#-web-browser)
+- 🌏 Browser: [**Firefox**](https://github.com/NNBnh/dotfiles/wiki/which#-web-browser)
 - 🎥 Graphic editor: [**Blender**](https://github.com/NNBnh/dotfiles/wiki/which#-graphic-editor)
 - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dotfiles/wiki/which#-game-engine)
 
