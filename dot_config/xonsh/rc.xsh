@@ -3,7 +3,7 @@ import os
 $PROMPT = "\n\033[0;1;90m {cwd}\033[0m\n\033[1;94m❯ "
 $MULTILINE_PROMPT = "|"
 $XONSH_AUTOPAIR = $XONSH_CTRL_BKSP_DELETION = $COMPLETE_DOTS = $DOTGLOB = $AUTO_CD = True
-$PAGER = $MANPAGER = "nvimpager"
+$MANPAGER = "nvim -c Man!"
 
 @events.on_postcommand
 def print_exitcode(cmd, rtn, out, ts, **kw):
@@ -19,8 +19,7 @@ def set_file_select(items):
   $SELECTION = [os.path.abspath(item) for item in items]
 
 aliases["."] = "ls --almost-all --group-directories-first"
-aliases["e"] = $EDITOR = $VISUAL = "nvim"
-aliases["p"] = "nvimpager -c"
+aliases["e"] = $EDITOR = $VISUAL = $PAGER = "nvim"
 aliases["dl"] = "trash-put"
 aliases["a"] = "7z"
 aliases["g"] = "git"
