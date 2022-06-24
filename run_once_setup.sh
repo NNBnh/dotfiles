@@ -7,8 +7,8 @@ makepkg --syncdeps --install --noconfirm
 
 paru --sync --skipreview --useask --noconfirm --needed \
 	chezmoi nextcloud-client \
-	gnome ibus-unikey ttf-bmono ttf-sarasa-gothic \
-	kitty firefox blender godot \
+	gdm gnome-control-center ibus-unikey ttf-bmono ttf-sarasa-gothic \
+	kitty nautilus firefox blender godot \
 	steam multimc-bin osu-lazer-bin \
 	retroarch retroarch-assets-ozone \
 		libretro-mesen libretro-bsnes libretro-mupen64plus-next libretro-dolphin \
