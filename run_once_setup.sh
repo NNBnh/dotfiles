@@ -10,7 +10,7 @@ paru --sync --skipreview --useask --noconfirm --needed \
 	xdg-user-dirs-gtk tracker3-miners gvfs-afc gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb ntfs-3g \
 	gdm gnome-control-center ibus-unikey ttf-bmono ttf-sarasa-gothic \
 	kitty nautilus firefox blender godot \
-	steam multimc-bin osu-lazer-bin \
+	steam polymc-bin osu-lazer-bin \
 	retroarch retroarch-assets-ozone \
 		libretro-mesen libretro-bsnes libretro-mupen64plus-next libretro-dolphin \
 		libretro-duckstation libretro-pcsx2 \
