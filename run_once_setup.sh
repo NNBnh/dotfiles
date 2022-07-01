@@ -15,7 +15,7 @@ paru --sync --skipreview --useask --noconfirm --needed \
 		libretro-mesen libretro-bsnes libretro-mupen64plus-next libretro-dolphin \
 		libretro-duckstation libretro-pcsx2 \
 		libretro-sameboy libretro-mgba libretro-desmume libretro-citra \
-	ruby ruby-rdoc ruby-docs xonsh neovim btop trash-cli p7zip ffmpeg git
+	ruby ruby-rdoc ruby-docs xonsh neovim btop trash-cli p7zip git ffmpeg gifski
 
 for user_directories in DOCUMENTS PICTURES VIDEOS MUSIC DESKTOP DOWNLOAD PUBLICSHARE TEMPLATES; do
 	xdg-user-dirs-update --set $user_directories ~
