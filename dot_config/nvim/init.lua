@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd('BufWritePost', { command = 'source <afile> | Packer
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  use { 'RRethy/nvim-base16', config = function() vim.cmd('colorscheme base16-onedark') end } -- TODO
+  use { 'RRethy/nvim-base16', config = function() vim.cmd('colorscheme base16-da-one-sea') end }
   use { 'lukas-reineke/indent-blankline.nvim', config = function() require('indent_blankline').setup { char = '▏' } end }
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' }, config = function() require('gitsigns').setup() end }
   use { 'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup(nil, { css = true }) end }
