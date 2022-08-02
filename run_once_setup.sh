@@ -26,6 +26,11 @@ chsh -s $(which xonsh)
 sudo systemctl enable gdm.service
 sudo systemctl enable bluetooth.service
 
-echo "GTK_IM_MODULE=ibus\nQT_IM_MODULE=ibus\nXMODIFIERS=@im=ibus\nGLFW_IM_MODULE=ibus" | sudo tee --append /etc/environment > /dev/null
+echo '
+GTK_IM_MODULE=ibus
+QT_IM_MODULE=ibus
+XMODIFIERS=@im=ibus
+GLFW_IM_MODULE=ibus
+' | sudo tee --append /etc/environment > /dev/null
 
 systemctl reboot
