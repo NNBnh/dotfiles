@@ -20,6 +20,7 @@ def set_file_select(items):
 
 aliases["."] = "ls --almost-all --group-directories-first"
 aliases["e"] = $EDITOR = $VISUAL = $PAGER = "nvim"
+aliases["E"] = sudoedit
 aliases["dl"] = "trash-put"
 aliases["a"] = "7z"
 aliases["g"] = "git"
