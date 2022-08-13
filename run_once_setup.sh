@@ -5,21 +5,9 @@ git clone https://aur.archlinux.org/paru-bin.git ~/.cache/paru
 cd ~/.cache/paru
 makepkg --syncdeps --install --noconfirm
 
-paru --sync --skipreview --useask --noconfirm --needed \
-	chezmoi nextcloud-client \
-	xdg-user-dirs-gtk tracker3-miners gvfs-afc gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb ntfs-3g \
-	gdm gnome-control-center ibus-unikey ttf-bmono ttf-sarasa-gothic \
-	kitty nautilus firefox blender godot \
-	steam polymc-bin osu-lazer-bin \
-	retroarch retroarch-assets-ozone \
-		libretro-mesen libretro-bsnes libretro-mupen64plus-next libretro-dolphin \
-		libretro-duckstation libretro-pcsx2 \
-		libretro-sameboy libretro-mgba libretro-desmume libretro-citra \
-	ruby ruby-rdoc ruby-docs xonsh neovim btop trash-cli p7zip git ffmpeg gifski
+paru --sync --skipreview --useask --noconfirm --needed flatpak chezmoi ruby ruby-rdoc ruby-docs xonsh neovim btop trash-cli p7zip git ffmpeg
 
-for user_directories in DOCUMENTS PICTURES VIDEOS MUSIC DESKTOP DOWNLOAD PUBLICSHARE TEMPLATES; do
-	xdg-user-dirs-update --set $user_directories ~
-done
+flatpak install flathub com.nextcloud.desktopclient.nextcloud org.contourterminal.Contour org.mozilla.firefox com.usebottles.bottles org.blender.Blender org.godotengine.Godot com.valvesoftware.Steam org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu
 
 chsh -s $(which xonsh)
 
