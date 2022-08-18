@@ -28,6 +28,3 @@ aliases["s"] = lambda args: set_file_select(args)
 aliases["mv"] = lambda args: execx("mv    @($SELECTION) .") if not args else execx(" ".join(["mv"]    + args))
 aliases["cp"] = lambda args: execx("cp -r @($SELECTION) .") if not args else execx(" ".join(["cp -r"] + args))
 aliases["ln"] = lambda args: execx("ln -s @($SELECTION) .") if not args else execx(" ".join(["ln -s"] + args))
-aliases["theme"] = "cat ~/.local/share/theme.cat"
-
-theme
