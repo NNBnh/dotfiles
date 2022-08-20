@@ -14,9 +14,9 @@ My tiny and simple personal Đotfiles that can be [bootstrap with a single comma
 
 ### ✨ Starring
 
-- 💾 OS: [**Arch Linux**](https://github.com/NNBnh/dotfiles/wiki/which#-operating-system)
+- 💾 OS: [**Fedora**](https://github.com/NNBnh/dotfiles/wiki/which#-operating-system)
 - 🏞️ DE: [**Gnome**](https://github.com/NNBnh/dotfiles/wiki/which#%EF%B8%8F-desktop-environment)
-- 📟 Terminal: [**Kitty**](https://github.com/NNBnh/dotfiles/wiki/which#-terminal-emulator)
+- 📟 Terminal: [**Wezterm**](https://github.com/NNBnh/dotfiles/wiki/which#-terminal-emulator)
 - 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dotfiles/wiki/which#-interactive-shell)
 - 📝 Text editor: [**Neovim**](https://github.com/NNBnh/dotfiles/wiki/which#-text-editor)
 - 🌏 Browser: [**Firefox**](https://github.com/NNBnh/dotfiles/wiki/which#-web-browser)
