@@ -10,6 +10,6 @@ flatpak install --assumeyes flathub \
 
 chsh -s $(which xonsh)
 
-git config --global user.name nnbnh@protonmail.com
+git config --global user.email nnbnh@protonmail.com
 git config --global user.name NNB
 git config --global credential.helper store
