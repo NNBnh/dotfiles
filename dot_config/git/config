@@ -1,9 +1,0 @@
-[include]
-	path = "~/.local/share/gitalias.txt"
-
-[user]
-	email = "nnbnh@protonmail.com"
-	name = "NNB"
-
-[credential]
-	helper = "store"
