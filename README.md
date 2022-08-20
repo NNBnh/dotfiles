@@ -25,10 +25,10 @@ My tiny and simple personal Đotfiles that can be [bootstrap with a single comma
 
 ## 🚀 Setup
 
-[Install Arch](https://wiki.archlinux.org/title/Installation_guide) then run this command on the terminal:
+[Install Fedora](https://getfedora.org/en/workstation/download) then run this command on the terminal:
 
 ```sh
-sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply NNBnh
+sh -c "$(curl -fsLS chezmoi.io/get)" -- -b ~/.local/bin init --apply NNBnh
 ```
 
 That's all fork!
