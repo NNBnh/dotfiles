@@ -1,6 +1,9 @@
 #!/bin/sh
 
-sudo dnf install --assumeyes papirus-icon-theme ibus-unikey ruby xonsh neovim trash-cli p7zip ffmpeg-free
+sudo dnf copr enable --assumeyes peterwu/iosevka
+sudo dnf install --assumeyes \
+	papirus-icon-theme iosevka-curly-fonts ibus-unikey \
+	ruby xonsh neovim trash-cli p7zip ffmpeg-free
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --assumeyes flathub \
