@@ -3,9 +3,9 @@
 sudo dnf copr enable --assumeyes peterwu/iosevka
 sudo dnf install --assumeyes papirus-icon-theme iosevka-curly-fonts ibus-unikey
 
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus Dark'
+gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 
-sudo dnf remove --assumeyes gnome-terminal firefox
+sudo dnf remove --assumeyes gnome-terminal
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --assumeyes flathub \
 	org.wezfurlong.wezterm com.usebottles.bottles \
