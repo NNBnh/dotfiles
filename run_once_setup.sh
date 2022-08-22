@@ -12,6 +12,8 @@ flatpak install --assumeyes flathub \
 	org.blender.Blender org.godotengine.Godot \
 	com.valvesoftware.Steam org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu
 
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install ruby nushell neovim p7zip ffmpeg imagemagick gifski
 
 git config --global user.email nnbnh@protonmail.com
