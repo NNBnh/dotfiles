@@ -4,6 +4,7 @@ sudo dnf copr enable --assumeyes peterwu/iosevka
 sudo dnf install --assumeyes papirus-icon-theme iosevka-curly-fonts ibus-unikey
 
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"
 
 sudo dnf remove --assumeyes gnome-terminal
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
