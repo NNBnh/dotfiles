@@ -9,31 +9,32 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-g
 
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install --assumeyes flathub \
-	org.wezfurlong.wezterm com.usebottles.bottles org.js.nuclear.Nuclear \
-	com.visualstudio.code org.blender.Blender org.godotengine.Godot \
-	com.valvesoftware.Steam org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu
+
+utilities='org.wezfurlong.wezterm com.usebottles.bottles org.js.nuclear.Nuclear'
+tools='com.visualstudio.code org.blender.Blender org.godotengine.Godot'
+games='com.valvesoftware.Steam org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu'
+flatpak install --assumeyes flathub $utilities $tools $games
 
 mkdir -p ~/.var/app/org.wezfurlong.wezterm/config/wezterm
 cat > ~/.var/app/org.wezfurlong.wezterm/config/wezterm/wezterm.lua << CONFIG
 local wezterm = require 'wezterm'
 
 return {
-  font = wezterm.font 'Iosevka Curly Extended',
-  font_size = 10.0,
-  color_scheme = 'Catppuccin Mocha',
-  bold_brightens_ansi_colors = false,
-  use_fancy_tab_bar = false,
-  hide_tab_bar_if_only_one_tab = true,
-  keys = {
-    { key =    'UpArrow', mods = 'CTRL|SHIFT', action = 'DisableDefaultAssignment' },
-    { key =  'DownArrow', mods = 'CTRL|SHIFT', action = 'DisableDefaultAssignment' },
-    { key =  'LeftArrow', mods = 'CTRL|SHIFT', action = 'DisableDefaultAssignment' },
-    { key = 'RightArrow', mods = 'CTRL|SHIFT', action = 'DisableDefaultAssignment' },
-    { key =          'Z', mods = 'CTRL|SHIFT', action = wezterm.action.SendKey { key = 'Y',     mods = 'CTRL' } },
-    { key =      'Enter', mods =      'SHIFT', action = wezterm.action.SendKey { key = 'Enter', mods = 'ALT'  } },
-  },
-  default_prog = {'/home/linuxbrew/.linuxbrew/bin/nu'},
+	font = wezterm.font 'Iosevka Curly Extended',
+	font_size = 10.0,
+	color_scheme = 'Catppuccin Mocha',
+	bold_brightens_ansi_colors = false,
+	use_fancy_tab_bar = false,
+	hide_tab_bar_if_only_one_tab = true,
+	keys = {
+		{ key =    'UpArrow', mods = 'CTRL|SHIFT', action = 'DisableDefaultAssignment' },
+		{ key =  'DownArrow', mods = 'CTRL|SHIFT', action = 'DisableDefaultAssignment' },
+		{ key =  'LeftArrow', mods = 'CTRL|SHIFT', action = 'DisableDefaultAssignment' },
+		{ key = 'RightArrow', mods = 'CTRL|SHIFT', action = 'DisableDefaultAssignment' },
+		{ key =          'Z', mods = 'CTRL|SHIFT', action = wezterm.action.SendKey { key = 'Y',     mods = 'CTRL' } },
+		{ key =      'Enter', mods =      'SHIFT', action = wezterm.action.SendKey { key = 'Enter', mods = 'ALT'  } },
+	},
+	default_prog = {'/home/linuxbrew/.linuxbrew/bin/nu'},
 }
 CONFIG
 
@@ -52,8 +53,8 @@ git config --global pull.rebase true
 mkdir -p ~/.config/micro
 cat > ~/.config/micro/settings.json << CONFIG
 {
-    "colorscheme": "geany",
-    "mkparents": true,
-    "rmtrailingws": true
+	"colorscheme": "geany",
+	"mkparents": true,
+	"rmtrailingws": true
 }
 CONFIG
