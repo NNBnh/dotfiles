@@ -16,9 +16,9 @@ My tiny and simple personal Đotfiles that can be [bootstrap with a single comma
 
 - 💾 OS: [**Fedora**](https://github.com/NNBnh/dotfiles/wiki/which#-operating-system)
 - 🏞️ DE: [**Gnome**](https://github.com/NNBnh/dotfiles/wiki/which#%EF%B8%8F-desktop-environment)
-- 📟 Terminal: [**Wezterm**](https://github.com/NNBnh/dotfiles/wiki/which#-terminal-emulator)
-- 🐚 Shell: [**Xonsh**](https://github.com/NNBnh/dotfiles/wiki/which#-interactive-shell)
-- 📝 Text editor: [**Neovim**](https://github.com/NNBnh/dotfiles/wiki/which#-text-editor)
+- 📟 Terminal: [**WezTerm**](https://github.com/NNBnh/dotfiles/wiki/which#-terminal-emulator)
+- 🐚 Shell: [**NuShell**](https://github.com/NNBnh/dotfiles/wiki/which#-interactive-shell)
+- 📝 Text editor: [**VScode**](https://github.com/NNBnh/dotfiles/wiki/which#-text-editor)
 - 🌏 Browser: [**Firefox**](https://github.com/NNBnh/dotfiles/wiki/which#-web-browser)
 - 🎥 Graphic editor: [**Blender**](https://github.com/NNBnh/dotfiles/wiki/which#-graphic-editor)
 - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dotfiles/wiki/which#-game-engine)
@@ -28,7 +28,7 @@ My tiny and simple personal Đotfiles that can be [bootstrap with a single comma
 [Install Fedora](https://getfedora.org/en/workstation/download) then run this command on the terminal:
 
 ```sh
-sh -c "$(curl -fsLS chezmoi.io/get)" -- -b ~/.local/bin init --apply NNBnh
+# TODO
 ```
 
 That's all fork!
