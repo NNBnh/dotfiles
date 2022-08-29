@@ -10,7 +10,7 @@ sudo dnf install --assumeyes papirus-icon-theme iosevka-curly-fonts ibus-unikey
 # Flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-utilities='com.mattjakeman.ExtensionManager com.usebottles.bottles org.js.nuclear.Nuclear' # NOTE org.gnome.Extensions
+utilities='org.gnome.Extensions com.usebottles.bottles org.js.nuclear.Nuclear'
 tools='com.visualstudio.code org.blender.Blender org.godotengine.Godot'
 games='com.valvesoftware.Steam org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu'
 flatpak install --assumeyes flathub $utilities $tools $games
@@ -27,10 +27,6 @@ brew install ruby nushell micro p7zip ffmpeg imagemagick gifski asciinema
 
 # Gnome
 gsettings set org.gnome.desktop.interface icon-theme Papirus
-
-# GTK Title Bar    https://extensions.gnome.org/extension/1732/gtk-title-bar
-# Blur shell       https://extensions.gnome.org/extension/3193/blur-my-shell
-# GSConnect        https://extensions.gnome.org/extension/1319/gsconnect
 
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"
 
