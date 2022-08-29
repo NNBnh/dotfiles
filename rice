@@ -18,18 +18,42 @@ flatpak install --assumeyes flathub $utilities $tools $games
 
 # Homebrew
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" # TODO improve
+sudo dnf groupinstall --assumeyes 'Development Tools'
+printf '%s' 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bash_profile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-brew install ruby nushell micro p7zip ffmpeg imagemagick gifski asciinema
+brew install ruby zsh starship trash-cli p7zip ffmpeg imagemagick gifski asciinema
 
 
 # Config ------------------------------------------------------------------------------------------
 
 # Gnome
+# TODO
+# - https://github.com/velitasali/gtktitlebar
+# - https://github.com/aunetx/blur-my-shell
+# - https://github.com/GSConnect/gnome-shell-extension-gsconnect
 gsettings set org.gnome.desktop.interface icon-theme Papirus
 
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"
 
+
+# Zsh TODO
+cat > ~/.zshrc << ZSHRC
+eval "$(starship init zsh)"
+
+alias l='ls --almost-all --group-directories-first'
+alias md='mkdir -p'
+alias dl='trash-put'
+alias a='7z'
+alias g='git'
+
+s() { SELECTION=(); for item in "$@"; do SELECTION+=("$(readlink -f "$item")"); done }
+mv()  { if [ "$#" -eq '0' ]; then command mv    "${SELECTION[@]}" .; else command mv    "$@"; fi }
+cp()  { if [ "$#" -eq '0' ]; then command cp -r "${SELECTION[@]}" .; else command cp -r "$@"; fi }
+ln()  { if [ "$#" -eq '0' ]; then command ln -s "${SELECTION[@]}" .; else command ln -s "$@"; fi }
+hln() { if [ "$#" -eq '0' ]; then command ln    "${SELECTION[@]}" .; else command ln    "$@"; fi }
+e() { if [ "$#" -eq '0' ]; then flatpak run com.visualstudio.code --add .; else flatpak run com.visualstudio.code "$@"; fi }
+ZSHRC
 
 # Git
 git config --global user.email nnbnh@protonmail.com
@@ -40,12 +64,3 @@ git config --global pull.rebase true
 mkdir -p ~/.local/share
 curl -fsSL https://raw.githubusercontent.com/GitAlias/gitalias/main/gitalias.txt > ~/.local/share/gitalias.txt
 git config --global include.path ~/.local/share/gitalias.txt
-
-
-# NuShell
-echo '# TODO NuShell'
-
-
-# Micro
-mkdir -p ~/.config/micro
-printf '%s' '{ "colorscheme": "geany", "mkparents": true, "rmtrailingws": true }' > ~/.config/micro/settings.json
