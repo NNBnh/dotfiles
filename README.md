@@ -28,7 +28,7 @@ My tiny and simple personal Đotfiles that can be [bootstrap with a single comma
 [Install Fedora](https://getfedora.org/en/workstation/download) then run this command on the terminal:
 
 ```sh
-# TODO
+sh -c "$(curl -fsLS https://nnbnh.github.io/dotfiles)"
 ```
 
 That's all fork!
