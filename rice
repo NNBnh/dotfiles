@@ -1,0 +1,83 @@
+#!/bin/sh
+
+help='\033[1mUsage:\033[0m rice <options>
+TODO.
+\033[1mOptions:\033[0m
+  help    Print this help message
+  TODO    TODO'
+
+while :; do
+	case "${1:-}" in
+		install)
+			shift
+			install=true
+		;;
+		help|-h|--help)
+			printf '%b\n' "${help}"
+			exit 0
+		;;
+		'')
+			break
+		;;
+		*)
+			printf '%s\n' "Unknown option: ${1}" >&2
+			exit 2
+		;;
+	esac
+done
+
+
+install_dnf() {
+	sudo dnf copr enable --assumeyes peterwu/iosevka
+	sudo dnf install --assumeyes papirus-icon-theme iosevka-curly-fonts ibus-unikey
+}
+
+install_flatpak() {
+	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+	utilities='com.usebottles.bottles org.js.nuclear.Nuclear'
+	tools='com.visualstudio.code org.blender.Blender org.godotengine.Godot'
+	games='com.valvesoftware.Steam org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu'
+	flatpak install --assumeyes flathub $utilities $tools $games
+}
+
+install_brew() {
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+	brew install ruby nushell micro p7zip ffmpeg imagemagick gifski asciinema
+}
+
+
+config_gnome() {
+	gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark # FIXME
+	gsettings set org.gnome.desktop.interface icon-theme Papirus
+
+	# TODO extensions
+	# 
+
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"
+}
+
+config_git() {
+	git config --global user.email nnbnh@protonmail.com
+	git config --global user.name NNB
+	git config --global credential.helper store
+	git config --global pull.rebase true
+
+	mkdir -p ~/.local/share
+	curl -fsSL https://raw.githubusercontent.com/GitAlias/gitalias/main/gitalias.txt > ~/.local/share/gitalias.txt
+	git config --global include.path ~/.local/share/gitalias.txt
+}
+
+config_nushell() {
+	echo # TODO nushell
+}
+
+config_micro() {
+	mkdir -p ~/.config/micro
+	printf '%s' '{ "colorscheme": "geany", "mkparents": true, "rmtrailingws": true }' > ~/.config/micro/settings.json
+}
+
+
+# TODO
