@@ -38,7 +38,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-g
 
 # Zsh
 cat > ~/.zshrc << ZSHRC
-source /home/linuxbrew/.linuxbrew/var/homebrew/linked/zplug/init.zsh
+source "\${HOMEBREW_PREFIX}/var/homebrew/linked/zplug/init.zsh"
 
 zplug zdharma/fast-syntax-highlighting
 zplug zsh-users/zsh-autosuggestions
@@ -60,16 +60,14 @@ alias a='7z'
 alias g='git'
 
 s() { selection=(); for item in "\$@"; do selection+=("\$(readlink -f "\${item}")"); done }
-mv()  { if [ "\$#" -eq '0' ]; then command mv    "\${selection[@]}" .; else command mv    "\$@"; fi }
-cp()  { if [ "\$#" -eq '0' ]; then command cp -r "\${selection[@]}" .; else command cp -r "\$@"; fi }
-ln()  { if [ "\$#" -eq '0' ]; then command ln -s "\${selection[@]}" .; else command ln -s "\$@"; fi }
-hln() { if [ "\$#" -eq '0' ]; then command ln    "\${selection[@]}" .; else command ln    "\$@"; fi }
+mv()  { if [ "\$#" -eq 0 ]; then command mv    "\${selection[@]}" .; else command mv    "\$@"; fi }
+cp()  { if [ "\$#" -eq 0 ]; then command cp -r "\${selection[@]}" .; else command cp -r "\$@"; fi }
+ln()  { if [ "\$#" -eq 0 ]; then command ln -s "\${selection[@]}" .; else command ln -s "\$@"; fi }
+hln() { if [ "\$#" -eq 0 ]; then command ln    "\${selection[@]}" .; else command ln    "\$@"; fi }
 
 export HISTSIZE=500000
 export HISTFILE="\${HOME}/.history"
 export SAVEHIST="\${HISTSIZE}"
-
-clear
 ZSHRC
 
 # Git
