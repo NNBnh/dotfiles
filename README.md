@@ -8,7 +8,7 @@
 
 ## 💡 About
 
-> ⬤ ⬤ ⬤
+> _Đot_ **_Đot_** **Đot**
 
 My tiny and simple personal Đotfiles that can be [bootstrap with a single command](#-setup)!
 
@@ -16,9 +16,8 @@ My tiny and simple personal Đotfiles that can be [bootstrap with a single comma
 
 - 💾 OS: [**Fedora**](https://github.com/NNBnh/dotfiles/wiki/which#-operating-system)
 - 🏞️ DE: [**Gnome**](https://github.com/NNBnh/dotfiles/wiki/which#%EF%B8%8F-desktop-environment)
-- 📟 Terminal: [**WezTerm**](https://github.com/NNBnh/dotfiles/wiki/which#-terminal-emulator)
-- 🐚 Shell: [**NuShell**](https://github.com/NNBnh/dotfiles/wiki/which#-interactive-shell)
-- 📝 Text editor: [**VScode**](https://github.com/NNBnh/dotfiles/wiki/which#-text-editor)
+- 📝 IDE: [**VScode**](https://github.com/NNBnh/dotfiles/wiki/which#-text-editor)
+- 🐚 Shell: [**Zsh**](https://github.com/NNBnh/dotfiles/wiki/which#-interactive-shell)
 - 🌏 Browser: [**Firefox**](https://github.com/NNBnh/dotfiles/wiki/which#-web-browser)
 - 🎥 Graphic editor: [**Blender**](https://github.com/NNBnh/dotfiles/wiki/which#-graphic-editor)
 - 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dotfiles/wiki/which#-game-engine)

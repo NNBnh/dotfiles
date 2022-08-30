@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Install -----------------------------------------------------------------------------------------
+# Install ------------------------------------------------------------------------------------------
 
 # DNF
 sudo dnf copr enable --assumeyes peterwu/iosevka
@@ -22,24 +22,36 @@ sudo dnf groupinstall --assumeyes 'Development Tools'
 printf '%s' 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bash_profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-brew install ruby zsh starship trash-cli p7zip ffmpeg imagemagick gifski asciinema
+brew install ruby zsh zplug starship trash-cli p7zip ffmpeg imagemagick gifski asciinema
 
 
-# Config ------------------------------------------------------------------------------------------
+# Config -------------------------------------------------------------------------------------------
 
 # Gnome
 # TODO
 # - https://github.com/velitasali/gtktitlebar
-# - https://github.com/aunetx/blur-my-shell
 # - https://github.com/GSConnect/gnome-shell-extension-gsconnect
 gsettings set org.gnome.desktop.interface icon-theme Papirus
 
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"
 
 
-# Zsh TODO
+# Zsh
 cat > ~/.zshrc << ZSHRC
-eval "$(starship init zsh)"
+source /home/linuxbrew/.linuxbrew/var/homebrew/linked/zplug/init.zsh
+
+zplug zdharma/fast-syntax-highlighting
+zplug zsh-users/zsh-autosuggestions
+zplug marlonrichert/zsh-autocomplete
+
+zplug check || zplug install
+zplug load
+
+eval "\$(starship init zsh)"
+
+setopt histreduceblanks histignorespace histignorealldups autocd autopushd pushdminus pushdsilent \
+       pushdtohome pushdignoredups nohup extendedglob globdots shwordsplit automenu cdablevars \
+       listpacked nolisttypes alwaystoend correct no_nomatch rmstarsilent
 
 alias l='ls --almost-all --group-directories-first'
 alias md='mkdir -p'
@@ -47,12 +59,17 @@ alias dl='trash-put'
 alias a='7z'
 alias g='git'
 
-s() { SELECTION=(); for item in "$@"; do SELECTION+=("$(readlink -f "$item")"); done }
-mv()  { if [ "$#" -eq '0' ]; then command mv    "${SELECTION[@]}" .; else command mv    "$@"; fi }
-cp()  { if [ "$#" -eq '0' ]; then command cp -r "${SELECTION[@]}" .; else command cp -r "$@"; fi }
-ln()  { if [ "$#" -eq '0' ]; then command ln -s "${SELECTION[@]}" .; else command ln -s "$@"; fi }
-hln() { if [ "$#" -eq '0' ]; then command ln    "${SELECTION[@]}" .; else command ln    "$@"; fi }
-e() { if [ "$#" -eq '0' ]; then flatpak run com.visualstudio.code --add .; else flatpak run com.visualstudio.code "$@"; fi }
+s() { selection=(); for item in "\$@"; do selection+=("\$(readlink -f "\${item}")"); done }
+mv()  { if [ "\$#" -eq '0' ]; then command mv    "\${selection[@]}" .; else command mv    "\$@"; fi }
+cp()  { if [ "\$#" -eq '0' ]; then command cp -r "\${selection[@]}" .; else command cp -r "\$@"; fi }
+ln()  { if [ "\$#" -eq '0' ]; then command ln -s "\${selection[@]}" .; else command ln -s "\$@"; fi }
+hln() { if [ "\$#" -eq '0' ]; then command ln    "\${selection[@]}" .; else command ln    "\$@"; fi }
+
+export HISTSIZE=500000
+export HISTFILE="\${HOME}/.history"
+export SAVEHIST="\${HISTSIZE}"
+
+clear
 ZSHRC
 
 # Git
