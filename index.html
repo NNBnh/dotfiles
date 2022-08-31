@@ -53,17 +53,16 @@ setopt histreduceblanks histignorespace histignorealldups autocd autopushd pushd
        pushdtohome pushdignoredups nohup extendedglob globdots shwordsplit automenu cdablevars \
        listpacked nolisttypes alwaystoend correct no_nomatch rmstarsilent
 
-alias l='ls --almost-all --group-directories-first'
 alias md='mkdir -p'
 alias dl='trash-put'
 alias a='7z'
 alias g='git'
 
+chpwd() { ls --almost-all --group-directories-first }
 s() { selection=(); for item in "\$@"; do selection+=("\$(readlink -f "\${item}")"); done }
 mv()  { if [ "\$#" -eq 0 ]; then command mv    "\${selection[@]}" .; else command mv    "\$@"; fi }
 cp()  { if [ "\$#" -eq 0 ]; then command cp -r "\${selection[@]}" .; else command cp -r "\$@"; fi }
 ln()  { if [ "\$#" -eq 0 ]; then command ln -s "\${selection[@]}" .; else command ln -s "\$@"; fi }
-hln() { if [ "\$#" -eq 0 ]; then command ln    "\${selection[@]}" .; else command ln    "\$@"; fi }
 
 export HISTSIZE=500000
 export HISTFILE="\${HOME}/.history"
