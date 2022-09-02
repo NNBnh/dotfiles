@@ -60,9 +60,9 @@ alias g='git'
 
 chpwd() { ls --almost-all --group-directories-first }
 s() { selection=(); for item in "\$@"; do selection+=("\$(readlink -f "\${item}")"); done }
-mv()  { if [ "\$#" -eq 0 ]; then command mv    "\${selection[@]}" .; else command mv    "\$@"; fi }
-cp()  { if [ "\$#" -eq 0 ]; then command cp -r "\${selection[@]}" .; else command cp -r "\$@"; fi }
-ln()  { if [ "\$#" -eq 0 ]; then command ln -s "\${selection[@]}" .; else command ln -s "\$@"; fi }
+mv() { if [ "\$#" -eq 0 ]; then command mv    "\${selection[@]}" .; else command mv    "\$@"; fi }
+cp() { if [ "\$#" -eq 0 ]; then command cp -r "\${selection[@]}" .; else command cp -r "\$@"; fi }
+ln() { if [ "\$#" -eq 0 ]; then command ln -s "\${selection[@]}" .; else command ln -s "\$@"; fi }
 
 export HISTSIZE=500000
 export HISTFILE="\${HOME}/.history"
