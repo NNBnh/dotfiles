@@ -22,7 +22,10 @@ sudo dnf groupinstall --assumeyes 'Development Tools'
 printf '%s' 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bash_profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-brew install ruby zsh zplug starship trash-cli p7zip ffmpeg imagemagick gifski asciinema
+cli_utilities='ruby zsh zplug starship trash-cli p7zip'
+cli_medias='ffmpeg imagemagick gifski asciinema'
+cli_funs='figlet genact cmatrix no-more-secrets'
+brew install $cli_utilities $cli_medias $cli_funs
 
 
 # Config -------------------------------------------------------------------------------------------
