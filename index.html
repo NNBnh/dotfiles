@@ -3,17 +3,16 @@
 # Install ------------------------------------------------------------------------------------------
 
 # DNF
-sudo dnf copr enable --assumeyes peterwu/iosevka
-sudo dnf install --assumeyes papirus-icon-theme iosevka-curly-fonts ibus-unikey
+sudo dnf install --assumeyes papirus-icon-theme ibus-unikey
 
 
 # Flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-utilities='org.gnome.Extensions com.usebottles.bottles org.js.nuclear.Nuclear'
-tools='com.visualstudio.code org.blender.Blender org.godotengine.Godot'
-games='com.valvesoftware.Steam org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu'
-flatpak install --assumeyes flathub $utilities $tools $games
+gui_utilities='org.gnome.Extensions com.usebottles.bottles org.js.nuclear.Nuclear'
+gui_tools='com.visualstudio.code org.blender.Blender org.godotengine.Godot'
+gui_games='com.valvesoftware.Steam org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu'
+flatpak install --assumeyes flathub ${gui_utilities} ${gui_tools} ${gui_games}
 
 
 # Homebrew
@@ -22,10 +21,13 @@ sudo dnf groupinstall --assumeyes 'Development Tools'
 printf '%s' 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bash_profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-cli_utilities='ruby zsh zplug starship trash-cli p7zip'
-cli_medias='ffmpeg imagemagick gifski asciinema'
+cli_utilities='ruby zsh zplug starship trash-cli p7zip git'
+cli_tools='ffmpeg imagemagick gifski asciinema'
 cli_funs='figlet genact cmatrix no-more-secrets'
-brew install $cli_utilities $cli_medias $cli_funs
+brew install ${cli_utilities} ${cli_tools} ${cli_funs}
+
+
+# Nerd font (TODO Victor Mono)
 
 
 # Config -------------------------------------------------------------------------------------------
@@ -52,8 +54,8 @@ zplug load
 
 eval "\$(starship init zsh)"
 
-setopt histreduceblanks histignorespace histignorealldups autocd autopushd pushdminus pushdsilent \\
-       pushdtohome pushdignoredups nohup extendedglob globdots automenu cdablevars listpacked \\
+setopt histreduceblanks histignorespace histignorealldups autocd autopushd pushdminus pushdsilent \
+       pushdtohome pushdignoredups nohup extendedglob globdots automenu cdablevars listpacked \
        nolisttypes alwaystoend correct no_nomatch rmstarsilent
 
 alias md='mkdir -p'
