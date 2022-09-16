@@ -3,7 +3,7 @@
 # Install ------------------------------------------------------------------------------------------
 
 # DNF
-sudo dnf install --assumeyes papirus-icon-theme ibus-unikey
+sudo dnf install --assumeyes ibus-unikey
 
 
 # Flatpak
@@ -27,16 +27,18 @@ cli_funs='figlet genact cmatrix no-more-secrets'
 brew install ${cli_utilities} ${cli_tools} ${cli_funs}
 
 
-# Nerd font (TODO Victor Mono)
+# Other
+sh -c "$(curl -fsSL https://git.io/papirus-icon-theme-install)"
+# TODO Victor Mono Nerd font
 
 
 # Config -------------------------------------------------------------------------------------------
 
 # Gnome
 # TODO
-# - https://github.com/velitasali/gtktitlebar
+# - https://github.com/hardpixel/unite-shell
 # - https://github.com/GSConnect/gnome-shell-extension-gsconnect
-gsettings set org.gnome.desktop.interface icon-theme Papirus
+gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
 
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"
 
