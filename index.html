@@ -1,14 +1,6 @@
 #!/bin/sh
 
-# Install ------------------------------------------------------------------------------------------
-
-# DNF
-sudo dnf install --assumeyes ibus-unikey
-
-
 # Flatpak
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
 gui_utilities='org.gnome.Extensions com.usebottles.bottles org.js.nuclear.Nuclear'
 gui_tools='com.visualstudio.code org.blender.Blender org.godotengine.Godot'
 gui_games='com.valvesoftware.Steam org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu'
@@ -17,64 +9,19 @@ flatpak install --assumeyes flathub ${gui_utilities} ${gui_tools} ${gui_games}
 
 # Homebrew
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-sudo dnf groupinstall --assumeyes 'Development Tools'
-printf '%s' 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bash_profile
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+test -r ~/.bash_profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bash_profile
+echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.profile
 
-cli_utilities='ruby zsh zplug starship trash-cli p7zip git'
+cli_utilities='ruby zsh trash-cli p7zip git'
 cli_tools='ffmpeg imagemagick gifski asciinema'
 cli_funs='figlet genact cmatrix no-more-secrets'
 brew install ${cli_utilities} ${cli_tools} ${cli_funs}
 
 
-# Other
-sh -c "$(curl -fsSL https://git.io/papirus-icon-theme-install)"
-# TODO Victor Mono Nerd font
-
-
-# Config -------------------------------------------------------------------------------------------
-
-# Gnome
-# TODO
-# - https://github.com/hardpixel/unite-shell
-# - https://github.com/GSConnect/gnome-shell-extension-gsconnect
-gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
-
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"
-
-
-# Zsh
-cat > ~/.zshrc << ZSHRC
-source "\${HOMEBREW_PREFIX}/var/homebrew/linked/zplug/init.zsh"
-
-zplug zdharma/fast-syntax-highlighting
-zplug zsh-users/zsh-autosuggestions
-zplug marlonrichert/zsh-autocomplete
-
-zplug check || zplug install
-zplug load
-
-eval "\$(starship init zsh)"
-
-setopt histreduceblanks histignorespace histignorealldups autocd autopushd pushdminus pushdsilent \
-       pushdtohome pushdignoredups nohup extendedglob globdots automenu cdablevars listpacked \
-       nolisttypes alwaystoend correct no_nomatch rmstarsilent
-
-alias md='mkdir -p'
-alias dl='trash-put'
-alias a='7z'
-alias g='git'
-
-chpwd() { ls --almost-all --group-directories-first }
-s() { selection=(); for item in "\$@"; do selection+=("\$(readlink -f "\${item}")"); done }
-mv() { if [ "\$#" -eq 0 ]; then command mv    "\${selection[@]}" .; else command mv    "\$@"; fi }
-cp() { if [ "\$#" -eq 0 ]; then command cp -r "\${selection[@]}" .; else command cp -r "\$@"; fi }
-ln() { if [ "\$#" -eq 0 ]; then command ln -s "\${selection[@]}" .; else command ln -s "\$@"; fi }
-
-export HISTSIZE=500000
-export HISTFILE="\${HOME}/.history"
-export SAVEHIST="\${HISTSIZE}"
-ZSHRC
+# Zsh TODO
+curl https://raw.githubusercontent.com/NNBnh/kickstart.zsh/main/.zshrc > ~/.zshrc
 
 # Git
 git config --global user.email nnbnh@protonmail.com
@@ -82,6 +29,19 @@ git config --global user.name NNB
 git config --global credential.helper store
 git config --global pull.rebase true
 
-mkdir -p ~/.local/share
-curl -fsSL https://raw.githubusercontent.com/GitAlias/gitalias/main/gitalias.txt > ~/.local/share/gitalias.txt
-git config --global include.path ~/.local/share/gitalias.txt
+
+# Gnome
+# TODO
+# - https://github.com/hardpixel/unite-shell
+# - https://github.com/GSConnect/gnome-shell-extension-gsconnect
+
+
+# Other
+sudo dnf install --assumeyes ibus-unikey
+
+sh -c "$(curl -fsSL https://git.io/papirus-icon-theme-install)"
+gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
+
+# TODO Victor Mono Nerd font
+
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"
