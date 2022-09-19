@@ -24,7 +24,7 @@ My tiny and simple personal Đotfiles that can be [bootstrap with a single comma
 
 ## 🚀 Setup
 
-[Install Fedora](https://getfedora.org/en/workstation/download) then run this command on the terminal:
+Install [Nobara <sup>(Gnome)</sup>](https://nobaraproject.org) then run this command on the terminal:
 
 ```sh
 sh -c "$(curl -fsLS https://nnbnh.github.io/dotfiles)"
@@ -32,10 +32,4 @@ sh -c "$(curl -fsLS https://nnbnh.github.io/dotfiles)"
 
 That's all fork!
 
-<br><br><br><br>
-
----
-
-> <h1 align="center">Made with ❤️ by <a href="https://github.com/NNBnh"><i>NNB</i></a></h1>
->
-> <p align="center"><a href="https://www.buymeacoffee.com/nnbnh"><img src="https://img.shields.io/badge/buy_me_a_coffee%20-%23FFC387.svg?logo=buy-me-a-coffee&logoColor=333333&style=for-the-badge" alt="Buy Me a Coffee"></a></p>
+<a href="https://github.com/NNBnh"><img width="100%" src="https://capsule-render.vercel.app/api?type=waving&section=footer&color=0284C7&fontColor=F0F9FF&height=128&desc=Made%20with%20🎔%20by%20NNB&descAlignY=80"/></a>

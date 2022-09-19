@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Flatpak
-gui_utilities='org.gnome.Extensions com.usebottles.bottles org.js.nuclear.Nuclear'
+gui_utilities='org.gnome.Extensions com.usebottles.bottles'
 gui_tools='com.visualstudio.code org.blender.Blender org.godotengine.Godot'
 gui_games='com.valvesoftware.Steam org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu'
 flatpak install --assumeyes flathub ${gui_utilities} ${gui_tools} ${gui_games}
@@ -20,7 +20,7 @@ cli_funs='figlet genact cmatrix no-more-secrets'
 brew install ${cli_utilities} ${cli_tools} ${cli_funs}
 
 
-# Zsh TODO
+# Zsh
 curl https://raw.githubusercontent.com/NNBnh/kickstart.zsh/main/.zshrc > ~/.zshrc
 
 # Git
