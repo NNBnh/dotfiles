@@ -14,13 +14,13 @@ My tiny and simple personal Đotfiles that can be [bootstrap with a single comma
 
 ### ✨ Starring
 
-- 💾 OS: [**Fedora**](https://github.com/NNBnh/dotfiles/wiki/which#-operating-system)
-- 🏞️ DE: [**Gnome**](https://github.com/NNBnh/dotfiles/wiki/which#%EF%B8%8F-desktop-environment)
-- 📝 IDE: [**VScode**](https://github.com/NNBnh/dotfiles/wiki/which#-text-editor)
-- 🐚 Shell: [**Zsh**](https://github.com/NNBnh/dotfiles/wiki/which#-interactive-shell)
-- 🌏 Browser: [**Firefox**](https://github.com/NNBnh/dotfiles/wiki/which#-web-browser)
-- 🎥 Graphic editor: [**Blender**](https://github.com/NNBnh/dotfiles/wiki/which#-graphic-editor)
-- 🎮 Game engine: [**Godot**](https://github.com/NNBnh/dotfiles/wiki/which#-game-engine)
+- 💾 OS: [**Nobara**]()
+- 🏞️ DE: [**Gnome**]()
+- 📝 IDE: [**VScode**]()
+- 🐚 Shell: [**Zsh**]()
+- 🌏 Browser: [**Firefox**]()
+- 🎥 Graphic editor: [**Blender**]()
+- 🎮 Game engine: [**Godot**]()
 
 ## 🚀 Setup
 
@@ -32,4 +32,4 @@ sh -c "$(curl -fsLS https://nnbnh.github.io/dotfiles)"
 
 That's all fork!
 
-<a href="https://github.com/NNBnh"><img width="100%" src="https://capsule-render.vercel.app/api?type=waving&section=footer&color=0284C7&fontColor=F0F9FF&height=128&desc=Made%20with%20🎔%20by%20NNB&descAlignY=80"/></a>
+<a href="https://github.com/NNBnh"><img width="100%" src="https://capsule-render.vercel.app/api?type=waving&section=footer&color=0284C7&fontColor=F0F9FF&height=128&desc=Made%20with%20%26lt;3%20by%20NNB&descAlignY=80"/></a>
