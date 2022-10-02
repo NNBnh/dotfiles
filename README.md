@@ -10,7 +10,7 @@
 
 > _Đot_ **_Đot_** **Đot**
 
-My tiny and simple personal Đotfiles that can be [bootstrap with a single command](#-setup)!
+My tiny and simple personal Đotfiles.
 
 ### ✨ Starring
 
@@ -24,12 +24,86 @@ My tiny and simple personal Đotfiles that can be [bootstrap with a single comma
 
 ## 🚀 Setup
 
-Install [Nobara <sup>(Gnome)</sup>](https://nobaraproject.org) then run this command on the terminal:
+### 🖥️ Desktop
+
+First install [Nobara (Gnome)](https://nobaraproject.org) operating system on your machine.
+
+#TODO
+
+- https://github.com/hardpixel/unite-shell
+- https://github.com/GSConnect/gnome-shell-extension-gsconnect
+- https://github.com/oae/gnome-shell-pano
+
+Install input method:
 
 ```sh
-sh -c "$(curl -fsLS https://nnbnh.github.io/dotfiles)"
+sudo dnf install --assumeyes ibus-unikey
 ```
 
-That's all fork!
+Install [Papirus icon theme](https://git.io/papirus-icon-theme):
+
+```sh
+sh -c "$(curl -fsSL https://git.io/papirus-icon-theme-install)"
+gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
+```
+
+Install [Victor Mono](https://rubjo.github.io/victor-mono) [(Nerd font version)](https://www.nerdfonts.com):
+
+```sh
+curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/VictorMono.zip -o fonts.zip
+mkdir -p ~/.local/share/fonts
+unzip fonts.zip -d ~/.local/share/fonts
+rm fonts.zip
+```
+
+### 📦 Applications
+
+Install applications using [Flatpak](https://flatpak.org):
+
+```sh
+flatpak install --assumeyes flathub \
+  com.usebottles.bottles org.mozilla.firefox \
+  com.visualstudio.code org.blender.Blender org.godotengine.Godot \
+  com.valvesoftware.Steam org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu
+```
+
+Install [Firefox Gnome theme](https://github.com/rafaelmardojai/firefox-gnome-theme):
+
+```sh
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"
+```
+
+### 📟 Command-line
+
+First install Homebrew:
+
+```sh
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Then install command-line utilities:
+
+```sh
+brew install \
+  ruby zsh trash-cli p7zip git \
+  figlet genact cmatrix no-more-secrets asciinema
+```
+
+Config the shell:
+
+```sh
+curl https://raw.githubusercontent.com/NNBnh/kickstart.zsh/main/.zshrc > ~/.zshrc
+echo 'export PATH="$PATH:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.1.0/bin"' > ~/.zshrc
+```
+
+Config Git:
+
+```sh
+git config --global user.email nnbnh@protonmail.com
+git config --global user.name NNB
+git config --global credential.helper store
+git config --global pull.rebase true
+```
+
 
 <a href="https://github.com/NNBnh"><img width="100%" src="https://capsule-render.vercel.app/api?type=waving&section=footer&color=0284C7&fontColor=F0F9FF&height=128&desc=Made%20with%20%26lt;3%20by%20NNB&descAlignY=80"/></a>
