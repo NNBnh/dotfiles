@@ -10,7 +10,7 @@
 
 > _Đot_ **_Đot_** **Đot**
 
-My tiny and simple personal Đotfiles.
+My personal Đotfiles.
 
 ### ✨ Starring
 
@@ -28,23 +28,18 @@ My tiny and simple personal Đotfiles.
 
 First install [Nobara (Gnome)](https://nobaraproject.org) operating system on your machine.
 
-#TODO
+Then install some Gnome extensions to enhance the experience:
 
-- https://github.com/hardpixel/unite-shell
-- https://github.com/GSConnect/gnome-shell-extension-gsconnect
-- https://github.com/oae/gnome-shell-pano
+- [Unite](https://extensions.gnome.org/extension/1287/unite).
+- [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell).
+- [Launch new instance](https://extensions.gnome.org/extension/600/launch-new-instance).
+- [Pano](https://extensions.gnome.org/extension/5278/pano).
+- [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect).
 
 Install input method:
 
 ```sh
 sudo dnf install --assumeyes ibus-unikey
-```
-
-Install [Papirus icon theme](https://git.io/papirus-icon-theme):
-
-```sh
-sh -c "$(curl -fsSL https://git.io/papirus-icon-theme-install)"
-gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
 ```
 
 Install [Victor Mono](https://rubjo.github.io/victor-mono) [(Nerd font version)](https://www.nerdfonts.com):
@@ -62,8 +57,7 @@ Install applications using [Flatpak](https://flatpak.org):
 
 ```sh
 flatpak install --assumeyes flathub \
-  com.usebottles.bottles org.mozilla.firefox \
-  com.visualstudio.code org.blender.Blender org.godotengine.Godot \
+  com.usebottles.bottles com.visualstudio.code org.blender.Blender org.godotengine.Godot \
   com.valvesoftware.Steam org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu
 ```
 
@@ -75,7 +69,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-g
 
 ### 📟 Command-line
 
-First install Homebrew:
+First install [Homebrew](https://brew.sh):
 
 ```sh
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -89,10 +83,15 @@ brew install \
   figlet genact cmatrix no-more-secrets asciinema
 ```
 
-Config the shell:
+Install [`kickstart.zsh`](https://github.com/NNBnh/kickstart.zsh):
 
 ```sh
 curl https://raw.githubusercontent.com/NNBnh/kickstart.zsh/main/.zshrc > ~/.zshrc
+```
+
+Add Ruby's `bin/` to `$PATH`:
+
+```sh
 echo 'export PATH="$PATH:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.1.0/bin"' > ~/.zshrc
 ```
 
