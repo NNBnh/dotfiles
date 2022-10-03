@@ -57,8 +57,8 @@ Install applications using [Flatpak](https://flatpak.org):
 
 ```sh
 flatpak install --assumeyes flathub \
-  com.usebottles.bottles com.visualstudio.code org.blender.Blender org.godotengine.Godot \
-  com.valvesoftware.Steam org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu
+  com.visualstudio.code org.blender.Blender org.godotengine.Godot \
+  com.usebottles.bottles org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu
 ```
 
 Install [Firefox Gnome theme](https://github.com/rafaelmardojai/firefox-gnome-theme):
@@ -103,6 +103,5 @@ git config --global user.name NNB
 git config --global credential.helper store
 git config --global pull.rebase true
 ```
-
 
 <a href="https://github.com/NNBnh"><img width="100%" src="https://capsule-render.vercel.app/api?type=waving&section=footer&color=0284C7&fontColor=F0F9FF&height=128&desc=Made%20with%20%26lt;3%20by%20NNB&descAlignY=80"/></a>
