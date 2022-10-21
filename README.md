@@ -58,7 +58,7 @@ Install applications using [Flatpak](https://flatpak.org):
 ```sh
 flatpak install --assumeyes flathub \
   com.visualstudio.code org.blender.Blender org.godotengine.Godot \
-  com.usebottles.bottles org.libretro.RetroArch org.polymc.PolyMC sh.ppy.osu
+  com.usebottles.bottles org.libretro.RetroArch org.prismlauncher.PrismLauncher sh.ppy.osu
 ```
 
 Install [Firefox Gnome theme](https://github.com/rafaelmardojai/firefox-gnome-theme):
