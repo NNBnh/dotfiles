@@ -15,19 +15,20 @@ My personal Đotfiles.
 
 ### ✨ Starring
 
-- 💾 OS: [**Nobara**]()
-- 🏞️ DE: [**Gnome**]()
-- 📝 IDE: [**VScode**]()
-- 🐚 Shell: [**Zsh**]()
-- 🌏 Browser: [**Firefox**]()
-- 🎥 Graphic editor: [**Blender**]()
-- 🎮 Game engine: [**Godot**]()
+| 💾 OS             | [**ElementaryOS**]()
+| :---------------- | :- |
+| 🏞️ DE             | [**Pantheon**]()
+| 📝 IDE            | [**VScode**]()
+| 🐚 Shell          | [**Zsh**]()
+| 🌏 Browser        | [**Firefox**]()
+| 🎥 Graphic editor | [**Blender**]()
+| 🎮 Game engine    | [**Godot**]()
 
 ## 🚀 Setup
 
 ### 🖥️ Desktop
 
-First install [Elementary OS](https://elementary.io) operating system on your machine.
+First install [ElementaryOS](https://elementary.io) operating system on your machine.
 
 Install [Victor Mono](https://rubjo.github.io/victor-mono) [(Nerd font version)](https://www.nerdfonts.com):
 
