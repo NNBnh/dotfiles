@@ -27,21 +27,7 @@ My personal Đotfiles.
 
 ### 🖥️ Desktop
 
-First install [Nobara (Gnome)](https://nobaraproject.org) operating system on your machine.
-
-Then install some Gnome extensions to enhance the experience:
-
-- [Unite](https://extensions.gnome.org/extension/1287/unite).
-- [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell).
-- [Launch new instance](https://extensions.gnome.org/extension/600/launch-new-instance).
-- [Pano](https://extensions.gnome.org/extension/5278/pano).
-- [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect).
-
-Install input method:
-
-```sh
-sudo dnf install --assumeyes ibus-unikey
-```
+First install [Elementary OS](https://elementary.io) operating system on your machine.
 
 Install [Victor Mono](https://rubjo.github.io/victor-mono) [(Nerd font version)](https://www.nerdfonts.com):
 
@@ -58,14 +44,15 @@ Install applications using [Flatpak](https://flatpak.org):
 
 ```sh
 flatpak install --assumeyes flathub \
+  org.mozilla.firefox com.usebottles.bottles com.valvesoftware.Steam \
   com.visualstudio.code org.blender.Blender org.godotengine.Godot \
-  com.usebottles.bottles org.libretro.RetroArch org.prismlauncher.PrismLauncher sh.ppy.osu
+  org.libretro.RetroArch org.prismlauncher.PrismLauncher sh.ppy.osu
 ```
 
-Install [Firefox Gnome theme](https://github.com/rafaelmardojai/firefox-gnome-theme):
+Install [Elementary OS theme for Firefox](https://github.com/Zonnev/elementaryos-firefox-theme):
 
 ```sh
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Zonnev/elementaryos-firefox-theme/elementaryos-firefox-theme/install.sh)"
 ```
 
 ### 📟 Command-line
@@ -79,9 +66,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/in
 Then install command-line utilities:
 
 ```sh
-brew install \
-  ruby zsh trash-cli p7zip git \
-  figlet genact cmatrix no-more-secrets asciinema
+brew install ruby zsh trash-cli p7zip git figlet genact cmatrix no-more-secrets asciinema
 ```
 
 Install [`kickstart.zsh`](https://github.com/NNBnh/kickstart.zsh):
