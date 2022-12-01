@@ -85,7 +85,7 @@ curl https://raw.githubusercontent.com/NNBnh/kickstart.zsh/main/.zshrc > ~/.zshr
 Add Ruby's `bin/` to `$PATH`:
 
 ```sh
-echo 'export PATH="$PATH:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.1.0/bin"' > ~/.profile
+echo 'export PATH="$PATH:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.1.0/bin"' >> ~/.profile
 ```
 
 Config Git:
