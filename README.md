@@ -15,20 +15,20 @@ My personal Đotfiles.
 
 ### ✨ Starring
 
-| 💾 OS             | [**ElementaryOS**]()
-| :---------------- | :- |
-| 🏞️ DE             | [**Pantheon**]()
-| 📝 IDE            | [**VScode**]()
-| 🐚 Shell          | [**Zsh**]()
-| 🌏 Browser        | [**Firefox**]()
-| 🎥 Graphic editor | [**Blender**]()
-| 🎮 Game engine    | [**Godot**]()
+| 💾 **OS**             | [**ElementaryOS**]()
+| :-------------------- | :- |
+| 🏞️ **DE**             | [**Pantheon**]()
+| 📝 **IDE**            | [**VScode**]()
+| 🐚 **Shell**          | [**Zsh**]()
+| 🌏 **Browser**        | [**Firefox**]()
+| 🎥 **Graphic editor** | [**Blender**]()
+| 🎮 **Game engine**    | [**Godot**]()
 
 ## 🚀 Setup
 
 ### 🖥️ Desktop
 
-First install [ElementaryOS](https://elementary.io) operating system on your machine.
+First install [ElementaryOS](https://elementary.io) on your machine.
 
 Install [Victor Mono](https://rubjo.github.io/victor-mono) [(Nerd font version)](https://www.nerdfonts.com):
 
@@ -48,6 +48,12 @@ flatpak install --assumeyes flathub \
   org.mozilla.firefox com.usebottles.bottles com.valvesoftware.Steam \
   com.visualstudio.code org.blender.Blender org.godotengine.Godot \
   org.libretro.RetroArch org.prismlauncher.PrismLauncher sh.ppy.osu
+```
+
+Enable Flatpak applications to use the system theme:
+
+```sh
+sudo flatpak override --filesystem=xdg-data/themes
 ```
 
 Install [Elementary OS theme for Firefox](https://github.com/Zonnev/elementaryos-firefox-theme):
@@ -79,7 +85,7 @@ curl https://raw.githubusercontent.com/NNBnh/kickstart.zsh/main/.zshrc > ~/.zshr
 Add Ruby's `bin/` to `$PATH`:
 
 ```sh
-echo 'export PATH="$PATH:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.1.0/bin"' > ~/.zshrc
+echo 'export PATH="$PATH:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.1.0/bin"' > ~/.profile
 ```
 
 Config Git:
