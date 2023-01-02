@@ -45,14 +45,8 @@ Install applications using [Flatpak](https://flatpak.org):
 
 ```sh
 flatpak install --assumeyes flathub \
-  org.mozilla.firefox com.visualstudio.code org.blender.Blender org.godotengine.Godot \
+  com.visualstudio.code org.blender.Blender org.godotengine.Godot \
   org.libretro.RetroArch org.yuzu_emu.yuzu org.prismlauncher.PrismLauncher sh.ppy.osu
-```
-
-Enable Flatpak applications to use the system theme:
-
-```sh
-sudo flatpak override --filesystem=xdg-data/themes
 ```
 
 ### 📟 Command-line
