@@ -9,8 +9,6 @@
 
 ## 💡 About
 
-> _Đot_ **_Đot_** **Đot**
-
 My personal Đotfiles.
 
 ### ✨ Starring
@@ -20,9 +18,9 @@ My personal Đotfiles.
 | 🏞️ **DE**             | [**KDE**]()
 | 🎨 **Theme**          | [**Catppuccin**]()
 | 📝 **IDE**            | [**VScode**]()
-| 🐚 **Shell**          | [**Zsh**]()
+| 🐚 **Shell**          | [**Bash**]()
 | 🌏 **Browser**        | [**Firefox**]()
-| 🎥 **Graphic editor** | [**Blender**]()
+| 🎥 **Media editor**   | [**Blender**]()
 | 🎮 **Game engine**    | [**Godot**]()
 
 ## 🚀 Setup
@@ -51,7 +49,7 @@ rm catppuccin-kde
 
 ### 📦 Applications
 
-Install applications using [Flatpak](https://flatpak.org):
+Next, install applications using [Flatpak](https://flatpak.org):
 
 ```sh
 flatpak install --assumeyes flathub \
