@@ -15,9 +15,9 @@ My personal Đotfiles.
 
 ### ✨ Starring
 
-| 💾 **OS**             | [**ElementaryOS**]()
+| 💾 **OS**             | [**Nobara**]()
 | :-------------------- | :- |
-| 🏞️ **DE**             | [**Pantheon**]()
+| 🏞️ **DE**             | [**KDE**]()
 | 📝 **IDE**            | [**VScode**]()
 | 🐚 **Shell**          | [**Zsh**]()
 | 🌏 **Browser**        | [**Firefox**]()
@@ -28,7 +28,7 @@ My personal Đotfiles.
 
 ### 🖥️ Desktop
 
-First install [ElementaryOS](https://elementary.io) on your machine.
+First install [Nobara KDE](https://nobaraproject.org/download-nobara) on your machine.
 
 Install [Victor Mono](https://rubjo.github.io/victor-mono) [(Nerd font version)](https://www.nerdfonts.com):
 
@@ -45,21 +45,14 @@ Install applications using [Flatpak](https://flatpak.org):
 
 ```sh
 flatpak install --assumeyes flathub \
-  org.mozilla.firefox com.usebottles.bottles com.valvesoftware.Steam \
-  com.visualstudio.code org.blender.Blender org.godotengine.Godot \
-  org.libretro.RetroArch org.prismlauncher.PrismLauncher sh.ppy.osu
+  org.mozilla.firefox com.visualstudio.code org.blender.Blender org.godotengine.Godot \
+  org.libretro.RetroArch org.yuzu_emu.yuzu org.prismlauncher.PrismLauncher sh.ppy.osu
 ```
 
 Enable Flatpak applications to use the system theme:
 
 ```sh
 sudo flatpak override --filesystem=xdg-data/themes
-```
-
-Install [Elementary OS theme for Firefox](https://github.com/Zonnev/elementaryos-firefox-theme):
-
-```sh
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Zonnev/elementaryos-firefox-theme/elementaryos-firefox-theme/install.sh)"
 ```
 
 ### 📟 Command-line
