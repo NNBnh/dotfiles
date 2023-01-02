@@ -31,21 +31,22 @@ My personal Đotfiles.
 
 First install [Nobara KDE](https://nobaraproject.org/download-nobara) on your machine.
 
-Then `#TODO`...
-
-Install input method:
+Then install application style, fonts and input method:
 
 ```sh
-sudo dnf install --assumeyes ibus-unikey
+sudo dnf install --assumeyes lightly jetbrains-mono-fonts ibus-unikey
 ```
 
-Install [Victor Mono](https://rubjo.github.io/victor-mono) [(Nerd font version)](https://www.nerdfonts.com):
+Install [Catppuccin themes](https://github.com/catppuccin/kde):
 
 ```sh
-curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/VictorMono.zip -o fonts.zip
-mkdir -p ~/.local/share/fonts
-unzip fonts.zip -d ~/.local/share/fonts
-rm fonts.zip
+git clone https://github.com/catppuccin/kde catppuccin-kde
+mkdir -p ~/.local/share/color-schemes
+cd catppuccin-kde
+find . -type f -name "*.colors" -exec cp "{}" ~/.local/share/color-schemes \;
+find . -type f -name "*.tar.gz" -exec kpackagetool5 -i "{}" \;
+cd ..
+rm catppuccin-kde
 ```
 
 ### 📦 Applications
@@ -54,21 +55,24 @@ Install applications using [Flatpak](https://flatpak.org):
 
 ```sh
 flatpak install --assumeyes flathub \
-  com.visualstudio.code org.blender.Blender org.godotengine.Godot \
+  com.visualstudio.code org.kde.krita org.blender.Blender org.godotengine.Godot \
   org.libretro.RetroArch org.yuzu_emu.yuzu org.prismlauncher.PrismLauncher sh.ppy.osu
 ```
-
-Then `#TODO`...
 
 ### 📟 Command-line
 
 Install command-line utilities:
 
 ```sh
-sudo dnf install --assumeyes ruby rust cargo
+sudo dnf install --assumeyes ruby rust cargo nodejs
 ```
 
-Then `#TODO`...
+Install [Starship prompt](https://starship.rs):
+
+```sh
+curl -sS https://starship.rs/install.sh | sh
+echo 'eval "$(starship init bash)"' >> ~/.bashrc
+```
 
 Config Git:
 
