@@ -18,6 +18,7 @@ My personal Đotfiles.
 | 💾 **OS**             | [**Nobara**]()
 | :-------------------- | :- |
 | 🏞️ **DE**             | [**KDE**]()
+| 🎨 **Theme**          | [**Catppuccin**]()
 | 📝 **IDE**            | [**VScode**]()
 | 🐚 **Shell**          | [**Zsh**]()
 | 🌏 **Browser**        | [**Firefox**]()
@@ -29,6 +30,14 @@ My personal Đotfiles.
 ### 🖥️ Desktop
 
 First install [Nobara KDE](https://nobaraproject.org/download-nobara) on your machine.
+
+Then `#TODO`...
+
+Install input method:
+
+```sh
+sudo dnf install --assumeyes ibus-unikey
+```
 
 Install [Victor Mono](https://rubjo.github.io/victor-mono) [(Nerd font version)](https://www.nerdfonts.com):
 
@@ -49,31 +58,17 @@ flatpak install --assumeyes flathub \
   org.libretro.RetroArch org.yuzu_emu.yuzu org.prismlauncher.PrismLauncher sh.ppy.osu
 ```
 
+Then `#TODO`...
+
 ### 📟 Command-line
 
-First install [Homebrew](https://brew.sh):
+Install command-line utilities:
 
 ```sh
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+sudo dnf install --assumeyes ruby rust cargo
 ```
 
-Then install command-line utilities:
-
-```sh
-brew install ruby zsh trash-cli p7zip git figlet genact cmatrix no-more-secrets asciinema
-```
-
-Install [`kickstart.zsh`](https://github.com/NNBnh/kickstart.zsh):
-
-```sh
-curl https://raw.githubusercontent.com/NNBnh/kickstart.zsh/main/.zshrc > ~/.zshrc
-```
-
-Add Ruby's `bin/` to `$PATH`:
-
-```sh
-echo 'export PATH="$PATH:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.1.0/bin"' >> ~/.profile
-```
+Then `#TODO`...
 
 Config Git:
 
