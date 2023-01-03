@@ -38,12 +38,10 @@ sudo dnf install --assumeyes lightly jetbrains-mono-fonts ibus-unikey
 Install [Catppuccin themes](https://github.com/catppuccin/kde):
 
 ```sh
-git clone https://github.com/catppuccin/kde catppuccin-kde
+git clone --depth 1 https://github.com/catppuccin/kde catppuccin-kde
 mkdir -p ~/.local/share/color-schemes
-cd catppuccin-kde
-find . -type f -name "*.colors" -exec cp "{}" ~/.local/share/color-schemes \;
-find . -type f -name "*.tar.gz" -exec kpackagetool5 -i "{}" \;
-cd ..
+find catppuccin-kde -type f -name "*.colors" -exec cp "{}" ~/.local/share/color-schemes \;
+find catppuccin-kde -type f -name "*.tar.gz" -exec kpackagetool5 -i "{}" \;
 rm catppuccin-kde
 ```
 
@@ -62,7 +60,7 @@ flatpak install --assumeyes flathub \
 Install command-line utilities:
 
 ```sh
-sudo dnf install --assumeyes ruby rust cargo nodejs
+sudo dnf install --assumeyes ruby irb ruby-doc rust cargo nodejs
 ```
 
 Install [Starship prompt](https://starship.rs):
