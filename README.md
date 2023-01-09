@@ -32,18 +32,35 @@ First install [Nobara KDE](https://nobaraproject.org/download-nobara) on your ma
 Then install application style, fonts and input method:
 
 ```sh
-sudo dnf install --assumeyes lightly jetbrains-mono-fonts ibus-unikey
+sudo dnf install --assumeyes lightly jetbrains-mono-fonts fcitx5-unikey
 ```
 
-Install [Catppuccin themes](https://github.com/catppuccin/kde):
+Install [Catppuccin themes for KDE](https://github.com/catppuccin/kde):
 
 ```sh
 git clone --depth 1 https://github.com/catppuccin/kde catppuccin-kde
 mkdir -p ~/.local/share/color-schemes
 find catppuccin-kde -type f -name "*.colors" -exec cp "{}" ~/.local/share/color-schemes \;
 find catppuccin-kde -type f -name "*.tar.gz" -exec kpackagetool5 -i "{}" \;
-rm catppuccin-kde
+rm -rf catppuccin-kde
 ```
+
+Install [Catppuccin themes for Konsole](https://github.com/catppuccin/konsole):
+
+```sh
+git clone --depth 1 https://github.com/catppuccin/konsole catppuccin-konsole
+mkdir -p ~/.local/share/konsole
+cp catppuccin-konsole/*.colorscheme ~/.local/share/konsole
+rm -rf catppuccin-konsole
+```
+
+Add this setting on `~/.config/kwinrc`:
+
+```ini
+[Windows]
+BorderlessMaximizedWindows=true
+```
+
 
 ### 📦 Applications
 
