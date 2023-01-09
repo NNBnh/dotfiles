@@ -45,22 +45,12 @@ find catppuccin-kde -type f -name "*.tar.gz" -exec kpackagetool5 -i "{}" \;
 rm -rf catppuccin-kde
 ```
 
-Install [Catppuccin themes for Konsole](https://github.com/catppuccin/konsole):
-
-```sh
-git clone --depth 1 https://github.com/catppuccin/konsole catppuccin-konsole
-mkdir -p ~/.local/share/konsole
-cp catppuccin-konsole/*.colorscheme ~/.local/share/konsole
-rm -rf catppuccin-konsole
-```
-
-Add this setting on `~/.config/kwinrc`:
+Add this setting into `~/.config/kwinrc`:
 
 ```ini
 [Windows]
 BorderlessMaximizedWindows=true
 ```
-
 
 ### 📦 Applications
 
@@ -71,6 +61,23 @@ flatpak install --assumeyes flathub \
   org.kde.krita org.blender.Blender org.godotengine.Godot \
   org.libretro.RetroArch org.yuzu_emu.yuzu \
   org.prismlauncher.PrismLauncher sh.ppy.osu
+```
+
+Install [Catppuccin themes for Konsole](https://github.com/catppuccin/konsole):
+
+```sh
+git clone --depth 1 https://github.com/catppuccin/konsole catppuccin-konsole
+mkdir -p ~/.local/share/konsole
+cp catppuccin-konsole/*.colorscheme ~/.local/share/konsole
+rm -rf catppuccin-konsole
+```
+
+Install [Monterey themes for Firefox](https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/firefox):
+
+```sh
+git clone --depth 1 https://github.com/vinceliuice/WhiteSur-gtk-theme whitesur
+whitesur/tweaks.sh --firefox monterey
+rm -rf whitesur
 ```
 
 ### 🧰 IDE
