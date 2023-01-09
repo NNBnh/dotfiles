@@ -72,14 +72,6 @@ cp catppuccin-konsole/*.colorscheme ~/.local/share/konsole
 rm -rf catppuccin-konsole
 ```
 
-Install [Monterey themes for Firefox](https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/firefox):
-
-```sh
-git clone --depth 1 https://github.com/vinceliuice/WhiteSur-gtk-theme whitesur
-whitesur/tweaks.sh --firefox monterey
-rm -rf whitesur
-```
-
 ### 🧰 IDE
 
 Install [VScode](https://code.visualstudio.com):
