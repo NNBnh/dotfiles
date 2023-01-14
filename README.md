@@ -45,6 +45,13 @@ find catppuccin-kde -type f -name "*.tar.gz" -exec kpackagetool5 -i "{}" \;
 rm -rf catppuccin-kde
 ```
 
+Set the <kbd>GUI</kbd> key as a shortcut to open KRunner:
+
+```sh
+kwriteconfig5 --file kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.krunner,/App,,toggleDisplay"
+qdbus org.kde.KWin /KWin reconfigure
+```
+
 Add this setting into `~/.config/kwinrc`:
 
 ```ini
