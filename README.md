@@ -93,13 +93,12 @@ sudo dnf install code
 Install command-line utilities:
 
 ```sh
-sudo dnf install --assumeyes ruby irb ruby-doc rust cargo nodejs
+sudo dnf install --assumeyes starship ruby irb ruby-doc rust cargo nodejs
 ```
 
 Install [Starship prompt](https://starship.rs):
 
 ```sh
-curl -sS https://starship.rs/install.sh | sh
 echo 'eval "$(starship init bash)"' >> ~/.bashrc
 ```
 
