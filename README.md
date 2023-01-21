@@ -20,8 +20,6 @@ My personal Đotfiles.
 | 📝 **IDE**            | [**VScode**]()
 | 🐚 **Shell**          | [**Bash**]()
 | 🌏 **Browser**        | [**Firefox**]()
-| 🎥 **Media editor**   | [**Blender**]()
-| 🎮 **Game engine**    | [**Godot**]()
 
 ## 🚀 Setup
 
