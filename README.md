@@ -6,7 +6,6 @@
   <a href="https://github.com/NNBnh/dotfiles/releases"><img src="https://img.shields.io/badge/gallery%20-%2376A85D.svg?style=for-the-badge" alt="Gallery"></a>
 </p>
 
-
 ## 💡 About
 
 My personal Đotfiles.
