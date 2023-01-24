@@ -1,24 +1,19 @@
 <h1 align="center"><code>Đotfiles</code></h1>
 <p align="center"><img src="https://user-images.githubusercontent.com/43980777/214214244-60b68efc-d52b-48a1-a926-3c85c25b9a5d.png"></p>
-<p align="center">
-  <a href="https://github.com/NNBnh/dotfiles/wiki"><img src="https://img.shields.io/badge/wiki%20-%23DE5D6E.svg?style=for-the-badge" alt="Wiki"></a>
-  <a href="https://github.com/NNBnh/dotfiles/wiki/which"><img src="https://img.shields.io/badge/which%20-%23FF9470.svg?style=for-the-badge" alt="WHICH"></a>
-  <a href="https://github.com/NNBnh/dotfiles/releases"><img src="https://img.shields.io/badge/gallery%20-%2376A85D.svg?style=for-the-badge" alt="Gallery"></a>
-</p>
 
-## 💡 About
+<div align="center">
 
-My personal Đotfiles.
+  ## 🌟 Starring 🌟
 
-### ✨ Starring
-
-| 💾 **OS**             | [**Nobara**]()
-| :-------------------- | :- |
-| 🏞️ **DE**             | [**KDE**]()
-| 🎨 **Theme**          | [**Catppuccin**]()
-| 📝 **IDE**            | [**VScode**]()
-| 🐚 **Shell**          | [**Bash**]()
-| 🌏 **Browser**        | [**Firefox**]()
+  | 💾 **OS**             | [**Nobara**]()
+  | :-------------------- | :- |
+  | 🏞️ **DE**             | [**KDE**]()
+  | 🎨 **Theme**          | [**Catppuccin**]()
+  | 📝 **IDE**            | [**VScode**]()
+  | 🐚 **Shell**          | [**Bash**]()
+  | 🌏 **Browser**        | [**Firefox**]()
+  
+</div>
 
 ## 🚀 Setup
 
@@ -66,6 +61,8 @@ flatpak install --assumeyes flathub \
   org.libretro.RetroArch org.yuzu_emu.yuzu \
   org.prismlauncher.PrismLauncher sh.ppy.osu
 ```
+
+Install [Catppuccin themes for Firefox](https://github.com/catppuccin/firefox).
 
 Install [Catppuccin themes for Konsole](https://github.com/catppuccin/konsole):
 
