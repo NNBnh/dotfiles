@@ -1,5 +1,8 @@
 <h1 align="center"><code>Đotfiles</code></h1>
 <p align="center"><img src="https://user-images.githubusercontent.com/43980777/214214244-60b68efc-d52b-48a1-a926-3c85c25b9a5d.png"></p>
+<p align="center"><a href="https://www.pixiv.net/artworks/75924288">Wallpaper</a> by <a href="https://www.pixiv.net/users/2033916">あすてろid</a></p>
+
+<br>
 
 <div align="center">
 
