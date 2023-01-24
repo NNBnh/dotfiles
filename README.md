@@ -1,5 +1,5 @@
 <h1 align="center"><code>Đotfiles</code></h1>
-<p align="center">https://user-images.githubusercontent.com/43980777/204318909-e894d71b-6c98-40a7-a698-626f4d08f135.webm</p>
+<p align="center"><img src="https://user-images.githubusercontent.com/43980777/214214244-60b68efc-d52b-48a1-a926-3c85c25b9a5d.png"></p>
 <p align="center">
   <a href="https://github.com/NNBnh/dotfiles/wiki"><img src="https://img.shields.io/badge/wiki%20-%23DE5D6E.svg?style=for-the-badge" alt="Wiki"></a>
   <a href="https://github.com/NNBnh/dotfiles/wiki/which"><img src="https://img.shields.io/badge/which%20-%23FF9470.svg?style=for-the-badge" alt="WHICH"></a>
