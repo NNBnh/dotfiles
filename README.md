@@ -1,6 +1,6 @@
 <h1 align="center"><code>Đotfiles</code></h1>
-<p align="center"><img src="https://user-images.githubusercontent.com/43980777/214214244-60b68efc-d52b-48a1-a926-3c85c25b9a5d.png"></p>
-<p align="center"><a href="https://www.pixiv.net/artworks/75924288">Wallpaper</a> by <a href="https://www.pixiv.net/users/2033916">あすてろid</a></p>
+<p align="center"><img src=""></p>
+<p align="center"><a href="https://www.pixiv.net/artworks/76523866">Wallpaper</a> by <a href="https://www.pixiv.net/users/211515">防人</a></p>
 
 <br>
 
@@ -8,15 +8,17 @@
 
   ## 🌟 Starring 🌟
 
-  | 💾 **OS**             | [**Nobara**]()
+  | 💾 **OS**             | [**Nobara**](https://nobaraproject.org)
   | :-------------------- | :- |
-  | 🏞️ **DE**             | [**KDE**]()
-  | 🎨 **Theme**          | [**Catppuccin**]()
-  | 📝 **IDE**            | [**VScode**]()
-  | 🐚 **Shell**          | [**Bash**]()
-  | 🌏 **Browser**        | [**Firefox**]()
-  
+  | 🏞️ **DE**             | [**KDE**](https://kde.org)
+  | 🎨 **Theme**          | [**Catppuccin**](https://github.com/catppuccin/catppuccin)
+  | 📝 **IDE**            | [**VScode**](https://code.visualstudio.com)
+  | 🐚 **Shell**          | [**Ruby**](https://www.ruby-lang.org)
+  | 🌏 **Browser**        | [**Firefox**](https://nnbnh.github.io/blog/en/posts/3)
+
 </div>
+
+> **Note** I will make [a blog](https://nnbnh.github.io/blog) explain how I use Ruby as a shell.
 
 ## 🚀 Setup
 
@@ -104,4 +106,4 @@ git config --global credential.helper store
 git config --global pull.rebase true
 ```
 
-<a href="https://github.com/NNBnh"><img width="100%" src="https://capsule-render.vercel.app/api?type=waving&section=footer&color=0284C7&fontColor=F0F9FF&height=128&desc=Made%20with%20%26lt;3%20by%20NNB&descAlignY=80"/></a>
+<a href="https://github.com/NNBnh"><img width="100%" src="https://capsule-render.vercel.app/api?type=waving&section=footer&color=0284C7&fontColor=F0F9FF&height=128&desc=Made%20with%20%26lt;3%20by%20NNB&descAlignY=80" /></a>

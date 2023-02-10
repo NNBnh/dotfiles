@@ -1,0 +1,34 @@
+layout {
+    default_tab_template {
+        pane borderless=true size=1 {
+            plugin location="zellij:compact-bar"
+        }
+        pane split_direction="vertical" {
+            pane borderless=true size=25 {
+                command "sh"
+                args "-c" "printf '\\e[?7l'; gum style \"$(exa * --color always --icons --tree --group-directories-first)\" --margin 1; read"
+            }
+            pane split_direction="vertical" {
+                pane split_direction="vertical" {
+                    pane split_direction="horizontal" {
+                        pane name="󱞁 plot.rb - Helix" size="60%" edit="dotfiles/scripts/plot.rb"
+                        pane name=" plot.rb - Ruby" {
+                            command "ruby"
+                            args "dotfiles/scripts/plot.rb"
+                        }
+                    }
+                    pane split_direction="horizontal" {
+                        pane command="btop" borderless=true
+                        pane split_direction="vertical" {
+                            pane name=" System"
+                            pane name="󰸗 Calendar" size=26 {
+                                command "sh"
+                                args "-c" "echo; gum join --vertical --align center \"$(cal | head -n 1)\" '' \"$(gum style \"$(cal --color=always)\" --margin '1 2' | tail -n 8)\" | head -n 8; read"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
