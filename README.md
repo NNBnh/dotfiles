@@ -1,5 +1,5 @@
 <h1 align="center"><code>Đotfiles</code></h1>
-<p align="center"><img src=""></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/43980777/218121026-2d2ddb94-5105-4df8-a6a9-8ab632b69ce3.png"></p>
 <p align="center"><a href="https://www.pixiv.net/artworks/76523866">Wallpaper</a> by <a href="https://www.pixiv.net/users/211515">防人</a></p>
 
 <br>
