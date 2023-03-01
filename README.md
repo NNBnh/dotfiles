@@ -14,7 +14,7 @@
 
   ## 🌟 Starring 🌟
 
-  |      OS | 💾 | [Vanilla OS](https://vanillaos.org)
+  |      OS | 💽 | [Vanilla OS](https://vanillaos.org)
   | ------: | -- | :- |
   |      DE | 🏞️ | [Gnome](https://www.gnome.org)
   |   Theme | 🎨 | [Catppuccin](https://github.com/catppuccin/catppuccin)
@@ -28,22 +28,20 @@
 
 ## 🚀 Setup
 
-```sh
-flatpak install --assumeyes flathub \
-  org.mozilla.firefox com.usebottles.bottles \
-  com.visualstudio.code org.blender.Blender org.godotengine.Godot \
-  com.valvesoftware.Steam org.libretro.RetroArch org.ryujinx.Ryujinx \
-  org.prismlauncher.PrismLauncher sh.ppy.osu
+<pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install --assumeyes flathub \
+  <a href="https://www.mozilla.org/firefox">org.mozilla.firefox</a> <a href="https://usebottles.com">com.usebottles.bottles</a> \
+  <a href="https://code.visualstudio.com">com.visualstudio.code</a> <a href="https://www.blender.org">org.blender.Blender</a> <a href="https://godotengine.org">org.godotengine.Godot</a> \
+  <a href="https://store.steampowered.com">com.valvesoftware.Steam</a> <a href="https://www.retroarch.com">org.libretro.RetroArch</a> <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
+  <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a> <a href="https://osu.ppy.sh">sh.ppy.osu</a>
 
-apx install --aur ttf-iosevka-nerd ibus-bamboo aseprite git ruby{,-docs} rust nodejs
+apx install --aur <a href="https://typeof.net/Iosevka">ttf-iosevka-nerd</a> <a href="https://github.com/BambooEngine/ibus-bamboo">ibus-bamboo</a> <a href="https://www.aseprite.org">aseprite</a> <a href="https://git-scm.com">git</a> <a href="https://www.ruby-lang.org">ruby{,-docs}</a> <a href="https://www.rust-lang.org">rust</a> <a href="https://nodejs.org">nodejs</a>
 
-apx run --aur gem install solargraph rubocop
+apx run --aur gem install <a href="https://solargraph.org">solargraph</a> <a href="https://rubocop.org">rubocop</a>
 
 git config --global user.email nnbnh@protonmail.com
 git config --global user.name NNB
 git config --global credential.helper store
-git config --global pull.rebase true
-```
+git config --global pull.rebase true</code></pre>
 
 <a href="https://github.com/NNBnh">
   <img
