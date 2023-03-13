@@ -14,7 +14,7 @@
 
   ## 🌟 Starring 🌟
 
-  |      OS | 💽 | [Vanilla OS](https://vanillaos.org)
+  |      OS | 💽 | [Nobara](https://nobaraproject.org)
   | ------: | -- | :- |
   |      DE | 🏞️ | [Gnome](https://www.gnome.org)
   |   Theme | 🎨 | [Catppuccin](https://github.com/catppuccin/catppuccin)
@@ -29,14 +29,23 @@
 ## 🚀 Setup
 
 <pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install --assumeyes flathub \
-  <a href="https://www.mozilla.org/firefox">org.mozilla.firefox</a> <a href="https://usebottles.com">com.usebottles.bottles</a> \
-  <a href="https://code.visualstudio.com">com.visualstudio.code</a> <a href="https://www.blender.org">org.blender.Blender</a> <a href="https://godotengine.org">org.godotengine.Godot</a> \
-  <a href="https://store.steampowered.com">com.valvesoftware.Steam</a> <a href="https://www.retroarch.com">org.libretro.RetroArch</a> <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
+  <a href="https://www.blender.org">org.blender.Blender</a> <a href="https://godotengine.org">org.godotengine.Godot</a> \
+  <a href="https://www.retroarch.com">org.libretro.RetroArch</a> <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
   <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a> <a href="https://osu.ppy.sh">sh.ppy.osu</a>
 
-apx install --aur <a href="https://typeof.net/Iosevka">ttf-iosevka-nerd</a> <a href="https://github.com/BambooEngine/ibus-bamboo">ibus-bamboo</a> <a href="https://www.aseprite.org">aseprite</a> <a href="https://git-scm.com">git</a> <a href="https://www.ruby-lang.org">ruby{,-docs}</a> <a href="https://www.rust-lang.org">rust</a> <a href="https://nodejs.org">nodejs</a>
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+dnf check-update
+sudo dnf install code
 
-apx run --aur gem install <a href="https://solargraph.org">solargraph</a> <a href="https://rubocop.org">rubocop</a>
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+<a href="https://brew.sh">brew</a> install <a href="https://www.ruby-lang.org">ruby</a> <a href="https://www.rust-lang.org">rust</a> <a href="https://nodejs.org">node</a>
+sudo yum groupinstall 'Development Tools'
+printf '\n%s' 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bash_profile
+
+gem install <a href="https://solargraph.org">solargraph</a> <a href="https://rubocop.org">rubocop</a>
+
+<a href="https://github.com/rafaelmardojai/firefox-gnome-theme">bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
 
 git config --global user.email nnbnh@protonmail.com
 git config --global user.name NNB
