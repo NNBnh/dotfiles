@@ -28,11 +28,11 @@
 
 ## 🚀 Setup
 
-Iinstall the following Gnome extensions:
+Install the following Gnome extensions:
 
-- [Unite](https://extensions.gnome.org/extension/1287/unite).
-- [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell).
-- [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect).
+- [Unite](https://extensions.gnome.org/extension/1287/unite)
+- [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell)
+- [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect)
 
 Then run:
 
@@ -46,10 +46,10 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 dnf check-update
 sudo dnf install code
 
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-<a href="https://brew.sh">brew</a> install <a href="https://www.ruby-lang.org">ruby</a> <a href="https://www.rust-lang.org">rust</a> <a href="https://nodejs.org">node</a>
-sudo yum groupinstall 'Development Tools'
+<a href="https://brew.sh">bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</a>
 printf '\n%s' 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bash_profile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+brew install <a href="https://www.ruby-lang.org">ruby</a> <a href="https://www.rust-lang.org">rust</a> <a href="https://nodejs.org">node</a>
 
 gem install <a href="https://solargraph.org">solargraph</a> <a href="https://rubocop.org">rubocop</a>
 
