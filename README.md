@@ -28,6 +28,14 @@
 
 ## 🚀 Setup
 
+Iinstall the following Gnome extensions:
+
+- [Unite](https://extensions.gnome.org/extension/1287/unite).
+- [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell).
+- [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect).
+
+Then run:
+
 <pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install --assumeyes flathub \
   <a href="https://www.blender.org">org.blender.Blender</a> <a href="https://godotengine.org">org.godotengine.Godot</a> \
   <a href="https://www.retroarch.com">org.libretro.RetroArch</a> <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
