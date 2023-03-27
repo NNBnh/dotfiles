@@ -55,6 +55,8 @@ printf '\n%s' 'case $- in *i*) exec nu ;; esac' >> ~/.bashrc
 
 gem install <a href="https://solargraph.org">solargraph</a> <a href="https://rubocop.org">rubocop</a>
 
+<a href="https://github.com/catppuccin/gnome-terminal">curl -fsSL https://raw.githubusercontent.com/catppuccin/gnome-terminal/v0.2.0/install.py | python3 -</a>
+
 <a href="https://github.com/rafaelmardojai/firefox-gnome-theme">bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
 
 git config --global user.email nnbnh@protonmail.com
