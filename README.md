@@ -49,7 +49,9 @@ sudo dnf install <a href="https://code.visualstudio.com">code</a>
 <a href="https://brew.sh">bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</a>
 printf '\n%s' 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bash_profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-brew install <a href="https://www.ruby-lang.org">ruby</a> <a href="https://www.rust-lang.org">rust</a> <a href="https://nodejs.org">node</a>
+brew install <a href="https://www.nushell.sh">nushell</a> <a href="https://www.ruby-lang.org">ruby</a> <a href="https://www.rust-lang.org">rust</a> <a href="https://nodejs.org">node</a>
+
+printf '\n%s' 'case $- in *i*) exec nu ;; esac' >> ~/.bashrc
 
 gem install <a href="https://solargraph.org">solargraph</a> <a href="https://rubocop.org">rubocop</a>
 
