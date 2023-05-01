@@ -51,9 +51,10 @@ printf '\n%s' 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bas
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install <a href="https://www.nushell.sh">nushell</a> <a href="https://www.ruby-lang.org">ruby</a> <a href="https://www.rust-lang.org">rust</a> <a href="https://nodejs.org">node</a>
 
-printf '\n%s\n%s' 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' 'case $- in *i*) exec nu ;; esac' >> ~/.bashrc
+printf '\n%s' 'case $- in *i*) exec nu ;; esac' >> ~/.bashrc
 
 gem install <a href="https://solargraph.org">solargraph</a> <a href="https://rubocop.org">rubocop</a>
+printf '\n%s' 'export PATH="$PATH:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.2.0/bin"' >> ~/.bash_profile
 
 <a href="https://github.com/catppuccin/gnome-terminal">curl -fsSL https://raw.githubusercontent.com/catppuccin/gnome-terminal/v0.2.0/install.py | python3 -</a>
 
