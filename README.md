@@ -36,10 +36,7 @@ Install the following Gnome extensions:
 
 Then run:
 
-<pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install --assumeyes flathub \
-  <a href="https://godotengine.org">org.godotengine.Godot</a> \
-  <a href="https://www.retroarch.com">org.libretro.RetroArch</a> <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
-  <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a> <a href="https://osu.ppy.sh">sh.ppy.osu</a>
+<pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install --assumeyes flathub <a href="https://godotengine.org">org.godotengine.Godot</a> <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a> <a href="https://osu.ppy.sh">sh.ppy.osu</a>
 
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
