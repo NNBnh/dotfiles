@@ -42,7 +42,7 @@ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 dnf check-update
 
-sudo dnf install --assumeyes <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://code.visualstudio.com">code</a> <a href="https://www.ruby-lang.org">ruby{,gem-{tk{,-doc},rake,irb,test-unit}}</a> <a href="https://www.rust-lang.org">rust cargo</a> <a href="https://nodejs.org">nodejs</a>
+sudo dnf install --assumeyes <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://code.visualstudio.com">code</a> <a href="https://www.ruby-lang.org">ruby{,-devel,gem-{tk{,-doc},rake,irb,test-unit}}</a> <a href="https://www.rust-lang.org">rust cargo</a> <a href="https://nodejs.org">nodejs</a>
 
 gem install <a href="https://solargraph.org">solargraph</a> <a href="https://rubocop.org">rubocop</a>
 
