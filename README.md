@@ -41,17 +41,10 @@ Then run:
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 dnf check-update
-sudo dnf install --assumeyes <a href="https://code.visualstudio.com">code</a>
 
-<a href="https://brew.sh">bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</a>
-printf '\n%s' 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bash_profile
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-brew install <a href="https://www.nushell.sh">nushell</a> <a href="https://www.ruby-lang.org">ruby</a> <a href="https://www.rust-lang.org">rust</a> <a href="https://nodejs.org">node</a>
-
-printf '\n%s' 'case $- in *i*) exec nu ;; esac' >> ~/.bashrc
+sudo dnf install --assumeyes <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://code.visualstudio.com">code</a> <a href="https://www.ruby-lang.org">ruby{,gem-{tk{,-doc},rake,irb,test-unit}}</a> <a href="https://www.rust-lang.org">rust cargo</a> <a href="https://nodejs.org">nodejs</a>
 
 gem install <a href="https://solargraph.org">solargraph</a> <a href="https://rubocop.org">rubocop</a>
-printf '\n%s' 'export PATH="$PATH:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.2.0/bin"' >> ~/.bash_profile
 
 <a href="https://github.com/catppuccin/gnome-terminal">curl -fsSL https://raw.githubusercontent.com/catppuccin/gnome-terminal/v0.2.0/install.py | python3 -</a>
 
