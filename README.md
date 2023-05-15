@@ -38,9 +38,9 @@ Then run:
 
 <pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install --assumeyes flathub <a href="https://godotengine.org">org.godotengine.Godot</a> <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a> <a href="https://osu.ppy.sh">sh.ppy.osu</a>
 
-<a href="https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions">sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc && sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo' && dnf check-update</a>
-
 sudo dnf copr enable --assumeyes <a href="https://copr.fedorainfracloud.org/coprs/astrawan/nerd-fonts">astrawan/nerd-fonts</a>
+
+<a href="https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions">sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc && sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo' && dnf check-update</a>
 
 sudo dnf install --assumeyes <a href="https://www.jetbrains.com/lp/mono">nerd-firacode-fonts</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://code.visualstudio.com">code</a> <a href="https://www.ruby-lang.org">ruby{,-{doc,devel},gem-{tk{,-doc},rake,irb,test-unit}}</a> <a href="https://www.rust-lang.org">rust cargo</a> <a href="https://nodejs.org">nodejs</a>
 
