@@ -19,12 +19,10 @@
   |      DE | 🏞️ | [Gnome](https://www.gnome.org)
   |   Theme | 🎨 | [Catppuccin](https://github.com/catppuccin/catppuccin)
   |     IDE | 📝 | [VScode](https://code.visualstudio.com)
-  |   Shell | 🐚 | [Ruby on Shell](https://www.ruby-lang.org)
+  |   Shell | 🐚 | [Ruby on Shell](https://nnb.codeberg.page/ruby-on-shell)
   | Browser | 🌏 | [Firefox](https://nnbnh.github.io/blog/en/posts/3)
 
 </div>
-
-> **Note** I will make [a blog](https://nnbnh.github.io/blog) explain how I use Ruby as a shell.
 
 ## 🚀 Setup
 
