@@ -17,9 +17,9 @@
   |      OS | 💽 | [Nobara](https://nobaraproject.org)
   | ------: | -- | :- |
   |      DE | 🏞️ | [Gnome](https://www.gnome.org)
-  |   Theme | 🎨 | [Catppuccin](https://github.com/catppuccin/catppuccin)
+  |   Theme | 🎨 | [Catppuccin](https://nnbnh.github.io/blog/en/posts/8/#da-one)
   |     IDE | 📝 | [VScode](https://code.visualstudio.com)
-  |   Shell | 🐚 | [Ruby on Shell](https://nnb.codeberg.page/ruby-on-shell)
+  |   Shell | 🐚 | [Ruby on Shell](https://nnbnh.github.io/blog/en/posts/7)
   | Browser | 🌏 | [Firefox](https://nnbnh.github.io/blog/en/posts/3)
 
 </div>
@@ -60,7 +60,7 @@ git config --global user.name NNB
 git config --global credential.helper store
 git config --global pull.rebase true</code></pre>
 
-<a href="https://github.com/NNBnh">
+<a href="https://nnb.codeberg.page">
   <img
     width="100%"
     src="https://capsule-render.vercel.app/api?type=waving&section=footer&color=0284C7&fontColor=F0F9FF&height=128&desc=Made%20with%20%26lt;3%20by%20NNB&descAlignY=80"
