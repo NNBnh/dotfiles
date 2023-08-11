@@ -16,7 +16,7 @@
 
   |      OS | 💽 | [Nobara](https://nnbnh.github.io/blog/en/posts/13)
   | ------: | -- | :- |
-  |      DE | 🏞️ | [Gnome](https://nnbnh.github.io/blog/en/posts/13#de)
+  |      DE | 🏞️ | [Gnome](https://nnbnh.github.io/blog/en/posts/13#desktop-environment)
   |   Theme | 🎨 | [Catppuccin](https://nnbnh.github.io/blog/en/posts/8/#da-one)
   |     IDE | 📝 | [VScode](https://code.visualstudio.com)
   |   Shell | 🐚 | [Ruby on Shell](https://nnbnh.github.io/blog/en/posts/7)
