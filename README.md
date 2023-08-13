@@ -14,13 +14,13 @@
 
   ## 🌟 Starring 🌟
 
-  |      OS | 💽 | [Nobara](https://nnbnh.github.io/blog/en/posts/13)
+  |      OS | 💽 | [Nobara](https://NNB.codeberg.page/blog/en/posts/13)
   | ------: | -- | :- |
-  |      DE | 🏞️ | [Gnome](https://nnbnh.github.io/blog/en/posts/13#desktop-environment)
-  |   Theme | 🎨 | [Catppuccin](https://nnbnh.github.io/blog/en/posts/8/#da-one)
+  |      DE | 🏞️ | [Gnome](https://NNB.codeberg.page/blog/en/posts/13#desktop-environment)
+  |   Theme | 🎨 | [Catppuccin](https://NNB.codeberg.page/blog/en/posts/8/#da-one)
   |     IDE | 📝 | [VScode](https://code.visualstudio.com)
-  |   Shell | 🐚 | [Ruby on Shell](https://nnbnh.github.io/blog/en/posts/7)
-  | Browser | 🌏 | [Firefox](https://nnbnh.github.io/blog/en/posts/3)
+  |   Shell | 🐚 | [Ruby on Shell](https://NNB.codeberg.page/blog/en/posts/7)
+  | Browser | 🌏 | [Firefox](https://NNB.codeberg.page/blog/en/posts/3)
 
 </div>
 
