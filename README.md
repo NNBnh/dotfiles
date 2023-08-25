@@ -33,18 +33,18 @@ Install the following Gnome extensions:
 - [Rounded Window Corners](https://extensions.gnome.org/extension/5237/rounded-window-corners)
 - [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect)
 - [Pano](https://extensions.gnome.org/extension/5278/pano)
-- [Color Picker](https://extensions.gnome.org/extension/3396/color-picker)
 
 Then run:
 
 <pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install --assumeyes flathub \
+  <a href="https://gradienceteam.github.io">com.github.GradienceTeam.Gradience</a> \
   <a href="https://godotengine.org">org.godotengine.Godot</a> \
   <a href="https://www.blender.org">org.blender.Blender</a> \
   <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
   <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a> \
   <a href="https://osu.ppy.sh">sh.ppy.osu</a>
 <a href="https://github.com/flathub/org.blender.Blender/issues/130">flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
-  
+
 sudo dnf copr enable --assumeyes <a href="https://copr.fedorainfracloud.org/coprs/astrawan/nerd-fonts">astrawan/nerd-fonts</a>
 <a href="https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions">sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc && sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo' && dnf check-update</a>
 sudo dnf install --assumeyes \
