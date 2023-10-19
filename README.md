@@ -41,8 +41,7 @@ Then run:
   <a href="https://godotengine.org">org.godotengine.Godot</a> \
   <a href="https://www.blender.org">org.blender.Blender</a> \
   <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
-  <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a> \
-  <a href="https://osu.ppy.sh">sh.ppy.osu</a>
+  <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a>
 <a href="https://github.com/flathub/org.blender.Blender/issues/130">flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
 
 sudo dnf copr enable --assumeyes <a href="https://copr.fedorainfracloud.org/coprs/astrawan/nerd-fonts">astrawan/nerd-fonts</a>
