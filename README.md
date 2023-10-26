@@ -49,7 +49,7 @@ sudo dnf copr enable --assumeyes <a href="https://copr.fedorainfracloud.org/copr
 sudo dnf install --assumeyes <a href="https://www.jetbrains.com/lp/mono">nerd-jetbrainsmono-fonts</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://code.visualstudio.com">code</a>
 
 <a href="https://brew.sh">bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</a>
-brew install <a href="https://www.ruby-lang.org">ruby</a> <a href="https://solargraph.org">solargraph</a> <a href="https://www.rust-lang.org">rust</a> <a href="https://nodejs.org">nodejs</a>
+brew install <a href="https://www.ruby-lang.org">ruby</a> <a href="https://www.rust-lang.org">rust</a> <a href="https://nodejs.org">nodejs</a>
 
 <a href="https://github.com/rafaelmardojai/firefox-gnome-theme">bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
 
