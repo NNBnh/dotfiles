@@ -31,6 +31,7 @@ Install the following Gnome extensions:
 - [Unite](https://extensions.gnome.org/extension/1287/unite)
 - [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell)
 - [Rounded Window Corners](https://extensions.gnome.org/extension/5237/rounded-window-corners)
+- [Compiz windows effect](https://extensions.gnome.org/extension/3210/compiz-windows-effect)
 - [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect)
 - [Pano](https://extensions.gnome.org/extension/5278/pano)
 
