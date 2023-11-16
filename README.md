@@ -1,13 +1,13 @@
 <div align="center">
   <img
     width="100%"
-    src="https://user-images.githubusercontent.com/43980777/218121026-2d2ddb94-5105-4df8-a6a9-8ab632b69ce3.png"
+    src="https://codeberg.org/attachments/6fe9a28e-b351-4065-9d3a-853001306d76"
     alt="Screenshot"
   />
   <p>
-    <a href="https://www.pixiv.net/artworks/76523866">Wallpaper</a>
+    <a href="https://www.pixiv.net/artworks/72727430">Wallpaper</a>
     by
-    <a href="https://www.pixiv.net/users/211515">防人</a>
+    <a href="https://www.pixiv.net/users/864706">けみ猫</a>
   </p>
 
   <br />
@@ -23,6 +23,9 @@
   | Browser | 🌏 | [Firefox](https://NNB.codeberg.page/blog/en/posts/3)
 
 </div>
+
+
+
 
 ## 🚀 Setup
 
