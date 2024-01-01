@@ -37,6 +37,7 @@ Install the following Gnome extensions:
 - [Compiz windows effect](https://extensions.gnome.org/extension/3210/compiz-windows-effect)
 - [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect)
 - [Pano](https://extensions.gnome.org/extension/5278/pano)
+- [Color Picker](https://extensions.gnome.org/extension/3396/color-picker)
 
 Then run:
 
