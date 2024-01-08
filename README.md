@@ -1,7 +1,7 @@
 <div align="center">
   <img
     width="100%"
-    src="https://codeberg.org/attachments/6fe9a28e-b351-4065-9d3a-853001306d76"
+    src="https://codeberg.org/attachments/5613c6b6-0604-49b7-b40e-126036751417"
     alt="Screenshot"
   />
   <p>
