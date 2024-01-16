@@ -49,7 +49,7 @@ Then run:
   <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a>
 <a href="https://github.com/flathub/org.blender.Blender/issues/130">sudo flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
 
-sudo system install <a href="https://gitlab.gnome.org/GNOME/gnome-tweaks">gnome-tweaks</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a>
+sudo system install <a href="https://gitlab.gnome.org/GNOME/gnome-tweaks">gnome-tweaks</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> libgda6
 user create-container a <a href="https://archlinux.org">arch</a>
 sudo pacman.a -Suy --noconfirm <a href="https://www.rust-lang.org">rustup</a> <a href="https://nodejs.org">npm</a>
 yay.a -S --noconfirm <a href="https://github.com/postmodern/ruby-install">ruby-install</a>
