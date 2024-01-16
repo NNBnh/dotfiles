@@ -41,13 +41,13 @@ Then run:
 <pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install --assumeyes flathub \
   <a href="https://godotengine.org">org.godotengine.Godot</a> \
   <a href="https://www.blender.org">org.blender.Blender</a> \
-  <a href="https://store.steampowered.com">com.valvesoftware.Steam</a>
+  <a href="https://store.steampowered.com">com.valvesoftware.Steam</a> \
   <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
   <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a>
 <a href="https://github.com/flathub/org.blender.Blender/issues/130">sudo flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
 
-sudo system install <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a>
-
+sudo system install <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://extensions.gnome.org">gnome-shell-extension-manager</a>
+user create-container arch arch
 user exec arch -- sudo pacman -Suy <a href="https://code.visualstudio.com">code</a> <a href="https://www.rust-lang.org">rustup</a> <a href="https://nodejs.org">nodejs</a>
 user exec arch -- yay -S <a href="https://github.com/postmodern/chruby">chruby</a>
 
