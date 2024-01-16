@@ -40,6 +40,7 @@ Then run:
 
 <pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install --assumeyes flathub \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
+  <a href="https://code.visualstudio.com">com.visualstudio.code</a> \
   <a href="https://godotengine.org">org.godotengine.Godot</a> \
   <a href="https://www.blender.org">org.blender.Blender</a> \
   <a href="https://store.steampowered.com">com.valvesoftware.Steam</a> \
@@ -48,9 +49,9 @@ Then run:
 <a href="https://github.com/flathub/org.blender.Blender/issues/130">sudo flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
 
 sudo system install <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://extensions.gnome.org">gnome-browser-connector</a>
-user create-container arch arch
+user create-container arch <a href="https://archlinux.org">arch</a>
 user exec arch -- sudo pacman -Suy <a href="https://www.rust-lang.org">rustup</a> <a href="https://nodejs.org">nodejs</a>
-user exec arch -- yay -S <a href="https://code.visualstudio.com">visual-studio-code-bin</a> <a href="https://github.com/postmodern/chruby">chruby</a>
+user exec arch -- yay -S <a href="https://github.com/postmodern/chruby">chruby</a>
 
 <a href="https://github.com/rafaelmardojai/firefox-gnome-theme">bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
 
