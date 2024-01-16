@@ -51,7 +51,7 @@ Then run:
 
 sudo system install <a href="https://gitlab.gnome.org/GNOME/gnome-tweaks">gnome-tweaks</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a>
 user create-container a <a href="https://archlinux.org">arch</a>
-user exec a -- sudo pacman -Suy <a href="https://www.rust-lang.org">rustup</a> <a href="https://nodejs.org">nodejs</a>
+user exec a -- sudo pacman -Suy <a href="https://www.rust-lang.org">rustup</a> <a href="https://nodejs.org">npm</a>
 user exec a -- yay -S <a href="https://github.com/postmodern/chruby">chruby</a>
 
 <a href="https://github.com/rafaelmardojai/firefox-gnome-theme">bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
