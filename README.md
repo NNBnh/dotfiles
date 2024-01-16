@@ -39,6 +39,7 @@ Install the following Gnome extensions:
 Then run:
 
 <pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install --assumeyes flathub \
+  <a href="https://github.com/mjakeman/extension-manager">com.mattjakeman.ExtensionManager</a> \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
   <a href="https://code.visualstudio.com">com.visualstudio.code</a> \
   <a href="https://godotengine.org">org.godotengine.Godot</a> \
