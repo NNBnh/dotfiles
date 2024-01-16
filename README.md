@@ -53,7 +53,7 @@ sudo system install <a href="https://gitlab.gnome.org/GNOME/gnome-tweaks">gnome-
 user create-container a <a href="https://archlinux.org">arch</a>
 sudo pacman.a -Suy --noconfirm <a href="https://www.rust-lang.org">rustup</a> <a href="https://nodejs.org">npm</a>
 yay.a -S --noconfirm <a href="https://github.com/postmodern/ruby-install">ruby-install</a>
-ruby-install ruby
+ruby-install.a ruby
 
 <a href="https://github.com/rafaelmardojai/firefox-gnome-theme">bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
 
