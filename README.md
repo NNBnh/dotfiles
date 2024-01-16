@@ -46,7 +46,7 @@ Then run:
   <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a>
 <a href="https://github.com/flathub/org.blender.Blender/issues/130">sudo flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
 
-sudo system install <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://extensions.gnome.org">gnome-shell-extension-manager</a>
+sudo system install <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://extensions.gnome.org">gnome-browser-connector</a>
 user create-container arch arch
 user exec arch -- sudo pacman -Suy <a href="https://code.visualstudio.com">code</a> <a href="https://www.rust-lang.org">rustup</a> <a href="https://nodejs.org">nodejs</a>
 user exec arch -- yay -S <a href="https://github.com/postmodern/chruby">chruby</a>
