@@ -56,10 +56,10 @@ user exec a -- yay -S <a href="https://github.com/postmodern/chruby">chruby</a>
 
 <a href="https://github.com/rafaelmardojai/firefox-gnome-theme">bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
 
-git config --global user.email nnbnh@protonmail.com
-git config --global user.name NNB
-git config --global credential.helper store
-git config --global pull.rebase true</code></pre>
+git.a config --global user.email nnbnh@protonmail.com
+git.a config --global user.name NNB
+git.a config --global credential.helper store
+git.a config --global pull.rebase true</code></pre>
 
 <a href="https://nnb.codeberg.page">
   <img
