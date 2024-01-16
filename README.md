@@ -14,7 +14,7 @@
 
   ## 🌟 Starring 🌟
 
-  |      OS | 💽 | [Nobara](https://NNB.codeberg.page/blog/en/posts/13)
+  |      OS | 💽 | [BlendOS](https://NNB.codeberg.page/blog/en/posts/13)
   | ------: | -- | :- |
   |      DE | 🏞️ | [Gnome](https://NNB.codeberg.page/blog/en/posts/13#desktop-environment)
   |   Theme | 🎨 | [Catppuccin](https://NNB.codeberg.page/blog/en/posts/8/#da-one)
@@ -23,9 +23,6 @@
   | Browser | 🌏 | [Firefox](https://NNB.codeberg.page/blog/en/posts/3)
 
 </div>
-
-
-
 
 ## 🚀 Setup
 
@@ -42,16 +39,13 @@ Install the following Gnome extensions:
 Then run:
 
 <pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install --assumeyes flathub \
-  <a href="https://gradienceteam.github.io">com.github.GradienceTeam.Gradience</a> \
-  <a href="https://code.visualstudio.com">com.visualstudio.code</a> \
   <a href="https://godotengine.org">org.godotengine.Godot</a> \
   <a href="https://www.blender.org">org.blender.Blender</a> \
   <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
   <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a>
-<a href="https://github.com/flathub/org.blender.Blender/issues/130">flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
+<a href="https://github.com/flathub/org.blender.Blender/issues/130">sudo flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
 
-sudo dnf copr enable --assumeyes <a href="https://copr.fedorainfracloud.org/coprs/astrawan/nerd-fonts">astrawan/nerd-fonts</a>
-sudo dnf install --assumeyes <a href="https://www.jetbrains.com/lp/mono">nerd-jetbrainsmono-fonts</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a>
+sudo system install <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a>
 
 <a href="https://brew.sh">bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</a>
 brew install <a href="https://www.ruby-lang.org">ruby</a> <a href="https://www.rust-lang.org">rust</a> <a href="https://nodejs.org">nodejs</a>
