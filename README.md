@@ -52,8 +52,7 @@ Then run:
 sudo system install <a href="https://gitlab.gnome.org/GNOME/gnome-tweaks">gnome-tweaks</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://github.com/oae/gnome-shell-pano#installation">libgda6</a>
 
 user create-container d <a href="https://fedoraproject.org">debian</a>
-sudo apt.d install --assume-yes <a href="https://git-scm.com">git</a> <a href="https://www.rust-lang.org">rust-all</a> <a href="https://nodejs.org">nodejs</a> <a href="https://www.ruby-lang.org">ruby{,-dev}</a>
-sudo gem.d install <a href="https://solargraph.org">solargraph</a>
+sudo apt.d install --assume-yes <a href="https://git-scm.com">git</a> <a href="https://www.rust-lang.org">rust-all</a> <a href="https://nodejs.org">nodejs</a> <a href="https://www.ruby-lang.org">ruby</a>
 
 bash -c <a href="https://github.com/rafaelmardojai/firefox-gnome-theme">"$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
 
