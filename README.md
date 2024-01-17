@@ -50,17 +50,15 @@ Then run:
 <a href="https://github.com/flathub/org.blender.Blender/issues/130">sudo flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
 
 sudo system install <a href="https://gitlab.gnome.org/GNOME/gnome-tweaks">gnome-tweaks</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://github.com/oae/gnome-shell-pano#installation">libgda6</a>
-user create-container a <a href="https://archlinux.org">arch</a>
-sudo pacman.a -Suy --noconfirm <a href="https://www.rust-lang.org">rustup</a> <a href="https://nodejs.org">npm</a>
-yay.a -S --noconfirm <a href="https://github.com/postmodern/ruby-install">ruby-install</a>
-ruby-install.a ruby
+user create-container f <a href="https://fedoraproject.org">fedora-38</a>
+sudo dnf.f install --assumeyes <a href="https://git-scm.com">git</a> <a href="https://www.rust-lang.org">rustup</a> <a href="https://nodejs.org">nodejs</a> <a href="https://www.ruby-lang.org">ruby</a>
 
 <a href="https://github.com/rafaelmardojai/firefox-gnome-theme">bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
 
-git.a config --global user.email nnbnh@protonmail.com
-git.a config --global user.name NNB
-git.a config --global credential.helper store
-git.a config --global pull.rebase true</code></pre>
+git.f config --global user.email nnbnh@protonmail.com
+git.f config --global user.name NNB
+git.f config --global credential.helper store
+git.f config --global pull.rebase true</code></pre>
 
 <a href="https://nnb.codeberg.page">
   <img
