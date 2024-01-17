@@ -38,7 +38,7 @@ Install the following Gnome extensions:
 
 Then run:
 
-<pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install --assumeyes flathub \
+<pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
   <a href="https://github.com/mjakeman/extension-manager">com.mattjakeman.ExtensionManager</a> \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
   <a href="https://code.visualstudio.com">com.visualstudio.code</a> \
@@ -50,16 +50,17 @@ Then run:
 <a href="https://github.com/flathub/org.blender.Blender/issues/130">sudo flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
 
 sudo system install <a href="https://gitlab.gnome.org/GNOME/gnome-tweaks">gnome-tweaks</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://github.com/oae/gnome-shell-pano#installation">libgda6</a>
-user create-container f <a href="https://fedoraproject.org">fedora-38</a>
-sudo dnf.f install --assumeyes <a href="https://git-scm.com">git</a> <a href="https://www.rust-lang.org">rustup</a> <a href="https://nodejs.org">nodejs</a> <a href="https://www.ruby-lang.org">ruby{,-{irb,doc,devel}}</a>
-gem.f install <a href="https://solargraph.org">solargraph</a>
 
-<a href="https://github.com/rafaelmardojai/firefox-gnome-theme">bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
+user create-container d <a href="https://fedoraproject.org">debian</a>
+bash.d -c <a href="https://brew.sh">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</a>
+brew.d install <a href="https://git-scm.com">git</a> <a href="https://www.rust-lang.org">rustup</a> <a href="https://nodejs.org">node</a> <a href="https://www.ruby-lang.org">ruby</a> <a href="https://solargraph.org">solargraph</a>
 
-git.f config --global user.email nnbnh@protonmail.com
-git.f config --global user.name NNB
-git.f config --global credential.helper store
-git.f config --global pull.rebase true</code></pre>
+bash -c <a href="https://github.com/rafaelmardojai/firefox-gnome-theme">"$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
+
+git.d config --global user.email nnbnh@protonmail.com
+git.d config --global user.name NNB
+git.d config --global credential.helper store
+git.d config --global pull.rebase true</code></pre>
 
 <a href="https://nnb.codeberg.page">
   <img
