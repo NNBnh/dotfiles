@@ -26,19 +26,14 @@
 
 ## 🚀 Setup
 
-Install the following Gnome extensions:
+Run the following commands:
 
-- [Unite](https://extensions.gnome.org/extension/1287/unite)
-- [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell)
-- [Rounded Window Corners](https://extensions.gnome.org/extension/5237/rounded-window-corners)
-- [Compiz windows effect](https://extensions.gnome.org/extension/3210/compiz-windows-effect)
-- [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect)
-- [Pano](https://extensions.gnome.org/extension/5278/pano)
-- [Color Picker](https://extensions.gnome.org/extension/3396/color-picker)
+<pre><code class="sh">sudo system install <a href="https://gitlab.gnome.org/GNOME/gnome-tweaks">gnome-tweaks</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://github.com/oae/gnome-shell-pano#installation">libgda6</a>
 
-Then run:
+user create-container d <a href="https://fedoraproject.org">debian</a>
+sudo apt.d install --assume-yes <a href="https://git-scm.com">git</a> <a href="https://www.rust-lang.org">rust-all</a> <a href="https://nodejs.org">nodejs</a> <a href="https://www.ruby-lang.org">ruby</a>
 
-<pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
+<a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
   <a href="https://github.com/mjakeman/extension-manager">com.mattjakeman.ExtensionManager</a> \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
   <a href="https://code.visualstudio.com">com.visualstudio.code</a> \
@@ -49,17 +44,24 @@ Then run:
   <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a>
 <a href="https://github.com/flathub/org.blender.Blender/issues/130">sudo flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
 
-sudo system install <a href="https://gitlab.gnome.org/GNOME/gnome-tweaks">gnome-tweaks</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://github.com/oae/gnome-shell-pano#installation">libgda6</a>
-
-user create-container d <a href="https://fedoraproject.org">debian</a>
-sudo apt.d install --assume-yes <a href="https://git-scm.com">git</a> <a href="https://www.rust-lang.org">rust-all</a> <a href="https://nodejs.org">nodejs</a> <a href="https://www.ruby-lang.org">ruby</a>
-
 bash -c <a href="https://github.com/rafaelmardojai/firefox-gnome-theme">"$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
 
 git.d config --global user.email nnbnh@protonmail.com
 git.d config --global user.name NNB
 git.d config --global credential.helper store
 git.d config --global pull.rebase true</code></pre>
+
+Then install the following Gnome extensions:
+
+- [Unite](https://extensions.gnome.org/extension/1287/unite)
+- [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell)
+- [Rounded Window Corners](https://extensions.gnome.org/extension/5237/rounded-window-corners)
+- [Compiz windows effect](https://extensions.gnome.org/extension/3210/compiz-windows-effect)
+- [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect)
+- [Pano](https://extensions.gnome.org/extension/5278/pano)
+- [Color Picker](https://extensions.gnome.org/extension/3396/color-picker)
+
+That's all!
 
 <a href="https://nnb.codeberg.page">
   <img
