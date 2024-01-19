@@ -42,7 +42,6 @@ sudo apt.d install --assume-yes <a href="https://git-scm.com">git</a> <a href="h
   <a href="https://store.steampowered.com">com.valvesoftware.Steam</a> \
   <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
   <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a>
-<a href="https://github.com/flathub/org.blender.Blender/issues/130">sudo flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
 
 bash -c <a href="https://github.com/rafaelmardojai/firefox-gnome-theme">"$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
 
