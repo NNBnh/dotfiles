@@ -1,9 +1,8 @@
 <div align="center">
-  <img
-    width="100%"
-    src="https://codeberg.org/attachments/5613c6b6-0604-49b7-b40e-126036751417"
-    alt="Screenshot"
-  />
+  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&section=header&color=0284C7&fontColor=F0F9FF&height=256&text=%C4%90otfiles&desc=My%20personal%20%C4%90otfiles&fontAlignY=40" />
+
+  <img width="100%" src="https://codeberg.org/attachments/5613c6b6-0604-49b7-b40e-126036751417" />
+
   <p>
     <a href="https://www.pixiv.net/artworks/72727430">Wallpaper</a>
     by
