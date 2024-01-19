@@ -17,7 +17,6 @@
   |      OS | 💽 | [BlendOS](https://NNB.codeberg.page/blog/en/posts/13)
   | ------: | -- | :- |
   |      DE | 🏞️ | [Gnome](https://NNB.codeberg.page/blog/en/posts/13#desktop-environment)
-  |   Theme | 🎨 | [Catppuccin](https://NNB.codeberg.page/blog/en/posts/8/#da-one)
   |     IDE | 📝 | [VScode](https://nnb.codeberg.page/blog/en/posts/14)
   |   Shell | 🐚 | [Ruby on Shell](https://NNB.codeberg.page/blog/en/posts/7)
   | Browser | 🌏 | [Firefox](https://NNB.codeberg.page/blog/en/posts/3)
