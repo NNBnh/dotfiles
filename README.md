@@ -39,10 +39,10 @@ yay.a --sync --sysupgrade --refresh --noconfirm <a href="https://git-scm.com">gi
 
 bash -c <a href="https://github.com/rafaelmardojai/firefox-gnome-theme">"$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
 
-git.d config --global user.email nnbnh@protonmail.com
-git.d config --global user.name NNB
-git.d config --global credential.helper store
-git.d config --global pull.rebase true</code></pre>
+git.a config --global user.email nnbnh@protonmail.com
+git.a config --global user.name NNB
+git.a config --global credential.helper store
+git.a config --global pull.rebase true</code></pre>
 
 Then install the following Gnome extensions:
 
