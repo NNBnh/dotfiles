@@ -37,8 +37,6 @@ yay.a --sync --sysupgrade --refresh --noconfirm <a href="https://git-scm.com">gi
   <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
   <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a>
 
-bash -c <a href="https://github.com/rafaelmardojai/firefox-gnome-theme">"$(curl -fsSL https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh)"</a>
-
 git.a config --global user.email nnbnh@protonmail.com
 git.a config --global user.name NNB
 git.a config --global credential.helper store
