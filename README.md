@@ -22,7 +22,7 @@
 
 Run the following commands:
 
-<pre><code class="sh">sudo dnf install <a href="https://gitlab.gnome.org/GNOME/gnome-tweaks">gnome-tweaks</a> <a href="https://wiki.gnome.org/Projects/GnomeShellIntegration">gnome-browser-connector</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://github.com/oae/gnome-shell-pano#installation">libgda6</a>
+<pre><code class="sh">sudo dnf install <a href="https://gitlab.gnome.org/GNOME/gnome-tweaks">gnome-tweaks</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a>
 
 <a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
@@ -44,10 +44,9 @@ Then install the following Gnome extensions:
 
 - [Unite](https://extensions.gnome.org/extension/1287/unite)
 - [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell)
-- [Rounded Window Corners](https://extensions.gnome.org/extension/5237/rounded-window-corners)
 - [Compiz windows effect](https://extensions.gnome.org/extension/3210/compiz-windows-effect)
 - [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect)
-- [Pano](https://extensions.gnome.org/extension/5278/pano)
+- [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator)
 - [Color Picker](https://extensions.gnome.org/extension/3396/color-picker)
 
 That's all!
