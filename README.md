@@ -9,12 +9,12 @@
 
   ## 🌟 Starring 🌟
 
-  |      OS | 💽 | [BlendOS](https://NNB.codeberg.page/blog/en/posts/13)
+  |      OS | 💽 | [Fedora](https://NNB.codeberg.page/blog/en/posts/13)
   | ------: | -- | :- |
   |      DE | 🏞️ | [Gnome](https://NNB.codeberg.page/blog/en/posts/13#desktop-environment)
   |     IDE | 📝 | [VScode](https://nnb.codeberg.page/blog/en/posts/14)
-  |   Shell | 🐚 | [Ruby on Shell](https://NNB.codeberg.page/blog/en/posts/7)
-  | Browser | 🌏 | [Firefox](https://NNB.codeberg.page/blog/en/posts/3)
+  |   Shell | 🐚 | [Nushell](https://NNB.codeberg.page/blog/en/posts/7)
+  | Browser | 🌏 | [Brave](https://NNB.codeberg.page/blog/en/posts/3)
 
 </div>
 
@@ -22,14 +22,12 @@
 
 Run the following commands:
 
-<pre><code class="sh">sudo system install <a href="https://gitlab.gnome.org/GNOME/gnome-tweaks">gnome-tweaks</a> <a href="https://wiki.gnome.org/Projects/GnomeShellIntegration">gnome-browser-connector</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://github.com/oae/gnome-shell-pano#installation">libgda6</a>
-
-user create-container a <a href="https://archlinux.org">arch</a>
-yay.a --sync --sysupgrade --refresh --noconfirm <a href="https://git-scm.com">git</a> <a href="https://www.rust-lang.org">rustup</a> <a href="https://nodejs.org">npm</a> <a href="https://www.ruby-lang.org">ruby{,-docs}</a> <a href="https://www.aseprite.org">aseprite</a>
+<pre><code class="sh">sudo dnf install <a href="https://gitlab.gnome.org/GNOME/gnome-tweaks">gnome-tweaks</a> <a href="https://wiki.gnome.org/Projects/GnomeShellIntegration">gnome-browser-connector</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> <a href="https://github.com/oae/gnome-shell-pano#installation">libgda6</a>
 
 <a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
   <a href="https://obsproject.com">com.obsproject.Studio</a> \
+  <a href="https://brave.com">com.brave.Browser</a> \
   <a href="https://code.visualstudio.com">com.visualstudio.code</a> \
   <a href="https://godotengine.org">org.godotengine.Godot</a> \
   <a href="https://www.blender.org">org.blender.Blender</a> \
@@ -37,10 +35,10 @@ yay.a --sync --sysupgrade --refresh --noconfirm <a href="https://git-scm.com">gi
   <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
   <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a>
 
-git.a config --global user.email nnbnh@protonmail.com
-git.a config --global user.name NNB
-git.a config --global credential.helper store
-git.a config --global pull.rebase true</code></pre>
+git config --global user.email nnbnh@protonmail.com
+git config --global user.name NNB
+git config --global credential.helper store
+git config --global pull.rebase true</code></pre>
 
 Then install the following Gnome extensions:
 
