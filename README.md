@@ -27,7 +27,8 @@ Run the following commands:
   <a href="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme">papirus-icon-theme</a> \
   <a href="https://www.jetbrains.com/lp/mono">jetbrains-mono-fonts</a> \
   <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> \
-  <a href="https://github.com/GSConnect/gnome-shell-extension-gsconnect/wiki/Error#openssl-not-found">openssl</a>
+  <a href="https://github.com/GSConnect/gnome-shell-extension-gsconnect/wiki/Error#openssl-not-found">openssl</a> \
+  <a href="https://www.nushell.sh">nu</a>
 
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark
@@ -44,6 +45,8 @@ gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 12
   <a href="https://store.steampowered.com">com.valvesoftware.Steam</a> \
   <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
   <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a>
+
+<a href="https://github.com/flathub/org.blender.Blender/issues/130">sudo flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
 
 git config --global user.email nnbnh@protonmail.com
 git config --global user.name NNB
