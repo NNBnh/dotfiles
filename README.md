@@ -47,6 +47,7 @@ gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 12
   <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a>
 
 <a href="https://github.com/flathub/org.blender.Blender/issues/130">sudo flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
+flatpak override --user --filesystem "$HOME/Documents" com.valvesoftware.Steam # For Aseprite
 
 git config --global user.email nnbnh@protonmail.com
 git config --global user.name NNB
@@ -56,7 +57,6 @@ git config --global pull.rebase true</code></pre>
 Then install the following Gnome extensions:
 
 - [Unite](https://extensions.gnome.org/extension/1287/unite)
-- [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell)
 - [Compiz windows effect](https://extensions.gnome.org/extension/3210/compiz-windows-effect)
 - [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect)
 - [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator)
