@@ -12,9 +12,9 @@
   |      OS | 💽 | [Fedora](https://NNB.codeberg.page/blog/en/posts/13)
   | ------: | -- | :- |
   |      DE | 🏞️ | [Gnome](https://NNB.codeberg.page/blog/en/posts/13#desktop-environment)
-  |     IDE | 📝 | [VScode](https://nnb.codeberg.page/blog/en/posts/14)
-  |   Shell | 🐚 | [Nushell](https://NNB.codeberg.page/blog/en/posts/7)
-  | Browser | 🌏 | [Brave](https://NNB.codeberg.page/blog/en/posts/3)
+  |     IDE | 📝 | [Zed](https://nnb.codeberg.page/blog/en/posts/14) <sub>WIP</sub>
+  |   Shell | 🐚 | [Zsh](https://NNB.codeberg.page/blog/en/posts/7) <sub>WIP</sub>
+  | Browser | 🌏 | [Brave](https://NNB.codeberg.page/blog/en/posts/3) <sub>WIP</sub>
 
 </div>
 
@@ -28,7 +28,6 @@ Run the following commands:
   <a href="https://www.jetbrains.com/lp/mono">jetbrains-mono-fonts</a> \
   <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> \
   <a href="https://github.com/GSConnect/gnome-shell-extension-gsconnect/wiki/Error#openssl-not-found">openssl</a> \
-  <a href="https://www.nushell.sh">nu</a>
 
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark
@@ -36,6 +35,8 @@ gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
 gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 12'
 
 <a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
+  <a href="https://mattjakeman.com/apps/extension-manager">com.mattjakeman.ExtensionManager</a> \
+  <a href="https://github.com/tchx84/flatseal">com.github.tchx84.Flatseal</a> \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
   <a href="https://obsproject.com">com.obsproject.Studio</a> \
   <a href="https://brave.com">com.brave.Browser</a> \
@@ -46,9 +47,6 @@ gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 12
   <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
   <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a>
 
-<a href="https://github.com/flathub/org.blender.Blender/issues/130">sudo flatpak override --nosocket=wayland --socket=x11 org.blender.Blender</a>
-flatpak override --user --filesystem "$HOME/Documents" com.valvesoftware.Steam # For Aseprite
-
 git config --global user.email nnbnh@protonmail.com
 git config --global user.name NNB
 git config --global credential.helper store
@@ -57,7 +55,6 @@ git config --global pull.rebase true</code></pre>
 Then install the following Gnome extensions:
 
 - [Unite](https://extensions.gnome.org/extension/1287/unite)
-- [Compiz windows effect](https://extensions.gnome.org/extension/3210/compiz-windows-effect)
 - [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect)
 - [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator)
 - [Color Picker](https://extensions.gnome.org/extension/3396/color-picker)
