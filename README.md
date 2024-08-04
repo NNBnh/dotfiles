@@ -9,7 +9,7 @@
 
   ## 🌟 Starring 🌟
 
-  |      OS | 💽 | [Fedora](https://NNB.codeberg.page/blog/en/posts/13)
+  |      OS | 💽 | [Bazzite](https://NNB.codeberg.page/blog/en/posts/13) <sub>WIP</sub>
   | ------: | -- | :- |
   |      DE | 🏞️ | [Gnome](https://NNB.codeberg.page/blog/en/posts/13#desktop-environment)
   |     IDE | 📝 | [Zed](https://nnb.codeberg.page/blog/en/posts/14) <sub>WIP</sub>
@@ -22,29 +22,13 @@
 
 Run the following commands:
 
-<pre><code class="sh">sudo dnf install --assumeyes \
-  <a href="https://github.com/lassekongo83/adw-gtk3">adw-gtk3-theme</a> \
-  <a href="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme">papirus-icon-theme</a> \
-  <a href="https://www.jetbrains.com/lp/mono">jetbrains-mono-fonts</a> \
-  <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a> \
-  <a href="https://github.com/GSConnect/gnome-shell-extension-gsconnect/wiki/Error#openssl-not-found">openssl</a> \
-
-gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark
-gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
-gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 12'
-
-<a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
-  <a href="https://mattjakeman.com/apps/extension-manager">com.mattjakeman.ExtensionManager</a> \
-  <a href="https://github.com/tchx84/flatseal">com.github.tchx84.Flatseal</a> \
+<pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
   <a href="https://obsproject.com">com.obsproject.Studio</a> \
   <a href="https://brave.com">com.brave.Browser</a> \
-  <a href="https://code.visualstudio.com">com.visualstudio.code</a> \
+  <a href="https://zed.dev">dev.zed.Zed</a> \
   <a href="https://godotengine.org">org.godotengine.Godot</a> \
   <a href="https://www.blender.org">org.blender.Blender</a> \
-  <a href="https://store.steampowered.com">com.valvesoftware.Steam</a> \
-  <a href="https://ryujinx.org">org.ryujinx.Ryujinx</a> \
   <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a>
 
 git config --global user.email nnbnh@protonmail.com
@@ -55,7 +39,6 @@ git config --global pull.rebase true</code></pre>
 Then install the following Gnome extensions:
 
 - [Unite](https://extensions.gnome.org/extension/1287/unite)
-- [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect)
 - [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator)
 - [Color Picker](https://extensions.gnome.org/extension/3396/color-picker)
 
