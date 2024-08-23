@@ -12,9 +12,9 @@
   |      OS | 💽 | [Bazzite](https://NNB.codeberg.page/blog/en/posts/13) <sub>WIP</sub>
   | ------: | -- | :- |
   |      DE | 🏞️ | [Gnome](https://NNB.codeberg.page/blog/en/posts/13#desktop-environment)
-  |     IDE | 📝 | [Zed](https://nnb.codeberg.page/blog/en/posts/14) <sub>WIP</sub>
   |   Shell | 🐚 | [Zsh](https://NNB.codeberg.page/blog/en/posts/7) <sub>WIP</sub>
   | Browser | 🌏 | [Zen](https://NNB.codeberg.page/blog/en/posts/3) <sub>WIP</sub>
+  |  Editor | 📝 | [Zed](https://nnb.codeberg.page/blog/en/posts/14) <sub>WIP</sub>
 
 </div>
 
@@ -22,7 +22,9 @@
 
 Run the following commands:
 
-<pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
+<pre><code class="sh">sudo dnf install --assumeyes <a href="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme">papirus-icon-theme</a> <a href="https://www.jetbrains.com/lp/mono">jetbrains-mono-fonts</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a>
+
+<a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
   <a href="https://obsproject.com">com.obsproject.Studio</a> \
   <a href="https://www.zen-browser.app">io.github.zen_browser.zen</a> \
