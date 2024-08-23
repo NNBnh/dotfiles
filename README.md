@@ -14,7 +14,7 @@
   |      DE | 🏞️ | [Gnome](https://NNB.codeberg.page/blog/en/posts/13#desktop-environment)
   |     IDE | 📝 | [Zed](https://nnb.codeberg.page/blog/en/posts/14) <sub>WIP</sub>
   |   Shell | 🐚 | [Zsh](https://NNB.codeberg.page/blog/en/posts/7) <sub>WIP</sub>
-  | Browser | 🌏 | [Brave](https://NNB.codeberg.page/blog/en/posts/3) <sub>WIP</sub>
+  | Browser | 🌏 | [Zen](https://NNB.codeberg.page/blog/en/posts/3) <sub>WIP</sub>
 
 </div>
 
@@ -25,11 +25,10 @@ Run the following commands:
 <pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
   <a href="https://obsproject.com">com.obsproject.Studio</a> \
-  <a href="https://brave.com">com.brave.Browser</a> \
+  <a href="https://www.zen-browser.app">io.github.zen_browser.zen</a> \
   <a href="https://zed.dev">dev.zed.Zed</a> \
   <a href="https://godotengine.org">org.godotengine.Godot</a> \
-  <a href="https://www.blender.org">org.blender.Blender</a> \
-  <a href="https://prismlauncher.org">org.prismlauncher.PrismLauncher</a>
+  <a href="https://www.blender.org">org.blender.Blender</a>
 
 git config --global user.email nnbnh@protonmail.com
 git config --global user.name NNB
