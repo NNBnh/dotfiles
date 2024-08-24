@@ -21,6 +21,20 @@ eval "$(~/.local/bin/mise activate zsh)"
 command -v ~/.local/share/mise/installs/bun/latest/bin/bun >/dev/null || mise use --global bun
 command -v ~/.local/share/mise/installs/gleam/latest/bin/gleam >/dev/null || mise use --global gleam
 
+# Install other tools with Brew
+command -v brew >/dev/null || {
+  { test -d ~/.linuxbrew || test -d /home/linuxbrew/.linuxbrew; } \
+  || bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  test -d ~/.linuxbrew               && eval "$(~/.linuxbrew/bin/brew               shellenv)"
+  test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+}
+command -v brew >/dev/null && {
+  command -v eza   >/dev/null || brew install eza
+  command -v 7z    >/dev/null || brew install p7zip
+  command -v trash >/dev/null || brew install trash-cli
+  command -v git   >/dev/null || brew install git
+}
+
 
 # Environment variables ----------------------------------------------------------------------------
 
@@ -39,6 +53,7 @@ export SAVEHIST=10000
 # Set default editor/pager.
 #export EDITOR='nvim'
 #export VISUAL="${EDITOR}"
+
 
 # Options ------------------------------------------------------------------------------------------
 # You can find all available options on https://zsh.sourceforge.io/Doc/Release/Options.html
