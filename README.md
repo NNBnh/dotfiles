@@ -12,7 +12,7 @@
   |      OS | 💽 | [Bazzite](https://NNB.codeberg.page/blog/en/posts/13)
   | ------: | -- | :- |
   |      DE | 🏞️ | [Gnome](https://NNB.codeberg.page/blog/en/posts/13#desktop-environment)
-  |   Shell | 🐚 | [Zsh]() <sub>WIP</sub>
+  |   Shell | 🐚 | [Zsh](https://codeberg.org/NNB/kickstart.zsh)
   | Browser | 🌏 | [Zen](https://NNB.codeberg.page/blog/en/posts/3)
   |  Editor | 📝 | [Zed](https://nnb.codeberg.page/blog/en/posts/14)
 
