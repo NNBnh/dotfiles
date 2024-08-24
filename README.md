@@ -22,7 +22,7 @@
 
 Run the following commands:
 
-<pre><code class="sh">sudo dnf install --assumeyes <a href="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme">papirus-icon-theme</a> <a href="https://www.jetbrains.com/lp/mono">jetbrains-mono-fonts</a> <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a>
+<pre><code class="sh">rpm-ostree install <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a>
 
 <a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
