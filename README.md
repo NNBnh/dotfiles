@@ -34,8 +34,6 @@ Run the following commands:
 
 <a href="https://brew.sh">brew</a> install <a href="https://www.zsh.org">zsh</a> <a href="https://eza.rocks">eza</a> <a href="https://github.com/andreafrancia/trash-cli">trash-cli</a>
 
-<a href="https://mise.jdx.dev">mise</a> use --global <a href="https://bun.sh">bun</a> <a href="https://gleam.run">gleam</a>
-
 git config --global user.email nnbnh@protonmail.com
 git config --global user.name NNB
 git config --global credential.helper store
