@@ -9,12 +9,12 @@
 
   ## 🌟 Starring 🌟
 
-  |      OS | 💽 | [Bazzite](https://NNB.codeberg.page/blog/en/posts/13) <sub>WIP</sub>
+  |      OS | 💽 | [Bazzite](https://NNB.codeberg.page/blog/en/posts/13)
   | ------: | -- | :- |
   |      DE | 🏞️ | [Gnome](https://NNB.codeberg.page/blog/en/posts/13#desktop-environment)
-  |   Shell | 🐚 | [Zsh](https://NNB.codeberg.page/blog/en/posts/7) <sub>WIP</sub>
-  | Browser | 🌏 | [Zen](https://NNB.codeberg.page/blog/en/posts/3) <sub>WIP</sub>
-  |  Editor | 📝 | [Zed](https://nnb.codeberg.page/blog/en/posts/14) <sub>WIP</sub>
+  |   Shell | 🐚 | [Zsh]() <sub>WIP</sub>
+  | Browser | 🌏 | [Zen](https://NNB.codeberg.page/blog/en/posts/3)
+  |  Editor | 📝 | [Zed](https://nnb.codeberg.page/blog/en/posts/14)
 
 </div>
 
@@ -32,7 +32,7 @@ Run the following commands:
   <a href="https://godotengine.org">org.godotengine.Godot</a> \
   <a href="https://www.blender.org">org.blender.Blender</a>
 
-<a href="https://brew.sh">brew</a> install <a href="https://www.zsh.org">zsh</a> <a href="https://eza.rocks">eza</a>
+<a href="https://brew.sh">brew</a> install <a href="https://www.zsh.org">zsh</a> <a href="https://eza.rocks">eza</a> <a href="https://github.com/andreafrancia/trash-cli">trash-cli</a>
 
 <a href="https://mise.jdx.dev">mise</a> use --global <a href="https://bun.sh">bun</a> <a href="https://gleam.run">gleam</a>
 
