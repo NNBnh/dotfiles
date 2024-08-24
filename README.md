@@ -32,13 +32,8 @@ Run the following commands:
   <a href="https://godotengine.org">org.godotengine.Godot</a> \
   <a href="https://www.blender.org">org.blender.Blender</a>
 
-<a href="https://brew.sh">brew</a> install <a href="https://www.zsh.org">zsh</a> <a href="https://eza.rocks">eza</a> <a href="https://github.com/andreafrancia/trash-cli">trash-cli</a>
-curl https://codeberg.org/NNB/dotfiles/raw/branch/main/.zshrc > ~/.zshrc
-
-git config --global user.email nnbnh@protonmail.com
-git config --global user.name NNB
-git config --global credential.helper store
-git config --global pull.rebase true</code></pre>
+<a href="https://brew.sh">brew</a> install <a href="https://www.zsh.org">zsh</a>
+curl https://codeberg.org/NNB/dotfiles/raw/branch/main/.zshrc > ~/.zshrc</code></pre>
 
 Then install the following Gnome extensions:
 
