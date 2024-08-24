@@ -33,6 +33,7 @@ Run the following commands:
   <a href="https://www.blender.org">org.blender.Blender</a>
 
 <a href="https://brew.sh">brew</a> install <a href="https://www.zsh.org">zsh</a> <a href="https://eza.rocks">eza</a> <a href="https://github.com/andreafrancia/trash-cli">trash-cli</a>
+curl https://codeberg.org/NNB/dotfiles/raw/branch/main/.zshrc > ~/.zshrc
 
 git config --global user.email nnbnh@protonmail.com
 git config --global user.name NNB
