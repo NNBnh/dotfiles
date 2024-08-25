@@ -11,7 +11,7 @@
 
   |      OS | 💽 | [Bazzite](https://NNB.codeberg.page/blog/en/posts/13)
   | ------: | -- | :- |
-  |      DE | 🏞️ | [Gnome](https://NNB.codeberg.page/blog/en/posts/13#desktop-environment)
+  |      DE | 🏞️ | [KDE](https://NNB.codeberg.page/blog/en/posts/13#desktop-environment)
   |   Shell | 🐚 | [Zsh](https://codeberg.org/NNB/kickstart.zsh)
   | Browser | 🌏 | [Zen](https://NNB.codeberg.page/blog/en/posts/3)
   |  Editor | 📝 | [Zed](https://nnb.codeberg.page/blog/en/posts/14)
@@ -22,7 +22,9 @@
 
 Run the following commands:
 
-<pre><code class="sh">rpm-ostree install <a href="https://github.com/vn-input/ibus-unikey">ibus-unikey</a>
+<pre><code class="sh">echo "[Windows]\nBorderlessMaximizedWindows=true" >> ~/.config/kwinrc
+
+rpm-ostree install <a href="https://github.com/fcitx/fcitx5-unikey">fcitx5-unikey</a>
 
 <a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
@@ -34,12 +36,6 @@ Run the following commands:
 
 <a href="https://brew.sh">brew</a> install <a href="https://www.zsh.org">zsh</a>
 curl https://codeberg.org/NNB/dotfiles/raw/branch/main/.zshrc > ~/.zshrc</code></pre>
-
-Then install the following Gnome extensions:
-
-- [Unite](https://extensions.gnome.org/extension/1287/unite)
-- [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator)
-- [Color Picker](https://extensions.gnome.org/extension/3396/color-picker)
 
 That's all!
 
