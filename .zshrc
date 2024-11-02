@@ -18,7 +18,7 @@ eval "$(starship init zsh)"
 # Install Mise if it haven't already.
 command -v ~/.local/bin/mise >/dev/null || curl -sS https://mise.run | sh
 eval "$(~/.local/bin/mise activate zsh)"
-command -v ~/.local/share/mise/installs/bun/latest/bin/bun >/dev/null || mise use --global bun
+command -v ~/.local/share/mise/installs/bun/latest/bin/bun >/dev/null || mise use --global deno
 command -v ~/.local/share/mise/installs/gleam/latest/bin/gleam >/dev/null || mise use --global gleam
 
 # Install other tools with Brew
@@ -33,6 +33,7 @@ command -v brew >/dev/null && {
   command -v 7z    >/dev/null || brew install p7zip
   command -v trash >/dev/null || brew install trash-cli
   command -v git   >/dev/null || brew install git
+  command -v ruby  >/dev/null || brew install ruby
 }
 
 
