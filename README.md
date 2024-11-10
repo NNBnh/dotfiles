@@ -22,7 +22,7 @@
 
 Run the following commands:
 
-<pre><code class="sh">echo "[Windows]\nBorderlessMaximizedWindows=true" >> ~/.config/kwinrc
+<pre><code class="sh">echo -e "[Windows]\nBorderlessMaximizedWindows=true" >> ~/.config/kwinrc
 
 rpm-ostree install <a href="https://github.com/fcitx/fcitx5-unikey">fcitx5-unikey</a>
 
