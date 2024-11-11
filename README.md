@@ -24,9 +24,8 @@ Run the following commands:
 
 <pre><code class="sh">echo -e "[Windows]\nBorderlessMaximizedWindows=true" >> ~/.config/kwinrc
 
-rpm-ostree install <a href="https://github.com/fcitx/fcitx5-unikey">fcitx5-unikey</a>
-
 <a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
+  <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5</a> \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
   <a href="https://obsproject.com">com.obsproject.Studio</a> \
   <a href="https://www.zen-browser.app">io.github.zen_browser.zen</a> \
