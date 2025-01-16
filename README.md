@@ -28,7 +28,7 @@ Run the following commands:
   <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5 org.fcitx.Fcitx5.Addon.Unikey</a> \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
   <a href="https://obsproject.com">com.obsproject.Studio</a> \
-  <a href="https://www.zen-browser.app">io.github.zen_browser.zen</a> \
+  <a href="https://www.zen-browser.app">app.zen_browser.zen</a> \
   <a href="https://zed.dev">dev.zed.Zed</a> \
   <a href="https://godotengine.org">org.godotengine.Godot</a> \
   <a href="https://www.blender.org">org.blender.Blender</a>
