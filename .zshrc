@@ -1,42 +1,3 @@
-# Plugins ------------------------------------------------------------------------------------------
-
-# Install Zinit if it haven't already.
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-test -f "${ZINIT_HOME}/zinit.zsh" \
-|| git clone https://github.com/zdharma-continuum/zinit.git "${ZINIT_HOME}"
-source "${ZINIT_HOME}/zinit.zsh"
-
-# You can find more plugins on https://github.com/unixorn/awesome-zsh-plugins#plugins
-zinit light zdharma-continuum/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light marlonrichert/zsh-autocomplete
-
-# Install Starship if it haven't already.
-command -v starship >/dev/null || curl -sS https://starship.rs/install.sh | sh
-eval "$(starship init zsh)"
-
-# Install Mise if it haven't already.
-command -v ~/.local/bin/mise >/dev/null || curl -sS https://mise.run | sh
-eval "$(~/.local/bin/mise activate zsh)"
-command -v ~/.local/share/mise/installs/bun/latest/bin/bun >/dev/null || mise use --global bun
-command -v ~/.local/share/mise/installs/gleam/latest/bin/gleam >/dev/null || mise use --global gleam
-
-# Install other tools with Brew
-command -v brew >/dev/null || {
-  { test -d ~/.linuxbrew || test -d /home/linuxbrew/.linuxbrew; } \
-  || bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  test -d ~/.linuxbrew               && eval "$(~/.linuxbrew/bin/brew               shellenv)"
-  test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-}
-command -v brew >/dev/null && {
-  command -v eza   >/dev/null || brew install eza
-  command -v 7z    >/dev/null || brew install p7zip
-  command -v trash >/dev/null || brew install trash-cli
-  command -v git   >/dev/null || brew install git
-  command -v ruby  >/dev/null || brew install ruby
-}
-
-
 # Environment variables ----------------------------------------------------------------------------
 
 # Support XDG Base Directory.
@@ -88,13 +49,55 @@ setopt interactive_comments      # Allow comments even in interactive shells.
 #setopt vi                       # Enable Vi keybindings.
 
 
+# Install ------------------------------------------------------------------------------------------
+
+# Install Zinit if it haven't already.
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+test -f "${ZINIT_HOME}/zinit.zsh" \
+|| git clone https://github.com/zdharma-continuum/zinit.git "${ZINIT_HOME}"
+source "${ZINIT_HOME}/zinit.zsh"
+
+# You can find more plugins on https://github.com/unixorn/awesome-zsh-plugins#plugins
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+
+# Install Starship if it haven't already.
+command -v starship >/dev/null || curl -sS https://starship.rs/install.sh | sh
+eval "$(starship init zsh)"
+
+# Install Mise if it haven't already.
+command -v ~/.local/bin/mise >/dev/null || curl -sS https://mise.run | sh
+eval "$(~/.local/bin/mise activate zsh)"
+command -v ~/.local/share/mise/installs/bun/latest/bin/bun >/dev/null || mise use --global bun
+command -v ~/.local/share/mise/installs/gleam/latest/bin/gleam >/dev/null || mise use --global gleam
+
+# Install other tools with Brew
+command -v brew >/dev/null || {
+  { test -d ~/.linuxbrew || test -d /home/linuxbrew/.linuxbrew; } \
+  || bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  test -d ~/.linuxbrew               && eval "$(~/.linuxbrew/bin/brew               shellenv)"
+  test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+}
+command -v brew >/dev/null && {
+  command -v carapace >/dev/null || brew install carapace
+  command -v eza      >/dev/null || brew install eza
+  command -v 7z       >/dev/null || brew install p7zip
+  command -v trash    >/dev/null || brew install trash-cli
+  command -v jj       >/dev/null || brew install jj
+  command -v ruby     >/dev/null || brew install ruby
+}
+
+# Setup Carapace.
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
+
 # Aliases ------------------------------------------------------------------------------------------
 
 alias l='eza --almost-all --icons --group-directories-first --no-quotes'
 alias md='mkdir -p'
 alias dl='trash-put'
 alias a='7z'
-alias g='git'
 
 
 # Functions ----------------------------------------------------------------------------------------
