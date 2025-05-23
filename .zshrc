@@ -60,6 +60,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 # You can find more plugins on https://github.com/unixorn/awesome-zsh-plugins#plugins
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
+zinit light marlonrichert/zsh-autocomplete
 
 # Install Starship if it haven't already.
 command -v starship >/dev/null || curl -sS https://starship.rs/install.sh | sh
@@ -79,17 +80,12 @@ command -v brew >/dev/null || {
   test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 }
 command -v brew >/dev/null && {
-  command -v carapace >/dev/null || brew install carapace
   command -v eza      >/dev/null || brew install eza
   command -v 7z       >/dev/null || brew install p7zip
   command -v trash    >/dev/null || brew install trash-cli
   command -v jj       >/dev/null || brew install jj
   command -v ruby     >/dev/null || brew install ruby
 }
-
-# Setup Carapace.
-zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-source <(carapace _carapace)
 
 
 # Aliases ------------------------------------------------------------------------------------------
