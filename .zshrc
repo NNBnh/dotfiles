@@ -69,6 +69,7 @@ eval "$(starship init zsh)"
 # Install Mise if it haven't already.
 command -v ~/.local/bin/mise >/dev/null || curl -sS https://mise.run | sh
 eval "$(~/.local/bin/mise activate zsh)"
+command -v ~/.local/share/mise/installs/bun/latest/bin/bun >/dev/null || mise use --global bun
 
 # Install other tools with Brew
 command -v brew >/dev/null || {
