@@ -70,7 +70,7 @@ eval "$(starship init zsh)"
 command -v ~/.local/bin/mise >/dev/null || curl -sS https://mise.run | sh
 eval "$(~/.local/bin/mise activate zsh)"
 command -v ~/.local/share/mise/installs/bun/latest/bin/bun >/dev/null || mise use --global bun
-command -v ~/.local/share/mise/installs/gleam/latest/bin/gleam >/dev/null || mise use --global gleam
+command -v ~/.local/share/mise/installs/gleam/latest/bin/gleam >/dev/null || mise use --global gleam erlang rebar
 
 # Install other tools with Brew
 command -v brew >/dev/null || {
@@ -110,4 +110,4 @@ chpwd() { l; }
 
 # Startup ------------------------------------------------------------------------------------------
 
-#fastfetch
+command -v fastfetch >/dev/null || fastfetch
