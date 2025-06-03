@@ -13,8 +13,8 @@ export HISTSIZE=50000
 export SAVEHIST=10000
 
 # Set default editor/pager.
-#export EDITOR='nvim'
-#export VISUAL="${EDITOR}"
+export EDITOR='micro'
+export VISUAL="${EDITOR}"
 
 
 # Options ------------------------------------------------------------------------------------------
@@ -83,6 +83,7 @@ command -v brew >/dev/null && {
   command -v 7z       >/dev/null || brew install p7zip
   command -v trash    >/dev/null || brew install trash-cli
   command -v jj       >/dev/null || brew install jj
+  command -v micro    >/dev/null || brew install micro
   command -v bun      >/dev/null || brew install bun
   command -v gleam    >/dev/null || brew install gleam
   command -v ruby     >/dev/null || brew install ruby
