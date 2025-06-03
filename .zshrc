@@ -112,4 +112,4 @@ chpwd() { l; }
 
 # Startup ------------------------------------------------------------------------------------------
 
-command -v fastfetch >/dev/null || fastfetch
+command -v fastfetch >/dev/null && fastfetch
