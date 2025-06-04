@@ -12,7 +12,7 @@
   |      OS | 💽 | [Bazzite](https://NNB.codeberg.page/blog/en/posts/13)
   | ------: | -- | :- |
   |      DE | 🏞️ | [KDE](https://NNB.codeberg.page/blog/en/posts/13#desktop-environment)
-  |   Shell | 🐚 | [Zsh](https://codeberg.org/NNB/kickstart.zsh)
+  |   Shell | 🐚 | [Nu](https://www.nushell.sh)
   | Browser | 🌏 | [Zen](https://NNB.codeberg.page/blog/en/posts/3)
   |  Editor | 📝 | [Zed](https://nnb.codeberg.page/blog/en/posts/14)
 
@@ -31,8 +31,10 @@ Run the following commands:
   <a href="https://godotengine.org">org.godotengine.Godot</a> \
   <a href="https://www.blender.org">org.blender.Blender</a>
 
-<a href="https://brew.sh">brew</a> install <a href="https://www.zsh.org">zsh</a>
-curl https://codeberg.org/NNB/dotfiles/raw/branch/main/.zshrc > ~/.zshrc</code></pre>
+<a href="https://brew.sh">brew</a> install <a href="https://www.nushell.sh">nushell</a>
+mkdir -r ~/.config/nushell
+curl https://codeberg.org/NNB/dotfiles/raw/branch/main/config.nu > ~/.config/nushell/config.nu
+curl https://codeberg.org/NNB/dotfiles/raw/branch/main/env.nu > ~/.config/nushell/env.nu</code></pre>
 
 That's all!
 
