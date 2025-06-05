@@ -7,15 +7,17 @@ if (which brew | is-empty) {
 }
 
 if (which brew | is-not-empty) {
-    let pending_package = ["starship" "eza" "7z" "micro" "jj" "mise" "gleam" "ruby"]
+    if (which bun | is-empty) {
+        brew tap "oven-sh/bun"
+    }
+
+    let pending_package = ["starship" "eza" "7z" "micro" "jj" "bun" "gleam" "ruby"]
         | filter { |package| which $package | is-empty }
 
     if ($pending_package | is-not-empty) {
         brew install ...$pending_package
     }
 }
-
-mise use --global bun | ignore
 
 
 # Aliases ------------------------------------------------------------------------------------------
