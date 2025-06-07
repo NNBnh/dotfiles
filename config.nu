@@ -11,7 +11,7 @@ if (which brew | is-not-empty) {
         brew tap "oven-sh/bun"
     }
 
-    let pending_package = ["starship" "eza" "ripgrep" "7z" "micro" "jj" "bun" "gleam" "ruby"]
+    let pending_package = ["starship" "eza" "rg" "7z" "micro" "jj" "bun" "gleam" "ruby"]
         | filter { |package| which $package | is-empty }
 
     if ($pending_package | is-not-empty) {
