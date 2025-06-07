@@ -11,7 +11,7 @@ if (which brew | is-not-empty) {
         brew tap "oven-sh/bun"
     }
 
-    let pending_package = ["starship" "eza" "7z" "micro" "jj" "bun" "gleam" "ruby"]
+    let pending_package = ["starship" "eza" "ripgrep" "7z" "micro" "jj" "bun" "gleam" "ruby"]
         | filter { |package| which $package | is-empty }
 
     if ($pending_package | is-not-empty) {
@@ -22,11 +22,13 @@ if (which brew | is-not-empty) {
 
 # Aliases ------------------------------------------------------------------------------------------
 
-alias l = eza --almost-all --icons --group-directories-first --no-quotes
+alias l = eza --almost-all --git --header --icons --group-directories-first --no-quotes
+alias ll = l --long
 alias md = mkdir
 alias mv = mv --interactive --progress
 alias cp = cp --interactive --progress --recursive
-alias dl = rm --interactive --recursive --trash
+alias rm = rm --recursive
+alias d = rm
 alias a = 7z
 alias e = flatpak run dev.zed.Zed
 
@@ -34,7 +36,13 @@ alias e = flatpak run dev.zed.Zed
 # Environment variables ----------------------------------------------------------------------------
 
 $env.config.show_banner = false
-$env.config.buffer_editor = "micro"
+
+$env.EDITOR = "micro"
+$env.VISUAL = $env.EDITOR
+$env.config.buffer_editor = $env.EDITOR
+
+$env.config.rm.always_trash = true
+
 $env.config.hooks = {
     env_change: {
         PWD: [
@@ -71,6 +79,22 @@ def c [...args] {
     } else {
         cp ...$args
     }
+}
+
+# Open a new terminal.
+def n [] {
+    let $terminal_paths = which $env.TERM_PROGRAM | get path
+
+    if ($terminal_paths | is-empty) {
+        return
+    }
+
+    let $terminal_path = | first
+
+    job spawn {
+        nu --commands $terminal_path out+err>| ignore
+    }
+    | ignore
 }
 
 
