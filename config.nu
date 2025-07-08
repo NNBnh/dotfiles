@@ -11,11 +11,24 @@ if (which brew | is-not-empty) {
         brew tap "oven-sh/bun"
     }
 
-    let pending_package = ["starship" "eza" "rg" "7z" "micro" "jj" "bun" "gleam" "ruby"]
-        | filter { |package| which $package | is-empty }
+    let packages = [
+        ["name" "bin"];
+        ["starship" "starship"]
+        ["television" "tv"]
+        ["eza" "eza"]
+        ["zip7p" "7z"]
+        ["ripgrep" "rg"]
+        ["micro" "micro"]
+        ["jj" "jj"]
+        ["bun" "bun"]
+        ["gleam" "gleam"]
+        ["ruby" "ruby"]
+    ]
 
-    if ($pending_package | is-not-empty) {
-        brew install ...$pending_package
+    let pending_packages = $packages | where { |package| which $package.bin | is-empty }
+
+    if ($pending_packages | select "bin" | is-not-empty) {
+        brew install ...$pending_packages
     }
 }
 
@@ -102,3 +115,4 @@ def n [] {
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+#tv init nu | save -f ($nu.data-dir | path join "vendor/autoload/tv.nu")
