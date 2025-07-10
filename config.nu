@@ -16,9 +16,11 @@ if (which brew | is-not-empty) {
         ["starship" "starship"]
         ["television" "tv"]
         ["eza" "eza"]
-        ["zip7p" "7z"]
+        ["fd" "fd"]
         ["ripgrep" "rg"]
+        ["bat" "bat"]
         ["micro" "micro"]
+        ["zip7p" "7z"]
         ["jj" "jj"]
         ["bun" "bun"]
         ["gleam" "gleam"]
@@ -27,8 +29,8 @@ if (which brew | is-not-empty) {
 
     let pending_packages = $packages | where { |package| which $package.bin | is-empty }
 
-    if ($pending_packages | select "bin" | is-not-empty) {
-        brew install ...$pending_packages
+    if ($pending_packages | is-not-empty) {
+        brew install ...($pending_packages | get "name")
     }
 }
 
@@ -115,4 +117,4 @@ def n [] {
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
-#tv init nu | save -f ($nu.data-dir | path join "vendor/autoload/tv.nu")
+tv init nu | save -f ($nu.data-dir | path join "vendor/autoload/tv.nu")
