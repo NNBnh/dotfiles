@@ -7,10 +7,6 @@ if (which brew | is-empty) {
 }
 
 if (which brew | is-not-empty) {
-    if (which bun | is-empty) {
-        brew tap "oven-sh/bun"
-    }
-
     let packages = [
         ["name" "bin"];
         ["starship" "starship"]
@@ -22,7 +18,7 @@ if (which brew | is-not-empty) {
         ["micro" "micro"]
         ["zip7p" "7z"]
         ["jj" "jj"]
-        ["bun" "bun"]
+        ["oven-sh/bun/bun" "bun"]
         ["gleam" "gleam"]
         ["ruby" "ruby"]
     ]
