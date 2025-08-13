@@ -121,4 +121,4 @@ mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 tv init nu | save -f ($nu.data-dir | path join "vendor/autoload/tv.nu")
 
-cd ($env.PWD | str replace --regex "^/var/" "/")
+cd ($env.PWD | str replace --regex "^/var/home/" "/home/")
