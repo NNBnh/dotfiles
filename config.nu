@@ -57,7 +57,13 @@ $env.config.rm.always_trash = true
 $env.config.hooks = {
     env_change: {
         PWD: [
-            {|before, after| l $after }
+            {|before, after|
+                if $after == $env.HOME {
+                    eza --icons --group-directories-first --no-quotes
+                } else {
+                    l
+                }
+            }
         ]
     }
 }
@@ -114,3 +120,5 @@ def n [] {
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 tv init nu | save -f ($nu.data-dir | path join "vendor/autoload/tv.nu")
+
+cd ($env.PWD | str replace --regex "^/var/" "/")
