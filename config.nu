@@ -15,7 +15,7 @@ if (which brew | is-not-empty) {
         ["fd" "fd"]
         ["ripgrep" "rg"]
         ["bat" "bat"]
-        ["fresh-editor" "fresh-editor"]
+        ["fresh-editor" "fresh"]
         ["zip7p" "7z"]
         ["jj" "jj"]
         ["oven-sh/bun/bun" "bun"]
