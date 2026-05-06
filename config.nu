@@ -106,7 +106,7 @@ def n [] {
         return
     }
 
-    let $terminal_path = | first
+    let $terminal_path = $terminal_paths | first
 
     job spawn {
         nu --commands $terminal_path out+err>| ignore
