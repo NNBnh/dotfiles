@@ -15,7 +15,7 @@ if (which brew | is-not-empty) {
         ["fd" "fd"]
         ["ripgrep" "rg"]
         ["bat" "bat"]
-        ["fresh-editor" "fresh"]
+        ["helix" "hx"]
         ["zip7p" "7z"]
         ["jj" "jj"]
         ["oven-sh/bun/bun" "bun"]
@@ -41,14 +41,14 @@ alias cp = cp --interactive --progress --recursive
 alias rm = rm --recursive
 alias d = rm
 alias a = 7z
-alias e = flatpak run dev.zed.Zed
+alias e = hx
 
 
 # Environment variables ----------------------------------------------------------------------------
 
 $env.config.show_banner = false
 
-$env.EDITOR = "micro"
+$env.EDITOR = "hx"
 $env.VISUAL = $env.EDITOR
 $env.config.buffer_editor = $env.EDITOR
 
