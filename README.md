@@ -29,10 +29,7 @@ Run the following commands:
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
   <a href="https://obsproject.com">com.obsproject.Studio</a> \
   <a href="https://www.zen-browser.app">app.zen_browser.zen</a> \
-  <a href="https://zed.dev">dev.zed.Zed</a> \
-  <a href="https://www.shotcut.org">org.shotcut.Shotcut</a> \
-  <a href="https://www.blender.org">org.blender.Blender</a> \
-  <a href="https://www.blockbench.net">net.blockbench.Blockbench</a>
+  <a href="https://zed.dev">dev.zed.Zed</a>
 
 <a href="https://brew.sh">brew</a> install <a href="https://www.nushell.sh">nushell</a>
 mkdir -r ~/.config/nushell
