@@ -23,7 +23,8 @@
 Run the following commands:
 
 <pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
-  <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5 org.fcitx.Fcitx5.Addon.Unikey</a> \
+  <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5</a> \
+  <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5.Addon.Unikey</a> \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
   <a href="https://obsproject.com">com.obsproject.Studio</a>
 
