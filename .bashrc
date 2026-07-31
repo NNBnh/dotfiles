@@ -43,6 +43,7 @@ alias d="trash-put"
 alias a="7z"
 alias e="${EDITOR}"
 
+cd() { builtin cd "$@" && l; }
 s()  { s=(); for path in "$@"; do s+=("$(readlink -f "${path}")"); done }
 m()  { command mv    "${s[@]}" .; }
 c()  { command cp -r "${s[@]}" .; }
