@@ -17,7 +17,7 @@ command -v brew >/dev/null && {
     command -v trash    >/dev/null || brew install trash-cli
     command -v bun      >/dev/null || brew install oven-sh/bun/bun
     command -v gleam    >/dev/null || brew install gleam
-    command -v ruby     >/dev/null || brew install ruby
+    command -v ruby     >/dev/null || { brew install ruby && gem install rubyshell; }
 }
 
 test -f "${HOME}/.local/lib/libflyline.so" \
