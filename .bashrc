@@ -11,7 +11,6 @@ command -v brew >/dev/null && {
     command -v eza      >/dev/null || brew install eza
     command -v fd       >/dev/null || brew install fd
     command -v rg       >/dev/null || brew install ripgrep
-    command -v bat      >/dev/null || brew install bat
     command -v hx       >/dev/null || brew install helix
     command -v 7z       >/dev/null || brew install p7zip
     command -v trash    >/dev/null || brew install trash-cli
@@ -42,6 +41,7 @@ alias l="eza --almost-all --git --header --icons --group-directories-first --no-
 alias md="mkdir -p"
 alias d="trash-put"
 alias a="7z"
+alias g="git"
 alias e="${EDITOR}"
 
 cd() { builtin cd "$@" && l; }
