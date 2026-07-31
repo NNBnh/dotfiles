@@ -28,7 +28,7 @@ command -v flyline >/dev/null && {
     #flyline key bind Ctrl+a "always=SelectAll"
     flyline key bind Alt+Up "always=clearBuffer+insertString(cd ..)+submitOrNewline"
     flyline key bind Alt+Down "always=clearBuffer+insertString(l)+submitOrNewline"
-    flyline key bind Alt+Shift+Down "always=clearBuffer+insertString(ll)+submitOrNewline"
+    flyline key bind Alt+Shift+Down "always=clearBuffer+insertString(l --long)+submitOrNewline"
 }
 
 shopt -s autocd dotglob globstar nullglob
@@ -38,7 +38,6 @@ export EDITOR="hx"
 export VISUAL="${EDITOR}"
 
 alias l="eza --almost-all --git --header --icons --group-directories-first --no-quotes"
-alias ll="l --long"
 alias md="mkdir -p"
 alias d="trash-put"
 alias a="7z"
