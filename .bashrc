@@ -20,8 +20,6 @@ command -v brew >/dev/null && {
     command -v ruby     >/dev/null || brew install ruby
 }
 
-shopt -s autocd dotglob globstar nullglob
-
 test -f "${HOME}/.local/lib/libflyline.so" \
 || curl -fsSL "https://github.com/HalFrgrd/flyline/releases/latest/download/install.sh" | sh
 test -f "${HOME}/.local/lib/libflyline.so" && enable -f "${HOME}/.local/lib/libflyline.so" flyline
@@ -32,6 +30,8 @@ command -v flyline >/dev/null && {
     flyline key bind Alt+Down "always=clearBuffer+insertString(l)+submitOrNewline"
     flyline key bind Alt+Shift+Down "always=clearBuffer+insertString(ll)+submitOrNewline"
 }
+
+shopt -s autocd dotglob globstar nullglob
 
 export HISTCONTROL="ignorespace:erasedups"
 export EDITOR="hx"
