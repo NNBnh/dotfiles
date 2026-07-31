@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 command -v brew >/dev/null || {
     { test -d ~/.linuxbrew || test -d /home/linuxbrew/.linuxbrew; } \
