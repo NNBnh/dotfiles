@@ -27,9 +27,9 @@ command -v flyline >/dev/null && {
     flyline set-cursor --backend terminal --interpolate none
     flyline key bind Ctrl+a         "always=selectAll"
     flyline key bind Right          "bufferIsEmpty=insertString(./)"
-    flyline key bind Alt+Up         "always=clearBuffer+insertString(cd ..)+submitOrNewline"
-    flyline key bind Alt+Down       "always=clearBuffer+insertString(l)+submitOrNewline"
-    flyline key bind Alt+Shift+Down "always=clearBuffer+insertString(l --long)+submitOrNewline"
+    flyline key bind Alt+Up         "bufferIsEmpty=insertString(cd ..)+submitOrNewline"
+    flyline key bind Alt+Down       "bufferIsEmpty=insertString(l)+submitOrNewline"
+    flyline key bind Alt+Shift+Down "bufferIsEmpty=insertString(l --long)+submitOrNewline"
 }
 
 shopt -s autocd dotglob globstar nullglob
