@@ -25,9 +25,10 @@ test -f "${HOME}/.local/lib/libflyline.so" \
 test -f "${HOME}/.local/lib/libflyline.so" && enable -f "${HOME}/.local/lib/libflyline.so" flyline
 command -v flyline >/dev/null && {
     flyline set-cursor --backend terminal --interpolate none
-    #flyline key bind Ctrl+a "always=SelectAll"
-    flyline key bind Alt+Up "always=clearBuffer+insertString(cd ..)+submitOrNewline"
-    flyline key bind Alt+Down "always=clearBuffer+insertString(l)+submitOrNewline"
+    flyline key bind Ctrl+a         "always=selectAll"
+    flyline key bind Right          "bufferIsEmpty=insertString(./)"
+    flyline key bind Alt+Up         "always=clearBuffer+insertString(cd ..)+submitOrNewline"
+    flyline key bind Alt+Down       "always=clearBuffer+insertString(l)+submitOrNewline"
     flyline key bind Alt+Shift+Down "always=clearBuffer+insertString(l --long)+submitOrNewline"
 }
 
