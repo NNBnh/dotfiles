@@ -9,12 +9,12 @@
 
   ## 🌟 Starring 🌟
 
-  |      OS | 💽 | [Bazzite](https://NNB.codeberg.page/blog/en/posts/13)
+  |      OS | 💽 | [Dank Linux](https://danklinux.com)
   | ------: | -- | :- |
-  |      DE | 🏞️ | [KDE](https://NNB.codeberg.page/blog/en/posts/13#desktop-environment)
-  |   Shell | 🐚 | [Nu](https://www.nushell.sh)
-  | Browser | 🌏 | [Zen](https://NNB.codeberg.page/blog/en/posts/3)
-  |  Editor | 📝 | [Zed](https://nnb.codeberg.page/blog/en/posts/14)
+  |      DE | 🏞️ | [Niri](https://github.com/niri-wm/niri)
+  |   Shell | 🐚 | [Flyline](https://github.com/HalFrgrd/flyline)
+  | Browser | 🌏 | [Helium](https://helium.computer)
+  |  Editor | 📝 | [Helix](https://helix-editor.com)
 
 </div>
 
@@ -22,19 +22,12 @@
 
 Run the following commands:
 
-<pre><code class="sh">echo -e "[Windows]\nBorderlessMaximizedWindows=true" >> ~/.config/kwinrc
-
-<a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
+<pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
   <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5 org.fcitx.Fcitx5.Addon.Unikey</a> \
   <a href="https://usebottles.com">com.usebottles.bottles</a> \
-  <a href="https://obsproject.com">com.obsproject.Studio</a> \
-  <a href="https://www.zen-browser.app">app.zen_browser.zen</a> \
-  <a href="https://zed.dev">dev.zed.Zed</a>
+  <a href="https://obsproject.com">com.obsproject.Studio</a>
 
-<a href="https://brew.sh">brew</a> install <a href="https://www.nushell.sh">nushell</a>
-mkdir -r ~/.config/nushell
-curl https://codeberg.org/NNB/dotfiles/raw/branch/main/config.nu > ~/.config/nushell/config.nu
-curl https://codeberg.org/NNB/dotfiles/raw/branch/main/env.nu > ~/.config/nushell/env.nu</code></pre>
+curl https://codeberg.org/NNB/dotfiles/raw/branch/main/.bashrc > ~/.bashrc</code></pre>
 
 That's all!
 
