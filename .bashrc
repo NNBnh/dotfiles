@@ -1,36 +1,5 @@
 #!/usr/bin/env bash
 
-command -v brew >/dev/null || {
-    { test -d ~/.linuxbrew || test -d /home/linuxbrew/.linuxbrew; } \
-    || bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-    test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-}
-command -v brew >/dev/null && {
-    command -v starship >/dev/null || brew install starship
-    command -v eza      >/dev/null || brew install eza
-    command -v fd       >/dev/null || brew install fd
-    command -v rg       >/dev/null || brew install ripgrep
-    command -v hx       >/dev/null || brew install helix
-    command -v 7z       >/dev/null || brew install p7zip
-    command -v trash    >/dev/null || brew install trash-cli
-    command -v bun      >/dev/null || brew install oven-sh/bun/bun
-    command -v gleam    >/dev/null || brew install gleam
-    command -v ruby     >/dev/null || { brew install ruby && gem install rubyshell; }
-}
-
-test -f "${HOME}/.local/lib/libflyline.so" \
-|| curl -fsSL "https://github.com/HalFrgrd/flyline/releases/latest/download/install.sh" | sh
-test -f "${HOME}/.local/lib/libflyline.so" && enable -f "${HOME}/.local/lib/libflyline.so" flyline
-command -v flyline >/dev/null && {
-    flyline set-cursor --backend terminal --interpolate none
-    flyline key bind Ctrl+a         "always=selectAll"
-    flyline key bind Right          "bufferIsEmpty=insertString(./)"
-    flyline key bind Alt+Up         "bufferIsEmpty=insertString(cd ..)+submitOrNewline"
-    flyline key bind Alt+Down       "bufferIsEmpty=insertString(l)+submitOrNewline"
-    flyline key bind Alt+Shift+Down "bufferIsEmpty=insertString(l --long)+submitOrNewline"
-}
-
 shopt -s autocd dotglob globstar nullglob
 
 export HISTCONTROL="ignorespace:erasedups"
@@ -51,4 +20,31 @@ c()  { command cp -r "${s[@]}" .; }
 sl() { command ln -s "${s[@]}" .; }
 hl() { command ln    "${s[@]}" .; }
 
-command -v starship >/dev/null && eval "$(starship init bash)"
+[[ -f "${HOME}/.local/lib/libflyline.so" ]] || curl -fsSL "https://github.com/HalFrgrd/flyline/releases/latest/download/install.sh" | sh
+enable -f "${HOME}/.local/lib/libflyline.so" flyline
+flyline set-cursor --backend terminal --interpolate none
+flyline key bind Ctrl+a         "always=selectAll"
+flyline key bind Right          "bufferIsEmpty=insertString(./)"
+flyline key bind Alt+Up         "bufferIsEmpty=insertString(cd ..)+submitOrNewline"
+flyline key bind Alt+Down       "bufferIsEmpty=insertString(l)+submitOrNewline"
+flyline key bind Alt+Shift+Down "bufferIsEmpty=insertString(l --long)+submitOrNewline"
+
+brew-shellenv() {
+    [[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    [[ -x "~/.linuxbrew/bin/brew" ]] && eval "$(~/.linuxbrew/bin/brew shellenv)"
+}
+
+install-wizard() {
+    { command -v brew >/dev/null || command -v pkg >/dev/null; } || {
+        bash -c "$(curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh")"
+        brew-shellenv
+    }
+    command -v brew >/dev/null && brew install starship eza fd ripgrep helix p7zip trash-cli bun gleam ruby
+    command -v pkg >/dev/null && pkg install --yes starship eza fd ripgrep helix 7zip python-trash-cli gleam ruby
+    command -v bun >/dev/null || curl -fsSL https://bun.com/install | bash
+    command -v gem >/dev/null && gem install rubyshell
+}
+
+brew-shellenv
+
+command -v starship >/dev/null || install-wizard && eval "$(starship init bash)"
