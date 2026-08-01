@@ -1,10 +1,27 @@
 #!/usr/bin/env bash
 
+# Options ------------------------------------------------------------------------------------------
+
 shopt -s autocd dotglob globstar nullglob
+
+[[ -f ~/.local/lib/libflyline.so ]] || curl -fsSL "https://github.com/HalFrgrd/flyline/releases/latest/download/install.sh" | sh
+enable -f ~/.local/lib/libflyline.so flyline
+flyline set-cursor --backend terminal --interpolate none
+flyline key bind Ctrl+a "always=selectAll"
+flyline key bind Right "bufferIsEmpty=insertString(./)"
+flyline key bind Alt+Left "bufferIsEmpty=insertString(prevd)+submitOrNewline"
+flyline key bind Alt+Right "bufferIsEmpty=insertString(nextd)+submitOrNewline"
+flyline key bind Alt+Up "bufferIsEmpty=insertString(cd ..)+submitOrNewline"
+flyline key bind Alt+Down "bufferIsEmpty=insertString(l)+submitOrNewline"
+flyline key bind Alt+Shift+Down "bufferIsEmpty=insertString(l --long)+submitOrNewline"
+
+# Environment variables ----------------------------------------------------------------------------
 
 export HISTCONTROL="ignorespace:erasedups"
 export EDITOR="hx"
 export VISUAL="${EDITOR}"
+
+# Aliases ------------------------------------------------------------------------------------------
 
 alias l="eza --almost-all --git --header --icons --group-directories-first --no-quotes"
 alias md="mkdir -p"
@@ -13,38 +30,36 @@ alias a="7z"
 alias g="git"
 alias e="${EDITOR}"
 
-cd() { builtin cd "$@" && l; }
-s()  { s=(); for path in "$@"; do s+=("$(readlink -f "${path}")"); done }
-m()  { command mv    "${s[@]}" .; }
-c()  { command cp -r "${s[@]}" .; }
-sl() { command ln -s "${s[@]}" .; }
-hl() { command ln    "${s[@]}" .; }
+# Functions ----------------------------------------------------------------------------------------
 
-[[ -f "${HOME}/.local/lib/libflyline.so" ]] || curl -fsSL "https://github.com/HalFrgrd/flyline/releases/latest/download/install.sh" | sh
-enable -f "${HOME}/.local/lib/libflyline.so" flyline
-flyline set-cursor --backend terminal --interpolate none
-flyline key bind Ctrl+a         "always=selectAll"
-flyline key bind Right          "bufferIsEmpty=insertString(./)"
-flyline key bind Alt+Up         "bufferIsEmpty=insertString(cd ..)+submitOrNewline"
-flyline key bind Alt+Down       "bufferIsEmpty=insertString(l)+submitOrNewline"
-flyline key bind Alt+Shift+Down "bufferIsEmpty=insertString(l --long)+submitOrNewline"
+dirprev=()
+dirnext=()
+prevd() { [[ "${#dirprev[@]}" -gt 0 ]] && { builtin cd "${dirprev[-1]}" && { dirnext+=("${OLDPWD}"); l; }; unset 'dirprev[${#dirprev[@]}-1]'; }; }
+nextd() { [[ "${#dirnext[@]}" -gt 0 ]] && { builtin cd "${dirnext[-1]}" && { dirprev+=("${OLDPWD}"); l; }; unset 'dirnext[${#dirnext[@]}-1]'; }; }
+cd() { builtin cd "$@" && { [[ "${#dirprev[@]}" -le 0 || "${OLDPWD}" != "${dirprev[-1]}" ]] && dirprev+=("${OLDPWD}"); dirnext=(); l; }; }
+
+s() { s=(); for path in "$@"; do s+=("$(readlink -f "${path}")"); done }
+m() { [[ "${#s[@]}" -gt 0 ]] && mv "${s[@]}" . && s=(); }
+c() { [[ "${#s[@]}" -gt 0 ]] && cp -r "${s[@]}" .; }
+sl() { [[ "${#s[@]}" -gt 0 ]] && ln -s "${s[@]}" .; }
+hl() { [[ "${#s[@]}" -gt 0 ]] && ln "${s[@]}" .; }
+
+# Startup ------------------------------------------------------------------------------------------
 
 brew-shellenv() {
-    [[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    [[ -x "~/.linuxbrew/bin/brew" ]] && eval "$(~/.linuxbrew/bin/brew shellenv)"
-}
-
-install-wizard() {
-    { command -v brew >/dev/null || command -v pkg >/dev/null; } || {
-        bash -c "$(curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh")"
-        brew-shellenv
-    }
-    command -v brew >/dev/null && brew install starship eza fd ripgrep helix p7zip trash-cli bun gleam ruby
-    command -v pkg >/dev/null && pkg install --yes starship eza fd ripgrep helix 7zip python-trash-cli gleam ruby
-    command -v bun >/dev/null || curl -fsSL https://bun.com/install | bash
-    command -v gem >/dev/null && gem install rubyshell
+    [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    [[ -x ~/.linuxbrew/bin/brew ]] && eval "$(~/.linuxbrew/bin/brew shellenv)"
 }
 
 brew-shellenv
 
-command -v starship >/dev/null || install-wizard && eval "$(starship init bash)"
+command -v starship >/dev/null || {
+    command -v brew >/dev/null || {
+        bash -c "$(curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh")"
+        brew-shellenv
+    }
+    brew install starship eza helix p7zip trash-cli bun gleam ruby
+    gem install rubyshell
+}
+
+eval "$(starship init bash)"
