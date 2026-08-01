@@ -8,7 +8,7 @@ shopt -s autocd dotglob globstar nullglob
 enable -f ~/.local/lib/libflyline.so flyline
 flyline set-cursor --backend terminal --interpolate none
 flyline key bind Ctrl+a "always=selectAll"
-flyline key bind Right "bufferIsEmpty=insertString(./)"
+flyline key bind Right "bufferIsEmpty=insertString(cd )"
 flyline key bind Alt+Left "bufferIsEmpty=insertString(prevd)+submitOrNewline"
 flyline key bind Alt+Right "bufferIsEmpty=insertString(nextd)+submitOrNewline"
 flyline key bind Alt+Up "bufferIsEmpty=insertString(cd ..)+submitOrNewline"
@@ -36,7 +36,7 @@ dirprev=()
 dirnext=()
 prevd() { [[ "${#dirprev[@]}" -gt 0 ]] && { builtin cd "${dirprev[-1]}" && { dirnext+=("${OLDPWD}"); l; }; unset 'dirprev[${#dirprev[@]}-1]'; }; }
 nextd() { [[ "${#dirnext[@]}" -gt 0 ]] && { builtin cd "${dirnext[-1]}" && { dirprev+=("${OLDPWD}"); l; }; unset 'dirnext[${#dirnext[@]}-1]'; }; }
-cd() { builtin cd "$@" && { [[ "${#dirprev[@]}" -le 0 || "${OLDPWD}" != "${dirprev[-1]}" ]] && dirprev+=("${OLDPWD}"); dirnext=(); l; }; }
+cd() { builtin cd "$@" && { [[ "${PWD}" != "${OLDPWD}" && "${#dirprev[@]}" -le 0 || "${OLDPWD}" != "${dirprev[-1]}" ]] && dirprev+=("${OLDPWD}"); dirnext=(); l; }; }
 
 s() { s=(); for path in "$@"; do s+=("$(readlink -f "${path}")"); done }
 m() { [[ "${#s[@]}" -gt 0 ]] && mv "${s[@]}" . && s=(); }
