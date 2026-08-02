@@ -4,7 +4,10 @@
 
 shopt -s autocd dotglob globstar nullglob
 
-[[ -f ~/.local/lib/libflyline.so ]] || curl -fsSL "https://github.com/HalFrgrd/flyline/releases/latest/download/install.sh" | sh
+[[ -f ~/.local/lib/libflyline.so ]] || {
+    export FLYLINE_VERSION="0.0.0"
+    curl -fsSL "https://github.com/HalFrgrd/flyline/releases/latest/download/install.sh" | sh
+}
 enable -f ~/.local/lib/libflyline.so flyline
 flyline set-cursor --backend terminal --interpolate none
 flyline suggestions --sort-order alphabetical
