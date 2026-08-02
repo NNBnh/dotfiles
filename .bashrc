@@ -7,6 +7,7 @@ shopt -s autocd dotglob globstar nullglob
 [[ -f ~/.local/lib/libflyline.so ]] || curl -fsSL "https://github.com/HalFrgrd/flyline/releases/latest/download/install.sh" | sh
 enable -f ~/.local/lib/libflyline.so flyline
 flyline set-cursor --backend terminal --interpolate none
+flyline suggestions --sort-order alphabetical
 flyline key bind Ctrl+a "always=selectAll"
 flyline key bind Right "bufferIsEmpty=insertString(cd )"
 flyline key bind Alt+Left "bufferIsEmpty=insertString(prevd)+submitOrNewline"
