@@ -20,9 +20,11 @@
 
 ## 🚀 Setup
 
-Install Flatpak's packages:
+### 🪟 Install applications
 
 <pre class="code-block"><code class="chroma language-sh display"><a href="https://flatpak.org">flatpak</a> install flathub --assumeyes <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5</a> <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5.Addon.Unikey</a> <a href="https://usebottles.com">com.usebottles.bottles</a></code></pre>
+
+### 📟 Install CLI packages
 
 Install Homebrew:
 
@@ -30,25 +32,30 @@ Install Homebrew:
 bash -c "$(curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh")"
 ```
 
-Install Homebrew's packages:
+Install [Homebrew](https://brew.sh)'s packages:
 
-<pre class="code-block"><code class="chroma language-sh display"><a href="https://brew.sh">brew</a> install <a href="https://starship.rs">starship</a> <a href="https://eza.rocks">eza</a> <a href="https://helix-editor.com">helix</a> <a href="https://7-zip.org">sevenzip</a> <a href="https://github.com/andreafrancia/trash-cli">trash-cli</a> <a href="https://bun.com">bun</a> <a href="https://gleam.run">gleam</a> <a href="https://www.ruby-lang.org">ruby</a></code></pre>
+<pre class="code-block"><code class="chroma language-sh display">brew install <a href="https://starship.rs">starship</a> <a href="https://eza.rocks">eza</a> <a href="https://helix-editor.com">helix</a> <a href="https://7-zip.org">sevenzip</a> <a href="https://github.com/andreafrancia/trash-cli">trash-cli</a> <a href="https://bun.com">bun</a> <a href="https://gleam.run">gleam</a> <a href="https://www.ruby-lang.org">ruby</a></code></pre>
 
-Or install Termux's packages:
+Or install [Termux](https://wiki.termux.com/wiki/Package_Management)'s packages:
 
-<pre class="code-block"><code class="chroma language-sh display"><a href="https://wiki.termux.com/wiki/Package_Management">pkg</a> install --yes <a href="https://starship.rs">starship</a> <a href="https://eza.rocks">eza</a> <a href="https://helix-editor.com">helix</a> <a href="https://7-zip.org">7zip</a> <a href="https://github.com/andreafrancia/trash-cli">python-trash-cli</a> <a href="https://gleam.run">gleam</a> <a href="https://www.ruby-lang.org">ruby</a>
-curl -fsSL <span class="s2">"https://bun.sh/install"</span> | bash</code></pre>
+<pre class="code-block"><code class="chroma language-sh display">pkg install --yes <a href="https://starship.rs">starship</a> <a href="https://eza.rocks">eza</a> <a href="https://helix-editor.com">helix</a> <a href="https://7-zip.org">7zip</a> <a href="https://github.com/andreafrancia/trash-cli">python-trash-cli</a> <a href="https://gleam.run">gleam</a> <a href="https://www.ruby-lang.org">ruby</a></code></pre>
 
-Install Flyline:
+> Then install [Bun](https://bun.com) separately:
+>
+> ```sh
+> curl -fsSL "https://bun.sh/install" | bash
+> ```
+
+Install [Flyline](https://github.com/HalFrgrd/flyline):
 
 ```sh
 curl -fsSL "https://github.com/HalFrgrd/flyline/releases/latest/download/install.sh" | sh
 ```
 
-Download dotfiles:
+### 📄 Install Dotfiles
 
 ```sh
-curl https://codeberg.org/NNB/dotfiles/raw/branch/main/.bashrc > ~/.bashrc
+curl "https://codeberg.org/NNB/dotfiles/raw/branch/main/.bashrc" > ~/.bashrc
 ```
 
 That's all!
