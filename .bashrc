@@ -4,20 +4,18 @@
 
 shopt -s autocd dotglob globstar nullglob
 
-[[ -f ~/.local/lib/libflyline.so ]] || {
-    export FLYLINE_VERSION="0.0.0"
-    curl -fsSL "https://github.com/HalFrgrd/flyline/releases/latest/download/install.sh" | sh
+[[ -f ~/.local/lib/libflyline.so ]] && enable -f ~/.local/lib/libflyline.so flyline
+command -v flyline >/dev/null && {
+    flyline set-cursor --backend terminal --interpolate none
+    flyline suggestions --sort-order alphabetical
+    flyline key bind Ctrl+a "always=selectAll"
+    flyline key bind Right "bufferIsEmpty=insertString(cd )"
+    flyline key bind Alt+Left "bufferIsEmpty=insertString(prevd)+submitOrNewline"
+    flyline key bind Alt+Right "bufferIsEmpty=insertString(nextd)+submitOrNewline"
+    flyline key bind Alt+Up "bufferIsEmpty=insertString(cd ..)+submitOrNewline"
+    flyline key bind Alt+Down "bufferIsEmpty=insertString(l)+submitOrNewline"
+    flyline key bind Alt+Shift+Down "bufferIsEmpty=insertString(l --long)+submitOrNewline"
 }
-enable -f ~/.local/lib/libflyline.so flyline
-flyline set-cursor --backend terminal --interpolate none
-flyline suggestions --sort-order alphabetical
-flyline key bind Ctrl+a "always=selectAll"
-flyline key bind Right "bufferIsEmpty=insertString(cd )"
-flyline key bind Alt+Left "bufferIsEmpty=insertString(prevd)+submitOrNewline"
-flyline key bind Alt+Right "bufferIsEmpty=insertString(nextd)+submitOrNewline"
-flyline key bind Alt+Up "bufferIsEmpty=insertString(cd ..)+submitOrNewline"
-flyline key bind Alt+Down "bufferIsEmpty=insertString(l)+submitOrNewline"
-flyline key bind Alt+Shift+Down "bufferIsEmpty=insertString(l --long)+submitOrNewline"
 
 # Environment variables ----------------------------------------------------------------------------
 
@@ -50,20 +48,7 @@ hl() { [[ "${#s[@]}" -gt 0 ]] && ln "${s[@]}" .; }
 
 # Startup ------------------------------------------------------------------------------------------
 
-brew-shellenv() {
-    [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    [[ -x ~/.linuxbrew/bin/brew ]] && eval "$(~/.linuxbrew/bin/brew shellenv)"
-}
+[[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[[ -x ~/.linuxbrew/bin/brew ]] && eval "$(~/.linuxbrew/bin/brew shellenv)"
 
-brew-shellenv
-
-command -v starship >/dev/null || {
-    command -v brew >/dev/null || {
-        bash -c "$(curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh")"
-        brew-shellenv
-    }
-    brew install starship eza helix p7zip trash-cli bun gleam ruby
-    gem install rubyshell
-}
-
-eval "$(starship init bash)"
+command -v starship >/dev/null && eval "$(starship init bash)"
