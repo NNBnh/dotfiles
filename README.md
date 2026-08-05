@@ -37,9 +37,6 @@ bash -c "$(curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/HEAD/i
 <a href="https://wiki.termux.com/wiki/Package_Management">pkg</a> install --yes <a href="https://starship.rs">starship</a> <a href="https://eza.rocks">eza</a> <a href="https://helix-editor.com">helix</a> <a href="https://7-zip.org">7zip</a> <a href="https://github.com/andreafrancia/trash-cli">python-trash-cli</a> <a href="https://gleam.run">gleam</a> <a href="https://www.ruby-lang.org">ruby</a>
 curl -fsSL <span class="s2">"https://bun.sh/install"</span> | bash</code></pre>
 
-<pre class="code-block"><code class="chroma language-sh display"><span class="c1"># Install RubyShell</span>
-gem install <a href="https://rubyshell.org">rubyshell</a></code></pre>
-
 ```sh
 # Install Flyline
 curl -fsSL "https://github.com/HalFrgrd/flyline/releases/latest/download/install.sh" | sh
