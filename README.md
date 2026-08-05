@@ -22,7 +22,9 @@
 
 ### 🪟 Install applications
 
-<pre class="code-block"><code class="chroma language-sh display"><a href="https://flatpak.org">flatpak</a> install flathub --assumeyes <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5</a> <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5.Addon.Unikey</a> <a href="https://usebottles.com">com.usebottles.bottles</a></code></pre>
+Install [Flatpak](https://flatpak.org)'s packages:
+
+<pre class="code-block"><code class="chroma language-sh display">flatpak install flathub --assumeyes <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5</a> <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5.Addon.Unikey</a> <a href="https://usebottles.com">com.usebottles.bottles</a></code></pre>
 
 ### 📟 Install CLI packages
 
