@@ -22,13 +22,17 @@
 
 Run the following commands:
 
-<pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install flathub --assumeyes \
-  <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5</a> \
-  <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5.Addon.Unikey</a> \
-  <a href="https://usebottles.com">com.usebottles.bottles</a> \
-  <a href="https://obsproject.com">com.obsproject.Studio</a>
+<pre><code class="sh"><a href="https://flatpak.org">flatpak</a> install flathub --assumeyes <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5</a> <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5.Addon.Unikey</a> <a href="https://usebottles.com">com.usebottles.bottles</a></code></pre>
 
-curl https://codeberg.org/NNB/dotfiles/raw/branch/main/.bashrc > ~/.bashrc</code></pre>
+<pre><code class="sh">bash -c "$(curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh")"</code></pre>
+
+<pre><code class="sh"><a href="https://brew.sh">brew</a> install <a href="https://starship.rs">starship</a> <a href="https://eza.rocks">eza</a> <a href="https://helix-editor.com">helix</a> <a href="https://7-zip.org">sevenzip</a> <a href="https://github.com/andreafrancia/trash-cli">trash-cli</a> <a href="https://bun.com">bun</a> <a href="https://gleam.run">gleam</a> <a href="https://www.ruby-lang.org">ruby</a></code></pre>
+
+<pre><code class="sh">gem install <a href="https://rubyshell.org">rubyshell</a></code></pre>
+
+<pre><code class="sh">curl -fsSL <a href="https://github.com/HalFrgrd/flyline">"https://github.com/HalFrgrd/flyline/releases/latest/download/install.sh"</a> | sh</code></pre>
+
+<pre><code class="sh">curl https://codeberg.org/NNB/dotfiles/raw/branch/main/.bashrc > ~/.bashrc</code></pre>
 
 That's all!
 
