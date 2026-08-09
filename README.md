@@ -9,9 +9,10 @@
 
   ## 🌟 Starring 🌟
 
-  |      OS | 💽 | [Dank Linux](https://danklinux.com)
+  |      OS | 💽 | [Zirconium](https://github.com/zirconium-dev/zirconium)
   | ------: | -- | :- |
-  |      DE | 🏞️ | [Niri](https://github.com/niri-wm/niri)
+  |      DE | 🏞️ | [Dank Linux](https://danklinux.com)
+  |      WM | 🪟 | [Niri](https://github.com/niri-wm/niri)
   |   Shell | 🐚 | [Flyline](https://github.com/HalFrgrd/flyline)
   | Browser | 🌏 | [Helium](https://helium.computer)
   |  Editor | 📝 | [Helix](https://helix-editor.com)
@@ -22,23 +23,25 @@
 
 ### 🪟 Install applications
 
-Install [Flatpak](https://flatpak.org)'s packages:
+Install [Flatpak](https://flatpak.org) and [Flathub](https://flathub.org)'s packages:
 
 <pre class="code-block"><code class="chroma language-sh display">flatpak install flathub --assumeyes <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5</a> <a href="https://github.com/fcitx/fcitx5-unikey">org.fcitx.Fcitx5.Addon.Unikey</a> <a href="https://usebottles.com">com.usebottles.bottles</a></code></pre>
 
+Then install [Helium's AppImage](https://helium.computer/download).
+
 ### 📟 Install CLI packages
 
-Install Homebrew:
+Install [Homebrew](https://brew.sh):
 
 ```sh
 bash -c "$(curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh")"
 ```
 
-Install [Homebrew](https://brew.sh)'s packages:
+Install [Homebrew's packages](https://formulae.brew.sh):
 
 <pre class="code-block"><code class="chroma language-sh display">brew install <a href="https://starship.rs">starship</a> <a href="https://eza.rocks">eza</a> <a href="https://helix-editor.com">helix</a> <a href="https://7-zip.org">sevenzip</a> <a href="https://github.com/andreafrancia/trash-cli">trash-cli</a> <a href="https://bun.com">bun</a> <a href="https://gleam.run">gleam</a> <a href="https://www.ruby-lang.org">ruby</a></code></pre>
 
-Or install [Termux](https://wiki.termux.com/wiki/Package_Management)'s packages:
+Or install [Termux's packages](https://wiki.termux.com/wiki/Package_Management):
 
 <pre class="code-block"><code class="chroma language-sh display">pkg install --yes <a href="https://starship.rs">starship</a> <a href="https://eza.rocks">eza</a> <a href="https://helix-editor.com">helix</a> <a href="https://7-zip.org">7zip</a> <a href="https://github.com/andreafrancia/trash-cli">python-trash-cli</a> <a href="https://gleam.run">gleam</a> <a href="https://www.ruby-lang.org">ruby</a></code></pre>
 
