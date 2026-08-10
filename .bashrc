@@ -34,8 +34,6 @@ alias e="${EDITOR}"
 
 # Functions ----------------------------------------------------------------------------------------
 
-dirprev=()
-dirnext=()
 prevd() { [[ "${#dirprev[@]}" -gt 0 ]] && { builtin cd "${dirprev[-1]}" && { dirnext+=("${OLDPWD}"); l; }; unset 'dirprev[${#dirprev[@]}-1]'; }; }
 nextd() { [[ "${#dirnext[@]}" -gt 0 ]] && { builtin cd "${dirnext[-1]}" && { dirprev+=("${OLDPWD}"); l; }; unset 'dirnext[${#dirnext[@]}-1]'; }; }
 cd() { builtin cd "$@" && { [[ "${PWD}" != "${OLDPWD}" ]] && dirprev+=("${OLDPWD}"); dirnext=(); l; }; }
