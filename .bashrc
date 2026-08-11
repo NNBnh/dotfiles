@@ -4,6 +4,8 @@
 
 shopt -s autocd dotglob globstar nullglob
 
+[[ -f /home/linuxbrew/.linuxbrew/lib/bash/flyline ]] && enable -f /home/linuxbrew/.linuxbrew/lib/bash/flyline flyline
+[[ -f ~/.linuxbrew/lib/bash/flyline ]] && enable -f ~/.linuxbrew/lib/bash/flyline flyline
 [[ -f ~/.local/lib/libflyline.so ]] && enable -f ~/.local/lib/libflyline.so flyline
 command -v flyline >/dev/null && {
     flyline set-cursor --backend terminal --interpolate none
