@@ -9,6 +9,15 @@ export HISTCONTROL="ignorespace:erasedups"
 export EDITOR="hx"
 export VISUAL="${EDITOR}"
 
+# Aliases ------------------------------------------------------------------------------------------
+
+alias l="eza --almost-all --git --header --icons --group-directories-first --no-quotes"
+alias md="mkdir -p"
+alias d="trash-put"
+alias a="7z"
+alias g="git"
+alias e="${EDITOR}"
+
 # Functions ----------------------------------------------------------------------------------------
 
 prevd() { [[ "${#dirprev[@]}" -gt 0 ]] && { builtin cd "${dirprev[-1]}" && { dirnext+=("${OLDPWD}"); l; }; unset 'dirprev[${#dirprev[@]}-1]'; }; }
@@ -20,15 +29,6 @@ m() { [[ "${#s[@]}" -gt 0 ]] && mv "${s[@]}" . && s=(); }
 c() { [[ "${#s[@]}" -gt 0 ]] && cp -r "${s[@]}" .; }
 sl() { [[ "${#s[@]}" -gt 0 ]] && ln -s "${s[@]}" .; }
 hl() { [[ "${#s[@]}" -gt 0 ]] && ln "${s[@]}" .; }
-
-# Aliases ------------------------------------------------------------------------------------------
-
-alias l="eza --almost-all --git --header --icons --group-directories-first --no-quotes"
-alias md="mkdir -p"
-alias d="trash-put"
-alias a="7z"
-alias g="git"
-alias e="${EDITOR}"
 
 # Options ------------------------------------------------------------------------------------------
 
