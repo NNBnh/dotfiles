@@ -1,38 +1,13 @@
 #!/usr/bin/env bash
 
-# Options ------------------------------------------------------------------------------------------
+# Environment --------------------------------------------------------------------------------------
 
-shopt -s autocd dotglob globstar nullglob
-
-[[ -f /home/linuxbrew/.linuxbrew/lib/bash/flyline ]] && enable -f /home/linuxbrew/.linuxbrew/lib/bash/flyline flyline >/dev/null
-[[ -f ~/.linuxbrew/lib/bash/flyline ]] && enable -f ~/.linuxbrew/lib/bash/flyline flyline >/dev/null
-[[ -f ~/.local/lib/libflyline.so ]] && enable -f ~/.local/lib/libflyline.so flyline >/dev/null
-command -v flyline >/dev/null && {
-    flyline set-cursor --backend terminal --interpolate none
-    flyline suggestions --sort-order alphabetical
-    flyline key bind Ctrl+a "always=selectAll"
-    flyline key bind Right "bufferIsEmpty=insertString(cd )"
-    flyline key bind Alt+Left "bufferIsEmpty=insertString(prevd)+submitOrNewline"
-    flyline key bind Alt+Right "bufferIsEmpty=insertString(nextd)+submitOrNewline"
-    flyline key bind Alt+Up "bufferIsEmpty=insertString(cd ..)+submitOrNewline"
-    flyline key bind Alt+Down "bufferIsEmpty=insertString(l)+submitOrNewline"
-    flyline key bind Alt+Shift+Down "bufferIsEmpty=insertString(l --long)+submitOrNewline"
-}
-
-# Environment variables ----------------------------------------------------------------------------
+[[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[[ -x ~/.linuxbrew/bin/brew ]] && eval "$(~/.linuxbrew/bin/brew shellenv)"
 
 export HISTCONTROL="ignorespace:erasedups"
 export EDITOR="hx"
 export VISUAL="${EDITOR}"
-
-# Aliases ------------------------------------------------------------------------------------------
-
-alias l="eza --almost-all --git --header --icons --group-directories-first --no-quotes"
-alias md="mkdir -p"
-alias d="trash-put"
-alias a="7z"
-alias g="git"
-alias e="${EDITOR}"
 
 # Functions ----------------------------------------------------------------------------------------
 
@@ -46,9 +21,33 @@ c() { [[ "${#s[@]}" -gt 0 ]] && cp -r "${s[@]}" .; }
 sl() { [[ "${#s[@]}" -gt 0 ]] && ln -s "${s[@]}" .; }
 hl() { [[ "${#s[@]}" -gt 0 ]] && ln "${s[@]}" .; }
 
-# Startup ------------------------------------------------------------------------------------------
+# Aliases ------------------------------------------------------------------------------------------
 
-[[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-[[ -x ~/.linuxbrew/bin/brew ]] && eval "$(~/.linuxbrew/bin/brew shellenv)"
+alias l="eza --almost-all --git --header --icons --group-directories-first --no-quotes"
+alias md="mkdir -p"
+alias d="trash-put"
+alias a="7z"
+alias g="git"
+alias e="${EDITOR}"
+
+# Options ------------------------------------------------------------------------------------------
+
+shopt -s autocd dotglob globstar nullglob
+
+[[ -f "${HOMEBREW_PREFIX}/lib/bash/flyline" ]] && enable -f "${HOMEBREW_PREFIX}/lib/bash/flyline" flyline >/dev/null
+[[ -f ~/.local/lib/libflyline.so ]] && enable -f ~/.local/lib/libflyline.so flyline >/dev/null
+command -v flyline >/dev/null && {
+    flyline set-cursor --backend terminal --interpolate none
+    flyline suggestions --sort-order alphabetical
+    flyline key bind Ctrl+a "always=selectAll"
+    flyline key bind Right "bufferIsEmpty=insertString(cd )"
+    flyline key bind Alt+Left "bufferIsEmpty=insertString(prevd)+submitOrNewline"
+    flyline key bind Alt+Right "bufferIsEmpty=insertString(nextd)+submitOrNewline"
+    flyline key bind Alt+Up "bufferIsEmpty=insertString(cd ..)+submitOrNewline"
+    flyline key bind Alt+Down "bufferIsEmpty=insertString(l)+submitOrNewline"
+    flyline key bind Alt+Shift+Down "bufferIsEmpty=insertString(l --long)+submitOrNewline"
+}
+
+# Startup ------------------------------------------------------------------------------------------
 
 command -v starship >/dev/null && eval "$(starship init bash)"
