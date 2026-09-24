@@ -43,7 +43,7 @@ Install [Homebrew's packages](https://formulae.brew.sh):
 
 Or install [Termux's packages](https://wiki.termux.com/wiki/Package_Management):
 
-<pre class="code-block"><code class="chroma language-sh display">pkg install --yes <a href="https://starship.rs">starship</a> <a href="https://eza.rocks">eza</a> <a href="https://helix-editor.com">helix</a> <a href="https://7-zip.org">7zip</a> <a href="https://github.com/andreafrancia/trash-cli">python-trash-cli</a> <a href="https://gleam.run">gleam</a> <a href="https://www.ruby-lang.org">ruby</a></code></pre>
+<pre class="code-block"><code class="chroma language-sh display">pkg install --yes <a href="https://starship.rs">starship</a> <a href="https://eza.rocks">eza</a> <a href="https://helix-editor.com">helix</a> <a href="https://7-zip.org">7zip</a> <a href="https://github.com/andreafrancia/trash-cli">trash-cli</a> <a href="https://gleam.run">gleam</a> <a href="https://www.ruby-lang.org">ruby</a></code></pre>
 
 > Then install [Flyline](https://github.com/HalFrgrd/flyline) and [Bun](https://bun.com) separately:
 >
