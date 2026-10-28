@@ -11,7 +11,7 @@
 
   |      OS | 💽 | [Zirconium](https://github.com/zirconium-dev/zirconium)
   | ------: | -- | :- |
-  |      DE | 🏞️ | [Dank Linux](https://danklinux.com)
+  |      DE | 🏞️ | [Dux](https://duxlabs.dev)
   |      WM | 🪟 | [Niri](https://github.com/niri-wm/niri)
   |   Shell | 🐚 | [Flyline](https://github.com/HalFrgrd/flyline)
   | Browser | 🌏 | [Helium](https://helium.computer)
