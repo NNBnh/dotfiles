@@ -48,7 +48,7 @@ Or install [Termux's packages](https://wiki.termux.com/wiki/Package_Management):
 > Then install [Flyline](https://github.com/HalFrgrd/flyline) and [Bun](https://bun.com) separately:
 >
 > ```sh
-> curl -fsSL "https://github.com/HalFrgrd/flyline/releases/latest/download/install.sh" | sh
+> source <(curl -sSfL "https://github.com/HalFrgrd/flyline/releases/latest/download/install.sh")
 > curl -fsSL "https://bun.sh/install" | bash
 > ```
 
